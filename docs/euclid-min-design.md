@@ -1,526 +1,547 @@
-# 尺规作图最短步骤搜索项目设计文档
+# Euclid-Min：正十七边形最短尺规构造研究设计
 
-> 项目代号：**Euclid-Min**（暂定）  
-> 项目类型：开源 IT / 数学计算 / 自动搜索 / 可验证几何  
-> 首要目标：**寻找经典尺规作图问题的更短已知构造（shortest-known construction）**  
-> 长期目标：在部分问题上进一步尝试证明真正的最小步数
+> 项目代号：**Euclid-Min**
+>
+> 项目类型：计算数学 / 自动搜索 / 精确几何验证
+>
+> 唯一研究对象：**正十七边形的相邻顶点构造**
+>
+> 第一目标：在严格固定的规则下，寻找并验证更短的已知构造
+>
+> 长期目标：在可行的受限模型中研究严格的最小步数
 
 ---
 
-## 1. 项目背景
+## 1. 项目定位
 
-尺规作图中的大量经典问题已经有数百年甚至两千多年的历史，例如：
+Euclid-Min 不是通用动态几何软件，也不是面向大量经典题目的题库。
 
-- 正十七边形；
-- 阿波罗尼乌斯三圆问题；
+当前版本只研究一个问题：
+
+> 给定单位圆、圆心和圆上一个起始点，仅使用无刻度直尺与可折叠圆规，构造正十七边形在该起始点旁边的一个相邻顶点，最少需要多少次基础作图操作？
+
+项目把这个问题形式化为：
+
+```text
+固定初始几何对象
+        ↓
+合法的画线 / 画圆操作
+        ↓
+自动获得新的交点
+        ↓
+形成新的精确几何状态
+        ↓
+判断目标顶点是否出现
+```
+
+系统分为两个必须解耦的部分：
+
+```text
+┌────────────────────────┐
+│ Construction Search    │
+│ 搜索更短的候选构造       │
+└────────────┬───────────┘
+             │ certificate
+             ▼
+┌────────────────────────┐
+│ Exact Verifier         │
+│ 独立重放并严格验证       │
+└────────────┬───────────┘
+             ▼
+      可复现的构造与分数
+```
+
+搜索器可以使用启发式、随机化或 AI；验证器必须使用精确数学判断。
+
+---
+
+## 2. 唯一研究问题
+
+### 2.1 固定实例
+
+第一版只研究固定、归一化的单位圆实例：
+
+\[
+O=(0,0),\qquad A=(1,0),\qquad
+\Gamma:x^2+y^2=1.
+\]
+
+初始可见对象为：
+
+- 点 \(O\)；
+- 点 \(A\)；
+- 圆 \(\Gamma\)，圆心为 \(O\)，经过 \(A\)。
+
+这些初始对象免费提供，不计入构造分数。
+
+### 2.2 目标
+
+目标是构造以下两个点中的任意一个：
+
+\[
+B_+=\left(\cos\frac{2\pi}{17},\sin\frac{2\pi}{17}\right),
+\]
+
+或
+
+\[
+B_-=\left(\cos\frac{2\pi}{17},-\sin\frac{2\pi}{17}\right).
+\]
+
+它们分别是从 \(A\) 沿单位圆两个方向得到的相邻顶点。
+
+验证器可以使用这两个精确代数点判断目标是否达到，但搜索器不得把目标坐标当成可直接使用的已知点。
+
+### 2.3 不要求构造完整多边形
+
+当前目标不要求：
+
+- 画出全部 17 个顶点；
+- 画出 17 条边；
+- 沿圆周重复搬运边长；
+- 输出完整正十七边形图形。
+
+只要状态中精确出现 \(B_+\) 或 \(B_-\)，即认为达到目标。
+
+### 2.4 为什么采用固定实例
+
+固定实例可以把第一阶段限制在具体实代数数上，避免同时处理一般参数族、自由点连续变化和符号恒等证明。
+
+这并不降低问题的数学价值。正十七边形仍然涉及非平凡的二次扩张塔、复杂的构造依赖关系和巨大的组合搜索空间。
+
+---
+
+## 3. 当前范围
+
+### 3.1 项目要做的事情
+
+当前项目只做：
+
+1. 形式化正十七边形相邻顶点问题；
+2. 实现固定实例的精确构造验证器；
+3. 建立正十七边形历史构造 baseline；
+4. 自动重新计算构造分数；
+5. 搜索比已复核 baseline 更短的构造；
+6. 输出第三方可以重放的构造证书；
+7. 在条件成熟时研究受限模型下的最小性证明。
+
+### 3.2 当前明确不做的事情
+
+当前版本不做：
+
+- Apollonius 三圆问题；
 - Malfatti 三圆问题；
 - Cramer–Castillon 问题；
-- 各类三角形反构问题。
+- 三角形反构问题；
+- 其他正多边形的最短构造研究；
+- 通用尺规作图题库；
+- 自然语言题目自动形式化；
+- 一般参数族的符号验证；
+- 任意点或半自由点；
+- non-collapsing compass 搜索；
+- 第一版中的 GPU 或 AI 模型；
+- 未经完备证明的 global minimum 声明。
 
-传统数学通常关注：
+简单的中点、垂线、正三角形等构造可以作为内核测试，但它们不是项目研究对象，也不建立公开纪录。
 
-1. 一个目标是否尺规可作；
-2. 如何给出一个优美、可理解的经典构造；
-3. 构造背后的代数、射影、反演或圆几何结构。
+### 3.3 延后不等于预先设计
 
-但另一个非常自然的问题长期没有被系统解决：
+被排除的问题不要求当前架构提前兼容。
 
-> **在给定严格计步规则的前提下，一个尺规作图问题最少究竟需要多少步？**
+特别是，不为三圆问题提前引入：
 
-这与魔方中的 HTM/QTM 和 God's Number 很相似。
+- 通用输入参数；
+- 参数化代数函数；
+- 输入连续变化下的分支跟踪；
+- 通用切触目标语言；
+- 八类内切/外切分支。
 
-对于很多经典尺规问题，人们知道很多构造，也知道某些构造比另一些更短，但：
-
-- “目前已知最短”往往没有统一整理；
-- “严格最短”通常更难；
-- 即使问题本身极其经典，其最小尺规步数也可能未知。
-
-本项目把这一问题视为一个工程化的搜索与验证问题，而不是首先视为一篇数学论文。
-
-项目最终可以仅以 GitHub 开源项目形式存在；如果产生有价值的新结果，再考虑进一步整理为论文、技术报告或公开文章。
-
----
-
-# 2. 项目核心思想
-
-本项目把尺规作图形式化为一个可执行的状态空间搜索问题：
-
-```text
-初始几何对象
-    ↓
-合法尺规操作
-    ↓
-产生新的直线 / 圆
-    ↓
-自动产生新的交点
-    ↓
-形成新的几何状态
-    ↓
-判断是否达到目标
-```
-
-整个系统由两部分构成：
-
-```text
-                ┌──────────────────────┐
-                │   Construction Search │
-                │  搜索更短的构造方案   │
-                └──────────┬───────────┘
-                           │
-                           ▼
-                ┌──────────────────────┐
-                │ Exact Verifier       │
-                │ 严格验证每一步是否合法 │
-                └──────────┬───────────┘
-                           │
-                           ▼
-                    可复现构造证书
-```
-
-搜索算法可以是启发式的、随机的、AI 驱动的。
-
-但验证器必须是严格的。
+只有正十七边形研究闭环完成后，才重新评估是否扩展项目范围。
 
 ---
 
-# 3. 项目目标
+## 4. 正式 Profile
 
-## 3.1 第一阶段目标
-
-第一阶段**不要求证明 global minimum**。
-
-主要目标：
-
-> **在明确、权威或可对照的 metric 下，找到比公开文献中更短的经典尺规作图。**
-
-例如：
-
-```text
-Literature best:
-    45 Lemoine simplicity
-
-New construction:
-    42 Lemoine simplicity
-
-Verification:
-    PASS
-```
-
-只要规则一致、构造合法、结果可重放，即使不能证明 42 是绝对最小，也已经得到一个新的 upper bound：
-
-\[
-OPT \le 42
-\]
-
-这已经具有实际价值。
-
----
-
-## 3.2 第二阶段目标
-
-建立一个通用的：
-
-> **Straightedge-and-Compass Construction Verifier**
-
-输入：
-
-- 初始几何对象；
-- 一系列尺规操作；
-- 目标条件。
-
-输出：
-
-- 每一步是否合法；
-- 所有中间对象；
-- 最终目标是否严格满足；
-- 构造步数；
-- 各 metric 下的 score。
-
-验证器必须尽可能独立于搜索器。
-
----
-
-## 3.3 第三阶段目标
-
-实现自动搜索器：
-
-> **Automatic Short Construction Search**
-
-可以：
-
-- 枚举合法操作；
-- 自动生成候选构造；
-- 进行状态去重；
-- 使用启发式剪枝；
-- 使用随机搜索；
-- 使用 beam search；
-- 使用 A* / IDDFS / branch-and-bound；
-- 使用 AI 对候选操作排序；
-- 尝试刷新 shortest-known construction。
-
-此阶段允许不完备搜索。
-
-因此结果只能声明：
-
-> **shortest found / shortest known**
-
-不能声明：
-
-> **global minimum**
-
----
-
-## 3.4 长期目标
-
-如果项目成熟，可以尝试：
-
-> **Minimum-Step Proof**
-
-即同时得到：
-
-1. 一个长度为 \(N\) 的合法构造；
-2. 一个严格证明，说明所有 \(N-1\) 步及以下构造均不可能。
-
-从而得到：
-
-\[
-OPT = N
-\]
-
-这一目标难度非常高，不作为项目是否成功的判断标准。
-
----
-
-# 4. 非目标
-
-第一版明确不做以下事情：
-
-- 不试图形式化全部古典欧氏几何；
-- 不支持所有可能的尺规传统习惯；
-- 不把自然语言题目直接自动转换成形式化问题；
-- 不要求 AI 自己证明几何正确性；
-- 不要求第一版证明最小步数；
-- 不首先追求 GPU 加速；
-- 不首先追求论文发表；
-- 不把“搜索很多但没找到”当作“不存在”的证明。
-
-尤其必须坚持：
-
-> **没有完备覆盖，就不能声称 lower bound。**
-
-AI 搜了十亿个方案但没找到，不等于证明不存在。
-
----
-
-# 5. Metric 设计
-
-项目应区分：
-
-1. **内部搜索 metric**
-2. **公开比较 metric**
-
-内部 metric 可以更适合计算机。
-
-公开比较必须尽量采用已有文献中的标准，否则新纪录缺乏可比性。
-
----
-
-# 6. Metric A：E-move
-
-建议把现代计算机搜索的基础 metric 设为 E-move。
-
-基本思想：
-
-```text
-通过两个已有点画直线       = 1 E
-以已有点为圆心画合法圆     = 1 E
-交点                        = 0 E
-```
-
-高级宏操作必须展开成基础尺规操作，或者按照已有正式定义计算 E-score。
-
-例如：
-
-- 中点；
-- 垂线；
-- 垂直平分线；
-- 平行线；
-- 角平分线；
-- 距离搬运；
-
-不能天然视作 1 步。
-
-E-move 的优点：
-
-- 对搜索器非常自然；
-- 适合构造 DAG；
-- 不依赖尺子和圆规的“当前物理状态”；
-- 易于做 canonicalization；
-- 易于比较不同搜索策略；
-- 已经出现在现代最短尺规构造复杂度研究中。
-
----
-
-# 7. Metric B：Lemoine Geometrography
-
-为了与历史文献比较，项目必须支持 Lemoine simplicity。
-
-Lemoine 把实际尺规动作拆成：
-
-```text
-S1：让直尺边通过一个指定点
-S2：沿直尺画一条直线
-
-C1：把圆规的一只脚放到指定点
-C2：把圆规的一只脚放到某条已知轨迹上的任意点
-C3：画一个圆
-```
-
-simplicity：
-
-\[
-L = m_1 + m_2 + n_1 + n_2 + n_3
-\]
-
-其中：
-
-```text
-m1 = S1 次数
-m2 = S2 次数
-n1 = C1 次数
-n2 = C2 次数
-n3 = C3 次数
-```
-
----
-
-# 8. 为什么必须同时支持两种 metric
-
-内部搜索最适合：
-
-```text
-E-move
-```
-
-历史比较最适合：
-
-```text
-Lemoine simplicity
-```
-
-最终一个构造应该报告：
-
-```text
-E-score:        13
-Lemoine score:  42
-Lines:           4
-Circles:         9
-```
-
-如果出现：
-
-```text
-E-score 更低
-Lemoine score 更高
-```
-
-也没有问题。
-
-这说明它在两种不同优化目标下表现不同。
-
-项目不应该把它们混成一个数字。
-
----
-
-# 9. Metric Profile
-
-不同历史文献可能存在不同初始条件、圆规模型和目标条件。
-
-因此项目必须引入：
-
-```text
-Metric Profile
-```
-
-例如：
+第一版唯一具有规范意义的 profile 暂定为：
 
 ```yaml
-profile: detemple-1991
+id: regular-17-e-fixed-v1
 
-metric:
-  primary: lemoine
-
-compass:
-  mode: non-collapsing
+problem:
+  type: regular_polygon_adjacent_vertex
+  n: 17
+  semantics: fixed_instance
 
 initial_objects:
-  - unit_circle
-  - horizontal_diameter
-  - vertical_diameter
+  points:
+    O: [0, 0]
+    A: [1, 0]
+  circles:
+    unit_circle:
+      center: O
+      through: A
+
+tools:
+  straightedge: true
+  collapsing_compass: true
+  non_collapsing_compass: false
+
+points:
+  intersections_only: true
+  arbitrary_points: false
+  half_generic_points: false
+
+metric:
+  primary: e_move
 
 target:
-  type: adjacent_vertex_of_regular_polygon
+  type: either_adjacent_vertex
+  start: A
+  center: O
+  circle: unit_circle
   n: 17
 ```
 
-而机器内部测试可以使用：
+任何正式结果都必须绑定 profile ID 和 profile 内容哈希。
 
-```yaml
-profile: minimal-euclidean
+修改以下任一内容，都必须产生新的 profile：
 
-metric:
-  primary: e-move
+- 初始对象；
+- 可见对象；
+- 工具集合；
+- 圆规模型；
+- 自由点规则；
+- 交点规则；
+- 目标条件；
+- 计步规则。
 
-compass:
-  mode: collapsing
-
-initial_objects:
-  - center
-  - one_point_on_circle
-  - circle
-
-target:
-  type: adjacent_vertex_of_regular_polygon
-  n: 17
-```
+不同 profile 的分数不能直接比较。
 
 ---
 
-# 10. 不同 Profile 的结果不能直接比较
+## 5. 基础操作模型
 
-例如：
-
-```text
-Profile A:
-单位圆 + 两条垂直直径免费
-
-Profile B:
-只有圆心 + 圆上一点 + 单位圆
-```
-
-那么：
+### 5.1 直尺操作
 
 ```text
-A 的 13 步
+Line(P, Q)
 ```
 
-不能直接宣布优于：
+前置条件：
+
+- \(P\) 和 \(Q\) 都是当前状态中的已有点；
+- \(P\ne Q\)。
+
+结果是唯一经过 \(P,Q\) 的直线。
+
+成本：
 
 ```text
-B 的 14 步
+1 E-move
 ```
 
-因为初始信息不同。
-
-所有公开纪录必须绑定 profile。
-
-建议结果统一写成：
+### 5.2 可折叠圆规操作
 
 ```text
-Problem:
-    Regular 17-gon
-
-Profile:
-    DeTemple-1991-compatible
-
-Metric:
-    Lemoine
-
-Score:
-    42
-
-Status:
-    Verified construction
-    Global optimality NOT claimed
+Circle(center=P, through=Q)
 ```
 
----
+前置条件：
 
-# 11. 圆规模型
+- \(P\) 和 \(Q\) 都是当前状态中的已有点；
+- \(P\ne Q\)。
 
-必须明确支持至少两类。
+结果是以 \(P\) 为圆心、以 \(|PQ|\) 为半径的圆。
 
-## 11.1 Collapsing Compass
-
-圆规离开纸面后半径不能保留。
-
-基础圆：
+成本：
 
 ```text
-Circle(A, B)
+1 E-move
 ```
 
-表示：
+### 5.3 不支持直接搬运距离
 
-> 以已有点 A 为圆心，以 AB 为半径画圆。
-
----
-
-## 11.2 Non-Collapsing Compass
-
-允许把已有距离：
-
-\[
-|AB|
-\]
-
-搬到另一个圆心 \(C\)。
-
-例如：
+第一版不允许一步执行：
 
 ```text
 Circle(center=C, radius=AB)
 ```
 
-可能作为直接操作。
+除非 \(C\) 本身就是 \(A,B\) 中的一个端点，并用另一个端点作为圆上的已知点。
 
-历史文献中可能采用这一模型。
+也就是说，第一版没有 non-collapsing compass 工具。需要搬运距离时，必须展开成基础直尺和可折叠圆规操作。
 
-因此 verifier 和 metric calculator 必须区分两者。
+### 5.4 重复对象
+
+再次画出已经存在的直线或圆，在语义上可以被识别，但不会产生新状态。
+
+搜索器可以把这种操作作为显然受支配的候选排除。验证器如果读到这种操作，应当：
+
+- 仍然计算其成本；
+- 标记结果对象与已有对象相同；
+- 不产生新的交点。
 
 ---
 
-# 12. 任意点问题
+## 6. 点与交点语义
 
-经典尺规作图常出现：
+### 6.1 只允许确定点
 
-> 在线上任取一点 P。
-
-这会让搜索空间从有限分支变成连续无限分支。
-
-第一版建议：
-
-```text
-arbitrary_points = false
-```
-
-即禁止自由点。
-
-所有新点必须来自：
+除了初始点 \(O,A\)，所有新点都必须来自：
 
 - line-line intersection；
 - line-circle intersection；
 - circle-circle intersection。
 
-如果未来支持任意点，必须单独作为 profile。
+第一版禁止：
+
+- 平面上任取一点；
+- 直线上任取一点；
+- 圆上任取一点。
+
+因此在给定步数上界时，候选操作集合保持有限。
+
+### 6.2 自动交点闭包
+
+每画出一个新对象后，系统把它与所有已有直线和圆求交：
+
+```text
+new object
+    ↓
+intersect with existing objects
+    ↓
+obtain 0 / 1 / 2 finite real points
+    ↓
+exact canonicalization
+    ↓
+add new points to state
+```
+
+交点定义不计 E-move。
+
+### 6.3 退化情况
+
+验证器必须精确区分：
+
+- 无实交点；
+- 一个相切交点；
+- 两个不同实交点；
+- 平行直线；
+- 重合直线；
+- 重合圆；
+- 半径为零的非法圆。
+
+欧氏平面中的无穷远点不加入状态。
+
+### 6.4 稳定的交点标识
+
+证书不能依赖数值求根器返回的 `intersection 0` 或 `intersection 1`。
+
+固定实例中，两个交点按精确字典序命名：
+
+1. 先比较精确 \(x\) 坐标；
+2. 若 \(x\) 相等，再比较精确 \(y\) 坐标。
+
+可使用：
+
+```text
+lower / upper
+left / right
+first_lexicographic / second_lexicographic
+```
+
+作为人类可读别名，但验证器最终以精确坐标序关系决定身份。
 
 ---
 
-# 13. 几何对象模型
+## 7. E-move Metric
 
-核心类型：
+第一阶段只优化 E-move：
 
 ```text
-Point
-Line
-Circle
+画一条合法直线 = 1 E
+画一个合法基础圆 = 1 E
+定义交点         = 0 E
+```
+
+构造总分为：
+
+\[
+E = \#\text{Lines Drawn} + \#\text{Circles Drawn}.
+\]
+
+高级宏操作不能天然视为一步。例如：
+
+- 中点；
+- 垂直平分线；
+- 垂线；
+- 平行线；
+- 角平分线；
+- 距离搬运。
+
+如果 DSL 或 UI 将来提供这些宏，它们必须展开为基础操作后再计算 E-score。
+
+### 7.1 Lemoine simplicity 的位置
+
+Lemoine simplicity 只用于未来的历史 profile，不是 `regular-17-e-fixed-v1` 的实现前置条件。
+
+在正式支持前，必须从原始资料确认：
+
+- 基本动作的严格定义；
+- 初始对象如何计数；
+- 圆规和直尺的动作约定；
+- DeTemple 构造的实际初始条件；
+- 论文报告分数能否被项目独立重算。
+
+在完成上述工作前，文档和 README 不写未经复核的具体 Lemoine baseline 数字。
+
+---
+
+## 8. 数学声明等级
+
+每个结果必须明确标记其声明等级。
+
+### Level 0：Verified Construction
+
+找到并精确验证了一个合法构造。
+
+可声明：
+
+```text
+A verified N-move construction.
+```
+
+### Level 1：Shorter Than a Verified Baseline
+
+项目已经在相同 profile 下重放某个文献或公开构造，并找到严格更短的构造。
+
+可声明：
+
+```text
+Shorter than baseline X under profile Y.
+```
+
+### Level 2：Shortest Known in Reviewed Literature
+
+完成充分、可公开检查的文献检索后，可以谨慎声明：
+
+```text
+Shortest known in the reviewed literature under profile Y.
+```
+
+必须同时公开检索范围和截止日期。
+
+### Level 3：Globally Minimal
+
+只有同时具有：
+
+1. 一个长度为 \(N\) 的合法构造；
+2. 一个严格、可验证的证明，排除全部长度小于 \(N\) 的构造；
+
+才能声明：
+
+\[
+OPT=N.
+\]
+
+### 8.1 禁止的表述
+
+没有 lower-bound proof 时，禁止使用：
+
+```text
+minimum construction
+optimal construction
+God's Number = N
+```
+
+应使用：
+
+```text
+shortest construction found by Euclid-Min
+shortest known in the reviewed literature
+new verified upper bound
 ```
 
 ---
 
-## 13.1 Point
+## 9. Exact Algebra
 
-逻辑表示：
+### 9.1 基本要求
+
+尺规构造产生的坐标属于有限次二次扩张得到的实代数数。
+
+最终验证禁止使用：
+
+```python
+abs(x - y) < epsilon
+```
+
+来决定：
+
+- 两个点是否相同；
+- 点是否在线上；
+- 点是否在圆上；
+- 两条直线是否相同；
+- 两个圆是否相同；
+- 目标点是否已经构造出来。
+
+### 9.2 必须支持的精确判断
+
+数学内核至少需要：
+
+- 实代数数四则运算；
+- 精确平方根；
+- 相等判断；
+- 符号和序关系判断；
+- line-line 精确求交；
+- line-circle 精确求交；
+- circle-circle 精确求交；
+- 重根和相切判断；
+- 目标代数点比较。
+
+### 9.3 表示策略
+
+概念上，一个实代数数需要能够由以下信息唯一确定：
+
+- 定义表达式或多项式；
+- 选择的实根；
+- 必要的隔离区间或符号信息。
+
+表达式 DAG 可以用于保存构造来源和减少重复计算，但不能仅依靠字符串形式判断两个代数数是否相等。
+
+### 9.4 SageMath 的角色
+
+第一版使用 SageMath 作为 reference mathematical kernel，负责：
+
+- Algebraic Real Field；
+- 精确交点；
+- 相等和序关系；
+- 目标点构造；
+- 构造重放；
+- 回归测试中的权威结果。
+
+首要目标是正确性，不是速度。
+
+### 9.5 Go 的角色
+
+Go 可以在搜索规模需要时负责：
+
+- 搜索队列；
+- 状态索引；
+- 并发；
+- checkpoint；
+- CLI；
+- 性能 profiling。
+
+第一版不要求立即在 Go 中重新实现完整实代数数内核。
+
+如果以后实现 Go exact kernel，必须与 SageMath 做 differential testing。任何不一致都视为 bug。
+
+---
+
+## 10. 几何对象模型
+
+### 10.1 Point
 
 ```text
 Point {
@@ -531,1406 +552,813 @@ Point {
 }
 ```
 
-坐标必须支持 exact representation。
+点的数学身份由精确坐标决定，`id` 只用于证书引用。
 
-禁止使用 `float64` 作为最终真实性判断依据。
+### 10.2 Line
 
----
-
-## 13.2 Line
-
-推荐标准形式：
+数学形式：
 
 \[
-ax + by + c = 0
+ax+by+c=0.
 \]
 
-必须 canonicalize，例如：
+实现必须处理系数整体缩放造成的等价性。
 
-- 统一符号；
-- 约分；
-- 归一化代数表达式。
+两个 line 表达式是否相同必须通过精确比例关系或规范化表示判断，不能通过浮点归一化判断。
 
----
+### 10.3 Circle
 
-## 13.3 Circle
-
-标准形式：
+推荐形式：
 
 \[
-(x-a)^2 + (y-b)^2 = r^2
+(x-u)^2+(y-v)^2=r^2,
 \]
 
-或者一般形式：
-
-\[
-x^2+y^2+Dx+Ey+F=0
-\]
-
-根据 exact algebra 实现选择。
-
----
-
-# 14. Exact Algebra
-
-这是项目最关键的基础设施之一。
-
-尺规构造产生的坐标属于通过有限次二次扩张得到的代数数。
-
-不能使用：
-
-```python
-abs(x - y) < 1e-12
-```
-
-判断两个点是否相同。
-
-必须能够严格判断：
-
-\[
-x = y
-\]
-
-以及：
-
-\[
-x < y
-\]
-
-必要时还要判断：
-
-- 点是否在线上；
-- 点是否在圆上；
-- 两圆是否相切；
-- 两对象是否相同；
-- 两点是否重合。
-
----
-
-# 15. SageMath 的角色
-
-第一版建议使用现有 SageMath + Python 环境作为：
-
-> **Reference Mathematical Kernel**
-
-SageMath 负责：
-
-- Algebraic Real Field；
-- Number Field；
-- polynomial；
-- minimal polynomial；
-- exact square root；
-- symbolic verification；
-- 高精度辅助调试。
-
-第一阶段不追求 Sage 的速度。
-
-目标是：
-
-> **先把数学做对。**
-
----
-
-# 16. Go 的角色
-
-Go 作为正式 solver 的主要候选语言。
-
-适合：
-
-- 搜索状态管理；
-- hash；
-- canonical state；
-- 并发；
-- checkpoint；
-- 长时间任务；
-- CLI；
-- benchmark；
-- 单二进制发布。
-
-推荐路线：
+内部保存：
 
 ```text
-Sage/Python reference
-        ↓
-Go production solver
+center = (u, v)
+radius_squared = r2
 ```
+
+使用 \(r^2\) 可以减少不必要的平方根。
+
+### 10.4 Provenance
+
+每个非初始对象记录：
+
+- 产生它的操作；
+- 直接依赖对象；
+- 所属步骤；
+- 精确交点选择信息。
+
+provenance 用于生成证书，不替代对象的数学相等判断。
 
 ---
 
-# 17. Differential Testing
+## 11. Construction Language
 
-正式 Go kernel 实现后，必须与 Sage reference 做随机对照。
+项目需要一个简单、确定、可版本化的构造 DSL。
 
-流程：
-
-```text
-随机生成合法 construction
-        │
-        ├──────────────┐
-        ▼              ▼
-      Sage            Go
-        │              │
-        └───────┬──────┘
-                ▼
-          exact result compare
-```
-
-任何不一致都视为 bug。
-
----
-
-# 18. Construction Language
-
-项目需要一个非常简单、可读、可版本化的 DSL。
-
-例如：
+概念示例：
 
 ```text
-circle c1 A B
-circle c2 B A
-
-point P = intersect(c1, c2, 0)
-point Q = intersect(c1, c2, 1)
-
-line l1 P Q
+circle c1 center=A through=O
+point P = intersection(c1, unit_circle, upper)
+line l1 through=A,P
 ```
 
-或者 JSON/YAML 版本。
+正式格式优先采用 YAML 或 JSON；人类可读文本 DSL 可以后续生成。
 
 要求：
 
-- 人可以读；
-- 程序可以重放；
+- 人可以阅读；
+- 程序可以无歧义重放；
 - Git diff 友好；
 - 不依赖 GUI；
-- 易于第三方 verifier 实现。
+- 不依赖浮点坐标；
+- 所有对象引用都指向更早出现的对象；
+- profile 与证书格式都有版本号。
 
 ---
 
-# 19. Construction Certificate
+## 12. Construction Certificate
 
-每一个正式结果必须生成：
+每个正式结果必须生成构造证书，包括：
 
-```text
-construction certificate
-```
-
-包括：
-
-- Problem ID；
-- Metric profile；
+- schema version；
+- problem ID；
+- profile ID；
+- profile 内容哈希；
 - 初始对象；
-- 每一步操作；
-- 新产生的交点；
-- 最终目标对象；
+- 每一步基础操作；
+- 新产生的精确交点引用；
+- 最终目标点；
 - E-score；
-- Lemoine score；
-- exact verification result；
 - solver version；
 - verifier version；
-- hash。
+- 构造内容哈希；
+- exact verification result；
+- optimality claim 等级。
 
-例如：
+示例：
 
 ```yaml
-problem: regular-17-gon
-profile: detemple-1991
-solver_version: 0.4.2
-verifier_version: 0.3.8
+schema: euclid-min-certificate/v1
+problem: regular-17-adjacent-vertex
+profile: regular-17-e-fixed-v1
 
 score:
   e_move: 13
-  lemoine: 42
 
-verified: true
-optimality_claimed: false
+result:
+  verified: true
+  target: B_plus
+  claim: verified_construction
+  global_optimality: not_claimed
+
+software:
+  solver: 0.1.0
+  verifier: 0.1.0
 ```
+
+这里的数字仅为格式示例，不表示项目已经得到 13 步构造。
+
+证书哈希用于检测文件变化，不作为数学正确性的证明；第三方 verifier 必须重新计算所有几何对象。
 
 ---
 
-# 20. 搜索状态
+## 13. 搜索状态
 
-一个状态包含：
-
-```text
-Points
-Lines
-Circles
-Construction DAG
-Score
-```
-
-理论表示：
+搜索状态的数学部分为：
 
 \[
-S=(P,L,C)
+S=(P,L,C),
 \]
 
 其中：
 
-```text
-P = 当前所有可用点
-L = 当前所有直线
-C = 当前所有圆
-```
+- \(P\)：当前所有不同的精确点；
+- \(L\)：当前所有不同的直线；
+- \(C\)：当前所有不同的圆。
+
+工程状态还包括：
+
+- 当前 E-score；
+- 最佳前驱；
+- 构造 DAG；
+- canonical key；
+- 搜索元数据。
+
+在当前操作模型下，后续合法候选只依赖 \((P,L,C)\)，而不依赖产生对象的历史顺序。因此：
+
+- 几何集合用于判断状态等价；
+- 最佳前驱和构造 DAG 用于恢复最低成本证书；
+- 相同几何状态只保留成本不劣的标签。
 
 ---
 
-# 21. Candidate Generation
+## 14. Candidate Generation
 
-对于已有点集：
+对当前点集：
 
-```text
-P = {P1, P2, ... Pn}
-```
+\[
+P=\{P_1,P_2,\dots,P_n\},
+\]
 
-基础候选：
-
-```text
-Line(Pi, Pj)
-Circle(Pi, Pj)
-```
-
-如果 profile 支持 non-collapsing compass：
+生成：
 
 ```text
-Circle(center=Pi, radius=PjPk)
+Line(Pi, Pj),                  i < j
+Circle(center=Pi, through=Pj), i != j
 ```
 
-也可以进入候选集。
+排除：
+
+- 输入点重合；
+- 与已有对象精确相同的候选；
+- profile 不允许的工具；
+- 无法满足操作前置条件的候选。
+
+注意：
+
+> 一个新对象当前没有产生新交点，不代表它以后没有用。
+
+因此，“没有立即产生新点”只能作为启发式模式中的排序信号，不能在 proof mode 中作为永久删除分支的理由。
 
 ---
 
-# 22. 自动交点闭包
+## 15. Canonicalization
 
-新建一个 line/circle 后：
+Canonicalization 是控制状态爆炸的核心。
 
-```text
-new_object
-    ↓
-与所有已有对象求交
-    ↓
-产生 0 / 1 / 2 个新点
-    ↓
-canonicalize
-    ↓
-加入 Point Set
-```
+### 15.1 对象级去重
 
-交点本身默认不计 E-move。
+严格消除：
 
-Lemoine 是否计入额外操作由具体 profile 决定。
+- 坐标相同的点；
+- 方程等价的直线；
+- 圆心和半径平方相同的圆。
 
----
+### 15.2 操作顺序去重
 
-# 23. Canonicalization
+如果两条不同操作序列最终得到完全相同的 \((P,L,C)\)，则它们属于同一个搜索状态。
 
-必须严格消除：
+搜索器保留其中最低成本的前驱；成本相同的多条路径可以只保留一个确定性代表。
 
-- 重复点；
-- 重复直线；
-- 重复圆；
-- 等价状态；
-- 不同操作顺序产生的相同状态。
+### 15.3 初始对称性
 
-例如：
+固定初始配置关于直线 \(OA\) 反射对称。
 
-```text
-先画 AB
-再画 CD
-```
+项目可以研究把互为镜像的状态合并，但必须：
 
-与：
+- 精确定义反射作用；
+- 证明它保持初始对象、操作合法性、目标集合和 E-score；
+- 在 proof mode 中输出或实现可审计的等价规则。
 
-```text
-先画 CD
-再画 AB
-```
+未经证明的“看起来对称”不能用于完备剪枝。
 
-如果最终得到完全相同的几何闭包，应尽可能 canonicalize 为同一状态。
+### 15.4 Hash 不是相等证明
 
-这是控制状态爆炸的核心技术。
+hash 只用于快速索引。
+
+发生 hash 命中后，必须通过精确对象比较确认状态相同。不能因为摘要碰撞而合并数学状态。
 
 ---
 
-# 24. 搜索算法
+## 16. 搜索算法
 
-第一阶段目标是找短解，不要求完备性。
+第一阶段只追求更短的合法构造，不要求完备性。
 
-可以大胆使用：
+可以依次尝试：
 
-- DFS；
-- IDDFS；
-- beam search；
-- best-first search；
-- A*；
-- random restart；
-- Monte Carlo；
-- MCTS；
-- genetic search；
-- simulated annealing；
-- heuristic scoring；
-- AI ranking。
+1. IDDFS；
+2. best-first search；
+3. beam search；
+4. random restart；
+5. hand-written heuristic；
+6. symmetry-aware ordering；
+7. pattern database 或目标相关评分；
+8. AI candidate ranking。
 
-任何能找到合法短解的方法都可以使用。
+### 16.1 启发式目标信号
 
----
+可能的非证明性信号包括：
 
-# 25. AI 的角色
+- 新点的代数次数；
+- 点到目标点的数值距离；
+- 新对象与目标相关的近似入射关系；
+- 是否产生新的方向、长度或子域元素；
+- 构造 DAG 的深度和复用程度；
+- 历史构造中常见局部模式。
 
-AI 不应该负责：
+这些信号只能决定搜索顺序或启发式保留范围。
 
-```text
-最终几何正确性
-```
+### 16.2 AI 的边界
 
-AI 应该负责：
+AI 可以：
 
-```text
-候选操作排序
-```
+- 对候选操作排序；
+- 预测哪些状态更可能接近目标；
+- 从已知构造生成训练样本；
+- 建议可解释的局部构造模式。
 
-模型输入：
+AI 不能：
 
-```text
-current state
-goal
-candidate operation
-```
+- 决定几何相等；
+- 决定构造是否合法；
+- 替代 exact verifier；
+- 在 proof mode 中无证明地永久删除分支。
 
-输出：
-
-```text
-probability / heuristic score
-```
-
-例如：
-
-```text
-Line(O1,O2)        0.92
-Circle(A,B)        0.88
-Line(P3,P8)        0.41
-Circle(P7,P9)      0.01
-```
-
-搜索器优先探索高分操作。
+第一版在手写启发式和搜索 profiling 完成前不引入 AI 或 GPU。
 
 ---
 
-# 26. AI 不能做的剪枝
+## 17. Proof Mode
 
-如果最终想证明 global minimum，则不能因为：
+Proof Mode 是长期、可选目标，与寻找 upper bound 的普通搜索严格分离。
 
-```text
-AI score 很低
-```
+### 17.1 基本原则
 
-就永久删除该分支。
-
-AI 可以改变搜索顺序。
-
-AI 不能在没有数学证明的情况下决定：
-
-```text
-这个分支永远不需要搜索
-```
-
-否则搜索结果只能用于 upper bound。
-
----
-
-# 27. GPU 的角色
-
-第一版不依赖 GPU。
-
-核心 exhaustive / exact geometry 更可能受限于：
-
-- CPU；
-- RAM；
-- hash；
-- canonicalization；
-- exact algebra；
-- memory bandwidth。
-
-GPU 更适合：
-
-```text
-heuristic model
-```
-
-未来可以使用 4060 Ti：
-
-- PyTorch；
-- policy model；
-- value model；
-- batch candidate scoring。
-
----
-
-# 28. Proof Mode
-
-未来如果尝试 lower bound，必须单独进入：
-
-```text
-proof mode
-```
-
-Proof Mode 的原则：
-
-> **所有未搜索分支的删除都必须有可证明的安全依据。**
+> 所有未搜索分支的删除都必须有可证明的安全依据。
 
 允许：
 
+- 精确重复对象消除；
 - 严格状态等价；
-- 对称群 reduction；
-- mathematically proven dominance；
-- 可证明无效操作；
-- SAT/SMT 等价编码；
-- 可验证 UNSAT certificate。
+- 已证明的初始对称群 reduction；
+- 已证明的 dominance rule；
+- 可证明非法的操作；
+- 完备的深度有界枚举；
+- SAT/SMT 编码及可验证 UNSAT certificate。
 
 不允许：
 
-- AI 猜测；
-- 概率剪枝；
 - beam width；
 - random sampling；
-- 经验性 pruning。
+- AI 低分剪枝；
+- 数值近似相等；
+- 经验性“无用对象”判断；
+- 仅因长期没有找到解就宣布不存在。
 
----
+### 17.2 最小性证明结构
 
-# 29. “证明最小”的正式结构
-
-如果找到一个 \(N\) 步构造：
-
-\[
-OPT \le N
-\]
-
-若还能完备证明：
+若已找到一个 \(N\) 步构造，则：
 
 \[
-\text{不存在长度}<N\text{ 的构造}
+OPT\le N.
 \]
 
-则：
+若完备排除所有少于 \(N\) 步的构造，则：
 
 \[
-OPT \ge N
+OPT\ge N.
 \]
 
-最终：
+两者同时成立才能得到：
 
 \[
-OPT = N
+OPT=N.
 \]
 
-这一功能属于长期研究目标。
+第一阶段不以完成该证明为成功条件。
 
 ---
 
-# 30. Benchmark 分级
+## 18. Baseline 研究
 
-建议把问题分为四档。
+正式搜索前必须先建立正十七边形 baseline。
 
-## Tier 0：Kernel Test
+### 18.1 Baseline 条目
 
-只用于验证系统正确性。
+每个条目记录：
 
-例如：
-
-- 两圆交点；
-- 中点；
-- 垂线；
-- 垂直平分线；
-- 角平分线。
-
----
-
-## Tier 1：基础经典题
-
-例如：
-
-- 正三角形；
-- 正方形；
-- 正五边形；
-- 黄金分割；
-- 三角形外心；
-- 三角形内心。
-
-主要用于：
-
-- verifier；
-- exact algebra；
-- state search；
-- regression test。
-
----
-
-## Tier 2：中级 benchmark
-
-例如：
-
-- 三中线反构三角形；
-- 三高反构三角形；
-- mixtilinear incircle；
-- 较复杂三角形 reconstruction。
-
----
-
-## Tier 3：Boss Problems
-
-重点项目目标：
-
-### Regular 17-gon
-
-高斯经典问题。
-
-### Apollonius CCC
-
-三个互不相交、不包含的圆，指定：
-
-> 求一个包含三个输入圆、并分别与三个输入圆内切的大圆。
-
-### Malfatti Circles
-
-给定三角形，构造三个彼此相切且分别与两边相切的圆。
-
-### Cramer–Castillon
-
-给定圆和三个点，在圆上构造三角形，使三边分别经过给定点。
-
----
-
-# 31. 第一主攻目标：正十七边形
-
-建议第一个真正挑战的问题是：
-
-```text
-Regular 17-gon
-```
-
-原因：
-
-- 极其经典；
-- 数学背景成熟；
-- 输入简单；
-- 可作性明确；
-- 文献多；
-- 可以获得历史 baseline；
-- 很适合公开传播；
-- 搜索状态比 Apollonius 更干净。
-
----
-
-# 32. 正十七边形目标定义
-
-建议同时保留两个 profile。
-
-## Profile A：Historical
-
-尽可能严格复现某篇历史构造文献的初始条件和 metric。
-
-用于：
-
-> 刷新历史纪录。
-
----
-
-## Profile B：Minimal Formal
-
-例如：
-
-```text
-Given:
-    center O
-    point A
-    circle C(O,A)
-
-Goal:
-    construct B on C
-    such that angle AOB = 2π/17
-```
-
-目标只要求得到相邻顶点。
-
-不要求：
-
-- 画出 17 条边；
-- 重复沿圆周复制边长。
-
-这样更能体现核心数学复杂度。
-
----
-
-# 33. 第二主攻目标：Apollonius CCC
-
-输入：
-
-```text
-Circle C1
-Circle C2
-Circle C3
-```
-
-约束：
-
-```text
-三个圆互不相交
-互不包含
-一般位置
-```
-
-目标：
-
-```text
-construct Circle X
-```
-
-满足：
-
-```text
-X contains C1, C2, C3
-X internally tangent to C1
-X internally tangent to C2
-X internally tangent to C3
-```
-
-这是 Apollonius 八解中的固定一个 branch。
-
----
-
-# 34. 文献 Baseline 数据库
-
-项目必须建立：
-
-```text
-benchmarks/
-```
-
-每个问题记录：
-
-- 文献；
 - 作者；
+- 标题；
 - 年代；
-- 初始条件；
-- compass model；
-- metric；
-- reported score；
-- 构造步骤；
-- 是否已经自行复核；
-- 是否存在更短文献。
+- 原始来源；
+- 初始对象；
+- 可见对象；
+- 圆规模型；
+- 自由点规则；
+- 原文 metric；
+- 原文 reported score；
+- 项目重新计算的 score；
+- 完整构造步骤；
+- 项目验证状态；
+- 与当前 profile 是否可直接比较。
 
-例如：
+### 18.2 必须独立重放
 
-```yaml
-problem: regular-17-gon
+在声明“比某文献更短”之前，项目必须：
 
-baseline:
-  author: DeTemple
-  year: 1991
-  metric: Lemoine
-  score: 45
-  verified_by_project: false
+1. 获取可核对的原始构造；
+2. 明确原文初始条件；
+3. 明确原文计步规则；
+4. 把构造录入证书格式；
+5. 用 verifier 重放；
+6. 用 metric engine 重新计分；
+7. 公开所有不能确认的解释选择。
+
+不能只抄录论文中的一个数字作为已验证 baseline。
+
+### 18.3 两类 profile 分开维护
+
+项目预计维护：
+
+```text
+regular-17-e-fixed-v1
 ```
 
-在正式宣称“刷新纪录”前：
+用于机器搜索，以及未来某个：
 
-> baseline 必须由项目自己重新计算一遍。
+```text
+regular-17-detemple-YYYY-v1
+```
 
-不能只引用论文中的数字。
+用于历史 Lemoine 对照。
+
+两者的初始信息和 metric 可能不同，因此结果不能交叉比较。
 
 ---
 
-# 35. Literature Claim 等级
+## 19. 内核测试
 
-建议对公开结论分等级。
+虽然项目只研究正十七边形，数学内核仍需要小型回归测试。
 
-## Level 0
+测试可以覆盖：
 
-```text
-Found construction
-```
+- 两条直线唯一交点；
+- 平行线无有限交点；
+- 直线与圆的 0/1/2 个交点；
+- 两圆的 0/1/2 个交点；
+- 重合对象；
+- 正三角形的已知构造；
+- 中点和垂直平分线；
+- 反射对称状态；
+- 重复对象计费；
+- 目标点正例和近似但不相等的反例。
 
-只是找到一个合法构造。
-
----
-
-## Level 1
-
-```text
-Shorter than selected baseline
-```
-
-比某一篇明确文献短。
+这些测试只验证系统，不进入研究结果数据库。
 
 ---
 
-## Level 2
+## 20. 验证策略
+
+重要结果至少通过三条路径检查：
 
 ```text
-Shortest known in reviewed literature
+Sage exact verifier
+        +
+independent implementation or differential test
+        +
+human-readable construction explanation
 ```
 
-完成较充分文献检索后，可以谨慎使用。
+正式发布内容包括：
+
+1. construction certificate；
+2. profile 文件；
+3. 自动验证日志；
+4. E-score 明细；
+5. 构造依赖 DAG；
+6. SVG 或逐步动画；
+7. 人类可读步骤；
+8. baseline 对照；
+9. 软件版本和内容哈希。
 
 ---
 
-## Level 3
+## 21. 可复现原则
+
+每个正式结果必须满足：
 
 ```text
-Globally minimal
+clone repository
+      ↓
+select pinned verifier version
+      ↓
+verify certificate
+      ↓
+obtain the same legality result
+      ↓
+obtain the same E-score
+      ↓
+obtain the same exact target identity
 ```
 
-只有在存在严格 lower-bound proof 时才能使用。
+不能只发布：
+
+- 一张几何图；
+- 浮点坐标列表；
+- 搜索器自己的成功日志；
+- 无法重放的自然语言描述。
 
 ---
 
-# 36. README 中禁止的表述
+## 22. 仓库结构
 
-没有证明时不要写：
-
-```text
-minimum construction
-optimal construction
-God's Number = N
-```
-
-应该写：
-
-```text
-shortest construction found by this project
-shortest known construction in reviewed literature
-new upper bound
-```
-
----
-
-# 37. GitHub 项目定位
-
-推荐 README 一句话：
-
-> **Search for shorter straightedge-and-compass constructions of classical geometric problems, with exact machine verification.**
-
-中文：
-
-> **使用精确几何验证和自动搜索，寻找经典尺规作图问题的更短构造。**
-
-项目重点不是“AI 会画图”。
-
-而是：
-
-```text
-formal rules
-+
-exact verifier
-+
-automatic search
-+
-reproducible certificates
-```
-
----
-
-# 38. 仓库结构建议
+建议结构收束为：
 
 ```text
 euclid-min/
 │
 ├── README.md
 ├── LICENSE
+│
 ├── docs/
-│   ├── DESIGN.md
-│   ├── METRICS.md
+│   ├── euclid-min-design.md
 │   ├── FORMAL_MODEL.md
-│   └── PROOF_MODE.md
+│   ├── METRICS.md
+│   └── LITERATURE.md
+│
+├── profiles/
+│   ├── regular-17-e-fixed-v1.yaml
+│   └── historical/
 │
 ├── problems/
-│   ├── regular-17/
-│   ├── apollonius-ccc/
-│   ├── malfatti/
-│   └── cramer-castillon/
+│   └── regular-17/
+│       ├── problem.yaml
+│       └── target.sage
 │
 ├── baselines/
-│   ├── detemple-1991/
-│   └── ...
+│   └── regular-17/
 │
 ├── certificates/
-│   ├── regular-17/
-│   └── ...
+│   └── regular-17/
 │
 ├── sage/
-│   ├── notebooks/
-│   └── reference/
-│
-├── python/
-│   ├── experiments/
-│   └── ai/
+│   ├── reference/
+│   └── experiments/
 │
 ├── go/
 │   ├── cmd/
-│   ├── geometry/
-│   ├── algebra/
-│   ├── verifier/
 │   ├── search/
+│   ├── state/
 │   └── metrics/
 │
 └── tests/
+    ├── kernel/
+    └── regular-17/
 ```
+
+当前不创建其他研究问题的占位目录。
 
 ---
 
-# 39. CLI 设想
+## 23. CLI 设想
 
-例如：
+验证：
 
 ```bash
 euclid-min verify \
-  --problem regular-17 \
-  --profile detemple-1991 \
-  construction.yaml
+  --profile profiles/regular-17-e-fixed-v1.yaml \
+  certificates/regular-17/candidate.yaml
 ```
 
 输出：
 
 ```text
 Construction valid: YES
+Profile: regular-17-e-fixed-v1
 
-Objects:
+Objects drawn:
     Lines:    4
     Circles:  9
 
-Scores:
-    E-move:          13
-    Lemoine:         42
+Score:
+    E-move: 13
 
 Target:
-    VERIFIED
+    B_plus: VERIFIED
 
-Optimality:
-    NOT CLAIMED
+Claim:
+    VERIFIED CONSTRUCTION
+    GLOBAL OPTIMALITY NOT CLAIMED
 ```
+
+以上分数仅为界面示例。
 
 搜索：
 
 ```bash
 euclid-min search \
-  --problem regular-17 \
-  --profile e-move-minimal \
-  --max-score 14
+  --profile profiles/regular-17-e-fixed-v1.yaml \
+  --max-score 14 \
+  --strategy best-first
 ```
 
 ---
 
-# 40. Web Visualizer
+## 24. Visualizer
 
-后续可以提供一个静态 Web Viewer。
+可视化不是第一阶段验证依据，但对人工审查和传播很重要。
 
-功能：
+后续静态 Web Viewer 可以：
 
 - 逐步播放构造；
-- 显示当前点/线/圆；
-- 显示步骤编号；
-- 显示 metric；
-- 显示依赖关系；
+- 显示点、线、圆和步骤编号；
+- 高亮本步新对象和新交点；
+- 展示构造依赖 DAG；
+- 显示当前 E-score；
+- 切换 \(B_+\) 和 \(B_-\)；
 - 导出 SVG；
-- 生成分享链接。
+- 显示证书和 verifier 版本。
 
-这对于公众验证非常有帮助。
+Visualizer 使用浮点近似绘图，但不得参与最终数学判断。
 
 ---
 
-# 41. 可复现原则
+## 25. 性能风险
 
-所有正式纪录必须做到：
+主要风险按优先级包括：
+
+1. 状态数量爆炸；
+2. 点数增长导致候选数量平方增长；
+3. 圆与圆相交产生大量新点；
+4. 实代数表达式快速膨胀；
+5. 精确相等和序关系过慢；
+6. canonical key 太大；
+7. 等价状态无法充分合并；
+8. 构造 DAG 和状态占用大量内存；
+9. 启发式无法有效接近目标；
+10. 历史 profile 的计步规则无法无歧义复现。
+
+### 25.1 优化顺序
 
 ```text
-clone repo
-    ↓
-run verifier
-    ↓
-得到完全相同 score
-    ↓
-得到完全相同 final geometry
-```
-
-不能只发布一张几何图。
-
----
-
-# 42. 第三方验证
-
-如果项目真的找到重要新构造，优先采用公开验证，而不是只依赖作者自己的程序。
-
-建议提供：
-
-1. construction certificate；
-2. 几何图；
-3. 动画；
-4. 完整 metric 计算；
-5. 独立 verifier；
-6. Sage notebook；
-7. 人类可阅读步骤；
-8. 文献 baseline 对照。
-
-然后邀请社区验证。
-
----
-
-# 43. 社区验证对象
-
-可以邀请：
-
-- 数学专业网友；
-- 几何爱好者；
-- Math StackExchange 用户；
-- GitHub contributors；
-- Bilibili 数学科普作者；
-- 数学教师；
-- 自动定理证明研究者。
-
-如果未来真的出现非常漂亮的新纪录，也可以尝试联系：
-
-- 李永乐老师；
-- 妈咪说；
-- 钰子一；
-- 漫士沉思录；
-
-以及其他数学科普创作者。
-
-目的不是把他们当作“权威认证机构”，而是：
-
-> **让更多懂数学的人公开复核构造、发现漏洞、传播结果。**
-
----
-
-# 44. 多重验证策略
-
-一个重要结果最好通过三条独立路径验证：
-
-```text
-Go Verifier
-    +
-SageMath Reference
-    +
-Human-readable proof
-```
-
-如果三者一致，可信度会明显提高。
-
-未来还可以让社区编写：
-
-```text
-third-party verifier
-```
-
----
-
-# 45. 安全性与可信度
-
-项目最危险的 bug：
-
-> 两个本来不同的代数点因为近似误差被认为相同。
-
-因此：
-
-```text
-float64
-```
-
-只能用于：
-
-- UI；
-- 绘图；
-- heuristic；
-- 预览。
-
-不能用于：
-
-- 最终相等判断；
-- 构造合法性；
-- target verification；
-- proof mode。
-
----
-
-# 46. 性能风险
-
-可能的主要瓶颈：
-
-1. 状态数爆炸；
-2. 交点数量爆炸；
-3. exact algebra 太慢；
-4. hash key 太大；
-5. canonicalization 成本过高；
-6. 内存耗尽；
-7. 大量等价状态；
-8. AI heuristic 不够有效。
-
----
-
-# 47. 优化顺序
-
-不要过早优化。
-
-推荐：
-
-```text
+形式定义
+   ↓
 正确性
-  ↓
+   ↓
 可验证性
-  ↓
-baseline 重现
-  ↓
+   ↓
+baseline 重放
+   ↓
 小规模搜索
-  ↓
+   ↓
 profiling
-  ↓
-性能优化
-  ↓
-AI
-  ↓
-GPU
+   ↓
+状态与代数优化
+   ↓
+启发式
+   ↓
+AI / GPU（如果确有收益）
 ```
 
 ---
 
-# 48. 第一阶段技术路线
+## 26. 技术路线
 
-## Phase 0：项目定义
+### Phase 0：冻结形式模型
 
 完成：
 
-- metric specification；
-- compass model；
-- arbitrary point policy；
-- problem format；
-- target format。
+- `regular-17-e-fixed-v1` profile；
+- 初始对象语义；
+- 操作前置条件；
+- 交点和退化语义；
+- 目标精确定义；
+- E-move 规范；
+- certificate schema；
+- claim policy。
 
----
+验收标准：
 
-## Phase 1：Sage Reference Verifier
+> 两个独立实现者仅阅读规范，就能对同一证书得到相同的合法性和分数判断。
+
+### Phase 1：Sage Reference Verifier
 
 实现：
 
-- Point；
-- Line；
-- Circle；
+- Point / Line / Circle；
 - exact intersection；
-- equality；
+- equality 和 ordering；
 - construction replay；
-- target verification。
-
-完成后，可以手工输入一个经典构造并严格验证。
-
----
-
-## Phase 2：Metric Engine
-
-实现：
-
+- target verification；
 - E-score；
-- Lemoine score；
-- metric profile；
-- historical compatibility。
+- certificate validation。
 
-目标：
+验收标准：
 
-> 自动重新计算文献构造的 score。
+> 可以手工录入并严格验证一个已知正十七边形构造。
 
----
+### Phase 2：Baseline
 
-## Phase 3：Go Verifier
+完成：
 
-将核心 verifier 移植到 Go。
+- 正十七边形文献表；
+- 至少一个可完整重放的构造；
+- 初始条件和 metric 对照；
+- 项目自行计算的分数；
+- 人类可读构造说明。
 
-要求：
+验收标准：
 
-- 与 Sage differential test；
-- CLI 可用；
-- construction certificate 可用。
+> 项目拥有至少一个可信、可复现的搜索上界。
 
----
-
-## Phase 4：Basic Search
+### Phase 3：Basic Search
 
 实现：
 
 - candidate generation；
-- BFS / IDDFS；
+- automatic intersection closure；
 - state hash；
-- canonicalization；
-- small benchmark。
+- exact duplicate detection；
+- IDDFS 或 best-first；
+- checkpoint；
+- 小深度 exhaustive regression。
 
-先从非常小的问题开始。
+验收标准：
 
----
+> 搜索器能够自动重新发现小型局部构造模式，并输出 verifier 可接受的证书。
 
-## Phase 5：Heuristic Search
+### Phase 4：Heuristic Search
 
 实现：
 
-- best-first；
-- beam；
-- random restart；
-- hand-written heuristic；
-- symmetry heuristic。
+- 目标相关评分；
+- 镜像对称 reduction；
+- beam / random restart；
+- 状态压缩；
+- 搜索性能 profiling；
+- 必要时的 Go 搜索引擎。
+
+验收标准：
+
+> 可以稳定运行长时间搜索，并产生不劣于 baseline 的候选。
+
+### Phase 5：历史 Metric
+
+在获得和读懂原始资料后实现：
+
+- Lemoine 动作规范；
+- DeTemple-compatible profile；
+- 历史构造重放；
+- 历史分数独立重算。
+
+验收标准：
+
+> 可以对历史 profile 给出有来源、可审计的比较结论。
+
+### Phase 6：新 Upper Bound
 
 目标：
 
-> 在中型问题上找到较短构造。
+> 在某个已经独立复核的 profile 下，找到严格更短且可公开验证的正十七边形相邻顶点构造。
+
+### Phase 7：Proof Mode（可选）
+
+仅在状态空间、对称性和完备枚举机制足够成熟后尝试。
+
+不把它作为项目必须完成的里程碑。
 
 ---
 
-## Phase 6：AI Search
+## 27. 成功标准
 
-使用：
+### Success A：形式模型成立
 
-- Python；
-- PyTorch；
-- 4060 Ti。
+问题、操作、目标、metric 和证书没有关键歧义。
 
-训练或运行：
+### Success B：Verifier 成立
 
-```text
-policy heuristic
-```
+能够精确重放正十七边形构造，并由回归测试保护。
 
-只负责候选排序。
+### Success C：Baseline 成立
 
----
+至少一个公开构造被项目独立录入、验证和计分。
 
-## Phase 7：Boss Problem
+### Success D：Search 成立
 
-首先挑战：
+搜索器能够自动产生合法构造或重新发现 baseline 的核心结构。
 
-```text
-regular-17
-```
+### Success E：新 Upper Bound
 
-目标不是证明最小。
+找到比相同 profile 下可信 baseline 更短的构造。
 
-目标：
+### Success F：Global Minimum
 
-> **打破至少一个可靠文献 baseline。**
+在严格受限模型中同时给出构造上界和完备 lower-bound proof。
+
+Success A–D 已经足以形成有价值的开源计算数学项目；Success E 是首要研究突破；Success F 是长期最高目标。
 
 ---
 
-# 49. 项目成功标准
+## 28. 最重要的研究原则
 
-项目不应该只有“解决开放问题”才算成功。
+### 原则 1
 
-分级如下。
+> 只研究一个问题，也必须把问题定义完整。
 
-## Success A
+### 原则 2
 
-成功实现可靠的：
+> 先保证 verifier 正确，再追求 solver 聪明。
 
-```text
-exact straightedge-and-compass verifier
-```
+### 原则 3
 
-项目成立。
+> AI 可以寻找答案，但不能决定答案是否正确。
 
----
+### 原则 4
 
-## Success B
+> 没有完备搜索或独立 lower-bound certificate，就不能声称最小。
 
-能自动重新发现一些经典构造。
+### 原则 5
 
-项目已经很有趣。
+> 没有相同 profile，就不能比较步数。
 
----
+### 原则 6
 
-## Success C
+> 历史数字必须重新计算，示例数字不能变成 baseline。
 
-找到比部分传统构造更短的方案。
+### 原则 7
 
-项目有实际研究价值。
+> 任何正式结果都必须可重放、可验证、可复现。
 
----
+### 原则 8
 
-## Success D
-
-刷新某个经典问题的公开 shortest-known upper bound。
-
-这是明确的新结果。
+> 固定实例的成功不能被表述成一般参数族的证明。
 
 ---
 
-## Success E
+## 29. 近期工作清单
 
-证明某个非平凡经典问题的 global minimum。
+按顺序完成：
 
-这是长期最高目标。
+1. 编写 `docs/FORMAL_MODEL.md`；
+2. 编写 `profiles/regular-17-e-fixed-v1.yaml`；
+3. 定义 certificate JSON Schema 或 YAML Schema；
+4. 在 SageMath 中定义精确目标点 \(B_+,B_-\)；
+5. 实现三类精确求交；
+6. 实现构造重放和 E-score；
+7. 录入第一个已知正十七边形构造；
+8. 建立 `docs/LITERATURE.md`；
+9. 确认第一个可信搜索上界；
+10. 再开始实现自动搜索。
 
----
-
-# 50. 最重要的工程原则
-
-## 原则 1
-
-> **先保证 verifier 正确，再追求 solver 聪明。**
-
----
-
-## 原则 2
-
-> **AI 可以找答案，但不能决定答案是否正确。**
+搜索器不是第一项开发任务。
 
 ---
 
-## 原则 3
+## 30. 文献起点
 
-> **没有完备搜索，就不能声称 lower bound。**
+1. Émile Lemoine — *Géométrographie*。
+2. Duane W. DeTemple (1991) — *Carlyle Circles and the Lemoine Simplicity of Polygon Constructions*，The American Mathematical Monthly 98(2), 97–108，DOI: `10.1080/00029890.1991.11995711`。
+3. François Labelle — *On the Complexity of Straightedge and Compass Constructions*；在正式引用前继续核对版本、发表信息和原始链接。
+4. Erik D. Demaine, Victor Luo (2025) — *Euclidea is APX-hard: Complexity of Optimizing Euclidean Constructions*，Journal of Information Processing 33, 1110–1117，DOI: `10.2197/ipsjjip.33.1110`。
+5. 正十七边形经典构造及其现代变体的原始资料。
 
----
+正式宣称任何 `shortest known` 前，必须进行系统文献检索，并公开：
 
-## 原则 4
-
-> **没有统一 profile，就不能比较步数。**
-
----
-
-## 原则 5
-
-> **任何纪录都必须可重放、可验证、可复现。**
-
----
-
-## 原则 6
-
-> **对外尽量使用已有文献 metric，而不是只使用项目自定义 metric。**
+- 检索数据库；
+- 检索关键词；
+- 检索时间范围；
+- 纳入和排除标准；
+- 无法获得全文的资料；
+- baseline 可比性判断。
 
 ---
 
-# 51. 当前最现实的项目定位
+## 31. 一句话总结
 
-本项目第一阶段最合适的目标不是：
-
-> “解决尺规作图最小步数问题。”
-
-而是：
-
-> **建立一套可靠的计算机尺规构造描述、验证与搜索框架，并尝试刷新经典问题的 shortest-known construction。**
-
-这已经足够困难，也足够有价值。
-
----
-
-# 52. 推荐第一个正式 Benchmark
-
-建议：
-
-```text
-Regular 17-gon
-```
-
-第一步不是搜索。
-
-而是：
-
-1. 收集重要历史构造；
-2. 精确确认各自初始条件；
-3. 精确确认 metric；
-4. 将构造录入 verifier；
-5. 自动重算 score；
-6. 建立可信 baseline。
-
-只有 baseline 可信以后，才开始搜索。
-
----
-
-# 53. 关于论文
-
-项目不以论文为首要目标。
-
-优先：
-
-```text
-GitHub
-+
-source code
-+
-certificates
-+
-benchmarks
-+
-visualizer
-+
-public verification
-```
-
-如果未来出现：
-
-- 新的经典问题最短已知构造；
-- 新的通用搜索算法；
-- 新的 canonicalization 方法；
-- 新的严格 lower bound；
-- global minimum proof；
-
-再根据成果决定是否写论文。
-
----
-
-# 54. 最终愿景
-
-理想状态下，项目可以形成一个公开数据库：
-
-```text
-Classical Construction Database
-```
-
-每个问题展示：
-
-```text
-Problem
-Known constructions
-Metric profiles
-Historical best
-Project best
-Verified certificates
-Optimality status
-```
-
-例如：
-
-```text
-Regular 17-gon
-
-Historical:
-    DeTemple 1991
-    Lemoine: 45
-
-Project:
-    Candidate A
-    E-score: 13
-    Lemoine: 42
-    Verified: YES
-
-Optimality:
-    UNKNOWN
-```
-
-这样即使永远无法解决 global minimum，这个项目本身仍然可以长期积累成果。
-
----
-
-# 55. 一句话总结
-
-> **Euclid-Min 是一个面向经典尺规作图问题的开源自动搜索与精确验证项目：内部使用机器友好的形式模型寻找更短构造，对外使用已有权威 metric 与历史文献公平比较；第一阶段追求新的 shortest-known construction，而不是强求 global optimality proof。**
-
----
-
-# 参考资料起点
-
-后续正式建仓后，应单独整理 `docs/LITERATURE.md`，至少从以下资料开始：
-
-1. Émile Lemoine — Geometrography / Géométrographie
-2. Duane W. DeTemple (1991) — *Carlyle Circles and Lemoine Simplicity of Polygon Constructions*
-3. François Labelle — *On the Complexity of Straightedge and Compass Constructions*
-4. Erik D. Demaine, Yaqiao Luo (2025) — *Computational Complexity of Optimizing Compass and Straightedge Constructions*
-5. Malfatti circles 的自动化构造改进工作
-6. Cramer–Castillon 与自动尺规构造相关文献
-7. Euclidea solver / automatic construction search 项目
-
-正式宣称任何 “best known” 前，必须重新进行系统文献检索。
+> **Euclid-Min 是一个专门研究正十七边形相邻顶点最短尺规构造的开源计算数学项目：在固定、有限分支的 E-move 模型中搜索更短构造，使用精确代数验证生成可复现证书，并严格区分“新的已验证上界”与“全局最优证明”。**
