@@ -18,7 +18,7 @@ O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
 
 ## 当前状态
 
-项目已完成 **M0：形式规范冻结**，并落地 **M1：Sage 精确几何内核**。当前已经实现精确点、直线、圆、三类求交、退化关系、自动交点闭包和正十七边形目标判断；证书重放和 CLI 将在 M2 实现。
+项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**和 **M2：验证闭环**。当前已经实现精确几何、三类求交、自动交点闭包、profile/Schema 校验、JCS 哈希、证书重放、E-score、验证报告和 CLI。下一阶段是录入并验证第一个正十七边形 baseline。
 
 唯一规范 profile 为：
 
@@ -44,7 +44,8 @@ regular-17-e-fixed-v1
 - [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
 - [Profile Schema](schemas/profile-v1.schema.json)；
-- [Certificate Schema](schemas/certificate-v1.schema.json)。
+- [Certificate Schema](schemas/certificate-v1.schema.json)；
+- [Verification Report Schema](schemas/verification-report-v1.schema.json)；
 - [Sage 内核运行说明](sage/README.md)。
 
 若研究设计与版本化规范冲突，以 profile、Schema、`FORMAL_MODEL.md`、`METRICS.md` 和 `CERTIFICATE_FORMAT.md` 中更具体的规则为准。
@@ -77,10 +78,25 @@ docker run --rm `
   -w /workspace `
   -e PYTHONPATH=/workspace/sage `
   sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 `
-  sage -python -m unittest discover -s tests/kernel -v
+  sage -python -m unittest discover -s tests -v
 ```
 
-更短的本地命令和目录说明见 [Sage 内核运行说明](sage/README.md)。
+更多容器运行说明和目录说明见 [Sage 内核运行说明](sage/README.md)。
+
+## 运行证书验证器
+
+```powershell
+docker run --rm `
+  -v "${PWD}:/workspace" `
+  -w /workspace `
+  -e PYTHONPATH=/workspace/sage `
+  sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 `
+  sage -python -m euclid_min verify `
+  --profile profiles/regular-17-e-fixed-v1.yaml `
+  tests/fixtures/certificates/not-target.json
+```
+
+该 fixture 专门测试“结构合法但未达到目标”的失败路径，因此命令应返回 `target_not_reached` 和退出码 1。首份成功证书将在 M3 baseline 阶段加入。
 
 ## 研究声明
 

@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/verification-report-v1.schema.json",
+  "title": "Euclid-Min Verification Report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "verifier", "valid"],
+  "properties": {
+    "schema": { "const": "euclid-min-verification-report/v1" },
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "sage_version"],
+      "properties": {
+        "name": { "const": "euclid-min-sage-verifier" },
+        "version": { "type": "string", "minLength": 1 },
+        "sage_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "valid": { "type": "boolean" },
+    "certificate_sha256": { "$ref": "#/$defs/sha256" },
+    "construction_sha256": { "$ref": "#/$defs/sha256" },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": { "const": "regular-17-e-fixed-v1" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "draw_operations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lines", "circles", "total"],
+      "properties": {
+        "lines": { "$ref": "#/$defs/nonnegativeSafeInteger" },
+        "circles": { "$ref": "#/$defs/nonnegativeSafeInteger" },
+        "total": { "$ref": "#/$defs/positiveSafeInteger" }
+      }
+    },
+    "distinct_objects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["points", "lines", "circles"],
+      "properties": {
+        "points": { "$ref": "#/$defs/nonnegativeSafeInteger" },
+        "lines": { "$ref": "#/$defs/nonnegativeSafeInteger" },
+        "circles": { "$ref": "#/$defs/nonnegativeSafeInteger" }
+      }
+    },
+    "duplicate_draws": { "$ref": "#/$defs/nonnegativeSafeInteger" },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric", "e_move"],
+      "properties": {
+        "metric": { "const": "e_move" },
+        "e_move": { "$ref": "#/$defs/positiveSafeInteger" }
+      }
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "enum": ["B_plus", "B_minus"] }
+    },
+    "first_target_program_index": { "$ref": "#/$defs/nonnegativeSafeInteger" },
+    "first_target_e_move": { "$ref": "#/$defs/positiveSafeInteger" },
+    "requested_claim": { "$ref": "#/$defs/claim" },
+    "supported_claim": { "$ref": "#/$defs/claim" },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 },
+        "program_index": { "$ref": "#/$defs/nonnegativeSafeInteger" },
+        "entry_id": { "type": "string", "minLength": 1 },
+        "details": { "type": "object" }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": { "valid": { "const": true } },
+      "required": [
+        "certificate_sha256",
+        "construction_sha256",
+        "profile",
+        "draw_operations",
+        "distinct_objects",
+        "duplicate_draws",
+        "score",
+        "targets",
+        "first_target_program_index",
+        "first_target_e_move",
+        "requested_claim",
+        "supported_claim"
+      ],
+      "not": { "required": ["error"] }
+    },
+    {
+      "properties": { "valid": { "const": false } },
+      "required": ["error"]
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "nonnegativeSafeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "positiveSafeInteger": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "claim": {
+      "enum": [
+        "verified_construction",
+        "shorter_than_verified_baseline",
+        "shortest_known_reviewed_literature",
+        "globally_minimal"
+      ]
+    }
+  }
+}

@@ -8,8 +8,9 @@
 |---|---|
 | M0：规范闭环 | 已完成 |
 | M1：Sage 精确几何内核 | 已完成 |
-| M2：验证闭环 | 下一阶段 |
-| M3 及以后 | 尚未开始 |
+| M2：验证闭环 | 已完成 |
+| M3：首个可信 baseline | 下一阶段 |
+| M4 及以后 | 尚未开始 |
 
 ## M0：规范闭环
 
@@ -107,6 +108,15 @@ sage -python -m euclid_min verify \
 - 修改伪造分数、profile hash 或 construction hash 会失败；
 - 非法证书返回稳定错误代码和程序位置；
 - verifier 不读取或信任提交者提供的浮点坐标。
+
+### 落地结果
+
+- 严格 JSON/YAML 加载会拒绝重复键和非安全输入；
+- profile、certificate 和 verification report 均有 Draft 2020-12 Schema；
+- JCS 规范化和 SHA-256 由 Sage Python 内部实现并有 Unicode 排序测试；
+- 名称环境、三种程序条目、重复对象计分和稳定错误位置均已实现；
+- CLI 支持中文摘要、JSON stdout、独立报告文件和规范退出码；
+- 结构合法但未命中目标的 fixture 可端到端验证；首份真实成功证书属于 M3 交付物。
 
 ## M3：首个可信 baseline
 

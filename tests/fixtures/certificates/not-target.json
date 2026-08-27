@@ -1,0 +1,48 @@
+{
+  "schema": "euclid-min-certificate/v1",
+  "problem": "regular-17-adjacent-vertex",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "construction": {
+    "id": "not-target",
+    "title": "Verifier non-target fixture",
+    "program": [
+      {
+        "id": "l1",
+        "op": "line",
+        "through": ["O", "A"]
+      },
+      {
+        "id": "P",
+        "op": "intersect",
+        "objects": ["l1", "unit_circle"],
+        "index": 0
+      },
+      {
+        "id": "c1",
+        "op": "circle",
+        "center": "A",
+        "through": "P"
+      }
+    ]
+  },
+  "assertions": {
+    "score": {
+      "metric": "e_move",
+      "e_move": 2
+    },
+    "targets": ["B_plus"],
+    "claim": "verified_construction"
+  },
+  "software": {
+    "producer": {
+      "name": "manual",
+      "version": "1"
+    }
+  },
+  "integrity": {
+    "construction_sha256": "134e1838f715a47204fba53028bcb7a8aa35a3a060b05bf941cce3879d3ae875"
+  }
+}

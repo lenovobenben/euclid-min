@@ -57,7 +57,11 @@
           "required": ["metric", "e_move"],
           "properties": {
             "metric": { "const": "e_move" },
-            "e_move": { "type": "integer", "minimum": 1 }
+            "e_move": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            }
           }
         },
         "targets": {

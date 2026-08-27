@@ -11,17 +11,19 @@ euclid_min/
   intersections.py 三类求交及退化关系
   state.py          精确去重和自动交点闭包
   target.py         B_plus、B_minus 精确目标
+  canonical_json.py JCS 规范化和 SHA-256
+  formats.py        profile、证书和 Schema 严格加载
+  replay.py         名称环境、程序重放和 E-score
+  verifier.py       断言校验和验证报告
+  cli.py            命令行入口
 ```
 
-当前模块只实现数学内核，不负责：
+当前已经覆盖 M1 数学内核和 M2 验证闭环。尚未实现：
 
-- profile 和 JSON Schema 加载；
-- 证书 ID 名称环境；
-- 顺序程序重放；
-- E-score；
-- 验证报告和 CLI。
-
-这些内容属于 M2。
+- 文献 baseline 录入；
+- 自动搜索；
+- 构造可视化；
+- lower-bound proof mode。
 
 ## 参考环境
 
@@ -32,7 +34,16 @@ SageMath 10.7
 sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528
 ```
 
-固定摘要用于复现实验。可以在本地交互开发时使用兼容的 SageMath 10.7 环境，但正式验证应记录实际版本和镜像摘要。
+固定摘要用于复现实验。交互开发和 Jupyter 实验也应使用同一 SageMath 10.7 容器；正式验证必须记录实际版本和镜像摘要。
+
+镜像内已固定并使用：
+
+```text
+PyYAML 6.0.1
+jsonschema 4.17.3
+```
+
+JCS 编码器由项目内部实现，并有字符串转义、UTF-16 键排序、安全整数和 profile 摘要回归测试。
 
 ## 运行测试
 
@@ -44,10 +55,27 @@ docker run --rm `
   -w /workspace `
   -e PYTHONPATH=/workspace/sage `
   sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 `
-  sage -python -m unittest discover -s tests/kernel -v
+  sage -python -m unittest discover -s tests -v
 ```
 
 项目不要求也不支持使用本地普通 Python 执行这些模块。交互实验可以使用同一 SageMath 容器中的 Jupyter，但正式代码、测试和验证仍通过 `sage -python` 运行。
+
+## 运行 verifier
+
+容器中的核心命令为：
+
+```bash
+sage -python -m euclid_min verify \
+  --profile profiles/regular-17-e-fixed-v1.yaml \
+  certificates/example.json
+```
+
+可选参数：
+
+- `--json`：把完整报告输出到 stdout；
+- `--report result.json`：保存独立验证报告。
+
+退出码 0 表示验证成功，1 表示证书或构造验证失败，2 表示 CLI 或报告写入错误。
 
 ## 精确性边界
 
