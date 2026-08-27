@@ -1,5 +1,10 @@
 # Euclid-Min：正十七边形最短尺规构造研究设计
 
+> 规范状态说明：本文描述研究方向和总体设计。实现阶段的权威语义由
+> `profiles/regular-17-e-fixed-v1.yaml`、`docs/FORMAL_MODEL.md`、
+> `docs/METRICS.md`、`docs/CERTIFICATE_FORMAT.md` 及对应 JSON Schema 给出；
+> 若示例或早期设想与这些版本化规范冲突，以版本化规范为准。
+
 > 项目代号：**Euclid-Min**
 >
 > 项目类型：计算数学 / 自动搜索 / 精确几何验证

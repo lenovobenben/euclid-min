@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/profile-v1.schema.json",
+  "title": "Euclid-Min Profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "problem",
+    "initial_objects",
+    "tools",
+    "operations",
+    "points",
+    "intersections",
+    "metric",
+    "target",
+    "canonicalization"
+  ],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-profile/v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*-v[1-9][0-9]*$"
+    },
+    "problem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "polygon_sides", "semantics"],
+      "properties": {
+        "id": { "const": "regular-17-adjacent-vertex" },
+        "type": { "const": "regular_polygon_adjacent_vertex" },
+        "polygon_sides": { "const": 17 },
+        "semantics": { "const": "fixed_instance" }
+      }
+    },
+    "initial_objects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["points", "circles", "cost"],
+      "properties": {
+        "points": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "coordinates"],
+              "properties": {
+                "id": { "const": "O" },
+                "coordinates": {
+                  "type": "array",
+                  "prefixItems": [{ "const": 0 }, { "const": 0 }],
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "coordinates"],
+              "properties": {
+                "id": { "const": "A" },
+                "coordinates": {
+                  "type": "array",
+                  "prefixItems": [{ "const": 1 }, { "const": 0 }],
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              }
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "circles": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "center", "through"],
+              "properties": {
+                "id": { "const": "unit_circle" },
+                "center": { "const": "O" },
+                "through": { "const": "A" }
+              }
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "cost": { "const": "free" }
+      }
+    },
+    "tools": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["straightedge", "collapsing_compass", "non_collapsing_compass"],
+      "properties": {
+        "straightedge": { "const": true },
+        "collapsing_compass": { "const": true },
+        "non_collapsing_compass": { "const": false }
+      }
+    },
+    "operations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line", "circle_center_through", "duplicate_objects"],
+      "properties": {
+        "line": { "$ref": "#/$defs/enabledDistinctPointOperation" },
+        "circle_center_through": { "$ref": "#/$defs/enabledDistinctPointOperation" },
+        "duplicate_objects": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["legal", "charged", "add_intersections"],
+          "properties": {
+            "legal": { "const": true },
+            "charged": { "const": true },
+            "add_intersections": { "const": false }
+          }
+        }
+      }
+    },
+    "points": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "arbitrary_points", "half_generic_points"],
+      "properties": {
+        "source": { "const": "initial_or_intersection_only" },
+        "arbitrary_points": { "const": false },
+        "half_generic_points": { "const": false }
+      }
+    },
+    "intersections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generation",
+        "domain",
+        "point_identity",
+        "ordering",
+        "index_base",
+        "coincident_objects"
+      ],
+      "properties": {
+        "generation": { "const": "automatic_new_object_closure" },
+        "domain": { "const": "finite_real" },
+        "point_identity": { "const": "exact_coordinates" },
+        "ordering": { "const": "lexicographic_xy_ascending" },
+        "index_base": { "const": 0 },
+        "coincident_objects": { "const": "no_isolated_intersections" }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "line_cost", "circle_cost", "intersection_binding_cost"],
+      "properties": {
+        "primary": { "const": "e_move" },
+        "line_cost": { "const": 1 },
+        "circle_cost": { "const": 1 },
+        "intersection_binding_cost": { "const": 0 }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "start", "center", "circle", "polygon_sides", "accepted", "equality"],
+      "properties": {
+        "type": { "const": "either_adjacent_vertex" },
+        "start": { "const": "A" },
+        "center": { "const": "O" },
+        "circle": { "const": "unit_circle" },
+        "polygon_sides": { "const": 17 },
+        "accepted": {
+          "type": "array",
+          "prefixItems": [{ "const": "B_plus" }, { "const": "B_minus" }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "equality": { "const": "exact_coordinates" }
+      }
+    },
+    "canonicalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["serialization", "encoding", "digest"],
+      "properties": {
+        "serialization": { "const": "rfc8785_jcs" },
+        "encoding": { "const": "utf-8" },
+        "digest": { "const": "sha256" }
+      }
+    }
+  },
+  "$defs": {
+    "enabledDistinctPointOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "requires_distinct_points"],
+      "properties": {
+        "enabled": { "const": true },
+        "requires_distinct_points": { "const": true }
+      }
+    }
+  }
+}

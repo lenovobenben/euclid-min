@@ -1,0 +1,71 @@
+# Euclid-Min
+
+Euclid-Min 是一个专门研究正十七边形相邻顶点最短尺规构造的计算数学项目。
+
+项目固定初始对象为单位圆
+
+\[
+O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
+\]
+
+并研究：只使用无刻度直尺与可折叠圆规，至少需要多少次基础作图操作，才能得到 (A) 在单位圆上的任意一个相邻正十七边形顶点。
+
+当前阶段的首要目标不是宣称全局最优，而是建立一条可复现的研究链路：
+
+```text
+形式规范 → Sage 精确验证器 → 已知构造 baseline → 自动搜索 → 可验证证书
+```
+
+## 当前状态
+
+项目处于 **M0：形式规范冻结** 阶段。当前仓库主要包含规范，尚未实现搜索器或验证器。
+
+唯一规范 profile 为：
+
+```text
+regular-17-e-fixed-v1
+```
+
+该 profile 使用 E-move 计分：
+
+- 画一条合法直线：1 E；
+- 画一个合法基础圆：1 E；
+- 选择或命名已经自动产生的交点：0 E；
+- 初始点 (O,A) 和单位圆免费提供。
+
+## 规范文件
+
+- [研究设计](docs/euclid-min-design.md)：项目定位、研究范围和长期路线；
+- [正式模型](docs/FORMAL_MODEL.md)：对象、状态、操作、交点和目标的规范语义；
+- [计分规则](docs/METRICS.md)：E-move 的权威计分规则；
+- [证书格式](docs/CERTIFICATE_FORMAT.md)：构造程序、哈希和验证输出约定；
+- [文献与 baseline 台账](docs/LITERATURE.md)：检索规则、来源状态和可比性记录；
+- [实施路线](docs/ROADMAP.md)：从规范到搜索器的阶段计划；
+- [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
+- [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
+- [Profile Schema](schemas/profile-v1.schema.json)；
+- [Certificate Schema](schemas/certificate-v1.schema.json)。
+
+若研究设计与版本化规范冲突，以 profile、Schema、`FORMAL_MODEL.md`、`METRICS.md` 和 `CERTIFICATE_FORMAT.md` 中更具体的规则为准。
+
+## 技术边界
+
+- SageMath 是第一版权威精确数学内核；
+- 普通 Python 用于 Schema 校验、CLI、报告和辅助工具；
+- Go 只在 profiling 证明有必要后承担搜索队列、并发、状态索引或 checkpoint；
+- 浮点计算只能用于绘图和启发式排序，不能决定几何相等、构造合法性或目标命中；
+- 没有完备 lower-bound proof 时，只能发布“已验证构造”或“新的已验证上界”，不能声称全局最优。
+
+## 近期里程碑
+
+1. **M0：规范闭环**——冻结正式模型、profile、证书格式和计分规则；
+2. **M1：精确几何内核**——实现三类精确求交及退化处理；
+3. **M2：验证闭环**——实现证书重放、目标判断和验证报告；
+4. **M3：首个 baseline**——完整录入并验证一个正十七边形已知构造；
+5. **M4：基础搜索**——实现小深度可审计搜索和证书导出。
+
+更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
+
+## 研究声明
+
+仓库当前没有给出正十七边形构造步数纪录，也没有声称任何构造达到全局最小。设计文档或示例中的数字仅用于说明格式。

@@ -1,0 +1,70 @@
+schema: euclid-min-profile/v1
+id: regular-17-e-fixed-v1
+
+problem:
+  id: regular-17-adjacent-vertex
+  type: regular_polygon_adjacent_vertex
+  polygon_sides: 17
+  semantics: fixed_instance
+
+initial_objects:
+  points:
+    - id: O
+      coordinates: [0, 0]
+    - id: A
+      coordinates: [1, 0]
+  circles:
+    - id: unit_circle
+      center: O
+      through: A
+  cost: free
+
+tools:
+  straightedge: true
+  collapsing_compass: true
+  non_collapsing_compass: false
+
+operations:
+  line:
+    enabled: true
+    requires_distinct_points: true
+  circle_center_through:
+    enabled: true
+    requires_distinct_points: true
+  duplicate_objects:
+    legal: true
+    charged: true
+    add_intersections: false
+
+points:
+  source: initial_or_intersection_only
+  arbitrary_points: false
+  half_generic_points: false
+
+intersections:
+  generation: automatic_new_object_closure
+  domain: finite_real
+  point_identity: exact_coordinates
+  ordering: lexicographic_xy_ascending
+  index_base: 0
+  coincident_objects: no_isolated_intersections
+
+metric:
+  primary: e_move
+  line_cost: 1
+  circle_cost: 1
+  intersection_binding_cost: 0
+
+target:
+  type: either_adjacent_vertex
+  start: A
+  center: O
+  circle: unit_circle
+  polygon_sides: 17
+  accepted: [B_plus, B_minus]
+  equality: exact_coordinates
+
+canonicalization:
+  serialization: rfc8785_jcs
+  encoding: utf-8
+  digest: sha256
