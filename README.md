@@ -18,7 +18,7 @@ O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
 
 ## 当前状态
 
-项目处于 **M0：形式规范冻结** 阶段。当前仓库主要包含规范，尚未实现搜索器或验证器。
+项目已完成 **M0：形式规范冻结**，并落地 **M1：Sage 精确几何内核**。当前已经实现精确点、直线、圆、三类求交、退化关系、自动交点闭包和正十七边形目标判断；证书重放和 CLI 将在 M2 实现。
 
 唯一规范 profile 为：
 
@@ -45,14 +45,15 @@ regular-17-e-fixed-v1
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
 - [Profile Schema](schemas/profile-v1.schema.json)；
 - [Certificate Schema](schemas/certificate-v1.schema.json)。
+- [Sage 内核运行说明](sage/README.md)。
 
 若研究设计与版本化规范冲突，以 profile、Schema、`FORMAL_MODEL.md`、`METRICS.md` 和 `CERTIFICATE_FORMAT.md` 中更具体的规则为准。
 
 ## 技术边界
 
-- SageMath 是第一版权威精确数学内核；
-- 普通 Python 用于 Schema 校验、CLI、报告和辅助工具；
-- Go 只在 profiling 证明有必要后承担搜索队列、并发、状态索引或 checkpoint；
+- 全部 Python 代码统一运行在 SageMath 自带的 Python 环境中；
+- SageMath 同时承载精确内核、Schema 校验、CLI、报告和第一版搜索器；
+- 本地普通 Python 和 Go 都不属于当前支持的运行路径；只有 profiling 证明有必要时才重新评估 Go；
 - 浮点计算只能用于绘图和启发式排序，不能决定几何相等、构造合法性或目标命中；
 - 没有完备 lower-bound proof 时，只能发布“已验证构造”或“新的已验证上界”，不能声称全局最优。
 
@@ -65,6 +66,21 @@ regular-17-e-fixed-v1
 5. **M4：基础搜索**——实现小深度可审计搜索和证书导出。
 
 更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
+
+## 运行精确内核测试
+
+当前参考环境为 SageMath 10.7。使用 Docker 运行：
+
+```powershell
+docker run --rm `
+  -v "${PWD}:/workspace" `
+  -w /workspace `
+  -e PYTHONPATH=/workspace/sage `
+  sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 `
+  sage -python -m unittest discover -s tests/kernel -v
+```
+
+更短的本地命令和目录说明见 [Sage 内核运行说明](sage/README.md)。
 
 ## 研究声明
 
