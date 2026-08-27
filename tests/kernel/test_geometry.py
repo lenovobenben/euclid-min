@@ -21,7 +21,12 @@ from euclid_min.intersections import (
     intersect_line_line,
 )
 from euclid_min.state import GeometryState, PointNotInStateError
-from euclid_min.target import TargetName, adjacent_targets, reached_targets
+from euclid_min.target import (
+    TargetName,
+    adjacent_targets,
+    reached_targets,
+    reached_targets_by_object_pair,
+)
 
 
 class GeometryObjectTests(unittest.TestCase):
@@ -197,6 +202,15 @@ class TargetTests(unittest.TestCase):
         )
         self.assertNotEqual(approximate, target)
         self.assertEqual(reached_targets((approximate,)), ())
+
+    def test_targets_can_be_detected_without_materializing_intersections(self):
+        targets = adjacent_targets()
+        unit = Circle(Point(0, 0), 1)
+        vertical_chord = Line(1, 0, -targets[TargetName.B_PLUS].x)
+        self.assertEqual(
+            reached_targets_by_object_pair(unit, vertical_chord),
+            (TargetName.B_PLUS, TargetName.B_MINUS),
+        )
 
 
 if __name__ == "__main__":

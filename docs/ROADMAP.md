@@ -9,8 +9,9 @@
 | M0：规范闭环 | 已完成 |
 | M1：Sage 精确几何内核 | 已完成 |
 | M2：验证闭环 | 已完成 |
-| M3：首个可信 baseline | 下一阶段 |
-| M4 及以后 | 尚未开始 |
+| M3：首个可信 baseline | 已完成 |
+| M4：基础搜索 | 下一阶段 |
+| M5 及以后 | 尚未开始 |
 
 ## M0：规范闭环
 
@@ -135,6 +136,17 @@ sage -python -m euclid_min verify \
 - 项目自行重算 E-score；
 - 所有与原文不同的初始条件或宏展开均被公开；
 - baseline 是否可与当前 profile 直接比较有明确结论。
+
+### 落地结果
+
+- 已取得并逐步核对 DeTemple 1991 论文第 4 节的十步 Carlyle 圆构造；
+- 原文免费坐标轴已计费，modern non-collapsing compass 的两次距离搬运已按
+  collapsing-compass 基础操作展开；
+- 转写证书由 SageMath 10.7 verifier 精确重放为 32 E：11 条直线、21 个圆；
+- 两个相邻目标点均在第 32 E 首次出现；
+- 该条目标为 `converted`，原文 51/45 的 Lemoine simplicity 与 32 E 不直接可比；
+- 来源、证书、验证报告和中文解释均保存在
+  `baselines/regular-17/detemple-1991-carlyle-converted/`。
 
 ## M4：基础搜索
 

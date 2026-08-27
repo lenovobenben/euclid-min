@@ -14,8 +14,8 @@ from .geometry import (
     Point,
 )
 from .intersections import IntersectionKind, intersect
-from .state import GeometryState
-from .target import TargetName, reached_targets
+from .state import ImplicitClosureState
+from .target import TargetName, reached_targets_by_object_pair
 
 
 NamedObject = Point | Drawable
@@ -23,7 +23,7 @@ NamedObject = Point | Drawable
 
 @dataclass(frozen=True, slots=True)
 class ReplayResult:
-    state: GeometryState
+    state: ImplicitClosureState
     names: dict[str, NamedObject]
     line_draws: int
     circle_draws: int
@@ -41,7 +41,7 @@ class ProgramReplayer:
     """按 `euclid-min-certificate/v1` 顺序执行 program。"""
 
     def __init__(self) -> None:
-        self.state = GeometryState.fixed_initial()
+        self.state = ImplicitClosureState.fixed_initial()
         origin, start = self.state.points
         unit_circle = self.state.circles[0]
         self.names: dict[str, NamedObject] = {
@@ -54,6 +54,7 @@ class ProgramReplayer:
         self.duplicate_draws = 0
         self.first_target_program_index: int | None = None
         self.first_target_e_move: int | None = None
+        self._targets: set[TargetName] = set()
 
     def replay(self, program: list[dict[str, Any]]) -> ReplayResult:
         for program_index, entry in enumerate(program):
@@ -70,7 +71,11 @@ class ProgramReplayer:
                 )
                 raise
 
-        targets = reached_targets(self.state.points)
+        targets = tuple(
+            target
+            for target in (TargetName.B_PLUS, TargetName.B_MINUS)
+            if target in self._targets
+        )
         return ReplayResult(
             state=self.state,
             names=dict(self.names),
@@ -137,7 +142,8 @@ class ProgramReplayer:
         if not addition.new_object:
             self.duplicate_draws += 1
         self.names[entry_id] = addition.object
-        self._record_first_target(program_index)
+        if addition.new_object:
+            self._record_object_targets(addition.object, program_index)
 
     def _draw_circle(
         self,
@@ -159,7 +165,8 @@ class ProgramReplayer:
         if not addition.new_object:
             self.duplicate_draws += 1
         self.names[entry_id] = addition.object
-        self._record_first_target(program_index)
+        if addition.new_object:
+            self._record_object_targets(addition.object, program_index)
 
     def _bind_intersection(
         self,
@@ -182,12 +189,7 @@ class ProgramReplayer:
                 details={"intersection_count": len(result.points)},
             )
 
-        point = result.points[index]
-        if not self.state.contains_point(point):
-            raise VerificationError(
-                "intersection_not_in_state",
-                "所选交点尚未由自动闭包加入当前数学状态",
-            )
+        point = self.state.bind_point(result.points[index])
         self.names[entry_id] = point
 
     def _point_reference(self, reference: str) -> Point:
@@ -223,9 +225,21 @@ class ProgramReplayer:
                 details={"reference": reference},
             ) from error
 
-    def _record_first_target(self, program_index: int) -> None:
-        if self.first_target_program_index is not None:
+    def _record_object_targets(
+        self,
+        new_object: Drawable,
+        program_index: int,
+    ) -> None:
+        newly_reached: set[TargetName] = set()
+        for other in self.state.drawables:
+            if other is new_object:
+                continue
+            newly_reached.update(
+                reached_targets_by_object_pair(new_object, other)
+            )
+        if not newly_reached:
             return
-        if reached_targets(self.state.points):
+        self._targets.update(newly_reached)
+        if self.first_target_program_index is None:
             self.first_target_program_index = program_index
             self.first_target_e_move = self.e_move

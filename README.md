@@ -18,7 +18,7 @@ O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
 
 ## 当前状态
 
-项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**和 **M2：验证闭环**。当前已经实现精确几何、三类求交、自动交点闭包、profile/Schema 校验、JCS 哈希、证书重放、E-score、验证报告和 CLI。下一阶段是录入并验证第一个正十七边形 baseline。
+项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**和 **M3：首个可信 baseline**。DeTemple 1991 的 Carlyle 圆构造经当前 profile 转写后，由 Sage verifier 精确重放为 **32 E**（11 条直线、21 个圆），并同时得到两个相邻目标点。该数字包含坐标轴构造和两次 collapsing-compass 距离搬运展开；它不是原文 Lemoine simplicity 数字，也不是最优性声明。
 
 唯一规范 profile 为：
 
@@ -96,8 +96,14 @@ docker run --rm `
   tests/fixtures/certificates/not-target.json
 ```
 
-该 fixture 专门测试“结构合法但未达到目标”的失败路径，因此命令应返回 `target_not_reached` 和退出码 1。首份成功证书将在 M3 baseline 阶段加入。
+成功基线可把最后一个参数替换为：
+
+```text
+baselines/regular-17/detemple-1991-carlyle-converted/construction.json
+```
+
+原 fixture 专门测试“结构合法但未达到目标”的失败路径，因此命令应返回 `target_not_reached` 和退出码 1。
 
 ## 研究声明
 
-仓库当前没有给出正十七边形构造步数纪录，也没有声称任何构造达到全局最小。设计文档或示例中的数字仅用于说明格式。
+仓库当前给出一个在固定 profile 下重算为 32 E 的已验证构造，作为后续搜索的首个上界。项目尚未完成系统文献检索，也没有 lower-bound proof，因此不声称它是文献最短、最短已知或全局最优。

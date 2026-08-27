@@ -1,0 +1,36 @@
+id: detemple-1991-carlyle-converted
+bibliography:
+  authors:
+    - Duane W. DeTemple
+  title: Carlyle Circles and the Lemoine Simplicity of Polygon Constructions
+  year: 1991
+  publication: The American Mathematical Monthly
+  volume: 98
+  issue: 2
+  pages: 97-108
+  doi: 10.2307/2323939
+  stable_url: https://www.jstor.org/stable/2323939
+  accessible_copy: https://sharingthesoul.wordpress.com/wp-content/uploads/2021/03/carlyle-and-lemoine-polygon-constructions-detemple1991.pdf
+access:
+  full_text_obtained: true
+  accessed_on: 2026-08-28
+construction:
+  exact_location: Section 4, pages 102-104, Figure 3, steps (i)-(x)
+  initial_objects: Unit circle centered at O together with the x- and y-axes
+  tools: Straightedge and modern non-collapsing compass
+  free_point_rules: Axis-circle intersections used by the stated construction
+  original_metric: Lemoine simplicity
+  reported_score:
+    unmodified_construction: 51
+    modified_construction: 45
+euclid_min:
+  target_profile: regular-17-e-fixed-v1
+  comparability: converted
+  directly_comparable: false
+  conversion_notes: >-
+    The x- and y-axes are constructed and charged. The unmodified ten-step
+    route is used. Both non-collapsing distance transfers are expanded into
+    straightedge and collapsing-compass primitive operations. Only either
+    adjacent vertex of A is required by the target profile.
+  recomputed_e_score: 32
+  verification_status: verified

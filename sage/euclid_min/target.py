@@ -9,7 +9,7 @@ from typing import Iterable, Mapping
 
 from sage.all import AA, cos, pi, sin
 
-from .geometry import Point
+from .geometry import Drawable, Point
 
 
 class TargetName(str, Enum):
@@ -40,4 +40,25 @@ def reached_targets(points: Iterable[Point]) -> tuple[TargetName, ...]:
         name
         for name in (TargetName.B_PLUS, TargetName.B_MINUS)
         if any(point == targets[name] for point in point_list)
+    )
+
+
+def reached_targets_by_object_pair(
+    first: Drawable,
+    second: Drawable,
+) -> tuple[TargetName, ...]:
+    """精确返回作为两个不同对象公共点出现的目标。
+
+    两条不同直线、两个不同圆或一线一圆不可能共享一段曲线。因此同时满足
+    两个对象方程的目标点，恰好是自动闭包会产生的有限孤立交点；无需先求出
+    该对象对的其他交点。
+    """
+
+    if type(first) is type(second) and first == second:
+        return ()
+    targets = adjacent_targets()
+    return tuple(
+        name
+        for name in (TargetName.B_PLUS, TargetName.B_MINUS)
+        if first.contains(targets[name]) and second.contains(targets[name])
     )

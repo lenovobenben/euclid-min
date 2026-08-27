@@ -177,10 +177,11 @@ def _success_report(
                 "total": replay.e_move,
             },
             "distinct_objects": {
-                "points": len(replay.state.points),
                 "lines": len(replay.state.lines),
                 "circles": len(replay.state.circles),
             },
+            "bound_points": len(replay.state.points),
+            "closure_strategy": "implicit_exact",
             "duplicate_draws": replay.duplicate_draws,
             "score": {"metric": "e_move", "e_move": replay.e_move},
             "targets": [target.value for target in replay.targets],

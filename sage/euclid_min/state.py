@@ -131,3 +131,79 @@ class GeometryState:
             if item == candidate:
                 return item
         return None
+
+
+class ImplicitClosureState:
+    """验证器使用的惰性交点闭包状态。
+
+    数学状态仍包含每一对已构造对象的全部有限实交点，但这里只物化证书通过
+    ``intersect`` 绑定了名称的点。这样不会为了验证一条构造路径而提前生成
+    永远不会被引用的高次数代数数。完整的显式闭包参考实现仍由
+    :class:`GeometryState` 提供。
+    """
+
+    def __init__(self) -> None:
+        self._points: list[Point] = []
+        self._lines: list[Line] = []
+        self._circles: list[Circle] = []
+
+    @classmethod
+    def fixed_initial(cls) -> "ImplicitClosureState":
+        state = cls()
+        origin = Point(0, 0)
+        start = Point(1, 0)
+        state._points.extend((origin, start))
+        state._circles.append(Circle.through(origin, start))
+        return state
+
+    @property
+    def points(self) -> tuple[Point, ...]:
+        """返回已经显式绑定的不同点；未绑定交点仍隐式存在。"""
+
+        return tuple(self._points)
+
+    @property
+    def lines(self) -> tuple[Line, ...]:
+        return tuple(self._lines)
+
+    @property
+    def circles(self) -> tuple[Circle, ...]:
+        return tuple(self._circles)
+
+    @property
+    def drawables(self) -> tuple[Drawable, ...]:
+        return (*self._lines, *self._circles)
+
+    def bind_point(self, point: Point) -> Point:
+        """物化一个已经由两个已构造对象确定的交点。"""
+
+        existing = GeometryState._find_equal(self._points, point)
+        if existing is not None:
+            return existing
+        self._points.append(point)
+        return point
+
+    def draw_line(self, first: Point, second: Point) -> AdditionResult:
+        self._require_points(first, second)
+        line = Line.through(first, second)
+        existing = GeometryState._find_equal(self._lines, line)
+        if existing is not None:
+            return AdditionResult(existing, False, (), ())
+        self._lines.append(line)
+        return AdditionResult(line, True, (), ())
+
+    def draw_circle(self, center: Point, through: Point) -> AdditionResult:
+        self._require_points(center, through)
+        circle = Circle.through(center, through)
+        existing = GeometryState._find_equal(self._circles, circle)
+        if existing is not None:
+            return AdditionResult(existing, False, (), ())
+        self._circles.append(circle)
+        return AdditionResult(circle, True, (), ())
+
+    def _require_points(self, *points: Point) -> None:
+        for point in points:
+            if GeometryState._find_equal(self._points, point) is None:
+                raise PointNotInStateError(
+                    "基础操作只能使用已经显式绑定名称的点"
+                )

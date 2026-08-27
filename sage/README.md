@@ -9,7 +9,7 @@ euclid_min/
   exact.py          AA 转换、精确比较和平方根
   geometry.py       Point、Line、Circle
   intersections.py 三类求交及退化关系
-  state.py          精确去重和自动交点闭包
+  state.py          精确去重、显式闭包和验证器惰性闭包
   target.py         B_plus、B_minus 精确目标
   canonical_json.py JCS 规范化和 SHA-256
   formats.py        profile、证书和 Schema 严格加载
@@ -18,9 +18,8 @@ euclid_min/
   cli.py            命令行入口
 ```
 
-当前已经覆盖 M1 数学内核和 M2 验证闭环。尚未实现：
+当前已经覆盖 M1 数学内核、M2 验证闭环和 M3 首个可信 baseline。尚未实现：
 
-- 文献 baseline 录入；
 - 自动搜索；
 - 构造可视化；
 - lower-bound proof mode。
@@ -77,6 +76,14 @@ sage -python -m euclid_min verify \
 
 退出码 0 表示验证成功，1 表示证书或构造验证失败，2 表示 CLI 或报告写入错误。
 
+M3 基线的证书由以下命令确定性生成：
+
+```bash
+sage -python sage/experiments/build_detemple_1991_baseline.py
+```
+
+生成后仍须通过独立的 `euclid_min verify` 命令重放；生成器本身不是验证结论。
+
 ## 精确性边界
 
 - 所有几何坐标进入对象时立即转换为 `AA`；
@@ -86,4 +93,6 @@ sage -python -m euclid_min verify \
 - 交点按精确 (x,y) 字典序排列；
 - 相切重根只返回一个点；
 - 状态去重使用数学相等，当前参考实现优先采用线性精确比较；
+- verifier 用惰性精确闭包避免物化无关的高次数交点；绑定时仍精确求交，
+  目标则以两个已构造对象的精确公共点判定；
 - hash、字符串和浮点近似均不参与数学结论。

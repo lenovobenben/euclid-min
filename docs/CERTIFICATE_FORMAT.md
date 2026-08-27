@@ -235,9 +235,16 @@ verifier 的名称、版本和运行结果不写回输入证书，而是写入�
   },
   "verifier": {
     "name": "euclid-min-sage-verifier",
-    "version": "0.1.0"
+    "version": "0.3.0",
+    "sage_version": "10.7"
   },
   "valid": true,
+  "distinct_objects": {
+    "lines": 11,
+    "circles": 22
+  },
+  "bound_points": 29,
+  "closure_strategy": "implicit_exact",
   "score": {
     "metric": "e_move",
     "e_move": 13
@@ -250,6 +257,11 @@ verifier 的名称、版本和运行结果不写回输入证书，而是写入�
 ```
 
 `certificate_sha256` 对原始 UTF-8 文件字节计算，用于确定实际验证的是哪一个文件；语义身份仍由规范化的 profile 和 construction 摘要承担。
+
+`distinct_objects` 只统计不同的已构造直线和圆，其中包含 profile 免费提供的对象。
+`bound_points` 是初始点和证书显式绑定的不同点数，不是数学闭包中全部交点的
+数量。`closure_strategy: implicit_exact` 表示 verifier 按正式模型保留隐式闭包，
+只在绑定时精确物化指定对象对的交点；该策略不改变构造语义或目标判定。
 
 失败报告至少应包含：
 

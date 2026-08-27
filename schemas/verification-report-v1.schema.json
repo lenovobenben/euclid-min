@@ -42,13 +42,14 @@
     "distinct_objects": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["points", "lines", "circles"],
+      "required": ["lines", "circles"],
       "properties": {
-        "points": { "$ref": "#/$defs/nonnegativeSafeInteger" },
         "lines": { "$ref": "#/$defs/nonnegativeSafeInteger" },
         "circles": { "$ref": "#/$defs/nonnegativeSafeInteger" }
       }
     },
+    "bound_points": { "$ref": "#/$defs/nonnegativeSafeInteger" },
+    "closure_strategy": { "const": "implicit_exact" },
     "duplicate_draws": { "$ref": "#/$defs/nonnegativeSafeInteger" },
     "score": {
       "type": "object",
@@ -92,6 +93,8 @@
         "profile",
         "draw_operations",
         "distinct_objects",
+        "bound_points",
+        "closure_strategy",
         "duplicate_draws",
         "score",
         "targets",

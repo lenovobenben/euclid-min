@@ -1,18 +1,26 @@
 # 正十七边形构造文献与 Baseline 台账
 
-本文记录 Euclid-Min 的文献检索范围、来源状态、构造转写和 profile 可比性。当前文件只建立研究程序，不声明已经验证任何历史步数。
+本文记录 Euclid-Min 的文献检索范围、来源状态、构造转写和 profile 可比性。
 
 ## 1. 当前状态
 
 ```text
 系统检索：尚未开始
-完整原文复核：尚未完成
-已录入构造：0
-已通过 verifier 的 baseline：0
-可用于“更短于 baseline”声明的条目：0
+定向来源复核：DeTemple 1991 全文及十步构造已核对
+已录入构造：1
+已通过 verifier 的 baseline：1
+可用于“更短于 baseline”声明的条目：1（converted）
 ```
 
-在至少一个条目完成原文核对、基础操作展开、证书录入和精确验证前，项目没有正式搜索上界。
+当前首个正式搜索上界为 32 E。系统文献检索尚未完成，因此不能把它称为文献最短或最短已知。
+
+### 已验证 baseline
+
+| ID | 来源 | 可比性 | 当前 profile 重算 | 状态 |
+|---|---|---|---:|---|
+| `detemple-1991-carlyle-converted` | DeTemple, 1991, §4, pp. 102–104, Fig. 3, steps (i)–(x) | `converted` | 32 E | Sage verifier 通过 |
+
+原文从单位圆和两条坐标轴开始，使用 modern non-collapsing compass，并报告未经修改构造的 Lemoine simplicity 为 51、修改版为 45。本项目录入未经修改的十步路线，但为坐标轴计费并展开两次距离搬运。因此原文 51/45 与本项目的 32 E 只能并列记录，不能直接比较。
 
 ## 2. 研究问题
 
@@ -58,7 +66,7 @@ Lemoine simplicity heptadecagon
 | ID | 候选来源 | 当前状态 | 预期用途 |
 |---|---|---|---|
 | `lemoine-geometrographie` | Émile Lemoine，*Géométrographie* | 待获取、待核对 | 历史 metric 与原始动作定义 |
-| `detemple-1991-carlyle` | Duane W. DeTemple，Carlyle circles 与 polygon constructions 论文 | 待获取、待核对 | 历史构造和 Lemoine simplicity |
+| `detemple-1991-carlyle` | Duane W. DeTemple，Carlyle circles 与 polygon constructions 论文 | 全文、步骤和工具假设已核对；首个 baseline 已验证 | 历史构造和 Lemoine simplicity |
 | `labelle-complexity` | François Labelle，尺规构造复杂度资料 | 待确认版本 | 复杂度框架与相关工作 |
 | `demaine-luo-euclidea` | Erik D. Demaine、Victor Luo，Euclidea 优化复杂度论文 | 待核对 | 计算复杂度背景，不一定提供 baseline |
 | `classical-heptadecagon` | Gauss 之后的经典正十七边形构造原始或可靠二手资料 | 待系统检索 | 首个可重放构造候选 |
@@ -147,4 +155,4 @@ euclid_min:
 - 完成公开、充分的文献检索：才可以谨慎讨论“已审阅文献中的最短已知”；
 - 具有完备 lower-bound proof：才可以声称全局最优。
 
-当前项目只具备规范设计，不满足上述任何关于具体步数的声明门槛。
+当前项目满足“已验证构造”门槛，并可把 32 E 作为同一 profile 下搜索结果的比较上界；尚不满足“已审阅文献中的最短已知”或“全局最优”的声明门槛。

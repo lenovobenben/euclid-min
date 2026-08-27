@@ -28,6 +28,7 @@ class ProgramReplayTests(unittest.TestCase):
         self.assertEqual(result.names["P"], Point(-1, 0))
         self.assertEqual(len(result.state.lines), 1)
         self.assertEqual(len(result.state.circles), 2)
+        self.assertEqual(len(result.state.points), 3)
         self.assertEqual(result.targets, ())
 
     def test_unknown_reference_reports_program_location(self):
