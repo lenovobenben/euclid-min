@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/search-checkpoint-v1.schema.json",
+  "title": "Euclid-Min Search Checkpoint v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "profile",
+    "strategy",
+    "max_score",
+    "frontier",
+    "previous_stats"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-search-checkpoint/v1" },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": { "const": "regular-17-e-fixed-v1" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "strategy": { "const": "bounded_breadth_first" },
+    "max_score": { "$ref": "#/$defs/nonnegativeInteger" },
+    "frontier": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["score", "program"],
+        "properties": {
+          "score": { "$ref": "#/$defs/nonnegativeInteger" },
+          "program": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                { "$ref": "#/$defs/lineEntry" },
+                { "$ref": "#/$defs/circleEntry" },
+                { "$ref": "#/$defs/intersectEntry" }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "previous_stats": { "$ref": "#/$defs/stats" }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "nonnegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "lineEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "op", "through"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "op": { "const": "line" },
+        "through": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        }
+      }
+    },
+    "circleEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "op", "center", "through"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "op": { "const": "circle" },
+        "center": { "$ref": "#/$defs/id" },
+        "through": { "$ref": "#/$defs/id" }
+      }
+    },
+    "intersectEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "op", "objects", "index"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "op": { "const": "intersect" },
+        "objects": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expanded_states",
+        "generated_candidates",
+        "accepted_states",
+        "equivalent_pruned",
+        "max_frontier"
+      ],
+      "properties": {
+        "expanded_states": { "$ref": "#/$defs/nonnegativeInteger" },
+        "generated_candidates": { "$ref": "#/$defs/nonnegativeInteger" },
+        "accepted_states": { "$ref": "#/$defs/nonnegativeInteger" },
+        "equivalent_pruned": { "$ref": "#/$defs/nonnegativeInteger" },
+        "max_frontier": { "$ref": "#/$defs/nonnegativeInteger" }
+      }
+    }
+  }
+}

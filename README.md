@@ -18,7 +18,7 @@ O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
 
 ## 当前状态
 
-项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**和 **M3：首个可信 baseline**。DeTemple 1991 的 Carlyle 圆构造经当前 profile 转写后，由 Sage verifier 精确重放为 **32 E**（11 条直线、21 个圆），并同时得到两个相邻目标点。该数字包含坐标轴构造和两次 collapsing-compass 距离搬运展开；它不是原文 Lemoine simplicity 数字，也不是最优性声明。
+项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**和 **M4：基础搜索器**。DeTemple 1991 的 Carlyle 圆构造经当前 profile 转写后，由 Sage verifier 精确重放为 **32 E**（11 条直线、21 个圆），并同时得到两个相邻目标点。基础搜索器已经具备完整候选生成、显式交点闭包、精确状态确认、确定性广度优先搜索、checkpoint、provenance 和证书导出；当前只定位于小深度可审计搜索。
 
 唯一规范 profile 为：
 
@@ -41,11 +41,13 @@ regular-17-e-fixed-v1
 - [证书格式](docs/CERTIFICATE_FORMAT.md)：构造程序、哈希和验证输出约定；
 - [文献与 baseline 台账](docs/LITERATURE.md)：检索规则、来源状态和可比性记录；
 - [实施路线](docs/ROADMAP.md)：从规范到搜索器的阶段计划；
+- [基础搜索器](docs/SEARCH.md)：M4 状态、候选、去重、checkpoint 和 CLI；
 - [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
 - [Profile Schema](schemas/profile-v1.schema.json)；
 - [Certificate Schema](schemas/certificate-v1.schema.json)；
 - [Verification Report Schema](schemas/verification-report-v1.schema.json)；
+- [Search Checkpoint Schema](schemas/search-checkpoint-v1.schema.json)；
 - [Sage 内核运行说明](sage/README.md)。
 
 若研究设计与版本化规范冲突，以 profile、Schema、`FORMAL_MODEL.md`、`METRICS.md` 和 `CERTIFICATE_FORMAT.md` 中更具体的规则为准。
@@ -55,7 +57,7 @@ regular-17-e-fixed-v1
 - 全部 Python 代码统一运行在 SageMath 自带的 Python 环境中；
 - SageMath 同时承载精确内核、Schema 校验、CLI、报告和第一版搜索器；
 - 本地普通 Python 和 Go 都不属于当前支持的运行路径；只有 profiling 证明有必要时才重新评估 Go；
-- 浮点计算只能用于绘图和启发式排序，不能决定几何相等、构造合法性或目标命中；
+- 浮点计算只能用于绘图、启发式排序或非权威 hash 分桶，不能决定几何相等、构造合法性、状态合并或目标命中；
 - 没有完备 lower-bound proof 时，只能发布“已验证构造”或“新的已验证上界”，不能声称全局最优。
 
 ## 近期里程碑
@@ -65,6 +67,8 @@ regular-17-e-fixed-v1
 3. **M2：验证闭环**——实现证书重放、目标判断和验证报告；
 4. **M3：首个 baseline**——完整录入并验证一个正十七边形已知构造；
 5. **M4：基础搜索**——实现小深度可审计搜索和证书导出。
+
+M4 之后将先做 profiling 和启发式排序，再决定是否需要 Go 调度层或动画可视化。
 
 更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
 

@@ -57,6 +57,19 @@ class GeometryState:
     def circles(self) -> tuple[Circle, ...]:
         return tuple(self._circles)
 
+    @property
+    def drawables(self) -> tuple[Drawable, ...]:
+        return (*self._lines, *self._circles)
+
+    def clone(self) -> "GeometryState":
+        """复制数学状态；AA 和几何值对象均不可变，可以安全共享。"""
+
+        clone = type(self)()
+        clone._points = list(self._points)
+        clone._lines = list(self._lines)
+        clone._circles = list(self._circles)
+        return clone
+
     def contains_point(self, point: Point) -> bool:
         return self._find_equal(self._points, point) is not None
 

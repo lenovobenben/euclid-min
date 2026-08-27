@@ -2,7 +2,7 @@
   "schema": "euclid-min-verification-report/v1",
   "verifier": {
     "name": "euclid-min-sage-verifier",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "sage_version": "10.7"
   },
   "certificate_sha256": "539efeccca6b645f8dcbf7a484842cb46459a7251ab080b2a1e5f0ada8690428",

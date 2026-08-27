@@ -56,6 +56,25 @@ class CliTests(unittest.TestCase):
         self.assertEqual(stdout_report, file_report)
         self.assertFalse(stdout_report["valid"])
 
+    def test_search_json_reports_bounded_exhaustion(self):
+        output = io.StringIO()
+        with redirect_stdout(output):
+            exit_code = main(
+                [
+                    "search",
+                    "--profile",
+                    str(PROFILE_PATH),
+                    "--max-score",
+                    "0",
+                    "--json",
+                ]
+            )
+        self.assertEqual(exit_code, 1)
+        summary = json.loads(output.getvalue())
+        self.assertEqual(summary["status"], "exhausted")
+        self.assertEqual(summary["max_score"], 0)
+        self.assertEqual(summary["stats"]["expanded_states"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

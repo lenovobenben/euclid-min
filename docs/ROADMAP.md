@@ -10,8 +10,9 @@
 | M1：Sage 精确几何内核 | 已完成 |
 | M2：验证闭环 | 已完成 |
 | M3：首个可信 baseline | 已完成 |
-| M4：基础搜索 | 下一阶段 |
-| M5 及以后 | 尚未开始 |
+| M4：基础搜索 | 已完成 |
+| M5：启发式搜索与 profiling | 下一阶段 |
+| M6 及以后 | 尚未开始 |
 
 ## M0：规范闭环
 
@@ -169,6 +170,16 @@ sage -python -m euclid_min verify \
 - 所有输出证书均由独立 verifier 接受；
 - 在指定小深度上，枚举数量和去重结果可重复；
 - 搜索器和 verifier 之间没有共享“成功即正确”的捷径。
+
+### 落地结果
+
+- `sage/euclid_min/search/` 实现完整候选生成、显式自动闭包和确定性 BFS；
+- 状态摘要只负责分桶，摘要命中后对 \((P,L,C)\) 做精确集合比较；
+- `max_score` 提供深度界，`max_states` 以 `state_limit` 明确暂停而不冒充穷尽；
+- frontier checkpoint 具有独立 Schema，可精确恢复并继续；
+- 搜索路径可以恢复交点 provenance 并导出正式证书，CLI 写出前调用独立 verifier；
+- 回归测试自动重发现 1 E 的等边三角形顶点和 3 E 的中点构造；
+- 当前实现仅面向小深度，尚未对 32 E baseline 发起大规模搜索。
 
 ## M5：启发式搜索与 profiling
 
