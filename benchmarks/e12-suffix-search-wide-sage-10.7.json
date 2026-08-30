@@ -1,0 +1,50 @@
+{
+  "schema": "euclid-min-suffix-search-summary/v1",
+  "mode": "heuristic_nonproof",
+  "environment": {
+    "sage_version": "10.7",
+    "python_version": "3.12.5",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "cpu_count": 16,
+    "docker_image": "sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528"
+  },
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "prefix_last_id": "c_M1_2_Ay",
+  "prefix_program_entries": 25,
+  "prefix_e_move": 12,
+  "max_total_score": 18,
+  "suffix_budget": 6,
+  "beam_width": 8,
+  "candidate_width": 12,
+  "workers": 8,
+  "state_timeout_seconds": 10.0,
+  "max_input_level": 8,
+  "candidate_strategy": "diverse",
+  "max_states": null,
+  "heuristic": "one-move",
+  "status": "heuristic_limit",
+  "found_score": null,
+  "stats": {
+    "expanded_states": 41,
+    "generated_candidates": 492,
+    "accepted_states": 299,
+    "equivalent_pruned": 0,
+    "max_frontier": 8,
+    "heuristic_evaluations": 298,
+    "heuristic_pruned": 250,
+    "elapsed_seconds": 455.83942645000025,
+    "candidate_generation_seconds": 0.0,
+    "state_expansion_seconds": 159.03998390101333,
+    "state_index_seconds": 0.0,
+    "goal_test_seconds": 0.09497479099627526,
+    "heuristic_seconds": 25.83381800701136,
+    "candidate_prefilter_evaluations": 1060449,
+    "candidate_prefilter_pruned": 1059957,
+    "candidate_prefilter_seconds": 14.934166977995119,
+    "candidate_timeouts": 194
+  },
+  "interpretation_boundary": "浮点启发式会删除分支；未命中不构成 18 E 不存在的证明。"
+}

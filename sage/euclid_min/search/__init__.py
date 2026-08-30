@@ -2,8 +2,15 @@
 
 from .candidates import generate_candidates
 from .beam import DeterministicBeamSearch
+from .parallel_beam import ParallelHeuristicBeamSearch
 from .engine import BoundedBreadthFirstSearch
-from .heuristic import PointDistanceHeuristic, Regular17Heuristic
+from .heuristic import (
+    OneMoveTargetHeuristic,
+    PointDistanceHeuristic,
+    Regular17CandidateHeuristic,
+    Regular17Heuristic,
+    Regular17OneMoveHeuristic,
+)
 from .model import (
     Candidate,
     PointGoal,
@@ -18,10 +25,14 @@ __all__ = [
     "BoundedBreadthFirstSearch",
     "Candidate",
     "DeterministicBeamSearch",
+    "OneMoveTargetHeuristic",
+    "ParallelHeuristicBeamSearch",
     "PointGoal",
     "PointDistanceHeuristic",
     "Regular17Goal",
+    "Regular17CandidateHeuristic",
     "Regular17Heuristic",
+    "Regular17OneMoveHeuristic",
     "SearchNode",
     "SearchOutcome",
     "SearchStats",

@@ -1,0 +1,140 @@
+{
+  "schema": "euclid-min-suffix-restart-matrix-summary/v1",
+  "mode": "heuristic_nonproof",
+  "matrix_id": "e12-suffix-restart-matrix-v1",
+  "started_at": "2026-08-30T18:03:02.002709+00:00",
+  "finished_at": "2026-08-30T18:09:01.862534+00:00",
+  "wall_elapsed_seconds": 359.88546109599883,
+  "environment": {
+    "sage_version": "10.7",
+    "python_version": "3.12.5",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "cpu_count": 16,
+    "docker_image": "sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528"
+  },
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "prefix_last_id": "c_M1_2_Ay",
+  "max_total_score": 18,
+  "max_parallel_runs": 4,
+  "planned_worker_capacity": 16,
+  "status": "complete_no_hit",
+  "aggregate": {
+    "planned_runs": 4,
+    "completed_runs": 4,
+    "failed_runs": 0,
+    "found_runs": 0,
+    "expanded_states": 106,
+    "generated_candidates": 848,
+    "accepted_states": 436,
+    "heuristic_evaluations": 432,
+    "candidate_prefilter_evaluations": 2415174,
+    "candidate_timeouts": 416,
+    "summed_run_elapsed_seconds": 848.9282389180007
+  },
+  "runs": [
+    {
+      "id": "level6-diverse-one-move",
+      "parameters": {
+        "beam_width": 6,
+        "candidate_width": 8,
+        "workers": 4,
+        "state_timeout_seconds": 8.0,
+        "max_input_level": 6,
+        "candidate_strategy": "diverse",
+        "heuristic": "one-move"
+      },
+      "summary_path": "benchmarks/e12-suffix-restart-matrix-sage-10.7/level6-diverse-one-move.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 31,
+        "generated_candidates": 248,
+        "accepted_states": 240,
+        "heuristic_evaluations": 239,
+        "candidate_prefilter_evaluations": 836217,
+        "candidate_timeouts": 9,
+        "elapsed_seconds": 92.42091291399993
+      }
+    },
+    {
+      "id": "level10-diverse-one-move",
+      "parameters": {
+        "beam_width": 6,
+        "candidate_width": 8,
+        "workers": 4,
+        "state_timeout_seconds": 8.0,
+        "max_input_level": 10,
+        "candidate_strategy": "diverse",
+        "heuristic": "one-move"
+      },
+      "summary_path": "benchmarks/e12-suffix-restart-matrix-sage-10.7/level10-diverse-one-move.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 13,
+        "generated_candidates": 104,
+        "accepted_states": 23,
+        "heuristic_evaluations": 22,
+        "candidate_prefilter_evaluations": 168528,
+        "candidate_timeouts": 82,
+        "elapsed_seconds": 102.61278238399973
+      }
+    },
+    {
+      "id": "level8-target-one-move",
+      "parameters": {
+        "beam_width": 6,
+        "candidate_width": 8,
+        "workers": 4,
+        "state_timeout_seconds": 8.0,
+        "max_input_level": 8,
+        "candidate_strategy": "target-only",
+        "heuristic": "one-move"
+      },
+      "summary_path": "benchmarks/e12-suffix-restart-matrix-sage-10.7/level8-target-one-move.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 31,
+        "generated_candidates": 248,
+        "accepted_states": 89,
+        "heuristic_evaluations": 88,
+        "candidate_prefilter_evaluations": 753180,
+        "candidate_timeouts": 160,
+        "elapsed_seconds": 357.3188562730011
+      }
+    },
+    {
+      "id": "level8-diverse-regular",
+      "parameters": {
+        "beam_width": 6,
+        "candidate_width": 8,
+        "workers": 4,
+        "state_timeout_seconds": 8.0,
+        "max_input_level": 8,
+        "candidate_strategy": "diverse",
+        "heuristic": "regular"
+      },
+      "summary_path": "benchmarks/e12-suffix-restart-matrix-sage-10.7/level8-diverse-regular.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 31,
+        "generated_candidates": 248,
+        "accepted_states": 84,
+        "heuristic_evaluations": 83,
+        "candidate_prefilter_evaluations": 657249,
+        "candidate_timeouts": 165,
+        "elapsed_seconds": 296.575687347
+      }
+    }
+  ],
+  "interpretation_boundary": "各 run 都使用浮点预筛、beam 截断、层级门和超时；矩阵未命中不构成 18 E 不存在的证明。"
+}

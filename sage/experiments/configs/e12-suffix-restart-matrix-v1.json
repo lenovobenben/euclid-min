@@ -1,0 +1,49 @@
+{
+  "schema": "euclid-min-suffix-restart-matrix-config/v1",
+  "id": "e12-suffix-restart-matrix-v1",
+  "prefix_last_id": "c_M1_2_Ay",
+  "max_total_score": 18,
+  "max_parallel_runs": 4,
+  "runs": [
+    {
+      "id": "level6-diverse-one-move",
+      "beam_width": 6,
+      "candidate_width": 8,
+      "workers": 4,
+      "state_timeout_seconds": 8.0,
+      "max_input_level": 6,
+      "candidate_strategy": "diverse",
+      "heuristic": "one-move"
+    },
+    {
+      "id": "level10-diverse-one-move",
+      "beam_width": 6,
+      "candidate_width": 8,
+      "workers": 4,
+      "state_timeout_seconds": 8.0,
+      "max_input_level": 10,
+      "candidate_strategy": "diverse",
+      "heuristic": "one-move"
+    },
+    {
+      "id": "level8-target-one-move",
+      "beam_width": 6,
+      "candidate_width": 8,
+      "workers": 4,
+      "state_timeout_seconds": 8.0,
+      "max_input_level": 8,
+      "candidate_strategy": "target-only",
+      "heuristic": "one-move"
+    },
+    {
+      "id": "level8-diverse-regular",
+      "beam_width": 6,
+      "candidate_width": 8,
+      "workers": 4,
+      "state_timeout_seconds": 8.0,
+      "max_input_level": 8,
+      "candidate_strategy": "diverse",
+      "heuristic": "regular"
+    }
+  ]
+}

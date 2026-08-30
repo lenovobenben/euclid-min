@@ -134,7 +134,11 @@
         "state_expansion_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
         "state_index_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
         "goal_test_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
-        "heuristic_seconds": { "$ref": "#/$defs/nonnegativeNumber" }
+        "heuristic_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "candidate_prefilter_evaluations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "candidate_prefilter_pruned": { "$ref": "#/$defs/nonnegativeInteger" },
+        "candidate_prefilter_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "candidate_timeouts": { "$ref": "#/$defs/nonnegativeInteger" }
       }
     },
     "nonnegativeNumber": {

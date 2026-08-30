@@ -1,20 +1,35 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://euclid-min.local/schemas/search-profile-v1.schema.json",
-  "title": "Euclid-Min Search Profile v1",
+  "$id": "https://euclid-min.local/schemas/suffix-search-summary-v1.schema.json",
+  "title": "Euclid-Min Heuristic Suffix Search Summary v1",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema",
-    "generated_at",
+    "mode",
     "environment",
     "profile",
-    "cases",
+    "prefix_last_id",
+    "prefix_program_entries",
+    "prefix_e_move",
+    "max_total_score",
+    "suffix_budget",
+    "beam_width",
+    "candidate_width",
+    "workers",
+    "state_timeout_seconds",
+    "max_input_level",
+    "candidate_strategy",
+    "max_states",
+    "heuristic",
+    "status",
+    "found_score",
+    "stats",
     "interpretation_boundary"
   ],
   "properties": {
-    "schema": { "const": "euclid-min-search-profile/v1" },
-    "generated_at": { "type": "string", "format": "date-time" },
+    "schema": { "const": "euclid-min-suffix-search-summary/v1" },
+    "mode": { "const": "heuristic_nonproof" },
     "environment": {
       "type": "object",
       "additionalProperties": false,
@@ -23,21 +38,14 @@
         "python_version",
         "platform",
         "cpu_count",
-        "docker_image",
-        "target_cache_warmed"
+        "docker_image"
       ],
       "properties": {
         "sage_version": { "type": "string", "minLength": 1 },
         "python_version": { "type": "string", "minLength": 1 },
         "platform": { "type": "string", "minLength": 1 },
-        "cpu_count": {
-          "oneOf": [
-            { "$ref": "#/$defs/nonnegativeInteger" },
-            { "type": "null" }
-          ]
-        },
-        "docker_image": { "type": "string", "minLength": 1 },
-        "target_cache_warmed": { "const": true }
+        "cpu_count": { "$ref": "#/$defs/positiveInteger" },
+        "docker_image": { "type": "string", "minLength": 1 }
       }
     },
     "profile": {
@@ -49,62 +57,38 @@
         "sha256": { "$ref": "#/$defs/sha256" }
       }
     },
-    "cases": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["name", "strategy", "parameters", "status", "score", "stats"],
-        "properties": {
-          "name": { "type": "string", "minLength": 1 },
-          "strategy": {
-            "enum": ["bounded_breadth_first", "deterministic_target_beam"]
-          },
-          "parameters": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["max_score", "max_states"],
-            "properties": {
-              "max_score": { "$ref": "#/$defs/nonnegativeInteger" },
-              "max_states": { "$ref": "#/$defs/positiveInteger" },
-              "beam_width": { "$ref": "#/$defs/positiveInteger" }
-            }
-          },
-          "status": {
-            "enum": ["found", "exhausted", "state_limit", "heuristic_limit"]
-          },
-          "score": {
-            "oneOf": [
-              { "$ref": "#/$defs/nonnegativeInteger" },
-              { "type": "null" }
-            ]
-          },
-          "stats": { "$ref": "#/$defs/stats" }
-        }
-      }
+    "prefix_last_id": { "type": "string", "minLength": 1 },
+    "prefix_program_entries": { "$ref": "#/$defs/nonnegativeInteger" },
+    "prefix_e_move": { "$ref": "#/$defs/nonnegativeInteger" },
+    "max_total_score": { "$ref": "#/$defs/nonnegativeInteger" },
+    "suffix_budget": { "$ref": "#/$defs/nonnegativeInteger" },
+    "beam_width": { "$ref": "#/$defs/positiveInteger" },
+    "candidate_width": { "$ref": "#/$defs/positiveInteger" },
+    "workers": { "$ref": "#/$defs/positiveInteger" },
+    "state_timeout_seconds": { "$ref": "#/$defs/positiveNumber" },
+    "max_input_level": {
+      "oneOf": [
+        { "$ref": "#/$defs/nonnegativeInteger" },
+        { "type": "null" }
+      ]
     },
-    "interpretation_boundary": { "type": "string", "minLength": 1 }
-  },
-  "$defs": {
-    "sha256": {
-      "type": "string",
-      "pattern": "^[0-9a-f]{64}$"
+    "candidate_strategy": { "enum": ["diverse", "target-only"] },
+    "max_states": {
+      "oneOf": [
+        { "$ref": "#/$defs/positiveInteger" },
+        { "type": "null" }
+      ]
     },
-    "nonnegativeInteger": {
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 9007199254740991
+    "heuristic": { "enum": ["one-move", "regular"] },
+    "status": { "enum": ["found", "state_limit", "heuristic_limit"] },
+    "found_score": {
+      "oneOf": [
+        { "$ref": "#/$defs/nonnegativeInteger" },
+        { "type": "null" }
+      ]
     },
-    "positiveInteger": {
-      "type": "integer",
-      "minimum": 1,
-      "maximum": 9007199254740991
-    },
-    "nonnegativeNumber": {
-      "type": "number",
-      "minimum": 0
-    },
+    "candidate_path": { "type": "string", "minLength": 1 },
+    "independent_verifier_valid": { "type": "boolean" },
     "stats": {
       "type": "object",
       "additionalProperties": false,
@@ -121,7 +105,11 @@
         "state_expansion_seconds",
         "state_index_seconds",
         "goal_test_seconds",
-        "heuristic_seconds"
+        "heuristic_seconds",
+        "candidate_prefilter_evaluations",
+        "candidate_prefilter_pruned",
+        "candidate_prefilter_seconds",
+        "candidate_timeouts"
       ],
       "properties": {
         "expanded_states": { "$ref": "#/$defs/nonnegativeInteger" },
@@ -142,6 +130,22 @@
         "candidate_prefilter_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
         "candidate_timeouts": { "$ref": "#/$defs/nonnegativeInteger" }
       }
-    }
+    },
+    "interpretation_boundary": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "nonnegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "nonnegativeNumber": { "type": "number", "minimum": 0 },
+    "positiveNumber": { "type": "number", "exclusiveMinimum": 0 }
   }
 }

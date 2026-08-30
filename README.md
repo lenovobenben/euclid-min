@@ -43,6 +43,7 @@ regular-17-e-fixed-v1
 - [实施路线](docs/ROADMAP.md)：从规范到搜索器的阶段计划；
 - [基础搜索器](docs/SEARCH.md)：M4 状态、候选、去重、checkpoint 和 CLI；
 - [M5 Profiling](docs/M5_PROFILING.md)：固定实验、热点结论和启发式边界；
+- [E12 并行后缀搜索](docs/M6_SUFFIX_SEARCH.md)：18 E 联合窗口、进程并行、候选多样化和证据边界；
 - [19 E 新上界说明](baselines/regular-17/detemple-1991-carlyle-improved-converted/explanation.md)：M6 证书、推导、计分与依赖主链；
 - [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
@@ -51,6 +52,9 @@ regular-17-e-fixed-v1
 - [Verification Report Schema](schemas/verification-report-v1.schema.json)；
 - [Search Checkpoint Schema](schemas/search-checkpoint-v1.schema.json)；
 - [Search Profile Schema](schemas/search-profile-v1.schema.json)；
+- [Suffix Search Summary Schema](schemas/suffix-search-summary-v1.schema.json)；
+- [Suffix Restart Matrix Config Schema](schemas/suffix-restart-matrix-config-v1.schema.json)；
+- [Suffix Restart Matrix Summary Schema](schemas/suffix-restart-matrix-summary-v1.schema.json)；
 - [Dependency Graph Schema](schemas/dependency-graph-v1.schema.json)；
 - [Sage 内核运行说明](sage/README.md)。
 
@@ -74,7 +78,7 @@ regular-17-e-fixed-v1
 6. **M5：profiling 与启发式搜索**——定位热点并实现非证明 beam；
 7. **M6：新的已验证上界**——把论文修改转写、清理无效分支、加入局部精确窗口替换并验证为 19 E。
 
-M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。M6 的 19 E 来自可审计的构造化简、依赖清理和局部精确枚举，不依赖启发式搜索成功。下一阶段可继续压缩上界，或在状态等价与安全剪枝成熟后评估 M7 proof mode。
+M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。E12 后缀搜索已经支持 16-worker 容量的确定性 restart 矩阵，实测峰值约 1155% Docker CPU，但尚未找到 18 E。M6 的 19 E 来自可审计的构造化简、依赖清理和局部精确枚举，不依赖启发式搜索成功。下一阶段可继续压缩上界，或在状态等价与安全剪枝成熟后评估 M7 proof mode。
 
 更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
 

@@ -243,6 +243,11 @@ sage -python -m euclid_min verify \
 - 相比同一 profile 的 32 E baseline，新的已验证上界降低 13 E；
 - profile、证书、验证报告、机器可读依赖 DAG、Schema、来源台账、中文说明和回归测试均已发布；
 - 该结果不包含 lower-bound proof，不声称 19 E 全局最优或文献最短。
+- 已启动固定 E12 精确前缀的 6 E 联合后缀搜索；进程级并行、候选多样化、
+  生成层级门和超时统计已经落地。beam 8、每状态 12 候选的宽搜稳定到达
+  总分 18，但尚未命中；四配置、16-worker 容量的确定性 restart 矩阵也已完成，
+  实测峰值约 1155% Docker CPU。机器可读配置、子结果、总汇总及 Schema 均已
+  纳入回归测试。该实验属于非证明模式，详见 `docs/M6_SUFFIX_SEARCH.md`。
 
 ## M7：Proof Mode（长期可选）
 

@@ -19,6 +19,7 @@ class SearchTelemetry:
             "state_index_seconds": 0.0,
             "goal_test_seconds": 0.0,
             "heuristic_seconds": 0.0,
+            "candidate_prefilter_seconds": 0.0,
         }
 
     @contextmanager
@@ -39,6 +40,9 @@ class SearchTelemetry:
         max_frontier: int,
         heuristic_evaluations: int = 0,
         heuristic_pruned: int = 0,
+        candidate_prefilter_evaluations: int = 0,
+        candidate_prefilter_pruned: int = 0,
+        candidate_timeouts: int = 0,
     ) -> SearchStats:
         return SearchStats(
             expanded_states=expanded_states,
@@ -48,6 +52,9 @@ class SearchTelemetry:
             max_frontier=max_frontier,
             heuristic_evaluations=heuristic_evaluations,
             heuristic_pruned=heuristic_pruned,
+            candidate_prefilter_evaluations=candidate_prefilter_evaluations,
+            candidate_prefilter_pruned=candidate_prefilter_pruned,
+            candidate_timeouts=candidate_timeouts,
             elapsed_seconds=perf_counter() - self.started_at,
             **self.timings,
         )

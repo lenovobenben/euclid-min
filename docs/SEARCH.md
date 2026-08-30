@@ -104,7 +104,23 @@ euclid-min search --profile <profile> --max-score 3 \
 - 完整闭包和候选数量增长极快，当前实现只承诺小深度可审计性；
 - checkpoint 以可移植和可核对为先，不追求紧凑；
 - 统计是单次运行统计，恢复后不会伪装成累计完备证明；
-- 尚无代数次数/子域信号、随机重启、镜像归约、并发、Go 调度器或 proof mode；
+- 尚无代数次数/子域信号、随机重启、严格完备的镜像归约、Go 调度器或 proof mode；
 - BFS 没有触发 `state_limit` 时只能说明指定深度被当前规则穷尽，不能直接推出与当前 19 E 上界相匹配的下界；beam 永远不提供穷尽结论。
+
+## 8. E12 并行联合后缀实验
+
+为继续攻击 18 E，上界搜索已经支持从带分数的精确中间节点启动，并新增专用的
+进程级 `ParallelHeuristicBeamSearch`。它在 worker 内执行 Sage 精确展开，只向
+父进程返回路径摘要；候选预筛使用数值规范键、生成依赖层级、目标残差和线圆
+配额。运行时超时及所有被删除分支均被显式统计。
+
+该模式严格属于 `heuristic_nonproof`，不改变本页第 3 节对完备搜索和 lower bound
+的要求。固定 E12 前缀的首轮六层结果、复现命令和性能数据见
+[`M6_SUFFIX_SEARCH.md`](M6_SUFFIX_SEARCH.md)。
+
+多个确定性配置可由 `search_detemple_suffix_matrix.py` 作为独立子进程并行运行；
+每个子进程内部再使用自己的 Sage 精确 worker。配置、子结果和总汇总均受 JSON
+Schema 约束。当前四配置矩阵的总容量为 16 worker，实测峰值约 1155% Docker
+CPU；它扩大的是启发式结构覆盖，仍不具备穷尽性。
 
 M5 的固定 profiling 结果、启发式公式和解释边界见 `docs/M5_PROFILING.md`。

@@ -118,6 +118,31 @@ sage -python -m euclid_min search \
 beam 删除过分支，未命中时返回 `heuristic_limit` 和退出码 4。它不能用于下界或
 最优性声明。固定 profiling 由 `sage/experiments/profile_search.py` 生成。
 
+从 19 E 构造的精确 E12 前缀发起 6 E 并行联合后缀搜索：
+
+```bash
+sage -python sage/experiments/search_detemple_suffix.py \
+  --max-total-score 18 \
+  --beam-width 4 \
+  --candidate-width 8 \
+  --workers 8 \
+  --state-timeout-seconds 8 \
+  --max-input-level 8 \
+  --candidate-strategy diverse
+```
+
+该实验使用浮点预筛、生成层级门、beam 截断和运行时超时，始终属于
+`heuristic_nonproof`。完整设计与首轮结果见 `docs/M6_SUFFIX_SEARCH.md`。
+
+同时运行四个确定性配置、合计最多 16 个精确 worker：
+
+```bash
+sage -python sage/experiments/search_detemple_suffix_matrix.py
+```
+
+可先增加 `--smoke` 只跑一层，检查嵌套子进程、产物路径和 Schema。正式矩阵
+配置位于 `sage/experiments/configs/e12-suffix-restart-matrix-v1.json`。
+
 ## 精确性边界
 
 - 所有几何坐标进入对象时立即转换为 `AA`；

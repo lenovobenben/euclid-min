@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/suffix-restart-matrix-config-v1.schema.json",
+  "title": "Euclid-Min Suffix Restart Matrix Config v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "prefix_last_id",
+    "max_total_score",
+    "max_parallel_runs",
+    "runs"
+  ],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-suffix-restart-matrix-config/v1"
+    },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "prefix_last_id": { "type": "string", "minLength": 1 },
+    "max_total_score": { "$ref": "#/$defs/nonnegativeInteger" },
+    "max_parallel_runs": { "$ref": "#/$defs/positiveInteger" },
+    "runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/run" }
+    }
+  },
+  "$defs": {
+    "nonnegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "positiveNumber": { "type": "number", "exclusiveMinimum": 0 },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "beam_width",
+        "candidate_width",
+        "workers",
+        "state_timeout_seconds",
+        "max_input_level",
+        "candidate_strategy",
+        "heuristic"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "beam_width": { "$ref": "#/$defs/positiveInteger" },
+        "candidate_width": { "$ref": "#/$defs/positiveInteger" },
+        "workers": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 9007199254740991
+        },
+        "state_timeout_seconds": { "$ref": "#/$defs/positiveNumber" },
+        "max_input_level": { "$ref": "#/$defs/nonnegativeInteger" },
+        "candidate_strategy": { "enum": ["diverse", "target-only"] },
+        "heuristic": { "enum": ["one-move", "regular"] }
+      }
+    }
+  }
+}

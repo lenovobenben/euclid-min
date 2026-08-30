@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/suffix-restart-matrix-summary-v1.schema.json",
+  "title": "Euclid-Min Suffix Restart Matrix Summary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "mode",
+    "matrix_id",
+    "started_at",
+    "finished_at",
+    "wall_elapsed_seconds",
+    "environment",
+    "profile",
+    "prefix_last_id",
+    "max_total_score",
+    "max_parallel_runs",
+    "planned_worker_capacity",
+    "status",
+    "aggregate",
+    "runs",
+    "interpretation_boundary"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-suffix-restart-matrix-summary/v1" },
+    "mode": { "const": "heuristic_nonproof" },
+    "matrix_id": { "type": "string", "minLength": 1 },
+    "started_at": { "type": "string", "format": "date-time" },
+    "finished_at": { "type": "string", "format": "date-time" },
+    "wall_elapsed_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sage_version",
+        "python_version",
+        "platform",
+        "cpu_count",
+        "docker_image"
+      ],
+      "properties": {
+        "sage_version": { "type": "string", "minLength": 1 },
+        "python_version": { "type": "string", "minLength": 1 },
+        "platform": { "type": "string", "minLength": 1 },
+        "cpu_count": { "$ref": "#/$defs/positiveInteger" },
+        "docker_image": { "type": "string", "minLength": 1 }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": { "const": "regular-17-e-fixed-v1" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "prefix_last_id": { "type": "string", "minLength": 1 },
+    "max_total_score": { "$ref": "#/$defs/nonnegativeInteger" },
+    "max_parallel_runs": { "$ref": "#/$defs/positiveInteger" },
+    "planned_worker_capacity": { "$ref": "#/$defs/positiveInteger" },
+    "status": { "enum": ["complete_no_hit", "found", "partial_failure"] },
+    "aggregate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "planned_runs",
+        "completed_runs",
+        "failed_runs",
+        "found_runs",
+        "expanded_states",
+        "generated_candidates",
+        "accepted_states",
+        "heuristic_evaluations",
+        "candidate_prefilter_evaluations",
+        "candidate_timeouts",
+        "summed_run_elapsed_seconds"
+      ],
+      "properties": {
+        "planned_runs": { "$ref": "#/$defs/nonnegativeInteger" },
+        "completed_runs": { "$ref": "#/$defs/nonnegativeInteger" },
+        "failed_runs": { "$ref": "#/$defs/nonnegativeInteger" },
+        "found_runs": { "$ref": "#/$defs/nonnegativeInteger" },
+        "expanded_states": { "$ref": "#/$defs/nonnegativeInteger" },
+        "generated_candidates": { "$ref": "#/$defs/nonnegativeInteger" },
+        "accepted_states": { "$ref": "#/$defs/nonnegativeInteger" },
+        "heuristic_evaluations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "candidate_prefilter_evaluations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "candidate_timeouts": { "$ref": "#/$defs/nonnegativeInteger" },
+        "summed_run_elapsed_seconds": { "$ref": "#/$defs/nonnegativeNumber" }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "parameters",
+          "summary_path",
+          "exit_code",
+          "status",
+          "found_score",
+          "stats"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "parameters": { "$ref": "#/$defs/parameters" },
+          "summary_path": { "type": "string", "minLength": 1 },
+          "exit_code": { "type": "integer" },
+          "status": {
+            "enum": ["found", "state_limit", "heuristic_limit", "failed"]
+          },
+          "found_score": {
+            "oneOf": [
+              { "$ref": "#/$defs/nonnegativeInteger" },
+              { "type": "null" }
+            ]
+          },
+          "stats": {
+            "oneOf": [
+              { "$ref": "#/$defs/stats" },
+              { "type": "null" }
+            ]
+          }
+        }
+      }
+    },
+    "interpretation_boundary": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "nonnegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "nonnegativeNumber": { "type": "number", "minimum": 0 },
+    "positiveNumber": { "type": "number", "exclusiveMinimum": 0 },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "beam_width",
+        "candidate_width",
+        "workers",
+        "state_timeout_seconds",
+        "max_input_level",
+        "candidate_strategy",
+        "heuristic"
+      ],
+      "properties": {
+        "beam_width": { "$ref": "#/$defs/positiveInteger" },
+        "candidate_width": { "$ref": "#/$defs/positiveInteger" },
+        "workers": { "$ref": "#/$defs/positiveInteger" },
+        "state_timeout_seconds": { "$ref": "#/$defs/positiveNumber" },
+        "max_input_level": { "$ref": "#/$defs/nonnegativeInteger" },
+        "candidate_strategy": { "enum": ["diverse", "target-only"] },
+        "heuristic": { "enum": ["one-move", "regular"] }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expanded_states",
+        "generated_candidates",
+        "accepted_states",
+        "heuristic_evaluations",
+        "candidate_prefilter_evaluations",
+        "candidate_timeouts",
+        "elapsed_seconds"
+      ],
+      "properties": {
+        "expanded_states": { "$ref": "#/$defs/nonnegativeInteger" },
+        "generated_candidates": { "$ref": "#/$defs/nonnegativeInteger" },
+        "accepted_states": { "$ref": "#/$defs/nonnegativeInteger" },
+        "heuristic_evaluations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "candidate_prefilter_evaluations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "candidate_timeouts": { "$ref": "#/$defs/nonnegativeInteger" },
+        "elapsed_seconds": { "$ref": "#/$defs/nonnegativeNumber" }
+      }
+    }
+  }
+}

@@ -13,16 +13,22 @@ from euclid_min.replay import ProgramReplayer
 from euclid_min.search import (
     BoundedBreadthFirstSearch,
     DeterministicBeamSearch,
+    OneMoveTargetHeuristic,
+    ParallelHeuristicBeamSearch,
     PointGoal,
     PointDistanceHeuristic,
+    Regular17CandidateHeuristic,
     Regular17Heuristic,
+    Regular17OneMoveHeuristic,
     SearchNode,
     generate_candidates,
 )
 from euclid_min.search.export import build_program_from_steps
+from euclid_min.search.candidates import generate_prefiltered_candidates
 from euclid_min.search.checkpoint import load_checkpoint, save_checkpoint
 from euclid_min.search.index import ExactStateIndex, state_fingerprint, states_equal
 from euclid_min.target import TargetName, adjacent_targets
+from experiments.search_detemple_suffix import exact_prefix
 
 
 class CandidateGenerationTests(unittest.TestCase):
@@ -33,6 +39,27 @@ class CandidateGenerationTests(unittest.TestCase):
         self.assertEqual(candidates[0].second, Point(1, 0))
         self.assertEqual(candidates[1].first, Point(1, 0))
         self.assertEqual(candidates[1].second, Point(0, 0))
+
+    def test_diverse_prefilter_retains_lines_and_circles(self):
+        state = SearchNode.initial().state
+        heuristic = Regular17CandidateHeuristic()
+        heuristic.prepare_state(state)
+
+        candidates, raw_operations, eligible_operations = (
+            generate_prefiltered_candidates(
+                state,
+                limit=4,
+                score_operation=heuristic.evaluate_points,
+                operation_key=heuristic.operation_key,
+                operation_level=heuristic.operation_level,
+                exact_deduplicate=False,
+                diversify=True,
+            )
+        )
+
+        self.assertEqual(raw_operations, 3)
+        self.assertEqual(eligible_operations, 2)
+        self.assertEqual({candidate.op for candidate in candidates}, {"line", "circle"})
 
 
 class StateIndexTests(unittest.TestCase):
@@ -220,6 +247,91 @@ class HeuristicSearchTests(unittest.TestCase):
         self.assertGreater(limited.stats.heuristic_evaluations, 0)
         self.assertGreaterEqual(limited.stats.elapsed_seconds, 0)
 
+    def test_beam_search_can_continue_from_a_scored_exact_prefix(self):
+        initial = SearchNode.initial()
+        prefix = initial.apply(generate_candidates(initial.state)[1])
+        root_three_over_two = AA(3).sqrt() / 2
+        equilateral = PointGoal(Point(AA(1) / 2, root_three_over_two))
+
+        outcome = DeterministicBeamSearch().search(
+            equilateral,
+            PointDistanceHeuristic(*equilateral.points),
+            max_score=1,
+            beam_width=1,
+            initial_node=prefix,
+        )
+
+        self.assertEqual(outcome.status, "found")
+        self.assertEqual(outcome.node.score, 1)
+
+    def test_beam_candidate_prefilter_limits_exact_expansion(self):
+        unreachable = Point(AA(1) / 3, 0)
+        outcome = DeterministicBeamSearch().search(
+            PointGoal(unreachable),
+            PointDistanceHeuristic(unreachable),
+            max_score=1,
+            beam_width=1,
+            candidate_width=1,
+            candidate_heuristic=Regular17CandidateHeuristic(),
+        )
+
+        self.assertEqual(outcome.status, "heuristic_limit")
+        self.assertEqual(outcome.stats.generated_candidates, 1)
+        self.assertEqual(outcome.stats.candidate_prefilter_evaluations, 3)
+        self.assertEqual(outcome.stats.candidate_prefilter_pruned, 2)
+
+    def test_beam_parallel_expansion_preserves_deterministic_result(self):
+        root_three_over_two = AA(3).sqrt() / 2
+        equilateral = PointGoal(Point(AA(1) / 2, root_three_over_two))
+
+        serial = DeterministicBeamSearch().search(
+            equilateral,
+            PointDistanceHeuristic(*equilateral.points),
+            max_score=1,
+            beam_width=2,
+        )
+        parallel = ParallelHeuristicBeamSearch().search(
+            equilateral,
+            PointDistanceHeuristic(*equilateral.points),
+            Regular17CandidateHeuristic(),
+            max_score=1,
+            beam_width=2,
+            candidate_width=2,
+            workers=2,
+            state_timeout_seconds=5,
+        )
+
+        self.assertEqual(parallel.status, "found")
+        self.assertEqual(parallel.node.steps, serial.node.steps)
+
+    def test_candidate_prefilter_can_reject_deep_input_points(self):
+        state = SearchNode.initial().state
+        deep_point = Point(AA(2).sqrt(), 0)
+        state._add_point(deep_point, level=2)
+        heuristic = Regular17CandidateHeuristic(max_input_level=1)
+        heuristic.prepare_state(state)
+
+        score = heuristic.evaluate_points(
+            "line",
+            deep_point,
+            state.points[0],
+        )
+
+        self.assertIsNone(score)
+
+    def test_one_move_heuristic_detects_a_target_bearing_point_pair(self):
+        target = adjacent_targets()[TargetName.B_PLUS]
+        state = SearchNode.initial().state
+        baseline = Regular17OneMoveHeuristic().evaluate(state)
+
+        enriched = state.clone()
+        enriched._add_point(Point(target.x, 1))
+        enriched._add_point(Point(target.x, 2))
+        improved = OneMoveTargetHeuristic(target).evaluate(enriched)
+
+        self.assertEqual(improved.next_drawable_residual, 0.0)
+        self.assertLess(improved, baseline)
+
 
 class ProfilingArtifactTests(unittest.TestCase):
     def test_repository_profile_matches_its_schema(self):
@@ -238,6 +350,92 @@ class ProfilingArtifactTests(unittest.TestCase):
         )
         Draft202012Validator.check_schema(schema)
         Draft202012Validator(schema).validate(artifact)
+
+    def test_suffix_search_summary_matches_its_schema(self):
+        repository_root = Path(__file__).resolve().parents[2]
+        artifact = json.loads(
+            (
+                repository_root
+                / "benchmarks"
+                / "e12-suffix-search-wide-sage-10.7.json"
+            ).read_text(encoding="utf-8")
+        )
+        schema = json.loads(
+            (
+                repository_root
+                / "schemas"
+                / "suffix-search-summary-v1.schema.json"
+            ).read_text(encoding="utf-8")
+        )
+        Draft202012Validator.check_schema(schema)
+        Draft202012Validator(schema).validate(artifact)
+
+    def test_suffix_restart_matrix_config_matches_its_schema(self):
+        repository_root = Path(__file__).resolve().parents[2]
+        config = json.loads(
+            (
+                repository_root
+                / "sage"
+                / "experiments"
+                / "configs"
+                / "e12-suffix-restart-matrix-v1.json"
+            ).read_text(encoding="utf-8")
+        )
+        schema = json.loads(
+            (
+                repository_root
+                / "schemas"
+                / "suffix-restart-matrix-config-v1.schema.json"
+            ).read_text(encoding="utf-8")
+        )
+        Draft202012Validator.check_schema(schema)
+        Draft202012Validator(schema).validate(config)
+
+    def test_suffix_restart_matrix_artifacts_match_their_schemas(self):
+        repository_root = Path(__file__).resolve().parents[2]
+        artifact = json.loads(
+            (
+                repository_root
+                / "benchmarks"
+                / "e12-suffix-restart-matrix-sage-10.7.json"
+            ).read_text(encoding="utf-8")
+        )
+        matrix_schema = json.loads(
+            (
+                repository_root
+                / "schemas"
+                / "suffix-restart-matrix-summary-v1.schema.json"
+            ).read_text(encoding="utf-8")
+        )
+        suffix_schema = json.loads(
+            (
+                repository_root
+                / "schemas"
+                / "suffix-search-summary-v1.schema.json"
+            ).read_text(encoding="utf-8")
+        )
+        Draft202012Validator.check_schema(matrix_schema)
+        Draft202012Validator(matrix_schema).validate(artifact)
+        Draft202012Validator.check_schema(suffix_schema)
+        suffix_validator = Draft202012Validator(suffix_schema)
+        for run in artifact["runs"]:
+            run_artifact = json.loads(
+                (repository_root / run["summary_path"]).read_text(
+                    encoding="utf-8"
+                )
+            )
+            suffix_validator.validate(run_artifact)
+
+
+class ExactPrefixSearchTests(unittest.TestCase):
+    def test_detemple_e12_prefix_rebuilds_with_complete_closure(self):
+        node, prefix = exact_prefix("c_M1_2_Ay")
+
+        self.assertEqual(node.score, 12)
+        self.assertEqual(prefix[-1]["id"], "c_M1_2_Ay")
+        self.assertGreater(len(node.state.points), 2)
+        self.assertEqual(len(node.state.lines), 4)
+        self.assertEqual(len(node.state.circles), 9)
 
 
 if __name__ == "__main__":

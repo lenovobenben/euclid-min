@@ -30,8 +30,11 @@ class GeometryState:
 
     def __init__(self) -> None:
         self._points: list[Point] = []
+        self._point_levels: list[int] = []
         self._lines: list[Line] = []
+        self._line_levels: list[int] = []
         self._circles: list[Circle] = []
+        self._circle_levels: list[int] = []
 
     @classmethod
     def fixed_initial(cls) -> "GeometryState":
@@ -40,14 +43,20 @@ class GeometryState:
         state = cls()
         origin = Point(0, 0)
         start = Point(1, 0)
-        state._add_point(origin)
-        state._add_point(start)
-        state.add_circle(Circle.through(origin, start))
+        state._add_point(origin, level=0)
+        state._add_point(start, level=0)
+        state.add_circle(Circle.through(origin, start), level=0)
         return state
 
     @property
     def points(self) -> tuple[Point, ...]:
         return tuple(self._points)
+
+    @property
+    def point_levels(self) -> tuple[int, ...]:
+        """与 ``points`` 对齐的启发式生成层级；不参与数学状态相等。"""
+
+        return tuple(self._point_levels)
 
     @property
     def lines(self) -> tuple[Line, ...]:
@@ -66,9 +75,20 @@ class GeometryState:
 
         clone = type(self)()
         clone._points = list(self._points)
+        clone._point_levels = list(self._point_levels)
         clone._lines = list(self._lines)
+        clone._line_levels = list(self._line_levels)
         clone._circles = list(self._circles)
+        clone._circle_levels = list(self._circle_levels)
         return clone
+
+    def point_level(self, point: Point) -> int:
+        """返回点首次可由当前路径生成的依赖层级。"""
+
+        index = self._find_equal_index(self._points, point)
+        if index is None:
+            raise PointNotInStateError("点不在当前数学状态中")
+        return self._point_levels[index]
 
     def contains_point(self, point: Point) -> bool:
         return self._find_equal(self._points, point) is not None
@@ -83,54 +103,86 @@ class GeometryState:
         """用状态中的两个点画线并执行自动交点闭包。"""
 
         self._require_points(first, second)
-        return self.add_line(Line.through(first, second))
+        level = 1 + max(self.point_level(first), self.point_level(second))
+        return self.add_line(Line.through(first, second), level=level)
 
     def draw_circle(self, center: Point, through: Point) -> AdditionResult:
         """用状态中的两个点画基础圆并执行自动交点闭包。"""
 
         self._require_points(center, through)
-        return self.add_circle(Circle.through(center, through))
+        level = 1 + max(self.point_level(center), self.point_level(through))
+        return self.add_circle(Circle.through(center, through), level=level)
 
-    def add_line(self, line: Line) -> AdditionResult:
+    def add_line(self, line: Line, *, level: int = 0) -> AdditionResult:
         """加入精确直线；重复对象不重新求交。"""
 
         existing = self._find_equal(self._lines, line)
         if existing is not None:
             return AdditionResult(existing, False, (), ())
 
-        results = [intersect(line, old) for old in self._lines]
-        results.extend(intersect(line, old) for old in self._circles)
+        results = [
+            (intersect(line, old), max(level, old_level))
+            for old, old_level in zip(self._lines, self._line_levels)
+        ]
+        results.extend(
+            (intersect(line, old), max(level, old_level))
+            for old, old_level in zip(self._circles, self._circle_levels)
+        )
         self._lines.append(line)
+        self._line_levels.append(level)
         new_points = self._add_intersection_points(results)
-        return AdditionResult(line, True, new_points, tuple(results))
+        return AdditionResult(
+            line,
+            True,
+            new_points,
+            tuple(result for result, _point_level in results),
+        )
 
-    def add_circle(self, circle: Circle) -> AdditionResult:
+    def add_circle(self, circle: Circle, *, level: int = 0) -> AdditionResult:
         """加入精确圆；重复对象不重新求交。"""
 
         existing = self._find_equal(self._circles, circle)
         if existing is not None:
             return AdditionResult(existing, False, (), ())
 
-        results = [intersect(circle, old) for old in self._lines]
-        results.extend(intersect(circle, old) for old in self._circles)
+        results = [
+            (intersect(circle, old), max(level, old_level))
+            for old, old_level in zip(self._lines, self._line_levels)
+        ]
+        results.extend(
+            (intersect(circle, old), max(level, old_level))
+            for old, old_level in zip(self._circles, self._circle_levels)
+        )
         self._circles.append(circle)
+        self._circle_levels.append(level)
         new_points = self._add_intersection_points(results)
-        return AdditionResult(circle, True, new_points, tuple(results))
+        return AdditionResult(
+            circle,
+            True,
+            new_points,
+            tuple(result for result, _point_level in results),
+        )
 
     def _add_intersection_points(
-        self, results: list[IntersectionResult]
+        self, results: list[tuple[IntersectionResult, int]]
     ) -> tuple[Point, ...]:
         new_points: list[Point] = []
-        for result in results:
+        for result, level in results:
             for point in result.points:
-                if self._add_point(point):
+                if self._add_point(point, level=level):
                     new_points.append(point)
         return tuple(new_points)
 
-    def _add_point(self, point: Point) -> bool:
-        if self.contains_point(point):
+    def _add_point(self, point: Point, *, level: int = 0) -> bool:
+        existing_index = self._find_equal_index(self._points, point)
+        if existing_index is not None:
+            self._point_levels[existing_index] = min(
+                self._point_levels[existing_index],
+                level,
+            )
             return False
         self._points.append(point)
+        self._point_levels.append(level)
         return True
 
     def _require_points(self, *points: Point) -> None:
@@ -143,6 +195,13 @@ class GeometryState:
         for item in items:
             if item == candidate:
                 return item
+        return None
+
+    @staticmethod
+    def _find_equal_index(items, candidate) -> int | None:
+        for index, item in enumerate(items):
+            if item == candidate:
+                return index
         return None
 
 

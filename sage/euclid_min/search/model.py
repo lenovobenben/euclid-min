@@ -110,6 +110,10 @@ class SearchStats:
     state_index_seconds: float = 0.0
     goal_test_seconds: float = 0.0
     heuristic_seconds: float = 0.0
+    candidate_prefilter_evaluations: int = 0
+    candidate_prefilter_pruned: int = 0
+    candidate_prefilter_seconds: float = 0.0
+    candidate_timeouts: int = 0
 
 
 @dataclass(frozen=True, slots=True)

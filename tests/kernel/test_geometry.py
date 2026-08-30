@@ -182,6 +182,27 @@ class GeometryStateTests(unittest.TestCase):
         with self.assertRaises(PointNotInStateError):
             state.draw_line(Point(0, 0), Point(2, 0))
 
+    def test_search_generation_levels_follow_draw_dependencies(self):
+        state = GeometryState.fixed_initial()
+        origin, start = state.points
+        self.assertEqual(state.point_levels, (0, 0))
+
+        circle_result = state.draw_circle(start, origin)
+        equilateral = circle_result.new_points[0]
+        self.assertEqual(state.point_level(equilateral), 1)
+
+        line_result = state.draw_line(origin, equilateral)
+        self.assertTrue(line_result.new_points)
+        self.assertTrue(
+            all(state.point_level(point) <= 2 for point in state.points)
+        )
+        self.assertTrue(
+            any(
+                state.point_level(point) == 2
+                for point in line_result.new_points
+            )
+        )
+
 
 class TargetTests(unittest.TestCase):
     def test_targets_are_exact_points_on_unit_circle(self):
