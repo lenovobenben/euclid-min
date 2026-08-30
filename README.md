@@ -18,7 +18,7 @@ O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
 
 ## 当前状态
 
-项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**、**M4：基础搜索器**和 **M5：profiling 与启发式搜索**。DeTemple 1991 的 Carlyle 圆构造经当前 profile 转写后，由 Sage verifier 精确重放为 **32 E**（11 条直线、21 个圆）。搜索器现支持可审计 BFS、阶段计时和明确标注为非证明模式的目标相关 beam search；尚未得到比 32 E 更短的新证书。
+项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**、**M4：基础搜索器**、**M5：profiling 与启发式搜索**和 **M6：新的已验证上界**。DeTemple 1991 修改版的 Carlyle 圆构造经当前 profile 转写后，由 Sage verifier 精确重放为 **29 E**（10 条直线、19 个圆），比原 32 E baseline 短 3 E。
 
 唯一规范 profile 为：
 
@@ -43,6 +43,7 @@ regular-17-e-fixed-v1
 - [实施路线](docs/ROADMAP.md)：从规范到搜索器的阶段计划；
 - [基础搜索器](docs/SEARCH.md)：M4 状态、候选、去重、checkpoint 和 CLI；
 - [M5 Profiling](docs/M5_PROFILING.md)：固定实验、热点结论和启发式边界；
+- [29 E 新上界说明](baselines/regular-17/detemple-1991-carlyle-improved-converted/explanation.md)：M6 证书、推导、计分与依赖主链；
 - [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
 - [Profile Schema](schemas/profile-v1.schema.json)；
@@ -50,6 +51,7 @@ regular-17-e-fixed-v1
 - [Verification Report Schema](schemas/verification-report-v1.schema.json)；
 - [Search Checkpoint Schema](schemas/search-checkpoint-v1.schema.json)；
 - [Search Profile Schema](schemas/search-profile-v1.schema.json)；
+- [Dependency Graph Schema](schemas/dependency-graph-v1.schema.json)；
 - [Sage 内核运行说明](sage/README.md)。
 
 若研究设计与版本化规范冲突，以 profile、Schema、`FORMAL_MODEL.md`、`METRICS.md` 和 `CERTIFICATE_FORMAT.md` 中更具体的规则为准。
@@ -68,9 +70,11 @@ regular-17-e-fixed-v1
 2. **M1：精确几何内核**——实现三类精确求交及退化处理；
 3. **M2：验证闭环**——实现证书重放、目标判断和验证报告；
 4. **M3：首个 baseline**——完整录入并验证一个正十七边形已知构造；
-5. **M4：基础搜索**——实现小深度可审计搜索和证书导出。
+5. **M4：基础搜索**——实现小深度可审计搜索和证书导出；
+6. **M5：profiling 与启发式搜索**——定位热点并实现非证明 beam；
+7. **M6：新的已验证上界**——把论文两项修改转写并验证为 29 E。
 
-M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。下一阶段将尝试减少状态复制和重复精确求交，并用非证明 beam 模式寻找低于 32 E 的候选。
+M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。M6 的 29 E 来自可审计的构造化简，不依赖启发式搜索成功。下一阶段可继续压缩上界，或在状态等价与安全剪枝成熟后评估 M7 proof mode。
 
 更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
 
@@ -105,11 +109,11 @@ docker run --rm `
 成功基线可把最后一个参数替换为：
 
 ```text
-baselines/regular-17/detemple-1991-carlyle-converted/construction.json
+baselines/regular-17/detemple-1991-carlyle-improved-converted/construction.json
 ```
 
 原 fixture 专门测试“结构合法但未达到目标”的失败路径，因此命令应返回 `target_not_reached` 和退出码 1。
 
 ## 研究声明
 
-仓库当前给出一个在固定 profile 下重算为 32 E 的已验证构造，作为后续搜索的首个上界。项目尚未完成系统文献检索，也没有 lower-bound proof，因此不声称它是文献最短、最短已知或全局最优。
+仓库当前给出一个在固定 profile 下重算为 29 E 的新已验证上界，并保留 32 E 首个 baseline 供差分审计。项目尚未完成系统文献检索，也没有 lower-bound proof，因此不声称 29 E 是文献最短、最短已知或全局最优。

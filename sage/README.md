@@ -19,9 +19,8 @@ euclid_min/
   search/           候选生成、精确 BFS、checkpoint 和证书导出
 ```
 
-当前已经覆盖 M1 数学内核、M2 验证闭环、M3 首个可信 baseline、M4 基础搜索器和 M5 profiling/启发式搜索。尚未实现：
+当前已经覆盖 M1 数学内核、M2 验证闭环、M3 首个可信 baseline、M4 基础搜索器、M5 profiling/启发式搜索和 M6 新的已验证上界。尚未实现：
 
-- 新的低于 32 E 的已验证上界；
 - 构造可视化；
 - lower-bound proof mode。
 
@@ -84,6 +83,14 @@ sage -python sage/experiments/build_detemple_1991_baseline.py
 ```
 
 生成后仍须通过独立的 `euclid_min verify` 命令重放；生成器本身不是验证结论。
+
+M6 的 29 E 证书与依赖 DAG 由以下命令确定性生成：
+
+```bash
+sage -python sage/experiments/build_detemple_1991_improved.py
+```
+
+输出仍须由独立 verifier 进程从磁盘重放。
 
 ## 运行小深度搜索
 

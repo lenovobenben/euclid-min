@@ -1,0 +1,472 @@
+{
+  "schema": "euclid-min-certificate/v1",
+  "problem": "regular-17-adjacent-vertex",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "construction": {
+    "id": "detemple-1991-carlyle-improved-converted",
+    "title": "DeTemple 1991 improved Carlyle construction converted to collapsing compass",
+    "description": "Modified DeTemple route using both improvements from page 104; axes are charged and both distance transfers are expanded.",
+    "program": [
+      {
+        "id": "x_axis",
+        "op": "line",
+        "through": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "Q",
+        "op": "intersect",
+        "objects": [
+          "x_axis",
+          "unit_circle"
+        ],
+        "index": 0
+      },
+      {
+        "id": "c_A_Q",
+        "op": "circle",
+        "center": "A",
+        "through": "Q"
+      },
+      {
+        "id": "c_Q_A",
+        "op": "circle",
+        "center": "Q",
+        "through": "A"
+      },
+      {
+        "id": "y_axis_low",
+        "op": "intersect",
+        "objects": [
+          "c_A_Q",
+          "c_Q_A"
+        ],
+        "index": 0
+      },
+      {
+        "id": "y_axis_high",
+        "op": "intersect",
+        "objects": [
+          "c_A_Q",
+          "c_Q_A"
+        ],
+        "index": 1
+      },
+      {
+        "id": "y_axis",
+        "op": "line",
+        "through": [
+          "y_axis_low",
+          "y_axis_high"
+        ]
+      },
+      {
+        "id": "Ay",
+        "op": "intersect",
+        "objects": [
+          "y_axis",
+          "unit_circle"
+        ],
+        "index": 1
+      },
+      {
+        "id": "c_Q_O",
+        "op": "circle",
+        "center": "Q",
+        "through": "O"
+      },
+      {
+        "id": "eq_QO_low",
+        "op": "intersect",
+        "objects": [
+          "c_Q_O",
+          "unit_circle"
+        ],
+        "index": 0
+      },
+      {
+        "id": "eq_QO_high",
+        "op": "intersect",
+        "objects": [
+          "c_Q_O",
+          "unit_circle"
+        ],
+        "index": 1
+      },
+      {
+        "id": "bisector_QO",
+        "op": "line",
+        "through": [
+          "eq_QO_low",
+          "eq_QO_high"
+        ]
+      },
+      {
+        "id": "Qhalf",
+        "op": "intersect",
+        "objects": [
+          "bisector_QO",
+          "x_axis"
+        ],
+        "index": 0
+      },
+      {
+        "id": "c_Qhalf_A",
+        "op": "circle",
+        "center": "Qhalf",
+        "through": "A"
+      },
+      {
+        "id": "M0",
+        "op": "intersect",
+        "objects": [
+          "c_Qhalf_A",
+          "bisector_QO"
+        ],
+        "index": 0
+      },
+      {
+        "id": "c_M0_Ay",
+        "op": "circle",
+        "center": "M0",
+        "through": "Ay"
+      },
+      {
+        "id": "H1_2",
+        "op": "intersect",
+        "objects": [
+          "c_M0_Ay",
+          "x_axis"
+        ],
+        "index": 0
+      },
+      {
+        "id": "H0_2",
+        "op": "intersect",
+        "objects": [
+          "c_M0_Ay",
+          "x_axis"
+        ],
+        "index": 1
+      },
+      {
+        "id": "c_Qhalf_O",
+        "op": "circle",
+        "center": "Qhalf",
+        "through": "O"
+      },
+      {
+        "id": "c_O_Qhalf",
+        "op": "circle",
+        "center": "O",
+        "through": "Qhalf"
+      },
+      {
+        "id": "b_Qhalf_low",
+        "op": "intersect",
+        "objects": [
+          "c_Qhalf_O",
+          "c_O_Qhalf"
+        ],
+        "index": 0
+      },
+      {
+        "id": "b_Qhalf_high",
+        "op": "intersect",
+        "objects": [
+          "c_Qhalf_O",
+          "c_O_Qhalf"
+        ],
+        "index": 1
+      },
+      {
+        "id": "bisector_Qhalf_O",
+        "op": "line",
+        "through": [
+          "b_Qhalf_low",
+          "b_Qhalf_high"
+        ]
+      },
+      {
+        "id": "Qquarter",
+        "op": "intersect",
+        "objects": [
+          "bisector_Qhalf_O",
+          "x_axis"
+        ],
+        "index": 0
+      },
+      {
+        "id": "c_Qquarter_Ay",
+        "op": "circle",
+        "center": "Qquarter",
+        "through": "Ay"
+      },
+      {
+        "id": "M1_2",
+        "op": "intersect",
+        "objects": [
+          "c_Qquarter_Ay",
+          "x_axis"
+        ],
+        "index": 0
+      },
+      {
+        "id": "M0_2",
+        "op": "intersect",
+        "objects": [
+          "c_Qquarter_Ay",
+          "x_axis"
+        ],
+        "index": 1
+      },
+      {
+        "id": "c_M0_2_Ay",
+        "op": "circle",
+        "center": "M0_2",
+        "through": "Ay"
+      },
+      {
+        "id": "H0_4",
+        "op": "intersect",
+        "objects": [
+          "c_M0_2_Ay",
+          "x_axis"
+        ],
+        "index": 1
+      },
+      {
+        "id": "c_M1_2_Ay",
+        "op": "circle",
+        "center": "M1_2",
+        "through": "Ay"
+      },
+      {
+        "id": "H1_4",
+        "op": "intersect",
+        "objects": [
+          "c_M1_2_Ay",
+          "x_axis"
+        ],
+        "index": 1
+      },
+      {
+        "id": "copy1_D_Q",
+        "op": "line",
+        "through": [
+          "eq_QO_high",
+          "Q"
+        ]
+      },
+      {
+        "id": "copy1_D_O",
+        "op": "line",
+        "through": [
+          "eq_QO_high",
+          "O"
+        ]
+      },
+      {
+        "id": "copy1_c_Q_H1_4",
+        "op": "circle",
+        "center": "Q",
+        "through": "H1_4"
+      },
+      {
+        "id": "copy1_G",
+        "op": "intersect",
+        "objects": [
+          "copy1_D_Q",
+          "copy1_c_Q_H1_4"
+        ],
+        "index": 0
+      },
+      {
+        "id": "copy1_c_D_G",
+        "op": "circle",
+        "center": "eq_QO_high",
+        "through": "copy1_G"
+      },
+      {
+        "id": "copy1_L",
+        "op": "intersect",
+        "objects": [
+          "copy1_D_O",
+          "copy1_c_D_G"
+        ],
+        "index": 1
+      },
+      {
+        "id": "c_O_QH1_4",
+        "op": "circle",
+        "center": "O",
+        "through": "copy1_L"
+      },
+      {
+        "id": "Y",
+        "op": "intersect",
+        "objects": [
+          "c_O_QH1_4",
+          "y_axis"
+        ],
+        "index": 1
+      },
+      {
+        "id": "c_Y_O",
+        "op": "circle",
+        "center": "Y",
+        "through": "O"
+      },
+      {
+        "id": "b_OY_low",
+        "op": "intersect",
+        "objects": [
+          "c_O_QH1_4",
+          "c_Y_O"
+        ],
+        "index": 0
+      },
+      {
+        "id": "b_OY_high",
+        "op": "intersect",
+        "objects": [
+          "c_O_QH1_4",
+          "c_Y_O"
+        ],
+        "index": 1
+      },
+      {
+        "id": "bisector_O_Y",
+        "op": "line",
+        "through": [
+          "b_OY_low",
+          "b_OY_high"
+        ]
+      },
+      {
+        "id": "line_Y_H0_4",
+        "op": "line",
+        "through": [
+          "Y",
+          "H0_4"
+        ]
+      },
+      {
+        "id": "M0_4",
+        "op": "intersect",
+        "objects": [
+          "bisector_O_Y",
+          "line_Y_H0_4"
+        ],
+        "index": 0
+      },
+      {
+        "id": "c_M0_4_Ay",
+        "op": "circle",
+        "center": "M0_4",
+        "through": "Ay"
+      },
+      {
+        "id": "H0_8",
+        "op": "intersect",
+        "objects": [
+          "c_M0_4_Ay",
+          "x_axis"
+        ],
+        "index": 1
+      },
+      {
+        "id": "copy2_c_H_O",
+        "op": "circle",
+        "center": "H0_8",
+        "through": "O"
+      },
+      {
+        "id": "copy2_c_O_H",
+        "op": "circle",
+        "center": "O",
+        "through": "H0_8"
+      },
+      {
+        "id": "copy2_D",
+        "op": "intersect",
+        "objects": [
+          "copy2_c_H_O",
+          "copy2_c_O_H"
+        ],
+        "index": 1
+      },
+      {
+        "id": "copy2_D_O",
+        "op": "line",
+        "through": [
+          "copy2_D",
+          "O"
+        ]
+      },
+      {
+        "id": "copy2_D_H",
+        "op": "line",
+        "through": [
+          "copy2_D",
+          "H0_8"
+        ]
+      },
+      {
+        "id": "copy2_G",
+        "op": "intersect",
+        "objects": [
+          "copy2_D_O",
+          "unit_circle"
+        ],
+        "index": 0
+      },
+      {
+        "id": "copy2_c_D_G",
+        "op": "circle",
+        "center": "copy2_D",
+        "through": "copy2_G"
+      },
+      {
+        "id": "copy2_L",
+        "op": "intersect",
+        "objects": [
+          "copy2_D_H",
+          "copy2_c_D_G"
+        ],
+        "index": 1
+      },
+      {
+        "id": "target_circle",
+        "op": "circle",
+        "center": "H0_8",
+        "through": "copy2_L"
+      }
+    ]
+  },
+  "assertions": {
+    "score": {
+      "metric": "e_move",
+      "e_move": 29
+    },
+    "targets": [
+      "B_plus",
+      "B_minus"
+    ],
+    "claim": "verified_construction"
+  },
+  "software": {
+    "producer": {
+      "name": "euclid-min-detemple-improved-generator",
+      "version": "1"
+    }
+  },
+  "integrity": {
+    "construction_sha256": "6e79d4da660431af6f2b52df185d56243ea446b8445609d0eabb8b58d4fe1a76"
+  }
+}

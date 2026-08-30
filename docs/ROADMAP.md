@@ -12,8 +12,8 @@
 | M3：首个可信 baseline | 已完成 |
 | M4：基础搜索 | 已完成 |
 | M5：启发式搜索与 profiling | 已完成 |
-| M6：新的已验证上界 | 下一阶段 |
-| M7 | 尚未开始 |
+| M6：新的已验证上界 | 已完成 |
+| M7：Proof Mode（长期可选） | 下一阶段 |
 
 ## M0：规范闭环
 
@@ -228,6 +228,17 @@ sage -python -m euclid_min verify \
 4. 发布 profile、证书、报告、依赖图和人类可读说明。
 
 允许声明“比已验证 baseline 更短”或“新的已验证上界”。没有 lower-bound proof 时不得声明全局最优。
+
+### 落地结果
+
+- 核对 DeTemple 1991 第 104 页的两项修改，并把它们翻译为当前可折叠圆规 profile；
+- 半尺度 Carlyle 圆把原步骤 (iv) 从 6 E 降为 4 E；
+- 复用步骤 (vi) 已有的圆，把原步骤 (vii)–(viii) 从 4 E 降为 3 E；
+- 新证书由独立 SageMath 10.7 verifier 精确重放为 29 E：10 条直线、19 个圆；
+- 两个相邻目标均在第 29 E 首次出现，无重复绘制；
+- 相比同一 profile 的 32 E baseline，新的已验证上界降低 3 E；
+- profile、证书、验证报告、机器可读依赖 DAG、Schema、来源台账、中文说明和回归测试均已发布；
+- 该结果不包含 lower-bound proof，不声称 29 E 全局最优或文献最短。
 
 ## M7：Proof Mode（长期可选）
 

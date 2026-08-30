@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/dependency-graph-v1.schema.json",
+  "title": "Euclid-Min construction dependency graph v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "construction_id",
+    "construction_sha256",
+    "profile",
+    "total_e_move",
+    "nodes"
+  ],
+  "properties": {
+    "schema": {"const": "euclid-min-dependency-graph/v1"},
+    "construction_id": {"type": "string", "minLength": 1},
+    "construction_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "total_e_move": {"type": "integer", "minimum": 0},
+    "nodes": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "op", "cost", "depends_on"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "op": {
+            "enum": [
+              "initial_point",
+              "initial_circle",
+              "line",
+              "circle",
+              "intersect"
+            ]
+          },
+          "cost": {"type": "integer", "minimum": 0, "maximum": 1},
+          "e_move_after": {"type": "integer", "minimum": 0},
+          "depends_on": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    }
+  }
+}
