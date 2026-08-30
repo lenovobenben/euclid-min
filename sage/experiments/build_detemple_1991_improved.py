@@ -1,10 +1,10 @@
-"""生成 DeTemple 路线经局部精确化简后的 20 E 证书。
+"""生成 DeTemple 路线经局部精确化简后的 19 E 证书。
 
 原文第 104 页建议用半尺度 Carlyle 圆直接得到 M_{0,2}、M_{1,2}，
 并让步骤 (vi) 已有的圆复用于 OY 的中垂线。直接得到这两个中点后，
 原步骤 (ii)-(iii) 产生的完整尺度根不再被使用，故一并删除。本转写仍按
 `regular-17-e-fixed-v1` 使用 collapsing compass。最后不再搬运单位长度，
-而是作 OH_{0,8} 的中垂线，与单位圆直接得到两个目标点。步骤 (vi) 的距离
+而是利用另一个 Carlyle 根和已有圆作一条目标线。步骤 (vi) 的距离
 搬运也由一个经过 Y 的已有点圆替换；M_{0,4} 则由三条辅助直线定位。
 """
 
@@ -38,7 +38,7 @@ DEFAULT_DEPENDENCY_GRAPH_OUTPUT = DEFAULT_OUTPUT.with_name("dependency-graph.jso
 
 
 def build_program() -> list[dict]:
-    """应用论文修改、依赖清理和两个局部精确捷径。"""
+    """应用论文修改、依赖清理和局部精确窗口替换。"""
 
     baseline = build_baseline_program()
     first_replaced = next(
@@ -116,32 +116,28 @@ def build_program() -> list[dict]:
 
     first_replaced = next(
         index for index, entry in enumerate(program)
-        if entry["id"] == "copy2_c_H_O"
+        if entry["id"] == "H0_8"
     )
-    target_chord_step = [
-        # H0_8=(2*cos(2*pi/17), 0)。OH0_8 的中垂线是
-        # x=cos(2*pi/17)，与单位圆的两个交点正是目标 B_+、B_-。
-        circle("target_bisector_c_H_O", "H0_8", "O"),
-        circle("target_bisector_c_O_H", "O", "H0_8"),
+    target_line_step = [
+        # 取最后 Carlyle 圆在横轴上的另一个根 H4_8。以 O 为圆心过
+        # H4_8 的圆与已有 c_Q_O 的上交点为 P；精确关联搜索确认 QP
+        # 经过 B_+，故与单位圆直接给出一个合规目标。
         intersection(
-            "target_bisector_low",
-            "target_bisector_c_H_O",
-            "target_bisector_c_O_H",
+            "H4_8",
+            "c_M0_4_Ay",
+            "x_axis",
             0,
         ),
+        circle("target_helper_circle", "O", "H4_8"),
         intersection(
-            "target_bisector_high",
-            "target_bisector_c_H_O",
-            "target_bisector_c_O_H",
+            "target_helper_point",
+            "target_helper_circle",
+            "c_Q_O",
             1,
         ),
-        line(
-            "target_chord",
-            "target_bisector_low",
-            "target_bisector_high",
-        ),
+        line("target_line", "Q", "target_helper_point"),
     ]
-    return program[:first_replaced] + target_chord_step
+    return program[:first_replaced] + target_line_step
 
 
 def build_certificate(profile_path: Path = DEFAULT_PROFILE) -> dict:
@@ -152,7 +148,7 @@ def build_certificate(profile_path: Path = DEFAULT_PROFILE) -> dict:
         "description": (
             "Modified DeTemple route using both improvements from page 104, "
             "with the superseded full-scale root branch removed and the final "
-            "unit transfer replaced by the perpendicular target chord; the "
+            "unit transfer replaced by a two-move exact target line; the "
             "remaining distance transfer is replaced by an exact local circle "
             "shortcut, the last Carlyle center is located by a three-line "
             "exact window replacement, and both axes are charged."

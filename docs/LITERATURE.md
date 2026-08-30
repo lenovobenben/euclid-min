@@ -12,16 +12,16 @@
 可用于同一 profile 比较的条目：2（converted）
 ```
 
-当前新的已验证上界为 20 E，原 32 E 条目作为首个 baseline 保留。系统文献检索尚未完成，因此不能把 20 E 称为文献最短或最短已知。
+当前新的已验证上界为 19 E，原 32 E 条目作为首个 baseline 保留。系统文献检索尚未完成，因此不能把 19 E 称为文献最短或最短已知。
 
 ### 已验证 baseline
 
 | ID | 来源 | 可比性 | 当前 profile 重算 | 状态 |
 |---|---|---|---:|---|
 | `detemple-1991-carlyle-converted` | DeTemple, 1991, §4, pp. 102–104, Fig. 3, steps (i)–(x) | `converted` | 32 E | Sage verifier 通过 |
-| `detemple-1991-carlyle-improved-converted` | DeTemple, 1991, §4, p. 104, with project-local dependency and exact-window simplifications | `converted` | 20 E | Sage verifier 通过；新上界 |
+| `detemple-1991-carlyle-improved-converted` | DeTemple, 1991, §4, p. 104, with project-local dependency and exact-window simplifications | `converted` | 19 E | Sage verifier 通过；新上界 |
 
-原文从单位圆和两条坐标轴开始，使用 modern non-collapsing compass，并报告未经修改构造的 Lemoine simplicity 为 51、修改版为 45。本项目两条转写均为坐标轴计费：未经修改路线并展开两次距离搬运后为 32 E；应用原文修改、删除被取代分支、使用最终目标弦，并以局部精确枚举得到的单圆和三线窗口替换中段后为 20 E。原文 51/45 与本项目的 32/20 E 只能并列记录，不能跨 metric 直接比较；本项目内部的 32 E 与 20 E 使用同一 profile，可以直接比较。
+原文从单位圆和两条坐标轴开始，使用 modern non-collapsing compass，并报告未经修改构造的 Lemoine simplicity 为 51、修改版为 45。本项目两条转写均为坐标轴计费：未经修改路线并展开两次距离搬运后为 32 E；应用原文修改、删除被取代分支，并以局部精确窗口替换中段和末段后为 19 E。原文 51/45 与本项目的 32/19 E 只能并列记录，不能跨 metric 直接比较；本项目内部的 32 E 与 19 E 使用同一 profile，可以直接比较。
 
 ## 2. 研究问题
 
@@ -156,4 +156,4 @@ euclid_min:
 - 完成公开、充分的文献检索：才可以谨慎讨论“已审阅文献中的最短已知”；
 - 具有完备 lower-bound proof：才可以声称全局最优。
 
-当前项目满足“比已验证 baseline 更短”的门槛，并可把 20 E 作为同一 profile 下后续结果的比较上界；尚不满足“已审阅文献中的最短已知”或“全局最优”的声明门槛。
+当前项目满足“比已验证 baseline 更短”的门槛，并可把 19 E 作为同一 profile 下后续结果的比较上界；尚不满足“已审阅文献中的最短已知”或“全局最优”的声明门槛。

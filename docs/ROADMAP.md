@@ -237,11 +237,12 @@ sage -python -m euclid_min verify \
 - 依赖 DAG 审计确认完整尺度根分支已被取代，删除其中两个无后继的计费圆及其零成本交点；
 - 用 OH0,8 的中垂线作为单位圆目标弦，把最终单位长度搬运从 6 E 降为 3 E；
 - 局部精确枚举找到一个已有点圆直接经过 Y，并以三线窗口定位 M0,4，使步骤 (vi) 及后续圆心构造合计从 9 E 降为 5 E；
-- 新证书由独立 SageMath 10.7 verifier 精确重放为 20 E：8 条直线、12 个圆；
-- 两个相邻目标均在第 20 E 首次出现，无重复绘制；
-- 相比同一 profile 的 32 E baseline，新的已验证上界降低 12 E；
+- 两步目标窗口利用另一个 Carlyle 根和已有圆作出经过 B_plus 的目标线，把末段从 3 E 降为 2 E；
+- 新证书由独立 SageMath 10.7 verifier 精确重放为 19 E：8 条直线、11 个圆；
+- B_plus 在第 19 E 首次出现，无重复绘制；profile 只要求任一相邻目标；
+- 相比同一 profile 的 32 E baseline，新的已验证上界降低 13 E；
 - profile、证书、验证报告、机器可读依赖 DAG、Schema、来源台账、中文说明和回归测试均已发布；
-- 该结果不包含 lower-bound proof，不声称 20 E 全局最优或文献最短。
+- 该结果不包含 lower-bound proof，不声称 19 E 全局最优或文献最短。
 
 ## M7：Proof Mode（长期可选）
 

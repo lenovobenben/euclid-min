@@ -1,12 +1,12 @@
 {
   "schema": "euclid-min-dependency-graph/v1",
   "construction_id": "detemple-1991-carlyle-improved-converted",
-  "construction_sha256": "61056ac3e49fd9dda29bf47f2a195059c6bceebac0ead3d16cedad16b0f9545f",
+  "construction_sha256": "2248c9683f876e4a87d0a1b0bacdd4ae40f21c2d9d121e9586a749d840d9264b",
   "profile": {
     "id": "regular-17-e-fixed-v1",
     "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
   },
-  "total_e_move": 20,
+  "total_e_move": 19,
   "nodes": [
     {
       "id": "O",
@@ -400,7 +400,7 @@
       ]
     },
     {
-      "id": "H0_8",
+      "id": "H4_8",
       "op": "intersect",
       "cost": 0,
       "e_move_after": 17,
@@ -410,53 +410,33 @@
       ]
     },
     {
-      "id": "target_bisector_c_H_O",
+      "id": "target_helper_circle",
       "op": "circle",
       "cost": 1,
       "e_move_after": 18,
       "depends_on": [
-        "H0_8",
-        "O"
-      ]
-    },
-    {
-      "id": "target_bisector_c_O_H",
-      "op": "circle",
-      "cost": 1,
-      "e_move_after": 19,
-      "depends_on": [
         "O",
-        "H0_8"
+        "H4_8"
       ]
     },
     {
-      "id": "target_bisector_low",
+      "id": "target_helper_point",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 19,
+      "e_move_after": 18,
       "depends_on": [
-        "target_bisector_c_H_O",
-        "target_bisector_c_O_H"
+        "target_helper_circle",
+        "c_Q_O"
       ]
     },
     {
-      "id": "target_bisector_high",
-      "op": "intersect",
-      "cost": 0,
-      "e_move_after": 19,
-      "depends_on": [
-        "target_bisector_c_H_O",
-        "target_bisector_c_O_H"
-      ]
-    },
-    {
-      "id": "target_chord",
+      "id": "target_line",
       "op": "line",
       "cost": 1,
-      "e_move_after": 20,
+      "e_move_after": 19,
       "depends_on": [
-        "target_bisector_low",
-        "target_bisector_high"
+        "Q",
+        "target_helper_point"
       ]
     }
   ]

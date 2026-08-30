@@ -36,8 +36,8 @@ euclid_min:
     removed. A project-local exact-incidence shortcut replaces the first
     distance transfer with one circle through Y; a project-local exact
     three-line window then locates the final Carlyle center. The final unit
-    transfer is replaced by the perpendicular bisector of OH0,8, whose
-    intersections with the unit circle are the two targets. Only either
-    adjacent vertex of A is required.
-  recomputed_e_score: 20
+    transfer is replaced by a two-move exact target line using the other
+    Carlyle root and an existing circle. It reaches B_plus; only either
+    adjacent vertex of A is required by the profile.
+  recomputed_e_score: 19
   verification_status: verified

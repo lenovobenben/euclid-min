@@ -8,7 +8,7 @@
   "construction": {
     "id": "detemple-1991-carlyle-improved-converted",
     "title": "DeTemple 1991 improved Carlyle construction converted to collapsing compass",
-    "description": "Modified DeTemple route using both improvements from page 104, with the superseded full-scale root branch removed and the final unit transfer replaced by the perpendicular target chord; the remaining distance transfer is replaced by an exact local circle shortcut, the last Carlyle center is located by a three-line exact window replacement, and both axes are charged.",
+    "description": "Modified DeTemple route using both improvements from page 104, with the superseded full-scale root branch removed and the final unit transfer replaced by a two-move exact target line; the remaining distance transfer is replaced by an exact local circle shortcut, the last Carlyle center is located by a three-line exact window replacement, and both axes are charged.",
     "program": [
       {
         "id": "x_axis",
@@ -307,50 +307,35 @@
         "through": "Ay"
       },
       {
-        "id": "H0_8",
+        "id": "H4_8",
         "op": "intersect",
         "objects": [
           "c_M0_4_Ay",
           "x_axis"
         ],
-        "index": 1
-      },
-      {
-        "id": "target_bisector_c_H_O",
-        "op": "circle",
-        "center": "H0_8",
-        "through": "O"
-      },
-      {
-        "id": "target_bisector_c_O_H",
-        "op": "circle",
-        "center": "O",
-        "through": "H0_8"
-      },
-      {
-        "id": "target_bisector_low",
-        "op": "intersect",
-        "objects": [
-          "target_bisector_c_H_O",
-          "target_bisector_c_O_H"
-        ],
         "index": 0
       },
       {
-        "id": "target_bisector_high",
+        "id": "target_helper_circle",
+        "op": "circle",
+        "center": "O",
+        "through": "H4_8"
+      },
+      {
+        "id": "target_helper_point",
         "op": "intersect",
         "objects": [
-          "target_bisector_c_H_O",
-          "target_bisector_c_O_H"
+          "target_helper_circle",
+          "c_Q_O"
         ],
         "index": 1
       },
       {
-        "id": "target_chord",
+        "id": "target_line",
         "op": "line",
         "through": [
-          "target_bisector_low",
-          "target_bisector_high"
+          "Q",
+          "target_helper_point"
         ]
       }
     ]
@@ -358,11 +343,10 @@
   "assertions": {
     "score": {
       "metric": "e_move",
-      "e_move": 20
+      "e_move": 19
     },
     "targets": [
-      "B_plus",
-      "B_minus"
+      "B_plus"
     ],
     "claim": "verified_construction"
   },
@@ -373,6 +357,6 @@
     }
   },
   "integrity": {
-    "construction_sha256": "61056ac3e49fd9dda29bf47f2a195059c6bceebac0ead3d16cedad16b0f9545f"
+    "construction_sha256": "2248c9683f876e4a87d0a1b0bacdd4ae40f21c2d9d121e9586a749d840d9264b"
   }
 }
