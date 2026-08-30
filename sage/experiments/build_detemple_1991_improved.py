@@ -1,9 +1,10 @@
-"""生成 DeTemple 1991 两项修改并清理无效分支后的 27 E 证书。
+"""生成 DeTemple 路线经三项确定性化简后的 24 E 证书。
 
 原文第 104 页建议用半尺度 Carlyle 圆直接得到 M_{0,2}、M_{1,2}，
 并让步骤 (vi) 已有的圆复用于 OY 的中垂线。直接得到这两个中点后，
 原步骤 (ii)-(iii) 产生的完整尺度根不再被使用，故一并删除。本转写仍按
-`regular-17-e-fixed-v1` 使用 collapsing compass。
+`regular-17-e-fixed-v1` 使用 collapsing compass。最后不再搬运单位长度，
+而是作 OH_{0,8} 的中垂线，与单位圆直接得到两个目标点。
 """
 
 from __future__ import annotations
@@ -36,7 +37,7 @@ DEFAULT_DEPENDENCY_GRAPH_OUTPUT = DEFAULT_OUTPUT.with_name("dependency-graph.jso
 
 
 def build_program() -> list[dict]:
-    """应用论文两项修改，并删除被半尺度路线取代的无效分支。"""
+    """应用论文两项修改、清理无效分支并改用最终目标弦。"""
 
     baseline = build_baseline_program()
     first_replaced = next(
@@ -87,7 +88,40 @@ def build_program() -> list[dict]:
         line("line_Y_H0_4", "Y", "H0_4"),
         intersection("M0_4", "bisector_O_Y", "line_Y_H0_4", 0),
     ]
-    return program[:first_replaced] + reused_radius_step + program[after_replaced:]
+    program = (
+        program[:first_replaced]
+        + reused_radius_step
+        + program[after_replaced:]
+    )
+
+    first_replaced = next(
+        index for index, entry in enumerate(program)
+        if entry["id"] == "copy2_c_H_O"
+    )
+    target_chord_step = [
+        # H0_8=(2*cos(2*pi/17), 0)。OH0_8 的中垂线是
+        # x=cos(2*pi/17)，与单位圆的两个交点正是目标 B_+、B_-。
+        circle("target_bisector_c_H_O", "H0_8", "O"),
+        circle("target_bisector_c_O_H", "O", "H0_8"),
+        intersection(
+            "target_bisector_low",
+            "target_bisector_c_H_O",
+            "target_bisector_c_O_H",
+            0,
+        ),
+        intersection(
+            "target_bisector_high",
+            "target_bisector_c_H_O",
+            "target_bisector_c_O_H",
+            1,
+        ),
+        line(
+            "target_chord",
+            "target_bisector_low",
+            "target_bisector_high",
+        ),
+    ]
+    return program[:first_replaced] + target_chord_step
 
 
 def build_certificate(profile_path: Path = DEFAULT_PROFILE) -> dict:
@@ -97,8 +131,9 @@ def build_certificate(profile_path: Path = DEFAULT_PROFILE) -> dict:
         "title": "DeTemple 1991 improved Carlyle construction converted to collapsing compass",
         "description": (
             "Modified DeTemple route using both improvements from page 104, "
-            "with the superseded full-scale root branch removed; axes are "
-            "charged and both distance transfers are expanded."
+            "with the superseded full-scale root branch removed and the final "
+            "unit transfer replaced by the perpendicular target chord; axes "
+            "are charged and the remaining distance transfer is expanded."
         ),
         "program": build_program(),
     }

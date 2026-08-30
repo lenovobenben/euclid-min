@@ -105,6 +105,6 @@ euclid-min search --profile <profile> --max-score 3 \
 - checkpoint 以可移植和可核对为先，不追求紧凑；
 - 统计是单次运行统计，恢复后不会伪装成累计完备证明；
 - 尚无代数次数/子域信号、随机重启、镜像归约、并发、Go 调度器或 proof mode；
-- BFS 没有触发 `state_limit` 时只能说明指定深度被当前规则穷尽，不能直接推出与当前 27 E 上界相匹配的下界；beam 永远不提供穷尽结论。
+- BFS 没有触发 `state_limit` 时只能说明指定深度被当前规则穷尽，不能直接推出与当前 24 E 上界相匹配的下界；beam 永远不提供穷尽结论。
 
 M5 的固定 profiling 结果、启发式公式和解释边界见 `docs/M5_PROFILING.md`。

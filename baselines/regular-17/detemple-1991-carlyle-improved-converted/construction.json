@@ -8,7 +8,7 @@
   "construction": {
     "id": "detemple-1991-carlyle-improved-converted",
     "title": "DeTemple 1991 improved Carlyle construction converted to collapsing compass",
-    "description": "Modified DeTemple route using both improvements from page 104, with the superseded full-scale root branch removed; axes are charged and both distance transfers are expanded.",
+    "description": "Modified DeTemple route using both improvements from page 104, with the superseded full-scale root branch removed and the final unit transfer replaced by the perpendicular target chord; axes are charged and the remaining distance transfer is expanded.",
     "program": [
       {
         "id": "x_axis",
@@ -342,78 +342,49 @@
         "index": 1
       },
       {
-        "id": "copy2_c_H_O",
+        "id": "target_bisector_c_H_O",
         "op": "circle",
         "center": "H0_8",
         "through": "O"
       },
       {
-        "id": "copy2_c_O_H",
+        "id": "target_bisector_c_O_H",
         "op": "circle",
         "center": "O",
         "through": "H0_8"
       },
       {
-        "id": "copy2_D",
+        "id": "target_bisector_low",
         "op": "intersect",
         "objects": [
-          "copy2_c_H_O",
-          "copy2_c_O_H"
-        ],
-        "index": 1
-      },
-      {
-        "id": "copy2_D_O",
-        "op": "line",
-        "through": [
-          "copy2_D",
-          "O"
-        ]
-      },
-      {
-        "id": "copy2_D_H",
-        "op": "line",
-        "through": [
-          "copy2_D",
-          "H0_8"
-        ]
-      },
-      {
-        "id": "copy2_G",
-        "op": "intersect",
-        "objects": [
-          "copy2_D_O",
-          "unit_circle"
+          "target_bisector_c_H_O",
+          "target_bisector_c_O_H"
         ],
         "index": 0
       },
       {
-        "id": "copy2_c_D_G",
-        "op": "circle",
-        "center": "copy2_D",
-        "through": "copy2_G"
-      },
-      {
-        "id": "copy2_L",
+        "id": "target_bisector_high",
         "op": "intersect",
         "objects": [
-          "copy2_D_H",
-          "copy2_c_D_G"
+          "target_bisector_c_H_O",
+          "target_bisector_c_O_H"
         ],
         "index": 1
       },
       {
-        "id": "target_circle",
-        "op": "circle",
-        "center": "H0_8",
-        "through": "copy2_L"
+        "id": "target_chord",
+        "op": "line",
+        "through": [
+          "target_bisector_low",
+          "target_bisector_high"
+        ]
       }
     ]
   },
   "assertions": {
     "score": {
       "metric": "e_move",
-      "e_move": 27
+      "e_move": 24
     },
     "targets": [
       "B_plus",
@@ -428,6 +399,6 @@
     }
   },
   "integrity": {
-    "construction_sha256": "df01b48c160cf9a84493a5a16430cc4ca6067e896155b8da45c10ea19937ddc2"
+    "construction_sha256": "ec0b77c3041a0e2fee046f65508d0d27a0199f3bcf5672c8ff386953df869026"
   }
 }
