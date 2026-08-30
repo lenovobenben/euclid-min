@@ -19,9 +19,9 @@ euclid_min/
   search/           候选生成、精确 BFS、checkpoint 和证书导出
 ```
 
-当前已经覆盖 M1 数学内核、M2 验证闭环、M3 首个可信 baseline 和 M4 基础搜索器。尚未实现：
+当前已经覆盖 M1 数学内核、M2 验证闭环、M3 首个可信 baseline、M4 基础搜索器和 M5 profiling/启发式搜索。尚未实现：
 
-- 大规模启发式搜索与 profiling；
+- 新的低于 32 E 的已验证上界；
 - 构造可视化；
 - lower-bound proof mode。
 
@@ -96,6 +96,20 @@ sage -python -m euclid_min search \
 
 `max_states` 是状态软上限；触发时返回退出码 3 和 `state_limit`，不能解释为
 指定深度已穷尽。完整规则和 checkpoint 用法见 `docs/SEARCH.md`。
+
+目标相关 beam 模式：
+
+```bash
+sage -python -m euclid_min search \
+  --profile profiles/regular-17-e-fixed-v1.yaml \
+  --max-score 6 \
+  --strategy beam \
+  --beam-width 32 \
+  --json
+```
+
+beam 删除过分支，未命中时返回 `heuristic_limit` 和退出码 4。它不能用于下界或
+最优性声明。固定 profiling 由 `sage/experiments/profile_search.py` 生成。
 
 ## 精确性边界
 

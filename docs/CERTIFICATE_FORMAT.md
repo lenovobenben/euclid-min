@@ -235,7 +235,7 @@ verifier 的名称、版本和运行结果不写回输入证书，而是写入�
   },
   "verifier": {
     "name": "euclid-min-sage-verifier",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "sage_version": "10.7"
   },
   "valid": true,

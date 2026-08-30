@@ -126,8 +126,20 @@
         "generated_candidates": { "$ref": "#/$defs/nonnegativeInteger" },
         "accepted_states": { "$ref": "#/$defs/nonnegativeInteger" },
         "equivalent_pruned": { "$ref": "#/$defs/nonnegativeInteger" },
-        "max_frontier": { "$ref": "#/$defs/nonnegativeInteger" }
+        "max_frontier": { "$ref": "#/$defs/nonnegativeInteger" },
+        "heuristic_evaluations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "heuristic_pruned": { "$ref": "#/$defs/nonnegativeInteger" },
+        "elapsed_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "candidate_generation_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "state_expansion_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "state_index_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "goal_test_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "heuristic_seconds": { "$ref": "#/$defs/nonnegativeNumber" }
       }
+    },
+    "nonnegativeNumber": {
+      "type": "number",
+      "minimum": 0
     }
   }
 }

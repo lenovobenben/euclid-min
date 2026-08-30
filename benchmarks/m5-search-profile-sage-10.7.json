@@ -1,0 +1,95 @@
+{
+  "schema": "euclid-min-search-profile/v1",
+  "generated_at": "2026-08-30T14:20:29.255177+00:00",
+  "environment": {
+    "sage_version": "10.7",
+    "python_version": "3.12.5",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "cpu_count": 16,
+    "docker_image": "sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528",
+    "target_cache_warmed": true
+  },
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "cases": [
+    {
+      "name": "bfs-depth-2-complete",
+      "strategy": "bounded_breadth_first",
+      "parameters": {
+        "max_score": 2,
+        "max_states": 1000
+      },
+      "status": "exhausted",
+      "score": null,
+      "stats": {
+        "expanded_states": 3,
+        "generated_candidates": 16,
+        "accepted_states": 16,
+        "equivalent_pruned": 1,
+        "max_frontier": 13,
+        "heuristic_evaluations": 0,
+        "heuristic_pruned": 0,
+        "elapsed_seconds": 0.1666337930000168,
+        "candidate_generation_seconds": 0.06577020299999958,
+        "state_expansion_seconds": 0.0951405609999938,
+        "state_index_seconds": 0.00509747199987487,
+        "goal_test_seconds": 0.0002503720001527654,
+        "heuristic_seconds": 0.0
+      }
+    },
+    {
+      "name": "bfs-depth-3-state-limit",
+      "strategy": "bounded_breadth_first",
+      "parameters": {
+        "max_score": 3,
+        "max_states": 100
+      },
+      "status": "state_limit",
+      "score": null,
+      "stats": {
+        "expanded_states": 9,
+        "generated_candidates": 110,
+        "accepted_states": 101,
+        "equivalent_pruned": 10,
+        "max_frontier": 92,
+        "heuristic_evaluations": 0,
+        "heuristic_pruned": 0,
+        "elapsed_seconds": 0.7015266860000224,
+        "candidate_generation_seconds": 0.022604375000014443,
+        "state_expansion_seconds": 0.6181766570003333,
+        "state_index_seconds": 0.05761148899972568,
+        "goal_test_seconds": 0.0016978979995769805,
+        "heuristic_seconds": 0.0
+      }
+    },
+    {
+      "name": "beam-depth-3-width-8",
+      "strategy": "deterministic_target_beam",
+      "parameters": {
+        "max_score": 3,
+        "max_states": 2000,
+        "beam_width": 8
+      },
+      "status": "heuristic_limit",
+      "score": null,
+      "stats": {
+        "expanded_states": 11,
+        "generated_candidates": 142,
+        "accepted_states": 126,
+        "equivalent_pruned": 17,
+        "max_frontier": 8,
+        "heuristic_evaluations": 125,
+        "heuristic_pruned": 107,
+        "elapsed_seconds": 0.9227364549999493,
+        "candidate_generation_seconds": 0.028772564000007606,
+        "state_expansion_seconds": 0.7962358549997361,
+        "state_index_seconds": 0.07484204599961686,
+        "goal_test_seconds": 0.002028724000126658,
+        "heuristic_seconds": 0.018957234000254175
+      }
+    }
+  ],
+  "interpretation_boundary": "Timings are diagnostic and machine-dependent. Heuristic pruning does not support lower-bound or optimality claims."
+}

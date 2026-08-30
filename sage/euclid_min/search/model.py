@@ -102,6 +102,14 @@ class SearchStats:
     accepted_states: int
     equivalent_pruned: int
     max_frontier: int
+    heuristic_evaluations: int = 0
+    heuristic_pruned: int = 0
+    elapsed_seconds: float = 0.0
+    candidate_generation_seconds: float = 0.0
+    state_expansion_seconds: float = 0.0
+    state_index_seconds: float = 0.0
+    goal_test_seconds: float = 0.0
+    heuristic_seconds: float = 0.0
 
 
 @dataclass(frozen=True, slots=True)

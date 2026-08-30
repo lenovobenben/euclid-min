@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/search-profile-v1.schema.json",
+  "title": "Euclid-Min Search Profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "generated_at",
+    "environment",
+    "profile",
+    "cases",
+    "interpretation_boundary"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-search-profile/v1" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sage_version",
+        "python_version",
+        "platform",
+        "cpu_count",
+        "docker_image",
+        "target_cache_warmed"
+      ],
+      "properties": {
+        "sage_version": { "type": "string", "minLength": 1 },
+        "python_version": { "type": "string", "minLength": 1 },
+        "platform": { "type": "string", "minLength": 1 },
+        "cpu_count": {
+          "oneOf": [
+            { "$ref": "#/$defs/nonnegativeInteger" },
+            { "type": "null" }
+          ]
+        },
+        "docker_image": { "type": "string", "minLength": 1 },
+        "target_cache_warmed": { "const": true }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": { "const": "regular-17-e-fixed-v1" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "strategy", "parameters", "status", "score", "stats"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "strategy": {
+            "enum": ["bounded_breadth_first", "deterministic_target_beam"]
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["max_score", "max_states"],
+            "properties": {
+              "max_score": { "$ref": "#/$defs/nonnegativeInteger" },
+              "max_states": { "$ref": "#/$defs/positiveInteger" },
+              "beam_width": { "$ref": "#/$defs/positiveInteger" }
+            }
+          },
+          "status": {
+            "enum": ["found", "exhausted", "state_limit", "heuristic_limit"]
+          },
+          "score": {
+            "oneOf": [
+              { "$ref": "#/$defs/nonnegativeInteger" },
+              { "type": "null" }
+            ]
+          },
+          "stats": { "$ref": "#/$defs/stats" }
+        }
+      }
+    },
+    "interpretation_boundary": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "nonnegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "nonnegativeNumber": {
+      "type": "number",
+      "minimum": 0
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expanded_states",
+        "generated_candidates",
+        "accepted_states",
+        "equivalent_pruned",
+        "max_frontier",
+        "heuristic_evaluations",
+        "heuristic_pruned",
+        "elapsed_seconds",
+        "candidate_generation_seconds",
+        "state_expansion_seconds",
+        "state_index_seconds",
+        "goal_test_seconds",
+        "heuristic_seconds"
+      ],
+      "properties": {
+        "expanded_states": { "$ref": "#/$defs/nonnegativeInteger" },
+        "generated_candidates": { "$ref": "#/$defs/nonnegativeInteger" },
+        "accepted_states": { "$ref": "#/$defs/nonnegativeInteger" },
+        "equivalent_pruned": { "$ref": "#/$defs/nonnegativeInteger" },
+        "max_frontier": { "$ref": "#/$defs/nonnegativeInteger" },
+        "heuristic_evaluations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "heuristic_pruned": { "$ref": "#/$defs/nonnegativeInteger" },
+        "elapsed_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "candidate_generation_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "state_expansion_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "state_index_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "goal_test_seconds": { "$ref": "#/$defs/nonnegativeNumber" },
+        "heuristic_seconds": { "$ref": "#/$defs/nonnegativeNumber" }
+      }
+    }
+  }
+}

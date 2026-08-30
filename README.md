@@ -18,7 +18,7 @@ O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
 
 ## 当前状态
 
-项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**和 **M4：基础搜索器**。DeTemple 1991 的 Carlyle 圆构造经当前 profile 转写后，由 Sage verifier 精确重放为 **32 E**（11 条直线、21 个圆），并同时得到两个相邻目标点。基础搜索器已经具备完整候选生成、显式交点闭包、精确状态确认、确定性广度优先搜索、checkpoint、provenance 和证书导出；当前只定位于小深度可审计搜索。
+项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**、**M4：基础搜索器**和 **M5：profiling 与启发式搜索**。DeTemple 1991 的 Carlyle 圆构造经当前 profile 转写后，由 Sage verifier 精确重放为 **32 E**（11 条直线、21 个圆）。搜索器现支持可审计 BFS、阶段计时和明确标注为非证明模式的目标相关 beam search；尚未得到比 32 E 更短的新证书。
 
 唯一规范 profile 为：
 
@@ -42,12 +42,14 @@ regular-17-e-fixed-v1
 - [文献与 baseline 台账](docs/LITERATURE.md)：检索规则、来源状态和可比性记录；
 - [实施路线](docs/ROADMAP.md)：从规范到搜索器的阶段计划；
 - [基础搜索器](docs/SEARCH.md)：M4 状态、候选、去重、checkpoint 和 CLI；
+- [M5 Profiling](docs/M5_PROFILING.md)：固定实验、热点结论和启发式边界；
 - [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
 - [Profile Schema](schemas/profile-v1.schema.json)；
 - [Certificate Schema](schemas/certificate-v1.schema.json)；
 - [Verification Report Schema](schemas/verification-report-v1.schema.json)；
 - [Search Checkpoint Schema](schemas/search-checkpoint-v1.schema.json)；
+- [Search Profile Schema](schemas/search-profile-v1.schema.json)；
 - [Sage 内核运行说明](sage/README.md)。
 
 若研究设计与版本化规范冲突，以 profile、Schema、`FORMAL_MODEL.md`、`METRICS.md` 和 `CERTIFICATE_FORMAT.md` 中更具体的规则为准。
@@ -68,7 +70,7 @@ regular-17-e-fixed-v1
 4. **M3：首个 baseline**——完整录入并验证一个正十七边形已知构造；
 5. **M4：基础搜索**——实现小深度可审计搜索和证书导出。
 
-M4 之后将先做 profiling 和启发式排序，再决定是否需要 Go 调度层或动画可视化。
+M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。下一阶段将尝试减少状态复制和重复精确求交，并用非证明 beam 模式寻找低于 32 E 的候选。
 
 更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
 

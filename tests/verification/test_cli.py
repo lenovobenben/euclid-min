@@ -75,6 +75,28 @@ class CliTests(unittest.TestCase):
         self.assertEqual(summary["max_score"], 0)
         self.assertEqual(summary["stats"]["expanded_states"], 0)
 
+    def test_beam_search_is_labeled_nonproof(self):
+        output = io.StringIO()
+        with redirect_stdout(output):
+            exit_code = main(
+                [
+                    "search",
+                    "--profile",
+                    str(PROFILE_PATH),
+                    "--max-score",
+                    "0",
+                    "--strategy",
+                    "beam",
+                    "--beam-width",
+                    "2",
+                    "--json",
+                ]
+            )
+        self.assertEqual(exit_code, 4)
+        summary = json.loads(output.getvalue())
+        self.assertEqual(summary["status"], "heuristic_limit")
+        self.assertEqual(summary["search_mode"], "heuristic_nonproof")
+
 
 if __name__ == "__main__":
     unittest.main()

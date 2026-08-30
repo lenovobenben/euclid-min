@@ -7,6 +7,7 @@ from collections import deque
 from .candidates import generate_candidates
 from .index import ExactStateIndex
 from .model import SearchGoal, SearchNode, SearchOutcome, SearchStats
+from .profiling import SearchTelemetry
 
 
 class BoundedBreadthFirstSearch:
@@ -24,6 +25,7 @@ class BoundedBreadthFirstSearch:
             raise ValueError("max_score 不能为负数")
         if max_states is not None and max_states < 1:
             raise ValueError("max_states 至少为 1")
+        telemetry = SearchTelemetry()
 
         starting_nodes = initial_frontier or (SearchNode.initial(),)
         if any(node.score > max_score for node in starting_nodes):
@@ -31,7 +33,9 @@ class BoundedBreadthFirstSearch:
         index = ExactStateIndex()
         frontier: deque[SearchNode] = deque()
         for node in starting_nodes:
-            if index.add_if_better(node.state, node.score):
+            with telemetry.measure("state_index_seconds"):
+                accepted = index.add_if_better(node.state, node.score)
+            if accepted:
                 frontier.append(node)
         expanded_states = 0
         generated_candidates = 0
@@ -40,7 +44,9 @@ class BoundedBreadthFirstSearch:
         max_frontier = len(frontier)
 
         for node in frontier:
-            if goal.reached(node.state):
+            with telemetry.measure("goal_test_seconds"):
+                goal_reached = goal.reached(node.state)
+            if goal_reached:
                 return self._outcome(
                     "found",
                     node,
@@ -49,6 +55,7 @@ class BoundedBreadthFirstSearch:
                     accepted_states,
                     equivalent_pruned,
                     max_frontier,
+                    telemetry=telemetry,
                 )
 
         while frontier:
@@ -56,13 +63,20 @@ class BoundedBreadthFirstSearch:
             if node.score >= max_score:
                 continue
             expanded_states += 1
-            for candidate in generate_candidates(node.state):
+            with telemetry.measure("candidate_generation_seconds"):
+                candidates = generate_candidates(node.state)
+            for candidate in candidates:
                 generated_candidates += 1
-                child = node.apply(candidate)
-                if not index.add_if_better(child.state, child.score):
+                with telemetry.measure("state_expansion_seconds"):
+                    child = node.apply(candidate)
+                with telemetry.measure("state_index_seconds"):
+                    accepted = index.add_if_better(child.state, child.score)
+                if not accepted:
                     equivalent_pruned += 1
                     continue
-                if goal.reached(child.state):
+                with telemetry.measure("goal_test_seconds"):
+                    goal_reached = goal.reached(child.state)
+                if goal_reached:
                     accepted_states += 1
                     return self._outcome(
                         "found",
@@ -72,6 +86,7 @@ class BoundedBreadthFirstSearch:
                         accepted_states,
                         equivalent_pruned,
                         max(max_frontier, len(frontier) + 1),
+                        telemetry=telemetry,
                     )
                 frontier.append(child)
                 accepted_states += 1
@@ -88,6 +103,7 @@ class BoundedBreadthFirstSearch:
                     equivalent_pruned,
                     max_frontier,
                     tuple(frontier),
+                    telemetry=telemetry,
                 )
 
         return self._outcome(
@@ -98,6 +114,7 @@ class BoundedBreadthFirstSearch:
             accepted_states,
             equivalent_pruned,
             max_frontier,
+            telemetry=telemetry,
         )
 
     @staticmethod
@@ -110,11 +127,13 @@ class BoundedBreadthFirstSearch:
         equivalent_pruned: int,
         max_frontier: int,
         frontier: tuple[SearchNode, ...] = (),
+        *,
+        telemetry: SearchTelemetry,
     ) -> SearchOutcome:
         return SearchOutcome(
             status,
             node,
-            SearchStats(
+            telemetry.snapshot(
                 expanded_states=expanded_states,
                 generated_candidates=generated_candidates,
                 accepted_states=accepted_states,

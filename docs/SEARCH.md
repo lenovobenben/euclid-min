@@ -1,7 +1,7 @@
 # M4 基础搜索器
 
-本文描述 `euclid_min search` 的当前实现边界。M4 的目标是建立可审计的小深度
-搜索闭环，不是立即在 32 E 以下完成正十七边形的大规模搜索。
+本文描述 `euclid_min search` 的当前实现边界。M4 建立可审计的小深度搜索闭环，
+M5 在其上增加阶段计时和明确标记为非证明模式的目标相关 beam search。
 
 ## 1. 搜索状态
 
@@ -35,9 +35,12 @@ Circle(center=Pi, through=Pj), i != j
 比较范围，不是数学身份：摘要命中后，索引仍忽略插入顺序并逐项精确比较
 \((P,L,C)\)。摘要碰撞不会导致状态被错误合并。
 
-搜索按 E-score 做确定性广度优先展开。未触发 `max_states` 时，对给定
+基础模式按 E-score 做确定性广度优先展开。未触发 `max_states` 时，对给定
 `max_score` 的基础操作空间完备；触发限制时状态为 `state_limit`，不得解释为
 深度已经穷尽。
+
+M5 的 `beam` 模式按目标关联残差、最近点距离和点数信号排序，每层只保留
+`beam_width` 个状态。它会永久删除分支，始终属于 `heuristic_nonproof`。
 
 ## 4. Provenance 与证书
 
@@ -51,13 +54,14 @@ CLI 对候选证书执行独立的 `verify_files` 重放；只有验证成功后
 
 ## 5. Checkpoint
 
-状态软上限只在一个节点的候选全部展开后生效，因而 checkpoint 保存的是完整
+在 BFS 模式中，状态软上限只在一个节点的候选全部展开后生效，因而 checkpoint 保存的是完整
 frontier，不会遗漏半个节点。文件使用
 `euclid-min-search-checkpoint/v1`，受
 `schemas/search-checkpoint-v1.schema.json` 约束，并固定 profile ID 和摘要。
 
 每个 frontier 节点保存可重放 program。恢复时程序先由重放器还原为搜索步骤，
 再用完整闭包重建状态。checkpoint 不把 AA 的内部表示或浮点坐标当作权威数据。
+Beam 模式当前不支持 checkpoint。
 
 ## 6. CLI
 
@@ -93,11 +97,14 @@ euclid-min search --profile <profile> --max-score 3 \
 | 1 | 在给定 `max_score` 内穷尽，未命中 |
 | 2 | 参数、profile、checkpoint、写入或验证错误 |
 | 3 | 达到状态软上限，搜索可继续 |
+| 4 | 启发式保留范围已用尽，未命中；不代表穷尽 |
 
 ## 7. 当前限制
 
 - 完整闭包和候选数量增长极快，当前实现只承诺小深度可审计性；
 - checkpoint 以可移植和可核对为先，不追求紧凑；
 - 统计是单次运行统计，恢复后不会伪装成累计完备证明；
-- 尚无启发式排序、镜像归约、并发、Go 调度器或 proof mode；
-- 没有触发 `state_limit` 只能说明指定深度被当前规则穷尽，不能推出 32 E 的下界。
+- 尚无代数次数/子域信号、随机重启、镜像归约、并发、Go 调度器或 proof mode；
+- BFS 没有触发 `state_limit` 时只能说明指定深度被当前规则穷尽，不能直接推出 32 E 的下界；beam 永远不提供穷尽结论。
+
+M5 的固定 profiling 结果、启发式公式和解释边界见 `docs/M5_PROFILING.md`。
