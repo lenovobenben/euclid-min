@@ -84,7 +84,7 @@ sage -python sage/experiments/build_detemple_1991_baseline.py
 
 生成后仍须通过独立的 `euclid_min verify` 命令重放；生成器本身不是验证结论。
 
-M6 的 21 E 证书与依赖 DAG 由以下命令确定性生成：
+M6 的 20 E 证书与依赖 DAG 由以下命令确定性生成：
 
 ```bash
 sage -python sage/experiments/build_detemple_1991_improved.py

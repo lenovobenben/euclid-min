@@ -1,12 +1,12 @@
 {
   "schema": "euclid-min-dependency-graph/v1",
   "construction_id": "detemple-1991-carlyle-improved-converted",
-  "construction_sha256": "781937e73abdc6d0be9d5d81100650a780cf145d2347dda03bb77435090e172c",
+  "construction_sha256": "61056ac3e49fd9dda29bf47f2a195059c6bceebac0ead3d16cedad16b0f9545f",
   "profile": {
     "id": "regular-17-e-fixed-v1",
     "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
   },
-  "total_e_move": 21,
+  "total_e_move": 20,
   "nodes": [
     {
       "id": "O",
@@ -320,60 +320,60 @@
       ]
     },
     {
-      "id": "c_O_Y",
-      "op": "circle",
+      "id": "positive_half",
+      "op": "intersect",
+      "cost": 0,
+      "e_move_after": 13,
+      "depends_on": [
+        "x_axis",
+        "c_O_Qhalf"
+      ]
+    },
+    {
+      "id": "scaled_circle_low",
+      "op": "intersect",
+      "cost": 0,
+      "e_move_after": 13,
+      "depends_on": [
+        "bisector_Qhalf_O",
+        "c_Qquarter_Ay"
+      ]
+    },
+    {
+      "id": "m_center_helper_1",
+      "op": "line",
       "cost": 1,
       "e_move_after": 14,
       "depends_on": [
-        "O",
-        "Y"
+        "M0_2",
+        "scaled_circle_low"
       ]
     },
     {
-      "id": "c_Y_O",
-      "op": "circle",
-      "cost": 1,
-      "e_move_after": 15,
-      "depends_on": [
-        "Y",
-        "O"
-      ]
-    },
-    {
-      "id": "b_OY_low",
+      "id": "m_center_helper_point",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 15,
+      "e_move_after": 14,
       "depends_on": [
-        "c_O_Y",
-        "c_Y_O"
+        "m_center_helper_1",
+        "bisector_QO"
       ]
     },
     {
-      "id": "b_OY_high",
-      "op": "intersect",
-      "cost": 0,
-      "e_move_after": 15,
-      "depends_on": [
-        "c_O_Y",
-        "c_Y_O"
-      ]
-    },
-    {
-      "id": "bisector_O_Y",
+      "id": "m_center_helper_2",
       "op": "line",
       "cost": 1,
-      "e_move_after": 16,
+      "e_move_after": 15,
       "depends_on": [
-        "b_OY_low",
-        "b_OY_high"
+        "m_center_helper_point",
+        "positive_half"
       ]
     },
     {
       "id": "line_Y_H0_4",
       "op": "line",
       "cost": 1,
-      "e_move_after": 17,
+      "e_move_after": 16,
       "depends_on": [
         "Y",
         "H0_4"
@@ -383,9 +383,9 @@
       "id": "M0_4",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 17,
+      "e_move_after": 16,
       "depends_on": [
-        "bisector_O_Y",
+        "m_center_helper_2",
         "line_Y_H0_4"
       ]
     },
@@ -393,7 +393,7 @@
       "id": "c_M0_4_Ay",
       "op": "circle",
       "cost": 1,
-      "e_move_after": 18,
+      "e_move_after": 17,
       "depends_on": [
         "M0_4",
         "Ay"
@@ -403,7 +403,7 @@
       "id": "H0_8",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 18,
+      "e_move_after": 17,
       "depends_on": [
         "c_M0_4_Ay",
         "x_axis"
@@ -413,7 +413,7 @@
       "id": "target_bisector_c_H_O",
       "op": "circle",
       "cost": 1,
-      "e_move_after": 19,
+      "e_move_after": 18,
       "depends_on": [
         "H0_8",
         "O"
@@ -423,7 +423,7 @@
       "id": "target_bisector_c_O_H",
       "op": "circle",
       "cost": 1,
-      "e_move_after": 20,
+      "e_move_after": 19,
       "depends_on": [
         "O",
         "H0_8"
@@ -433,7 +433,7 @@
       "id": "target_bisector_low",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 20,
+      "e_move_after": 19,
       "depends_on": [
         "target_bisector_c_H_O",
         "target_bisector_c_O_H"
@@ -443,7 +443,7 @@
       "id": "target_bisector_high",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 20,
+      "e_move_after": 19,
       "depends_on": [
         "target_bisector_c_H_O",
         "target_bisector_c_O_H"
@@ -453,7 +453,7 @@
       "id": "target_chord",
       "op": "line",
       "cost": 1,
-      "e_move_after": 21,
+      "e_move_after": 20,
       "depends_on": [
         "target_bisector_low",
         "target_bisector_high"

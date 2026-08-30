@@ -1,11 +1,11 @@
-"""生成 DeTemple 路线经局部精确化简后的 21 E 证书。
+"""生成 DeTemple 路线经局部精确化简后的 20 E 证书。
 
 原文第 104 页建议用半尺度 Carlyle 圆直接得到 M_{0,2}、M_{1,2}，
 并让步骤 (vi) 已有的圆复用于 OY 的中垂线。直接得到这两个中点后，
 原步骤 (ii)-(iii) 产生的完整尺度根不再被使用，故一并删除。本转写仍按
 `regular-17-e-fixed-v1` 使用 collapsing compass。最后不再搬运单位长度，
 而是作 OH_{0,8} 的中垂线，与单位圆直接得到两个目标点。步骤 (vi) 的距离
-搬运也由一个经过 Y 的已有点圆替换。
+搬运也由一个经过 Y 的已有点圆替换；M_{0,4} 则由三条辅助直线定位。
 """
 
 from __future__ import annotations
@@ -87,14 +87,26 @@ def build_program() -> list[dict]:
         circle("c_direct_y", "direct_y_center", "H1_4"),
         intersection("Y", "y_axis", "c_direct_y", 1),
 
-        # 直接圆不以 O 为圆心，所以补齐 OY 的两个等半径圆，再作中垂线。
-        circle("c_O_Y", "O", "Y"),
-        circle("c_Y_O", "Y", "O"),
-        intersection("b_OY_low", "c_O_Y", "c_Y_O", 0),
-        intersection("b_OY_high", "c_O_Y", "c_Y_O", 1),
-        line("bisector_O_Y", "b_OY_low", "b_OY_high"),
+        # 两步局部窗口搜索找到一条更短的 M0_4 定位路线。R=(1/2,0)，
+        # V 是半尺度 Carlyle 圆在 x=-1/4 上的下交点。直线 M0_2 V
+        # 与 x=-1/2 相交于 N，再连 NR；所得直线精确经过 M0_4。
+        intersection("positive_half", "x_axis", "c_O_Qhalf", 1),
+        intersection(
+            "scaled_circle_low",
+            "bisector_Qhalf_O",
+            "c_Qquarter_Ay",
+            0,
+        ),
+        line("m_center_helper_1", "M0_2", "scaled_circle_low"),
+        intersection(
+            "m_center_helper_point",
+            "m_center_helper_1",
+            "bisector_QO",
+            0,
+        ),
+        line("m_center_helper_2", "m_center_helper_point", "positive_half"),
         line("line_Y_H0_4", "Y", "H0_4"),
-        intersection("M0_4", "bisector_O_Y", "line_Y_H0_4", 0),
+        intersection("M0_4", "m_center_helper_2", "line_Y_H0_4", 0),
     ]
     program = (
         program[:first_replaced]
@@ -142,7 +154,8 @@ def build_certificate(profile_path: Path = DEFAULT_PROFILE) -> dict:
             "with the superseded full-scale root branch removed and the final "
             "unit transfer replaced by the perpendicular target chord; the "
             "remaining distance transfer is replaced by an exact local circle "
-            "shortcut, and both axes are charged."
+            "shortcut, the last Carlyle center is located by a three-line "
+            "exact window replacement, and both axes are charged."
         ),
         "program": build_program(),
     }

@@ -34,10 +34,10 @@ euclid_min:
     the half-scaled circle directly locates the two centers needed by step
     (v), the superseded full-scale root branch from steps (ii)-(iii) is
     removed. A project-local exact-incidence shortcut replaces the first
-    distance transfer with one circle through Y; the OY midpoint construction
-    is then completed with collapsing-compass primitives. The final unit
+    distance transfer with one circle through Y; a project-local exact
+    three-line window then locates the final Carlyle center. The final unit
     transfer is replaced by the perpendicular bisector of OH0,8, whose
     intersections with the unit circle are the two targets. Only either
     adjacent vertex of A is required.
-  recomputed_e_score: 21
+  recomputed_e_score: 20
   verification_status: verified
