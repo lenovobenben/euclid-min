@@ -71,6 +71,7 @@ def run_search(
     state_timeout_seconds: float | None,
     max_input_level: int | None,
     candidate_strategy: str,
+    complexity_order: bool,
     max_states: int | None,
     heuristic_name: str,
     profile_path: Path,
@@ -105,6 +106,7 @@ def run_search(
         workers=workers,
         state_timeout_seconds=state_timeout_seconds,
         diversify_candidates=candidate_strategy == "diverse",
+        complexity_order=complexity_order,
     )
     summary = {
         "schema": "euclid-min-suffix-search-summary/v1",
@@ -128,6 +130,7 @@ def run_search(
         "state_timeout_seconds": state_timeout_seconds,
         "max_input_level": max_input_level,
         "candidate_strategy": candidate_strategy,
+        "complexity_order": complexity_order,
         "max_states": max_states,
         "heuristic": heuristic_name,
         "status": outcome.status,
@@ -174,6 +177,11 @@ def main() -> int:
         choices=("diverse", "target-only"),
         default="diverse",
     )
+    parser.add_argument(
+        "--complexity-order",
+        action="store_true",
+        help="按输入点 provenance 复杂度和生成层级优先执行低风险候选",
+    )
     parser.add_argument("--max-states", type=int)
     parser.add_argument(
         "--heuristic",
@@ -203,6 +211,7 @@ def main() -> int:
         state_timeout_seconds=args.state_timeout_seconds,
         max_input_level=args.max_input_level,
         candidate_strategy=args.candidate_strategy,
+        complexity_order=args.complexity_order,
         max_states=args.max_states,
         heuristic_name=args.heuristic,
         profile_path=args.profile,

@@ -1,0 +1,75 @@
+{
+  "schema": "euclid-min-suffix-restart-matrix-config/v1",
+  "id": "e12-suffix-complexity-matrix-v1",
+  "prefix_last_id": "c_M1_2_Ay",
+  "max_total_score": 18,
+  "max_parallel_runs": 4,
+  "runs": [
+    {
+      "id": "level5-complexity-one-move",
+      "beam_width": 6,
+      "candidate_width": 8,
+      "workers": 4,
+      "state_timeout_seconds": 8.0,
+      "max_input_level": 5,
+      "candidate_strategy": "diverse",
+      "heuristic": "one-move",
+      "complexity_order": true
+    },
+    {
+      "id": "level6-complexity-one-move",
+      "beam_width": 6,
+      "candidate_width": 8,
+      "workers": 4,
+      "state_timeout_seconds": 8.0,
+      "max_input_level": 6,
+      "candidate_strategy": "diverse",
+      "heuristic": "one-move",
+      "complexity_order": true
+    },
+    {
+      "id": "level7-complexity-one-move",
+      "beam_width": 6,
+      "candidate_width": 8,
+      "workers": 4,
+      "state_timeout_seconds": 8.0,
+      "max_input_level": 7,
+      "candidate_strategy": "diverse",
+      "heuristic": "one-move",
+      "complexity_order": true
+    },
+    {
+      "id": "level8-complexity-one-move",
+      "beam_width": 6,
+      "candidate_width": 8,
+      "workers": 4,
+      "state_timeout_seconds": 8.0,
+      "max_input_level": 8,
+      "candidate_strategy": "diverse",
+      "heuristic": "one-move",
+      "complexity_order": true
+    },
+    {
+      "id": "level6-complexity-wide",
+      "beam_width": 8,
+      "candidate_width": 12,
+      "workers": 4,
+      "state_timeout_seconds": 12.0,
+      "max_input_level": 6,
+      "candidate_strategy": "diverse",
+      "heuristic": "one-move",
+      "complexity_order": true
+    },
+    {
+      "id": "level7-complexity-wide",
+      "beam_width": 8,
+      "candidate_width": 12,
+      "workers": 4,
+      "state_timeout_seconds": 12.0,
+      "max_input_level": 7,
+      "candidate_strategy": "diverse",
+      "heuristic": "one-move",
+      "complexity_order": true
+    }
+  ]
+}

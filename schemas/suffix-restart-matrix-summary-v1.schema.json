@@ -164,7 +164,8 @@
         "state_timeout_seconds": { "$ref": "#/$defs/positiveNumber" },
         "max_input_level": { "$ref": "#/$defs/nonnegativeInteger" },
         "candidate_strategy": { "enum": ["diverse", "target-only"] },
-        "heuristic": { "enum": ["one-move", "regular"] }
+        "heuristic": { "enum": ["one-move", "regular"] },
+        "complexity_order": { "type": "boolean" }
       }
     },
     "stats": {

@@ -123,4 +123,8 @@ euclid-min search --profile <profile> --max-score 3 \
 Schema 约束。当前四配置矩阵的总容量为 16 worker，实测峰值约 1155% Docker
 CPU；它扩大的是启发式结构覆盖，仍不具备穷尽性。
 
+可选的 `complexity_order` 根据搜索路径同步维护的有界 provenance 复杂度安排
+已选候选的 worker 提交顺序。该值不读取 `AA` 最小多项式，不进入状态相等或
+剪枝；当前 A/B 实验未证明它单独改善吞吐，主要性能信号仍来自生成层级门。
+
 M5 的固定 profiling 结果、启发式公式和解释边界见 `docs/M5_PROFILING.md`。

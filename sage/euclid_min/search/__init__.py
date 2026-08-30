@@ -5,6 +5,7 @@ from .beam import DeterministicBeamSearch
 from .parallel_beam import ParallelHeuristicBeamSearch
 from .engine import BoundedBreadthFirstSearch
 from .heuristic import (
+    CandidateComplexityScore,
     OneMoveTargetHeuristic,
     PointDistanceHeuristic,
     Regular17CandidateHeuristic,
@@ -24,6 +25,7 @@ from .model import (
 __all__ = [
     "BoundedBreadthFirstSearch",
     "Candidate",
+    "CandidateComplexityScore",
     "DeterministicBeamSearch",
     "OneMoveTargetHeuristic",
     "ParallelHeuristicBeamSearch",

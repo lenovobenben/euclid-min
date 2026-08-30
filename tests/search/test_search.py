@@ -27,6 +27,7 @@ from euclid_min.search.export import build_program_from_steps
 from euclid_min.search.candidates import generate_prefiltered_candidates
 from euclid_min.search.checkpoint import load_checkpoint, save_checkpoint
 from euclid_min.search.index import ExactStateIndex, state_fingerprint, states_equal
+from euclid_min.search.parallel_beam import _ordered_indexed_candidates
 from euclid_min.target import TargetName, adjacent_targets
 from experiments.search_detemple_suffix import exact_prefix
 
@@ -319,6 +320,35 @@ class HeuristicSearchTests(unittest.TestCase):
 
         self.assertIsNone(score)
 
+    def test_candidate_complexity_uses_cached_provenance_cost(self):
+        state = SearchNode.initial().state
+        algebraic = Point(AA(2).sqrt(), 0)
+        state._add_point(algebraic, level=2, complexity=2)
+        heuristic = Regular17CandidateHeuristic()
+        heuristic.prepare_state(state, include_complexity=True)
+
+        rational_cost = heuristic.operation_complexity(
+            "line",
+            state.points[0],
+            state.points[1],
+        )
+        algebraic_cost = heuristic.operation_complexity(
+            "line",
+            state.points[0],
+            algebraic,
+        )
+
+        self.assertEqual(rational_cost.estimated_complexity, 1)
+        self.assertEqual(algebraic_cost.estimated_complexity, 2)
+        self.assertLess(rational_cost, algebraic_cost)
+
+    def test_complexity_scheduler_preserves_original_candidate_indices(self):
+        candidates = generate_candidates(SearchNode.initial().state)
+
+        ordered = _ordered_indexed_candidates(candidates, (2, 1))
+
+        self.assertEqual([index for index, _candidate in ordered], [1, 0])
+
     def test_one_move_heuristic_detects_a_target_bearing_point_pair(self):
         target = adjacent_targets()[TargetName.B_PLUS]
         state = SearchNode.initial().state
@@ -370,17 +400,8 @@ class ProfilingArtifactTests(unittest.TestCase):
         Draft202012Validator.check_schema(schema)
         Draft202012Validator(schema).validate(artifact)
 
-    def test_suffix_restart_matrix_config_matches_its_schema(self):
+    def test_suffix_restart_matrix_configs_match_their_schema(self):
         repository_root = Path(__file__).resolve().parents[2]
-        config = json.loads(
-            (
-                repository_root
-                / "sage"
-                / "experiments"
-                / "configs"
-                / "e12-suffix-restart-matrix-v1.json"
-            ).read_text(encoding="utf-8")
-        )
         schema = json.loads(
             (
                 repository_root
@@ -389,17 +410,24 @@ class ProfilingArtifactTests(unittest.TestCase):
             ).read_text(encoding="utf-8")
         )
         Draft202012Validator.check_schema(schema)
-        Draft202012Validator(schema).validate(config)
+        validator = Draft202012Validator(schema)
+        for name in (
+            "e12-suffix-restart-matrix-v1.json",
+            "e12-suffix-complexity-matrix-v1.json",
+        ):
+            config = json.loads(
+                (
+                    repository_root
+                    / "sage"
+                    / "experiments"
+                    / "configs"
+                    / name
+                ).read_text(encoding="utf-8")
+            )
+            validator.validate(config)
 
     def test_suffix_restart_matrix_artifacts_match_their_schemas(self):
         repository_root = Path(__file__).resolve().parents[2]
-        artifact = json.loads(
-            (
-                repository_root
-                / "benchmarks"
-                / "e12-suffix-restart-matrix-sage-10.7.json"
-            ).read_text(encoding="utf-8")
-        )
         matrix_schema = json.loads(
             (
                 repository_root
@@ -415,16 +443,26 @@ class ProfilingArtifactTests(unittest.TestCase):
             ).read_text(encoding="utf-8")
         )
         Draft202012Validator.check_schema(matrix_schema)
-        Draft202012Validator(matrix_schema).validate(artifact)
+        matrix_validator = Draft202012Validator(matrix_schema)
         Draft202012Validator.check_schema(suffix_schema)
         suffix_validator = Draft202012Validator(suffix_schema)
-        for run in artifact["runs"]:
-            run_artifact = json.loads(
-                (repository_root / run["summary_path"]).read_text(
+        for name in (
+            "e12-suffix-restart-matrix-sage-10.7.json",
+            "e12-suffix-complexity-matrix-sage-10.7.json",
+        ):
+            artifact = json.loads(
+                (repository_root / "benchmarks" / name).read_text(
                     encoding="utf-8"
                 )
             )
-            suffix_validator.validate(run_artifact)
+            matrix_validator.validate(artifact)
+            for run in artifact["runs"]:
+                run_artifact = json.loads(
+                    (repository_root / run["summary_path"]).read_text(
+                        encoding="utf-8"
+                    )
+                )
+                suffix_validator.validate(run_artifact)
 
 
 class ExactPrefixSearchTests(unittest.TestCase):

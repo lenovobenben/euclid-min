@@ -83,7 +83,7 @@ def child_command(
     summary_path: Path,
     candidate_path: Path,
 ) -> list[str]:
-    return [
+    command = [
         sys.executable,
         str(CHILD_SCRIPT),
         "--prefix-last-id",
@@ -112,6 +112,9 @@ def child_command(
         str(candidate_path),
         "--write-candidate",
     ]
+    if run.get("complexity_order", False):
+        command.append("--complexity-order")
+    return command
 
 
 def compact_stats(summary: dict | None) -> dict | None:
@@ -229,7 +232,11 @@ def run_matrix(
                 row = {
                     "id": run["id"],
                     "parameters": {
-                        key: run[key]
+                        key: (
+                            run.get("complexity_order", False)
+                            if key == "complexity_order"
+                            else run[key]
+                        )
                         for key in (
                             "beam_width",
                             "candidate_width",
@@ -238,6 +245,7 @@ def run_matrix(
                             "max_input_level",
                             "candidate_strategy",
                             "heuristic",
+                            "complexity_order",
                         )
                     },
                     "summary_path": portable_path(summary_path),

@@ -246,8 +246,10 @@ sage -python -m euclid_min verify \
 - 已启动固定 E12 精确前缀的 6 E 联合后缀搜索；进程级并行、候选多样化、
   生成层级门和超时统计已经落地。beam 8、每状态 12 候选的宽搜稳定到达
   总分 18，但尚未命中；四配置、16-worker 容量的确定性 restart 矩阵也已完成，
-  实测峰值约 1155% Docker CPU。机器可读配置、子结果、总汇总及 Schema 均已
-  纳入回归测试。该实验属于非证明模式，详见 `docs/M6_SUFFIX_SEARCH.md`。
+  六配置复杂度矩阵通过补位把实测峰值提高到约 1212% Docker CPU。低成本
+  provenance 排序没有在同参数 A/B 中单独降低超时，但确认层级 5–6 吞吐显著
+  优于 7–8。机器可读配置、子结果、总汇总及 Schema 均已纳入回归测试。该实验
+  属于非证明模式，详见 `docs/M6_SUFFIX_SEARCH.md`。
 
 ## M7：Proof Mode（长期可选）
 

@@ -1,0 +1,196 @@
+{
+  "schema": "euclid-min-suffix-restart-matrix-summary/v1",
+  "mode": "heuristic_nonproof",
+  "matrix_id": "e12-suffix-complexity-matrix-v1",
+  "started_at": "2026-08-30T18:25:38.120098+00:00",
+  "finished_at": "2026-08-30T18:35:16.585552+00:00",
+  "wall_elapsed_seconds": 578.5135107049991,
+  "environment": {
+    "sage_version": "10.7",
+    "python_version": "3.12.5",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "cpu_count": 16,
+    "docker_image": "sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528"
+  },
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "prefix_last_id": "c_M1_2_Ay",
+  "max_total_score": 18,
+  "max_parallel_runs": 4,
+  "planned_worker_capacity": 16,
+  "status": "complete_no_hit",
+  "aggregate": {
+    "planned_runs": 6,
+    "completed_runs": 6,
+    "failed_runs": 0,
+    "found_runs": 0,
+    "expanded_states": 206,
+    "generated_candidates": 1976,
+    "accepted_states": 1776,
+    "heuristic_evaluations": 1770,
+    "candidate_prefilter_evaluations": 5248089,
+    "candidate_timeouts": 206,
+    "summed_run_elapsed_seconds": 1393.9150906989998
+  },
+  "runs": [
+    {
+      "id": "level5-complexity-one-move",
+      "parameters": {
+        "beam_width": 6,
+        "candidate_width": 8,
+        "workers": 4,
+        "state_timeout_seconds": 8.0,
+        "max_input_level": 5,
+        "candidate_strategy": "diverse",
+        "heuristic": "one-move",
+        "complexity_order": true
+      },
+      "summary_path": "benchmarks/e12-suffix-complexity-matrix-sage-10.7/level5-complexity-one-move.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 31,
+        "generated_candidates": 248,
+        "accepted_states": 249,
+        "heuristic_evaluations": 248,
+        "candidate_prefilter_evaluations": 769938,
+        "candidate_timeouts": 0,
+        "elapsed_seconds": 92.97890889100017
+      }
+    },
+    {
+      "id": "level6-complexity-one-move",
+      "parameters": {
+        "beam_width": 6,
+        "candidate_width": 8,
+        "workers": 4,
+        "state_timeout_seconds": 8.0,
+        "max_input_level": 6,
+        "candidate_strategy": "diverse",
+        "heuristic": "one-move",
+        "complexity_order": true
+      },
+      "summary_path": "benchmarks/e12-suffix-complexity-matrix-sage-10.7/level6-complexity-one-move.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 31,
+        "generated_candidates": 248,
+        "accepted_states": 240,
+        "heuristic_evaluations": 239,
+        "candidate_prefilter_evaluations": 836217,
+        "candidate_timeouts": 9,
+        "elapsed_seconds": 90.11747415799982
+      }
+    },
+    {
+      "id": "level7-complexity-one-move",
+      "parameters": {
+        "beam_width": 6,
+        "candidate_width": 8,
+        "workers": 4,
+        "state_timeout_seconds": 8.0,
+        "max_input_level": 7,
+        "candidate_strategy": "diverse",
+        "heuristic": "one-move",
+        "complexity_order": true
+      },
+      "summary_path": "benchmarks/e12-suffix-complexity-matrix-sage-10.7/level7-complexity-one-move.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 31,
+        "generated_candidates": 248,
+        "accepted_states": 191,
+        "heuristic_evaluations": 190,
+        "candidate_prefilter_evaluations": 771651,
+        "candidate_timeouts": 58,
+        "elapsed_seconds": 286.2170340799985
+      }
+    },
+    {
+      "id": "level8-complexity-one-move",
+      "parameters": {
+        "beam_width": 6,
+        "candidate_width": 8,
+        "workers": 4,
+        "state_timeout_seconds": 8.0,
+        "max_input_level": 8,
+        "candidate_strategy": "diverse",
+        "heuristic": "one-move",
+        "complexity_order": true
+      },
+      "summary_path": "benchmarks/e12-suffix-complexity-matrix-sage-10.7/level8-complexity-one-move.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 31,
+        "generated_candidates": 248,
+        "accepted_states": 152,
+        "heuristic_evaluations": 151,
+        "candidate_prefilter_evaluations": 681603,
+        "candidate_timeouts": 97,
+        "elapsed_seconds": 284.7120273970013
+      }
+    },
+    {
+      "id": "level6-complexity-wide",
+      "parameters": {
+        "beam_width": 8,
+        "candidate_width": 12,
+        "workers": 4,
+        "state_timeout_seconds": 12.0,
+        "max_input_level": 6,
+        "candidate_strategy": "diverse",
+        "heuristic": "one-move",
+        "complexity_order": true
+      },
+      "summary_path": "benchmarks/e12-suffix-complexity-matrix-sage-10.7/level6-complexity-wide.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 41,
+        "generated_candidates": 492,
+        "accepted_states": 476,
+        "heuristic_evaluations": 475,
+        "candidate_prefilter_evaluations": 1119720,
+        "candidate_timeouts": 17,
+        "elapsed_seconds": 160.02019657100027
+      }
+    },
+    {
+      "id": "level7-complexity-wide",
+      "parameters": {
+        "beam_width": 8,
+        "candidate_width": 12,
+        "workers": 4,
+        "state_timeout_seconds": 12.0,
+        "max_input_level": 7,
+        "candidate_strategy": "diverse",
+        "heuristic": "one-move",
+        "complexity_order": true
+      },
+      "summary_path": "benchmarks/e12-suffix-complexity-matrix-sage-10.7/level7-complexity-wide.json",
+      "exit_code": 4,
+      "status": "heuristic_limit",
+      "found_score": null,
+      "stats": {
+        "expanded_states": 41,
+        "generated_candidates": 492,
+        "accepted_states": 468,
+        "heuristic_evaluations": 467,
+        "candidate_prefilter_evaluations": 1068960,
+        "candidate_timeouts": 25,
+        "elapsed_seconds": 479.8694496019998
+      }
+    }
+  ],
+  "interpretation_boundary": "各 run 都使用浮点预筛、beam 截断、层级门和超时；矩阵未命中不构成 18 E 不存在的证明。"
+}

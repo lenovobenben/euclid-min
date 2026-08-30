@@ -143,6 +143,10 @@ sage -python sage/experiments/search_detemple_suffix_matrix.py
 可先增加 `--smoke` 只跑一层，检查嵌套子进程、产物路径和 Schema。正式矩阵
 配置位于 `sage/experiments/configs/e12-suffix-restart-matrix-v1.json`。
 
+增加 `--complexity-order` 可让已选候选按廉价 provenance 复杂度优先进入 worker；
+该选项不调用最小多项式，也不改变候选评分的最终确定性顺序。六配置对照使用
+`sage/experiments/configs/e12-suffix-complexity-matrix-v1.json`。
+
 ## 精确性边界
 
 - 所有几何坐标进入对象时立即转换为 `AA`；

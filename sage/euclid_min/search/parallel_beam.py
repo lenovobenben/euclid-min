@@ -31,6 +31,7 @@ class ParallelHeuristicBeamSearch:
         workers: int,
         state_timeout_seconds: float,
         diversify_candidates: bool = True,
+        complexity_order: bool = False,
         initial_node: SearchNode | None = None,
         max_states: int | None = None,
         progress: Callable[[dict[str, int | str]], None] | None = None,
@@ -95,7 +96,10 @@ class ParallelHeuristicBeamSearch:
             for node_index, node in enumerate(frontier):
                 expanded_states += 1
                 with telemetry.measure("candidate_prefilter_seconds"):
-                    candidate_heuristic.prepare_state(node.state)
+                    candidate_heuristic.prepare_state(
+                        node.state,
+                        include_complexity=complexity_order,
+                    )
                     candidates, raw_operations, eligible_operations = (
                         generate_prefiltered_candidates(
                             node.state,
@@ -125,6 +129,14 @@ class ParallelHeuristicBeamSearch:
                             "eligible_operations": eligible_operations,
                         }
                     )
+                candidate_complexities = (
+                    tuple(
+                        candidate_heuristic.candidate_complexity(candidate)
+                        for candidate in candidates
+                    )
+                    if complexity_order
+                    else None
+                )
                 records, timings, timed_out = _score_candidates_parallel(
                     node,
                     candidates,
@@ -132,6 +144,7 @@ class ParallelHeuristicBeamSearch:
                     heuristic,
                     workers=workers,
                     timeout_seconds=state_timeout_seconds,
+                    candidate_complexities=candidate_complexities,
                 )
                 telemetry.timings["state_expansion_seconds"] += timings[0]
                 telemetry.timings["goal_test_seconds"] += timings[1]
@@ -233,6 +246,7 @@ def _score_candidates_parallel(
     *,
     workers: int,
     timeout_seconds: float,
+    candidate_complexities: tuple[object, ...] | None = None,
 ):
     if not candidates:
         return [], (0.0, 0.0, 0.0), 0
@@ -242,9 +256,13 @@ def _score_candidates_parallel(
         initializer=_initialize_worker,
         initargs=(node, goal, heuristic),
     )
+    indexed_candidates = _ordered_indexed_candidates(
+        candidates,
+        candidate_complexities,
+    )
     results = [
         pool.apply_async(_score_candidate, ((index, candidate),))
-        for index, candidate in enumerate(candidates)
+        for index, candidate in indexed_candidates
     ]
     deadline = perf_counter() + timeout_seconds
     records = []
@@ -293,6 +311,29 @@ def _score_candidates_parallel(
         (expansion_seconds, goal_seconds, heuristic_seconds),
         timed_out,
     )
+
+
+def _ordered_indexed_candidates(
+    candidates: tuple[Candidate, ...],
+    complexities: tuple[object, ...] | None,
+) -> list[tuple[int, Candidate]]:
+    """按预测成本调度，但保留原索引用于确定性结果排序。"""
+
+    indexed = list(enumerate(candidates))
+    if complexities is None:
+        return indexed
+    if len(complexities) != len(candidates):
+        raise ValueError("候选复杂度数量与候选数量不一致")
+    return [
+        (index, candidate)
+        for _complexity, index, candidate in sorted(
+            (
+                (complexities[index], index, candidate)
+                for index, candidate in indexed
+            ),
+            key=lambda item: (item[0], item[1]),
+        )
+    ]
 
 
 _WORKER_NODE: SearchNode | None = None

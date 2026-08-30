@@ -37,6 +37,16 @@ class CandidateHeuristicScore:
     op_rank: int
 
 
+@dataclass(frozen=True, order=True, slots=True)
+class CandidateComplexityScore:
+    """越小越便宜：仅用于安排已选候选的精确执行顺序。"""
+
+    estimated_complexity: int
+    max_point_complexity: int
+    max_input_level: int
+    op_rank: int
+
+
 class PointDistanceHeuristic:
     """按目标附近的点及近似通过目标的对象对排序状态。"""
 
@@ -206,9 +216,15 @@ class TargetCandidateHeuristic:
         self._point_float_cache: dict[
             int, tuple[Point, tuple[float, float]]
         ] = {}
+        self._point_complexity_cache: dict[int, tuple[Point, int]] = {}
         self._existing_operation_keys: set[tuple] = set()
 
-    def prepare_state(self, state: GeometryState) -> None:
+    def prepare_state(
+        self,
+        state: GeometryState,
+        *,
+        include_complexity: bool = False,
+    ) -> None:
         """缓存当前状态的廉价点生成层级，供热路径 O(1) 查询。"""
 
         self._point_level_cache = {
@@ -219,6 +235,17 @@ class TargetCandidateHeuristic:
             id(point): (point, (float(point.x), float(point.y)))
             for point in state.points
         }
+        self._point_complexity_cache = (
+            {
+                id(point): (point, complexity)
+                for point, complexity in zip(
+                    state.points,
+                    state.point_complexities,
+                )
+            }
+            if include_complexity
+            else {}
+        )
         self._existing_operation_keys = {
             (
                 "line",
@@ -344,6 +371,54 @@ class TargetCandidateHeuristic:
         """返回两个输入点的最高生成层级，作为廉价成本代理。"""
 
         return max(self._point_level(first), self._point_level(second))
+
+    def operation_complexity(
+        self,
+        op: str,
+        first: Point,
+        second: Point,
+    ) -> CandidateComplexityScore:
+        """以 provenance 复杂度和生成层级预测精确展开成本。
+
+        该整数只随构造 provenance 做有界乘法，不查看 ``AA`` 最小多项式，因而
+        保持 O(1) 热路径。它不参与任何数学剪枝或验证结论。
+        """
+
+        first_complexity = self._point_complexity(first)
+        second_complexity = self._point_complexity(second)
+        op_factor = 1 if op == "line" else 2
+        return CandidateComplexityScore(
+            estimated_complexity=min(
+                1_000_000_000,
+                op_factor * first_complexity * second_complexity,
+            ),
+            max_point_complexity=max(
+                first_complexity,
+                second_complexity,
+            ),
+            max_input_level=max(
+                self._point_level(first),
+                self._point_level(second),
+            ),
+            op_rank=0 if op == "line" else 1,
+        )
+
+    def candidate_complexity(
+        self,
+        candidate: Candidate,
+    ) -> CandidateComplexityScore:
+        return self.operation_complexity(
+            candidate.op,
+            candidate.first,
+            candidate.second,
+        )
+
+    def _point_complexity(self, point: Point) -> int:
+        cache_key = id(point)
+        cached = self._point_complexity_cache.get(cache_key)
+        if cached is not None and cached[0] is point:
+            return cached[1]
+        raise ValueError("候选评分前必须先 prepare_state")
 
     def _point_coordinates(self, point: Point) -> tuple[float, float]:
         cache_key = id(point)

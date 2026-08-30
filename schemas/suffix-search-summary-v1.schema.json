@@ -73,6 +73,7 @@
       ]
     },
     "candidate_strategy": { "enum": ["diverse", "target-only"] },
+    "complexity_order": { "type": "boolean" },
     "max_states": {
       "oneOf": [
         { "$ref": "#/$defs/positiveInteger" },

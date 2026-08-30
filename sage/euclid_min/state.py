@@ -8,6 +8,9 @@ from .geometry import Circle, Drawable, Line, Point
 from .intersections import IntersectionResult, intersect
 
 
+_COMPLEXITY_CAP = 1_000_000_000
+
+
 class PointNotInStateError(ValueError):
     """基础操作引用了尚未位于数学状态中的点。"""
 
@@ -31,10 +34,13 @@ class GeometryState:
     def __init__(self) -> None:
         self._points: list[Point] = []
         self._point_levels: list[int] = []
+        self._point_complexities: list[int] = []
         self._lines: list[Line] = []
         self._line_levels: list[int] = []
+        self._line_complexities: list[int] = []
         self._circles: list[Circle] = []
         self._circle_levels: list[int] = []
+        self._circle_complexities: list[int] = []
 
     @classmethod
     def fixed_initial(cls) -> "GeometryState":
@@ -43,9 +49,13 @@ class GeometryState:
         state = cls()
         origin = Point(0, 0)
         start = Point(1, 0)
-        state._add_point(origin, level=0)
-        state._add_point(start, level=0)
-        state.add_circle(Circle.through(origin, start), level=0)
+        state._add_point(origin, level=0, complexity=1)
+        state._add_point(start, level=0, complexity=1)
+        state.add_circle(
+            Circle.through(origin, start),
+            level=0,
+            complexity=1,
+        )
         return state
 
     @property
@@ -57,6 +67,12 @@ class GeometryState:
         """与 ``points`` 对齐的启发式生成层级；不参与数学状态相等。"""
 
         return tuple(self._point_levels)
+
+    @property
+    def point_complexities(self) -> tuple[int, ...]:
+        """与 ``points`` 对齐的廉价 provenance 复杂度代理。"""
+
+        return tuple(self._point_complexities)
 
     @property
     def lines(self) -> tuple[Line, ...]:
@@ -76,10 +92,13 @@ class GeometryState:
         clone = type(self)()
         clone._points = list(self._points)
         clone._point_levels = list(self._point_levels)
+        clone._point_complexities = list(self._point_complexities)
         clone._lines = list(self._lines)
         clone._line_levels = list(self._line_levels)
+        clone._line_complexities = list(self._line_complexities)
         clone._circles = list(self._circles)
         clone._circle_levels = list(self._circle_levels)
+        clone._circle_complexities = list(self._circle_complexities)
         return clone
 
     def point_level(self, point: Point) -> int:
@@ -89,6 +108,14 @@ class GeometryState:
         if index is None:
             raise PointNotInStateError("点不在当前数学状态中")
         return self._point_levels[index]
+
+    def point_complexity(self, point: Point) -> int:
+        """返回点的 provenance 复杂度代理；不计算最小多项式。"""
+
+        index = self._find_equal_index(self._points, point)
+        if index is None:
+            raise PointNotInStateError("点不在当前数学状态中")
+        return self._point_complexities[index]
 
     def contains_point(self, point: Point) -> bool:
         return self._find_equal(self._points, point) is not None
@@ -104,16 +131,39 @@ class GeometryState:
 
         self._require_points(first, second)
         level = 1 + max(self.point_level(first), self.point_level(second))
-        return self.add_line(Line.through(first, second), level=level)
+        complexity = _bounded_product(
+            self.point_complexity(first),
+            self.point_complexity(second),
+        )
+        return self.add_line(
+            Line.through(first, second),
+            level=level,
+            complexity=complexity,
+        )
 
     def draw_circle(self, center: Point, through: Point) -> AdditionResult:
         """用状态中的两个点画基础圆并执行自动交点闭包。"""
 
         self._require_points(center, through)
         level = 1 + max(self.point_level(center), self.point_level(through))
-        return self.add_circle(Circle.through(center, through), level=level)
+        complexity = _bounded_product(
+            self.point_complexity(center),
+            self.point_complexity(through),
+            factor=2,
+        )
+        return self.add_circle(
+            Circle.through(center, through),
+            level=level,
+            complexity=complexity,
+        )
 
-    def add_line(self, line: Line, *, level: int = 0) -> AdditionResult:
+    def add_line(
+        self,
+        line: Line,
+        *,
+        level: int = 0,
+        complexity: int = 1,
+    ) -> AdditionResult:
         """加入精确直线；重复对象不重新求交。"""
 
         existing = self._find_equal(self._lines, line)
@@ -121,24 +171,47 @@ class GeometryState:
             return AdditionResult(existing, False, (), ())
 
         results = [
-            (intersect(line, old), max(level, old_level))
-            for old, old_level in zip(self._lines, self._line_levels)
+            (
+                intersect(line, old),
+                max(level, old_level),
+                _bounded_product(complexity, old_complexity),
+            )
+            for old, old_level, old_complexity in zip(
+                self._lines,
+                self._line_levels,
+                self._line_complexities,
+            )
         ]
         results.extend(
-            (intersect(line, old), max(level, old_level))
-            for old, old_level in zip(self._circles, self._circle_levels)
+            (
+                intersect(line, old),
+                max(level, old_level),
+                _bounded_product(complexity, old_complexity, factor=2),
+            )
+            for old, old_level, old_complexity in zip(
+                self._circles,
+                self._circle_levels,
+                self._circle_complexities,
+            )
         )
         self._lines.append(line)
         self._line_levels.append(level)
+        self._line_complexities.append(complexity)
         new_points = self._add_intersection_points(results)
         return AdditionResult(
             line,
             True,
             new_points,
-            tuple(result for result, _point_level in results),
+            tuple(result for result, _point_level, _complexity in results),
         )
 
-    def add_circle(self, circle: Circle, *, level: int = 0) -> AdditionResult:
+    def add_circle(
+        self,
+        circle: Circle,
+        *,
+        level: int = 0,
+        complexity: int = 1,
+    ) -> AdditionResult:
         """加入精确圆；重复对象不重新求交。"""
 
         existing = self._find_equal(self._circles, circle)
@@ -146,43 +219,75 @@ class GeometryState:
             return AdditionResult(existing, False, (), ())
 
         results = [
-            (intersect(circle, old), max(level, old_level))
-            for old, old_level in zip(self._lines, self._line_levels)
+            (
+                intersect(circle, old),
+                max(level, old_level),
+                _bounded_product(complexity, old_complexity, factor=2),
+            )
+            for old, old_level, old_complexity in zip(
+                self._lines,
+                self._line_levels,
+                self._line_complexities,
+            )
         ]
         results.extend(
-            (intersect(circle, old), max(level, old_level))
-            for old, old_level in zip(self._circles, self._circle_levels)
+            (
+                intersect(circle, old),
+                max(level, old_level),
+                _bounded_product(complexity, old_complexity, factor=2),
+            )
+            for old, old_level, old_complexity in zip(
+                self._circles,
+                self._circle_levels,
+                self._circle_complexities,
+            )
         )
         self._circles.append(circle)
         self._circle_levels.append(level)
+        self._circle_complexities.append(complexity)
         new_points = self._add_intersection_points(results)
         return AdditionResult(
             circle,
             True,
             new_points,
-            tuple(result for result, _point_level in results),
+            tuple(result for result, _point_level, _complexity in results),
         )
 
     def _add_intersection_points(
-        self, results: list[tuple[IntersectionResult, int]]
+        self, results: list[tuple[IntersectionResult, int, int]]
     ) -> tuple[Point, ...]:
         new_points: list[Point] = []
-        for result, level in results:
+        for result, level, complexity in results:
             for point in result.points:
-                if self._add_point(point, level=level):
+                if self._add_point(
+                    point,
+                    level=level,
+                    complexity=complexity,
+                ):
                     new_points.append(point)
         return tuple(new_points)
 
-    def _add_point(self, point: Point, *, level: int = 0) -> bool:
+    def _add_point(
+        self,
+        point: Point,
+        *,
+        level: int = 0,
+        complexity: int = 1,
+    ) -> bool:
         existing_index = self._find_equal_index(self._points, point)
         if existing_index is not None:
             self._point_levels[existing_index] = min(
                 self._point_levels[existing_index],
                 level,
             )
+            self._point_complexities[existing_index] = min(
+                self._point_complexities[existing_index],
+                complexity,
+            )
             return False
         self._points.append(point)
         self._point_levels.append(level)
+        self._point_complexities.append(complexity)
         return True
 
     def _require_points(self, *points: Point) -> None:
@@ -203,6 +308,12 @@ class GeometryState:
             if item == candidate:
                 return index
         return None
+
+
+def _bounded_product(first: int, second: int, *, factor: int = 1) -> int:
+    """返回有上限的廉价 provenance 乘积，避免路径增长造成大整数热点。"""
+
+    return min(_COMPLEXITY_CAP, factor * max(1, first) * max(1, second))
 
 
 class ImplicitClosureState:

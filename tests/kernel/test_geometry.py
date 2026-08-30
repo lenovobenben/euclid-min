@@ -186,10 +186,12 @@ class GeometryStateTests(unittest.TestCase):
         state = GeometryState.fixed_initial()
         origin, start = state.points
         self.assertEqual(state.point_levels, (0, 0))
+        self.assertEqual(state.point_complexities, (1, 1))
 
         circle_result = state.draw_circle(start, origin)
         equilateral = circle_result.new_points[0]
         self.assertEqual(state.point_level(equilateral), 1)
+        self.assertEqual(state.point_complexity(equilateral), 4)
 
         line_result = state.draw_line(origin, equilateral)
         self.assertTrue(line_result.new_points)
@@ -199,6 +201,12 @@ class GeometryStateTests(unittest.TestCase):
         self.assertTrue(
             any(
                 state.point_level(point) == 2
+                for point in line_result.new_points
+            )
+        )
+        self.assertTrue(
+            any(
+                state.point_complexity(point) >= 8
                 for point in line_result.new_points
             )
         )
