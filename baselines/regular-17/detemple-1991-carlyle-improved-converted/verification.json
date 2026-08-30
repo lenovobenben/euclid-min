@@ -5,35 +5,35 @@
     "version": "0.5.0",
     "sage_version": "10.7"
   },
-  "certificate_sha256": "552e99b6b49462d792712a4fc3301142bcd131200f8769d47f7910da59267884",
-  "construction_sha256": "ec0b77c3041a0e2fee046f65508d0d27a0199f3bcf5672c8ff386953df869026",
+  "certificate_sha256": "8817051bbf18f29a19d8ef944fca17306ccc04a57f26403359706cf6c99963a5",
+  "construction_sha256": "781937e73abdc6d0be9d5d81100650a780cf145d2347dda03bb77435090e172c",
   "profile": {
     "id": "regular-17-e-fixed-v1",
     "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
   },
   "valid": true,
   "draw_operations": {
-    "lines": 9,
-    "circles": 15,
-    "total": 24
+    "lines": 7,
+    "circles": 14,
+    "total": 21
   },
   "distinct_objects": {
-    "lines": 9,
-    "circles": 16
+    "lines": 7,
+    "circles": 15
   },
-  "bound_points": 25,
+  "bound_points": 24,
   "closure_strategy": "implicit_exact",
   "duplicate_draws": 0,
   "score": {
     "metric": "e_move",
-    "e_move": 24
+    "e_move": 21
   },
   "targets": [
     "B_plus",
     "B_minus"
   ],
-  "first_target_program_index": 46,
-  "first_target_e_move": 24,
+  "first_target_program_index": 42,
+  "first_target_e_move": 21,
   "requested_claim": "verified_construction",
   "supported_claim": "verified_construction"
 }

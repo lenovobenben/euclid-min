@@ -1,12 +1,12 @@
 {
   "schema": "euclid-min-dependency-graph/v1",
   "construction_id": "detemple-1991-carlyle-improved-converted",
-  "construction_sha256": "ec0b77c3041a0e2fee046f65508d0d27a0199f3bcf5672c8ff386953df869026",
+  "construction_sha256": "781937e73abdc6d0be9d5d81100650a780cf145d2347dda03bb77435090e172c",
   "profile": {
     "id": "regular-17-e-fixed-v1",
     "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
   },
-  "total_e_move": 24,
+  "total_e_move": 21,
   "nodes": [
     {
       "id": "O",
@@ -290,90 +290,50 @@
       ]
     },
     {
-      "id": "copy1_D_Q",
-      "op": "line",
+      "id": "direct_y_center",
+      "op": "intersect",
+      "cost": 0,
+      "e_move_after": 12,
+      "depends_on": [
+        "bisector_QO",
+        "c_Qhalf_O"
+      ]
+    },
+    {
+      "id": "c_direct_y",
+      "op": "circle",
       "cost": 1,
       "e_move_after": 13,
       "depends_on": [
-        "eq_QO_high",
-        "Q"
-      ]
-    },
-    {
-      "id": "copy1_D_O",
-      "op": "line",
-      "cost": 1,
-      "e_move_after": 14,
-      "depends_on": [
-        "eq_QO_high",
-        "O"
-      ]
-    },
-    {
-      "id": "copy1_c_Q_H1_4",
-      "op": "circle",
-      "cost": 1,
-      "e_move_after": 15,
-      "depends_on": [
-        "Q",
+        "direct_y_center",
         "H1_4"
-      ]
-    },
-    {
-      "id": "copy1_G",
-      "op": "intersect",
-      "cost": 0,
-      "e_move_after": 15,
-      "depends_on": [
-        "copy1_D_Q",
-        "copy1_c_Q_H1_4"
-      ]
-    },
-    {
-      "id": "copy1_c_D_G",
-      "op": "circle",
-      "cost": 1,
-      "e_move_after": 16,
-      "depends_on": [
-        "eq_QO_high",
-        "copy1_G"
-      ]
-    },
-    {
-      "id": "copy1_L",
-      "op": "intersect",
-      "cost": 0,
-      "e_move_after": 16,
-      "depends_on": [
-        "copy1_D_O",
-        "copy1_c_D_G"
-      ]
-    },
-    {
-      "id": "c_O_QH1_4",
-      "op": "circle",
-      "cost": 1,
-      "e_move_after": 17,
-      "depends_on": [
-        "O",
-        "copy1_L"
       ]
     },
     {
       "id": "Y",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 17,
+      "e_move_after": 13,
       "depends_on": [
-        "c_O_QH1_4",
-        "y_axis"
+        "y_axis",
+        "c_direct_y"
+      ]
+    },
+    {
+      "id": "c_O_Y",
+      "op": "circle",
+      "cost": 1,
+      "e_move_after": 14,
+      "depends_on": [
+        "O",
+        "Y"
       ]
     },
     {
       "id": "c_Y_O",
       "op": "circle",
       "cost": 1,
-      "e_move_after": 18,
+      "e_move_after": 15,
       "depends_on": [
         "Y",
         "O"
@@ -383,9 +343,9 @@
       "id": "b_OY_low",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 18,
+      "e_move_after": 15,
       "depends_on": [
-        "c_O_QH1_4",
+        "c_O_Y",
         "c_Y_O"
       ]
     },
@@ -393,9 +353,9 @@
       "id": "b_OY_high",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 18,
+      "e_move_after": 15,
       "depends_on": [
-        "c_O_QH1_4",
+        "c_O_Y",
         "c_Y_O"
       ]
     },
@@ -403,7 +363,7 @@
       "id": "bisector_O_Y",
       "op": "line",
       "cost": 1,
-      "e_move_after": 19,
+      "e_move_after": 16,
       "depends_on": [
         "b_OY_low",
         "b_OY_high"
@@ -413,7 +373,7 @@
       "id": "line_Y_H0_4",
       "op": "line",
       "cost": 1,
-      "e_move_after": 20,
+      "e_move_after": 17,
       "depends_on": [
         "Y",
         "H0_4"
@@ -423,7 +383,7 @@
       "id": "M0_4",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 20,
+      "e_move_after": 17,
       "depends_on": [
         "bisector_O_Y",
         "line_Y_H0_4"
@@ -433,7 +393,7 @@
       "id": "c_M0_4_Ay",
       "op": "circle",
       "cost": 1,
-      "e_move_after": 21,
+      "e_move_after": 18,
       "depends_on": [
         "M0_4",
         "Ay"
@@ -443,7 +403,7 @@
       "id": "H0_8",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 21,
+      "e_move_after": 18,
       "depends_on": [
         "c_M0_4_Ay",
         "x_axis"
@@ -453,7 +413,7 @@
       "id": "target_bisector_c_H_O",
       "op": "circle",
       "cost": 1,
-      "e_move_after": 22,
+      "e_move_after": 19,
       "depends_on": [
         "H0_8",
         "O"
@@ -463,7 +423,7 @@
       "id": "target_bisector_c_O_H",
       "op": "circle",
       "cost": 1,
-      "e_move_after": 23,
+      "e_move_after": 20,
       "depends_on": [
         "O",
         "H0_8"
@@ -473,7 +433,7 @@
       "id": "target_bisector_low",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 23,
+      "e_move_after": 20,
       "depends_on": [
         "target_bisector_c_H_O",
         "target_bisector_c_O_H"
@@ -483,7 +443,7 @@
       "id": "target_bisector_high",
       "op": "intersect",
       "cost": 0,
-      "e_move_after": 23,
+      "e_move_after": 20,
       "depends_on": [
         "target_bisector_c_H_O",
         "target_bisector_c_O_H"
@@ -493,7 +453,7 @@
       "id": "target_chord",
       "op": "line",
       "cost": 1,
-      "e_move_after": 24,
+      "e_move_after": 21,
       "depends_on": [
         "target_bisector_low",
         "target_bisector_high"
