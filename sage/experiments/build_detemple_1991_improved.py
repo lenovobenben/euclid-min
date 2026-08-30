@@ -1,7 +1,8 @@
-"""生成 DeTemple 1991 两项修改版的 29 E 证书。
+"""生成 DeTemple 1991 两项修改并清理无效分支后的 27 E 证书。
 
 原文第 104 页建议用半尺度 Carlyle 圆直接得到 M_{0,2}、M_{1,2}，
-并让步骤 (vi) 已有的圆复用于 OY 的中垂线。本转写仍按
+并让步骤 (vi) 已有的圆复用于 OY 的中垂线。直接得到这两个中点后，
+原步骤 (ii)-(iii) 产生的完整尺度根不再被使用，故一并删除。本转写仍按
 `regular-17-e-fixed-v1` 使用 collapsing compass。
 """
 
@@ -35,12 +36,12 @@ DEFAULT_DEPENDENCY_GRAPH_OUTPUT = DEFAULT_OUTPUT.with_name("dependency-graph.jso
 
 
 def build_program() -> list[dict]:
-    """把基线路线的步骤 (iv)、(vii)-(viii) 换成论文的两项修改。"""
+    """应用论文两项修改，并删除被半尺度路线取代的无效分支。"""
 
     baseline = build_baseline_program()
     first_replaced = next(
         index for index, entry in enumerate(baseline)
-        if entry["id"] == "c_O_H0_2"
+        if entry["id"] == "c_Qhalf_A"
     )
     after_replaced = next(
         index for index, entry in enumerate(baseline)
@@ -95,8 +96,9 @@ def build_certificate(profile_path: Path = DEFAULT_PROFILE) -> dict:
         "id": "detemple-1991-carlyle-improved-converted",
         "title": "DeTemple 1991 improved Carlyle construction converted to collapsing compass",
         "description": (
-            "Modified DeTemple route using both improvements from page 104; "
-            "axes are charged and both distance transfers are expanded."
+            "Modified DeTemple route using both improvements from page 104, "
+            "with the superseded full-scale root branch removed; axes are "
+            "charged and both distance transfers are expanded."
         ),
         "program": build_program(),
     }

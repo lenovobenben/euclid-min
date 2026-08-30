@@ -18,7 +18,7 @@ O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
 
 ## 当前状态
 
-项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**、**M4：基础搜索器**、**M5：profiling 与启发式搜索**和 **M6：新的已验证上界**。DeTemple 1991 修改版的 Carlyle 圆构造经当前 profile 转写后，由 Sage verifier 精确重放为 **29 E**（10 条直线、19 个圆），比原 32 E baseline 短 3 E。
+项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**、**M4：基础搜索器**、**M5：profiling 与启发式搜索**和 **M6：新的已验证上界**。DeTemple 1991 修改版的 Carlyle 圆构造经当前 profile 转写并清理无效分支后，由 Sage verifier 精确重放为 **27 E**（10 条直线、17 个圆），比原 32 E baseline 短 5 E。
 
 唯一规范 profile 为：
 
@@ -43,7 +43,7 @@ regular-17-e-fixed-v1
 - [实施路线](docs/ROADMAP.md)：从规范到搜索器的阶段计划；
 - [基础搜索器](docs/SEARCH.md)：M4 状态、候选、去重、checkpoint 和 CLI；
 - [M5 Profiling](docs/M5_PROFILING.md)：固定实验、热点结论和启发式边界；
-- [29 E 新上界说明](baselines/regular-17/detemple-1991-carlyle-improved-converted/explanation.md)：M6 证书、推导、计分与依赖主链；
+- [27 E 新上界说明](baselines/regular-17/detemple-1991-carlyle-improved-converted/explanation.md)：M6 证书、推导、计分与依赖主链；
 - [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
 - [Profile Schema](schemas/profile-v1.schema.json)；
@@ -72,9 +72,9 @@ regular-17-e-fixed-v1
 4. **M3：首个 baseline**——完整录入并验证一个正十七边形已知构造；
 5. **M4：基础搜索**——实现小深度可审计搜索和证书导出；
 6. **M5：profiling 与启发式搜索**——定位热点并实现非证明 beam；
-7. **M6：新的已验证上界**——把论文两项修改转写并验证为 29 E。
+7. **M6：新的已验证上界**——把论文两项修改转写、清理无效分支并验证为 27 E。
 
-M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。M6 的 29 E 来自可审计的构造化简，不依赖启发式搜索成功。下一阶段可继续压缩上界，或在状态等价与安全剪枝成熟后评估 M7 proof mode。
+M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。M6 的 27 E 来自可审计的构造化简和依赖清理，不依赖启发式搜索成功。下一阶段可继续压缩上界，或在状态等价与安全剪枝成熟后评估 M7 proof mode。
 
 更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
 
@@ -116,4 +116,4 @@ baselines/regular-17/detemple-1991-carlyle-improved-converted/construction.json
 
 ## 研究声明
 
-仓库当前给出一个在固定 profile 下重算为 29 E 的新已验证上界，并保留 32 E 首个 baseline 供差分审计。项目尚未完成系统文献检索，也没有 lower-bound proof，因此不声称 29 E 是文献最短、最短已知或全局最优。
+仓库当前给出一个在固定 profile 下重算为 27 E 的新已验证上界，并保留 32 E 首个 baseline 供差分审计。项目尚未完成系统文献检索，也没有 lower-bound proof，因此不声称 27 E 是文献最短、最短已知或全局最优。

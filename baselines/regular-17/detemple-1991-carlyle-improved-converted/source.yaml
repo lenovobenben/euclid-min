@@ -30,8 +30,11 @@ euclid_min:
   conversion_notes: >-
     The x- and y-axes are constructed and charged. Both modifications stated
     on page 104 are used: the half-scaled Carlyle circle replaces the double
-    bisection, and the circle from step (vi) is reused to bisect OY. Both
-    non-collapsing distance transfers are expanded into collapsing-compass
-    primitive operations. Only either adjacent vertex of A is required.
-  recomputed_e_score: 29
+    bisection, and the circle from step (vi) is reused to bisect OY. Because
+    the half-scaled circle directly locates the two centers needed by step
+    (v), the superseded full-scale root branch from steps (ii)-(iii) is
+    removed. Both non-collapsing distance transfers are expanded into
+    collapsing-compass primitive operations. Only either adjacent vertex of
+    A is required.
+  recomputed_e_score: 27
   verification_status: verified

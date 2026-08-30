@@ -8,7 +8,7 @@
   "construction": {
     "id": "detemple-1991-carlyle-improved-converted",
     "title": "DeTemple 1991 improved Carlyle construction converted to collapsing compass",
-    "description": "Modified DeTemple route using both improvements from page 104; axes are charged and both distance transfers are expanded.",
+    "description": "Modified DeTemple route using both improvements from page 104, with the superseded full-scale root branch removed; axes are charged and both distance transfers are expanded.",
     "program": [
       {
         "id": "x_axis",
@@ -114,45 +114,6 @@
           "x_axis"
         ],
         "index": 0
-      },
-      {
-        "id": "c_Qhalf_A",
-        "op": "circle",
-        "center": "Qhalf",
-        "through": "A"
-      },
-      {
-        "id": "M0",
-        "op": "intersect",
-        "objects": [
-          "c_Qhalf_A",
-          "bisector_QO"
-        ],
-        "index": 0
-      },
-      {
-        "id": "c_M0_Ay",
-        "op": "circle",
-        "center": "M0",
-        "through": "Ay"
-      },
-      {
-        "id": "H1_2",
-        "op": "intersect",
-        "objects": [
-          "c_M0_Ay",
-          "x_axis"
-        ],
-        "index": 0
-      },
-      {
-        "id": "H0_2",
-        "op": "intersect",
-        "objects": [
-          "c_M0_Ay",
-          "x_axis"
-        ],
-        "index": 1
       },
       {
         "id": "c_Qhalf_O",
@@ -452,7 +413,7 @@
   "assertions": {
     "score": {
       "metric": "e_move",
-      "e_move": 29
+      "e_move": 27
     },
     "targets": [
       "B_plus",
@@ -467,6 +428,6 @@
     }
   },
   "integrity": {
-    "construction_sha256": "6e79d4da660431af6f2b52df185d56243ea446b8445609d0eabb8b58d4fe1a76"
+    "construction_sha256": "df01b48c160cf9a84493a5a16430cc4ca6067e896155b8da45c10ea19937ddc2"
   }
 }

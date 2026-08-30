@@ -232,13 +232,14 @@ sage -python -m euclid_min verify \
 ### 落地结果
 
 - 核对 DeTemple 1991 第 104 页的两项修改，并把它们翻译为当前可折叠圆规 profile；
-- 半尺度 Carlyle 圆把原步骤 (iv) 从 6 E 降为 4 E；
+- 半尺度 Carlyle 圆直接得到后续所需的两个中点，使原步骤 (ii)–(iv) 的 8 E 分支可由 4 E 替换；
 - 复用步骤 (vi) 已有的圆，把原步骤 (vii)–(viii) 从 4 E 降为 3 E；
-- 新证书由独立 SageMath 10.7 verifier 精确重放为 29 E：10 条直线、19 个圆；
-- 两个相邻目标均在第 29 E 首次出现，无重复绘制；
-- 相比同一 profile 的 32 E baseline，新的已验证上界降低 3 E；
+- 依赖 DAG 审计确认完整尺度根分支已被取代，删除其中两个无后继的计费圆及其零成本交点；
+- 新证书由独立 SageMath 10.7 verifier 精确重放为 27 E：10 条直线、17 个圆；
+- 两个相邻目标均在第 27 E 首次出现，无重复绘制；
+- 相比同一 profile 的 32 E baseline，新的已验证上界降低 5 E；
 - profile、证书、验证报告、机器可读依赖 DAG、Schema、来源台账、中文说明和回归测试均已发布；
-- 该结果不包含 lower-bound proof，不声称 29 E 全局最优或文献最短。
+- 该结果不包含 lower-bound proof，不声称 27 E 全局最优或文献最短。
 
 ## M7：Proof Mode（长期可选）
 
