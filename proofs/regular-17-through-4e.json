@@ -1,0 +1,106 @@
+{
+  "schema": "euclid-min-bounded-proof/v1",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "target": {
+    "type": "regular_polygon_adjacent_vertex",
+    "polygon_sides": 17,
+    "accepted": [
+      "B_plus",
+      "B_minus"
+    ]
+  },
+  "proof_mode": {
+    "strategy": "exact_breadth_first",
+    "arithmetic": "sage_aa_exact",
+    "candidate_generation": "all_distinct_objects_from_all_state_points",
+    "heuristic_pruning": false,
+    "state_limit": null,
+    "timeouts": false,
+    "safe_reductions": [
+      "duplicate_draw_dominance",
+      "same_object_parameterization_equivalence",
+      "exact_state_equivalence",
+      "horizontal_reflection_equivalence",
+      "final_step_target_incidence"
+    ]
+  },
+  "bound": {
+    "metric": "e_move",
+    "max_score": 4
+  },
+  "result": {
+    "status": "exhausted",
+    "claim": "no_target_at_or_below_max_score",
+    "minimum_score": null
+  },
+  "layers": [
+    {
+      "score": 0,
+      "frontier_states": 1,
+      "goal_states": 0,
+      "expanded_states": 1,
+      "generated_candidates": 2,
+      "accepted_next_states": 2,
+      "equivalent_pruned": 0,
+      "terminal_candidates": 0,
+      "terminal_nonmatching_pruned": 0
+    },
+    {
+      "score": 1,
+      "frontier_states": 2,
+      "goal_states": 0,
+      "expanded_states": 2,
+      "generated_candidates": 14,
+      "accepted_next_states": 9,
+      "equivalent_pruned": 5,
+      "terminal_candidates": 0,
+      "terminal_nonmatching_pruned": 0
+    },
+    {
+      "score": 2,
+      "frontier_states": 9,
+      "goal_states": 0,
+      "expanded_states": 9,
+      "generated_candidates": 147,
+      "accepted_next_states": 104,
+      "equivalent_pruned": 43,
+      "terminal_candidates": 0,
+      "terminal_nonmatching_pruned": 0
+    },
+    {
+      "score": 3,
+      "frontier_states": 104,
+      "goal_states": 0,
+      "expanded_states": 104,
+      "generated_candidates": 4173,
+      "accepted_next_states": 0,
+      "equivalent_pruned": 0,
+      "terminal_candidates": 0,
+      "terminal_nonmatching_pruned": 4173
+    },
+    {
+      "score": 4,
+      "frontier_states": 0,
+      "goal_states": 0,
+      "expanded_states": 0,
+      "generated_candidates": 0,
+      "accepted_next_states": 0,
+      "equivalent_pruned": 0,
+      "terminal_candidates": 0,
+      "terminal_nonmatching_pruned": 0
+    }
+  ],
+  "totals": {
+    "expanded_states": 116,
+    "generated_candidates": 4336,
+    "accepted_states": 116,
+    "equivalent_pruned": 48,
+    "terminal_candidates": 0,
+    "terminal_nonmatching_pruned": 4173,
+    "max_frontier": 104,
+    "goal_tests": 116
+  }
+}

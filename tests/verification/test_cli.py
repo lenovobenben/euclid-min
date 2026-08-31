@@ -97,6 +97,42 @@ class CliTests(unittest.TestCase):
         self.assertEqual(summary["status"], "heuristic_limit")
         self.assertEqual(summary["search_mode"], "heuristic_nonproof")
 
+    def test_prove_and_check_proof_commands_round_trip(self):
+        prove_output = io.StringIO()
+        check_output = io.StringIO()
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            proof_path = Path(temporary_directory) / "bounded-proof.json"
+            with redirect_stdout(prove_output):
+                prove_exit_code = main(
+                    [
+                        "prove",
+                        "--profile",
+                        str(PROFILE_PATH),
+                        "--max-score",
+                        "0",
+                        "--output",
+                        str(proof_path),
+                        "--json",
+                    ]
+                )
+            with redirect_stdout(check_output):
+                check_exit_code = main(
+                    [
+                        "check-proof",
+                        "--profile",
+                        str(PROFILE_PATH),
+                        str(proof_path),
+                        "--json",
+                    ]
+                )
+
+        prove_summary = json.loads(prove_output.getvalue())
+        check_summary = json.loads(check_output.getvalue())
+        self.assertEqual(prove_exit_code, 0)
+        self.assertEqual(check_exit_code, 0)
+        self.assertEqual(prove_summary["result"]["status"], "exhausted")
+        self.assertTrue(check_summary["valid"])
+
 
 if __name__ == "__main__":
     unittest.main()

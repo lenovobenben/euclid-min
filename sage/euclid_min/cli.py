@@ -19,6 +19,7 @@ from .search import (
 )
 from .search.checkpoint import load_checkpoint, save_checkpoint
 from .search.export import build_certificate_from_steps
+from .search.proof import check_bounded_proof, save_bounded_proof
 from .verifier import VerificationReport, verify_files
 from .version import __version__
 
@@ -82,6 +83,40 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="以 JSON 输出搜索摘要",
     )
+
+    prove_parser = subparsers.add_parser(
+        "prove",
+        help="生成无启发式的小深度有界穷尽证明记录",
+    )
+    prove_parser.add_argument("--profile", required=True, help="profile YAML 文件")
+    prove_parser.add_argument(
+        "--max-score",
+        required=True,
+        type=int,
+        help="要完整排除或求得最小值的最大 E-score",
+    )
+    prove_parser.add_argument("--output", required=True, help="证明记录 JSON 文件")
+    prove_parser.add_argument(
+        "--json",
+        action="store_true",
+        help="以 JSON 输出生成摘要",
+    )
+
+    check_proof_parser = subparsers.add_parser(
+        "check-proof",
+        help="用线性精确参考枚举器重放证明记录",
+    )
+    check_proof_parser.add_argument("proof", help="bounded proof JSON 文件")
+    check_proof_parser.add_argument(
+        "--profile",
+        required=True,
+        help="profile YAML 文件",
+    )
+    check_proof_parser.add_argument(
+        "--json",
+        action="store_true",
+        help="以 JSON 输出检查摘要",
+    )
     return parser
 
 
@@ -89,6 +124,10 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.command == "search":
         return _run_search(args)
+    if args.command == "prove":
+        return _run_prove(args)
+    if args.command == "check-proof":
+        return _run_check_proof(args)
     if args.command != "verify":
         return 2
 
@@ -204,6 +243,56 @@ def _run_search(args: argparse.Namespace) -> int:
     except (VerificationError, ValueError, RuntimeError, OSError) as error:
         print(f"搜索失败：{error}", file=sys.stderr)
         return 2
+
+
+def _run_prove(args: argparse.Namespace) -> int:
+    try:
+        proof = save_bounded_proof(
+            args.output,
+            profile_path=args.profile,
+            max_score=args.max_score,
+        )
+        summary = {
+            "proof": str(args.output),
+            "profile": proof["profile"],
+            "bound": proof["bound"],
+            "result": proof["result"],
+            "totals": proof["totals"],
+        }
+        if args.json:
+            print(json.dumps(summary, ensure_ascii=False, indent=2))
+        else:
+            print(f"证明记录：{args.output}")
+            print(f"最大 E-score：{proof['bound']['max_score']}")
+            if proof["result"]["status"] == "exhausted":
+                print("结论：给定分数界内已穷尽且未命中目标")
+            else:
+                print(
+                    "结论：目标的最小 E-score 为 "
+                    f"{proof['result']['minimum_score']}"
+                )
+        return 0
+    except (VerificationError, ValueError, RuntimeError, OSError) as error:
+        print(f"证明记录生成失败：{error}", file=sys.stderr)
+        return 2
+
+
+def _run_check_proof(args: argparse.Namespace) -> int:
+    try:
+        summary = check_bounded_proof(
+            args.proof,
+            profile_path=args.profile,
+        )
+        if args.json:
+            print(json.dumps(summary, ensure_ascii=False, indent=2))
+        else:
+            print("证明记录有效：是")
+            print(f"Checker：{summary['checker']}")
+            print(f"证明文件 SHA-256：{summary['proof_sha256']}")
+        return 0
+    except (VerificationError, ValueError, RuntimeError, OSError) as error:
+        print(f"证明记录无效：{error}", file=sys.stderr)
+        return 1
 
 
 def _write_report(path: Path, report: VerificationReport) -> None:

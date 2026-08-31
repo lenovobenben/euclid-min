@@ -200,13 +200,21 @@ def _object_key(candidate: Drawable) -> tuple[str, ...]:
     if isinstance(candidate, Line):
         return (
             "line",
-            float(candidate.a).hex(),
-            float(candidate.b).hex(),
-            float(candidate.c).hex(),
+            _float_token(candidate.a),
+            _float_token(candidate.b),
+            _float_token(candidate.c),
         )
     return (
         "circle",
-        float(candidate.center.x).hex(),
-        float(candidate.center.y).hex(),
-        float(candidate.radius_squared).hex(),
+        _float_token(candidate.center.x),
+        _float_token(candidate.center.y),
+        _float_token(candidate.radius_squared),
     )
+
+
+def _float_token(value) -> str:
+    """规范化非权威分桶值，避免精确零保留浮点符号位。"""
+
+    if value == 0:
+        return float(0).hex()
+    return float(value).hex()
