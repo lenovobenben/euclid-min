@@ -49,6 +49,7 @@ regular-17-e-fixed-v1
 - [旧版 4 E 证明记录](proofs/regular-17-through-4e.json)：保留用于 v1 兼容性；
 - [5 E 两步义务生成扫描](benchmarks/m7-two-step-obligation-scan-sage-10.7.json)：P3b 的中间 proof candidate；
 - [19 E 新上界说明](baselines/regular-17/detemple-1991-carlyle-improved-converted/explanation.md)：M6 证书、推导、计分与依赖主链；
+- [E19 Manim 宣传动画](animations/e19/README.md)：权威 19 步文字脚本、Sage 几何导出和可复现动画场景；
 - [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
 - [Profile Schema](schemas/profile-v1.schema.json)；

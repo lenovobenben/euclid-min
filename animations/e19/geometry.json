@@ -1,0 +1,754 @@
+{
+  "schema": "euclid-min-manim-e19/v1",
+  "source": {
+    "certificate": "baselines/regular-17/detemple-1991-carlyle-improved-converted/construction.json",
+    "certificate_sha256": "652ce4f04f264bf238e9e5cc7812ec568f90791b3b0a26e16a92c90eb819c13d",
+    "construction_sha256": "2248c9683f876e4a87d0a1b0bacdd4ae40f21c2d9d121e9586a749d840d9264b",
+    "profile_id": "regular-17-e-fixed-v1",
+    "profile_sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014",
+    "sage_version": "10.7"
+  },
+  "verified_result": {
+    "e_move": 19,
+    "line_draws": 8,
+    "circle_draws": 11,
+    "first_target_e_move": 19,
+    "target": "B_plus"
+  },
+  "initial": {
+    "O": [
+      0.0,
+      0.0
+    ],
+    "A": [
+      1.0,
+      0.0
+    ],
+    "unit_circle": {
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 1.0
+    }
+  },
+  "target": {
+    "id": "B_plus",
+    "point": [
+      0.9324722294043557,
+      0.3612416661871529
+    ]
+  },
+  "points": {
+    "A": [
+      1.0,
+      0.0
+    ],
+    "Ay": [
+      0.0,
+      1.0
+    ],
+    "H0_4": [
+      2.0494811777353155,
+      0.0
+    ],
+    "H1_4": [
+      0.34415073140891084,
+      0.0
+    ],
+    "H4_8": [
+      0.184536718926604,
+      0.0
+    ],
+    "M0_2": [
+      0.7807764064044151,
+      0.0
+    ],
+    "M0_4": [
+      1.0247405888676577,
+      0.6720753657044554
+    ],
+    "M1_2": [
+      -1.280776406404415,
+      0.0
+    ],
+    "O": [
+      0.0,
+      0.0
+    ],
+    "Q": [
+      -1.0,
+      0.0
+    ],
+    "Qhalf": [
+      -0.5,
+      0.0
+    ],
+    "Qquarter": [
+      -0.25,
+      0.0
+    ],
+    "Y": [
+      0.0,
+      1.3441507314089107
+    ],
+    "b_Qhalf_high": [
+      -0.25,
+      0.4330127018922193
+    ],
+    "b_Qhalf_low": [
+      -0.25,
+      -0.4330127018922193
+    ],
+    "direct_y_center": [
+      -0.5,
+      0.5
+    ],
+    "eq_QO_high": [
+      -0.5,
+      0.8660254037844386
+    ],
+    "eq_QO_low": [
+      -0.5,
+      -0.8660254037844386
+    ],
+    "m_center_helper_point": [
+      -0.5,
+      -1.280776406404415
+    ],
+    "positive_half": [
+      0.5,
+      0.0
+    ],
+    "scaled_circle_low": [
+      -0.25,
+      -1.030776406404415
+    ],
+    "target_helper_point": [
+      -0.01702690031609822,
+      0.18374951781657034
+    ],
+    "y_axis_high": [
+      0.0,
+      1.7320508075688772
+    ],
+    "y_axis_low": [
+      0.0,
+      -1.7320508075688772
+    ]
+  },
+  "events": [
+    {
+      "kind": "draw",
+      "program_index": 0,
+      "e_move": 1,
+      "id": "x_axis",
+      "op": "line",
+      "geometry": {
+        "a": 0.0,
+        "b": 1.0,
+        "c": 0.0
+      },
+      "through": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 1,
+      "after_e_move": 1,
+      "id": "Q",
+      "objects": [
+        "x_axis",
+        "unit_circle"
+      ],
+      "point": [
+        -1.0,
+        0.0
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 2,
+      "e_move": 2,
+      "id": "c_A_Q",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          1.0,
+          0.0
+        ],
+        "radius": 2.0
+      },
+      "center": "A",
+      "through": "Q"
+    },
+    {
+      "kind": "draw",
+      "program_index": 3,
+      "e_move": 3,
+      "id": "c_Q_A",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          -1.0,
+          0.0
+        ],
+        "radius": 2.0
+      },
+      "center": "Q",
+      "through": "A"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 4,
+      "after_e_move": 3,
+      "id": "y_axis_low",
+      "objects": [
+        "c_A_Q",
+        "c_Q_A"
+      ],
+      "point": [
+        0.0,
+        -1.7320508075688772
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 5,
+      "after_e_move": 3,
+      "id": "y_axis_high",
+      "objects": [
+        "c_A_Q",
+        "c_Q_A"
+      ],
+      "point": [
+        0.0,
+        1.7320508075688772
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 6,
+      "e_move": 4,
+      "id": "y_axis",
+      "op": "line",
+      "geometry": {
+        "a": 1.0,
+        "b": 0.0,
+        "c": 0.0
+      },
+      "through": [
+        "y_axis_low",
+        "y_axis_high"
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 7,
+      "after_e_move": 4,
+      "id": "Ay",
+      "objects": [
+        "y_axis",
+        "unit_circle"
+      ],
+      "point": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 8,
+      "e_move": 5,
+      "id": "c_Q_O",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          -1.0,
+          0.0
+        ],
+        "radius": 1.0
+      },
+      "center": "Q",
+      "through": "O"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 9,
+      "after_e_move": 5,
+      "id": "eq_QO_low",
+      "objects": [
+        "c_Q_O",
+        "unit_circle"
+      ],
+      "point": [
+        -0.5,
+        -0.8660254037844386
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 10,
+      "after_e_move": 5,
+      "id": "eq_QO_high",
+      "objects": [
+        "c_Q_O",
+        "unit_circle"
+      ],
+      "point": [
+        -0.5,
+        0.8660254037844386
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 11,
+      "e_move": 6,
+      "id": "bisector_QO",
+      "op": "line",
+      "geometry": {
+        "a": 1.0,
+        "b": 0.0,
+        "c": 0.5
+      },
+      "through": [
+        "eq_QO_low",
+        "eq_QO_high"
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 12,
+      "after_e_move": 6,
+      "id": "Qhalf",
+      "objects": [
+        "bisector_QO",
+        "x_axis"
+      ],
+      "point": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 13,
+      "e_move": 7,
+      "id": "c_Qhalf_O",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          -0.5,
+          0.0
+        ],
+        "radius": 0.5
+      },
+      "center": "Qhalf",
+      "through": "O"
+    },
+    {
+      "kind": "draw",
+      "program_index": 14,
+      "e_move": 8,
+      "id": "c_O_Qhalf",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "radius": 0.5
+      },
+      "center": "O",
+      "through": "Qhalf"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 15,
+      "after_e_move": 8,
+      "id": "b_Qhalf_low",
+      "objects": [
+        "c_Qhalf_O",
+        "c_O_Qhalf"
+      ],
+      "point": [
+        -0.25,
+        -0.4330127018922193
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 16,
+      "after_e_move": 8,
+      "id": "b_Qhalf_high",
+      "objects": [
+        "c_Qhalf_O",
+        "c_O_Qhalf"
+      ],
+      "point": [
+        -0.25,
+        0.4330127018922193
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 17,
+      "e_move": 9,
+      "id": "bisector_Qhalf_O",
+      "op": "line",
+      "geometry": {
+        "a": 1.0,
+        "b": 0.0,
+        "c": 0.25
+      },
+      "through": [
+        "b_Qhalf_low",
+        "b_Qhalf_high"
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 18,
+      "after_e_move": 9,
+      "id": "Qquarter",
+      "objects": [
+        "bisector_Qhalf_O",
+        "x_axis"
+      ],
+      "point": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 19,
+      "e_move": 10,
+      "id": "c_Qquarter_Ay",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          -0.25,
+          0.0
+        ],
+        "radius": 1.030776406404415
+      },
+      "center": "Qquarter",
+      "through": "Ay"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 20,
+      "after_e_move": 10,
+      "id": "M1_2",
+      "objects": [
+        "c_Qquarter_Ay",
+        "x_axis"
+      ],
+      "point": [
+        -1.280776406404415,
+        0.0
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 21,
+      "after_e_move": 10,
+      "id": "M0_2",
+      "objects": [
+        "c_Qquarter_Ay",
+        "x_axis"
+      ],
+      "point": [
+        0.7807764064044151,
+        0.0
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 22,
+      "e_move": 11,
+      "id": "c_M0_2_Ay",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          0.7807764064044151,
+          0.0
+        ],
+        "radius": 1.2687047713309005
+      },
+      "center": "M0_2",
+      "through": "Ay"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 23,
+      "after_e_move": 11,
+      "id": "H0_4",
+      "objects": [
+        "c_M0_2_Ay",
+        "x_axis"
+      ],
+      "point": [
+        2.0494811777353155,
+        0.0
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 24,
+      "e_move": 12,
+      "id": "c_M1_2_Ay",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          -1.280776406404415,
+          0.0
+        ],
+        "radius": 1.624927137813326
+      },
+      "center": "M1_2",
+      "through": "Ay"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 25,
+      "after_e_move": 12,
+      "id": "H1_4",
+      "objects": [
+        "c_M1_2_Ay",
+        "x_axis"
+      ],
+      "point": [
+        0.34415073140891084,
+        0.0
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 26,
+      "after_e_move": 12,
+      "id": "direct_y_center",
+      "objects": [
+        "bisector_QO",
+        "c_Qhalf_O"
+      ],
+      "point": [
+        -0.5,
+        0.5
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 27,
+      "e_move": 13,
+      "id": "c_direct_y",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          -0.5,
+          0.5
+        ],
+        "radius": 0.9811169437626683
+      },
+      "center": "direct_y_center",
+      "through": "H1_4"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 28,
+      "after_e_move": 13,
+      "id": "Y",
+      "objects": [
+        "y_axis",
+        "c_direct_y"
+      ],
+      "point": [
+        0.0,
+        1.3441507314089107
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 29,
+      "after_e_move": 13,
+      "id": "positive_half",
+      "objects": [
+        "x_axis",
+        "c_O_Qhalf"
+      ],
+      "point": [
+        0.5,
+        0.0
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 30,
+      "after_e_move": 13,
+      "id": "scaled_circle_low",
+      "objects": [
+        "bisector_Qhalf_O",
+        "c_Qquarter_Ay"
+      ],
+      "point": [
+        -0.25,
+        -1.030776406404415
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 31,
+      "e_move": 14,
+      "id": "m_center_helper_1",
+      "op": "line",
+      "geometry": {
+        "a": 1.0,
+        "b": -1.0,
+        "c": -0.7807764064044151
+      },
+      "through": [
+        "M0_2",
+        "scaled_circle_low"
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 32,
+      "after_e_move": 14,
+      "id": "m_center_helper_point",
+      "objects": [
+        "m_center_helper_1",
+        "bisector_QO"
+      ],
+      "point": [
+        -0.5,
+        -1.280776406404415
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 33,
+      "e_move": 15,
+      "id": "m_center_helper_2",
+      "op": "line",
+      "geometry": {
+        "a": 1.0,
+        "b": -0.7807764064044151,
+        "c": -0.5
+      },
+      "through": [
+        "m_center_helper_point",
+        "positive_half"
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 34,
+      "e_move": 16,
+      "id": "line_Y_H0_4",
+      "op": "line",
+      "geometry": {
+        "a": 1.0,
+        "b": 1.5247405888676577,
+        "c": -2.0494811777353155
+      },
+      "through": [
+        "Y",
+        "H0_4"
+      ]
+    },
+    {
+      "kind": "intersection",
+      "program_index": 35,
+      "after_e_move": 16,
+      "id": "M0_4",
+      "objects": [
+        "m_center_helper_2",
+        "line_Y_H0_4"
+      ],
+      "point": [
+        1.0247405888676577,
+        0.6720753657044554
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 36,
+      "e_move": 17,
+      "id": "c_M0_4_Ay",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          1.0247405888676577,
+          0.6720753657044554
+        ],
+        "radius": 1.0759311503301223
+      },
+      "center": "M0_4",
+      "through": "Ay"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 37,
+      "after_e_move": 17,
+      "id": "H4_8",
+      "objects": [
+        "c_M0_4_Ay",
+        "x_axis"
+      ],
+      "point": [
+        0.184536718926604,
+        0.0
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 38,
+      "e_move": 18,
+      "id": "target_helper_circle",
+      "op": "circle",
+      "geometry": {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "radius": 0.184536718926604
+      },
+      "center": "O",
+      "through": "H4_8"
+    },
+    {
+      "kind": "intersection",
+      "program_index": 39,
+      "after_e_move": 18,
+      "id": "target_helper_point",
+      "objects": [
+        "target_helper_circle",
+        "c_Q_O"
+      ],
+      "point": [
+        -0.01702690031609822,
+        0.18374951781657034
+      ]
+    },
+    {
+      "kind": "draw",
+      "program_index": 40,
+      "e_move": 19,
+      "id": "target_line",
+      "op": "line",
+      "geometry": {
+        "a": 1.0,
+        "b": -5.349527505509776,
+        "c": 1.0
+      },
+      "through": [
+        "Q",
+        "target_helper_point"
+      ]
+    }
+  ]
+}
