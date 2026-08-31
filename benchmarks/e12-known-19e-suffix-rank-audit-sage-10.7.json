@@ -1,0 +1,743 @@
+{
+  "schema": "euclid-min-known-suffix-rank-audit/v1",
+  "generated_at": "2026-08-31T00:23:40.550603+00:00",
+  "mode": "heuristic_diagnostic_nonproof",
+  "environment": {
+    "sage_version": "10.7",
+    "python_version": "3.12.5",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "cpu_count": 16,
+    "docker_image": "sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528"
+  },
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "prefix_last_id": "c_M1_2_Ay",
+  "prefix_e_move": 12,
+  "known_total_e_move": 19,
+  "level_limits": [
+    5,
+    6,
+    7,
+    8
+  ],
+  "widths": [
+    8,
+    12,
+    32
+  ],
+  "steps": [
+    {
+      "e_move": 13,
+      "program_id": "c_direct_y",
+      "op": "circle",
+      "points_before": 69,
+      "raw_operations": 7038,
+      "input_level": 7,
+      "levels": {
+        "5": {
+          "eligible_operations": 1798,
+          "unique_operations": 1462,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 7,
+            "op_rank": 1
+          }
+        },
+        "6": {
+          "eligible_operations": 2964,
+          "unique_operations": 2492,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 7,
+            "op_rank": 1
+          }
+        },
+        "7": {
+          "eligible_operations": 6594,
+          "unique_operations": 5876,
+          "target_rank": 3941,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": {
+            "incidence_residual": 1.1086401058790034,
+            "op_rank": 1
+          },
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 7,
+            "op_rank": 1
+          }
+        },
+        "8": {
+          "eligible_operations": 6594,
+          "unique_operations": 5876,
+          "target_rank": 3941,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": {
+            "incidence_residual": 1.1086401058790034,
+            "op_rank": 1
+          },
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 7,
+            "op_rank": 1
+          }
+        }
+      }
+    },
+    {
+      "e_move": 14,
+      "program_id": "m_center_helper_1",
+      "op": "line",
+      "points_before": 91,
+      "raw_operations": 12285,
+      "input_level": 6,
+      "levels": {
+        "5": {
+          "eligible_operations": 1798,
+          "unique_operations": 1462,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 6,
+            "op_rank": 0
+          }
+        },
+        "6": {
+          "eligible_operations": 2964,
+          "unique_operations": 2492,
+          "target_rank": 399,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": {
+            "incidence_residual": 0.1481712866871308,
+            "op_rank": 0
+          },
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 6,
+            "op_rank": 0
+          }
+        },
+        "7": {
+          "eligible_operations": 6593,
+          "unique_operations": 5875,
+          "target_rank": 878,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": {
+            "incidence_residual": 0.1481712866871308,
+            "op_rank": 0
+          },
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 6,
+            "op_rank": 0
+          }
+        },
+        "8": {
+          "eligible_operations": 11711,
+          "unique_operations": 10874,
+          "target_rank": 1593,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": {
+            "incidence_residual": 0.1481712866871308,
+            "op_rank": 0
+          },
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 6,
+            "op_rank": 0
+          }
+        }
+      }
+    },
+    {
+      "e_move": 15,
+      "program_id": "m_center_helper_2",
+      "op": "line",
+      "points_before": 103,
+      "raw_operations": 15759,
+      "input_level": 7,
+      "levels": {
+        "5": {
+          "eligible_operations": 1798,
+          "unique_operations": 1462,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 7,
+            "op_rank": 0
+          }
+        },
+        "6": {
+          "eligible_operations": 2963,
+          "unique_operations": 2491,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 7,
+            "op_rank": 0
+          }
+        },
+        "7": {
+          "eligible_operations": 9154,
+          "unique_operations": 8416,
+          "target_rank": 1065,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": {
+            "incidence_residual": 0.11856443109093817,
+            "op_rank": 0
+          },
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 7,
+            "op_rank": 0
+          }
+        },
+        "8": {
+          "eligible_operations": 15060,
+          "unique_operations": 14199,
+          "target_rank": 1736,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": {
+            "incidence_residual": 0.11856443109093817,
+            "op_rank": 0
+          },
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 7,
+            "op_rank": 0
+          }
+        }
+      }
+    },
+    {
+      "e_move": 16,
+      "program_id": "line_Y_H0_4",
+      "op": "line",
+      "points_before": 118,
+      "raw_operations": 20709,
+      "input_level": 8,
+      "levels": {
+        "5": {
+          "eligible_operations": 1798,
+          "unique_operations": 1462,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 8,
+            "op_rank": 0
+          }
+        },
+        "6": {
+          "eligible_operations": 2963,
+          "unique_operations": 2491,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 8,
+            "op_rank": 0
+          }
+        },
+        "7": {
+          "eligible_operations": 9153,
+          "unique_operations": 8415,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 8,
+            "op_rank": 0
+          }
+        },
+        "8": {
+          "eligible_operations": 19832,
+          "unique_operations": 18955,
+          "target_rank": 6106,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": {
+            "incidence_residual": 0.3105216490250695,
+            "op_rank": 0
+          },
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 8,
+            "op_rank": 0
+          }
+        }
+      }
+    },
+    {
+      "e_move": 17,
+      "program_id": "c_M0_4_Ay",
+      "op": "circle",
+      "points_before": 128,
+      "raw_operations": 24384,
+      "input_level": 9,
+      "levels": {
+        "5": {
+          "eligible_operations": 1798,
+          "unique_operations": 1462,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 9,
+            "op_rank": 1
+          }
+        },
+        "6": {
+          "eligible_operations": 2963,
+          "unique_operations": 2491,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 9,
+            "op_rank": 1
+          }
+        },
+        "7": {
+          "eligible_operations": 9153,
+          "unique_operations": 8415,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 9,
+            "op_rank": 1
+          }
+        },
+        "8": {
+          "eligible_operations": 19831,
+          "unique_operations": 18954,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 9,
+            "op_rank": 1
+          }
+        }
+      }
+    },
+    {
+      "e_move": 18,
+      "program_id": "target_helper_circle",
+      "op": "circle",
+      "points_before": 147,
+      "raw_operations": 32193,
+      "input_level": 10,
+      "levels": {
+        "5": {
+          "eligible_operations": 1798,
+          "unique_operations": 1462,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 10,
+            "op_rank": 1
+          }
+        },
+        "6": {
+          "eligible_operations": 2963,
+          "unique_operations": 2491,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 10,
+            "op_rank": 1
+          }
+        },
+        "7": {
+          "eligible_operations": 9153,
+          "unique_operations": 8415,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 10,
+            "op_rank": 1
+          }
+        },
+        "8": {
+          "eligible_operations": 19831,
+          "unique_operations": 18954,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 10,
+            "op_rank": 1
+          }
+        }
+      }
+    },
+    {
+      "e_move": 19,
+      "program_id": "target_line",
+      "op": "line",
+      "points_before": 155,
+      "raw_operations": 35805,
+      "input_level": 11,
+      "levels": {
+        "5": {
+          "eligible_operations": 1798,
+          "unique_operations": 1462,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 11,
+            "op_rank": 0
+          }
+        },
+        "6": {
+          "eligible_operations": 2963,
+          "unique_operations": 2491,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 11,
+            "op_rank": 0
+          }
+        },
+        "7": {
+          "eligible_operations": 9153,
+          "unique_operations": 8415,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 11,
+            "op_rank": 0
+          }
+        },
+        "8": {
+          "eligible_operations": 19831,
+          "unique_operations": 18954,
+          "target_rank": null,
+          "target_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "diverse_retained": {
+            "8": false,
+            "12": false,
+            "32": false
+          },
+          "candidate_score": null,
+          "candidate_complexity": {
+            "estimated_complexity": 1000000000,
+            "max_point_complexity": 1000000000,
+            "max_input_level": 11,
+            "op_rank": 0
+          }
+        }
+      }
+    }
+  ],
+  "interpretation_boundary": "该审计只衡量已知 19 E 路径在当前预筛中的可见性；它既不证明搜索完备，也不提供 18 E 下界。"
+}

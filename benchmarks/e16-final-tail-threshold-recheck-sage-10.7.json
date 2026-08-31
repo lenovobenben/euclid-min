@@ -1,0 +1,25 @@
+{
+  "schema": "euclid-min-final-tail-threshold-recheck/v1",
+  "source": "benchmarks/e16-final-tail-two-step-search-sage-10.7.json",
+  "residual_threshold": 1e-7,
+  "mode": "exact_recheck_of_numeric_shortlist",
+  "targets": [
+    {
+      "target": "B_plus",
+      "candidate_indices": [17034, 6370, 17169, 2169, 11786],
+      "completed": 5,
+      "timed_out": 0,
+      "exact_target_candidates_tested": 0,
+      "found_local_steps": null
+    },
+    {
+      "target": "B_minus",
+      "candidate_indices": [17034, 17169, 5373, 13200, 12807],
+      "completed": 5,
+      "timed_out": 0,
+      "exact_target_candidates_tested": 0,
+      "found_local_steps": null
+    }
+  ],
+  "interpretation_boundary": "放宽浮点阈值只增加精确假阳性检查；本次复核仍未命中，不构成下界。"
+}

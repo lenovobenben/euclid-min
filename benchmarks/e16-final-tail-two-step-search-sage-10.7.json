@@ -1,0 +1,32 @@
+{
+  "schema": "euclid-min-final-tail-two-step-search/v1",
+  "mode": "heuristic_nonproof",
+  "prefix_e_move": 16,
+  "local_budget": 2,
+  "first_step_limit": 128,
+  "workers": 8,
+  "batch_size": 16,
+  "batch_timeout_seconds": 30.0,
+  "targets": [
+    {
+      "target": "B_plus",
+      "first_step_candidates": 22455,
+      "exact_first_steps_completed": 128,
+      "exact_first_steps_timed_out": 0,
+      "exact_target_candidates_tested": 0,
+      "found_local_steps": null
+    },
+    {
+      "target": "B_minus",
+      "first_step_candidates": 22455,
+      "exact_first_steps_completed": 128,
+      "exact_first_steps_timed_out": 0,
+      "exact_target_candidates_tested": 0,
+      "found_local_steps": null
+    }
+  ],
+  "found_total_e_move": null,
+  "certificate_valid": null,
+  "elapsed_seconds": 664.4194579230001,
+  "interpretation_boundary": "两个镜像目标分别使用浮点第一步排序和固定 top-N；未命中不是下界。"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "euclid-min-m04-three-step-search/v1",
+  "mode": "heuristic_nonproof",
+  "prefix_e_move": 12,
+  "local_budget": 3,
+  "first_step_candidates": 5876,
+  "first_step_limit": 128,
+  "workers": 8,
+  "batch_size": 16,
+  "batch_timeout_seconds": 30.0,
+  "exact_first_steps_completed": 128,
+  "exact_first_steps_timed_out": 0,
+  "exact_target_candidates_tested": 19,
+  "found_local_steps": null,
+  "found_total_e_move": null,
+  "certificate_valid": null,
+  "elapsed_seconds": 34.35969563399999,
+  "interpretation_boundary": "浮点第一步排序与固定 top-N 会删除分支；未命中只结束本次最终尝试。"
+}

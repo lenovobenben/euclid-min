@@ -464,6 +464,62 @@ class ProfilingArtifactTests(unittest.TestCase):
                 )
                 suffix_validator.validate(run_artifact)
 
+    def test_final_attempt_artifacts_record_bounded_no_hit_results(self):
+        repository_root = Path(__file__).resolve().parents[2]
+        benchmark_root = repository_root / "benchmarks"
+        audit = json.loads(
+            (
+                benchmark_root
+                / "e12-known-19e-suffix-rank-audit-sage-10.7.json"
+            ).read_text(encoding="utf-8")
+        )
+        m04 = json.loads(
+            (
+                benchmark_root
+                / "e12-m04-three-step-search-sage-10.7.json"
+            ).read_text(encoding="utf-8")
+        )
+        tail = json.loads(
+            (
+                benchmark_root
+                / "e16-final-tail-two-step-search-sage-10.7.json"
+            ).read_text(encoding="utf-8")
+        )
+        recheck = json.loads(
+            (
+                benchmark_root
+                / "e16-final-tail-threshold-recheck-sage-10.7.json"
+            ).read_text(encoding="utf-8")
+        )
+
+        self.assertEqual(audit["known_total_e_move"], 19)
+        self.assertEqual(len(audit["steps"]), 7)
+        self.assertFalse(
+            any(
+                retained
+                for step in audit["steps"]
+                for level in step["levels"].values()
+                for strategy in ("target_retained", "diverse_retained")
+                for retained in level[strategy].values()
+            )
+        )
+        self.assertEqual(m04["exact_first_steps_completed"], 128)
+        self.assertEqual(m04["exact_first_steps_timed_out"], 0)
+        self.assertEqual(m04["exact_target_candidates_tested"], 19)
+        self.assertIsNone(m04["found_total_e_move"])
+        self.assertEqual([row["target"] for row in tail["targets"]], [
+            "B_plus",
+            "B_minus",
+        ])
+        self.assertTrue(
+            all(row["exact_first_steps_completed"] == 128 for row in tail["targets"])
+        )
+        self.assertIsNone(tail["found_total_e_move"])
+        self.assertEqual(recheck["residual_threshold"], 1e-7)
+        self.assertTrue(
+            all(row["exact_target_candidates_tested"] == 0 for row in recheck["targets"])
+        )
+
 
 class ExactPrefixSearchTests(unittest.TestCase):
     def test_detemple_e12_prefix_rebuilds_with_complete_closure(self):

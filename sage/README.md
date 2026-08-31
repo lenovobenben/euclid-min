@@ -147,6 +147,18 @@ sage -python sage/experiments/search_detemple_suffix_matrix.py
 该选项不调用最小多项式，也不改变候选评分的最终确定性顺序。六配置对照使用
 `sage/experiments/configs/e12-suffix-complexity-matrix-v1.json`。
 
+最后一次有界尝试使用以下三个入口：
+
+```bash
+sage -python sage/experiments/audit_detemple_suffix_ranks.py
+sage -python sage/experiments/search_m04_three_step.py
+sage -python sage/experiments/search_final_tail_two_step.py
+```
+
+排名审计确认当前通用启发式无法重新发现已知 19 E 后缀；两个分别可直接节省
+1 E 的局部窗口也未命中。项目因此停止继续扩大当前 beam，详见
+`docs/M6_SUFFIX_SEARCH.md` 第 8 节。
+
 ## 精确性边界
 
 - 所有几何坐标进入对象时立即转换为 `AA`；
