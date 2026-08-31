@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import unittest
 
-from verify_69e import verify
+from target import adjacent_trace
+from verify_69e import K, verify
 
 
 class Regular257Video69ETests(unittest.TestCase):
@@ -16,6 +17,7 @@ class Regular257Video69ETests(unittest.TestCase):
         self.assertEqual(replay.circles, 4)
         self.assertEqual(target_axis.b, 0)
         self.assertEqual(-target_axis.c / target_axis.a, g0)
+        self.assertEqual(g0, adjacent_trace(K.gen()))
 
 
 if __name__ == "__main__":

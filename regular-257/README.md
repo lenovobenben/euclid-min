@@ -7,6 +7,11 @@
 正 257 边形专属的说明、步骤表、验证脚本和测试集中保存在本目录。视频原片、
 拆帧及分析过程文件位于 Git 忽略的 `tmp/`，不进入正式提交。
 
+当前研究对象已由 [DESIGN.md](DESIGN.md) 和 [profile.yaml](profile.yaml)
+冻结为“非锚定正 257 边形边问题”：目标是在给定圆上构造任意一对相邻顶点，
+不要求邻接初始圆上点。[profile.schema.json](profile.schema.json) 固定机器可检验
+的数据结构，[target.py](target.py) 则在精确分圆域中实现目标弦判据。
+
 截至 2026-08-31，公开视频页面没有给出 Manim 源码、构造证书或逐步文本附件。本目录的 69 步表来自对视频画面、E 计数器、点名和底部操作说明的逐帧核对，不依赖向作者索取未公开材料。
 
 ## 已确认的结果
@@ -16,6 +21,8 @@
 - 4 个圆分别是第 2、4、34、69 步；
 - [video-69e-steps.csv](video-69e-steps.csv) 给出每一步的对象、定义点、免费交点和视频起始时间；
 - [verify_69e.py](verify_69e.py) 在 `Q(zeta_257)` 中精确检查全部 69 步的关联关系、视频展示的周期方程和最终角度关系。
+- [construction-69e.json](construction-69e.json) 把视频转写为 150 条声明式程序：69 个计费对象和 81 个免费交点绑定；
+- [verification-69e.json](verification-69e.json) 记录专用重放器对 Schema、哈希、显式交点索引、计分和最终目标见证的精确验证结果。
 
 这里的“精确”不是提高浮点精度。验证器使用第 257 次分圆域中的代数恒等式；浮点近似只用于输出便于人工阅读的数值。
 
@@ -101,7 +108,9 @@ x=g_0.
 1. 非锚定：构造圆上任意一对正 257 边形相邻顶点；
 2. 锚定：必须构造初始给定圆上点的相邻顶点。
 
-在 profile 确定前，本目录只把 69E 表述为“已恢复并精确验证的视频构造”，不把它写成仓库锚定规则下的 69E baseline。
+本目录只把 69E 表述为“已恢复并精确验证的视频构造”。当前证书已经验证所有
+显式绑定和最终目标见证，但尚未枚举完整自动交点闭包，也未确认 0–68E 是否存在
+未绑定的更早目标。因此暂不把它表述为正式 baseline、公开纪录或全局最优值。
 
 ## 复现
 
@@ -122,17 +131,34 @@ exact_incidence_check=true
 displayed_period_relations=true
 ```
 
+重新生成并验证 JSON 证书：
+
+```powershell
+docker exec `
+  -e PYTHONPATH=/workspace/sage `
+  boring_wing `
+  sage -python regular-257/build_69e_certificate.py
+
+docker exec `
+  -e PYTHONPATH=/workspace/sage `
+  boring_wing `
+  sage -python regular-257/verify_69e_certificate.py
+```
+
+验证器使用 `CyclotomicField(257)` 处理主路径，只在 `sqrt(3)` 和最终正弦坐标
+需要时提升到 `UniversalCyclotomicField`。它不使用浮点容差或 `AA` 根隔离。
+
 运行本目录测试：
 
 ```powershell
 docker exec `
+  -e PYTHONPATH=/workspace/sage `
   boring_wing `
   sage -python -m unittest discover -s regular-257 -p "test_*.py" -v
 ```
 
 ## 后续工作
 
-- 为“非锚定 257”单独定义版本化 profile 和目标语义；
-- 把 CSV 转成正式 JSON 构造证书，并扩展当前只接受正 17 边形的 Schema；
-- 保存逐步交点索引，而不是在研究验证器中用代数名称选择分支；
+- 实现完整自动交点闭包，并检查 0–68E 是否出现未绑定的更早目标；
+- 精确去重全部作图对象并生成依赖图；
 - 独立核对 69E 的文献优先权与是否存在更短公开构造。

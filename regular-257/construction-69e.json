@@ -1,0 +1,1326 @@
+{
+  "schema": "euclid-min-regular-257-certificate/v1",
+  "problem": "regular-257-free-edge",
+  "profile": {
+    "id": "regular-257-free-edge-e-fixed-v1",
+    "sha256": "0e4554cf5e9d01ce8f9bbe702a70e81937521b75d93f694bea59408e56a63de2"
+  },
+  "source": {
+    "kind": "public_video_transcription",
+    "url": "https://www.bilibili.com/video/BV1CARsYJEVe/",
+    "steps_table": "video-69e-steps.csv"
+  },
+  "construction": {
+    "id": "video-69e-transcription",
+    "title": "正 257 边形 69E 公视频转写构造",
+    "description": "按 video-69e-steps.csv 转写；所有显式交点使用精确字典序索引，目标为给定圆上的任意一对正 257 边形相邻顶点。",
+    "program": [
+      {
+        "id": "a",
+        "op": "line",
+        "through": [
+          "C",
+          "B"
+        ]
+      },
+      {
+        "id": "M1",
+        "op": "intersect",
+        "objects": [
+          "a",
+          "c0"
+        ],
+        "index": 0
+      },
+      {
+        "id": "q",
+        "op": "circle",
+        "center": "B",
+        "through": "C"
+      },
+      {
+        "id": "q_c0_left",
+        "op": "intersect",
+        "objects": [
+          "q",
+          "c0"
+        ],
+        "index": 0
+      },
+      {
+        "id": "q_c0_right",
+        "op": "intersect",
+        "objects": [
+          "q",
+          "c0"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d",
+        "op": "line",
+        "through": [
+          "q_c0_left",
+          "q_c0_right"
+        ]
+      },
+      {
+        "id": "A",
+        "op": "intersect",
+        "objects": [
+          "a",
+          "d"
+        ],
+        "index": 0
+      },
+      {
+        "id": "c",
+        "op": "circle",
+        "center": "A",
+        "through": "B"
+      },
+      {
+        "id": "D",
+        "op": "intersect",
+        "objects": [
+          "c",
+          "d"
+        ],
+        "index": 0
+      },
+      {
+        "id": "E",
+        "op": "intersect",
+        "objects": [
+          "c",
+          "d"
+        ],
+        "index": 1
+      },
+      {
+        "id": "BE",
+        "op": "line",
+        "through": [
+          "B",
+          "E"
+        ]
+      },
+      {
+        "id": "G",
+        "op": "intersect",
+        "objects": [
+          "BE",
+          "c0"
+        ],
+        "index": 1
+      },
+      {
+        "id": "b",
+        "op": "line",
+        "through": [
+          "C",
+          "G"
+        ]
+      },
+      {
+        "id": "F",
+        "op": "intersect",
+        "objects": [
+          "b",
+          "c0"
+        ],
+        "index": 0
+      },
+      {
+        "id": "DM1",
+        "op": "line",
+        "through": [
+          "D",
+          "M1"
+        ]
+      },
+      {
+        "id": "H",
+        "op": "intersect",
+        "objects": [
+          "DM1",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "I",
+        "op": "intersect",
+        "objects": [
+          "DM1",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "IE",
+        "op": "line",
+        "through": [
+          "I",
+          "E"
+        ]
+      },
+      {
+        "id": "K",
+        "op": "intersect",
+        "objects": [
+          "IE",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "J",
+        "op": "intersect",
+        "objects": [
+          "IE",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "DJ",
+        "op": "line",
+        "through": [
+          "D",
+          "J"
+        ]
+      },
+      {
+        "id": "L",
+        "op": "intersect",
+        "objects": [
+          "DJ",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "KL",
+        "op": "line",
+        "through": [
+          "K",
+          "L"
+        ]
+      },
+      {
+        "id": "N",
+        "op": "intersect",
+        "objects": [
+          "KL",
+          "BE"
+        ],
+        "index": 0
+      },
+      {
+        "id": "M",
+        "op": "intersect",
+        "objects": [
+          "KL",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "NI",
+        "op": "line",
+        "through": [
+          "N",
+          "I"
+        ]
+      },
+      {
+        "id": "O",
+        "op": "intersect",
+        "objects": [
+          "NI",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "FO",
+        "op": "line",
+        "through": [
+          "F",
+          "O"
+        ]
+      },
+      {
+        "id": "A0",
+        "op": "intersect",
+        "objects": [
+          "FO",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "A1",
+        "op": "intersect",
+        "objects": [
+          "FO",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "BA0",
+        "op": "line",
+        "through": [
+          "B",
+          "A0"
+        ]
+      },
+      {
+        "id": "R",
+        "op": "intersect",
+        "objects": [
+          "BA0",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "BA1",
+        "op": "line",
+        "through": [
+          "B",
+          "A1"
+        ]
+      },
+      {
+        "id": "S",
+        "op": "intersect",
+        "objects": [
+          "BA1",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "RM",
+        "op": "line",
+        "through": [
+          "R",
+          "M"
+        ]
+      },
+      {
+        "id": "B0",
+        "op": "intersect",
+        "objects": [
+          "RM",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "B2",
+        "op": "intersect",
+        "objects": [
+          "RM",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "SM",
+        "op": "line",
+        "through": [
+          "S",
+          "M"
+        ]
+      },
+      {
+        "id": "B1",
+        "op": "intersect",
+        "objects": [
+          "SM",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "B3",
+        "op": "intersect",
+        "objects": [
+          "SM",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "EA1",
+        "op": "line",
+        "through": [
+          "E",
+          "A1"
+        ]
+      },
+      {
+        "id": "T",
+        "op": "intersect",
+        "objects": [
+          "EA1",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "LB0",
+        "op": "line",
+        "through": [
+          "L",
+          "B0"
+        ]
+      },
+      {
+        "id": "U",
+        "op": "intersect",
+        "objects": [
+          "LB0",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "UT",
+        "op": "line",
+        "through": [
+          "U",
+          "T"
+        ]
+      },
+      {
+        "id": "Ca",
+        "op": "intersect",
+        "objects": [
+          "UT",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "EA0",
+        "op": "line",
+        "through": [
+          "E",
+          "A0"
+        ]
+      },
+      {
+        "id": "V",
+        "op": "intersect",
+        "objects": [
+          "EA0",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "LB1",
+        "op": "line",
+        "through": [
+          "L",
+          "B1"
+        ]
+      },
+      {
+        "id": "W",
+        "op": "intersect",
+        "objects": [
+          "LB1",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "VW",
+        "op": "line",
+        "through": [
+          "V",
+          "W"
+        ]
+      },
+      {
+        "id": "Cb",
+        "op": "intersect",
+        "objects": [
+          "VW",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "B0B3",
+        "op": "line",
+        "through": [
+          "B0",
+          "B3"
+        ]
+      },
+      {
+        "id": "X",
+        "op": "intersect",
+        "objects": [
+          "B0B3",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "RX",
+        "op": "line",
+        "through": [
+          "R",
+          "X"
+        ]
+      },
+      {
+        "id": "Cc",
+        "op": "intersect",
+        "objects": [
+          "RX",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "B2B3",
+        "op": "line",
+        "through": [
+          "B2",
+          "B3"
+        ]
+      },
+      {
+        "id": "Y",
+        "op": "intersect",
+        "objects": [
+          "B2B3",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "YS",
+        "op": "line",
+        "through": [
+          "Y",
+          "S"
+        ]
+      },
+      {
+        "id": "Cd",
+        "op": "intersect",
+        "objects": [
+          "YS",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "HCa",
+        "op": "line",
+        "through": [
+          "H",
+          "Ca"
+        ]
+      },
+      {
+        "id": "Z",
+        "op": "intersect",
+        "objects": [
+          "HCa",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ZK",
+        "op": "line",
+        "through": [
+          "Z",
+          "K"
+        ]
+      },
+      {
+        "id": "H1",
+        "op": "intersect",
+        "objects": [
+          "ZK",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "B1Cc",
+        "op": "line",
+        "through": [
+          "B1",
+          "Cc"
+        ]
+      },
+      {
+        "id": "I1",
+        "op": "intersect",
+        "objects": [
+          "B1Cc",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "I1H",
+        "op": "line",
+        "through": [
+          "I1",
+          "H"
+        ]
+      },
+      {
+        "id": "J1",
+        "op": "intersect",
+        "objects": [
+          "I1H",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "BJ1",
+        "op": "line",
+        "through": [
+          "B",
+          "J1"
+        ]
+      },
+      {
+        "id": "K1",
+        "op": "intersect",
+        "objects": [
+          "BJ1",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "K1H1",
+        "op": "line",
+        "through": [
+          "K1",
+          "H1"
+        ]
+      },
+      {
+        "id": "Da",
+        "op": "intersect",
+        "objects": [
+          "K1H1",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "Db",
+        "op": "intersect",
+        "objects": [
+          "K1H1",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "BZ",
+        "op": "line",
+        "through": [
+          "B",
+          "Z"
+        ]
+      },
+      {
+        "id": "L1",
+        "op": "intersect",
+        "objects": [
+          "BZ",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "c_M1L1",
+        "op": "circle",
+        "center": "M1",
+        "through": "L1"
+      },
+      {
+        "id": "N1",
+        "op": "intersect",
+        "objects": [
+          "c_M1L1",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "CdN1",
+        "op": "line",
+        "through": [
+          "Cd",
+          "N1"
+        ]
+      },
+      {
+        "id": "O1",
+        "op": "intersect",
+        "objects": [
+          "CdN1",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "HCb",
+        "op": "line",
+        "through": [
+          "H",
+          "Cb"
+        ]
+      },
+      {
+        "id": "P1",
+        "op": "intersect",
+        "objects": [
+          "HCb",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "EP1",
+        "op": "line",
+        "through": [
+          "E",
+          "P1"
+        ]
+      },
+      {
+        "id": "Q1",
+        "op": "intersect",
+        "objects": [
+          "EP1",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "LQ1",
+        "op": "line",
+        "through": [
+          "L",
+          "Q1"
+        ]
+      },
+      {
+        "id": "R1",
+        "op": "intersect",
+        "objects": [
+          "LQ1",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "R1Cc",
+        "op": "line",
+        "through": [
+          "R1",
+          "Cc"
+        ]
+      },
+      {
+        "id": "S1",
+        "op": "intersect",
+        "objects": [
+          "R1Cc",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "CdB0",
+        "op": "line",
+        "through": [
+          "Cd",
+          "B0"
+        ]
+      },
+      {
+        "id": "T1",
+        "op": "intersect",
+        "objects": [
+          "CdB0",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "T1S1",
+        "op": "line",
+        "through": [
+          "T1",
+          "S1"
+        ]
+      },
+      {
+        "id": "U1",
+        "op": "intersect",
+        "objects": [
+          "T1S1",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "EU1",
+        "op": "line",
+        "through": [
+          "E",
+          "U1"
+        ]
+      },
+      {
+        "id": "V1",
+        "op": "intersect",
+        "objects": [
+          "EU1",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "V1O1",
+        "op": "line",
+        "through": [
+          "V1",
+          "O1"
+        ]
+      },
+      {
+        "id": "Dc",
+        "op": "intersect",
+        "objects": [
+          "V1O1",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "Dd",
+        "op": "intersect",
+        "objects": [
+          "V1O1",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "RS1",
+        "op": "line",
+        "through": [
+          "R",
+          "S1"
+        ]
+      },
+      {
+        "id": "W1",
+        "op": "intersect",
+        "objects": [
+          "RS1",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "EW1",
+        "op": "line",
+        "through": [
+          "E",
+          "W1"
+        ]
+      },
+      {
+        "id": "X1",
+        "op": "intersect",
+        "objects": [
+          "EW1",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "X1Z",
+        "op": "line",
+        "through": [
+          "X1",
+          "Z"
+        ]
+      },
+      {
+        "id": "D0",
+        "op": "intersect",
+        "objects": [
+          "X1Z",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "D8",
+        "op": "intersect",
+        "objects": [
+          "X1Z",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "BD0",
+        "op": "line",
+        "through": [
+          "B",
+          "D0"
+        ]
+      },
+      {
+        "id": "Y1",
+        "op": "intersect",
+        "objects": [
+          "BD0",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "GDa",
+        "op": "line",
+        "through": [
+          "G",
+          "Da"
+        ]
+      },
+      {
+        "id": "Z1",
+        "op": "intersect",
+        "objects": [
+          "GDa",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "DZ1",
+        "op": "line",
+        "through": [
+          "D",
+          "Z1"
+        ]
+      },
+      {
+        "id": "H2",
+        "op": "intersect",
+        "objects": [
+          "DZ1",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "H2Y1",
+        "op": "line",
+        "through": [
+          "H2",
+          "Y1"
+        ]
+      },
+      {
+        "id": "E0",
+        "op": "intersect",
+        "objects": [
+          "H2Y1",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "BE0",
+        "op": "line",
+        "through": [
+          "B",
+          "E0"
+        ]
+      },
+      {
+        "id": "I2",
+        "op": "intersect",
+        "objects": [
+          "BE0",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "DcD0",
+        "op": "line",
+        "through": [
+          "Dc",
+          "D0"
+        ]
+      },
+      {
+        "id": "J2",
+        "op": "intersect",
+        "objects": [
+          "DcD0",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "AJ2",
+        "op": "line",
+        "through": [
+          "A",
+          "J2"
+        ]
+      },
+      {
+        "id": "K2",
+        "op": "intersect",
+        "objects": [
+          "AJ2",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "EK2",
+        "op": "line",
+        "through": [
+          "E",
+          "K2"
+        ]
+      },
+      {
+        "id": "L2",
+        "op": "intersect",
+        "objects": [
+          "EK2",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "L2I2",
+        "op": "line",
+        "through": [
+          "L2",
+          "I2"
+        ]
+      },
+      {
+        "id": "F0",
+        "op": "intersect",
+        "objects": [
+          "L2I2",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "BD8",
+        "op": "line",
+        "through": [
+          "B",
+          "D8"
+        ]
+      },
+      {
+        "id": "M2",
+        "op": "intersect",
+        "objects": [
+          "BD8",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "GDb",
+        "op": "line",
+        "through": [
+          "G",
+          "Db"
+        ]
+      },
+      {
+        "id": "N2",
+        "op": "intersect",
+        "objects": [
+          "GDb",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "DN2",
+        "op": "line",
+        "through": [
+          "D",
+          "N2"
+        ]
+      },
+      {
+        "id": "O2",
+        "op": "intersect",
+        "objects": [
+          "DN2",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "M2O2",
+        "op": "line",
+        "through": [
+          "M2",
+          "O2"
+        ]
+      },
+      {
+        "id": "E24",
+        "op": "intersect",
+        "objects": [
+          "M2O2",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "BE24",
+        "op": "line",
+        "through": [
+          "B",
+          "E24"
+        ]
+      },
+      {
+        "id": "P2",
+        "op": "intersect",
+        "objects": [
+          "BE24",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "D8Dd",
+        "op": "line",
+        "through": [
+          "D8",
+          "Dd"
+        ]
+      },
+      {
+        "id": "Q2",
+        "op": "intersect",
+        "objects": [
+          "D8Dd",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "AQ2",
+        "op": "line",
+        "through": [
+          "A",
+          "Q2"
+        ]
+      },
+      {
+        "id": "R2",
+        "op": "intersect",
+        "objects": [
+          "AQ2",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ER2",
+        "op": "line",
+        "through": [
+          "E",
+          "R2"
+        ]
+      },
+      {
+        "id": "S2",
+        "op": "intersect",
+        "objects": [
+          "ER2",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "S2P2",
+        "op": "line",
+        "through": [
+          "S2",
+          "P2"
+        ]
+      },
+      {
+        "id": "F56",
+        "op": "intersect",
+        "objects": [
+          "S2P2",
+          "c"
+        ],
+        "index": 1
+      },
+      {
+        "id": "BF0",
+        "op": "line",
+        "through": [
+          "B",
+          "F0"
+        ]
+      },
+      {
+        "id": "T2",
+        "op": "intersect",
+        "objects": [
+          "BF0",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "EF56",
+        "op": "line",
+        "through": [
+          "E",
+          "F56"
+        ]
+      },
+      {
+        "id": "U2",
+        "op": "intersect",
+        "objects": [
+          "EF56",
+          "a"
+        ],
+        "index": 0
+      },
+      {
+        "id": "U2T2",
+        "op": "line",
+        "through": [
+          "U2",
+          "T2"
+        ]
+      },
+      {
+        "id": "G0",
+        "op": "intersect",
+        "objects": [
+          "U2T2",
+          "c"
+        ],
+        "index": 0
+      },
+      {
+        "id": "BG0",
+        "op": "line",
+        "through": [
+          "B",
+          "G0"
+        ]
+      },
+      {
+        "id": "V2",
+        "op": "intersect",
+        "objects": [
+          "BG0",
+          "b"
+        ],
+        "index": 0
+      },
+      {
+        "id": "target_transfer",
+        "op": "circle",
+        "center": "V2",
+        "through": "C"
+      },
+      {
+        "id": "W2_minus",
+        "op": "intersect",
+        "objects": [
+          "target_transfer",
+          "c0"
+        ],
+        "index": 0
+      },
+      {
+        "id": "W2_plus",
+        "op": "intersect",
+        "objects": [
+          "target_transfer",
+          "c0"
+        ],
+        "index": 1
+      }
+    ]
+  },
+  "assertions": {
+    "score": {
+      "metric": "e_move",
+      "e_move": 69
+    },
+    "draws": {
+      "lines": 65,
+      "circles": 4,
+      "duplicate_object_status": "not_checked"
+    },
+    "target_witnesses": [
+      [
+        "G",
+        "W2_minus"
+      ],
+      [
+        "G",
+        "W2_plus"
+      ]
+    ],
+    "first_bound_target_e_move": 69,
+    "automatic_closure_first_hit": "not_checked",
+    "claim": "verified_construction"
+  },
+  "software": {
+    "producer": {
+      "name": "build_69e_certificate.py",
+      "version": "1"
+    }
+  },
+  "integrity": {
+    "construction_sha256": "6c4b0113fae6ab513d3a1564a268415fa1dd96952e14753201880b776f6fe3d3"
+  }
+}

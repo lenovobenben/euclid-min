@@ -1,0 +1,41 @@
+{
+  "schema": "euclid-min-regular-257-verification-report/v1",
+  "certificate_sha256": "2343ae25162d1e728680ba9291d843c6f552dcf2a452208e23118e8554eec129",
+  "construction_sha256": "6c4b0113fae6ab513d3a1564a268415fa1dd96952e14753201880b776f6fe3d3",
+  "profile": {
+    "id": "regular-257-free-edge-e-fixed-v1",
+    "sha256": "0e4554cf5e9d01ce8f9bbe702a70e81937521b75d93f694bea59408e56a63de2"
+  },
+  "verifier": {
+    "name": "verify_69e_certificate.py",
+    "version": "1",
+    "sage_version": "10.7",
+    "exact_backend": "CyclotomicField(257)+UniversalCyclotomicField"
+  },
+  "valid": true,
+  "verification_scope": "explicit_bindings_and_final_target_witnesses",
+  "program_entries": 150,
+  "proof_hints_verified": 81,
+  "draws": {
+    "lines": 65,
+    "circles": 4,
+    "duplicate_object_status": "not_checked"
+  },
+  "bound_point_names": 83,
+  "score": {
+    "metric": "e_move",
+    "e_move": 69
+  },
+  "target_witnesses": [
+    [
+      "G",
+      "W2_minus"
+    ],
+    [
+      "G",
+      "W2_plus"
+    ]
+  ],
+  "first_bound_target_e_move": 69,
+  "automatic_closure_first_hit": "not_checked"
+}
