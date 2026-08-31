@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import unittest
 
-from euclid_min.regular_257_video_69e import verify
+from verify_69e import verify
 
 
 class Regular257Video69ETests(unittest.TestCase):

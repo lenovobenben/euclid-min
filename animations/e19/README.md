@@ -5,7 +5,8 @@
 `regular-17-e-fixed-v1` 内比较，不表示世界纪录。正片只保留全屏作图和右上角的单个步数计数器。几何数据
 不是在动画里手工估算：`geometry.json` 由 SageMath 从正式证书精确重放后导出，
 Manim 只负责把这些坐标转换成屏幕图形。免费单位圆使用独立洋红色，镜头会跟随
-关键局部自动缩放，最后以 `∠AOB = 2π/17` 说明所求相邻顶点。
+关键局部自动缩放。每次作直线前高亮两个定线点；每次作圆前高亮圆心和圆上一点，
+并临时显示对应半径。最后以 `∠AOB = 2π/17` 说明所求相邻顶点。
 
 ## 文件
 
@@ -14,7 +15,7 @@ Manim 只负责把这些坐标转换成屏幕图形。免费单位圆使用独�
 - `geometry.json`：已导出的动画输入；
 - `e19_progress.py`：Manim Community v0.21.0 场景；
 - `Dockerfile`：固定 Manim 镜像并补充中文字体；
-- `manim.cfg`：1080p、30 fps 和输出目录。
+- `manim.cfg`：4K（3840×2160）、30 fps 和输出目录。
 
 ## 重新导出几何数据
 
@@ -46,17 +47,18 @@ docker run --rm `
   animations/e19/e19_progress.py E19Progress
 ```
 
-1080p 成片：
+4K 成片：
 
 ```powershell
 docker run --rm `
   -v "${PWD}:/manim" `
   -w /manim `
   euclid-min-manim:0.21.0 `
-  manim --config_file animations/e19/manim.cfg -r 1920,1080 --fps 30 `
+  manim --config_file animations/e19/manim.cfg --fps 30 `
   animations/e19/e19_progress.py E19Progress
 ```
 
 成片位于
-`animations/e19/media/videos/e19_progress/1080p30/E19Progress.mp4`。媒体目录不提交
-Git；代码、分镜和几何快照才是可复现源文件。
+`animations/e19/media/videos/e19_progress/2160p30/E19Progress.mp4`。该最终 4K MP4
+随代码提交，便于直接观看；同一媒体目录内的分段视频、渲染缓存和临时文件仍由
+Git 忽略。代码、分镜和几何快照用于复现成片。

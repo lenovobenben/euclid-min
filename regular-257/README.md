@@ -4,6 +4,9 @@
 
 - <https://www.bilibili.com/video/BV1CARsYJEVe/>
 
+正 257 边形专属的说明、步骤表、验证脚本和测试集中保存在本目录。视频原片、
+拆帧及分析过程文件位于 Git 忽略的 `tmp/`，不进入正式提交。
+
 截至 2026-08-31，公开视频页面没有给出 Manim 源码、构造证书或逐步文本附件。本目录的 69 步表来自对视频画面、E 计数器、点名和底部操作说明的逐帧核对，不依赖向作者索取未公开材料。
 
 ## 已确认的结果
@@ -12,7 +15,7 @@
 - 69 个计费动作由 **65 条直线和 4 个圆**组成；
 - 4 个圆分别是第 2、4、34、69 步；
 - [video-69e-steps.csv](video-69e-steps.csv) 给出每一步的对象、定义点、免费交点和视频起始时间；
-- `euclid_min.regular_257_video_69e` 在 `Q(zeta_257)` 中精确检查全部 69 步的关联关系、视频展示的周期方程和最终角度关系。
+- [verify_69e.py](verify_69e.py) 在 `Q(zeta_257)` 中精确检查全部 69 步的关联关系、视频展示的周期方程和最终角度关系。
 
 这里的“精确”不是提高浮点精度。验证器使用第 257 次分圆域中的代数恒等式；浮点近似只用于输出便于人工阅读的数值。
 
@@ -106,9 +109,8 @@ x=g_0.
 
 ```powershell
 docker exec `
-  -e PYTHONPATH=/workspace/sage `
   boring_wing `
-  sage -python -m euclid_min.regular_257_video_69e
+  sage -python regular-257/verify_69e.py
 ```
 
 预期关键输出：
@@ -118,6 +120,14 @@ steps=69 lines=65 circles=4
 target_axis_x_equals_g0=True
 exact_incidence_check=true
 displayed_period_relations=true
+```
+
+运行本目录测试：
+
+```powershell
+docker exec `
+  boring_wing `
+  sage -python -m unittest discover -s regular-257 -p "test_*.py" -v
 ```
 
 ## 后续工作
