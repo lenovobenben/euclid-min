@@ -1,99 +1,98 @@
 # Euclid-Min
 
-Euclid-Min 是一个专门研究正十七边形相邻顶点最短尺规构造的计算数学项目。
+Euclid-Min 是一个研究正十七边形相邻顶点短尺规构造的计算数学项目。项目把“什么算一步”固定成可执行的形式规范，用 SageMath 精确重放每一份构造证书，再在同一规则下比较长度。
 
-项目固定初始对象为单位圆
+## 研究问题
+
+初始免费给出
 
 \[
-O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
+O=(0,0),\qquad A=(1,0),\qquad x^2+y^2=1,
 \]
 
-并研究：只使用无刻度直尺与可折叠圆规，至少需要多少次基础作图操作，才能得到 (A) 在单位圆上的任意一个相邻正十七边形顶点。
+其中单位圆以 \(O\) 为圆心并经过 \(A\)。只能使用无刻度直尺和可折叠圆规，目标是在单位圆上构造 \(A\) 的任意一个正十七边形相邻顶点。
 
-当前阶段的首要目标不是宣称全局最优，而是建立一条可复现的研究链路：
+项目不要求画出完整的十七边形。只要精确产生
 
-```text
-形式规范 → Sage 精确验证器 → 已知构造 baseline → 自动搜索 → 可验证证书
-```
+\[
+B_\pm=\left(\cos\frac{2\pi}{17},\ \pm\sin\frac{2\pi}{17}\right)
+\]
 
-## 当前状态
+中的任意一点，就达到目标。
 
-项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**、**M4：基础搜索器**、**M5：profiling 与启发式搜索**和 **M6：新的已验证上界**，并已推进到 **M7 P3c：5 E 独立复核证明**。M7 的全局最优性证明现标记为**待完成（暂停）**，恢复前需要先获得能显著压缩 6–18 E 搜索空间的新理论归约。DeTemple 1991 修改版的 Carlyle 圆构造经当前 profile 转写、依赖清理和局部精确窗口替换后，由 Sage verifier 精确重放为 **19 E**（8 条直线、11 个圆），比原 32 E baseline 短 13 E。
+## 什么算一步
 
-唯一规范 profile 为：
+本项目采用 **E 步**（E-move，elementary move）计数。权威定义见[计分规范](docs/METRICS.md)，核心规则如下。
+
+| 动作 | 分数 |
+|---|---:|
+| 经过两个已有不同点画一条直线 | 1 E |
+| 以一个已有点为圆心、经过另一个已有点画圆 | 1 E |
+| 求出或命名已有直线与圆的确定交点 | 0 E |
+| 初始点 \(O,A\) 和单位圆 | 0 E |
+
+因此
+
+\[
+E=\text{实际画出的直线数}+\text{实际画出的圆数}
+\]
+
+还有几条不能省略的限制：
+
+- 除 \(O,A\) 外，所有新点必须是已有直线或圆的确定交点；不能任取平面点、直线上的点或圆上的点。
+- 中点、垂线、垂直平分线、角平分线、平行线和距离搬运都不是一步；必须展开为基础画线、画圆操作。
+- 圆规是可折叠圆规。不能一步画“以 \(C\) 为圆心、以 \(|AB|\) 为半径”的圆，除非 \(C\) 就是 \(A,B\) 中的一个端点。
+- 重复画出已有直线或圆仍然消耗 1 E。
+- 两个数字只有在初始对象、允许工具、自由点规则、目标和计分规则全部相同，并且证书都通过精确验证时，才能直接比较。
+
+一个简单例子：若只免费给出两个点 \(P,Q\)，构造其中点需要画直线 \(PQ\)、两个等半径圆以及两圆交点连线，共 **4 E**；交点本身不另计分。若直线 \(PQ\) 也作为初始对象免费给出，则同一任务是 **3 E**。这说明“初始给了什么”也是步数定义的一部分。
+
+## 这种计数法的文献依据
+
+E 步不是本项目临时创造的宣传数字。
+
+- François Labelle 在 1997 年的 [*The Complexity of Geometric Constructions*](https://www.cs.mcgill.ca/~sqrt/cons/constructions.html) 中使用可折叠圆规，并把复杂度定义为实际执行的画线和画圆次数；交点直接视为已构造点。这与本项目的计费核心相同。
+- Sava Grozdev 与 Deko Dekov 在 2015 年论文 [*The Computer Improves the Steiner’s Construction of the Malfatti Circles*](https://azbuki.bg/wp-content/uploads/2015/02/azbuki.bg_dmdocuments_MathInfo012015_Grozdev_Dekov.pdf) 中实际采用 Labelle 计数：每条直线或每个圆计 1，交点计 0。
+- Erik D. Demaine 与 Victor Luo 在 2025 年论文 [*Euclidea is APX-hard: Complexity of Optimizing Euclidean Constructions*](https://doi.org/10.2197/ipsjjip.33.1110) 中正式使用 **E-move** 一词：一次直尺或圆规基础操作计 1 E，点定义不计入 E-score。本项目沿用这一名称和计费核心。
+
+这些资料的具体初始对象、目标和自由点规则并不都与本项目相同，所以它们证明的是“这种计数原则有明确先例”，不是说其中报告的步数可以直接与本项目比较。尤其是 DeTemple 1991 使用的是 Lemoine 简洁度；其 45 分与本项目的 19 E 不是同一种数字。
+
+## 当前结果
+
+固定规则配置为：
 
 ```text
 regular-17-e-fixed-v1
 ```
 
-该 profile 使用 E-move 计分：
+当前仓库包含一份通过 SageMath 精确验证的 **19 E 构造证书**：8 条直线、11 个圆。它来自对 DeTemple 1991 修改版 Carlyle 圆路线的规则转换、依赖清理和局部精确替换。
 
-- 画一条合法直线：1 E；
-- 画一个合法基础圆：1 E；
-- 选择或命名已经自动产生的交点：0 E；
-- 初始点 (O,A) 和单位圆免费提供。
+这里的 32 E 是同一项目规则下对 DeTemple 原路线的转换基线，19 E 是项目对该基线的改进。它们不是“此前世界纪录”和“新的世界纪录”。项目尚未完成系统文献检索，也尚未排除全部 0–18 E 构造，因此目前只能严格表述为：
 
-## 规范文件
+> 在 `regular-17-e-fixed-v1` 下，项目已经验证一份 19 E 构造；相较同规则下的 32 E 项目基线，减少了 13 E。
 
-- [研究设计](docs/euclid-min-design.md)：项目定位、研究范围和长期路线；
+完整最优性证明目前暂停。现有证明记录严格排除了 0–5 E，但不能由此推出 19 E 最优。
+
+## 文档入口
+
+- [研究设计](docs/euclid-min-design.md)：研究对象、范围、声明等级和技术路线；
 - [正式模型](docs/FORMAL_MODEL.md)：对象、状态、操作、交点和目标的规范语义；
-- [计分规则](docs/METRICS.md)：E-move 的权威计分规则；
+- [计分规范](docs/METRICS.md)：E 步的权威定义、例子和文献关系；
 - [证书格式](docs/CERTIFICATE_FORMAT.md)：构造程序、哈希和验证输出约定；
-- [文献与 baseline 台账](docs/LITERATURE.md)：检索规则、来源状态和可比性记录；
-- [实施路线](docs/ROADMAP.md)：从规范到搜索器的阶段计划；
-- [基础搜索器](docs/SEARCH.md)：M4 状态、候选、去重、checkpoint 和 CLI；
-- [M5 Profiling](docs/M5_PROFILING.md)：固定实验、热点结论和启发式边界；
-- [E12 并行后缀搜索](docs/M6_SUFFIX_SEARCH.md)：18 E 联合窗口、进程并行、候选多样化和证据边界；
-- [M7 Proof Mode](docs/M7_PROOF_MODE.md)：有界完备枚举、安全归约、证明记录和参考重放；
-- [当前小深度证明记录](proofs/regular-17-through-5e.json)：参考 checker 可重放的 5 E 有界穷尽产物；
-- [旧版 4 E 证明记录](proofs/regular-17-through-4e.json)：保留用于 v1 兼容性；
-- [5 E 两步义务生成扫描](benchmarks/m7-two-step-obligation-scan-sage-10.7.json)：P3b 的中间 proof candidate；
-- [19 E 新上界说明](baselines/regular-17/detemple-1991-carlyle-improved-converted/explanation.md)：M6 证书、推导、计分与依赖主链；
-- [E19 Manim 宣传动画](animations/e19/README.md)：权威 19 步文字脚本、Sage 几何导出和可复现动画场景；
-- [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
-- [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
-- [Profile Schema](schemas/profile-v1.schema.json)；
-- [Certificate Schema](schemas/certificate-v1.schema.json)；
-- [Verification Report Schema](schemas/verification-report-v1.schema.json)；
-- [Search Checkpoint Schema](schemas/search-checkpoint-v1.schema.json)；
-- [Search Profile Schema](schemas/search-profile-v1.schema.json)；
-- [Bounded Proof v1 Schema](schemas/bounded-proof-v1.schema.json)；
-- [Bounded Proof v2 Schema](schemas/bounded-proof-v2.schema.json)；
-- [Two-step Obligation Scan Schema](schemas/two-step-obligation-scan-v1.schema.json)；
-- [Suffix Search Summary Schema](schemas/suffix-search-summary-v1.schema.json)；
-- [Suffix Restart Matrix Config Schema](schemas/suffix-restart-matrix-config-v1.schema.json)；
-- [Suffix Restart Matrix Summary Schema](schemas/suffix-restart-matrix-summary-v1.schema.json)；
-- [Dependency Graph Schema](schemas/dependency-graph-v1.schema.json)；
-- [Sage 内核运行说明](sage/README.md)。
+- [文献与基线台账](docs/LITERATURE.md)：来源状态、规则差异和可比性；
+- [实施路线](docs/ROADMAP.md)：各阶段的完成状态；
+- [19 E 构造说明](baselines/regular-17/detemple-1991-carlyle-improved-converted/explanation.md)：证书、推导和依赖主链；
+- [19 E Manim 动画](animations/e19/README.md)：由 Sage 几何数据生成的可复现动画；
+- [5 E 有界证明记录](proofs/regular-17-through-5e.json)：可由独立检查器重放的当前下界产物；
+- [SageMath 运行说明](sage/README.md)。
 
-若研究设计与版本化规范冲突，以 profile、Schema、`FORMAL_MODEL.md`、`METRICS.md` 和 `CERTIFICATE_FORMAT.md` 中更具体的规则为准。
+若概述性文档与版本化规范冲突，以规则配置文件、Schema、[正式模型](docs/FORMAL_MODEL.md)、[计分规范](docs/METRICS.md)和[证书格式](docs/CERTIFICATE_FORMAT.md)为准。
 
-## 技术边界
+## 运行验证
 
-- 全部 Python 代码统一运行在 SageMath 自带的 Python 环境中；
-- SageMath 同时承载精确内核、Schema 校验、CLI、报告和第一版搜索器；
-- 本地普通 Python 和 Go 都不属于当前支持的运行路径；只有 profiling 证明有必要时才重新评估 Go；
-- 浮点计算只能用于绘图、启发式排序或非权威 hash 分桶，不能决定几何相等、构造合法性、状态合并或目标命中；
-- 没有完备 lower-bound proof 时，只能发布“已验证构造”或“新的已验证上界”，不能声称全局最优。
+参考环境为 SageMath 10.7。全部 Python 代码统一在 SageMath 自带的 Python 环境中运行。
 
-## 近期里程碑
-
-1. **M0：规范闭环**——冻结正式模型、profile、证书格式和计分规则；
-2. **M1：精确几何内核**——实现三类精确求交及退化处理；
-3. **M2：验证闭环**——实现证书重放、目标判断和验证报告；
-4. **M3：首个 baseline**——完整录入并验证一个正十七边形已知构造；
-5. **M4：基础搜索**——实现小深度可审计搜索和证书导出；
-6. **M5：profiling 与启发式搜索**——定位热点并实现非证明 beam；
-7. **M6：新的已验证上界**——把论文修改转写、清理无效分支、加入局部精确窗口替换并验证为 19 E。
-8. **M7：Proof Mode（待完成，当前暂停）**——已严格排除 0–5 E；恢复后须以新的理论归约继续处理 6–18 E。
-
-M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。E12 后缀搜索已经支持 16-worker 容量的确定性 restart 矩阵；六配置复杂度实验实测峰值约 1212% Docker CPU。最后又对 E12→`M0_4` 三步窗口和 E16→目标两步窗口进行了有界专用搜索，仍未找到 18 E。由于当前启发式无法重新发现已知 19 E 后缀，项目已按停止条件结束盲目扩宽；所有 M6 启发式负结果均不是下界。M6 的 19 E 来自可审计的构造化简、依赖清理和局部精确枚举，不依赖启发式搜索成功。M7 已实现小深度 proof record、线性精确参考重放、横轴镜像归约、目标依赖祖先审计、终层精确入射裁剪、反向 DAG 切分接口，以及有限前向状态上的两步 AND/OR 义务展开；当前 `bounded-proof/v2` 已由独立对象入射参考实现完整重放，严格排除 0–5 E。18 E 仍未穷尽，因此 19 E 仍不是已证明最优值；该全局证明任务现已暂停并保留为待完成研究目标。
-
-更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
-
-## 运行精确内核测试
-
-当前参考环境为 SageMath 10.7。使用 Docker 运行：
+运行完整测试：
 
 ```powershell
 docker run --rm `
@@ -104,9 +103,7 @@ docker run --rm `
   sage -python -m unittest discover -s tests -v
 ```
 
-更多容器运行说明和目录说明见 [Sage 内核运行说明](sage/README.md)。
-
-## 运行证书验证器
+验证 19 E 构造证书：
 
 ```powershell
 docker run --rm `
@@ -116,17 +113,7 @@ docker run --rm `
   sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 `
   sage -python -m euclid_min verify `
   --profile profiles/regular-17-e-fixed-v1.yaml `
-  tests/fixtures/certificates/not-target.json
+  baselines/regular-17/detemple-1991-carlyle-improved-converted/construction.json
 ```
 
-成功基线可把最后一个参数替换为：
-
-```text
-baselines/regular-17/detemple-1991-carlyle-improved-converted/construction.json
-```
-
-原 fixture 专门测试“结构合法但未达到目标”的失败路径，因此命令应返回 `target_not_reached` 和退出码 1。
-
-## 研究声明
-
-仓库当前给出一个在固定 profile 下重算为 19 E 的新已验证上界，并保留 32 E 首个 baseline 供差分审计。项目尚未完成系统文献检索，也没有 lower-bound proof，因此不声称 19 E 是文献最短、最短已知或全局最优。
+浮点计算只用于绘图、启发式排序和非权威分桶；几何相等、构造合法性、状态合并和目标命中全部使用精确数学判断。

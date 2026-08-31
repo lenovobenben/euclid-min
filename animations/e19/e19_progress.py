@@ -1,4 +1,4 @@
-"""Euclid-Min 19 E 构造宣传动画。"""
+"""Euclid-Min 19 E 构造演示动画。"""
 
 from __future__ import annotations
 
@@ -131,8 +131,8 @@ class E19Progress(MovingCameraScene):
         )
         explanation.next_to(title, DOWN, buff=0.32)
 
-        old_score = self.make_text("此前 32 E", font_size=55, color=MUTED)
-        new_score = self.make_text("现在 19 E", font_size=68, color=GOLD, weight="MEDIUM")
+        old_score = self.make_text("项目基线 32 E", font_size=50, color=MUTED)
+        new_score = self.make_text("当前证书 19 E", font_size=62, color=GOLD, weight="MEDIUM")
         scores = VGroup(old_score, new_score).arrange(RIGHT, buff=2.0)
         scores.move_to(DOWN * 0.1)
         arrow = Arrow(
