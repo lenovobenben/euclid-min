@@ -1,0 +1,68 @@
+{
+  "schema": "euclid-min-two-step-obligation-scan/v1",
+  "mode": "proof_candidate_unchecked",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "target": {
+    "type": "regular_polygon_adjacent_vertex",
+    "polygon_sides": 17,
+    "accepted": [
+      "B_plus",
+      "B_minus"
+    ]
+  },
+  "forward": {
+    "max_score": 3,
+    "frontier_states": 104,
+    "layers": [
+      {
+        "score": 0,
+        "frontier_states": 1,
+        "generated_candidates": 2,
+        "accepted_next_states": 2,
+        "equivalent_pruned": 0
+      },
+      {
+        "score": 1,
+        "frontier_states": 2,
+        "generated_candidates": 14,
+        "accepted_next_states": 9,
+        "equivalent_pruned": 5
+      },
+      {
+        "score": 2,
+        "frontier_states": 9,
+        "generated_candidates": 147,
+        "accepted_next_states": 104,
+        "equivalent_pruned": 43
+      }
+    ],
+    "safe_reductions": [
+      "duplicate_draw_dominance",
+      "same_object_parameterization_equivalence",
+      "exact_state_equivalence",
+      "horizontal_reflection_equivalence"
+    ]
+  },
+  "suffix": {
+    "budget": 2,
+    "strategy": "complete_state_relative_and_or_expansion",
+    "precursor_candidates": 4173,
+    "terminal_parameterizations_tested": 711795,
+    "one_step_target_branches": 0,
+    "terminal_candidates": 0,
+    "successful_branches": 0
+  },
+  "result": {
+    "status": "no_target_in_generator_scan",
+    "covered_total_score": 5
+  },
+  "execution": {
+    "workers": 8,
+    "elapsed_seconds": 143.313535821002,
+    "container_image": "sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528"
+  },
+  "interpretation_boundary": "生成器已完整扫描其声明的有限空间，但该记录尚未由独立参考 checker 重放；它本身不能升级下界，正式结论应引用 bounded-proof/v2。"
+}

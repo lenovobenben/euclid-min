@@ -97,6 +97,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     prove_parser.add_argument("--output", required=True, help="证明记录 JSON 文件")
     prove_parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="两步义务 proof v2 使用的进程数（默认 1）",
+    )
+    prove_parser.add_argument(
         "--json",
         action="store_true",
         help="以 JSON 输出生成摘要",
@@ -116,6 +122,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--json",
         action="store_true",
         help="以 JSON 输出检查摘要",
+    )
+    check_proof_parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="两步义务 proof v2 参考重放使用的进程数（默认 1）",
     )
     return parser
 
@@ -251,6 +263,7 @@ def _run_prove(args: argparse.Namespace) -> int:
             args.output,
             profile_path=args.profile,
             max_score=args.max_score,
+            workers=args.workers,
         )
         summary = {
             "proof": str(args.output),
@@ -282,6 +295,7 @@ def _run_check_proof(args: argparse.Namespace) -> int:
         summary = check_bounded_proof(
             args.proof,
             profile_path=args.profile,
+            workers=args.workers,
         )
         if args.json:
             print(json.dumps(summary, ensure_ascii=False, indent=2))

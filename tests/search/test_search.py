@@ -520,6 +520,34 @@ class ProfilingArtifactTests(unittest.TestCase):
             all(row["exact_target_candidates_tested"] == 0 for row in recheck["targets"])
         )
 
+    def test_m7_two_step_obligation_scan_is_schema_valid_and_unchecked(self):
+        repository_root = Path(__file__).resolve().parents[2]
+        artifact = json.loads(
+            (
+                repository_root
+                / "benchmarks"
+                / "m7-two-step-obligation-scan-sage-10.7.json"
+            ).read_text(encoding="utf-8")
+        )
+        schema = json.loads(
+            (
+                repository_root
+                / "schemas"
+                / "two-step-obligation-scan-v1.schema.json"
+            ).read_text(encoding="utf-8")
+        )
+        Draft202012Validator.check_schema(schema)
+        Draft202012Validator(schema).validate(artifact)
+
+        self.assertEqual(artifact["mode"], "proof_candidate_unchecked")
+        self.assertEqual(artifact["forward"]["frontier_states"], 104)
+        self.assertEqual(artifact["suffix"]["precursor_candidates"], 4173)
+        self.assertEqual(
+            artifact["suffix"]["terminal_parameterizations_tested"],
+            711795,
+        )
+        self.assertEqual(artifact["suffix"]["successful_branches"], 0)
+
 
 class ExactPrefixSearchTests(unittest.TestCase):
     def test_detemple_e12_prefix_rebuilds_with_complete_closure(self):

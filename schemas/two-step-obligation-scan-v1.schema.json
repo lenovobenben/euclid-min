@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/two-step-obligation-scan-v1.schema.json",
+  "title": "Euclid-Min two-step obligation generator scan v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "mode",
+    "profile",
+    "target",
+    "forward",
+    "suffix",
+    "result",
+    "execution",
+    "interpretation_boundary"
+  ],
+  "properties": {
+    "schema": {"const": "euclid-min-two-step-obligation-scan/v1"},
+    "mode": {"const": "proof_candidate_unchecked"},
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "polygon_sides", "accepted"],
+      "properties": {
+        "type": {"const": "regular_polygon_adjacent_vertex"},
+        "polygon_sides": {"const": 17},
+        "accepted": {
+          "type": "array",
+          "prefixItems": [{"const": "B_plus"}, {"const": "B_minus"}],
+          "items": false
+        }
+      }
+    },
+    "forward": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_score", "frontier_states", "layers", "safe_reductions"],
+      "properties": {
+        "max_score": {"const": 3},
+        "frontier_states": {"type": "integer", "minimum": 1},
+        "layers": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "score",
+              "frontier_states",
+              "generated_candidates",
+              "accepted_next_states",
+              "equivalent_pruned"
+            ],
+            "properties": {
+              "score": {"type": "integer", "minimum": 0},
+              "frontier_states": {"type": "integer", "minimum": 0},
+              "generated_candidates": {"type": "integer", "minimum": 0},
+              "accepted_next_states": {"type": "integer", "minimum": 0},
+              "equivalent_pruned": {"type": "integer", "minimum": 0}
+            }
+          }
+        },
+        "safe_reductions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        }
+      }
+    },
+    "suffix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "budget",
+        "strategy",
+        "precursor_candidates",
+        "terminal_parameterizations_tested",
+        "one_step_target_branches",
+        "terminal_candidates",
+        "successful_branches"
+      ],
+      "properties": {
+        "budget": {"const": 2},
+        "strategy": {"const": "complete_state_relative_and_or_expansion"},
+        "precursor_candidates": {"type": "integer", "minimum": 0},
+        "terminal_parameterizations_tested": {"type": "integer", "minimum": 0},
+        "one_step_target_branches": {"type": "integer", "minimum": 0},
+        "terminal_candidates": {"type": "integer", "minimum": 0},
+        "successful_branches": {"type": "integer", "minimum": 0}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "covered_total_score"],
+      "properties": {
+        "status": {"enum": ["no_target_in_generator_scan", "target_found"]},
+        "covered_total_score": {"const": 5}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workers", "elapsed_seconds", "container_image"],
+      "properties": {
+        "workers": {"type": "integer", "minimum": 1},
+        "elapsed_seconds": {"type": "number", "minimum": 0},
+        "container_image": {"type": "string", "minLength": 1}
+      }
+    },
+    "interpretation_boundary": {"type": "string", "minLength": 1}
+  }
+}

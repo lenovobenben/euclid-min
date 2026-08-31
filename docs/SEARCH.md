@@ -136,11 +136,13 @@ M5 的固定 profiling 结果、启发式公式和解释边界见 `docs/M5_PROFI
 ## 9. M7 小深度 Proof Mode
 
 `euclid-min prove` 与普通 `search` 的 `bfs` 共享正式数学状态，但不接受
-`max_states`、checkpoint、超时或任何启发式候选删除。它按 E-score 完整分层，
-把每层覆盖计数写入 `euclid-min-bounded-proof/v1`。
+`max_states`、checkpoint、超时或任何启发式候选删除。v1 按 E-score 完整分层；
+v2 先完整枚举到 3 E，再对剩余两步作有限 AND/OR 义务展开。
 
 `euclid-min check-proof` 不信任这些计数，而使用不含数值摘要的线性精确候选去重
 和状态索引从头重放。P1 已把关于横轴互为镜像的状态精确合并，并增加目标依赖
 祖先审计；P2 又利用目标始终位于免费单位圆这一事实，只在最后一层展开精确经过
-目标的候选。当前实现仍只用于小深度证明闭环，尚未对 18 E 空间完成穷尽。规范、
-命令和可信边界见 `docs/M7_PROOF_MODE.md`。
+目标的候选；P3a 把具体见证转换为按自动闭包最早可用分数切分的反向 DAG；
+P3b 又对有限前向状态完整展开两步 AND/OR 目标义务；P3c 使用线性前向枚举和
+逐对象 `contains` 入射检查独立重放全部 5 E 计数。当前固定证明严格排除到 5 E，
+仍远未穷尽 18 E。规范、命令和可信边界见 `docs/M7_PROOF_MODE.md`。

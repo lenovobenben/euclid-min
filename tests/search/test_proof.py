@@ -13,6 +13,7 @@ from euclid_min.geometry import Point
 from euclid_min.search.model import PointGoal
 from euclid_min.search.proof import (
     DEFAULT_PROOF_SCHEMA,
+    DEFAULT_PROOF_V2_SCHEMA,
     build_bounded_proof,
     check_bounded_proof,
     enumerate_bounded_proof,
@@ -21,8 +22,11 @@ from euclid_min.search.proof import (
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 PROFILE_PATH = REPOSITORY_ROOT / "profiles" / "regular-17-e-fixed-v1.yaml"
-PUBLISHED_PROOF_PATH = (
+LEGACY_PROOF_PATH = (
     REPOSITORY_ROOT / "proofs" / "regular-17-through-4e.json"
+)
+PUBLISHED_PROOF_PATH = (
+    REPOSITORY_ROOT / "proofs" / "regular-17-through-5e.json"
 )
 
 
@@ -49,15 +53,31 @@ class ProofEnumerationTests(unittest.TestCase):
 
 
 class BoundedProofRecordTests(unittest.TestCase):
-    def test_published_four_move_proof_replays(self):
+    def test_legacy_four_move_record_remains_v1_schema_valid(self):
+        proof = json.loads(LEGACY_PROOF_PATH.read_text(encoding="utf-8"))
+        schema = json.loads(DEFAULT_PROOF_SCHEMA.read_text(encoding="utf-8"))
+
+        Draft202012Validator(schema).validate(proof)
+        self.assertEqual(proof["bound"]["max_score"], 4)
+
+    def test_published_five_move_proof_replays_with_reference_checker(self):
+        proof = json.loads(PUBLISHED_PROOF_PATH.read_text(encoding="utf-8"))
+        schema = json.loads(DEFAULT_PROOF_V2_SCHEMA.read_text(encoding="utf-8"))
+        Draft202012Validator(schema).validate(proof)
+
         checked = check_bounded_proof(
             PUBLISHED_PROOF_PATH,
             profile_path=PROFILE_PATH,
+            workers=8,
         )
 
         self.assertTrue(checked["valid"])
-        self.assertEqual(checked["bound"]["max_score"], 4)
+        self.assertEqual(checked["bound"]["max_score"], 5)
         self.assertEqual(checked["result"]["status"], "exhausted")
+        self.assertEqual(
+            checked["checker"],
+            "linear_exact_forward_and_object_incidence_reference_replay",
+        )
 
     def test_record_matches_schema_and_reference_replay(self):
         proof = build_bounded_proof(profile_path=PROFILE_PATH, max_score=1)

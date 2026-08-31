@@ -19,7 +19,7 @@ euclid_min/
   search/           候选生成、精确 BFS、checkpoint 和证书导出
 ```
 
-当前已经覆盖 M1 数学内核、M2 验证闭环、M3 首个可信 baseline、M4 基础搜索器、M5 profiling/启发式搜索、M6 新的已验证上界，以及 M7 小深度证明记录、横轴镜像归约、目标祖先审计和终层目标入射裁剪。尚未实现：
+当前已经覆盖 M1 数学内核、M2 验证闭环、M3 首个可信 baseline、M4 基础搜索器、M5 profiling/启发式搜索、M6 新的已验证上界，以及 M7 小深度证明记录、横轴镜像归约、目标祖先审计、终层目标入射裁剪、反向 DAG 切分接口和两步 AND/OR 义务展开。尚未实现：
 
 - 构造可视化；
 - 能够覆盖全局 18 E 空间的 lower-bound proof mode。
@@ -123,20 +123,34 @@ beam 删除过分支，未命中时返回 `heuristic_limit` 和退出码 4。它
 ```bash
 sage -python -m euclid_min prove \
   --profile profiles/regular-17-e-fixed-v1.yaml \
-  --max-score 4 \
-  --output proofs/regular-17-through-4e.json \
+  --max-score 5 \
+  --workers 8 \
+  --output proofs/regular-17-through-5e.json \
   --json
 
 sage -python -m euclid_min check-proof \
   --profile profiles/regular-17-e-fixed-v1.yaml \
-  proofs/regular-17-through-4e.json \
+  --workers 8 \
+  proofs/regular-17-through-5e.json \
   --json
 ```
 
 生成器没有状态上限、超时或启发式剪枝，并精确合并关于横轴互为镜像的状态；
 最后一层只展开精确经过允许目标的候选。checker 使用线性精确参考枚举重新计算
-全部层计数和终层入射。当前入口只承诺小深度可审计性，不代表 18 E 已经穷尽。
-设计和证据边界见 `docs/M7_PROOF_MODE.md`。
+全部层计数和终层入射。另有反向依赖 DAG 接口，用于按自动闭包最早可用分数
+导出具体见证的前向/后向边界；两步 AND/OR 入口则完整枚举有限状态上的全部首步
+对象和终步入射义务。v2 checker 改用线性前向枚举，并实际构造每个终步对象后
+检查 `contains`；当前固定证明严格排除到 5 E，但不代表 18 E 已经穷尽。设计和
+证据边界见 `docs/M7_PROOF_MODE.md`。
+
+重建深度 3 frontier 并以 8 个进程完整扫描两步 AND/OR 义务：
+
+```bash
+sage -python sage/experiments/scan_m7_two_step_obligations.py --workers 8
+```
+
+该命令保留 P3b 的生成器侧中间产物；正式结论应引用已经独立重放的
+`proofs/regular-17-through-5e.json`。
 
 从 19 E 构造的精确 E12 前缀发起 6 E 并行联合后缀搜索：
 

@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/bounded-proof-v2.schema.json",
+  "title": "Euclid-Min Bounded Proof v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "profile",
+    "target",
+    "proof_mode",
+    "bound",
+    "result",
+    "forward",
+    "suffix",
+    "totals"
+  ],
+  "properties": {
+    "schema": {"const": "euclid-min-bounded-proof/v2"},
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": {"const": "regular-17-e-fixed-v1"},
+        "sha256": {
+          "const": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "polygon_sides", "accepted"],
+      "properties": {
+        "type": {"const": "regular_polygon_adjacent_vertex"},
+        "polygon_sides": {"const": 17},
+        "accepted": {"const": ["B_plus", "B_minus"]}
+      }
+    },
+    "proof_mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "arithmetic",
+        "candidate_generation",
+        "heuristic_pruning",
+        "state_limit",
+        "timeouts",
+        "safe_reductions"
+      ],
+      "properties": {
+        "strategy": {"const": "exact_breadth_first_plus_two_step_and_or"},
+        "arithmetic": {"const": "sage_aa_exact"},
+        "candidate_generation": {
+          "const": "all_distinct_objects_from_all_state_points"
+        },
+        "heuristic_pruning": {"const": false},
+        "state_limit": {"type": "null"},
+        "timeouts": {"const": false},
+        "safe_reductions": {
+          "const": [
+            "duplicate_draw_dominance",
+            "same_object_parameterization_equivalence",
+            "exact_state_equivalence",
+            "horizontal_reflection_equivalence",
+            "two_step_terminal_and_or_expansion"
+          ]
+        }
+      }
+    },
+    "bound": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric", "max_score"],
+      "properties": {
+        "metric": {"const": "e_move"},
+        "max_score": {"const": 5}
+      }
+    },
+    "result": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "claim", "minimum_score"],
+          "properties": {
+            "status": {"const": "exhausted"},
+            "claim": {"const": "no_target_at_or_below_max_score"},
+            "minimum_score": {"type": "null"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "claim", "minimum_score"],
+          "properties": {
+            "status": {"const": "found"},
+            "claim": {"const": "target_found_at_minimum_score"},
+            "minimum_score": {"enum": [4, 5]}
+          }
+        }
+      ]
+    },
+    "forward": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_score", "frontier_states", "layers"],
+      "properties": {
+        "max_score": {"const": 3},
+        "frontier_states": {"$ref": "#/$defs/nonnegativeInteger"},
+        "layers": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {"$ref": "#/$defs/forwardLayer"}
+        }
+      }
+    },
+    "suffix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "budget",
+        "strategy",
+        "precursor_candidates",
+        "terminal_parameterizations_tested",
+        "one_step_target_branches",
+        "terminal_candidates",
+        "successful_branches"
+      ],
+      "properties": {
+        "budget": {"const": 2},
+        "strategy": {"const": "complete_state_relative_and_or_expansion"},
+        "precursor_candidates": {"$ref": "#/$defs/nonnegativeInteger"},
+        "terminal_parameterizations_tested": {
+          "$ref": "#/$defs/nonnegativeInteger"
+        },
+        "one_step_target_branches": {"$ref": "#/$defs/nonnegativeInteger"},
+        "terminal_candidates": {"$ref": "#/$defs/nonnegativeInteger"},
+        "successful_branches": {"$ref": "#/$defs/nonnegativeInteger"}
+      }
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expanded_states",
+        "generated_candidates",
+        "accepted_states",
+        "equivalent_pruned",
+        "max_frontier",
+        "goal_tests",
+        "precursor_candidates",
+        "terminal_parameterizations_tested",
+        "one_step_target_branches",
+        "terminal_candidates",
+        "successful_branches"
+      ],
+      "properties": {
+        "expanded_states": {"$ref": "#/$defs/nonnegativeInteger"},
+        "generated_candidates": {"$ref": "#/$defs/nonnegativeInteger"},
+        "accepted_states": {"$ref": "#/$defs/nonnegativeInteger"},
+        "equivalent_pruned": {"$ref": "#/$defs/nonnegativeInteger"},
+        "max_frontier": {"$ref": "#/$defs/nonnegativeInteger"},
+        "goal_tests": {"$ref": "#/$defs/nonnegativeInteger"},
+        "precursor_candidates": {"$ref": "#/$defs/nonnegativeInteger"},
+        "terminal_parameterizations_tested": {
+          "$ref": "#/$defs/nonnegativeInteger"
+        },
+        "one_step_target_branches": {"$ref": "#/$defs/nonnegativeInteger"},
+        "terminal_candidates": {"$ref": "#/$defs/nonnegativeInteger"},
+        "successful_branches": {"$ref": "#/$defs/nonnegativeInteger"}
+      }
+    }
+  },
+  "$defs": {
+    "nonnegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "forwardLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "frontier_states",
+        "goal_states",
+        "expanded_states",
+        "generated_candidates",
+        "accepted_next_states",
+        "equivalent_pruned"
+      ],
+      "properties": {
+        "score": {"$ref": "#/$defs/nonnegativeInteger"},
+        "frontier_states": {"$ref": "#/$defs/nonnegativeInteger"},
+        "goal_states": {"$ref": "#/$defs/nonnegativeInteger"},
+        "expanded_states": {"$ref": "#/$defs/nonnegativeInteger"},
+        "generated_candidates": {"$ref": "#/$defs/nonnegativeInteger"},
+        "accepted_next_states": {"$ref": "#/$defs/nonnegativeInteger"},
+        "equivalent_pruned": {"$ref": "#/$defs/nonnegativeInteger"}
+      }
+    }
+  }
+}

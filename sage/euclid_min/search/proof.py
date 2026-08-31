@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import multiprocessing
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Callable
@@ -17,8 +18,12 @@ from ..formats import (
 )
 from ..geometry import Circle, Drawable, Line
 from ..state import GeometryState
+from ..target import adjacent_targets
 from .candidates import generate_candidates
-from .backward import is_regular17_terminal_step
+from .backward import (
+    expand_regular17_two_step_obligations,
+    is_regular17_terminal_step,
+)
 from .index import (
     ExactStateIndex,
     HorizontalReflectionStateIndex,
@@ -30,10 +35,15 @@ from .symmetry import states_equal_under_horizontal_reflection
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_PROOF_SCHEMA = REPOSITORY_ROOT / "schemas" / "bounded-proof-v1.schema.json"
+DEFAULT_PROOF_V2_SCHEMA = (
+    REPOSITORY_ROOT / "schemas" / "bounded-proof-v2.schema.json"
+)
 SUPPORTED_PROFILE_ID = "regular-17-e-fixed-v1"
 SUPPORTED_PROFILE_SHA256 = (
     "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
 )
+_TWO_STEP_FRONTIER: tuple[SearchNode, ...] = ()
+_TWO_STEP_REFERENCE = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -248,13 +258,257 @@ def enumerate_bounded_proof(
     )
 
 
+def _enumerate_three_move_frontier(*, reference: bool):
+    """完整构造 0–3 E frontier，供 v2 的两步终端义务使用。"""
+
+    candidate_generator = (
+        _generate_candidates_reference if reference else generate_candidates
+    )
+    state_index = (
+        _LinearExactStateIndex(horizontal_reflection=True)
+        if reference
+        else HorizontalReflectionStateIndex()
+    )
+    initial = SearchNode.initial()
+    if not state_index.add_if_better(initial.state, initial.score):
+        raise RuntimeError("初始状态不应被状态索引拒绝")
+    frontier = (initial,)
+    goal = Regular17Goal()
+    layers = []
+    totals = {
+        "expanded_states": 0,
+        "generated_candidates": 0,
+        "accepted_states": 1,
+        "equivalent_pruned": 0,
+        "max_frontier": 1,
+        "goal_tests": 0,
+    }
+
+    for score in range(4):
+        goal_states = sum(goal.reached(node.state) for node in frontier)
+        totals["goal_tests"] += len(frontier)
+        if goal_states:
+            raise RuntimeError("两步 proof v2 的 0–3 E 前向 frontier 意外命中目标")
+        if score == 3:
+            layers.append(
+                {
+                    "score": score,
+                    "frontier_states": len(frontier),
+                    "goal_states": 0,
+                    "expanded_states": 0,
+                    "generated_candidates": 0,
+                    "accepted_next_states": 0,
+                    "equivalent_pruned": 0,
+                }
+            )
+            break
+
+        children = []
+        generated = 0
+        equivalent_pruned = 0
+        for node in frontier:
+            for candidate in candidate_generator(node.state):
+                generated += 1
+                child = node.apply(candidate)
+                if not state_index.add_if_better(child.state, child.score):
+                    equivalent_pruned += 1
+                    continue
+                children.append(child)
+        layers.append(
+            {
+                "score": score,
+                "frontier_states": len(frontier),
+                "goal_states": 0,
+                "expanded_states": len(frontier),
+                "generated_candidates": generated,
+                "accepted_next_states": len(children),
+                "equivalent_pruned": equivalent_pruned,
+            }
+        )
+        totals["expanded_states"] += len(frontier)
+        totals["generated_candidates"] += generated
+        totals["accepted_states"] += len(children)
+        totals["equivalent_pruned"] += equivalent_pruned
+        frontier = tuple(children)
+        totals["max_frontier"] = max(totals["max_frontier"], len(frontier))
+
+    return frontier, layers, totals
+
+
+def _scan_two_step_state(index: int) -> dict[str, int]:
+    node = _TWO_STEP_FRONTIER[index]
+    if not _TWO_STEP_REFERENCE:
+        expansion = expand_regular17_two_step_obligations(node.state)
+        return {
+            "precursor_candidates": expansion.precursor_candidates,
+            "terminal_parameterizations_tested": (
+                expansion.terminal_parameterizations_tested
+            ),
+            "one_step_target_branches": sum(
+                bool(branch.targets) for branch in expansion.branches
+            ),
+            "terminal_candidates": expansion.terminal_candidates,
+            "successful_branches": len(expansion.successful_branches),
+        }
+
+    precursor_candidates = _generate_candidates_reference(node.state)
+    terminal_parameterizations_tested = 0
+    one_step_target_branches = 0
+    terminal_candidates = 0
+    successful_branches = 0
+    for precursor in precursor_candidates:
+        child = node.apply(precursor)
+        if is_regular17_terminal_step(precursor):
+            one_step_target_branches += 1
+            successful_branches += 1
+            continue
+        point_count = len(child.state.points)
+        terminal_parameterizations_tested += (
+            3 * point_count * (point_count - 1) // 2
+        )
+        terminals = _generate_terminal_candidates_reference(child.state)
+        terminal_candidates += len(terminals)
+        if terminals:
+            successful_branches += 1
+    return {
+        "precursor_candidates": len(precursor_candidates),
+        "terminal_parameterizations_tested": terminal_parameterizations_tested,
+        "one_step_target_branches": one_step_target_branches,
+        "terminal_candidates": terminal_candidates,
+        "successful_branches": successful_branches,
+    }
+
+
+def _scan_two_step_frontier(
+    frontier: tuple[SearchNode, ...],
+    *,
+    reference: bool,
+    workers: int,
+) -> dict[str, int]:
+    if workers < 1:
+        raise ValueError("proof workers 至少为 1")
+    global _TWO_STEP_FRONTIER, _TWO_STEP_REFERENCE
+    _TWO_STEP_FRONTIER = frontier
+    _TWO_STEP_REFERENCE = reference
+    if workers == 1:
+        rows = [_scan_two_step_state(index) for index in range(len(frontier))]
+    else:
+        if "fork" not in multiprocessing.get_all_start_methods():
+            raise RuntimeError("多进程 proof v2 需要 fork 启动方式")
+        with multiprocessing.get_context("fork").Pool(processes=workers) as pool:
+            rows = pool.map(
+                _scan_two_step_state,
+                range(len(frontier)),
+                chunksize=1,
+            )
+    return {
+        key: sum(row[key] for row in rows)
+        for key in (
+            "precursor_candidates",
+            "terminal_parameterizations_tested",
+            "one_step_target_branches",
+            "terminal_candidates",
+            "successful_branches",
+        )
+    }
+
+
+def _build_two_step_bounded_proof(
+    *,
+    profile_path: str | Path,
+    reference: bool,
+    workers: int,
+) -> dict:
+    profile = load_profile(profile_path)
+    _require_supported_profile(profile.data["id"], profile.sha256)
+    frontier, layers, forward_totals = _enumerate_three_move_frontier(
+        reference=reference
+    )
+    suffix_totals = _scan_two_step_frontier(
+        frontier,
+        reference=reference,
+        workers=workers,
+    )
+    successful = suffix_totals["successful_branches"]
+    minimum_score = (
+        4
+        if suffix_totals["one_step_target_branches"]
+        else 5
+        if successful
+        else None
+    )
+    result = {
+        "status": "found" if successful else "exhausted",
+        "claim": (
+            "target_found_at_minimum_score"
+            if successful
+            else "no_target_at_or_below_max_score"
+        ),
+        "minimum_score": minimum_score,
+    }
+    totals = {**forward_totals, **suffix_totals}
+    payload = {
+        "schema": "euclid-min-bounded-proof/v2",
+        "profile": {"id": profile.data["id"], "sha256": profile.sha256},
+        "target": {
+            "type": "regular_polygon_adjacent_vertex",
+            "polygon_sides": 17,
+            "accepted": ["B_plus", "B_minus"],
+        },
+        "proof_mode": {
+            "strategy": "exact_breadth_first_plus_two_step_and_or",
+            "arithmetic": "sage_aa_exact",
+            "candidate_generation": (
+                "all_distinct_objects_from_all_state_points"
+            ),
+            "heuristic_pruning": False,
+            "state_limit": None,
+            "timeouts": False,
+            "safe_reductions": [
+                "duplicate_draw_dominance",
+                "same_object_parameterization_equivalence",
+                "exact_state_equivalence",
+                "horizontal_reflection_equivalence",
+                "two_step_terminal_and_or_expansion",
+            ],
+        },
+        "bound": {"metric": "e_move", "max_score": 5},
+        "result": result,
+        "forward": {
+            "max_score": 3,
+            "frontier_states": len(frontier),
+            "layers": layers,
+        },
+        "suffix": {
+            "budget": 2,
+            "strategy": "complete_state_relative_and_or_expansion",
+            **suffix_totals,
+        },
+        "totals": totals,
+    }
+    _validate_schema_instance(
+        payload,
+        _load_schema(DEFAULT_PROOF_V2_SCHEMA),
+        "proof_schema_invalid",
+    )
+    return payload
+
+
 def build_bounded_proof(
     *,
     profile_path: str | Path,
     max_score: int,
     reference: bool = False,
+    workers: int = 1,
 ) -> dict:
     """为固定正十七边形 profile 构造确定性的有界证明记录。"""
+
+    if max_score == 5:
+        return _build_two_step_bounded_proof(
+            profile_path=profile_path,
+            reference=reference,
+            workers=workers,
+        )
 
     profile = load_profile(profile_path)
     _require_supported_profile(profile.data["id"], profile.sha256)
@@ -326,12 +580,14 @@ def save_bounded_proof(
     *,
     profile_path: str | Path,
     max_score: int,
+    workers: int = 1,
 ) -> dict:
     """生成并保存证明记录。"""
 
     payload = build_bounded_proof(
         profile_path=profile_path,
         max_score=max_score,
+        workers=workers,
     )
     output_path = Path(path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -346,7 +602,8 @@ def check_bounded_proof(
     path: str | Path,
     *,
     profile_path: str | Path,
-    schema_path: str | Path = DEFAULT_PROOF_SCHEMA,
+    schema_path: str | Path | None = None,
+    workers: int = 1,
 ) -> dict:
     """用无摘要的参考枚举器重放并核对一份证明记录。"""
 
@@ -360,9 +617,22 @@ def check_bounded_proof(
             f"无法读取 bounded proof: {error}",
         ) from error
 
+    schema_id = data.get("schema")
+    if schema_path is None:
+        if schema_id == "euclid-min-bounded-proof/v1":
+            selected_schema_path = DEFAULT_PROOF_SCHEMA
+        elif schema_id == "euclid-min-bounded-proof/v2":
+            selected_schema_path = DEFAULT_PROOF_V2_SCHEMA
+        else:
+            raise VerificationError(
+                "unsupported_proof_schema",
+                f"不支持的 bounded proof schema {schema_id!r}",
+            )
+    else:
+        selected_schema_path = Path(schema_path)
     _validate_schema_instance(
         data,
-        _load_schema(schema_path),
+        _load_schema(selected_schema_path),
         "proof_schema_invalid",
     )
     profile = load_profile(profile_path)
@@ -380,6 +650,7 @@ def check_bounded_proof(
         profile_path=profile_path,
         max_score=data["bound"]["max_score"],
         reference=True,
+        workers=workers,
     )
     if replayed != data:
         path_parts, asserted, actual = _first_difference(data, replayed)
@@ -398,7 +669,11 @@ def check_bounded_proof(
         "profile": data["profile"],
         "bound": data["bound"],
         "result": data["result"],
-        "checker": "linear_exact_reference_replay",
+        "checker": (
+            "linear_exact_forward_and_object_incidence_reference_replay"
+            if schema_id == "euclid-min-bounded-proof/v2"
+            else "linear_exact_reference_replay"
+        ),
     }
 
 
@@ -429,6 +704,45 @@ def _generate_candidates_reference(state: GeometryState) -> tuple[Candidate, ...
                 continue
             if add_if_new(Circle.through(center, through)):
                 candidates.append(Candidate("circle", center, through))
+    return tuple(candidates)
+
+
+def _generate_terminal_candidates_reference(
+    state: GeometryState,
+) -> tuple[Candidate, ...]:
+    """逐个构造完整对象、再以 ``contains`` 检查目标入射的参考实现。"""
+
+    points = tuple(sorted(state.points))
+    targets = tuple(adjacent_targets().values())
+    known_objects: list[Drawable] = list(state.drawables)
+    candidates: list[Candidate] = []
+
+    def consider(drawable: Drawable, candidate: Candidate) -> None:
+        if not any(drawable.contains(target) for target in targets):
+            return
+        if any(
+            type(existing) is type(drawable) and existing == drawable
+            for existing in known_objects
+        ):
+            return
+        known_objects.append(drawable)
+        candidates.append(candidate)
+
+    for first_index, first in enumerate(points):
+        for second in points[first_index + 1 :]:
+            consider(
+                Line.through(first, second),
+                Candidate("line", first, second),
+            )
+
+    for center in points:
+        for through in points:
+            if center == through:
+                continue
+            consider(
+                Circle.through(center, through),
+                Candidate("circle", center, through),
+            )
     return tuple(candidates)
 
 

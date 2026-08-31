@@ -15,21 +15,27 @@
 M7 的目标是让这个否定结论来自可审计的安全归约和完备枚举，而不是 beam、
 浮点排名、候选宽度、运行时超时或未校准的启发式。
 
-## 1. 当前 P0/P1 交付物
+## 1. 当前 P0–P3c 交付物
 
 P0 已实现一个小深度 proof-mode 闭环，P1 在此基础上加入第一项非平凡安全归约：
 
 - `euclid_min.search.proof` 按 E-score 做确定性完整分层枚举；
-- `euclid-min-bounded-proof/v1` 记录每层 frontier、候选、合并和目标检查计数；
+- `euclid-min-bounded-proof/v1` 记录逐层 frontier，v2 记录“前向 3 E + 完整两步
+  后缀”的有界证明；
 - `euclid-min prove` 生成证明记录；
 - `euclid-min check-proof` 使用另一套线性精确候选去重和状态索引重新枚举；
+- v2 末两步参考路径逐一构造直线或圆，再以对象的精确 `contains` 判定目标入射，
+  不复用生成器的共线式或等距式预筛公式；
 - 生成与检查均固定到 profile ID 及其已发布 SHA-256；
 - proof mode 不接受 `max_states`、超时、beam 或浮点候选删除。
 - 关于横轴互为镜像的状态被合并为一个精确等价轨道；
 - 目标依赖祖先审计可以识别并裁剪不服务于目标根的计费对象。
+- 具体成功见证可以规范化为带最早可用分数的反向依赖 DAG，并在任意 E-score
+  处导出前向/后向切分边界。
+- 给定一个有限前向状态，可以完整展开所有至多两步目标后缀的 AND/OR 义务。
 
-当前实现只证明实际完成的小深度分数界，不证明 18 E 已被穷尽，也不改变当前
-“19 E 已验证上界”的结论等级。
+当前实现已严格排除 0–5 E，但不证明 18 E 已被穷尽，也不改变当前“19 E 已验证
+上界”的结论等级。
 
 ## 2. 有界枚举的完备性
 
@@ -135,15 +141,100 @@ D\text{ 精确经过 }B_+\text{ 或 }B_-.
 该定理目前用于审计和下一阶段反向 DAG 设计，尚未作为前向 proof 枚举的即时
 剪枝；在 proof record 中只声明实际参与状态合并的归约。
 
+### 4.1 反向 DAG 与切分边界
+
+`build_reverse_dependency_dag` 先取目标根的祖先闭包，删除全部非祖先节点，再按
+保留的计费对象重新编号。每个节点记录类型、直接前提、计费序号和
+`availability_score`。对直线或圆，该分数是自身计费序号；对交点，则是两个父
+对象分数的最大值。因此交点何时在程序文本中获得名称不会影响它在自动闭包中的
+真实可用时刻。
+
+在分数 \(s\) 处从目标根向后遍历：分数不超过 \(s\) 的第一个节点进入前向
+边界，其余节点留在反向后缀。所得边界是这条具体见证在该切分处要求前向状态同时
+提供的点和对象集合。已知 19 E 证书的校准结果为：
+
+- 17 E：边界为 `O、Q、c_Q_O、H4_8`，反向侧剩
+  `target_helper_circle` 和 `target_line` 两次绘制；
+- 18 E：边界为 `Q、target_helper_point`，反向侧只剩 `target_line`；
+- 所有 0–19 E 切分均满足边界节点分数不超过切分值、后缀节点分数严格大于
+  切分值，且后缀计费数恰为 \(19-s\)。
+
+终步候选另有直接生成入口：它对点对先精确检查三点共线式或圆心等距式，只为
+满足 \(B_+\) 或 \(B_-\) 入射方程的点对构造对象。该入口已在 19 E 最终状态前
+与“完整生成全部候选后过滤”的参考路径逐项比较。
+
+这里的 DAG 仍描述一条已知具体见证。它验证了节点语义和 meet-in-the-middle
+切分接口，但不能排除其他未知 DAG；P3b 因而继续处理有限前向状态上的完整
+AND/OR 展开，而不是把这条已知见证误当作全局反向枚举。
+
+### 4.2 有限状态上的两步 AND/OR 展开
+
+P3b 先处理一个严格有限的子问题。给定精确状态 \(S\)，根义务是“至多再画两个
+不同新对象即可命中目标”。第一层 OR 枚举 `generate_candidates(S)` 的全部不同
+对象；对每个首步对象执行完整自动交点闭包，再直接求解所有经过 \(B_+\) 或
+\(B_-\) 的最终直线和圆。
+
+一个最终绘制分支是 AND：它的两个输入点必须同时可用。若输入点由首步新产生，
+记录还会列出所有包含该点的既有对象；该点由首步对象与其中任一支撑对象相交得到。
+因此结构中同时保留：
+
+- 根对不同首步对象的 OR；
+- 每个最终绘制对两个输入点的 AND；
+- 一个新点存在多个既有支撑对象时的 OR。
+
+这里的有限性来自前向状态，而不是对连续欧氏平面作任意点猜测。首步候选仍覆盖
+状态点集上的全部基础直线和基础圆；终步生成器覆盖首步闭包点集上的全部共线式和
+等距式解。重复对象与同对象不同参数化按第 3.1、3.2 节的安全规则删除。
+
+三类校准已经通过：初始状态完整展开后无两步分支命中；一个合成状态恢复了
+“首步切出新点、末步用该点画目标直线”的依赖；已知 19 E 路线的最后两步恢复了
+`target_helper_point`，并精确记录 `c_Q_O` 为它的既有支撑对象。
+
+在固定 4 E 证明的 104 个深度 3 状态上，一次 8 进程完整生成扫描覆盖 4,173 个
+首步候选和 711,795 个终步点对参数化，没有产生目标候选。墙钟时间约 140 秒，
+在 P3b 阶段只用于工程评估，不属于当时的数学结论：该零命中结果尚未写入版本化
+proof record，独立参考 checker 也尚未重放这 711,795 项。P3c 已在下一节补齐
+这两项，因此正式下界现在可以升级到 5 E。
+
+固定生成扫描可复现为：
+
+```bash
+sage -python sage/experiments/scan_m7_two_step_obligations.py --workers 8
+```
+
+输出使用 `euclid-min-two-step-obligation-scan/v1`，固定产物位于
+`benchmarks/m7-two-step-obligation-scan-sage-10.7.json`，并强制标记为
+`proof_candidate_unchecked`。进程数只影响执行时间，`pool.map` 仍按 104 个状态的
+确定性顺序汇总计数。
+
+### 4.3 bounded-proof v2 与独立参考重放
+
+P3c 把上述有限两步后缀纳入 `euclid-min-bounded-proof/v2`。证明先从初始状态
+完整前向枚举到 3 E；横轴反射归约后共接受 116 个状态，深度 3 frontier 为
+104 个。随后对这些状态完整枚举 4,173 个首步候选，并检查 711,795 个末步直线或
+圆的输入参数化。所有分支都没有命中目标。
+
+生成器沿用共线式和圆心等距式的精确预筛，以避免构造明显不经过目标的对象。
+参考 checker 则采用结构上不同的路径：它线性精确生成和去重全部首步候选；末步
+对每个参数化实际构造 `Line` 或 `Circle`，再调用对象的精确 `contains` 检查两个
+目标。参考路径重放得到完全相同的 frontier、候选和零命中计数。
+
+正式记录为 `proofs/regular-17-through-5e.json`，SHA-256 为
+`616a268ea02ed0785e5f055d157c298bc817484560de0f7998a3452d734a7463`，记录的 checker
+为 `linear_exact_forward_and_object_incidence_reference_replay`。因此在当前 profile
+及其固定规范摘要下，0–5 E 均不存在合法构造。
+
 ## 5. 证明记录
 
-Schema 位于 `schemas/bounded-proof-v1.schema.json`。记录固定包含：
+逐层旧格式位于 `schemas/bounded-proof-v1.schema.json`；两步后缀正式格式位于
+`schemas/bounded-proof-v2.schema.json`。记录固定包含：
 
 - profile ID 与规范摘要；
 - 目标集合和 E-score 上界；
 - 精确算术、完整候选生成及禁用启发式的声明；
 - 当前启用的安全归约 ID；
 - 每层 frontier 数量、目标状态数、完整候选数、精确等价合并数和终层入射计数；
+- v2 的前向展开、首步候选、末步参数化、目标候选和成功分支计数；
 - 总展开数、总候选数、总接受状态数和目标检查数；
 - `exhausted` 或 `found` 结论。
 
@@ -157,8 +248,9 @@ Schema 位于 `schemas/bounded-proof-v1.schema.json`。记录固定包含：
 ```bash
 sage -python -m euclid_min prove \
   --profile profiles/regular-17-e-fixed-v1.yaml \
-  --max-score 4 \
-  --output proofs/regular-17-through-4e.json \
+  --max-score 5 \
+  --workers 8 \
+  --output proofs/regular-17-through-5e.json \
   --json
 ```
 
@@ -167,17 +259,21 @@ sage -python -m euclid_min prove \
 ```bash
 sage -python -m euclid_min check-proof \
   --profile profiles/regular-17-e-fixed-v1.yaml \
-  proofs/regular-17-through-4e.json \
+  --workers 8 \
+  proofs/regular-17-through-5e.json \
   --json
 ```
 
 `prove` 成功生成记录时返回 0；`check-proof` 重放一致时返回 0，不一致时返回 1。
-仓库中的 `proofs/regular-17-through-4e.json` 是首份固定产物；它证明当前
-profile 下 0–4 E 均不能命中相邻顶点，用于校准格式、镜像归约、终层约束和重放链路。
+仓库中的 `proofs/regular-17-through-5e.json` 是当前正式产物；它证明当前 profile
+下 0–5 E 均不能命中相邻顶点。旧的 `proofs/regular-17-through-4e.json` 作为 v1
+格式、镜像归约和单终步重放链路的兼容性产物保留。
 
 ## 7. 可信边界
 
-参考 checker 与生成器具有不同的候选去重和状态索引实现，但仍共享：
+参考 checker 与生成器具有不同的候选去重和状态索引实现；v2 的末步参考路径还
+改为逐个构造对象并调用精确 `contains`，不复用生成器的直接入射预筛。但二者仍
+共享：
 
 - SageMath `AA`；
 - Point、Line、Circle 和三类精确求交；
@@ -192,8 +288,8 @@ profile 下 0–4 E 均不能命中相邻顶点，用于校准格式、镜像归
 
 线性参考重放只适合小深度。通向 18 E 的下一阶段依次为：
 
-1. 把最后一步入射条件递归展开为反向依赖 DAG 搜索；
-2. 设计前向状态与多步反向目标约束的 meet-in-the-middle 接口；
+1. 把固定两步后缀推广为更深的精确反向 AND/OR 边界；
+2. 让前向状态与反向边界按精确点/对象集合匹配；
 3. 给并行分片增加确定性覆盖范围和可合并证明记录；
 4. 先完整重放固定 E12/E16 局部窗口，再评估全局 18 E；
 5. 只有所有分支都由安全规则覆盖后，才允许发布 `OPT = 19`。

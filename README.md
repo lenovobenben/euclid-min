@@ -18,7 +18,7 @@ O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1,
 
 ## 当前状态
 
-项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**、**M4：基础搜索器**、**M5：profiling 与启发式搜索**和 **M6：新的已验证上界**，并已推进到 **M7 P2：终层反向约束**。DeTemple 1991 修改版的 Carlyle 圆构造经当前 profile 转写、依赖清理和局部精确窗口替换后，由 Sage verifier 精确重放为 **19 E**（8 条直线、11 个圆），比原 32 E baseline 短 13 E。
+项目已完成 **M0：形式规范冻结**、**M1：Sage 精确几何内核**、**M2：验证闭环**、**M3：首个可信 baseline**、**M4：基础搜索器**、**M5：profiling 与启发式搜索**和 **M6：新的已验证上界**，并已推进到 **M7 P3c：5 E 独立复核证明**。DeTemple 1991 修改版的 Carlyle 圆构造经当前 profile 转写、依赖清理和局部精确窗口替换后，由 Sage verifier 精确重放为 **19 E**（8 条直线、11 个圆），比原 32 E baseline 短 13 E。
 
 唯一规范 profile 为：
 
@@ -45,7 +45,9 @@ regular-17-e-fixed-v1
 - [M5 Profiling](docs/M5_PROFILING.md)：固定实验、热点结论和启发式边界；
 - [E12 并行后缀搜索](docs/M6_SUFFIX_SEARCH.md)：18 E 联合窗口、进程并行、候选多样化和证据边界；
 - [M7 Proof Mode](docs/M7_PROOF_MODE.md)：有界完备枚举、安全归约、证明记录和参考重放；
-- [首份小深度证明记录](proofs/regular-17-through-4e.json)：参考 checker 可重放的 4 E 有界穷尽产物；
+- [当前小深度证明记录](proofs/regular-17-through-5e.json)：参考 checker 可重放的 5 E 有界穷尽产物；
+- [旧版 4 E 证明记录](proofs/regular-17-through-4e.json)：保留用于 v1 兼容性；
+- [5 E 两步义务生成扫描](benchmarks/m7-two-step-obligation-scan-sage-10.7.json)：P3b 的中间 proof candidate；
 - [19 E 新上界说明](baselines/regular-17/detemple-1991-carlyle-improved-converted/explanation.md)：M6 证书、推导、计分与依赖主链；
 - [固定 profile](profiles/regular-17-e-fixed-v1.yaml)：当前唯一可比较的研究实例；
 - [固定 profile 摘要](profiles/regular-17-e-fixed-v1.sha256)；
@@ -54,7 +56,9 @@ regular-17-e-fixed-v1
 - [Verification Report Schema](schemas/verification-report-v1.schema.json)；
 - [Search Checkpoint Schema](schemas/search-checkpoint-v1.schema.json)；
 - [Search Profile Schema](schemas/search-profile-v1.schema.json)；
-- [Bounded Proof Schema](schemas/bounded-proof-v1.schema.json)；
+- [Bounded Proof v1 Schema](schemas/bounded-proof-v1.schema.json)；
+- [Bounded Proof v2 Schema](schemas/bounded-proof-v2.schema.json)；
+- [Two-step Obligation Scan Schema](schemas/two-step-obligation-scan-v1.schema.json)；
 - [Suffix Search Summary Schema](schemas/suffix-search-summary-v1.schema.json)；
 - [Suffix Restart Matrix Config Schema](schemas/suffix-restart-matrix-config-v1.schema.json)；
 - [Suffix Restart Matrix Summary Schema](schemas/suffix-restart-matrix-summary-v1.schema.json)；
@@ -82,7 +86,7 @@ regular-17-e-fixed-v1
 7. **M6：新的已验证上界**——把论文修改转写、清理无效分支、加入局部精确窗口替换并验证为 19 E。
 8. **M7：Proof Mode**——以安全归约、完备枚举记录和参考重放逐步建立下界证据。
 
-M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。E12 后缀搜索已经支持 16-worker 容量的确定性 restart 矩阵；六配置复杂度实验实测峰值约 1212% Docker CPU。最后又对 E12→`M0_4` 三步窗口和 E16→目标两步窗口进行了有界专用搜索，仍未找到 18 E。由于当前启发式无法重新发现已知 19 E 后缀，项目已按停止条件结束盲目扩宽；所有 M6 启发式负结果均不是下界。M6 的 19 E 来自可审计的构造化简、依赖清理和局部精确枚举，不依赖启发式搜索成功。M7 已实现小深度 proof record、线性精确参考重放、横轴镜像归约、目标依赖祖先审计和终层精确入射裁剪；当前固定产物完整排除到 4 E，尚未穷尽 18 E，因此 19 E 仍不是已证明最优值。
+M5 profile 显示当前主要热点在 Sage 精确子状态展开，而非 Python 队列；目前不引入 Go。E12 后缀搜索已经支持 16-worker 容量的确定性 restart 矩阵；六配置复杂度实验实测峰值约 1212% Docker CPU。最后又对 E12→`M0_4` 三步窗口和 E16→目标两步窗口进行了有界专用搜索，仍未找到 18 E。由于当前启发式无法重新发现已知 19 E 后缀，项目已按停止条件结束盲目扩宽；所有 M6 启发式负结果均不是下界。M6 的 19 E 来自可审计的构造化简、依赖清理和局部精确枚举，不依赖启发式搜索成功。M7 已实现小深度 proof record、线性精确参考重放、横轴镜像归约、目标依赖祖先审计、终层精确入射裁剪、反向 DAG 切分接口，以及有限前向状态上的两步 AND/OR 义务展开；当前 `bounded-proof/v2` 已由独立对象入射参考实现完整重放，严格排除 0–5 E。18 E 仍未穷尽，因此 19 E 仍不是已证明最优值。
 
 更完整的验收条件见 [实施路线](docs/ROADMAP.md)。
 
