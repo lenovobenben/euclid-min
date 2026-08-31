@@ -44,8 +44,17 @@ TARGET = "#5DE2A5"
 ALERT = "#FF7A90"
 TARGET_CIRCLE = "#F45BFF"
 
+# 第 19 步必须同时看见定直线的两个已知点 Q、P，以及直线与单位圆新切出的 B。
+# 最终结论再缩回单位圆全景，避免局部放大把 Q 裁出画面。
+TARGET_LINE_FRAME_CENTER = (-0.04, 0.18)
+TARGET_LINE_FRAME_WIDTH = 7.6
+FINAL_OVERVIEW_FRAME_CENTER = (0.0, 0.0)
+FINAL_OVERVIEW_FRAME_WIDTH = 10.8
+
 # 正片不再为文字面板预留空间，几何图占满整个画面。
-LOGICAL_BOUNDS = (-2.6, 2.6, -1.48, 1.48)
+# 直线先按最大镜头范围生成，再由相机裁切。这样临时缩远时，直线仍会穿过
+# 位于旧默认画幅之外的定位点（第 4 步的上下两个定线点尤其如此）。
+LOGICAL_BOUNDS = (-3.6, 3.6, -2.0, 2.0)
 GEOMETRY_SCALE = 2.72
 GEOMETRY_SHIFT = DOWN * 0.12
 
@@ -248,15 +257,17 @@ class E19Progress(MovingCameraScene):
         return Transform(self.counter, new_counter)
 
     def adjust_camera(self, e_move: int) -> None:
-        if e_move in {11, 14}:
+        if e_move in {5, 11, 14}:
             self.play(Restore(self.camera.frame), run_time=0.65)
             return
         cues = {
-            10: ((-0.28, 0.04), 9.2),
+            # 第 4 步的两个定线点在单位圆上下方，必须临时扩大视野。
+            4: ((0.0, 0.0), 18.4),
+            10: ((-0.28, 0.22), 9.2),
             13: ((-0.12, 0.5), 9.0),
             17: ((0.52, 0.25), 9.2),
             18: ((0.18, 0.12), 7.8),
-            19: ((0.28, 0.13), 6.8),
+            19: (TARGET_LINE_FRAME_CENTER, TARGET_LINE_FRAME_WIDTH),
         }
         cue = cues.get(e_move)
         if cue is None:
@@ -267,6 +278,46 @@ class E19Progress(MovingCameraScene):
             run_time=0.68,
         )
 
+    def reference_marker(self, point_id: str, color: str) -> VGroup:
+        position = logical_to_scene(self.data["points"][point_id])
+        marker = VGroup(
+            Circle(
+                radius=0.115,
+                color=color,
+                stroke_width=3.4,
+                fill_opacity=0,
+            ).move_to(position),
+            Dot(position, radius=0.048, color=color),
+        )
+        marker.set_z_index(8)
+        return marker
+
+    def show_references(self, event: dict) -> VGroup:
+        if event["op"] == "line":
+            first_id, second_id = event["through"]
+            overlay = VGroup(
+                self.reference_marker(first_id, GOLD),
+                self.reference_marker(second_id, GOLD),
+            )
+        else:
+            center_id = event["center"]
+            through_id = event["through"]
+            center = logical_to_scene(self.data["points"][center_id])
+            through = logical_to_scene(self.data["points"][through_id])
+            radius_guide = Line(
+                center,
+                through,
+                color=ALERT,
+                stroke_width=2.4,
+            ).set_z_index(7)
+            overlay = VGroup(
+                radius_guide,
+                self.reference_marker(center_id, ALERT),
+                self.reference_marker(through_id, GOLD),
+            )
+        self.play(FadeIn(overlay, scale=0.72), run_time=0.22)
+        return overlay
+
     def play_construction(self) -> None:
         for event in self.data["events"]:
             if event["kind"] == "intersection":
@@ -276,6 +327,7 @@ class E19Progress(MovingCameraScene):
 
             e_move = event["e_move"]
             self.adjust_camera(e_move)
+            references = self.show_references(event)
             drawable = self.make_drawable(event)
             self.play(
                 Create(drawable),
@@ -291,13 +343,18 @@ class E19Progress(MovingCameraScene):
                         width=1.55,
                         opacity=0.44,
                     ),
+                    FadeOut(references),
                     run_time=0.14,
                 )
             elif e_move == 18:
                 self.play(
                     drawable.animate.set_stroke(color=ALERT, width=2.5, opacity=0.9),
+                    FadeOut(references),
                     run_time=0.18,
                 )
+            elif e_move == 19:
+                self.play(FadeOut(references), run_time=0.18)
+                self.wait(0.45)
 
     def highlight_target(self) -> None:
         target_point = self.data["target"]["point"]
@@ -322,7 +379,7 @@ class E19Progress(MovingCameraScene):
             *(
                 group
                 for point_id, group in self.point_objects.items()
-                if point_id not in {"O", "A", "target_helper_point"}
+                if point_id not in {"O", "A", "Q", "target_helper_point"}
             )
         )
         self.play(
@@ -337,6 +394,12 @@ class E19Progress(MovingCameraScene):
         )
         self.play(FadeIn(target_dot, scale=1.8), FadeIn(target_label), run_time=0.35)
         self.play(pulse.animate.scale(5).set_stroke(opacity=0), run_time=0.75)
+        self.play(
+            self.camera.frame.animate.move_to(
+                logical_to_scene(FINAL_OVERVIEW_FRAME_CENTER)
+            ).set(width=FINAL_OVERVIEW_FRAME_WIDTH),
+            run_time=0.8,
+        )
 
         origin = logical_to_scene(self.data["initial"]["O"])
         start = logical_to_scene(self.data["initial"]["A"])

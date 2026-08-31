@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import configparser
 import json
 import unittest
 from pathlib import Path
@@ -17,9 +18,35 @@ CERTIFICATE_PATH = (
     / "construction.json"
 )
 GEOMETRY_PATH = REPOSITORY_ROOT / "animations" / "e19" / "geometry.json"
+MANIM_CONFIG_PATH = REPOSITORY_ROOT / "animations" / "e19" / "manim.cfg"
 
 
 class E19AnimationDataTests(unittest.TestCase):
+    def test_release_render_profile_is_4k_30fps(self) -> None:
+        parser = configparser.ConfigParser()
+        parser.read(MANIM_CONFIG_PATH, encoding="utf-8")
+        cli = parser["CLI"]
+
+        self.assertEqual(cli.getint("pixel_width"), 3840)
+        self.assertEqual(cli.getint("pixel_height"), 2160)
+        self.assertEqual(cli.getint("frame_rate"), 30)
+
+    def test_every_draw_has_two_exported_reference_points(self) -> None:
+        exported = json.loads(GEOMETRY_PATH.read_text(encoding="utf-8"))
+        points = exported["points"]
+
+        for event in exported["events"]:
+            if event["kind"] != "draw":
+                continue
+            if event["op"] == "line":
+                references = event["through"]
+            else:
+                references = [event["center"], event["through"]]
+
+            self.assertEqual(len(references), 2, event["id"])
+            for point_id in references:
+                self.assertIn(point_id, points, event["id"])
+
     def test_export_matches_verified_certificate_replay(self) -> None:
         certificate = json.loads(CERTIFICATE_PATH.read_text(encoding="utf-8"))
         exported = json.loads(GEOMETRY_PATH.read_text(encoding="utf-8"))
