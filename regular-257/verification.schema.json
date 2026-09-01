@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://euclid-min.local/regular-257/verification.schema.json",
-  "title": "Euclid-Min regular-257 verification report v1",
+  "title": "Euclid-Min regular-257 verification report v2",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -19,10 +19,11 @@
     "score",
     "target_witnesses",
     "first_bound_target_e_move",
-    "automatic_closure_first_hit"
+    "automatic_closure_target_audit",
+    "first_target_sources"
   ],
   "properties": {
-    "schema": { "const": "euclid-min-regular-257-verification-report/v1" },
+    "schema": { "const": "euclid-min-regular-257-verification-report/v2" },
     "certificate_sha256": { "$ref": "#/$defs/sha256" },
     "construction_sha256": { "$ref": "#/$defs/sha256" },
     "profile": {
@@ -40,7 +41,7 @@
       "required": ["name", "version", "sage_version", "exact_backend"],
       "properties": {
         "name": { "const": "verify_69e_certificate.py" },
-        "version": { "const": "1" },
+        "version": { "const": "2" },
         "sage_version": { "type": "string", "minLength": 1 },
         "exact_backend": {
           "const": "CyclotomicField(257)+UniversalCyclotomicField"
@@ -49,18 +50,18 @@
     },
     "valid": { "const": true },
     "verification_scope": {
-      "const": "explicit_bindings_and_final_target_witnesses"
+      "const": "explicit_bindings_and_complete_target_closure_audit"
     },
     "program_entries": { "const": 150 },
     "proof_hints_verified": { "const": 81 },
     "draws": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["lines", "circles", "duplicate_object_status"],
+      "required": ["lines", "circles", "duplicates"],
       "properties": {
         "lines": { "const": 65 },
         "circles": { "const": 4 },
-        "duplicate_object_status": { "const": "not_checked" }
+        "duplicates": { "const": 0 }
       }
     },
     "bound_point_names": { "const": 83 },
@@ -80,7 +81,31 @@
       "items": { "$ref": "#/$defs/pointPair" }
     },
     "first_bound_target_e_move": { "const": 69 },
-    "automatic_closure_first_hit": { "const": "not_checked" }
+    "automatic_closure_target_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "method", "first_target_e_move"],
+      "properties": {
+        "status": { "const": "complete" },
+        "method": { "const": "exact_rotated_chord_carriers" },
+        "first_target_e_move": { "const": 69 }
+      }
+    },
+    "first_target_sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["new_object", "source_object", "orientation"],
+        "properties": {
+          "new_object": { "const": "target_transfer" },
+          "source_object": { "$ref": "#/$defs/id" },
+          "orientation": { "enum": ["minus", "plus"] }
+        }
+      }
+    }
   },
   "$defs": {
     "sha256": {

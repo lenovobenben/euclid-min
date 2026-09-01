@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/full-point-candidate-frontier.schema.json",
+  "title": "Euclid-Min regular-257 full-point candidate frontier v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source", "semantics", "inventory", "summary", "trials"],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-regular-257-full-point-candidate-frontier/v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256"
+      ],
+      "properties": {
+        "full_intersection_closure_report": {
+          "const": "full-intersection-closure-69e.json"
+        },
+        "full_intersection_closure_report_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["point_universe", "candidate_definition_points", "schedule", "purpose"],
+      "properties": {
+        "point_universe": {
+          "const": "all_finite_real_intersections_of_the_70_existing_drawables"
+        },
+        "candidate_definition_points": {
+          "const": "available_points_with_materialized_exact_coordinates"
+        },
+        "schedule": { "const": "closure_before_adding_one_new_drawable" },
+        "purpose": { "type": "string", "minLength": 1 }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "points",
+        "exact_coordinate_points",
+        "abstract_residual_points",
+        "target_circle_points",
+        "paid_drawables",
+        "removed_pairs"
+      ],
+      "properties": {
+        "points": { "const": 2287 },
+        "exact_coordinate_points": { "const": 1813 },
+        "abstract_residual_points": { "const": 474 },
+        "target_circle_points": { "const": 118 },
+        "paid_drawables": { "const": 69 },
+        "removed_pairs": { "const": 2346 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trials_reaching_target_before_candidate",
+        "minimum_available_exact_coordinate_points",
+        "maximum_available_exact_coordinate_points",
+        "minimum_available_paid_drawables",
+        "maximum_available_paid_drawables",
+        "target_transfer_trials",
+        "maximum_frontier_trials",
+        "exact_point_count_frequency",
+        "available_paid_drawable_count_frequency"
+      ],
+      "properties": {
+        "trials_reaching_target_before_candidate": { "const": 0 },
+        "minimum_available_exact_coordinate_points": { "const": 2 },
+        "maximum_available_exact_coordinate_points": { "const": 1759 },
+        "minimum_available_paid_drawables": { "const": 0 },
+        "maximum_available_paid_drawables": { "const": 67 },
+        "target_transfer_trials": { "const": 68 },
+        "maximum_frontier_trials": {
+          "type": "array",
+          "minItems": 20,
+          "maxItems": 20,
+          "items": { "$ref": "#/$defs/trial" }
+        },
+        "exact_point_count_frequency": { "$ref": "#/$defs/frequency" },
+        "available_paid_drawable_count_frequency": { "$ref": "#/$defs/frequency" }
+      }
+    },
+    "trials": {
+      "type": "array",
+      "minItems": 2346,
+      "maxItems": 2346,
+      "items": { "$ref": "#/$defs/trial" }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    },
+    "frequency": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["value", "trials"],
+        "properties": {
+          "value": { "type": "integer", "minimum": 0 },
+          "trials": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "trial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "removed",
+        "removed_e_moves",
+        "includes_target_transfer",
+        "target_reached_before_candidate",
+        "available_points",
+        "available_exact_coordinate_points",
+        "available_target_circle_points",
+        "available_paid_drawables",
+        "stalled_selected_drawables",
+        "line_definition_upper_bound",
+        "circle_definition_upper_bound"
+      ],
+      "properties": {
+        "removed": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "removed_e_moves": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "integer", "minimum": 1, "maximum": 69 }
+        },
+        "includes_target_transfer": { "type": "boolean" },
+        "target_reached_before_candidate": { "const": false },
+        "available_points": { "type": "integer", "minimum": 2, "maximum": 2287 },
+        "available_exact_coordinate_points": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 1813
+        },
+        "available_target_circle_points": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 118
+        },
+        "available_paid_drawables": { "type": "integer", "minimum": 0, "maximum": 67 },
+        "stalled_selected_drawables": { "type": "integer", "minimum": 0, "maximum": 67 },
+        "line_definition_upper_bound": { "type": "integer", "minimum": 1 },
+        "circle_definition_upper_bound": { "type": "integer", "minimum": 2 }
+      }
+    }
+  }
+}

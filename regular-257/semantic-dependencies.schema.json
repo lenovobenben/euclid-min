@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/semantic-dependencies.schema.json",
+  "title": "Euclid-Min regular-257 semantic dependency report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "summary",
+    "hypergraph",
+    "full_universe_closure",
+    "single_deletion_trials",
+    "irreducibility_result"
+  ],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-regular-257-semantic-dependency-report/v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "construction_sha256",
+        "verification_report",
+        "dependency_report",
+        "dependency_report_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "construction_sha256": { "$ref": "#/$defs/sha256" },
+        "verification_report": { "const": "verification-69e.json" },
+        "dependency_report": { "const": "dependency-graph-69e.json" },
+        "dependency_report_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "point_universe",
+        "drawable_universe",
+        "scheduling",
+        "cycle_policy",
+        "limitations"
+      ],
+      "properties": {
+        "point_universe": {
+          "const": "initial_and_named_certificate_points"
+        },
+        "drawable_universe": {
+          "const": "initial_circle_and_69_verified_paid_drawables"
+        },
+        "scheduling": {
+          "const": "monotone_forward_closure_with_paid_draw_reordering"
+        },
+        "cycle_policy": {
+          "const": "an_object_or_point_must_be_available_before_it_is_used"
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_points",
+        "named_intersection_points",
+        "unique_named_points",
+        "initial_drawables",
+        "paid_drawables",
+        "point_producer_hyperedges",
+        "points_with_multiple_final_producers",
+        "points_with_multiple_producers_at_declared_binding",
+        "points_with_multiple_producers_before_first_paid_use",
+        "drawable_definition_hyperedges",
+        "drawables_with_multiple_named_definitions",
+        "single_deletion_trials",
+        "individually_removable_paid_draws"
+      ],
+      "properties": {
+        "initial_points": { "const": 2 },
+        "named_intersection_points": { "const": 81 },
+        "unique_named_points": { "const": 83 },
+        "initial_drawables": { "const": 1 },
+        "paid_drawables": { "const": 69 },
+        "point_producer_hyperedges": { "const": 401 },
+        "points_with_multiple_final_producers": { "const": 78 },
+        "points_with_multiple_producers_at_declared_binding": { "const": 0 },
+        "points_with_multiple_producers_before_first_paid_use": { "const": 0 },
+        "drawable_definition_hyperedges": { "const": 694 },
+        "drawables_with_multiple_named_definitions": { "const": 69 },
+        "single_deletion_trials": { "const": 69 },
+        "individually_removable_paid_draws": { "const": 0 }
+      }
+    },
+    "hypergraph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "points",
+        "drawables",
+        "initial_points",
+        "initial_drawables",
+        "target_witnesses"
+      ],
+      "properties": {
+        "points": {
+          "type": "array",
+          "minItems": 81,
+          "maxItems": 81,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/pointNode" }
+        },
+        "drawables": {
+          "type": "array",
+          "minItems": 69,
+          "maxItems": 69,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/drawableNode" }
+        },
+        "initial_points": { "const": ["B", "C"] },
+        "initial_drawables": { "const": ["c0"] },
+        "target_witnesses": {
+          "const": [["G", "W2_minus"], ["G", "W2_plus"]]
+        }
+      }
+    },
+    "full_universe_closure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_reached",
+        "reached_named_points",
+        "reached_drawables",
+        "reached_target_witnesses"
+      ],
+      "properties": {
+        "target_reached": { "const": true },
+        "reached_named_points": { "const": 83 },
+        "reached_drawables": { "const": 70 },
+        "reached_target_witnesses": {
+          "const": [["G", "W2_minus"], ["G", "W2_plus"]]
+        }
+      }
+    },
+    "single_deletion_trials": {
+      "type": "array",
+      "minItems": 69,
+      "maxItems": 69,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/deletionTrial" }
+    },
+    "irreducibility_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "all_paid_draws_individually_necessary",
+        "removable_paid_draws",
+        "minimum_required_paid_draws_within_universe",
+        "required_paid_draws",
+        "proof_argument"
+      ],
+      "properties": {
+        "method": { "const": "monotone_single_deletion_exhaustion" },
+        "all_paid_draws_individually_necessary": { "const": true },
+        "removable_paid_draws": { "type": "array", "maxItems": 0 },
+        "minimum_required_paid_draws_within_universe": { "const": 69 },
+        "required_paid_draws": {
+          "type": "array",
+          "minItems": 69,
+          "maxItems": 69,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "proof_argument": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "pair": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "pairList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/pair" }
+    },
+    "consumer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "program_index", "e_move"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "program_index": { "type": "integer", "minimum": 1, "maximum": 150 },
+        "e_move": { "type": "integer", "minimum": 1, "maximum": 69 }
+      }
+    },
+    "pointNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "e_move",
+        "program_index",
+        "declared_producer",
+        "first_paid_consumer",
+        "incident_drawables_in_final_state",
+        "producers_at_declared_binding",
+        "producers_before_first_paid_use",
+        "producers_in_final_state"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "program_index": { "type": "integer", "minimum": 1, "maximum": 150 },
+        "declared_producer": { "$ref": "#/$defs/pair" },
+        "first_paid_consumer": {
+          "oneOf": [
+            { "$ref": "#/$defs/consumer" },
+            { "type": "null" }
+          ]
+        },
+        "incident_drawables_in_final_state": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "producers_at_declared_binding": { "$ref": "#/$defs/pairList" },
+        "producers_before_first_paid_use": { "$ref": "#/$defs/pairList" },
+        "producers_in_final_state": { "$ref": "#/$defs/pairList" }
+      }
+    },
+    "drawableNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "e_move",
+        "program_index",
+        "kind",
+        "declared_definition",
+        "incident_named_points",
+        "exact_named_point_definitions"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "program_index": { "type": "integer", "minimum": 1, "maximum": 150 },
+        "kind": { "enum": ["line", "circle"] },
+        "declared_definition": { "$ref": "#/$defs/pair" },
+        "incident_named_points": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "exact_named_point_definitions": { "$ref": "#/$defs/pairList" }
+      }
+    },
+    "deletionTrial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "removed",
+        "e_move",
+        "target_reached",
+        "reached_named_points",
+        "reached_drawables",
+        "available_target_points"
+      ],
+      "properties": {
+        "removed": { "$ref": "#/$defs/id" },
+        "e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "target_reached": { "const": false },
+        "reached_named_points": { "type": "integer", "minimum": 2, "maximum": 83 },
+        "reached_drawables": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "available_target_points": {
+          "type": "array",
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": { "enum": ["G", "W2_minus", "W2_plus"] }
+        }
+      }
+    }
+  }
+}

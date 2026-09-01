@@ -39,7 +39,7 @@ class Regular257CertificateTests(unittest.TestCase):
             {
                 "lines": 65,
                 "circles": 4,
-                "duplicate_object_status": "not_checked",
+                "duplicates": 0,
             },
         )
         self.assertEqual(self.report["score"]["e_move"], 69)
@@ -49,8 +49,16 @@ class Regular257CertificateTests(unittest.TestCase):
         )
         self.assertEqual(self.report["first_bound_target_e_move"], 69)
         self.assertEqual(
-            self.report["automatic_closure_first_hit"],
-            "not_checked",
+            self.report["automatic_closure_target_audit"],
+            {
+                "status": "complete",
+                "method": "exact_rotated_chord_carriers",
+                "first_target_e_move": 69,
+            },
+        )
+        self.assertEqual(
+            {item["source_object"] for item in self.report["first_target_sources"]},
+            {"BE", "b", "GDa", "GDb"},
         )
 
     def test_committed_report_matches_fresh_replay(self) -> None:

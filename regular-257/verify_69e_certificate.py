@@ -14,6 +14,7 @@ from sage.version import version as sage_version
 from euclid_min.canonical_json import sha256_hex
 
 from cyclotomic_replay import FIELD, Circle, CyclotomicReplayer, Point
+from closure_target_audit import ClosureTargetAuditor
 from proof_hints import build_proof_hints
 from target import is_target_pair
 
@@ -105,6 +106,10 @@ def verify_certificate(path: Path = CERTIFICATE_PATH) -> dict:
 
     hints = build_proof_hints()
     replayer = CyclotomicReplayer()
+    target_circle = replayer.names["c0"]
+    if not isinstance(target_circle, Circle):
+        raise AssertionError("c0 必须是圆")
+    closure_auditor = ClosureTargetAuditor(target_circle)
     verified_hints = 0
     for program_index, entry in enumerate(program):
         try:
@@ -117,12 +122,18 @@ def verify_certificate(path: Path = CERTIFICATE_PATH) -> dict:
                 verified_hints += 1
             else:
                 replayer.execute(entry)
+                closure_auditor.add_drawable(
+                    entry["id"],
+                    replayer.names[entry["id"]],
+                    replayer.e_move,
+                )
         except Exception as error:
             raise ValueError(
                 f"program[{program_index}] {entry['id']!r} 验证失败: {error}"
             ) from error
 
     result = replayer.result()
+    closure_audit = closure_auditor.result()
     witnesses = _target_witnesses(result)
     first_bound_target_e_move = min(
         max(
@@ -136,7 +147,12 @@ def verify_certificate(path: Path = CERTIFICATE_PATH) -> dict:
     actual_draws = {
         "lines": result.line_draws,
         "circles": result.circle_draws,
-        "duplicate_object_status": "not_checked",
+        "duplicates": closure_audit.duplicate_draws,
+    }
+    actual_closure_target_audit = {
+        "status": "complete",
+        "method": "exact_rotated_chord_carriers",
+        "first_target_e_move": closure_audit.first_target_e_move,
     }
     if assertions["score"] != actual_score:
         raise ValueError("E-move 声明与重算结果不一致")
@@ -146,10 +162,24 @@ def verify_certificate(path: Path = CERTIFICATE_PATH) -> dict:
         raise ValueError("目标见证声明与重算结果不一致")
     if assertions["first_bound_target_e_move"] != first_bound_target_e_move:
         raise ValueError("首次显式绑定目标的 E 值不一致")
+    if (
+        assertions["automatic_closure_target_audit"]
+        != actual_closure_target_audit
+    ):
+        raise ValueError("自动闭包首次目标声明与精确审计不一致")
+
+    first_target_sources = [
+        {
+            "new_object": hit.new_object,
+            "source_object": hit.source_object,
+            "orientation": hit.orientation,
+        }
+        for hit in closure_audit.first_hits
+    ]
 
     point_names = sum(isinstance(value, Point) for value in result.names.values())
     return {
-        "schema": "euclid-min-regular-257-verification-report/v1",
+        "schema": "euclid-min-regular-257-verification-report/v2",
         "certificate_sha256": hashlib.sha256(raw).hexdigest(),
         "construction_sha256": construction_hash,
         "profile": {
@@ -158,7 +188,7 @@ def verify_certificate(path: Path = CERTIFICATE_PATH) -> dict:
         },
         "verifier": {
             "name": "verify_69e_certificate.py",
-            "version": "1",
+            "version": "2",
             "sage_version": sage_version,
             "exact_backend": (
                 "CyclotomicField(257)+UniversalCyclotomicField"
@@ -166,7 +196,7 @@ def verify_certificate(path: Path = CERTIFICATE_PATH) -> dict:
         },
         "valid": True,
         "verification_scope": (
-            "explicit_bindings_and_final_target_witnesses"
+            "explicit_bindings_and_complete_target_closure_audit"
         ),
         "program_entries": len(program),
         "proof_hints_verified": verified_hints,
@@ -175,7 +205,8 @@ def verify_certificate(path: Path = CERTIFICATE_PATH) -> dict:
         "score": actual_score,
         "target_witnesses": witnesses,
         "first_bound_target_e_move": first_bound_target_e_move,
-        "automatic_closure_first_hit": "not_checked",
+        "automatic_closure_target_audit": actual_closure_target_audit,
+        "first_target_sources": first_target_sources,
     }
 
 
@@ -194,7 +225,8 @@ def main() -> None:
     )
     print("e_move=69 lines=65 circles=4")
     print(f"target_witnesses={report['target_witnesses']}")
-    print("automatic_closure_first_hit=not_checked")
+    print("automatic_closure_first_target_e_move=69")
+    print("duplicate_draws=0")
 
 
 if __name__ == "__main__":

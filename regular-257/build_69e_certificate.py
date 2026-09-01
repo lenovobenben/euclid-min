@@ -15,6 +15,7 @@ from cyclotomic_replay import (
     CyclotomicReplayer,
     Point,
 )
+from closure_target_audit import ClosureTargetAuditor
 from proof_hints import build_proof_hints
 from target import is_target_pair
 
@@ -29,6 +30,10 @@ class CertificateBuilder:
     def __init__(self) -> None:
         self.proof_hints = build_proof_hints()
         self.replayer = CyclotomicReplayer()
+        target_circle = self.replayer.names["c0"]
+        if not isinstance(target_circle, Circle):
+            raise AssertionError("c0 必须是圆")
+        self.closure_auditor = ClosureTargetAuditor(target_circle)
         self.program: list[dict] = []
 
     def line(self, name: str, first: str, second: str) -> None:
@@ -76,10 +81,16 @@ class CertificateBuilder:
                 flush=True,
             )
         self.replayer.execute(entry)
+        if entry["op"] in ("line", "circle"):
+            self.closure_auditor.add_drawable(
+                entry["id"],
+                self.replayer.names[entry["id"]],
+                self.replayer.e_move,
+            )
         self.program.append(entry)
 
 
-def build_program() -> tuple[list[dict], CyclotomicReplayer]:
+def build_program():
     b = CertificateBuilder()
 
     b.line("a", "C", "B")
@@ -253,7 +264,7 @@ def build_program() -> tuple[list[dict], CyclotomicReplayer]:
         b.proof_hints["W2_plus"],
     )
 
-    return b.program, b.replayer
+    return b.program, b.replayer, b.closure_auditor.result()
 
 
 def _paid_csv_rows() -> list[tuple[int, str, str]]:
@@ -284,7 +295,7 @@ def _target_witnesses(replayer: CyclotomicReplayer) -> list[list[str]]:
 
 
 def build_certificate() -> dict:
-    program, replayer = build_program()
+    program, replayer, closure_audit = build_program()
     result = replayer.result()
     paid_program = [entry for entry in program if entry["op"] != "intersect"]
     paid_csv = _paid_csv_rows()
@@ -298,6 +309,14 @@ def build_certificate() -> dict:
     witnesses = _target_witnesses(replayer)
     if witnesses != [["G", "W2_minus"], ["G", "W2_plus"]]:
         raise AssertionError(f"非预期目标点对: {witnesses}")
+    if closure_audit.first_target_e_move != 69:
+        raise AssertionError(
+            f"自动闭包首次目标不是 69E: {closure_audit.first_target_e_move}"
+        )
+    if closure_audit.duplicate_draws != 0:
+        raise AssertionError(
+            f"证书含 {closure_audit.duplicate_draws} 个重复作图对象"
+        )
     first_bound_target_e_move = min(
         max(
             result.bound_point_e_moves[first],
@@ -316,7 +335,7 @@ def build_certificate() -> dict:
         "program": program,
     }
     return {
-        "schema": "euclid-min-regular-257-certificate/v1",
+        "schema": "euclid-min-regular-257-certificate/v2",
         "problem": "regular-257-free-edge",
         "profile": {
             "id": "regular-257-free-edge-e-fixed-v1",
@@ -333,15 +352,19 @@ def build_certificate() -> dict:
             "draws": {
                 "lines": result.line_draws,
                 "circles": result.circle_draws,
-                "duplicate_object_status": "not_checked",
+                "duplicates": closure_audit.duplicate_draws,
             },
             "target_witnesses": witnesses,
             "first_bound_target_e_move": first_bound_target_e_move,
-            "automatic_closure_first_hit": "not_checked",
+            "automatic_closure_target_audit": {
+                "status": "complete",
+                "method": "exact_rotated_chord_carriers",
+                "first_target_e_move": closure_audit.first_target_e_move,
+            },
             "claim": "verified_construction",
         },
         "software": {
-            "producer": {"name": "build_69e_certificate.py", "version": "1"}
+            "producer": {"name": "build_69e_certificate.py", "version": "2"}
         },
         "integrity": {"construction_sha256": sha256_hex(construction)},
     }

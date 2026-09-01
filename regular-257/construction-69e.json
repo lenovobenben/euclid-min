@@ -1,5 +1,5 @@
 {
-  "schema": "euclid-min-regular-257-certificate/v1",
+  "schema": "euclid-min-regular-257-certificate/v2",
   "problem": "regular-257-free-edge",
   "profile": {
     "id": "regular-257-free-edge-e-fixed-v1",
@@ -1298,7 +1298,7 @@
     "draws": {
       "lines": 65,
       "circles": 4,
-      "duplicate_object_status": "not_checked"
+      "duplicates": 0
     },
     "target_witnesses": [
       [
@@ -1311,13 +1311,17 @@
       ]
     ],
     "first_bound_target_e_move": 69,
-    "automatic_closure_first_hit": "not_checked",
+    "automatic_closure_target_audit": {
+      "status": "complete",
+      "method": "exact_rotated_chord_carriers",
+      "first_target_e_move": 69
+    },
     "claim": "verified_construction"
   },
   "software": {
     "producer": {
       "name": "build_69e_certificate.py",
-      "version": "1"
+      "version": "2"
     }
   },
   "integrity": {

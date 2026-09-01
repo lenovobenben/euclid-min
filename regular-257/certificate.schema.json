@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://euclid-min.local/regular-257/certificate.schema.json",
-  "title": "Euclid-Min regular-257 construction certificate v1",
+  "title": "Euclid-Min regular-257 construction certificate v2",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -15,7 +15,7 @@
     "integrity"
   ],
   "properties": {
-    "schema": { "const": "euclid-min-regular-257-certificate/v1" },
+    "schema": { "const": "euclid-min-regular-257-certificate/v2" },
     "problem": { "const": "regular-257-free-edge" },
     "profile": {
       "type": "object",
@@ -65,7 +65,7 @@
         "draws",
         "target_witnesses",
         "first_bound_target_e_move",
-        "automatic_closure_first_hit",
+        "automatic_closure_target_audit",
         "claim"
       ],
       "properties": {
@@ -81,11 +81,11 @@
         "draws": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["lines", "circles", "duplicate_object_status"],
+          "required": ["lines", "circles", "duplicates"],
           "properties": {
             "lines": { "const": 65 },
             "circles": { "const": 4 },
-            "duplicate_object_status": { "const": "not_checked" }
+            "duplicates": { "const": 0 }
           }
         },
         "target_witnesses": {
@@ -95,7 +95,16 @@
           "items": { "$ref": "#/$defs/pointPair" }
         },
         "first_bound_target_e_move": { "const": 69 },
-        "automatic_closure_first_hit": { "const": "not_checked" },
+        "automatic_closure_target_audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "method", "first_target_e_move"],
+          "properties": {
+            "status": { "const": "complete" },
+            "method": { "const": "exact_rotated_chord_carriers" },
+            "first_target_e_move": { "const": 69 }
+          }
+        },
         "claim": { "const": "verified_construction" }
       }
     },
@@ -110,7 +119,7 @@
           "required": ["name", "version"],
           "properties": {
             "name": { "const": "build_69e_certificate.py" },
-            "version": { "const": "1" }
+            "version": { "const": "2" }
           }
         }
       }

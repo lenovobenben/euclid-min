@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/dependency-graph.schema.json",
+  "title": "Euclid-Min regular-257 dependency report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "summary",
+    "nodes",
+    "edges",
+    "target_analysis",
+    "paid_projection"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-regular-257-dependency-report/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "construction_sha256",
+        "verification_report"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "construction_sha256": { "$ref": "#/$defs/sha256" },
+        "verification_report": { "const": "verification-69e.json" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_direction", "scope", "limitation"],
+      "properties": {
+        "edge_direction": { "const": "dependency_to_consumer" },
+        "scope": { "const": "declared_certificate_bindings" },
+        "limitation": { "type": "string", "minLength": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_nodes",
+        "program_nodes",
+        "paid_nodes",
+        "line_nodes",
+        "circle_nodes",
+        "intersection_nodes",
+        "edges",
+        "syntactically_dead_paid_nodes"
+      ],
+      "properties": {
+        "initial_nodes": { "const": 3 },
+        "program_nodes": { "const": 150 },
+        "paid_nodes": { "const": 69 },
+        "line_nodes": { "const": 65 },
+        "circle_nodes": { "const": 4 },
+        "intersection_nodes": { "const": 81 },
+        "edges": { "const": 300 },
+        "syntactically_dead_paid_nodes": { "const": 0 }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 153,
+      "maxItems": 153,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 300,
+      "maxItems": 300,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/edge" }
+    },
+    "target_analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "first_target_e_move",
+        "first_hit_new_object",
+        "first_hit_source_objects",
+        "orientations",
+        "witness_alternatives",
+        "final_paid_object_cone",
+        "removable_paid_draw_candidates",
+        "conclusion"
+      ],
+      "properties": {
+        "first_target_e_move": { "const": 69 },
+        "first_hit_new_object": { "const": "target_transfer" },
+        "first_hit_source_objects": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": { "enum": ["BE", "b", "GDa", "GDb"] }
+        },
+        "orientations": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "enum": ["minus", "plus"] }
+        },
+        "witness_alternatives": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/witnessCone" }
+        },
+        "final_paid_object_cone": {
+          "allOf": [
+            { "$ref": "#/$defs/cone" },
+            {
+              "type": "object",
+              "required": ["root"],
+              "properties": { "root": { "const": "target_transfer" } }
+            }
+          ]
+        },
+        "removable_paid_draw_candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "conclusion": { "type": "string", "minLength": 1 }
+      }
+    },
+    "paid_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodes", "edges"],
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "minItems": 69,
+          "maxItems": 69,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/paidNode" }
+        },
+        "edges": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/edge" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "idArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "program_index",
+        "e_move",
+        "paid",
+        "dependencies"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": {
+          "enum": [
+            "initial_point",
+            "initial_circle",
+            "line",
+            "circle",
+            "intersection"
+          ]
+        },
+        "program_index": { "type": "integer", "minimum": 0, "maximum": 150 },
+        "e_move": { "type": "integer", "minimum": 0, "maximum": 69 },
+        "paid": { "type": "boolean" },
+        "dependencies": {
+          "allOf": [
+            { "$ref": "#/$defs/idArray" },
+            { "maxItems": 2 }
+          ]
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "$ref": "#/$defs/id" },
+        "to": { "$ref": "#/$defs/id" }
+      }
+    },
+    "cone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "required_node_count",
+        "required_initial_nodes",
+        "required_paid_nodes",
+        "required_intersection_nodes",
+        "unrequired_paid_nodes",
+        "unrequired_intersection_nodes"
+      ],
+      "properties": {
+        "root": { "$ref": "#/$defs/id" },
+        "required_node_count": { "type": "integer", "minimum": 1 },
+        "required_initial_nodes": { "type": "integer", "minimum": 0 },
+        "required_paid_nodes": { "type": "integer", "minimum": 0 },
+        "required_intersection_nodes": { "type": "integer", "minimum": 0 },
+        "unrequired_paid_nodes": { "$ref": "#/$defs/idArray" },
+        "unrequired_intersection_nodes": { "$ref": "#/$defs/idArray" }
+      }
+    },
+    "witnessCone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "points",
+        "required_node_count",
+        "required_initial_nodes",
+        "required_paid_nodes",
+        "required_intersection_nodes",
+        "unrequired_paid_nodes",
+        "unrequired_intersection_nodes"
+      ],
+      "properties": {
+        "points": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "required_node_count": { "const": 152 },
+        "required_initial_nodes": { "const": 3 },
+        "required_paid_nodes": { "const": 69 },
+        "required_intersection_nodes": { "const": 80 },
+        "unrequired_paid_nodes": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "unrequired_intersection_nodes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": { "enum": ["W2_minus", "W2_plus"] }
+        }
+      }
+    },
+    "paidNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "e_move",
+        "kind",
+        "direct_paid_dependencies",
+        "uses_initial_state"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "kind": { "enum": ["line", "circle"] },
+        "direct_paid_dependencies": { "$ref": "#/$defs/idArray" },
+        "uses_initial_state": { "type": "boolean" }
+      }
+    }
+  }
+}

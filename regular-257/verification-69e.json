@@ -1,6 +1,6 @@
 {
-  "schema": "euclid-min-regular-257-verification-report/v1",
-  "certificate_sha256": "2343ae25162d1e728680ba9291d843c6f552dcf2a452208e23118e8554eec129",
+  "schema": "euclid-min-regular-257-verification-report/v2",
+  "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
   "construction_sha256": "6c4b0113fae6ab513d3a1564a268415fa1dd96952e14753201880b776f6fe3d3",
   "profile": {
     "id": "regular-257-free-edge-e-fixed-v1",
@@ -8,18 +8,18 @@
   },
   "verifier": {
     "name": "verify_69e_certificate.py",
-    "version": "1",
+    "version": "2",
     "sage_version": "10.7",
     "exact_backend": "CyclotomicField(257)+UniversalCyclotomicField"
   },
   "valid": true,
-  "verification_scope": "explicit_bindings_and_final_target_witnesses",
+  "verification_scope": "explicit_bindings_and_complete_target_closure_audit",
   "program_entries": 150,
   "proof_hints_verified": 81,
   "draws": {
     "lines": 65,
     "circles": 4,
-    "duplicate_object_status": "not_checked"
+    "duplicates": 0
   },
   "bound_point_names": 83,
   "score": {
@@ -37,5 +37,51 @@
     ]
   ],
   "first_bound_target_e_move": 69,
-  "automatic_closure_first_hit": "not_checked"
+  "automatic_closure_target_audit": {
+    "status": "complete",
+    "method": "exact_rotated_chord_carriers",
+    "first_target_e_move": 69
+  },
+  "first_target_sources": [
+    {
+      "new_object": "target_transfer",
+      "source_object": "BE",
+      "orientation": "minus"
+    },
+    {
+      "new_object": "target_transfer",
+      "source_object": "b",
+      "orientation": "minus"
+    },
+    {
+      "new_object": "target_transfer",
+      "source_object": "GDa",
+      "orientation": "minus"
+    },
+    {
+      "new_object": "target_transfer",
+      "source_object": "GDb",
+      "orientation": "minus"
+    },
+    {
+      "new_object": "target_transfer",
+      "source_object": "BE",
+      "orientation": "plus"
+    },
+    {
+      "new_object": "target_transfer",
+      "source_object": "b",
+      "orientation": "plus"
+    },
+    {
+      "new_object": "target_transfer",
+      "source_object": "GDa",
+      "orientation": "plus"
+    },
+    {
+      "new_object": "target_transfer",
+      "source_object": "GDb",
+      "orientation": "plus"
+    }
+  ]
 }

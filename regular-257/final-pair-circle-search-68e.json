@@ -1,0 +1,47 @@
+{
+  "schema": "euclid-min-regular-257-final-pair-circle-search/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "full_intersection_closure_report": "full-intersection-closure-69e.json",
+    "full_intersection_closure_report_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294",
+    "candidate_frontier_report": "full-point-candidate-frontier-69e.json",
+    "candidate_frontier_report_sha256": "fabd29e6fe05e32b9ec5e102aa67802819a88e060df2be3b5c5ca4f4ed121bf8"
+  },
+  "semantics": {
+    "removed_paid_drawables": [
+      "BG0",
+      "target_transfer"
+    ],
+    "candidate_e_move": 68,
+    "candidate_family": "one_circle_with_available_materialized_exact_center_and_through_point",
+    "target_events": [
+      "the_two_new_intersections_of_candidate_circle_and_c0_are_adjacent",
+      "a_new_candidate_intersection_on_c0_is_adjacent_to_an_already_available_point_on_c0"
+    ],
+    "limitations": [
+      "尚未物化 474 个抽象残余圆交点作为候选定义点。",
+      "结论只覆盖删除第 68、69 步的最大前沿，不覆盖其他删二组合。"
+    ]
+  },
+  "universe": {
+    "available_points": 2103,
+    "available_exact_coordinate_points": 1759,
+    "existing_target_carriers": 67,
+    "circle_definitions": 3092322
+  },
+  "parallelization": {
+    "workers": 8,
+    "chunk_size": 1000,
+    "chunk_count": 3093
+  },
+  "search": {
+    "definitions_tested": 3092322,
+    "ball_relation_checks": 423647298,
+    "ball_excluded_definitions": 3092316,
+    "exact_checks": 6,
+    "solutions": [],
+    "solutions_found": 0,
+    "status": "exhausted_no_solution"
+  }
+}

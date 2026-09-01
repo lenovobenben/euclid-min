@@ -1,0 +1,630 @@
+{
+  "schema": "euclid-min-regular-257-all-point-circle-search/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "full_intersection_closure_report": "full-intersection-closure-69e.json",
+    "full_intersection_closure_report_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294",
+    "candidate_frontier_report": "full-point-candidate-frontier-69e.json",
+    "candidate_frontier_report_sha256": "fabd29e6fe05e32b9ec5e102aa67802819a88e060df2be3b5c5ca4f4ed121bf8",
+    "residual_point_ball_audit": "residual-point-ball-audit-68e.json",
+    "residual_point_ball_audit_sha256": "c2bd9afe37f3a17bc3e9909d5b26b73aa982a280adb2ccd509816fa997c49afa"
+  },
+  "semantics": {
+    "removed_paid_drawables": [
+      "BG0",
+      "target_transfer"
+    ],
+    "candidate_e_move": 68,
+    "candidate_family": "one_circle_with_distinct_available_center_and_through_point",
+    "target_events": [
+      "the_two_new_intersections_of_candidate_circle_and_c0_are_adjacent",
+      "a_new_candidate_intersection_on_c0_is_adjacent_to_an_already_available_point_on_c0"
+    ],
+    "strictness": "严格实球未能排除的定义只在能由关联表证明重画 c0 时判为无新交点；其余一律保留为未决。",
+    "limitations": [
+      "结论只覆盖删除第 68、69 步的最大前沿。",
+      "结论只允许加入一个作为最后第 68E 的新对象。"
+    ]
+  },
+  "universe": {
+    "available_points": 2103,
+    "exact_coordinate_points": 1759,
+    "strict_ball_residual_points": 344,
+    "available_target_circle_points": 115,
+    "existing_target_carriers": 67,
+    "circle_definitions": 4420506
+  },
+  "parallelization": {
+    "workers": 8,
+    "chunk_size": 1000,
+    "chunk_count": 4421
+  },
+  "search": {
+    "definitions_tested": 4420506,
+    "ball_relation_checks": 605593682,
+    "ball_excluded_definitions": 4420391,
+    "redrawn_target_circle_definitions": [
+      {
+        "definition_index": 4205,
+        "center": "C",
+        "through": "B"
+      },
+      {
+        "definition_index": 4206,
+        "center": "C",
+        "through": "M1"
+      },
+      {
+        "definition_index": 4284,
+        "center": "C",
+        "through": "G"
+      },
+      {
+        "definition_index": 4326,
+        "center": "C",
+        "through": "F"
+      },
+      {
+        "definition_index": 5958,
+        "center": "C",
+        "through": "q_c0_left"
+      },
+      {
+        "definition_index": 5959,
+        "center": "C",
+        "through": "q_c0_right"
+      },
+      {
+        "definition_index": 5960,
+        "center": "C",
+        "through": "U1731"
+      },
+      {
+        "definition_index": 5961,
+        "center": "C",
+        "through": "U1732"
+      },
+      {
+        "definition_index": 5973,
+        "center": "C",
+        "through": "U1751"
+      },
+      {
+        "definition_index": 5978,
+        "center": "C",
+        "through": "U1756"
+      },
+      {
+        "definition_index": 5979,
+        "center": "C",
+        "through": "U1757"
+      },
+      {
+        "definition_index": 5982,
+        "center": "C",
+        "through": "U1762"
+      },
+      {
+        "definition_index": 5983,
+        "center": "C",
+        "through": "U1763"
+      },
+      {
+        "definition_index": 5986,
+        "center": "C",
+        "through": "U1768"
+      },
+      {
+        "definition_index": 5987,
+        "center": "C",
+        "through": "U1769"
+      },
+      {
+        "definition_index": 5990,
+        "center": "C",
+        "through": "U1774"
+      },
+      {
+        "definition_index": 5991,
+        "center": "C",
+        "through": "U1775"
+      },
+      {
+        "definition_index": 5996,
+        "center": "C",
+        "through": "U1782"
+      },
+      {
+        "definition_index": 5999,
+        "center": "C",
+        "through": "U1787"
+      },
+      {
+        "definition_index": 6004,
+        "center": "C",
+        "through": "U1794"
+      },
+      {
+        "definition_index": 6009,
+        "center": "C",
+        "through": "U1799"
+      },
+      {
+        "definition_index": 6010,
+        "center": "C",
+        "through": "U1800"
+      },
+      {
+        "definition_index": 6015,
+        "center": "C",
+        "through": "U1807"
+      },
+      {
+        "definition_index": 6016,
+        "center": "C",
+        "through": "U1808"
+      },
+      {
+        "definition_index": 6021,
+        "center": "C",
+        "through": "U1815"
+      },
+      {
+        "definition_index": 6022,
+        "center": "C",
+        "through": "U1816"
+      },
+      {
+        "definition_index": 6027,
+        "center": "C",
+        "through": "U1823"
+      },
+      {
+        "definition_index": 6028,
+        "center": "C",
+        "through": "U1824"
+      },
+      {
+        "definition_index": 6033,
+        "center": "C",
+        "through": "U1831"
+      },
+      {
+        "definition_index": 6034,
+        "center": "C",
+        "through": "U1832"
+      },
+      {
+        "definition_index": 6040,
+        "center": "C",
+        "through": "U1840"
+      },
+      {
+        "definition_index": 6041,
+        "center": "C",
+        "through": "U1841"
+      },
+      {
+        "definition_index": 6046,
+        "center": "C",
+        "through": "U1848"
+      },
+      {
+        "definition_index": 6047,
+        "center": "C",
+        "through": "U1849"
+      },
+      {
+        "definition_index": 6052,
+        "center": "C",
+        "through": "U1856"
+      },
+      {
+        "definition_index": 6053,
+        "center": "C",
+        "through": "U1857"
+      },
+      {
+        "definition_index": 6059,
+        "center": "C",
+        "through": "U1865"
+      },
+      {
+        "definition_index": 6060,
+        "center": "C",
+        "through": "U1866"
+      },
+      {
+        "definition_index": 6063,
+        "center": "C",
+        "through": "U1871"
+      },
+      {
+        "definition_index": 6064,
+        "center": "C",
+        "through": "U1872"
+      },
+      {
+        "definition_index": 6070,
+        "center": "C",
+        "through": "U1880"
+      },
+      {
+        "definition_index": 6071,
+        "center": "C",
+        "through": "U1881"
+      },
+      {
+        "definition_index": 6076,
+        "center": "C",
+        "through": "U1888"
+      },
+      {
+        "definition_index": 6077,
+        "center": "C",
+        "through": "U1889"
+      },
+      {
+        "definition_index": 6083,
+        "center": "C",
+        "through": "U1897"
+      },
+      {
+        "definition_index": 6084,
+        "center": "C",
+        "through": "U1898"
+      },
+      {
+        "definition_index": 6089,
+        "center": "C",
+        "through": "U1905"
+      },
+      {
+        "definition_index": 6090,
+        "center": "C",
+        "through": "U1906"
+      },
+      {
+        "definition_index": 6096,
+        "center": "C",
+        "through": "U1914"
+      },
+      {
+        "definition_index": 6097,
+        "center": "C",
+        "through": "U1915"
+      },
+      {
+        "definition_index": 6102,
+        "center": "C",
+        "through": "U1922"
+      },
+      {
+        "definition_index": 6103,
+        "center": "C",
+        "through": "U1923"
+      },
+      {
+        "definition_index": 6108,
+        "center": "C",
+        "through": "U1930"
+      },
+      {
+        "definition_index": 6113,
+        "center": "C",
+        "through": "U1937"
+      },
+      {
+        "definition_index": 6114,
+        "center": "C",
+        "through": "U1938"
+      },
+      {
+        "definition_index": 6119,
+        "center": "C",
+        "through": "U1945"
+      },
+      {
+        "definition_index": 6123,
+        "center": "C",
+        "through": "U1951"
+      },
+      {
+        "definition_index": 6124,
+        "center": "C",
+        "through": "U1952"
+      },
+      {
+        "definition_index": 6128,
+        "center": "C",
+        "through": "U1958"
+      },
+      {
+        "definition_index": 6129,
+        "center": "C",
+        "through": "U1959"
+      },
+      {
+        "definition_index": 6132,
+        "center": "C",
+        "through": "U1964"
+      },
+      {
+        "definition_index": 6133,
+        "center": "C",
+        "through": "U1965"
+      },
+      {
+        "definition_index": 6138,
+        "center": "C",
+        "through": "U1972"
+      },
+      {
+        "definition_index": 6139,
+        "center": "C",
+        "through": "U1973"
+      },
+      {
+        "definition_index": 6142,
+        "center": "C",
+        "through": "U1978"
+      },
+      {
+        "definition_index": 6143,
+        "center": "C",
+        "through": "U1979"
+      },
+      {
+        "definition_index": 6148,
+        "center": "C",
+        "through": "U1986"
+      },
+      {
+        "definition_index": 6149,
+        "center": "C",
+        "through": "U1987"
+      },
+      {
+        "definition_index": 6152,
+        "center": "C",
+        "through": "U1992"
+      },
+      {
+        "definition_index": 6153,
+        "center": "C",
+        "through": "U1993"
+      },
+      {
+        "definition_index": 6158,
+        "center": "C",
+        "through": "U2000"
+      },
+      {
+        "definition_index": 6159,
+        "center": "C",
+        "through": "U2001"
+      },
+      {
+        "definition_index": 6164,
+        "center": "C",
+        "through": "U2008"
+      },
+      {
+        "definition_index": 6165,
+        "center": "C",
+        "through": "U2009"
+      },
+      {
+        "definition_index": 6170,
+        "center": "C",
+        "through": "U2016"
+      },
+      {
+        "definition_index": 6171,
+        "center": "C",
+        "through": "U2017"
+      },
+      {
+        "definition_index": 6176,
+        "center": "C",
+        "through": "U2024"
+      },
+      {
+        "definition_index": 6177,
+        "center": "C",
+        "through": "U2025"
+      },
+      {
+        "definition_index": 6182,
+        "center": "C",
+        "through": "U2032"
+      },
+      {
+        "definition_index": 6183,
+        "center": "C",
+        "through": "U2033"
+      },
+      {
+        "definition_index": 6188,
+        "center": "C",
+        "through": "U2040"
+      },
+      {
+        "definition_index": 6193,
+        "center": "C",
+        "through": "U2047"
+      },
+      {
+        "definition_index": 6198,
+        "center": "C",
+        "through": "U2054"
+      },
+      {
+        "definition_index": 6199,
+        "center": "C",
+        "through": "U2055"
+      },
+      {
+        "definition_index": 6204,
+        "center": "C",
+        "through": "U2062"
+      },
+      {
+        "definition_index": 6205,
+        "center": "C",
+        "through": "U2063"
+      },
+      {
+        "definition_index": 6211,
+        "center": "C",
+        "through": "U2071"
+      },
+      {
+        "definition_index": 6216,
+        "center": "C",
+        "through": "U2078"
+      },
+      {
+        "definition_index": 6217,
+        "center": "C",
+        "through": "U2079"
+      },
+      {
+        "definition_index": 6222,
+        "center": "C",
+        "through": "U2086"
+      },
+      {
+        "definition_index": 6223,
+        "center": "C",
+        "through": "U2087"
+      },
+      {
+        "definition_index": 6229,
+        "center": "C",
+        "through": "U2095"
+      },
+      {
+        "definition_index": 6230,
+        "center": "C",
+        "through": "U2096"
+      },
+      {
+        "definition_index": 6235,
+        "center": "C",
+        "through": "U2103"
+      },
+      {
+        "definition_index": 6236,
+        "center": "C",
+        "through": "U2104"
+      },
+      {
+        "definition_index": 6242,
+        "center": "C",
+        "through": "U2112"
+      },
+      {
+        "definition_index": 6247,
+        "center": "C",
+        "through": "U2119"
+      },
+      {
+        "definition_index": 6250,
+        "center": "C",
+        "through": "U2124"
+      },
+      {
+        "definition_index": 6251,
+        "center": "C",
+        "through": "U2125"
+      },
+      {
+        "definition_index": 6254,
+        "center": "C",
+        "through": "U2130"
+      },
+      {
+        "definition_index": 6255,
+        "center": "C",
+        "through": "U2131"
+      },
+      {
+        "definition_index": 6259,
+        "center": "C",
+        "through": "U2137"
+      },
+      {
+        "definition_index": 6264,
+        "center": "C",
+        "through": "U2144"
+      },
+      {
+        "definition_index": 6265,
+        "center": "C",
+        "through": "U2145"
+      },
+      {
+        "definition_index": 6270,
+        "center": "C",
+        "through": "U2152"
+      },
+      {
+        "definition_index": 6271,
+        "center": "C",
+        "through": "U2153"
+      },
+      {
+        "definition_index": 6277,
+        "center": "C",
+        "through": "U2159"
+      },
+      {
+        "definition_index": 6278,
+        "center": "C",
+        "through": "U2160"
+      },
+      {
+        "definition_index": 6281,
+        "center": "C",
+        "through": "U2165"
+      },
+      {
+        "definition_index": 6282,
+        "center": "C",
+        "through": "U2166"
+      },
+      {
+        "definition_index": 6288,
+        "center": "C",
+        "through": "U2174"
+      },
+      {
+        "definition_index": 6293,
+        "center": "C",
+        "through": "U2181"
+      },
+      {
+        "definition_index": 6294,
+        "center": "C",
+        "through": "U2182"
+      },
+      {
+        "definition_index": 6299,
+        "center": "C",
+        "through": "U2189"
+      },
+      {
+        "definition_index": 6300,
+        "center": "C",
+        "through": "U2190"
+      }
+    ],
+    "redrawn_target_circle_count": 115,
+    "unresolved_definitions": [],
+    "unresolved_count": 0,
+    "solutions_found": 0,
+    "status": "exhausted_no_solution"
+  }
+}
