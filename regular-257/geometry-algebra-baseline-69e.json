@@ -1,0 +1,5804 @@
+{
+  "schema": "euclid-min-geometry-algebra-ir/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "construction_sha256": "6c4b0113fae6ab513d3a1564a268415fa1dd96952e14753201880b776f6fe3d3",
+    "full_intersection_closure_report": "full-intersection-closure-69e.json",
+    "full_intersection_closure_report_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294"
+  },
+  "model": {
+    "state": "available_points + available_drawables + algebraic_representations",
+    "paid_transition": "add_one_new_distinct_line_or_circle_defined_by_available_points",
+    "free_closure": "add_all_finite_real_intersections_of_available_drawables",
+    "persistence": "monotone_no_erasure",
+    "geometry_identity": "exact_geometric_equality_not_definition_syntax",
+    "contextual_cost": "number_of_distinct_paid_drawables_added_to_input_state"
+  },
+  "charts": [
+    {
+      "id": "encoding-circle-phi",
+      "carrier": "point on paid circle c",
+      "formula": "x/(y+1)",
+      "domain": "c and y != -1"
+    },
+    {
+      "id": "baseline-x",
+      "carrier": "point on paid line b",
+      "formula": "x",
+      "domain": "b"
+    },
+    {
+      "id": "vertical-axis-y",
+      "carrier": "point on paid line a",
+      "formula": "y",
+      "domain": "a"
+    },
+    {
+      "id": "vertical-carrier-x",
+      "carrier": "vertical line or radical axis",
+      "formula": "constant x coordinate",
+      "domain": "line with nonzero x coefficient and zero y coefficient"
+    }
+  ],
+  "symbols": [
+    {
+      "id": "constant.zero",
+      "kind": "constant",
+      "description": "编码圆上的 0"
+    },
+    {
+      "id": "constant.minus_one",
+      "kind": "constant",
+      "description": "编码圆上的 -1"
+    },
+    {
+      "id": "constant.one",
+      "kind": "constant",
+      "description": "编码圆上的 1"
+    },
+    {
+      "id": "constant.minus_two",
+      "kind": "constant",
+      "description": "编码圆上的 -2"
+    },
+    {
+      "id": "constant.minus_four",
+      "kind": "constant",
+      "description": "编码圆上的 -4"
+    },
+    {
+      "id": "constant.four",
+      "kind": "constant",
+      "description": "编码圆上的 4"
+    },
+    {
+      "id": "period.a0",
+      "kind": "quadratic_root",
+      "description": "高斯周期 a_0",
+      "producer_relation": "relation.a"
+    },
+    {
+      "id": "period.a1",
+      "kind": "quadratic_root",
+      "description": "高斯周期 a_1",
+      "producer_relation": "relation.a"
+    },
+    {
+      "id": "period.b0",
+      "kind": "quadratic_root",
+      "description": "高斯周期 b_0",
+      "producer_relation": "relation.b-even"
+    },
+    {
+      "id": "period.b2",
+      "kind": "quadratic_root",
+      "description": "高斯周期 b_2",
+      "producer_relation": "relation.b-even"
+    },
+    {
+      "id": "period.b1",
+      "kind": "quadratic_root",
+      "description": "高斯周期 b_1",
+      "producer_relation": "relation.b-odd"
+    },
+    {
+      "id": "period.b3",
+      "kind": "quadratic_root",
+      "description": "高斯周期 b_3",
+      "producer_relation": "relation.b-odd"
+    },
+    {
+      "id": "work.ca",
+      "kind": "quadratic_root",
+      "description": "移位周期 c_0+2",
+      "producer_relation": "relation.c-a"
+    },
+    {
+      "id": "work.ca-conjugate",
+      "kind": "quadratic_root",
+      "description": "共轭移位周期 c_4+2",
+      "producer_relation": "relation.c-a"
+    },
+    {
+      "id": "work.cb-conjugate",
+      "kind": "quadratic_root",
+      "description": "共轭移位周期 c_1+2",
+      "producer_relation": "relation.c-b"
+    },
+    {
+      "id": "work.cb",
+      "kind": "quadratic_root",
+      "description": "移位周期 c_5+2",
+      "producer_relation": "relation.c-b"
+    },
+    {
+      "id": "work.cc",
+      "kind": "quadratic_root",
+      "description": "周期和 c_0+c_2",
+      "producer_relation": "relation.c-c"
+    },
+    {
+      "id": "work.cc-conjugate",
+      "kind": "quadratic_root",
+      "description": "共轭周期和 c_4+c_6",
+      "producer_relation": "relation.c-c"
+    },
+    {
+      "id": "work.cd",
+      "kind": "quadratic_root",
+      "description": "周期和 c_1+c_7",
+      "producer_relation": "relation.c-d"
+    },
+    {
+      "id": "work.cd-conjugate",
+      "kind": "quadratic_root",
+      "description": "共轭周期和 c_3+c_5",
+      "producer_relation": "relation.c-d"
+    },
+    {
+      "id": "work.da",
+      "kind": "quadratic_root",
+      "description": "d 层辅助量 Da",
+      "producer_relation": "relation.d-ab"
+    },
+    {
+      "id": "work.db",
+      "kind": "quadratic_root",
+      "description": "d 层辅助量 Db",
+      "producer_relation": "relation.d-ab"
+    },
+    {
+      "id": "work.dc",
+      "kind": "quadratic_root",
+      "description": "d 层辅助量 Dc",
+      "producer_relation": "relation.d-cd"
+    },
+    {
+      "id": "work.dd",
+      "kind": "quadratic_root",
+      "description": "d 层辅助量 Dd",
+      "producer_relation": "relation.d-cd"
+    },
+    {
+      "id": "period.d0",
+      "kind": "quadratic_root",
+      "description": "高斯周期 d_0",
+      "producer_relation": "relation.d-main"
+    },
+    {
+      "id": "period.d8",
+      "kind": "quadratic_root",
+      "description": "高斯周期 d_8",
+      "producer_relation": "relation.d-main"
+    },
+    {
+      "id": "work.e-low-0",
+      "kind": "quadratic_root",
+      "description": "e_1+e_23",
+      "producer_relation": "relation.e-low-aux"
+    },
+    {
+      "id": "work.e-low-1",
+      "kind": "quadratic_root",
+      "description": "e_7+e_17",
+      "producer_relation": "relation.e-low-aux"
+    },
+    {
+      "id": "period.e0",
+      "kind": "quadratic_root",
+      "description": "高斯周期 e_0",
+      "producer_relation": "relation.e0"
+    },
+    {
+      "id": "period.e16",
+      "kind": "quadratic_root",
+      "description": "高斯周期 e_16",
+      "producer_relation": "relation.e0"
+    },
+    {
+      "id": "period.f0",
+      "kind": "quadratic_root",
+      "description": "高斯周期 f_0",
+      "producer_relation": "relation.f0"
+    },
+    {
+      "id": "period.f32",
+      "kind": "quadratic_root",
+      "description": "高斯周期 f_32",
+      "producer_relation": "relation.f0"
+    },
+    {
+      "id": "work.e-high-0",
+      "kind": "quadratic_root",
+      "description": "e_9+e_31",
+      "producer_relation": "relation.e-high-aux"
+    },
+    {
+      "id": "work.e-high-1",
+      "kind": "quadratic_root",
+      "description": "e_15+e_25",
+      "producer_relation": "relation.e-high-aux"
+    },
+    {
+      "id": "period.e8",
+      "kind": "quadratic_root",
+      "description": "高斯周期 e_8",
+      "producer_relation": "relation.e24"
+    },
+    {
+      "id": "period.e24",
+      "kind": "quadratic_root",
+      "description": "高斯周期 e_24",
+      "producer_relation": "relation.e24"
+    },
+    {
+      "id": "period.f24",
+      "kind": "quadratic_root",
+      "description": "高斯周期 f_24",
+      "producer_relation": "relation.f56"
+    },
+    {
+      "id": "period.f56",
+      "kind": "quadratic_root",
+      "description": "高斯周期 f_56",
+      "producer_relation": "relation.f56"
+    },
+    {
+      "id": "period.g0",
+      "kind": "quadratic_root",
+      "description": "g_0=zeta+zeta^-1",
+      "producer_relation": "relation.g0"
+    },
+    {
+      "id": "period.g64",
+      "kind": "quadratic_root",
+      "description": "共轭周期 g_64",
+      "producer_relation": "relation.g0"
+    },
+    {
+      "id": "coordinate.v2-x",
+      "kind": "derived_expression",
+      "description": "点 V2 在基线 b 上的 x 坐标 2/g_0",
+      "expression": {
+        "op": "div",
+        "numerator": {
+          "op": "const",
+          "value": 2
+        },
+        "denominator": {
+          "op": "symbol",
+          "id": "period.g0"
+        }
+      }
+    }
+  ],
+  "algebraic_relations": [
+    {
+      "id": "relation.a",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.a0",
+        "period.a1"
+      ],
+      "sum": {
+        "op": "const",
+        "value": -1
+      },
+      "product": {
+        "op": "const",
+        "value": -64
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.a0",
+          "point": "A0"
+        },
+        {
+          "symbol": "period.a1",
+          "point": "A1"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.b-even",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.b0",
+        "period.b2"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.a0"
+      },
+      "product": {
+        "op": "const",
+        "value": -16
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.b0",
+          "point": "B0"
+        },
+        {
+          "symbol": "period.b2",
+          "point": "B2"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.b-odd",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.b1",
+        "period.b3"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.a1"
+      },
+      "product": {
+        "op": "const",
+        "value": -16
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.b1",
+          "point": "B1"
+        },
+        {
+          "symbol": "period.b3",
+          "point": "B3"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.c-a",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "work.ca",
+        "work.ca-conjugate"
+      ],
+      "sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "period.b0"
+          },
+          {
+            "op": "const",
+            "value": 4
+          }
+        ]
+      },
+      "product": {
+        "op": "symbol",
+        "id": "period.a1"
+      },
+      "materialized_roots": [
+        {
+          "symbol": "work.ca",
+          "point": "Ca"
+        },
+        {
+          "symbol": "work.ca-conjugate",
+          "point": "U1835"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.c-b",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "work.cb-conjugate",
+        "work.cb"
+      ],
+      "sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "period.b1"
+          },
+          {
+            "op": "const",
+            "value": 4
+          }
+        ]
+      },
+      "product": {
+        "op": "symbol",
+        "id": "period.a0"
+      },
+      "materialized_roots": [
+        {
+          "symbol": "work.cb",
+          "point": "Cb"
+        },
+        {
+          "symbol": "work.cb-conjugate",
+          "point": "U1860"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.c-c",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "work.cc",
+        "work.cc-conjugate"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.a0"
+      },
+      "product": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "period.b0"
+          },
+          {
+            "op": "symbol",
+            "id": "period.b3"
+          }
+        ]
+      },
+      "materialized_roots": [
+        {
+          "symbol": "work.cc",
+          "point": "Cc"
+        },
+        {
+          "symbol": "work.cc-conjugate",
+          "point": "U1875"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.c-d",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "work.cd",
+        "work.cd-conjugate"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.a1"
+      },
+      "product": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "period.b2"
+          },
+          {
+            "op": "symbol",
+            "id": "period.b3"
+          }
+        ]
+      },
+      "materialized_roots": [
+        {
+          "symbol": "work.cd",
+          "point": "Cd"
+        },
+        {
+          "symbol": "work.cd-conjugate",
+          "point": "U1892"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.d-ab",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "work.da",
+        "work.db"
+      ],
+      "sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "period.b1"
+          },
+          {
+            "op": "symbol",
+            "id": "work.cc"
+          },
+          {
+            "op": "const",
+            "value": 2
+          }
+        ]
+      },
+      "product": {
+        "op": "add",
+        "args": [
+          {
+            "op": "mul",
+            "args": [
+              {
+                "op": "const",
+                "value": -4
+              },
+              {
+                "op": "symbol",
+                "id": "work.ca"
+              }
+            ]
+          },
+          {
+            "op": "const",
+            "value": -8
+          }
+        ]
+      },
+      "materialized_roots": [
+        {
+          "symbol": "work.da",
+          "point": "Da"
+        },
+        {
+          "symbol": "work.db",
+          "point": "Db"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.d-cd",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "work.dc",
+        "work.dd"
+      ],
+      "sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.cd"
+          },
+          {
+            "op": "neg",
+            "arg": {
+              "op": "symbol",
+              "id": "work.ca"
+            }
+          },
+          {
+            "op": "const",
+            "value": 2
+          }
+        ]
+      },
+      "product": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "period.b0"
+          },
+          {
+            "op": "symbol",
+            "id": "work.cc"
+          },
+          {
+            "op": "mul",
+            "args": [
+              {
+                "op": "const",
+                "value": 2
+              },
+              {
+                "op": "symbol",
+                "id": "work.cb"
+              }
+            ]
+          },
+          {
+            "op": "symbol",
+            "id": "work.cd"
+          },
+          {
+            "op": "const",
+            "value": -4
+          }
+        ]
+      },
+      "materialized_roots": [
+        {
+          "symbol": "work.dc",
+          "point": "Dc"
+        },
+        {
+          "symbol": "work.dd",
+          "point": "Dd"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.d-main",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.d0",
+        "period.d8"
+      ],
+      "sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.ca"
+          },
+          {
+            "op": "neg",
+            "arg": {
+              "op": "const",
+              "value": 2
+            }
+          }
+        ]
+      },
+      "product": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "period.a0"
+          },
+          {
+            "op": "symbol",
+            "id": "work.cc"
+          },
+          {
+            "op": "mul",
+            "args": [
+              {
+                "op": "const",
+                "value": 2
+              },
+              {
+                "op": "symbol",
+                "id": "work.cb"
+              }
+            ]
+          },
+          {
+            "op": "const",
+            "value": -4
+          }
+        ]
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.d0",
+          "point": "D0"
+        },
+        {
+          "symbol": "period.d8",
+          "point": "D8"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.e-low-aux",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "work.e-low-0",
+        "work.e-low-1"
+      ],
+      "sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.dc"
+          },
+          {
+            "op": "symbol",
+            "id": "period.d0"
+          }
+        ]
+      },
+      "product": {
+        "op": "const",
+        "value": -1
+      },
+      "materialized_roots": [
+        {
+          "symbol": "work.e-low-0",
+          "point": "K2"
+        },
+        {
+          "symbol": "work.e-low-1",
+          "point": "U2090"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.e0",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.e0",
+        "period.e16"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.d0"
+      },
+      "product": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.da"
+          },
+          {
+            "op": "neg",
+            "arg": {
+              "op": "const",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.e0",
+          "point": "E0"
+        },
+        {
+          "symbol": "period.e16",
+          "point": "U2066"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.f0",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.f0",
+        "period.f32"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.e0"
+      },
+      "product": {
+        "op": "symbol",
+        "id": "work.e-low-0"
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.f0",
+          "point": "F0"
+        },
+        {
+          "symbol": "period.f32",
+          "point": "U2107"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.e-high-aux",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "work.e-high-0",
+        "work.e-high-1"
+      ],
+      "sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.dd"
+          },
+          {
+            "op": "symbol",
+            "id": "period.d8"
+          }
+        ]
+      },
+      "product": {
+        "op": "const",
+        "value": -1
+      },
+      "materialized_roots": [
+        {
+          "symbol": "work.e-high-1",
+          "point": "R2"
+        },
+        {
+          "symbol": "work.e-high-0",
+          "point": "U2156"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.e24",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.e8",
+        "period.e24"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.d8"
+      },
+      "product": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.db"
+          },
+          {
+            "op": "neg",
+            "arg": {
+              "op": "const",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.e24",
+          "point": "E24"
+        },
+        {
+          "symbol": "period.e8",
+          "point": "U2134"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.f56",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.f24",
+        "period.f56"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.e24"
+      },
+      "product": {
+        "op": "symbol",
+        "id": "work.e-high-1"
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.f56",
+          "point": "F56"
+        },
+        {
+          "symbol": "period.f24",
+          "point": "U2169"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "relation.g0",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.g0",
+        "period.g64"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.f0"
+      },
+      "product": {
+        "op": "symbol",
+        "id": "period.f56"
+      },
+      "materialized_roots": [
+        {
+          "symbol": "period.g0",
+          "point": "G0"
+        },
+        {
+          "symbol": "period.g64",
+          "point": "U2193"
+        }
+      ],
+      "verified": true
+    }
+  ],
+  "representations": [
+    {
+      "id": "repr.B",
+      "symbol": "constant.zero",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "B"
+        ],
+        "arrangement_point_id": "B"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 0,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 0
+    },
+    {
+      "id": "repr.D",
+      "symbol": "constant.minus_one",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "D"
+        ],
+        "arrangement_point_id": "D"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 4,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 4
+    },
+    {
+      "id": "repr.E",
+      "symbol": "constant.one",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "E"
+        ],
+        "arrangement_point_id": "E"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 4,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 4
+    },
+    {
+      "id": "repr.H",
+      "symbol": "constant.minus_two",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "H"
+        ],
+        "arrangement_point_id": "H"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 7,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 7
+    },
+    {
+      "id": "repr.K",
+      "symbol": "constant.minus_four",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "K"
+        ],
+        "arrangement_point_id": "K"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 8,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 8
+    },
+    {
+      "id": "repr.L",
+      "symbol": "constant.four",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "L"
+        ],
+        "arrangement_point_id": "L"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 9,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 9
+    },
+    {
+      "id": "repr.A0",
+      "symbol": "period.a0",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "A0"
+        ],
+        "arrangement_point_id": "A0"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 12,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 12
+    },
+    {
+      "id": "repr.A1",
+      "symbol": "period.a1",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "A1"
+        ],
+        "arrangement_point_id": "A1"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 12,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 12
+    },
+    {
+      "id": "repr.B0",
+      "symbol": "period.b0",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "B0"
+        ],
+        "arrangement_point_id": "B0"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 15,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 15
+    },
+    {
+      "id": "repr.B2",
+      "symbol": "period.b2",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "B2"
+        ],
+        "arrangement_point_id": "B2"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 15,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 15
+    },
+    {
+      "id": "repr.B1",
+      "symbol": "period.b1",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "B1"
+        ],
+        "arrangement_point_id": "B1"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 16,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 16
+    },
+    {
+      "id": "repr.B3",
+      "symbol": "period.b3",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "B3"
+        ],
+        "arrangement_point_id": "B3"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 16,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 16
+    },
+    {
+      "id": "repr.Ca",
+      "symbol": "work.ca",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "Ca"
+        ],
+        "arrangement_point_id": "Ca"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 19,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 19
+    },
+    {
+      "id": "repr.auto.work.ca-conjugate",
+      "symbol": "work.ca-conjugate",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U1835"
+        ],
+        "arrangement_point_id": "U1835"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 19,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.auto.work.cb-conjugate",
+      "symbol": "work.cb-conjugate",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U1860"
+        ],
+        "arrangement_point_id": "U1860"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 22,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.Cb",
+      "symbol": "work.cb",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "Cb"
+        ],
+        "arrangement_point_id": "Cb"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 22,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 22
+    },
+    {
+      "id": "repr.Cc",
+      "symbol": "work.cc",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "Cc"
+        ],
+        "arrangement_point_id": "Cc"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 24,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 24
+    },
+    {
+      "id": "repr.auto.work.cc-conjugate",
+      "symbol": "work.cc-conjugate",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U1875"
+        ],
+        "arrangement_point_id": "U1875"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 24,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.Cd",
+      "symbol": "work.cd",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "Cd"
+        ],
+        "arrangement_point_id": "Cd"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 26,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 26
+    },
+    {
+      "id": "repr.auto.work.cd-conjugate",
+      "symbol": "work.cd-conjugate",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U1892"
+        ],
+        "arrangement_point_id": "U1892"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 26,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.Da",
+      "symbol": "work.da",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "Da"
+        ],
+        "arrangement_point_id": "Da"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 32,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 32
+    },
+    {
+      "id": "repr.Db",
+      "symbol": "work.db",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "Db"
+        ],
+        "arrangement_point_id": "Db"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 32,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 32
+    },
+    {
+      "id": "repr.Dc",
+      "symbol": "work.dc",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "Dc"
+        ],
+        "arrangement_point_id": "Dc"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 43,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 43
+    },
+    {
+      "id": "repr.Dd",
+      "symbol": "work.dd",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "Dd"
+        ],
+        "arrangement_point_id": "Dd"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 43,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 43
+    },
+    {
+      "id": "repr.D0",
+      "symbol": "period.d0",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "D0"
+        ],
+        "arrangement_point_id": "D0"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 46,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 46
+    },
+    {
+      "id": "repr.D8",
+      "symbol": "period.d8",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "D8"
+        ],
+        "arrangement_point_id": "D8"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 46,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 46
+    },
+    {
+      "id": "repr.K2",
+      "symbol": "work.e-low-0",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "K2"
+        ],
+        "arrangement_point_id": "K2"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 53,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 53
+    },
+    {
+      "id": "repr.auto.work.e-low-1",
+      "symbol": "work.e-low-1",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U2090"
+        ],
+        "arrangement_point_id": "U2090"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 53,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.E0",
+      "symbol": "period.e0",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "E0"
+        ],
+        "arrangement_point_id": "E0"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 50,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 50
+    },
+    {
+      "id": "repr.auto.period.e16",
+      "symbol": "period.e16",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U2066"
+        ],
+        "arrangement_point_id": "U2066"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 50,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.F0",
+      "symbol": "period.f0",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "F0"
+        ],
+        "arrangement_point_id": "F0"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 55,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 55
+    },
+    {
+      "id": "repr.auto.period.f32",
+      "symbol": "period.f32",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U2107"
+        ],
+        "arrangement_point_id": "U2107"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 55,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.auto.work.e-high-0",
+      "symbol": "work.e-high-0",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U2156"
+        ],
+        "arrangement_point_id": "U2156"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 62,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.R2",
+      "symbol": "work.e-high-1",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "R2"
+        ],
+        "arrangement_point_id": "R2"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 62,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 62
+    },
+    {
+      "id": "repr.auto.period.e8",
+      "symbol": "period.e8",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U2134"
+        ],
+        "arrangement_point_id": "U2134"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 59,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.E24",
+      "symbol": "period.e24",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "E24"
+        ],
+        "arrangement_point_id": "E24"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 59,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 59
+    },
+    {
+      "id": "repr.auto.period.f24",
+      "symbol": "period.f24",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U2169"
+        ],
+        "arrangement_point_id": "U2169"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 64,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.F56",
+      "symbol": "period.f56",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "F56"
+        ],
+        "arrangement_point_id": "F56"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 64,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 64
+    },
+    {
+      "id": "repr.G0",
+      "symbol": "period.g0",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "G0"
+        ],
+        "arrangement_point_id": "G0"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 67,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 67
+    },
+    {
+      "id": "repr.auto.period.g64",
+      "symbol": "period.g64",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "U2193"
+        ],
+        "arrangement_point_id": "U2193"
+      },
+      "chart": "encoding-circle-phi",
+      "available_e_move": 67,
+      "verification": "exact_cyclotomic_equality"
+    },
+    {
+      "id": "repr.V2",
+      "symbol": "coordinate.v2-x",
+      "carrier": {
+        "kind": "point",
+        "references": [
+          "V2"
+        ],
+        "arrangement_point_id": "V2"
+      },
+      "chart": "baseline-x",
+      "available_e_move": 68,
+      "verification": "exact_cyclotomic_equality",
+      "bound_e_move": 68
+    },
+    {
+      "id": "repr.target-axis-g0",
+      "symbol": "period.g0",
+      "carrier": {
+        "kind": "radical_axis",
+        "references": [
+          "target_transfer",
+          "c0"
+        ]
+      },
+      "chart": "vertical-carrier-x",
+      "available_e_move": 69,
+      "verification": "exact_cyclotomic_equality"
+    }
+  ],
+  "transitions": [
+    {
+      "e_move": 1,
+      "drawable": "a",
+      "kind": "line",
+      "definition_points": [
+        "C",
+        "B"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        0
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "M1"
+      ],
+      "explicit_bindings": [
+        "M1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 2,
+      "drawable": "q",
+      "kind": "circle",
+      "definition_points": [
+        "B",
+        "C"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        0
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "q_c0_left",
+        "q_c0_right",
+        "U1739"
+      ],
+      "explicit_bindings": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 3,
+      "drawable": "d",
+      "kind": "line",
+      "definition_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_point_birth_e_moves": [
+        2,
+        2
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "A"
+      ],
+      "explicit_bindings": [
+        "A"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 4,
+      "drawable": "c",
+      "kind": "circle",
+      "definition_points": [
+        "A",
+        "B"
+      ],
+      "definition_point_birth_e_moves": [
+        3,
+        0
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "E",
+        "D"
+      ],
+      "explicit_bindings": [
+        "D",
+        "E"
+      ],
+      "algebraic_representations_born": [
+        "repr.D",
+        "repr.E"
+      ]
+    },
+    {
+      "e_move": 5,
+      "drawable": "BE",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "E"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        4
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "G",
+        "U1744",
+        "U1745"
+      ],
+      "explicit_bindings": [
+        "G"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 6,
+      "drawable": "b",
+      "kind": "line",
+      "definition_points": [
+        "C",
+        "G"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        5
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "F"
+      ],
+      "explicit_bindings": [
+        "F"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 7,
+      "drawable": "DM1",
+      "kind": "line",
+      "definition_points": [
+        "D",
+        "M1"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        1
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0061",
+        "I",
+        "H",
+        "U1751",
+        "U1752",
+        "U1753"
+      ],
+      "explicit_bindings": [
+        "H",
+        "I"
+      ],
+      "algebraic_representations_born": [
+        "repr.H"
+      ]
+    },
+    {
+      "e_move": 8,
+      "drawable": "IE",
+      "kind": "line",
+      "definition_points": [
+        "I",
+        "E"
+      ],
+      "definition_point_birth_e_moves": [
+        7,
+        4
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "J",
+        "K",
+        "U1756",
+        "U1757",
+        "U1758",
+        "U1759"
+      ],
+      "explicit_bindings": [
+        "K",
+        "J"
+      ],
+      "algebraic_representations_born": [
+        "repr.K"
+      ]
+    },
+    {
+      "e_move": 9,
+      "drawable": "DJ",
+      "kind": "line",
+      "definition_points": [
+        "D",
+        "J"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        8
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0062",
+        "U0099",
+        "L",
+        "U1762",
+        "U1763",
+        "U1764",
+        "U1765"
+      ],
+      "explicit_bindings": [
+        "L"
+      ],
+      "algebraic_representations_born": [
+        "repr.L"
+      ]
+    },
+    {
+      "e_move": 10,
+      "drawable": "KL",
+      "kind": "line",
+      "definition_points": [
+        "K",
+        "L"
+      ],
+      "definition_point_birth_e_moves": [
+        8,
+        9
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "M",
+        "N",
+        "U0113",
+        "U1768",
+        "U1769",
+        "U1770",
+        "U1771"
+      ],
+      "explicit_bindings": [
+        "N",
+        "M"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 11,
+      "drawable": "NI",
+      "kind": "line",
+      "definition_points": [
+        "N",
+        "I"
+      ],
+      "definition_point_birth_e_moves": [
+        10,
+        7
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "O",
+        "U0016",
+        "U0212",
+        "U1774",
+        "U1775",
+        "U1776",
+        "U1777",
+        "U1778",
+        "U1779"
+      ],
+      "explicit_bindings": [
+        "O"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 12,
+      "drawable": "FO",
+      "kind": "line",
+      "definition_points": [
+        "F",
+        "O"
+      ],
+      "definition_point_birth_e_moves": [
+        6,
+        11
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0017",
+        "U0063",
+        "U0114",
+        "U0165",
+        "U0213",
+        "U0264",
+        "A0",
+        "A1",
+        "U1782",
+        "U1783",
+        "U1784"
+      ],
+      "explicit_bindings": [
+        "A0",
+        "A1"
+      ],
+      "algebraic_representations_born": [
+        "repr.A0",
+        "repr.A1"
+      ]
+    },
+    {
+      "e_move": 13,
+      "drawable": "BA0",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "A0"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        12
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0018",
+        "R",
+        "U0115",
+        "U0166",
+        "U0214",
+        "U0265",
+        "U0314",
+        "U1787",
+        "U1788",
+        "U1789"
+      ],
+      "explicit_bindings": [
+        "R"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 14,
+      "drawable": "BA1",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "A1"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        12
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0019",
+        "S",
+        "U0116",
+        "U0167",
+        "U0215",
+        "U0266",
+        "U0315",
+        "U1794",
+        "U1795",
+        "U1796"
+      ],
+      "explicit_bindings": [
+        "S"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 15,
+      "drawable": "RM",
+      "kind": "line",
+      "definition_points": [
+        "R",
+        "M"
+      ],
+      "definition_point_birth_e_moves": [
+        13,
+        10
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0020",
+        "U0064",
+        "U0117",
+        "U0168",
+        "U0216",
+        "U0316",
+        "U0369",
+        "U0461",
+        "B0",
+        "B2",
+        "U1799",
+        "U1800",
+        "U1801",
+        "U1802"
+      ],
+      "explicit_bindings": [
+        "B0",
+        "B2"
+      ],
+      "algebraic_representations_born": [
+        "repr.B0",
+        "repr.B2"
+      ]
+    },
+    {
+      "e_move": 16,
+      "drawable": "SM",
+      "kind": "line",
+      "definition_points": [
+        "S",
+        "M"
+      ],
+      "definition_point_birth_e_moves": [
+        14,
+        10
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0021",
+        "U0065",
+        "U0118",
+        "U0169",
+        "U0217",
+        "U0317",
+        "U0370",
+        "U0420",
+        "B1",
+        "B3",
+        "U1807",
+        "U1808",
+        "U1809",
+        "U1810"
+      ],
+      "explicit_bindings": [
+        "B1",
+        "B3"
+      ],
+      "algebraic_representations_born": [
+        "repr.B1",
+        "repr.B3"
+      ]
+    },
+    {
+      "e_move": 17,
+      "drawable": "EA1",
+      "kind": "line",
+      "definition_points": [
+        "E",
+        "A1"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        12
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "T",
+        "U0100",
+        "U0119",
+        "U0218",
+        "U0267",
+        "U0318",
+        "U0421",
+        "U0503",
+        "U0548",
+        "U1815",
+        "U1816",
+        "U1817",
+        "U1818"
+      ],
+      "explicit_bindings": [
+        "T"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 18,
+      "drawable": "LB0",
+      "kind": "line",
+      "definition_points": [
+        "L",
+        "B0"
+      ],
+      "definition_point_birth_e_moves": [
+        9,
+        15
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0001",
+        "U0022",
+        "U0066",
+        "U",
+        "U0120",
+        "U0170",
+        "U0319",
+        "U0371",
+        "U0422",
+        "U0462",
+        "U0549",
+        "U0594",
+        "U1823",
+        "U1824",
+        "U1825",
+        "U1826"
+      ],
+      "explicit_bindings": [
+        "U"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 19,
+      "drawable": "UT",
+      "kind": "line",
+      "definition_points": [
+        "U",
+        "T"
+      ],
+      "definition_point_birth_e_moves": [
+        18,
+        17
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0023",
+        "U0067",
+        "U0121",
+        "U0171",
+        "U0219",
+        "U0268",
+        "U0320",
+        "U0372",
+        "U0423",
+        "U0463",
+        "U0504",
+        "U0550",
+        "Ca",
+        "U1831",
+        "U1832",
+        "U1833",
+        "U1834",
+        "U1835"
+      ],
+      "explicit_bindings": [
+        "Ca"
+      ],
+      "algebraic_representations_born": [
+        "repr.Ca",
+        "repr.auto.work.ca-conjugate"
+      ]
+    },
+    {
+      "e_move": 20,
+      "drawable": "EA0",
+      "kind": "line",
+      "definition_points": [
+        "E",
+        "A0"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        12
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "V",
+        "U0101",
+        "U0122",
+        "U0220",
+        "U0269",
+        "U0321",
+        "U0464",
+        "U0505",
+        "U0551",
+        "U0636",
+        "U0680",
+        "U1840",
+        "U1841",
+        "U1842",
+        "U1843"
+      ],
+      "explicit_bindings": [
+        "V"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 21,
+      "drawable": "LB1",
+      "kind": "line",
+      "definition_points": [
+        "L",
+        "B1"
+      ],
+      "definition_point_birth_e_moves": [
+        9,
+        16
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0002",
+        "U0024",
+        "U0068",
+        "W",
+        "U0123",
+        "U0172",
+        "U0322",
+        "U0373",
+        "U0424",
+        "U0465",
+        "U0506",
+        "U0595",
+        "U0681",
+        "U0727",
+        "U1848",
+        "U1849",
+        "U1850",
+        "U1851"
+      ],
+      "explicit_bindings": [
+        "W"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 22,
+      "drawable": "VW",
+      "kind": "line",
+      "definition_points": [
+        "V",
+        "W"
+      ],
+      "definition_point_birth_e_moves": [
+        20,
+        21
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0025",
+        "U0069",
+        "U0124",
+        "U0173",
+        "U0221",
+        "U0270",
+        "U0323",
+        "U0374",
+        "U0425",
+        "U0466",
+        "U0507",
+        "U0552",
+        "U0596",
+        "U0637",
+        "U0682",
+        "Cb",
+        "U1856",
+        "U1857",
+        "U1858",
+        "U1859",
+        "U1860"
+      ],
+      "explicit_bindings": [
+        "Cb"
+      ],
+      "algebraic_representations_born": [
+        "repr.Cb",
+        "repr.auto.work.cb-conjugate"
+      ]
+    },
+    {
+      "e_move": 23,
+      "drawable": "B0B3",
+      "kind": "line",
+      "definition_points": [
+        "B0",
+        "B3"
+      ],
+      "definition_point_birth_e_moves": [
+        15,
+        16
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "X",
+        "U0026",
+        "U0070",
+        "U0102",
+        "U0125",
+        "U0174",
+        "U0222",
+        "U0271",
+        "U0324",
+        "U0375",
+        "U0426",
+        "U0467",
+        "U0597",
+        "U0683",
+        "U0728",
+        "U0767",
+        "U0810",
+        "U1865",
+        "U1866",
+        "U1867",
+        "U1868"
+      ],
+      "explicit_bindings": [
+        "X"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 24,
+      "drawable": "RX",
+      "kind": "line",
+      "definition_points": [
+        "R",
+        "X"
+      ],
+      "definition_point_birth_e_moves": [
+        13,
+        23
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0027",
+        "U0071",
+        "U0126",
+        "U0175",
+        "U0223",
+        "U0272",
+        "U0325",
+        "U0376",
+        "U0468",
+        "U0553",
+        "U0598",
+        "U0638",
+        "U0684",
+        "U0729",
+        "U0768",
+        "U0811",
+        "Cc",
+        "U1871",
+        "U1872",
+        "U1873",
+        "U1874",
+        "U1875"
+      ],
+      "explicit_bindings": [
+        "Cc"
+      ],
+      "algebraic_representations_born": [
+        "repr.Cc",
+        "repr.auto.work.cc-conjugate"
+      ]
+    },
+    {
+      "e_move": 25,
+      "drawable": "B2B3",
+      "kind": "line",
+      "definition_points": [
+        "B2",
+        "B3"
+      ],
+      "definition_point_birth_e_moves": [
+        15,
+        16
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "Y",
+        "U0028",
+        "U0072",
+        "U0103",
+        "U0127",
+        "U0176",
+        "U0224",
+        "U0273",
+        "U0326",
+        "U0377",
+        "U0427",
+        "U0469",
+        "U0599",
+        "U0639",
+        "U0685",
+        "U0730",
+        "U0769",
+        "U0812",
+        "U0895",
+        "U1880",
+        "U1881",
+        "U1882",
+        "U1883"
+      ],
+      "explicit_bindings": [
+        "Y"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 26,
+      "drawable": "YS",
+      "kind": "line",
+      "definition_points": [
+        "Y",
+        "S"
+      ],
+      "definition_point_birth_e_moves": [
+        25,
+        14
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0029",
+        "U0073",
+        "U0128",
+        "U0177",
+        "U0225",
+        "U0274",
+        "U0327",
+        "U0378",
+        "U0428",
+        "U0508",
+        "U0600",
+        "U0640",
+        "U0686",
+        "U0731",
+        "U0770",
+        "U0813",
+        "U0854",
+        "U0896",
+        "Cd",
+        "U1888",
+        "U1889",
+        "U1890",
+        "U1891",
+        "U1892"
+      ],
+      "explicit_bindings": [
+        "Cd"
+      ],
+      "algebraic_representations_born": [
+        "repr.Cd",
+        "repr.auto.work.cd-conjugate"
+      ]
+    },
+    {
+      "e_move": 27,
+      "drawable": "HCa",
+      "kind": "line",
+      "definition_points": [
+        "H",
+        "Ca"
+      ],
+      "definition_point_birth_e_moves": [
+        7,
+        19
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0003",
+        "U0030",
+        "U0074",
+        "Z",
+        "U0178",
+        "U0226",
+        "U0275",
+        "U0328",
+        "U0379",
+        "U0429",
+        "U0470",
+        "U0509",
+        "U0554",
+        "U0601",
+        "U0641",
+        "U0732",
+        "U0771",
+        "U0814",
+        "U0855",
+        "U0897",
+        "U0935",
+        "U0976",
+        "U1897",
+        "U1898",
+        "U1899",
+        "U1900"
+      ],
+      "explicit_bindings": [
+        "Z"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 28,
+      "drawable": "ZK",
+      "kind": "line",
+      "definition_points": [
+        "Z",
+        "K"
+      ],
+      "definition_point_birth_e_moves": [
+        27,
+        8
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "H1",
+        "U0031",
+        "U0075",
+        "U0129",
+        "U0227",
+        "U0329",
+        "U0380",
+        "U0430",
+        "U0471",
+        "U0510",
+        "U0555",
+        "U0602",
+        "U0642",
+        "U0687",
+        "U0733",
+        "U0772",
+        "U0815",
+        "U0856",
+        "U0898",
+        "U0936",
+        "U0977",
+        "U1905",
+        "U1906",
+        "U1907",
+        "U1908",
+        "U1909"
+      ],
+      "explicit_bindings": [
+        "H1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 29,
+      "drawable": "B1Cc",
+      "kind": "line",
+      "definition_points": [
+        "B1",
+        "Cc"
+      ],
+      "definition_point_birth_e_moves": [
+        16,
+        24
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0004",
+        "U0032",
+        "U0076",
+        "I1",
+        "U0130",
+        "U0179",
+        "U0228",
+        "U0276",
+        "U0330",
+        "U0381",
+        "U0431",
+        "U0472",
+        "U0511",
+        "U0603",
+        "U0643",
+        "U0688",
+        "U0734",
+        "U0816",
+        "U0857",
+        "U0937",
+        "U0978",
+        "U1015",
+        "U1050",
+        "U1914",
+        "U1915",
+        "U1916",
+        "U1917"
+      ],
+      "explicit_bindings": [
+        "I1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 30,
+      "drawable": "I1H",
+      "kind": "line",
+      "definition_points": [
+        "I1",
+        "H"
+      ],
+      "definition_point_birth_e_moves": [
+        29,
+        7
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0005",
+        "U0033",
+        "U0077",
+        "U0180",
+        "U0229",
+        "U0277",
+        "U0331",
+        "U0382",
+        "U0432",
+        "U0473",
+        "U0512",
+        "U0556",
+        "U0604",
+        "U0644",
+        "U0689",
+        "U0735",
+        "U0773",
+        "U0817",
+        "U0858",
+        "U0899",
+        "U0938",
+        "U0979",
+        "U1051",
+        "J1",
+        "U1922",
+        "U1923",
+        "U1924",
+        "U1925"
+      ],
+      "explicit_bindings": [
+        "J1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 31,
+      "drawable": "BJ1",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "J1"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        30
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0034",
+        "K1",
+        "U0131",
+        "U0181",
+        "U0230",
+        "U0278",
+        "U0332",
+        "U0383",
+        "U0513",
+        "U0557",
+        "U0605",
+        "U0645",
+        "U0690",
+        "U0736",
+        "U0774",
+        "U0818",
+        "U0859",
+        "U0900",
+        "U0939",
+        "U0980",
+        "U1016",
+        "U1052",
+        "U1086",
+        "U1930",
+        "U1931",
+        "U1932"
+      ],
+      "explicit_bindings": [
+        "K1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 32,
+      "drawable": "K1H1",
+      "kind": "line",
+      "definition_points": [
+        "K1",
+        "H1"
+      ],
+      "definition_point_birth_e_moves": [
+        31,
+        28
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0035",
+        "U0078",
+        "U0132",
+        "U0182",
+        "U0231",
+        "U0279",
+        "U0333",
+        "U0384",
+        "U0433",
+        "U0474",
+        "U0514",
+        "U0558",
+        "U0606",
+        "U0646",
+        "U0691",
+        "U0737",
+        "U0775",
+        "U0819",
+        "U0860",
+        "U0901",
+        "U0940",
+        "U0981",
+        "U1017",
+        "U1087",
+        "U1122",
+        "Da",
+        "Db",
+        "U1937",
+        "U1938",
+        "U1939",
+        "U1940"
+      ],
+      "explicit_bindings": [
+        "Da",
+        "Db"
+      ],
+      "algebraic_representations_born": [
+        "repr.Da",
+        "repr.Db"
+      ]
+    },
+    {
+      "e_move": 33,
+      "drawable": "BZ",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "Z"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        27
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0036",
+        "U0133",
+        "U0183",
+        "U0232",
+        "U0280",
+        "U0334",
+        "U0385",
+        "U0515",
+        "U0559",
+        "U0607",
+        "U0647",
+        "U0692",
+        "U0738",
+        "U0776",
+        "U0820",
+        "U0861",
+        "U0902",
+        "U0941",
+        "U0982",
+        "U1088",
+        "U1123",
+        "U1185",
+        "L1",
+        "U1945",
+        "U1946",
+        "U1947"
+      ],
+      "explicit_bindings": [
+        "L1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 34,
+      "drawable": "c_M1L1",
+      "kind": "circle",
+      "definition_points": [
+        "M1",
+        "L1"
+      ],
+      "definition_point_birth_e_moves": [
+        1,
+        33
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U1731",
+        "U1732",
+        "U1733",
+        "U1734",
+        "N1",
+        "U1740",
+        "U1741",
+        "U1748",
+        "U1749",
+        "U1754",
+        "U1755",
+        "U1790",
+        "U1791",
+        "U1797",
+        "U1798",
+        "U1803",
+        "U1804",
+        "U1811",
+        "U1812",
+        "U1819",
+        "U1820",
+        "U1827",
+        "U1828",
+        "U1836",
+        "U1837",
+        "U1844",
+        "U1845",
+        "U1852",
+        "U1853",
+        "U1861",
+        "U1862",
+        "U1876",
+        "U1877",
+        "U1884",
+        "U1885",
+        "U1893",
+        "U1894",
+        "U1901",
+        "U1902",
+        "U1910",
+        "U1911",
+        "U1918",
+        "U1919",
+        "U1926",
+        "U1927",
+        "U1933",
+        "U1934",
+        "U1941",
+        "U1942",
+        "U1948"
+      ],
+      "explicit_bindings": [
+        "N1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 35,
+      "drawable": "CdN1",
+      "kind": "line",
+      "definition_points": [
+        "Cd",
+        "N1"
+      ],
+      "definition_point_birth_e_moves": [
+        26,
+        34
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0006",
+        "U0037",
+        "U0079",
+        "O1",
+        "U0134",
+        "U0184",
+        "U0233",
+        "U0281",
+        "U0335",
+        "U0386",
+        "U0434",
+        "U0475",
+        "U0516",
+        "U0560",
+        "U0608",
+        "U0648",
+        "U0693",
+        "U0739",
+        "U0777",
+        "U0821",
+        "U0862",
+        "U0903",
+        "U0942",
+        "U1018",
+        "U1053",
+        "U1089",
+        "U1124",
+        "U1157",
+        "U1186",
+        "U1218",
+        "U1951",
+        "U1952",
+        "U1953",
+        "U1954",
+        "U1955"
+      ],
+      "explicit_bindings": [
+        "O1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 36,
+      "drawable": "HCb",
+      "kind": "line",
+      "definition_points": [
+        "H",
+        "Cb"
+      ],
+      "definition_point_birth_e_moves": [
+        7,
+        22
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "P1",
+        "U0038",
+        "U0080",
+        "U0104",
+        "U0185",
+        "U0234",
+        "U0282",
+        "U0336",
+        "U0387",
+        "U0435",
+        "U0476",
+        "U0517",
+        "U0561",
+        "U0609",
+        "U0649",
+        "U0694",
+        "U0740",
+        "U0778",
+        "U0863",
+        "U0904",
+        "U0943",
+        "U0983",
+        "U1054",
+        "U1090",
+        "U1158",
+        "U1187",
+        "U1219",
+        "U1245",
+        "U1958",
+        "U1959",
+        "U1960",
+        "U1961"
+      ],
+      "explicit_bindings": [
+        "P1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 37,
+      "drawable": "EP1",
+      "kind": "line",
+      "definition_points": [
+        "E",
+        "P1"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        36
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0105",
+        "U0135",
+        "U0235",
+        "U0283",
+        "U0337",
+        "U0388",
+        "U0436",
+        "U0477",
+        "U0518",
+        "U0562",
+        "U0650",
+        "U0695",
+        "U0779",
+        "U0822",
+        "U0864",
+        "U0905",
+        "U0944",
+        "U0984",
+        "U1019",
+        "U1055",
+        "U1091",
+        "U1125",
+        "U1159",
+        "U1188",
+        "U1220",
+        "U1246",
+        "Q1",
+        "U1964",
+        "U1965",
+        "U1966",
+        "U1967",
+        "U1968",
+        "U1969"
+      ],
+      "explicit_bindings": [
+        "Q1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 38,
+      "drawable": "LQ1",
+      "kind": "line",
+      "definition_points": [
+        "L",
+        "Q1"
+      ],
+      "definition_point_birth_e_moves": [
+        9,
+        37
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0007",
+        "U0039",
+        "U0081",
+        "R1",
+        "U0136",
+        "U0186",
+        "U0338",
+        "U0389",
+        "U0437",
+        "U0478",
+        "U0519",
+        "U0563",
+        "U0610",
+        "U0696",
+        "U0741",
+        "U0823",
+        "U0865",
+        "U0906",
+        "U0945",
+        "U0985",
+        "U1020",
+        "U1056",
+        "U1092",
+        "U1126",
+        "U1160",
+        "U1189",
+        "U1221",
+        "U1247",
+        "U1276",
+        "U1972",
+        "U1973",
+        "U1974",
+        "U1975"
+      ],
+      "explicit_bindings": [
+        "R1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 39,
+      "drawable": "R1Cc",
+      "kind": "line",
+      "definition_points": [
+        "R1",
+        "Cc"
+      ],
+      "definition_point_birth_e_moves": [
+        38,
+        24
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0008",
+        "U0040",
+        "U0082",
+        "U0137",
+        "U0187",
+        "U0236",
+        "U0284",
+        "U0339",
+        "U0390",
+        "U0438",
+        "U0479",
+        "U0520",
+        "U0564",
+        "U0611",
+        "U0651",
+        "U0697",
+        "U0742",
+        "U0780",
+        "U0824",
+        "U0866",
+        "U0946",
+        "U0986",
+        "U1021",
+        "U1057",
+        "U1127",
+        "U1161",
+        "U1190",
+        "U1222",
+        "U1248",
+        "U1277",
+        "U1307",
+        "S1",
+        "U1978",
+        "U1979",
+        "U1980",
+        "U1981",
+        "U1982",
+        "U1983"
+      ],
+      "explicit_bindings": [
+        "S1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 40,
+      "drawable": "CdB0",
+      "kind": "line",
+      "definition_points": [
+        "Cd",
+        "B0"
+      ],
+      "definition_point_birth_e_moves": [
+        26,
+        15
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0009",
+        "U0041",
+        "U0083",
+        "T1",
+        "U0138",
+        "U0188",
+        "U0237",
+        "U0285",
+        "U0340",
+        "U0391",
+        "U0439",
+        "U0480",
+        "U0565",
+        "U0612",
+        "U0698",
+        "U0743",
+        "U0781",
+        "U0825",
+        "U0907",
+        "U0947",
+        "U1022",
+        "U1058",
+        "U1093",
+        "U1128",
+        "U1162",
+        "U1191",
+        "U1223",
+        "U1278",
+        "U1308",
+        "U1332",
+        "U1361",
+        "U1986",
+        "U1987",
+        "U1988",
+        "U1989"
+      ],
+      "explicit_bindings": [
+        "T1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 41,
+      "drawable": "T1S1",
+      "kind": "line",
+      "definition_points": [
+        "T1",
+        "S1"
+      ],
+      "definition_point_birth_e_moves": [
+        40,
+        39
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0010",
+        "U0042",
+        "U0084",
+        "U0139",
+        "U0189",
+        "U0238",
+        "U0286",
+        "U0341",
+        "U0392",
+        "U0440",
+        "U0481",
+        "U0521",
+        "U0566",
+        "U0613",
+        "U0652",
+        "U0699",
+        "U0744",
+        "U0782",
+        "U0826",
+        "U0867",
+        "U0908",
+        "U0948",
+        "U0987",
+        "U1023",
+        "U1059",
+        "U1094",
+        "U1129",
+        "U1163",
+        "U1192",
+        "U1224",
+        "U1249",
+        "U1279",
+        "U1309",
+        "U1333",
+        "U1",
+        "U1992",
+        "U1993",
+        "U1994",
+        "U1995",
+        "U1996",
+        "U1997"
+      ],
+      "explicit_bindings": [
+        "U1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 42,
+      "drawable": "EU1",
+      "kind": "line",
+      "definition_points": [
+        "E",
+        "U1"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        41
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "V1",
+        "U0106",
+        "U0140",
+        "U0239",
+        "U0287",
+        "U0342",
+        "U0393",
+        "U0441",
+        "U0482",
+        "U0522",
+        "U0567",
+        "U0653",
+        "U0700",
+        "U0783",
+        "U0827",
+        "U0868",
+        "U0909",
+        "U0949",
+        "U0988",
+        "U1024",
+        "U1060",
+        "U1095",
+        "U1130",
+        "U1164",
+        "U1193",
+        "U1225",
+        "U1250",
+        "U1280",
+        "U1334",
+        "U1362",
+        "U1388",
+        "U2000",
+        "U2001",
+        "U2002",
+        "U2003",
+        "U2004",
+        "U2005"
+      ],
+      "explicit_bindings": [
+        "V1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 43,
+      "drawable": "V1O1",
+      "kind": "line",
+      "definition_points": [
+        "V1",
+        "O1"
+      ],
+      "definition_point_birth_e_moves": [
+        42,
+        35
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0043",
+        "U0085",
+        "U0141",
+        "U0190",
+        "U0240",
+        "U0288",
+        "U0343",
+        "U0394",
+        "U0442",
+        "U0483",
+        "U0523",
+        "U0568",
+        "U0614",
+        "U0654",
+        "U0701",
+        "U0745",
+        "U0784",
+        "U0828",
+        "U0869",
+        "U0910",
+        "U0950",
+        "U0989",
+        "U1025",
+        "U1061",
+        "U1096",
+        "U1131",
+        "U1165",
+        "U1194",
+        "U1226",
+        "U1281",
+        "U1310",
+        "U1335",
+        "U1363",
+        "U1389",
+        "U1415",
+        "Dc",
+        "Dd",
+        "U2008",
+        "U2009",
+        "U2010",
+        "U2011",
+        "U2012",
+        "U2013"
+      ],
+      "explicit_bindings": [
+        "Dc",
+        "Dd"
+      ],
+      "algebraic_representations_born": [
+        "repr.Dc",
+        "repr.Dd"
+      ]
+    },
+    {
+      "e_move": 44,
+      "drawable": "RS1",
+      "kind": "line",
+      "definition_points": [
+        "R",
+        "S1"
+      ],
+      "definition_point_birth_e_moves": [
+        13,
+        39
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0011",
+        "U0044",
+        "U0086",
+        "U0142",
+        "U0191",
+        "U0241",
+        "U0289",
+        "U0344",
+        "U0395",
+        "U0484",
+        "U0569",
+        "U0615",
+        "U0655",
+        "U0702",
+        "U0746",
+        "U0785",
+        "U0829",
+        "U0870",
+        "U0951",
+        "U0990",
+        "U1026",
+        "U1062",
+        "U1097",
+        "U1132",
+        "U1166",
+        "U1195",
+        "U1227",
+        "U1251",
+        "U1282",
+        "U1311",
+        "U1336",
+        "U1390",
+        "U1440",
+        "U1461",
+        "W1",
+        "U2016",
+        "U2017",
+        "U2018",
+        "U2019",
+        "U2020",
+        "U2021"
+      ],
+      "explicit_bindings": [
+        "W1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 45,
+      "drawable": "EW1",
+      "kind": "line",
+      "definition_points": [
+        "E",
+        "W1"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        44
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "X1",
+        "U0107",
+        "U0143",
+        "U0242",
+        "U0290",
+        "U0345",
+        "U0396",
+        "U0443",
+        "U0485",
+        "U0524",
+        "U0570",
+        "U0656",
+        "U0703",
+        "U0786",
+        "U0830",
+        "U0871",
+        "U0911",
+        "U0952",
+        "U0991",
+        "U1027",
+        "U1063",
+        "U1098",
+        "U1133",
+        "U1167",
+        "U1196",
+        "U1228",
+        "U1252",
+        "U1283",
+        "U1337",
+        "U1364",
+        "U1391",
+        "U1416",
+        "U1462",
+        "U2024",
+        "U2025",
+        "U2026",
+        "U2027",
+        "U2028",
+        "U2029"
+      ],
+      "explicit_bindings": [
+        "X1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 46,
+      "drawable": "X1Z",
+      "kind": "line",
+      "definition_points": [
+        "X1",
+        "Z"
+      ],
+      "definition_point_birth_e_moves": [
+        45,
+        27
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0045",
+        "U0087",
+        "U0144",
+        "U0192",
+        "U0243",
+        "U0291",
+        "U0346",
+        "U0397",
+        "U0444",
+        "U0486",
+        "U0525",
+        "U0571",
+        "U0616",
+        "U0657",
+        "U0704",
+        "U0747",
+        "U0787",
+        "U0831",
+        "U0872",
+        "U0912",
+        "U0953",
+        "U0992",
+        "U1099",
+        "U1134",
+        "U1168",
+        "U1197",
+        "U1253",
+        "U1284",
+        "U1312",
+        "U1338",
+        "U1365",
+        "U1392",
+        "U1417",
+        "U1441",
+        "U1463",
+        "U1484",
+        "D0",
+        "D8",
+        "U2032",
+        "U2033",
+        "U2034",
+        "U2035",
+        "U2036",
+        "U2037"
+      ],
+      "explicit_bindings": [
+        "D0",
+        "D8"
+      ],
+      "algebraic_representations_born": [
+        "repr.D0",
+        "repr.D8"
+      ]
+    },
+    {
+      "e_move": 47,
+      "drawable": "BD0",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "D0"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        46
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0046",
+        "Y1",
+        "U0145",
+        "U0193",
+        "U0244",
+        "U0292",
+        "U0347",
+        "U0398",
+        "U0526",
+        "U0572",
+        "U0617",
+        "U0658",
+        "U0705",
+        "U0748",
+        "U0788",
+        "U0832",
+        "U0873",
+        "U0913",
+        "U0954",
+        "U0993",
+        "U1028",
+        "U1064",
+        "U1100",
+        "U1135",
+        "U1198",
+        "U1254",
+        "U1285",
+        "U1313",
+        "U1339",
+        "U1366",
+        "U1393",
+        "U1418",
+        "U1442",
+        "U1464",
+        "U1485",
+        "U1507",
+        "U2040",
+        "U2041",
+        "U2042",
+        "U2043",
+        "U2044"
+      ],
+      "explicit_bindings": [
+        "Y1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 48,
+      "drawable": "GDa",
+      "kind": "line",
+      "definition_points": [
+        "G",
+        "Da"
+      ],
+      "definition_point_birth_e_moves": [
+        5,
+        32
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0012",
+        "U0047",
+        "U0146",
+        "U0194",
+        "U0245",
+        "U0293",
+        "U0348",
+        "U0399",
+        "U0445",
+        "U0487",
+        "U0527",
+        "U0573",
+        "U0618",
+        "U0659",
+        "U0706",
+        "U0749",
+        "U0789",
+        "U0833",
+        "U0874",
+        "U0914",
+        "U0955",
+        "U0994",
+        "U1029",
+        "U1065",
+        "U1101",
+        "U1136",
+        "U1169",
+        "U1229",
+        "U1255",
+        "U1286",
+        "U1314",
+        "U1340",
+        "U1367",
+        "U1394",
+        "U1419",
+        "U1443",
+        "U1465",
+        "U1486",
+        "U1508",
+        "U1526",
+        "U1544",
+        "Z1",
+        "U2047",
+        "U2048",
+        "U2049",
+        "U2050",
+        "U2051"
+      ],
+      "explicit_bindings": [
+        "Z1"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 49,
+      "drawable": "DZ1",
+      "kind": "line",
+      "definition_points": [
+        "D",
+        "Z1"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        48
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "H2",
+        "U0088",
+        "U0108",
+        "U0195",
+        "U0294",
+        "U0349",
+        "U0400",
+        "U0446",
+        "U0488",
+        "U0528",
+        "U0574",
+        "U0619",
+        "U0660",
+        "U0707",
+        "U0750",
+        "U0790",
+        "U0834",
+        "U0875",
+        "U0915",
+        "U0956",
+        "U0995",
+        "U1030",
+        "U1066",
+        "U1102",
+        "U1137",
+        "U1170",
+        "U1199",
+        "U1230",
+        "U1256",
+        "U1287",
+        "U1315",
+        "U1341",
+        "U1368",
+        "U1395",
+        "U1420",
+        "U1444",
+        "U1466",
+        "U1487",
+        "U1509",
+        "U1527",
+        "U1545",
+        "U2054",
+        "U2055",
+        "U2056",
+        "U2057",
+        "U2058",
+        "U2059"
+      ],
+      "explicit_bindings": [
+        "H2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 50,
+      "drawable": "H2Y1",
+      "kind": "line",
+      "definition_points": [
+        "H2",
+        "Y1"
+      ],
+      "definition_point_birth_e_moves": [
+        49,
+        47
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0048",
+        "U0089",
+        "U0147",
+        "U0196",
+        "U0246",
+        "U0295",
+        "U0350",
+        "U0401",
+        "U0447",
+        "U0489",
+        "U0529",
+        "U0575",
+        "U0620",
+        "U0661",
+        "U0708",
+        "U0751",
+        "U0791",
+        "U0835",
+        "U0876",
+        "U0916",
+        "U0957",
+        "U0996",
+        "U1031",
+        "U1067",
+        "U1103",
+        "U1138",
+        "U1171",
+        "U1200",
+        "U1231",
+        "U1257",
+        "U1288",
+        "U1316",
+        "U1342",
+        "U1369",
+        "U1396",
+        "U1421",
+        "U1445",
+        "U1467",
+        "U1488",
+        "U1510",
+        "U1528",
+        "U1558",
+        "E0",
+        "U2062",
+        "U2063",
+        "U2064",
+        "U2065",
+        "U2066",
+        "U2067",
+        "U2068"
+      ],
+      "explicit_bindings": [
+        "E0"
+      ],
+      "algebraic_representations_born": [
+        "repr.E0",
+        "repr.auto.period.e16"
+      ]
+    },
+    {
+      "e_move": 51,
+      "drawable": "BE0",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "E0"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        50
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0049",
+        "I2",
+        "U0148",
+        "U0197",
+        "U0247",
+        "U0296",
+        "U0351",
+        "U0402",
+        "U0530",
+        "U0576",
+        "U0621",
+        "U0662",
+        "U0709",
+        "U0752",
+        "U0792",
+        "U0836",
+        "U0877",
+        "U0917",
+        "U0958",
+        "U0997",
+        "U1032",
+        "U1068",
+        "U1104",
+        "U1139",
+        "U1201",
+        "U1258",
+        "U1289",
+        "U1317",
+        "U1343",
+        "U1370",
+        "U1397",
+        "U1422",
+        "U1446",
+        "U1468",
+        "U1489",
+        "U1511",
+        "U1529",
+        "U1559",
+        "U1576",
+        "U2071",
+        "U2072",
+        "U2073",
+        "U2074",
+        "U2075"
+      ],
+      "explicit_bindings": [
+        "I2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 52,
+      "drawable": "DcD0",
+      "kind": "line",
+      "definition_points": [
+        "Dc",
+        "D0"
+      ],
+      "definition_point_birth_e_moves": [
+        43,
+        46
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0013",
+        "U0050",
+        "U0090",
+        "J2",
+        "U0149",
+        "U0198",
+        "U0248",
+        "U0297",
+        "U0352",
+        "U0403",
+        "U0448",
+        "U0490",
+        "U0531",
+        "U0577",
+        "U0622",
+        "U0663",
+        "U0710",
+        "U0753",
+        "U0793",
+        "U0837",
+        "U0878",
+        "U0918",
+        "U0959",
+        "U0998",
+        "U1033",
+        "U1069",
+        "U1105",
+        "U1140",
+        "U1172",
+        "U1202",
+        "U1232",
+        "U1259",
+        "U1290",
+        "U1318",
+        "U1344",
+        "U1371",
+        "U1398",
+        "U1423",
+        "U1447",
+        "U1490",
+        "U1512",
+        "U1560",
+        "U1577",
+        "U1593",
+        "U1610",
+        "U2078",
+        "U2079",
+        "U2080",
+        "U2081",
+        "U2082",
+        "U2083"
+      ],
+      "explicit_bindings": [
+        "J2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 53,
+      "drawable": "AJ2",
+      "kind": "line",
+      "definition_points": [
+        "A",
+        "J2"
+      ],
+      "definition_point_birth_e_moves": [
+        3,
+        52
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0091",
+        "U0150",
+        "U0199",
+        "U0249",
+        "U0298",
+        "U0353",
+        "U0404",
+        "U0449",
+        "U0491",
+        "U0532",
+        "U0578",
+        "U0623",
+        "U0664",
+        "U0711",
+        "U0754",
+        "U0794",
+        "U0838",
+        "U0879",
+        "U0919",
+        "U0960",
+        "U0999",
+        "U1034",
+        "U1070",
+        "U1106",
+        "U1141",
+        "U1173",
+        "U1203",
+        "U1233",
+        "U1260",
+        "U1291",
+        "U1319",
+        "U1345",
+        "U1372",
+        "U1399",
+        "U1424",
+        "U1448",
+        "U1469",
+        "U1491",
+        "U1513",
+        "U1530",
+        "U1546",
+        "U1561",
+        "U1578",
+        "U1594",
+        "U1611",
+        "K2",
+        "U2086",
+        "U2087",
+        "U2088",
+        "U2089",
+        "U2090",
+        "U2091",
+        "U2092"
+      ],
+      "explicit_bindings": [
+        "K2"
+      ],
+      "algebraic_representations_born": [
+        "repr.K2",
+        "repr.auto.work.e-low-1"
+      ]
+    },
+    {
+      "e_move": 54,
+      "drawable": "EK2",
+      "kind": "line",
+      "definition_points": [
+        "E",
+        "K2"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        53
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "L2",
+        "U0109",
+        "U0151",
+        "U0250",
+        "U0299",
+        "U0354",
+        "U0405",
+        "U0450",
+        "U0492",
+        "U0533",
+        "U0579",
+        "U0665",
+        "U0712",
+        "U0795",
+        "U0839",
+        "U0880",
+        "U0920",
+        "U0961",
+        "U1000",
+        "U1035",
+        "U1071",
+        "U1107",
+        "U1142",
+        "U1174",
+        "U1204",
+        "U1234",
+        "U1261",
+        "U1292",
+        "U1346",
+        "U1373",
+        "U1400",
+        "U1425",
+        "U1470",
+        "U1492",
+        "U1531",
+        "U1547",
+        "U1562",
+        "U1579",
+        "U1595",
+        "U1612",
+        "U1622",
+        "U2095",
+        "U2096",
+        "U2097",
+        "U2098",
+        "U2099",
+        "U2100"
+      ],
+      "explicit_bindings": [
+        "L2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 55,
+      "drawable": "L2I2",
+      "kind": "line",
+      "definition_points": [
+        "L2",
+        "I2"
+      ],
+      "definition_point_birth_e_moves": [
+        54,
+        51
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0051",
+        "U0092",
+        "U0152",
+        "U0200",
+        "U0251",
+        "U0300",
+        "U0355",
+        "U0406",
+        "U0451",
+        "U0493",
+        "U0534",
+        "U0580",
+        "U0624",
+        "U0666",
+        "U0713",
+        "U0755",
+        "U0796",
+        "U0840",
+        "U0881",
+        "U0921",
+        "U0962",
+        "U1001",
+        "U1036",
+        "U1072",
+        "U1108",
+        "U1143",
+        "U1175",
+        "U1205",
+        "U1235",
+        "U1262",
+        "U1293",
+        "U1320",
+        "U1347",
+        "U1374",
+        "U1401",
+        "U1426",
+        "U1449",
+        "U1471",
+        "U1493",
+        "U1514",
+        "U1532",
+        "U1548",
+        "U1563",
+        "U1580",
+        "U1596",
+        "U1623",
+        "U1637",
+        "F0",
+        "U2103",
+        "U2104",
+        "U2105",
+        "U2106",
+        "U2107",
+        "U2108",
+        "U2109"
+      ],
+      "explicit_bindings": [
+        "F0"
+      ],
+      "algebraic_representations_born": [
+        "repr.F0",
+        "repr.auto.period.f32"
+      ]
+    },
+    {
+      "e_move": 56,
+      "drawable": "BD8",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "D8"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        46
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0052",
+        "M2",
+        "U0153",
+        "U0201",
+        "U0252",
+        "U0301",
+        "U0356",
+        "U0407",
+        "U0535",
+        "U0581",
+        "U0625",
+        "U0667",
+        "U0714",
+        "U0756",
+        "U0797",
+        "U0841",
+        "U0882",
+        "U0922",
+        "U0963",
+        "U1002",
+        "U1037",
+        "U1073",
+        "U1109",
+        "U1144",
+        "U1206",
+        "U1263",
+        "U1294",
+        "U1321",
+        "U1348",
+        "U1375",
+        "U1402",
+        "U1427",
+        "U1450",
+        "U1472",
+        "U1494",
+        "U1515",
+        "U1564",
+        "U1581",
+        "U1597",
+        "U1624",
+        "U1638",
+        "U1650",
+        "U1661",
+        "U2112",
+        "U2113",
+        "U2114",
+        "U2115",
+        "U2116"
+      ],
+      "explicit_bindings": [
+        "M2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 57,
+      "drawable": "GDb",
+      "kind": "line",
+      "definition_points": [
+        "G",
+        "Db"
+      ],
+      "definition_point_birth_e_moves": [
+        5,
+        32
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0014",
+        "U0053",
+        "U0154",
+        "U0202",
+        "U0253",
+        "U0302",
+        "U0357",
+        "U0408",
+        "U0452",
+        "U0494",
+        "U0536",
+        "U0582",
+        "U0626",
+        "U0668",
+        "U0715",
+        "U0757",
+        "U0798",
+        "U0842",
+        "U0883",
+        "U0923",
+        "U0964",
+        "U1003",
+        "U1038",
+        "U1074",
+        "U1110",
+        "U1145",
+        "U1176",
+        "U1236",
+        "U1264",
+        "U1295",
+        "U1322",
+        "U1349",
+        "U1376",
+        "U1403",
+        "U1428",
+        "U1451",
+        "U1473",
+        "U1495",
+        "U1516",
+        "U1533",
+        "U1549",
+        "U1582",
+        "U1598",
+        "U1613",
+        "U1625",
+        "U1639",
+        "U1651",
+        "U1662",
+        "U1673",
+        "N2",
+        "U2119",
+        "U2120",
+        "U2121"
+      ],
+      "explicit_bindings": [
+        "N2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 58,
+      "drawable": "DN2",
+      "kind": "line",
+      "definition_points": [
+        "D",
+        "N2"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        57
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "O2",
+        "U0093",
+        "U0110",
+        "U0203",
+        "U0303",
+        "U0358",
+        "U0409",
+        "U0453",
+        "U0495",
+        "U0537",
+        "U0583",
+        "U0627",
+        "U0669",
+        "U0716",
+        "U0758",
+        "U0799",
+        "U0843",
+        "U0884",
+        "U0924",
+        "U0965",
+        "U1004",
+        "U1039",
+        "U1075",
+        "U1111",
+        "U1146",
+        "U1177",
+        "U1207",
+        "U1237",
+        "U1265",
+        "U1296",
+        "U1323",
+        "U1350",
+        "U1377",
+        "U1404",
+        "U1429",
+        "U1452",
+        "U1474",
+        "U1496",
+        "U1517",
+        "U1534",
+        "U1550",
+        "U1565",
+        "U1599",
+        "U1614",
+        "U1626",
+        "U1640",
+        "U1652",
+        "U1663",
+        "U1674",
+        "U2124",
+        "U2125",
+        "U2126",
+        "U2127"
+      ],
+      "explicit_bindings": [
+        "O2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 59,
+      "drawable": "M2O2",
+      "kind": "line",
+      "definition_points": [
+        "M2",
+        "O2"
+      ],
+      "definition_point_birth_e_moves": [
+        56,
+        58
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0054",
+        "U0094",
+        "U0155",
+        "U0204",
+        "U0254",
+        "U0304",
+        "U0359",
+        "U0410",
+        "U0454",
+        "U0496",
+        "U0538",
+        "U0584",
+        "U0628",
+        "U0670",
+        "U0717",
+        "U0759",
+        "U0800",
+        "U0844",
+        "U0885",
+        "U0925",
+        "U0966",
+        "U1005",
+        "U1040",
+        "U1076",
+        "U1112",
+        "U1147",
+        "U1178",
+        "U1208",
+        "U1238",
+        "U1266",
+        "U1297",
+        "U1324",
+        "U1351",
+        "U1378",
+        "U1405",
+        "U1430",
+        "U1453",
+        "U1475",
+        "U1497",
+        "U1518",
+        "U1535",
+        "U1551",
+        "U1566",
+        "U1583",
+        "U1600",
+        "U1615",
+        "U1627",
+        "U1641",
+        "U1653",
+        "U1664",
+        "U1680",
+        "E24",
+        "U2130",
+        "U2131",
+        "U2132",
+        "U2133",
+        "U2134"
+      ],
+      "explicit_bindings": [
+        "E24"
+      ],
+      "algebraic_representations_born": [
+        "repr.E24",
+        "repr.auto.period.e8"
+      ]
+    },
+    {
+      "e_move": 60,
+      "drawable": "BE24",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "E24"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        59
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0055",
+        "P2",
+        "U0156",
+        "U0205",
+        "U0255",
+        "U0305",
+        "U0360",
+        "U0411",
+        "U0539",
+        "U0585",
+        "U0629",
+        "U0671",
+        "U0718",
+        "U0760",
+        "U0801",
+        "U0845",
+        "U0886",
+        "U0926",
+        "U0967",
+        "U1006",
+        "U1041",
+        "U1077",
+        "U1113",
+        "U1148",
+        "U1209",
+        "U1267",
+        "U1298",
+        "U1325",
+        "U1352",
+        "U1379",
+        "U1406",
+        "U1431",
+        "U1454",
+        "U1476",
+        "U1498",
+        "U1519",
+        "U1536",
+        "U1567",
+        "U1584",
+        "U1601",
+        "U1628",
+        "U1642",
+        "U1654",
+        "U1665",
+        "U1681",
+        "U1690",
+        "U2137",
+        "U2138",
+        "U2139",
+        "U2140",
+        "U2141"
+      ],
+      "explicit_bindings": [
+        "P2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 61,
+      "drawable": "D8Dd",
+      "kind": "line",
+      "definition_points": [
+        "D8",
+        "Dd"
+      ],
+      "definition_point_birth_e_moves": [
+        46,
+        43
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0015",
+        "U0056",
+        "U0095",
+        "Q2",
+        "U0157",
+        "U0206",
+        "U0256",
+        "U0306",
+        "U0361",
+        "U0412",
+        "U0455",
+        "U0497",
+        "U0540",
+        "U0586",
+        "U0630",
+        "U0672",
+        "U0719",
+        "U0761",
+        "U0802",
+        "U0846",
+        "U0887",
+        "U0927",
+        "U0968",
+        "U1007",
+        "U1042",
+        "U1078",
+        "U1114",
+        "U1149",
+        "U1179",
+        "U1210",
+        "U1239",
+        "U1268",
+        "U1299",
+        "U1326",
+        "U1353",
+        "U1380",
+        "U1407",
+        "U1432",
+        "U1455",
+        "U1499",
+        "U1520",
+        "U1552",
+        "U1568",
+        "U1585",
+        "U1602",
+        "U1616",
+        "U1629",
+        "U1643",
+        "U1655",
+        "U1666",
+        "U1682",
+        "U1691",
+        "U1699",
+        "U1707",
+        "U2144",
+        "U2145",
+        "U2146",
+        "U2147",
+        "U2148",
+        "U2149"
+      ],
+      "explicit_bindings": [
+        "Q2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 62,
+      "drawable": "AQ2",
+      "kind": "line",
+      "definition_points": [
+        "A",
+        "Q2"
+      ],
+      "definition_point_birth_e_moves": [
+        3,
+        61
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0096",
+        "U0158",
+        "U0207",
+        "U0257",
+        "U0307",
+        "U0362",
+        "U0413",
+        "U0456",
+        "U0498",
+        "U0541",
+        "U0587",
+        "U0631",
+        "U0673",
+        "U0720",
+        "U0762",
+        "U0803",
+        "U0847",
+        "U0888",
+        "U0928",
+        "U0969",
+        "U1008",
+        "U1043",
+        "U1079",
+        "U1115",
+        "U1150",
+        "U1180",
+        "U1211",
+        "U1240",
+        "U1269",
+        "U1300",
+        "U1327",
+        "U1354",
+        "U1381",
+        "U1408",
+        "U1433",
+        "U1456",
+        "U1477",
+        "U1500",
+        "U1521",
+        "U1537",
+        "U1553",
+        "U1569",
+        "U1586",
+        "U1603",
+        "U1617",
+        "U1630",
+        "U1656",
+        "U1667",
+        "U1675",
+        "U1683",
+        "U1692",
+        "U1700",
+        "U1708",
+        "R2",
+        "U2152",
+        "U2153",
+        "U2154",
+        "U2155",
+        "U2156",
+        "U2157",
+        "U2158"
+      ],
+      "explicit_bindings": [
+        "R2"
+      ],
+      "algebraic_representations_born": [
+        "repr.R2",
+        "repr.auto.work.e-high-0"
+      ]
+    },
+    {
+      "e_move": 63,
+      "drawable": "ER2",
+      "kind": "line",
+      "definition_points": [
+        "E",
+        "R2"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        62
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "S2",
+        "U0111",
+        "U0159",
+        "U0258",
+        "U0308",
+        "U0363",
+        "U0414",
+        "U0457",
+        "U0499",
+        "U0542",
+        "U0588",
+        "U0674",
+        "U0721",
+        "U0804",
+        "U0848",
+        "U0889",
+        "U0929",
+        "U0970",
+        "U1009",
+        "U1044",
+        "U1080",
+        "U1116",
+        "U1151",
+        "U1181",
+        "U1212",
+        "U1241",
+        "U1270",
+        "U1301",
+        "U1355",
+        "U1382",
+        "U1409",
+        "U1434",
+        "U1478",
+        "U1501",
+        "U1538",
+        "U1554",
+        "U1570",
+        "U1587",
+        "U1604",
+        "U1618",
+        "U1631",
+        "U1644",
+        "U1668",
+        "U1676",
+        "U1684",
+        "U1693",
+        "U1701",
+        "U1709",
+        "U1712",
+        "U2159",
+        "U2160",
+        "U2161",
+        "U2162"
+      ],
+      "explicit_bindings": [
+        "S2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 64,
+      "drawable": "S2P2",
+      "kind": "line",
+      "definition_points": [
+        "S2",
+        "P2"
+      ],
+      "definition_point_birth_e_moves": [
+        63,
+        60
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0057",
+        "U0097",
+        "U0160",
+        "U0208",
+        "U0259",
+        "U0309",
+        "U0364",
+        "U0415",
+        "U0458",
+        "U0500",
+        "U0543",
+        "U0589",
+        "U0632",
+        "U0675",
+        "U0722",
+        "U0763",
+        "U0805",
+        "U0849",
+        "U0890",
+        "U0930",
+        "U0971",
+        "U1010",
+        "U1045",
+        "U1081",
+        "U1117",
+        "U1152",
+        "U1182",
+        "U1213",
+        "U1242",
+        "U1271",
+        "U1302",
+        "U1328",
+        "U1356",
+        "U1383",
+        "U1410",
+        "U1435",
+        "U1457",
+        "U1479",
+        "U1502",
+        "U1522",
+        "U1539",
+        "U1555",
+        "U1571",
+        "U1588",
+        "U1605",
+        "U1619",
+        "U1632",
+        "U1645",
+        "U1657",
+        "U1669",
+        "U1677",
+        "U1685",
+        "U1694",
+        "U1702",
+        "U1713",
+        "U1718",
+        "F56",
+        "U2165",
+        "U2166",
+        "U2167",
+        "U2168",
+        "U2169",
+        "U2170",
+        "U2171"
+      ],
+      "explicit_bindings": [
+        "F56"
+      ],
+      "algebraic_representations_born": [
+        "repr.F56",
+        "repr.auto.period.f24"
+      ]
+    },
+    {
+      "e_move": 65,
+      "drawable": "BF0",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "F0"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        55
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0058",
+        "T2",
+        "U0161",
+        "U0209",
+        "U0260",
+        "U0310",
+        "U0365",
+        "U0416",
+        "U0544",
+        "U0590",
+        "U0633",
+        "U0676",
+        "U0723",
+        "U0764",
+        "U0806",
+        "U0850",
+        "U0891",
+        "U0931",
+        "U0972",
+        "U1011",
+        "U1046",
+        "U1082",
+        "U1118",
+        "U1153",
+        "U1214",
+        "U1272",
+        "U1303",
+        "U1329",
+        "U1357",
+        "U1384",
+        "U1411",
+        "U1436",
+        "U1458",
+        "U1480",
+        "U1503",
+        "U1523",
+        "U1540",
+        "U1572",
+        "U1589",
+        "U1606",
+        "U1633",
+        "U1646",
+        "U1658",
+        "U1686",
+        "U1695",
+        "U1703",
+        "U1714",
+        "U1719",
+        "U1723",
+        "U1726",
+        "U2174",
+        "U2175",
+        "U2176",
+        "U2177",
+        "U2178"
+      ],
+      "explicit_bindings": [
+        "T2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 66,
+      "drawable": "EF56",
+      "kind": "line",
+      "definition_points": [
+        "E",
+        "F56"
+      ],
+      "definition_point_birth_e_moves": [
+        4,
+        64
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U2",
+        "U0112",
+        "U0162",
+        "U0261",
+        "U0311",
+        "U0366",
+        "U0417",
+        "U0459",
+        "U0501",
+        "U0545",
+        "U0591",
+        "U0677",
+        "U0724",
+        "U0807",
+        "U0851",
+        "U0892",
+        "U0932",
+        "U0973",
+        "U1012",
+        "U1047",
+        "U1083",
+        "U1119",
+        "U1154",
+        "U1183",
+        "U1215",
+        "U1243",
+        "U1273",
+        "U1304",
+        "U1358",
+        "U1385",
+        "U1412",
+        "U1437",
+        "U1481",
+        "U1504",
+        "U1541",
+        "U1556",
+        "U1573",
+        "U1590",
+        "U1607",
+        "U1620",
+        "U1634",
+        "U1647",
+        "U1670",
+        "U1678",
+        "U1687",
+        "U1696",
+        "U1704",
+        "U1710",
+        "U1715",
+        "U1720",
+        "U1729",
+        "U2181",
+        "U2182",
+        "U2183",
+        "U2184",
+        "U2185",
+        "U2186"
+      ],
+      "explicit_bindings": [
+        "U2"
+      ],
+      "algebraic_representations_born": []
+    },
+    {
+      "e_move": 67,
+      "drawable": "U2T2",
+      "kind": "line",
+      "definition_points": [
+        "U2",
+        "T2"
+      ],
+      "definition_point_birth_e_moves": [
+        66,
+        65
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0059",
+        "U0098",
+        "U0163",
+        "U0210",
+        "U0262",
+        "U0312",
+        "U0367",
+        "U0418",
+        "U0460",
+        "U0502",
+        "U0546",
+        "U0592",
+        "U0634",
+        "U0678",
+        "U0725",
+        "U0765",
+        "U0808",
+        "U0852",
+        "U0893",
+        "U0933",
+        "U0974",
+        "U1013",
+        "U1048",
+        "U1084",
+        "U1120",
+        "U1155",
+        "U1184",
+        "U1216",
+        "U1244",
+        "U1274",
+        "U1305",
+        "U1330",
+        "U1359",
+        "U1386",
+        "U1413",
+        "U1438",
+        "U1459",
+        "U1482",
+        "U1505",
+        "U1524",
+        "U1542",
+        "U1557",
+        "U1574",
+        "U1591",
+        "U1608",
+        "U1621",
+        "U1635",
+        "U1648",
+        "U1659",
+        "U1671",
+        "U1679",
+        "U1688",
+        "U1697",
+        "U1705",
+        "U1711",
+        "U1716",
+        "U1721",
+        "U1724",
+        "U1727",
+        "G0",
+        "U2189",
+        "U2190",
+        "U2191",
+        "U2192",
+        "U2193",
+        "U2194",
+        "U2195"
+      ],
+      "explicit_bindings": [
+        "G0"
+      ],
+      "algebraic_representations_born": [
+        "repr.G0",
+        "repr.auto.period.g64"
+      ]
+    },
+    {
+      "e_move": 68,
+      "drawable": "BG0",
+      "kind": "line",
+      "definition_points": [
+        "B",
+        "G0"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        67
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "U0060",
+        "V2",
+        "U0164",
+        "U0211",
+        "U0263",
+        "U0313",
+        "U0368",
+        "U0419",
+        "U0547",
+        "U0593",
+        "U0635",
+        "U0679",
+        "U0726",
+        "U0766",
+        "U0809",
+        "U0853",
+        "U0894",
+        "U0934",
+        "U0975",
+        "U1014",
+        "U1049",
+        "U1085",
+        "U1121",
+        "U1156",
+        "U1217",
+        "U1275",
+        "U1306",
+        "U1331",
+        "U1360",
+        "U1387",
+        "U1414",
+        "U1439",
+        "U1460",
+        "U1483",
+        "U1506",
+        "U1525",
+        "U1543",
+        "U1575",
+        "U1592",
+        "U1609",
+        "U1636",
+        "U1649",
+        "U1660",
+        "U1672",
+        "U1689",
+        "U1698",
+        "U1706",
+        "U1717",
+        "U1722",
+        "U1725",
+        "U1728",
+        "U1730",
+        "U2198",
+        "U2199",
+        "U2200",
+        "U2201",
+        "U2202"
+      ],
+      "explicit_bindings": [
+        "V2"
+      ],
+      "algebraic_representations_born": [
+        "repr.V2"
+      ]
+    },
+    {
+      "e_move": 69,
+      "drawable": "target_transfer",
+      "kind": "circle",
+      "definition_points": [
+        "V2",
+        "C"
+      ],
+      "definition_point_birth_e_moves": [
+        68,
+        0
+      ],
+      "marginal_cost_e": 1,
+      "free_points_born": [
+        "W2_minus",
+        "W2_plus",
+        "U1735",
+        "U1736",
+        "U1737",
+        "U1738",
+        "U1742",
+        "U1743",
+        "U1746",
+        "U1747",
+        "U1750",
+        "U1760",
+        "U1761",
+        "U1766",
+        "U1767",
+        "U1772",
+        "U1773",
+        "U1780",
+        "U1781",
+        "U1785",
+        "U1786",
+        "U1792",
+        "U1793",
+        "U1805",
+        "U1806",
+        "U1813",
+        "U1814",
+        "U1821",
+        "U1822",
+        "U1829",
+        "U1830",
+        "U1838",
+        "U1839",
+        "U1846",
+        "U1847",
+        "U1854",
+        "U1855",
+        "U1863",
+        "U1864",
+        "U1869",
+        "U1870",
+        "U1878",
+        "U1879",
+        "U1886",
+        "U1887",
+        "U1895",
+        "U1896",
+        "U1903",
+        "U1904",
+        "U1912",
+        "U1913",
+        "U1920",
+        "U1921",
+        "U1928",
+        "U1929",
+        "U1935",
+        "U1936",
+        "U1943",
+        "U1944",
+        "U1949",
+        "U1950",
+        "U1956",
+        "U1957",
+        "U1962",
+        "U1963",
+        "U1970",
+        "U1971",
+        "U1976",
+        "U1977",
+        "U1984",
+        "U1985",
+        "U1990",
+        "U1991",
+        "U1998",
+        "U1999",
+        "U2006",
+        "U2007",
+        "U2014",
+        "U2015",
+        "U2022",
+        "U2023",
+        "U2030",
+        "U2031",
+        "U2038",
+        "U2039",
+        "U2045",
+        "U2046",
+        "U2052",
+        "U2053",
+        "U2060",
+        "U2061",
+        "U2069",
+        "U2070",
+        "U2076",
+        "U2077",
+        "U2084",
+        "U2085",
+        "U2093",
+        "U2094",
+        "U2101",
+        "U2102",
+        "U2110",
+        "U2111",
+        "U2117",
+        "U2118",
+        "U2122",
+        "U2123",
+        "U2128",
+        "U2129",
+        "U2135",
+        "U2136",
+        "U2142",
+        "U2143",
+        "U2150",
+        "U2151",
+        "U2163",
+        "U2164",
+        "U2172",
+        "U2173",
+        "U2179",
+        "U2180",
+        "U2187",
+        "U2188",
+        "U2196",
+        "U2197",
+        "U2203",
+        "U2204"
+      ],
+      "explicit_bindings": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "algebraic_representations_born": [
+        "repr.target-axis-g0"
+      ]
+    }
+  ],
+  "baseline_macro_partition": [
+    {
+      "id": "macro.bootstrap",
+      "first_e_move": 1,
+      "last_e_move": 9,
+      "observed_contextual_cost_e": 9,
+      "paid_drawables": [
+        "a",
+        "q",
+        "d",
+        "c",
+        "BE",
+        "b",
+        "DM1",
+        "IE",
+        "DJ"
+      ],
+      "input_symbols": [
+        "constant.zero"
+      ],
+      "output_symbols": [
+        "constant.minus_one",
+        "constant.one",
+        "constant.minus_two",
+        "constant.minus_four",
+        "constant.four"
+      ],
+      "output_representations": [
+        "repr.D",
+        "repr.E",
+        "repr.H",
+        "repr.K",
+        "repr.L"
+      ],
+      "interpretation": "建立编码圆、两条坐标轴与基础整数。"
+    },
+    {
+      "id": "macro.a-pair",
+      "first_e_move": 10,
+      "last_e_move": 12,
+      "observed_contextual_cost_e": 3,
+      "paid_drawables": [
+        "KL",
+        "NI",
+        "FO"
+      ],
+      "input_symbols": [
+        "constant.minus_one",
+        "constant.minus_two",
+        "constant.minus_four",
+        "constant.four"
+      ],
+      "output_symbols": [
+        "period.a0",
+        "period.a1"
+      ],
+      "output_representations": [
+        "repr.A0",
+        "repr.A1"
+      ],
+      "interpretation": "共同产生 a 层两个根。"
+    },
+    {
+      "id": "macro.b-pairs-joint",
+      "first_e_move": 13,
+      "last_e_move": 16,
+      "observed_contextual_cost_e": 4,
+      "paid_drawables": [
+        "BA0",
+        "BA1",
+        "RM",
+        "SM"
+      ],
+      "input_symbols": [
+        "period.a0",
+        "period.a1"
+      ],
+      "output_symbols": [
+        "period.b0",
+        "period.b1",
+        "period.b2",
+        "period.b3"
+      ],
+      "output_representations": [
+        "repr.B0",
+        "repr.B1",
+        "repr.B2",
+        "repr.B3"
+      ],
+      "interpretation": "两组 b 层根共享基线与既有辅助痕迹，四笔合并计价。"
+    },
+    {
+      "id": "macro.c-layer",
+      "first_e_move": 17,
+      "last_e_move": 26,
+      "observed_contextual_cost_e": 10,
+      "paid_drawables": [
+        "EA1",
+        "LB0",
+        "UT",
+        "EA0",
+        "LB1",
+        "VW",
+        "B0B3",
+        "RX",
+        "B2B3",
+        "YS"
+      ],
+      "input_symbols": [
+        "period.a0",
+        "period.a1",
+        "period.b0",
+        "period.b1",
+        "period.b2",
+        "period.b3"
+      ],
+      "output_symbols": [
+        "work.ca",
+        "work.ca-conjugate",
+        "work.cb-conjugate",
+        "work.cb",
+        "work.cc",
+        "work.cc-conjugate",
+        "work.cd",
+        "work.cd-conjugate"
+      ],
+      "output_representations": [
+        "repr.Ca",
+        "repr.Cb",
+        "repr.Cc",
+        "repr.Cd",
+        "repr.auto.work.ca-conjugate",
+        "repr.auto.work.cb-conjugate",
+        "repr.auto.work.cc-conjugate",
+        "repr.auto.work.cd-conjugate"
+      ],
+      "interpretation": "连续生成四个 c 层工作量；不把十笔拆成四个固定单价。"
+    },
+    {
+      "id": "macro.d-ab",
+      "first_e_move": 27,
+      "last_e_move": 32,
+      "observed_contextual_cost_e": 6,
+      "paid_drawables": [
+        "HCa",
+        "ZK",
+        "B1Cc",
+        "I1H",
+        "BJ1",
+        "K1H1"
+      ],
+      "input_symbols": [
+        "period.b1",
+        "work.ca",
+        "work.cc"
+      ],
+      "output_symbols": [
+        "work.da",
+        "work.db"
+      ],
+      "output_representations": [
+        "repr.Da",
+        "repr.Db"
+      ],
+      "interpretation": "产生 d 层第一对辅助根。"
+    },
+    {
+      "id": "macro.d-cd",
+      "first_e_move": 33,
+      "last_e_move": 43,
+      "observed_contextual_cost_e": 11,
+      "paid_drawables": [
+        "BZ",
+        "c_M1L1",
+        "CdN1",
+        "HCb",
+        "EP1",
+        "LQ1",
+        "R1Cc",
+        "CdB0",
+        "T1S1",
+        "EU1",
+        "V1O1"
+      ],
+      "input_symbols": [
+        "period.b0",
+        "work.ca",
+        "work.cb",
+        "work.cc",
+        "work.cd"
+      ],
+      "output_symbols": [
+        "work.dc",
+        "work.dd"
+      ],
+      "output_representations": [
+        "repr.Dc",
+        "repr.Dd"
+      ],
+      "interpretation": "包含一次圆作图的 d 层第二对辅助根。"
+    },
+    {
+      "id": "macro.d-main",
+      "first_e_move": 44,
+      "last_e_move": 46,
+      "observed_contextual_cost_e": 3,
+      "paid_drawables": [
+        "RS1",
+        "EW1",
+        "X1Z"
+      ],
+      "input_symbols": [
+        "period.a0",
+        "work.ca",
+        "work.cb",
+        "work.cc"
+      ],
+      "output_symbols": [
+        "period.d0",
+        "period.d8"
+      ],
+      "output_representations": [
+        "repr.D0",
+        "repr.D8"
+      ],
+      "interpretation": "共同产生 d_0 与 d_8。"
+    },
+    {
+      "id": "macro.low-tail",
+      "first_e_move": 47,
+      "last_e_move": 55,
+      "observed_contextual_cost_e": 9,
+      "paid_drawables": [
+        "BD0",
+        "GDa",
+        "DZ1",
+        "H2Y1",
+        "BE0",
+        "DcD0",
+        "AJ2",
+        "EK2",
+        "L2I2"
+      ],
+      "input_symbols": [
+        "work.da",
+        "work.dc",
+        "period.d0"
+      ],
+      "output_symbols": [
+        "period.e0",
+        "period.e16",
+        "work.e-low-0",
+        "work.e-low-1",
+        "period.f0",
+        "period.f32"
+      ],
+      "output_representations": [
+        "repr.E0",
+        "repr.F0",
+        "repr.K2",
+        "repr.auto.period.e16",
+        "repr.auto.period.f32",
+        "repr.auto.work.e-low-1"
+      ],
+      "interpretation": "低半支从 d 层推进到 f_0，并显式识别 K2 的代数值。"
+    },
+    {
+      "id": "macro.high-tail",
+      "first_e_move": 56,
+      "last_e_move": 64,
+      "observed_contextual_cost_e": 9,
+      "paid_drawables": [
+        "BD8",
+        "GDb",
+        "DN2",
+        "M2O2",
+        "BE24",
+        "D8Dd",
+        "AQ2",
+        "ER2",
+        "S2P2"
+      ],
+      "input_symbols": [
+        "work.db",
+        "work.dd",
+        "period.d8"
+      ],
+      "output_symbols": [
+        "period.e8",
+        "period.e24",
+        "work.e-high-0",
+        "work.e-high-1",
+        "period.f24",
+        "period.f56"
+      ],
+      "output_representations": [
+        "repr.E24",
+        "repr.F56",
+        "repr.R2",
+        "repr.auto.period.e8",
+        "repr.auto.period.f24",
+        "repr.auto.work.e-high-0"
+      ],
+      "interpretation": "高半支从 d 层推进到 f_56，并显式识别 R2 的代数值。"
+    },
+    {
+      "id": "macro.g0",
+      "first_e_move": 65,
+      "last_e_move": 67,
+      "observed_contextual_cost_e": 3,
+      "paid_drawables": [
+        "BF0",
+        "EF56",
+        "U2T2"
+      ],
+      "input_symbols": [
+        "period.f0",
+        "period.f56"
+      ],
+      "output_symbols": [
+        "period.g0",
+        "period.g64"
+      ],
+      "output_representations": [
+        "repr.G0",
+        "repr.auto.period.g64"
+      ],
+      "interpretation": "由最后一组二次关系取得目标迹 g_0。"
+    },
+    {
+      "id": "macro.target-transfer",
+      "first_e_move": 68,
+      "last_e_move": 69,
+      "observed_contextual_cost_e": 2,
+      "paid_drawables": [
+        "BG0",
+        "target_transfer"
+      ],
+      "input_symbols": [
+        "period.g0"
+      ],
+      "output_symbols": [
+        "coordinate.v2-x",
+        "period.g0"
+      ],
+      "output_representations": [
+        "repr.V2",
+        "repr.target-axis-g0"
+      ],
+      "interpretation": "把编码圆上的 g_0 转成目标圆上的竖直根轴。"
+    }
+  ],
+  "cost_audit": {
+    "construction_cost_e": 69,
+    "distinct_paid_drawables": 69,
+    "lines": 65,
+    "circles": 4,
+    "initial_points": 2,
+    "full_closure_points": 2287,
+    "free_points_born_after_paid_transitions": 2285,
+    "explicit_free_bindings": 81,
+    "named_bindings_available_earlier": 0,
+    "definition_point_references": 138,
+    "distinct_definition_points": 81,
+    "reused_definition_points": [
+      {
+        "point": "A",
+        "use_count": 3
+      },
+      {
+        "point": "A0",
+        "use_count": 2
+      },
+      {
+        "point": "A1",
+        "use_count": 2
+      },
+      {
+        "point": "B",
+        "use_count": 14
+      },
+      {
+        "point": "B0",
+        "use_count": 3
+      },
+      {
+        "point": "B1",
+        "use_count": 2
+      },
+      {
+        "point": "B3",
+        "use_count": 2
+      },
+      {
+        "point": "C",
+        "use_count": 4
+      },
+      {
+        "point": "Cc",
+        "use_count": 2
+      },
+      {
+        "point": "Cd",
+        "use_count": 2
+      },
+      {
+        "point": "D",
+        "use_count": 4
+      },
+      {
+        "point": "D0",
+        "use_count": 2
+      },
+      {
+        "point": "D8",
+        "use_count": 2
+      },
+      {
+        "point": "E",
+        "use_count": 10
+      },
+      {
+        "point": "G",
+        "use_count": 3
+      },
+      {
+        "point": "H",
+        "use_count": 3
+      },
+      {
+        "point": "I",
+        "use_count": 2
+      },
+      {
+        "point": "K",
+        "use_count": 2
+      },
+      {
+        "point": "L",
+        "use_count": 4
+      },
+      {
+        "point": "M",
+        "use_count": 2
+      },
+      {
+        "point": "M1",
+        "use_count": 2
+      },
+      {
+        "point": "R",
+        "use_count": 3
+      },
+      {
+        "point": "S",
+        "use_count": 2
+      },
+      {
+        "point": "S1",
+        "use_count": 2
+      },
+      {
+        "point": "Z",
+        "use_count": 3
+      }
+    ],
+    "max_free_point_fanout": {
+      "e_move": 69,
+      "drawable": "target_transfer",
+      "point_count": 127
+    }
+  },
+  "consistency": {
+    "all_expression_symbol_references_resolved": true,
+    "all_quadratic_relations_exact": true,
+    "all_representations_exact": true,
+    "all_draw_definitions_causally_available": true,
+    "all_named_bindings_not_later_than_declared_use": true,
+    "target_bridge": {
+      "source_symbol": "period.g0",
+      "carrier": "radical_axis(target_transfer,c0)",
+      "exact_claim": "x = g0 = 2*cos(2*pi/257)",
+      "verified": true
+    }
+  },
+  "limitations": [
+    "这是现有 69E 构造的可执行基线 IR，不声称 69E 全局最优。",
+    "免费闭包出生表覆盖现有 70 个对象；加入新对象时必须动态扩展交点闭包。",
+    "二次根对关系已精确验证，但根的几何分支选择仍必须由具体 gadget 证明。",
+    "当前没有给任何孤立代数运算指定脱离几何状态的固定 E 单价。"
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "schema": "euclid-min-regular-257-shared-locator-line-search/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "construction_sha256": "6c4b0113fae6ab513d3a1564a268415fa1dd96952e14753201880b776f6fe3d3",
+    "full_intersection_closure": "full-intersection-closure-69e.json",
+    "full_intersection_closure_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294",
+    "geometry_algebra_ir": "geometry-algebra-baseline-69e.json",
+    "geometry_algebra_ir_sha256": "10bd1078cca58e4de894d8476101e252289b8f0220e141cd16e81008e56ed655",
+    "tail_quadratic_chord_ir": "tail-quadratic-chord-ir-68e.json",
+    "tail_quadratic_chord_ir_sha256": "a542daee0277d7e278ea7a5474f423f91fc142b01fcd9ba8aad708975dbe15b8"
+  },
+  "semantics": {
+    "input_state": "complete_46e_free_intersection_closure",
+    "bridge_point": "intersection of one tail root chord and one existing prefix line",
+    "candidate": "one new line through bridge points from two distinct root-chord tasks, drawable through two 46E available points",
+    "success": "the new line materializes previously unavailable locator points for at least two root-chord tasks",
+    "exactness": "exact_line_line_bridges_then_128_bit_strict_real_ball_incidence",
+    "scope": "complete for prefix-line witnesses; circle-only bridge branches are deferred in polynomial form"
+  },
+  "universe": {
+    "target_tasks": [
+      {
+        "id": "chord-task.e0",
+        "branch": "low",
+        "relation": "relation.e0",
+        "baseline_carrier": "H2Y1",
+        "bridge_point_count": 43,
+        "deferred_circle_only_bridge_count": 8
+      },
+      {
+        "id": "chord-task.e-low-aux",
+        "branch": "low",
+        "relation": "relation.e-low-aux",
+        "baseline_carrier": "AJ2",
+        "bridge_point_count": 42,
+        "deferred_circle_only_bridge_count": 8
+      },
+      {
+        "id": "chord-task.f0",
+        "branch": "low",
+        "relation": "relation.f0",
+        "baseline_carrier": "L2I2",
+        "bridge_point_count": 43,
+        "deferred_circle_only_bridge_count": 8
+      },
+      {
+        "id": "chord-task.e24",
+        "branch": "high",
+        "relation": "relation.e24",
+        "baseline_carrier": "M2O2",
+        "bridge_point_count": 43,
+        "deferred_circle_only_bridge_count": 6
+      },
+      {
+        "id": "chord-task.e-high-aux",
+        "branch": "high",
+        "relation": "relation.e-high-aux",
+        "baseline_carrier": "AQ2",
+        "bridge_point_count": 42,
+        "deferred_circle_only_bridge_count": 8
+      },
+      {
+        "id": "chord-task.f56",
+        "branch": "high",
+        "relation": "relation.f56",
+        "baseline_carrier": "S2P2",
+        "bridge_point_count": 43,
+        "deferred_circle_only_bridge_count": 8
+      }
+    ],
+    "ambiguous_available_point_balls": []
+  },
+  "summary": {
+    "bridge_pair_space": 27306,
+    "coincident_bridge_pairs": 1,
+    "candidate_line_occurrences": 27305,
+    "distinct_constructible_lines": 643,
+    "duplicate_constructible_lines": 0,
+    "constructible_existing_line_equalities": 643,
+    "constructible_new_lines": 0,
+    "strict_ball_checks": 26394189,
+    "strict_ball_survivors": 1696,
+    "exact_coordinate_fallbacks": 1696,
+    "abstract_incidence_fallbacks": 0,
+    "workers": 8,
+    "available_points": 989,
+    "exact_coordinate_points": 763,
+    "abstract_residual_points": 226,
+    "prefix_drawables": 47,
+    "tail_chord_tasks": 6,
+    "task_pairs": 15,
+    "constructible_candidate_occurrences": 0,
+    "distinct_constructible_new_lines": 0,
+    "shared_new_locator_lines": 0
+  },
+  "results": [
+    {
+      "pair_index": 1,
+      "task_pair": [
+        "chord-task.e0",
+        "chord-task.e-low-aux"
+      ],
+      "bridge_pair_space": 1806,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1806,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1745307,
+      "strict_ball_survivors": 127,
+      "exact_coordinate_fallbacks": 127,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 2,
+      "task_pair": [
+        "chord-task.e0",
+        "chord-task.f0"
+      ],
+      "bridge_pair_space": 1849,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1849,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1787834,
+      "strict_ball_survivors": 86,
+      "exact_coordinate_fallbacks": 86,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 3,
+      "task_pair": [
+        "chord-task.e0",
+        "chord-task.e24"
+      ],
+      "bridge_pair_space": 1849,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1849,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1787834,
+      "strict_ball_survivors": 86,
+      "exact_coordinate_fallbacks": 86,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 4,
+      "task_pair": [
+        "chord-task.e0",
+        "chord-task.e-high-aux"
+      ],
+      "bridge_pair_space": 1806,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1806,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1745307,
+      "strict_ball_survivors": 127,
+      "exact_coordinate_fallbacks": 127,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 5,
+      "task_pair": [
+        "chord-task.e0",
+        "chord-task.f56"
+      ],
+      "bridge_pair_space": 1849,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1849,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1787834,
+      "strict_ball_survivors": 86,
+      "exact_coordinate_fallbacks": 86,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 6,
+      "task_pair": [
+        "chord-task.e-low-aux",
+        "chord-task.f0"
+      ],
+      "bridge_pair_space": 1806,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1806,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1745307,
+      "strict_ball_survivors": 127,
+      "exact_coordinate_fallbacks": 127,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 7,
+      "task_pair": [
+        "chord-task.e-low-aux",
+        "chord-task.e24"
+      ],
+      "bridge_pair_space": 1806,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1806,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1745307,
+      "strict_ball_survivors": 127,
+      "exact_coordinate_fallbacks": 127,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 8,
+      "task_pair": [
+        "chord-task.e-low-aux",
+        "chord-task.e-high-aux"
+      ],
+      "bridge_pair_space": 1764,
+      "coincident_bridge_pairs": 1,
+      "candidate_line_occurrences": 1763,
+      "distinct_constructible_lines": 41,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 41,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1704729,
+      "strict_ball_survivors": 164,
+      "exact_coordinate_fallbacks": 164,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 9,
+      "task_pair": [
+        "chord-task.e-low-aux",
+        "chord-task.f56"
+      ],
+      "bridge_pair_space": 1806,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1806,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1745307,
+      "strict_ball_survivors": 127,
+      "exact_coordinate_fallbacks": 127,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 10,
+      "task_pair": [
+        "chord-task.f0",
+        "chord-task.e24"
+      ],
+      "bridge_pair_space": 1849,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1849,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1787834,
+      "strict_ball_survivors": 86,
+      "exact_coordinate_fallbacks": 86,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 11,
+      "task_pair": [
+        "chord-task.f0",
+        "chord-task.e-high-aux"
+      ],
+      "bridge_pair_space": 1806,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1806,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1745307,
+      "strict_ball_survivors": 127,
+      "exact_coordinate_fallbacks": 127,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 12,
+      "task_pair": [
+        "chord-task.f0",
+        "chord-task.f56"
+      ],
+      "bridge_pair_space": 1849,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1849,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1787834,
+      "strict_ball_survivors": 86,
+      "exact_coordinate_fallbacks": 86,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 13,
+      "task_pair": [
+        "chord-task.e24",
+        "chord-task.e-high-aux"
+      ],
+      "bridge_pair_space": 1806,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1806,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1745307,
+      "strict_ball_survivors": 127,
+      "exact_coordinate_fallbacks": 127,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 14,
+      "task_pair": [
+        "chord-task.e24",
+        "chord-task.f56"
+      ],
+      "bridge_pair_space": 1849,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1849,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1787834,
+      "strict_ball_survivors": 86,
+      "exact_coordinate_fallbacks": 86,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    },
+    {
+      "pair_index": 15,
+      "task_pair": [
+        "chord-task.e-high-aux",
+        "chord-task.f56"
+      ],
+      "bridge_pair_space": 1806,
+      "coincident_bridge_pairs": 0,
+      "candidate_line_occurrences": 1806,
+      "distinct_constructible_lines": 43,
+      "duplicate_constructible_lines": 0,
+      "constructible_existing_line_equalities": 43,
+      "constructible_new_lines": 0,
+      "strict_ball_checks": 1745307,
+      "strict_ball_survivors": 127,
+      "exact_coordinate_fallbacks": 127,
+      "abstract_incidence_fallbacks": 0,
+      "constructible_candidate_count": 0
+    }
+  ],
+  "constructible_new_line_candidates": [],
+  "shared_new_locator_candidates": [],
+  "conclusion": {
+    "status": "exhausted_no_shared_locator_line_with_prefix_line_witness",
+    "minimality_claim": "none",
+    "next": "extend bridge points to circle-only polynomial branches"
+  },
+  "limitations": [
+    "本分片完整覆盖由 46E 既有直线见证的桥接点。",
+    "只由既有圆见证的二次桥接分支尚未展开；下一分片将沿目标线参数保留其二次多项式。",
+    "找到共享定位点仍只是一项局部原语，必须放入 17E 联合尾部调度后才能确认净省步。"
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/geometry-gadget.schema.json",
+  "title": "Euclid-Min geometry gadget library v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source", "semantics", "gadgets", "comparison", "limitations"],
+  "properties": {
+    "schema": { "const": "euclid-min-geometry-gadget-library/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "construction_sha256",
+        "geometry_algebra_ir",
+        "geometry_algebra_ir_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "construction_sha256": { "$ref": "#/$defs/sha256" },
+        "geometry_algebra_ir": { "const": "geometry-algebra-baseline-69e.json" },
+        "geometry_algebra_ir_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gadget", "cost", "free_effect", "scope"],
+      "properties": {
+        "gadget": { "const": "named_geometry_program_with_explicit_state_boundary" },
+        "cost": { "const": "distinct_new_drawables_after_exact_execution_in_input_state" },
+        "free_effect": { "const": "all_finite_real_intersections_added_after_each_paid_draw" },
+        "scope": { "const": "verified_baseline_prefix_context_not_context_free_fixed_price" }
+      }
+    },
+    "gadgets": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "$ref": "#/$defs/gadget" }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline_combined_cost_e",
+        "baseline_distinct_new_drawables",
+        "shared_required_points",
+        "shared_required_drawables",
+        "shared_input_representations",
+        "optimization_target",
+        "minimality_claim"
+      ],
+      "properties": {
+        "baseline_combined_cost_e": { "const": 18 },
+        "baseline_distinct_new_drawables": { "const": 18 },
+        "shared_required_points": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "shared_required_drawables": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "shared_input_representations": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "optimization_target": { "const": "jointly_compile_both_tail_interfaces_below_18E" },
+        "minimality_claim": { "const": "none" }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9._-]*$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "idArray": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+    "lineEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "op", "through"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "op": { "const": "line" },
+        "through": {
+          "type": "array",
+          "prefixItems": [{ "$ref": "#/$defs/id" }, { "$ref": "#/$defs/id" }],
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        }
+      }
+    },
+    "circleEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "op", "center", "through"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "op": { "const": "circle" },
+        "center": { "$ref": "#/$defs/id" },
+        "through": { "$ref": "#/$defs/id" }
+      }
+    },
+    "intersectEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "op", "objects", "index"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "op": { "const": "intersect" },
+        "objects": {
+          "type": "array",
+          "prefixItems": [{ "$ref": "#/$defs/id" }, { "$ref": "#/$defs/id" }],
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "index": { "type": "integer", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "gadget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "source_macro",
+        "context",
+        "algebraic_interface",
+        "geometric_interface",
+        "program",
+        "effects",
+        "cost",
+        "verification"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "status": { "const": "verified_in_baseline_prefix_state" },
+        "source_macro": { "$ref": "#/$defs/id" },
+        "context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["before_e_move", "after_e_move", "state_policy"],
+          "properties": {
+            "before_e_move": { "type": "integer", "minimum": 0, "maximum": 68 },
+            "after_e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+            "state_policy": { "const": "all_prefix_traces_persist" }
+          }
+        },
+        "algebraic_interface": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["input_symbols", "output_symbols", "input_representations", "output_representations"],
+          "properties": {
+            "input_symbols": { "$ref": "#/$defs/idArray" },
+            "output_symbols": { "$ref": "#/$defs/idArray" },
+            "input_representations": { "$ref": "#/$defs/idArray" },
+            "output_representations": { "$ref": "#/$defs/idArray" }
+          }
+        },
+        "geometric_interface": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required_points", "required_drawables"],
+          "properties": {
+            "required_points": { "$ref": "#/$defs/idArray" },
+            "required_drawables": { "$ref": "#/$defs/idArray" }
+          }
+        },
+        "program": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/lineEntry" },
+              { "$ref": "#/$defs/circleEntry" },
+              { "$ref": "#/$defs/intersectEntry" }
+            ]
+          }
+        },
+        "effects": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["new_paid_drawables", "explicit_points_bound", "full_free_closure_delta"],
+          "properties": {
+            "new_paid_drawables": { "$ref": "#/$defs/idArray" },
+            "explicit_points_bound": { "$ref": "#/$defs/idArray" },
+            "full_free_closure_delta": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["point_count", "point_ids"],
+              "properties": {
+                "point_count": { "type": "integer", "minimum": 0 },
+                "point_ids": { "$ref": "#/$defs/idArray" }
+              }
+            }
+          }
+        },
+        "cost": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["metric", "e_move", "lines", "circles", "duplicate_drawables"],
+          "properties": {
+            "metric": { "const": "contextual_distinct_new_drawables" },
+            "e_move": { "type": "integer", "minimum": 1 },
+            "lines": { "type": "integer", "minimum": 0 },
+            "circles": { "type": "integer", "minimum": 0 },
+            "duplicate_drawables": { "const": 0 }
+          }
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "exact_prefix_replay",
+            "exact_fragment_replay",
+            "all_boundary_references_available",
+            "all_declared_intersection_branches_verified",
+            "all_output_representations_verified_by_ga_ir"
+          ],
+          "properties": {
+            "exact_prefix_replay": { "const": true },
+            "exact_fragment_replay": { "const": true },
+            "all_boundary_references_available": { "const": true },
+            "all_declared_intersection_branches_verified": { "const": true },
+            "all_output_representations_verified_by_ga_ir": { "const": true }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/tail-cross-pair-two-object-line-bridge-search.schema.json",
+  "title": "Euclid-Min 46E two-object cross-tail line bridge search v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "root_sets",
+    "universe",
+    "summary",
+    "results",
+    "candidate_root_pairs",
+    "conclusion",
+    "limitations"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-tail-cross-pair-two-object-line-bridge-search/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256",
+        "geometry_algebra_ir",
+        "geometry_algebra_ir_sha256",
+        "all_point_line_search",
+        "all_point_line_search_sha256",
+        "all_point_circle_search",
+        "all_point_circle_search_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure_report": { "const": "full-intersection-closure-69e.json" },
+        "full_intersection_closure_report_sha256": { "$ref": "#/$defs/sha256" },
+        "geometry_algebra_ir": { "const": "geometry-algebra-baseline-69e.json" },
+        "geometry_algebra_ir_sha256": { "$ref": "#/$defs/sha256" },
+        "all_point_line_search": { "const": "tail-cross-pair-all-point-line-search-46e.json" },
+        "all_point_line_search_sha256": { "$ref": "#/$defs/sha256" },
+        "all_point_circle_search": { "const": "tail-cross-pair-all-point-circle-search-46e.json" },
+        "all_point_circle_search_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "template",
+        "first_line_case",
+        "searched_first_object",
+        "second_object",
+        "exactness"
+      ],
+      "properties": {
+        "state": { "const": "all_989_arrangement_points_available_after_46E" },
+        "template": { "const": "new_first_object_creates_two_points_then_new_target_line" },
+        "first_line_case": { "const": "impossible_because_two_distinct_lines_have_at_most_one_intersection" },
+        "searched_first_object": { "const": "new_circle_with_available_center_and_available_through_point" },
+        "second_object": { "const": "cross_tail_root_pair_line_through_two_new_bridge_points" },
+        "exactness": { "const": "128_bit_strict_real_ball_pruning_with_exact_target_line_parameter_polynomial_elimination" }
+      }
+    },
+    "root_sets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["low_tail", "high_tail"],
+      "properties": {
+        "low_tail": { "$ref": "#/$defs/idArray6" },
+        "high_tail": { "$ref": "#/$defs/idArray6" }
+      }
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "available_points",
+        "exact_coordinate_points",
+        "abstract_residual_points",
+        "prefix_drawables",
+        "prefix_circles",
+        "ambiguous_point_pairs"
+      ],
+      "properties": {
+        "available_points": { "const": 989 },
+        "exact_coordinate_points": { "const": 763 },
+        "abstract_residual_points": { "const": 226 },
+        "prefix_drawables": { "const": 47 },
+        "prefix_circles": { "const": 4 },
+        "ambiguous_point_pairs": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workers",
+        "cross_root_pairs",
+        "center_bridge_pair_space",
+        "strict_radius_overlap_survivors",
+        "exact_radius_equalities",
+        "existing_circle_equalities",
+        "new_circle_geometries",
+        "through_point_checks",
+        "strict_through_point_survivors",
+        "exact_through_point_fallbacks",
+        "drawable_new_circle_candidates",
+        "root_pairs_with_2e_bridge"
+      ],
+      "properties": {
+        "workers": { "type": "integer", "minimum": 1 },
+        "cross_root_pairs": { "const": 36 },
+        "center_bridge_pair_space": { "type": "integer", "minimum": 1 },
+        "strict_radius_overlap_survivors": { "type": "integer", "minimum": 0 },
+        "exact_radius_equalities": { "type": "integer", "minimum": 0 },
+        "existing_circle_equalities": { "type": "integer", "minimum": 0 },
+        "new_circle_geometries": { "type": "integer", "minimum": 0 },
+        "through_point_checks": { "type": "integer", "minimum": 0 },
+        "strict_through_point_survivors": { "type": "integer", "minimum": 0 },
+        "exact_through_point_fallbacks": { "type": "integer", "minimum": 0 },
+        "drawable_new_circle_candidates": { "type": "integer", "minimum": 0 },
+        "root_pairs_with_2e_bridge": { "type": "integer", "minimum": 0, "maximum": 36 }
+      }
+    },
+    "results": {
+      "type": "array",
+      "minItems": 36,
+      "maxItems": 36,
+      "items": { "$ref": "#/$defs/result" }
+    },
+    "candidate_root_pairs": { "type": "array", "items": { "$ref": "#/$defs/pair" } },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "minimality_claim"],
+      "properties": {
+        "status": { "enum": ["candidate_found", "exhausted_no_two_object_line_bridge"] },
+        "minimality_claim": { "const": "none" }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9._-]*$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "idArray": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+    "idArray6": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "pair": {
+      "type": "array",
+      "prefixItems": [{ "$ref": "#/$defs/id" }, { "$ref": "#/$defs/id" }],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "bridgePoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "witness_drawables"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "witness_drawables": { "$ref": "#/$defs/idArray" }
+      }
+    },
+    "circleCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "center",
+        "bridge_points",
+        "existing_drawable_references",
+        "available_through_points",
+        "strict_through_point_survivors",
+        "exact_through_point_fallbacks",
+        "is_new_drawable",
+        "is_drawable_from_46e_state"
+      ],
+      "properties": {
+        "center": { "$ref": "#/$defs/id" },
+        "bridge_points": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "$ref": "#/$defs/bridgePoint" }
+        },
+        "existing_drawable_references": { "$ref": "#/$defs/idArray" },
+        "available_through_points": { "$ref": "#/$defs/idArray" },
+        "strict_through_point_survivors": { "type": "integer", "minimum": 0 },
+        "exact_through_point_fallbacks": { "type": "integer", "minimum": 0 },
+        "is_new_drawable": { "type": "boolean" },
+        "is_drawable_from_46e_state": { "type": "boolean" }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "low_symbol",
+        "high_symbol",
+        "bridge_points",
+        "bridge_point_count",
+        "center_bridge_pair_space",
+        "strict_radius_overlap_survivors",
+        "exact_equidistant_center_pairs",
+        "circle_candidates",
+        "drawable_new_circle_candidates"
+      ],
+      "properties": {
+        "low_symbol": { "$ref": "#/$defs/id" },
+        "high_symbol": { "$ref": "#/$defs/id" },
+        "bridge_points": { "type": "array", "items": { "$ref": "#/$defs/bridgePoint" } },
+        "bridge_point_count": { "type": "integer", "minimum": 2 },
+        "center_bridge_pair_space": { "type": "integer", "minimum": 1 },
+        "strict_radius_overlap_survivors": { "type": "integer", "minimum": 0 },
+        "exact_equidistant_center_pairs": { "type": "integer", "minimum": 0 },
+        "circle_candidates": { "type": "array", "items": { "$ref": "#/$defs/circleCandidate" } },
+        "drawable_new_circle_candidates": { "type": "array", "items": { "$ref": "#/$defs/circleCandidate" } }
+      }
+    }
+  }
+}
