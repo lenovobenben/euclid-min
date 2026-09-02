@@ -225,8 +225,19 @@ docker run --rm `
 | 0–5 E 严格下界产物 | [有界证明记录](proofs/regular-17-through-5e.json) |
 | SageMath 使用方法 | [运行说明](sage/README.md) |
 | 正 257 边形独立研究 | [regular-257](regular-257/README.md) |
+| 协议适用范围 | [许可范围](LICENSE-SCOPE.md) |
+| 项目引用元数据 | [CITATION.cff](CITATION.cff) |
 
 若概述性文字与版本化规范冲突，以对应的规则配置、Schema、正式模型和计分规范为准。
+
+## 许可与引用
+
+本项目采用分范围双协议：
+
+- 源代码、测试、构建脚本、配置和 Schema 使用 [Apache License 2.0](LICENSE)；
+- 数学文档、构造证书、搜索数据、图表和动画使用 [Creative Commons Attribution 4.0 International](LICENSE-CONTENT)。
+
+完整边界和第三方材料说明见[许可范围](LICENSE-SCOPE.md)。使用本项目成果时，请按照 [CITATION.cff](CITATION.cff) 引用，并注明实际使用的提交或版本。许可证允许使用和再创作，但许可证本身不能替代学术引用。
 
 ## 项目原则
 

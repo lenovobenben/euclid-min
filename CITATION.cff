@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "如果本项目的代码、构造证书、数据或动画对你的工作有帮助，请引用本项目并注明所用提交或版本。"
+title: "euclid-min：可验证的尺规作图最少步数研究"
+type: software
+authors:
+  - alias: "lenov"
+repository-code: "https://github.com/lenovobenben/euclid-min"
+url: "https://github.com/lenovobenben/euclid-min"
+abstract: >-
+  euclid-min 研究固定尺规模型下的最少作图步数，提供正十七边形
+  19E 构造、精确证书、可重放验证器、搜索程序、研究数据与动画，
+  并保存正257边形的独立研究结果。
+keywords:
+  - straightedge-and-compass construction
+  - Euclidean construction
+  - regular heptadecagon
+  - exact verification
+  - SageMath
