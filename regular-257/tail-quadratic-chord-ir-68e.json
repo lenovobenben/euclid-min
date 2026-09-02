@@ -1,0 +1,920 @@
+{
+  "schema": "euclid-min-regular-257-tail-quadratic-chord-ir/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "construction_sha256": "6c4b0113fae6ab513d3a1564a268415fa1dd96952e14753201880b776f6fe3d3",
+    "geometry_algebra_ir": "geometry-algebra-baseline-69e.json",
+    "geometry_algebra_ir_sha256": "10bd1078cca58e4de894d8476101e252289b8f0220e141cd16e81008e56ed655",
+    "full_intersection_closure": "full-intersection-closure-69e.json",
+    "full_intersection_closure_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294",
+    "synthesis_live_slice": "synthesis-live-slice-68e.json",
+    "synthesis_live_slice_sha256": "2490aba9c0d690ae28819baf8b73857003a198e5637dab4fed25560962abe8fa"
+  },
+  "encoding": {
+    "chart": "encoding-circle-phi",
+    "point_formula": "phi(t)=(2t/(t^2+1),(1-t^2)/(t^2+1))",
+    "quadratic": "t^2-s*t+p=0",
+    "root_chord": "-s*x+(p-1)*y+(p+1)=0",
+    "baseline_b_intercept": "(2/s,-1)",
+    "axis_a_intercept": "(0,(p+1)/(1-p))",
+    "verified_symbolically_and_in_cyclotomic_field": true
+  },
+  "tasks": [
+    {
+      "id": "chord-task.e0",
+      "branch": "low",
+      "relation": "relation.e0",
+      "demanded_root": "period.e0",
+      "free_sibling_byproduct": "period.e16",
+      "root_sum": {
+        "op": "symbol",
+        "id": "period.d0"
+      },
+      "root_product": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.da"
+          },
+          {
+            "op": "neg",
+            "arg": {
+              "op": "const",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "compiled_line_coefficients": {
+        "x": {
+          "op": "neg",
+          "arg": {
+            "op": "symbol",
+            "id": "period.d0"
+          }
+        },
+        "y": {
+          "op": "add",
+          "args": [
+            {
+              "op": "add",
+              "args": [
+                {
+                  "op": "symbol",
+                  "id": "work.da"
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "const",
+                    "value": 1
+                  }
+                }
+              ]
+            },
+            {
+              "op": "const",
+              "value": -1
+            }
+          ]
+        },
+        "constant": {
+          "op": "add",
+          "args": [
+            {
+              "op": "add",
+              "args": [
+                {
+                  "op": "symbol",
+                  "id": "work.da"
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "const",
+                    "value": 1
+                  }
+                }
+              ]
+            },
+            {
+              "op": "const",
+              "value": 1
+            }
+          ]
+        }
+      },
+      "canonical_definition_points": {
+        "on_baseline_b": {
+          "chart": "baseline-x",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "const",
+              "value": 2
+            },
+            "denominator": {
+              "op": "symbol",
+              "id": "period.d0"
+            }
+          }
+        },
+        "on_axis_a": {
+          "chart": "vertical-axis-y",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "add",
+                  "args": [
+                    {
+                      "op": "symbol",
+                      "id": "work.da"
+                    },
+                    {
+                      "op": "neg",
+                      "arg": {
+                        "op": "const",
+                        "value": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "op": "const",
+                  "value": 1
+                }
+              ]
+            },
+            "denominator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 1
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "add",
+                    "args": [
+                      {
+                        "op": "symbol",
+                        "id": "work.da"
+                      },
+                      {
+                        "op": "neg",
+                        "arg": {
+                          "op": "const",
+                          "value": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "baseline_carrier": "H2Y1",
+      "baseline_carrier_e_move": 50,
+      "baseline_definition_points": [
+        "H2",
+        "Y1"
+      ],
+      "available_incident_points_at_46e": [],
+      "available_incident_point_count_at_46e": 0,
+      "verification": {
+        "formula_line_equals_baseline_carrier": true,
+        "both_exact_roots_on_formula_line": true,
+        "intercept_expressions_exact": true
+      }
+    },
+    {
+      "id": "chord-task.e-low-aux",
+      "branch": "low",
+      "relation": "relation.e-low-aux",
+      "demanded_root": "work.e-low-0",
+      "free_sibling_byproduct": "work.e-low-1",
+      "root_sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.dc"
+          },
+          {
+            "op": "symbol",
+            "id": "period.d0"
+          }
+        ]
+      },
+      "root_product": {
+        "op": "const",
+        "value": -1
+      },
+      "compiled_line_coefficients": {
+        "x": {
+          "op": "neg",
+          "arg": {
+            "op": "add",
+            "args": [
+              {
+                "op": "symbol",
+                "id": "work.dc"
+              },
+              {
+                "op": "symbol",
+                "id": "period.d0"
+              }
+            ]
+          }
+        },
+        "y": {
+          "op": "add",
+          "args": [
+            {
+              "op": "const",
+              "value": -1
+            },
+            {
+              "op": "const",
+              "value": -1
+            }
+          ]
+        },
+        "constant": {
+          "op": "add",
+          "args": [
+            {
+              "op": "const",
+              "value": -1
+            },
+            {
+              "op": "const",
+              "value": 1
+            }
+          ]
+        }
+      },
+      "canonical_definition_points": {
+        "on_baseline_b": {
+          "chart": "baseline-x",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "const",
+              "value": 2
+            },
+            "denominator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "symbol",
+                  "id": "work.dc"
+                },
+                {
+                  "op": "symbol",
+                  "id": "period.d0"
+                }
+              ]
+            }
+          }
+        },
+        "on_axis_a": {
+          "chart": "vertical-axis-y",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "const",
+                  "value": -1
+                },
+                {
+                  "op": "const",
+                  "value": 1
+                }
+              ]
+            },
+            "denominator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 1
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "const",
+                    "value": -1
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "baseline_carrier": "AJ2",
+      "baseline_carrier_e_move": 53,
+      "baseline_definition_points": [
+        "A",
+        "J2"
+      ],
+      "available_incident_points_at_46e": [
+        "A"
+      ],
+      "available_incident_point_count_at_46e": 1,
+      "verification": {
+        "formula_line_equals_baseline_carrier": true,
+        "both_exact_roots_on_formula_line": true,
+        "intercept_expressions_exact": true
+      }
+    },
+    {
+      "id": "chord-task.f0",
+      "branch": "low",
+      "relation": "relation.f0",
+      "demanded_root": "period.f0",
+      "free_sibling_byproduct": "period.f32",
+      "root_sum": {
+        "op": "symbol",
+        "id": "period.e0"
+      },
+      "root_product": {
+        "op": "symbol",
+        "id": "work.e-low-0"
+      },
+      "compiled_line_coefficients": {
+        "x": {
+          "op": "neg",
+          "arg": {
+            "op": "symbol",
+            "id": "period.e0"
+          }
+        },
+        "y": {
+          "op": "add",
+          "args": [
+            {
+              "op": "symbol",
+              "id": "work.e-low-0"
+            },
+            {
+              "op": "const",
+              "value": -1
+            }
+          ]
+        },
+        "constant": {
+          "op": "add",
+          "args": [
+            {
+              "op": "symbol",
+              "id": "work.e-low-0"
+            },
+            {
+              "op": "const",
+              "value": 1
+            }
+          ]
+        }
+      },
+      "canonical_definition_points": {
+        "on_baseline_b": {
+          "chart": "baseline-x",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "const",
+              "value": 2
+            },
+            "denominator": {
+              "op": "symbol",
+              "id": "period.e0"
+            }
+          }
+        },
+        "on_axis_a": {
+          "chart": "vertical-axis-y",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "symbol",
+                  "id": "work.e-low-0"
+                },
+                {
+                  "op": "const",
+                  "value": 1
+                }
+              ]
+            },
+            "denominator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 1
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "symbol",
+                    "id": "work.e-low-0"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "baseline_carrier": "L2I2",
+      "baseline_carrier_e_move": 55,
+      "baseline_definition_points": [
+        "L2",
+        "I2"
+      ],
+      "available_incident_points_at_46e": [],
+      "available_incident_point_count_at_46e": 0,
+      "verification": {
+        "formula_line_equals_baseline_carrier": true,
+        "both_exact_roots_on_formula_line": true,
+        "intercept_expressions_exact": true
+      }
+    },
+    {
+      "id": "chord-task.e24",
+      "branch": "high",
+      "relation": "relation.e24",
+      "demanded_root": "period.e24",
+      "free_sibling_byproduct": "period.e8",
+      "root_sum": {
+        "op": "symbol",
+        "id": "period.d8"
+      },
+      "root_product": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.db"
+          },
+          {
+            "op": "neg",
+            "arg": {
+              "op": "const",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "compiled_line_coefficients": {
+        "x": {
+          "op": "neg",
+          "arg": {
+            "op": "symbol",
+            "id": "period.d8"
+          }
+        },
+        "y": {
+          "op": "add",
+          "args": [
+            {
+              "op": "add",
+              "args": [
+                {
+                  "op": "symbol",
+                  "id": "work.db"
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "const",
+                    "value": 1
+                  }
+                }
+              ]
+            },
+            {
+              "op": "const",
+              "value": -1
+            }
+          ]
+        },
+        "constant": {
+          "op": "add",
+          "args": [
+            {
+              "op": "add",
+              "args": [
+                {
+                  "op": "symbol",
+                  "id": "work.db"
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "const",
+                    "value": 1
+                  }
+                }
+              ]
+            },
+            {
+              "op": "const",
+              "value": 1
+            }
+          ]
+        }
+      },
+      "canonical_definition_points": {
+        "on_baseline_b": {
+          "chart": "baseline-x",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "const",
+              "value": 2
+            },
+            "denominator": {
+              "op": "symbol",
+              "id": "period.d8"
+            }
+          }
+        },
+        "on_axis_a": {
+          "chart": "vertical-axis-y",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "add",
+                  "args": [
+                    {
+                      "op": "symbol",
+                      "id": "work.db"
+                    },
+                    {
+                      "op": "neg",
+                      "arg": {
+                        "op": "const",
+                        "value": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "op": "const",
+                  "value": 1
+                }
+              ]
+            },
+            "denominator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 1
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "add",
+                    "args": [
+                      {
+                        "op": "symbol",
+                        "id": "work.db"
+                      },
+                      {
+                        "op": "neg",
+                        "arg": {
+                          "op": "const",
+                          "value": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "baseline_carrier": "M2O2",
+      "baseline_carrier_e_move": 59,
+      "baseline_definition_points": [
+        "M2",
+        "O2"
+      ],
+      "available_incident_points_at_46e": [],
+      "available_incident_point_count_at_46e": 0,
+      "verification": {
+        "formula_line_equals_baseline_carrier": true,
+        "both_exact_roots_on_formula_line": true,
+        "intercept_expressions_exact": true
+      }
+    },
+    {
+      "id": "chord-task.e-high-aux",
+      "branch": "high",
+      "relation": "relation.e-high-aux",
+      "demanded_root": "work.e-high-1",
+      "free_sibling_byproduct": "work.e-high-0",
+      "root_sum": {
+        "op": "add",
+        "args": [
+          {
+            "op": "symbol",
+            "id": "work.dd"
+          },
+          {
+            "op": "symbol",
+            "id": "period.d8"
+          }
+        ]
+      },
+      "root_product": {
+        "op": "const",
+        "value": -1
+      },
+      "compiled_line_coefficients": {
+        "x": {
+          "op": "neg",
+          "arg": {
+            "op": "add",
+            "args": [
+              {
+                "op": "symbol",
+                "id": "work.dd"
+              },
+              {
+                "op": "symbol",
+                "id": "period.d8"
+              }
+            ]
+          }
+        },
+        "y": {
+          "op": "add",
+          "args": [
+            {
+              "op": "const",
+              "value": -1
+            },
+            {
+              "op": "const",
+              "value": -1
+            }
+          ]
+        },
+        "constant": {
+          "op": "add",
+          "args": [
+            {
+              "op": "const",
+              "value": -1
+            },
+            {
+              "op": "const",
+              "value": 1
+            }
+          ]
+        }
+      },
+      "canonical_definition_points": {
+        "on_baseline_b": {
+          "chart": "baseline-x",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "const",
+              "value": 2
+            },
+            "denominator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "symbol",
+                  "id": "work.dd"
+                },
+                {
+                  "op": "symbol",
+                  "id": "period.d8"
+                }
+              ]
+            }
+          }
+        },
+        "on_axis_a": {
+          "chart": "vertical-axis-y",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "const",
+                  "value": -1
+                },
+                {
+                  "op": "const",
+                  "value": 1
+                }
+              ]
+            },
+            "denominator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 1
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "const",
+                    "value": -1
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "baseline_carrier": "AQ2",
+      "baseline_carrier_e_move": 62,
+      "baseline_definition_points": [
+        "A",
+        "Q2"
+      ],
+      "available_incident_points_at_46e": [
+        "A"
+      ],
+      "available_incident_point_count_at_46e": 1,
+      "verification": {
+        "formula_line_equals_baseline_carrier": true,
+        "both_exact_roots_on_formula_line": true,
+        "intercept_expressions_exact": true
+      }
+    },
+    {
+      "id": "chord-task.f56",
+      "branch": "high",
+      "relation": "relation.f56",
+      "demanded_root": "period.f56",
+      "free_sibling_byproduct": "period.f24",
+      "root_sum": {
+        "op": "symbol",
+        "id": "period.e24"
+      },
+      "root_product": {
+        "op": "symbol",
+        "id": "work.e-high-1"
+      },
+      "compiled_line_coefficients": {
+        "x": {
+          "op": "neg",
+          "arg": {
+            "op": "symbol",
+            "id": "period.e24"
+          }
+        },
+        "y": {
+          "op": "add",
+          "args": [
+            {
+              "op": "symbol",
+              "id": "work.e-high-1"
+            },
+            {
+              "op": "const",
+              "value": -1
+            }
+          ]
+        },
+        "constant": {
+          "op": "add",
+          "args": [
+            {
+              "op": "symbol",
+              "id": "work.e-high-1"
+            },
+            {
+              "op": "const",
+              "value": 1
+            }
+          ]
+        }
+      },
+      "canonical_definition_points": {
+        "on_baseline_b": {
+          "chart": "baseline-x",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "const",
+              "value": 2
+            },
+            "denominator": {
+              "op": "symbol",
+              "id": "period.e24"
+            }
+          }
+        },
+        "on_axis_a": {
+          "chart": "vertical-axis-y",
+          "value": {
+            "op": "div",
+            "numerator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "symbol",
+                  "id": "work.e-high-1"
+                },
+                {
+                  "op": "const",
+                  "value": 1
+                }
+              ]
+            },
+            "denominator": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "const",
+                  "value": 1
+                },
+                {
+                  "op": "neg",
+                  "arg": {
+                    "op": "symbol",
+                    "id": "work.e-high-1"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "baseline_carrier": "S2P2",
+      "baseline_carrier_e_move": 64,
+      "baseline_definition_points": [
+        "S2",
+        "P2"
+      ],
+      "available_incident_points_at_46e": [],
+      "available_incident_point_count_at_46e": 0,
+      "verification": {
+        "formula_line_equals_baseline_carrier": true,
+        "both_exact_roots_on_formula_line": true,
+        "intercept_expressions_exact": true
+      }
+    }
+  ],
+  "summary": {
+    "tail_relation_tasks": 6,
+    "formula_lines_equal_baseline_carriers": 6,
+    "tasks_with_any_available_incident_point_at_46e": 2,
+    "tasks_with_two_available_incident_points_at_46e": 0,
+    "distinct_available_incident_points_at_46e": [
+      "A"
+    ]
+  },
+  "compiler_contract": {
+    "inputs": [
+      "root_sum",
+      "root_product",
+      "exact_46e_geometry_state"
+    ],
+    "output": "one_exact_root_chord_line_and_both_free_root_intersections",
+    "cost_rule": "count only distinct new construction lines/circles needed to materialize two definition points and the chord in the current state",
+    "search_focus": [
+      "为六条载线生成基线轴截点以外的等价定位点表示。",
+      "让一条新增对象同时产生两条不同载线所需的定位点。",
+      "对候选定位点执行完整免费交点闭包和精确几何去重。"
+    ]
+  },
+  "conclusions": [
+    "二次方程的根和、根积已经被编译为真实载线，而不是抽象固定 E 单价。",
+    "46E 前缀在 AJ2、AQ2 上各已有同一个点 A，其余四条载线没有前缀点。",
+    "没有任何尾部根载线在 46E 时已有两个定位点，所以不能直接以 1E 画出并省步。",
+    "下一步应搜索共享定位点生产程序，而不是再次枚举六条载线本身。"
+  ],
+  "limitations": [
+    "这里核对的是当前六组二次关系；等价代数改写可能产生不同根和、根积与载线。",
+    "前缀关联结论不排除一条新对象同时解锁多个后续定位点。"
+  ]
+}

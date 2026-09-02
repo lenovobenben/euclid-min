@@ -1,0 +1,40 @@
+{
+  "schema": "euclid-min-regular-257-residual-point-ball-audit/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "full_intersection_closure_report": "full-intersection-closure-69e.json",
+    "full_intersection_closure_report_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294",
+    "candidate_frontier_report": "full-point-candidate-frontier-69e.json",
+    "candidate_frontier_report_sha256": "fabd29e6fe05e32b9ec5e102aa67802819a88e060df2be3b5c5ca4f4ed121bf8"
+  },
+  "semantics": {
+    "removed_paid_drawables": [
+      "BG0",
+      "target_transfer"
+    ],
+    "purpose": "用严格实球物化最大前沿中尚无分圆域坐标的残余交点，并证明全部可用点在当前精度下可区分。",
+    "limitations": [
+      "实球给出严格包围和否定判定；若后续候选关系区间包含 0，仍须回退到精确代数判定。",
+      "本报告只处理删除第 68、69 步的最大前沿。"
+    ]
+  },
+  "precision_bits": 128,
+  "universe": {
+    "available_points": 2103,
+    "materialized_exact_points": 1759,
+    "materialized_residual_points": 344,
+    "line_circle_residual_points": 340,
+    "circle_circle_residual_points": 4,
+    "residual_producer_groups": 186
+  },
+  "audit": {
+    "incidence_checks": 4338,
+    "failed_incidences": [],
+    "ambiguous_point_pairs": [],
+    "all_residual_points_materialized": true,
+    "all_incidences_enclosed": true,
+    "all_available_points_separated": true,
+    "status": "complete"
+  }
+}

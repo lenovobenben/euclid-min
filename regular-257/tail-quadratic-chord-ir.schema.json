@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/tail-quadratic-chord-ir.schema.json",
+  "title": "Euclid-Min regular 257-gon tail quadratic chord IR v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "encoding",
+    "tasks",
+    "summary",
+    "compiler_contract",
+    "conclusions",
+    "limitations"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-regular-257-tail-quadratic-chord-ir/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "construction_sha256",
+        "geometry_algebra_ir",
+        "geometry_algebra_ir_sha256",
+        "full_intersection_closure",
+        "full_intersection_closure_sha256",
+        "synthesis_live_slice",
+        "synthesis_live_slice_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "construction_sha256": { "$ref": "#/$defs/sha256" },
+        "geometry_algebra_ir": { "const": "geometry-algebra-baseline-69e.json" },
+        "geometry_algebra_ir_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure": { "const": "full-intersection-closure-69e.json" },
+        "full_intersection_closure_sha256": { "$ref": "#/$defs/sha256" },
+        "synthesis_live_slice": { "const": "synthesis-live-slice-68e.json" },
+        "synthesis_live_slice_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "encoding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chart",
+        "point_formula",
+        "quadratic",
+        "root_chord",
+        "baseline_b_intercept",
+        "axis_a_intercept",
+        "verified_symbolically_and_in_cyclotomic_field"
+      ],
+      "properties": {
+        "chart": { "const": "encoding-circle-phi" },
+        "point_formula": { "type": "string", "minLength": 1 },
+        "quadratic": { "const": "t^2-s*t+p=0" },
+        "root_chord": { "const": "-s*x+(p-1)*y+(p+1)=0" },
+        "baseline_b_intercept": { "const": "(2/s,-1)" },
+        "axis_a_intercept": { "const": "(0,(p+1)/(1-p))" },
+        "verified_symbolically_and_in_cyclotomic_field": { "const": true }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": { "$ref": "#/$defs/task" }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tail_relation_tasks",
+        "formula_lines_equal_baseline_carriers",
+        "tasks_with_any_available_incident_point_at_46e",
+        "tasks_with_two_available_incident_points_at_46e",
+        "distinct_available_incident_points_at_46e"
+      ],
+      "properties": {
+        "tail_relation_tasks": { "const": 6 },
+        "formula_lines_equal_baseline_carriers": { "const": 6 },
+        "tasks_with_any_available_incident_point_at_46e": { "type": "integer", "minimum": 0, "maximum": 6 },
+        "tasks_with_two_available_incident_points_at_46e": { "type": "integer", "minimum": 0, "maximum": 6 },
+        "distinct_available_incident_points_at_46e": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "compiler_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputs", "output", "cost_rule", "search_focus"],
+      "properties": {
+        "inputs": { "$ref": "#/$defs/stringArray" },
+        "output": { "type": "string", "minLength": 1 },
+        "cost_rule": { "type": "string", "minLength": 1 },
+        "search_focus": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "conclusions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "stringArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "expression": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "value"],
+          "properties": {
+            "op": { "const": "const" },
+            "value": { "type": "integer" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "id"],
+          "properties": {
+            "op": { "const": "symbol" },
+            "id": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "args"],
+          "properties": {
+            "op": { "enum": ["add", "mul"] },
+            "args": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/expression" }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "arg"],
+          "properties": {
+            "op": { "const": "neg" },
+            "arg": { "$ref": "#/$defs/expression" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "numerator", "denominator"],
+          "properties": {
+            "op": { "const": "div" },
+            "numerator": { "$ref": "#/$defs/expression" },
+            "denominator": { "$ref": "#/$defs/expression" }
+          }
+        }
+      ]
+    },
+    "chartValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chart", "value"],
+      "properties": {
+        "chart": { "enum": ["baseline-x", "vertical-axis-y"] },
+        "value": { "$ref": "#/$defs/expression" }
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "branch",
+        "relation",
+        "demanded_root",
+        "free_sibling_byproduct",
+        "root_sum",
+        "root_product",
+        "compiled_line_coefficients",
+        "canonical_definition_points",
+        "baseline_carrier",
+        "baseline_carrier_e_move",
+        "baseline_definition_points",
+        "available_incident_points_at_46e",
+        "available_incident_point_count_at_46e",
+        "verification"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "branch": { "enum": ["low", "high"] },
+        "relation": { "type": "string", "minLength": 1 },
+        "demanded_root": { "type": "string", "minLength": 1 },
+        "free_sibling_byproduct": { "type": "string", "minLength": 1 },
+        "root_sum": { "$ref": "#/$defs/expression" },
+        "root_product": { "$ref": "#/$defs/expression" },
+        "compiled_line_coefficients": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y", "constant"],
+          "properties": {
+            "x": { "$ref": "#/$defs/expression" },
+            "y": { "$ref": "#/$defs/expression" },
+            "constant": { "$ref": "#/$defs/expression" }
+          }
+        },
+        "canonical_definition_points": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["on_baseline_b", "on_axis_a"],
+          "properties": {
+            "on_baseline_b": { "$ref": "#/$defs/chartValue" },
+            "on_axis_a": { "$ref": "#/$defs/chartValue" }
+          }
+        },
+        "baseline_carrier": { "type": "string", "minLength": 1 },
+        "baseline_carrier_e_move": { "type": "integer", "minimum": 47, "maximum": 64 },
+        "baseline_definition_points": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "available_incident_points_at_46e": { "$ref": "#/$defs/stringArray" },
+        "available_incident_point_count_at_46e": { "type": "integer", "minimum": 0 },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "formula_line_equals_baseline_carrier",
+            "both_exact_roots_on_formula_line",
+            "intercept_expressions_exact"
+          ],
+          "properties": {
+            "formula_line_equals_baseline_carrier": { "const": true },
+            "both_exact_roots_on_formula_line": { "const": true },
+            "intercept_expressions_exact": { "const": true }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "euclid-min-regular-257-all-point-direct-search/v1",
+  "source": {
+    "residual_point_ball_audit": "residual-point-ball-audit-68e.json",
+    "residual_point_ball_audit_sha256": "c2bd9afe37f3a17bc3e9909d5b26b73aa982a280adb2ccd509816fa997c49afa",
+    "line_chord_report": "all-point-line-chord-search-68e.json",
+    "line_chord_report_sha256": "39df07dbd23019bca5970bc53305cc556ecd6a704317649a1424082d3d0238c5",
+    "line_adjacent_report": "all-point-line-adjacent-search-68e.json",
+    "line_adjacent_report_sha256": "182588edd9ecbb1332e4cbeedd3cf13a99530efea37cf0d193c9e2552bb81550",
+    "circle_report": "all-point-circle-search-68e.json",
+    "circle_report_sha256": "ac26cea8719f4eb19cfb14f935f14b9f326a062e66771216e93b868e36cbdbc7"
+  },
+  "semantics": {
+    "removed_paid_drawables": [
+      "BG0",
+      "target_transfer"
+    ],
+    "selected_paid_drawables": 67,
+    "candidate_e_move": 68,
+    "candidate_definition_points": "all_available_arrangement_points",
+    "covered_candidate_families": [
+      "line_through_two_distinct_definition_points",
+      "circle_with_distinct_center_and_through_definition_points"
+    ],
+    "exhaustive_target_events": [
+      "the_two_new_intersections_of_candidate_and_c0_are_adjacent",
+      "a_new_candidate_intersection_on_c0_is_adjacent_to_an_already_available_point_on_c0"
+    ],
+    "completeness_argument": "加入候选前尚无目标边；候选是最后一个付费对象，所以首次目标边必含至少一个候选与目标圆的新交点。另一端只能是另一个新交点或既有目标圆点。",
+    "strictness": "全部否定项均由严格实球区间证明；仅有的区间未决项由安排关联表精确确认为以 C 为圆心重画目标圆，因而不产生新交点。",
+    "limitations": [
+      "结论只覆盖删除第 68、69 步的最大前沿，不覆盖其余 2345 个删二状态。",
+      "结论只允许加入一个作为最后第 68E 的新对象，不是 69E 的全局下界。"
+    ]
+  },
+  "universe": {
+    "available_points": 2103,
+    "exact_coordinate_points": 1759,
+    "strict_ball_residual_points": 344,
+    "line_definitions": 2210253,
+    "circle_definitions": 4420506,
+    "drawable_definitions": 6630759
+  },
+  "search": {
+    "line_chord_definitions_tested": 2210253,
+    "line_adjacent_definitions_tested": 2210253,
+    "line_adjacent_relation_checks": 300594408,
+    "circle_definitions_tested": 4420506,
+    "circle_relation_checks": 605593682,
+    "redrawn_target_circle_definitions": 115,
+    "unresolved_definitions": 0,
+    "solutions_found": 0,
+    "status": "exhausted_no_solution_in_all_point_maximum_frontier"
+  },
+  "conclusion": "在删除 BG0 与 target_transfer、保留前 67E 的最大前沿中，以任意两个可用安排点定义一条直线，或以任意一对不同的可用安排点定义圆心和圆上一点，都不能作为最后的第 68E 直接产生正 257 边形的一条边。"
+}

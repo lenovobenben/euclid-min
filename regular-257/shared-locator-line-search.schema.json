@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/shared-locator-line-search.schema.json",
+  "title": "Euclid-Min regular 257-gon shared locator line search v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "universe",
+    "summary",
+    "results",
+    "constructible_new_line_candidates",
+    "shared_new_locator_candidates",
+    "conclusion",
+    "limitations"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-regular-257-shared-locator-line-search/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "construction_sha256",
+        "full_intersection_closure",
+        "full_intersection_closure_sha256",
+        "geometry_algebra_ir",
+        "geometry_algebra_ir_sha256",
+        "tail_quadratic_chord_ir",
+        "tail_quadratic_chord_ir_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "construction_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure": { "const": "full-intersection-closure-69e.json" },
+        "full_intersection_closure_sha256": { "$ref": "#/$defs/sha256" },
+        "geometry_algebra_ir": { "const": "geometry-algebra-baseline-69e.json" },
+        "geometry_algebra_ir_sha256": { "$ref": "#/$defs/sha256" },
+        "tail_quadratic_chord_ir": { "const": "tail-quadratic-chord-ir-68e.json" },
+        "tail_quadratic_chord_ir_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input_state", "bridge_point", "candidate", "success", "exactness", "scope"],
+      "properties": {
+        "input_state": { "type": "string", "minLength": 1 },
+        "bridge_point": { "type": "string", "minLength": 1 },
+        "candidate": { "type": "string", "minLength": 1 },
+        "success": { "type": "string", "minLength": 1 },
+        "exactness": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 }
+      }
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_tasks", "ambiguous_available_point_balls"],
+      "properties": {
+        "target_tasks": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/targetTask" }
+        },
+        "ambiguous_available_point_balls": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "summary": { "$ref": "#/$defs/summary" },
+    "results": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": { "$ref": "#/$defs/result" }
+    },
+    "constructible_new_line_candidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "shared_new_locator_candidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "minimality_claim", "next"],
+      "properties": {
+        "status": {
+          "enum": [
+            "candidate_found",
+            "exhausted_no_shared_locator_line_with_prefix_line_witness"
+          ]
+        },
+        "minimality_claim": { "const": "none" },
+        "next": { "type": "string", "minLength": 1 }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "stringArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "targetTask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "branch",
+        "relation",
+        "baseline_carrier",
+        "bridge_point_count",
+        "deferred_circle_only_bridge_count"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "branch": { "enum": ["low", "high"] },
+        "relation": { "type": "string", "minLength": 1 },
+        "baseline_carrier": { "type": "string", "minLength": 1 },
+        "bridge_point_count": { "type": "integer", "minimum": 1 },
+        "deferred_circle_only_bridge_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "searchMetrics": {
+      "type": "object",
+      "required": [
+        "bridge_pair_space",
+        "coincident_bridge_pairs",
+        "candidate_line_occurrences",
+        "distinct_constructible_lines",
+        "duplicate_constructible_lines",
+        "constructible_existing_line_equalities",
+        "constructible_new_lines",
+        "strict_ball_checks",
+        "strict_ball_survivors",
+        "exact_coordinate_fallbacks",
+        "abstract_incidence_fallbacks"
+      ],
+      "properties": {
+        "bridge_pair_space": { "type": "integer", "minimum": 0 },
+        "coincident_bridge_pairs": { "type": "integer", "minimum": 0 },
+        "candidate_line_occurrences": { "type": "integer", "minimum": 0 },
+        "distinct_constructible_lines": { "type": "integer", "minimum": 0 },
+        "duplicate_constructible_lines": { "type": "integer", "minimum": 0 },
+        "constructible_existing_line_equalities": { "type": "integer", "minimum": 0 },
+        "constructible_new_lines": { "type": "integer", "minimum": 0 },
+        "strict_ball_checks": { "type": "integer", "minimum": 0 },
+        "strict_ball_survivors": { "type": "integer", "minimum": 0 },
+        "exact_coordinate_fallbacks": { "type": "integer", "minimum": 0 },
+        "abstract_incidence_fallbacks": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "summary": {
+      "unevaluatedProperties": false,
+      "allOf": [
+        { "$ref": "#/$defs/searchMetrics" },
+        {
+          "type": "object",
+          "required": [
+            "workers",
+            "available_points",
+            "exact_coordinate_points",
+            "abstract_residual_points",
+            "prefix_drawables",
+            "tail_chord_tasks",
+            "task_pairs",
+            "constructible_candidate_occurrences",
+            "distinct_constructible_new_lines",
+            "shared_new_locator_lines"
+          ],
+          "properties": {
+            "workers": { "type": "integer", "minimum": 1 },
+            "available_points": { "const": 989 },
+            "exact_coordinate_points": { "const": 763 },
+            "abstract_residual_points": { "const": 226 },
+            "prefix_drawables": { "const": 47 },
+            "tail_chord_tasks": { "const": 6 },
+            "task_pairs": { "const": 15 },
+            "constructible_candidate_occurrences": { "type": "integer", "minimum": 0 },
+            "distinct_constructible_new_lines": { "type": "integer", "minimum": 0 },
+            "shared_new_locator_lines": { "type": "integer", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "result": {
+      "unevaluatedProperties": false,
+      "allOf": [
+        { "$ref": "#/$defs/searchMetrics" },
+        {
+          "type": "object",
+          "required": ["pair_index", "task_pair", "constructible_candidate_count"],
+          "properties": {
+            "pair_index": { "type": "integer", "minimum": 1, "maximum": 15 },
+            "task_pair": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "constructible_candidate_count": { "type": "integer", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bridge", "witness_drawables", "already_available_at_46e"],
+      "properties": {
+        "bridge": { "type": "string", "minLength": 1 },
+        "witness_drawables": { "$ref": "#/$defs/stringArray" },
+        "already_available_at_46e": { "type": "boolean" }
+      }
+    },
+    "locatorEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task", "baseline_carrier", "locators", "new_locator_count"],
+      "properties": {
+        "task": { "type": "string", "minLength": 1 },
+        "baseline_carrier": { "type": "string", "minLength": 1 },
+        "locators": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/locator" } },
+        "new_locator_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "origin_task_pairs",
+        "origin_bridge_pairs",
+        "definition_points",
+        "locator_effects",
+        "new_task_count",
+        "new_locator_count",
+        "qualifies_as_shared_new_locator"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "origin_task_pairs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string" } }
+        },
+        "origin_bridge_pairs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string" } }
+        },
+        "definition_points": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string" } },
+        "locator_effects": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/locatorEffect" } },
+        "new_task_count": { "type": "integer", "minimum": 0 },
+        "new_locator_count": { "type": "integer", "minimum": 0 },
+        "qualifies_as_shared_new_locator": { "type": "boolean" }
+      }
+    }
+  }
+}

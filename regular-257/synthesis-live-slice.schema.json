@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/synthesis-live-slice.schema.json",
+  "title": "Euclid-Min regular 257-gon synthesis live slice v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "algebraic_slice",
+    "baseline_macro_liveness",
+    "geometric_slice",
+    "synthesis_contract",
+    "conclusions",
+    "limitations"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-regular-257-synthesis-live-slice/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "construction_sha256",
+        "geometry_algebra_ir",
+        "geometry_algebra_ir_sha256",
+        "geometry_gadget_library",
+        "geometry_gadget_library_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "construction_sha256": { "$ref": "#/$defs/sha256" },
+        "geometry_algebra_ir": { "const": "geometry-algebra-baseline-69e.json" },
+        "geometry_algebra_ir_sha256": { "$ref": "#/$defs/sha256" },
+        "geometry_gadget_library": { "const": "geometry-gadgets-tail-69e.json" },
+        "geometry_gadget_library_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algebraic_liveness", "geometric_liveness", "optimization_use"],
+      "properties": {
+        "algebraic_liveness": { "type": "string", "minLength": 1 },
+        "geometric_liveness": { "type": "string", "minLength": 1 },
+        "optimization_use": { "type": "string", "minLength": 1 }
+      }
+    },
+    "algebraic_slice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root_goal",
+        "active_symbols",
+        "active_quadratic_roots",
+        "free_sibling_byproduct_roots",
+        "inactive_quadratic_roots",
+        "active_relations",
+        "inactive_relations",
+        "relation_liveness",
+        "summary"
+      ],
+      "properties": {
+        "root_goal": { "const": "period.g0" },
+        "active_symbols": { "$ref": "#/$defs/stringArray" },
+        "active_quadratic_roots": { "$ref": "#/$defs/stringArray" },
+        "free_sibling_byproduct_roots": { "$ref": "#/$defs/stringArray" },
+        "inactive_quadratic_roots": { "$ref": "#/$defs/stringArray" },
+        "active_relations": { "$ref": "#/$defs/stringArray" },
+        "inactive_relations": { "$ref": "#/$defs/stringArray" },
+        "relation_liveness": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/relationLiveness" }
+        },
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "quadratic_roots_total",
+            "demanded_quadratic_roots",
+            "free_sibling_byproduct_roots",
+            "inactive_quadratic_roots",
+            "relations_total",
+            "active_relations",
+            "inactive_relations"
+          ],
+          "properties": {
+            "quadratic_roots_total": { "const": 34 },
+            "demanded_quadratic_roots": { "type": "integer", "minimum": 1, "maximum": 34 },
+            "free_sibling_byproduct_roots": { "type": "integer", "minimum": 0, "maximum": 34 },
+            "inactive_quadratic_roots": { "type": "integer", "minimum": 0, "maximum": 34 },
+            "relations_total": { "const": 17 },
+            "active_relations": { "type": "integer", "minimum": 1, "maximum": 17 },
+            "inactive_relations": { "type": "integer", "minimum": 0, "maximum": 17 }
+          }
+        }
+      }
+    },
+    "baseline_macro_liveness": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": { "$ref": "#/$defs/macroLiveness" }
+    },
+    "geometric_slice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_object",
+        "target_declared_dependency_paid_drawables",
+        "target_declared_dependency_paid_count",
+        "tail_regions",
+        "conclusion"
+      ],
+      "properties": {
+        "target_object": { "const": "target_transfer" },
+        "target_declared_dependency_paid_drawables": { "$ref": "#/$defs/stringArray" },
+        "target_declared_dependency_paid_count": { "const": 69 },
+        "tail_regions": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "$ref": "#/$defs/tailRegion" }
+        },
+        "conclusion": { "type": "string", "minLength": 1 }
+      }
+    },
+    "synthesis_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "replace_e_moves",
+        "input_state_after_e_move",
+        "required_geometric_points",
+        "required_geometric_drawables",
+        "input_symbols",
+        "input_representations",
+        "required_output_symbols",
+        "required_output_representations",
+        "internal_demanded_symbols_not_in_output_interface",
+        "free_sibling_byproducts_not_in_output_interface",
+        "baseline_contextual_cost_e",
+        "maximum_candidate_contextual_cost_e",
+        "downstream_fixed_suffix_cost_e",
+        "resulting_total_upper_bound_e",
+        "success_requirements"
+      ],
+      "properties": {
+        "id": { "const": "contract.joint-tail-at-46e-to-68e" },
+        "replace_e_moves": {
+          "type": "array",
+          "prefixItems": [{ "const": 47 }, { "const": 64 }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "input_state_after_e_move": { "const": 46 },
+        "required_geometric_points": { "$ref": "#/$defs/stringArray" },
+        "required_geometric_drawables": { "$ref": "#/$defs/stringArray" },
+        "input_symbols": { "$ref": "#/$defs/stringArray" },
+        "input_representations": { "$ref": "#/$defs/stringArray" },
+        "required_output_symbols": {
+          "type": "array",
+          "prefixItems": [{ "const": "period.f0" }, { "const": "period.f56" }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "required_output_representations": {
+          "type": "array",
+          "prefixItems": [{ "const": "repr.F0" }, { "const": "repr.F56" }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "internal_demanded_symbols_not_in_output_interface": { "$ref": "#/$defs/stringArray" },
+        "free_sibling_byproducts_not_in_output_interface": { "$ref": "#/$defs/stringArray" },
+        "baseline_contextual_cost_e": { "const": 18 },
+        "maximum_candidate_contextual_cost_e": { "const": 17 },
+        "downstream_fixed_suffix_cost_e": { "const": 5 },
+        "resulting_total_upper_bound_e": { "const": 68 },
+        "success_requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "conclusions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "stringArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "relationLiveness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "demanded_roots", "free_sibling_byproducts", "input_symbols"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "demanded_roots": { "$ref": "#/$defs/stringArray" },
+        "free_sibling_byproducts": { "$ref": "#/$defs/stringArray" },
+        "input_symbols": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "macroLiveness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "first_e_move",
+        "last_e_move",
+        "observed_contextual_cost_e",
+        "demanded_output_symbols",
+        "free_byproduct_output_symbols",
+        "classification"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "first_e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "last_e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "observed_contextual_cost_e": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "demanded_output_symbols": { "$ref": "#/$defs/stringArray" },
+        "free_byproduct_output_symbols": { "$ref": "#/$defs/stringArray" },
+        "classification": {
+          "enum": ["algebraically_active", "geometric_foundation_or_transfer"]
+        }
+      }
+    },
+    "tailRegion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "root_point",
+        "first_e_move",
+        "last_e_move",
+        "live_paid_drawables",
+        "directly_dead_paid_drawables"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "root_point": { "type": "string", "minLength": 1 },
+        "first_e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "last_e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "live_paid_drawables": { "$ref": "#/$defs/stringArray" },
+        "directly_dead_paid_drawables": { "$ref": "#/$defs/stringArray" }
+      }
+    }
+  }
+}

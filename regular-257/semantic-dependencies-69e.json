@@ -1,0 +1,9172 @@
+{
+  "schema": "euclid-min-regular-257-semantic-dependency-report/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "construction_sha256": "6c4b0113fae6ab513d3a1564a268415fa1dd96952e14753201880b776f6fe3d3",
+    "verification_report": "verification-69e.json",
+    "dependency_report": "dependency-graph-69e.json",
+    "dependency_report_sha256": "2cbad2f2dbdbc6d77549c2b4c55cfa80633d8848a69eca07b5dfc85def2a585c"
+  },
+  "semantics": {
+    "point_universe": "initial_and_named_certificate_points",
+    "drawable_universe": "initial_circle_and_69_verified_paid_drawables",
+    "scheduling": "monotone_forward_closure_with_paid_draw_reordering",
+    "cycle_policy": "an_object_or_point_must_be_available_before_it_is_used",
+    "limitations": [
+      "不引入证书 69 个付费对象以外的新直线或新圆。",
+      "对象的替代定义只使用证书中的具名点，不枚举未命名自动交点。",
+      "结论是给定对象与具名点宇宙内的相对不可删性，不是 69E 的全局下界。"
+    ]
+  },
+  "summary": {
+    "initial_points": 2,
+    "named_intersection_points": 81,
+    "unique_named_points": 83,
+    "initial_drawables": 1,
+    "paid_drawables": 69,
+    "point_producer_hyperedges": 401,
+    "points_with_multiple_final_producers": 78,
+    "points_with_multiple_producers_at_declared_binding": 0,
+    "points_with_multiple_producers_before_first_paid_use": 0,
+    "drawable_definition_hyperedges": 694,
+    "drawables_with_multiple_named_definitions": 69,
+    "single_deletion_trials": 69,
+    "individually_removable_paid_draws": 0
+  },
+  "hypergraph": {
+    "points": [
+      {
+        "id": "M1",
+        "e_move": 1,
+        "program_index": 2,
+        "declared_producer": [
+          "a",
+          "c0"
+        ],
+        "first_paid_consumer": {
+          "id": "DM1",
+          "program_index": 15,
+          "e_move": 7
+        },
+        "incident_drawables_in_final_state": [
+          "c0",
+          "a",
+          "DM1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c0",
+            "a"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c0",
+            "a"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c0",
+            "a"
+          ],
+          [
+            "c0",
+            "DM1"
+          ],
+          [
+            "a",
+            "DM1"
+          ]
+        ]
+      },
+      {
+        "id": "q_c0_left",
+        "e_move": 2,
+        "program_index": 4,
+        "declared_producer": [
+          "q",
+          "c0"
+        ],
+        "first_paid_consumer": {
+          "id": "d",
+          "program_index": 6,
+          "e_move": 3
+        },
+        "incident_drawables_in_final_state": [
+          "c0",
+          "q",
+          "d"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c0",
+            "q"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c0",
+            "q"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c0",
+            "q"
+          ],
+          [
+            "c0",
+            "d"
+          ],
+          [
+            "q",
+            "d"
+          ]
+        ]
+      },
+      {
+        "id": "q_c0_right",
+        "e_move": 2,
+        "program_index": 5,
+        "declared_producer": [
+          "q",
+          "c0"
+        ],
+        "first_paid_consumer": {
+          "id": "d",
+          "program_index": 6,
+          "e_move": 3
+        },
+        "incident_drawables_in_final_state": [
+          "c0",
+          "q",
+          "d"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c0",
+            "q"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c0",
+            "q"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c0",
+            "q"
+          ],
+          [
+            "c0",
+            "d"
+          ],
+          [
+            "q",
+            "d"
+          ]
+        ]
+      },
+      {
+        "id": "A",
+        "e_move": 3,
+        "program_index": 7,
+        "declared_producer": [
+          "a",
+          "d"
+        ],
+        "first_paid_consumer": {
+          "id": "c",
+          "program_index": 8,
+          "e_move": 4
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "d",
+          "AJ2",
+          "AQ2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "d"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "d"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "d"
+          ],
+          [
+            "a",
+            "AJ2"
+          ],
+          [
+            "a",
+            "AQ2"
+          ],
+          [
+            "d",
+            "AJ2"
+          ],
+          [
+            "d",
+            "AQ2"
+          ],
+          [
+            "AJ2",
+            "AQ2"
+          ]
+        ]
+      },
+      {
+        "id": "D",
+        "e_move": 4,
+        "program_index": 9,
+        "declared_producer": [
+          "c",
+          "d"
+        ],
+        "first_paid_consumer": {
+          "id": "DM1",
+          "program_index": 15,
+          "e_move": 7
+        },
+        "incident_drawables_in_final_state": [
+          "d",
+          "c",
+          "DM1",
+          "DJ",
+          "DZ1",
+          "DN2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "d",
+            "c"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "d",
+            "c"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "d",
+            "c"
+          ],
+          [
+            "d",
+            "DM1"
+          ],
+          [
+            "d",
+            "DJ"
+          ],
+          [
+            "d",
+            "DZ1"
+          ],
+          [
+            "d",
+            "DN2"
+          ],
+          [
+            "c",
+            "DM1"
+          ],
+          [
+            "c",
+            "DJ"
+          ],
+          [
+            "c",
+            "DZ1"
+          ],
+          [
+            "c",
+            "DN2"
+          ],
+          [
+            "DM1",
+            "DJ"
+          ],
+          [
+            "DM1",
+            "DZ1"
+          ],
+          [
+            "DM1",
+            "DN2"
+          ],
+          [
+            "DJ",
+            "DZ1"
+          ],
+          [
+            "DJ",
+            "DN2"
+          ],
+          [
+            "DZ1",
+            "DN2"
+          ]
+        ]
+      },
+      {
+        "id": "E",
+        "e_move": 4,
+        "program_index": 10,
+        "declared_producer": [
+          "c",
+          "d"
+        ],
+        "first_paid_consumer": {
+          "id": "BE",
+          "program_index": 11,
+          "e_move": 5
+        },
+        "incident_drawables_in_final_state": [
+          "d",
+          "c",
+          "BE",
+          "IE",
+          "EA1",
+          "EA0",
+          "EP1",
+          "EU1",
+          "EW1",
+          "EK2",
+          "ER2",
+          "EF56"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "d",
+            "c"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "d",
+            "c"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "d",
+            "c"
+          ],
+          [
+            "d",
+            "BE"
+          ],
+          [
+            "d",
+            "IE"
+          ],
+          [
+            "d",
+            "EA1"
+          ],
+          [
+            "d",
+            "EA0"
+          ],
+          [
+            "d",
+            "EP1"
+          ],
+          [
+            "d",
+            "EU1"
+          ],
+          [
+            "d",
+            "EW1"
+          ],
+          [
+            "d",
+            "EK2"
+          ],
+          [
+            "d",
+            "ER2"
+          ],
+          [
+            "d",
+            "EF56"
+          ],
+          [
+            "c",
+            "BE"
+          ],
+          [
+            "c",
+            "IE"
+          ],
+          [
+            "c",
+            "EA1"
+          ],
+          [
+            "c",
+            "EA0"
+          ],
+          [
+            "c",
+            "EP1"
+          ],
+          [
+            "c",
+            "EU1"
+          ],
+          [
+            "c",
+            "EW1"
+          ],
+          [
+            "c",
+            "EK2"
+          ],
+          [
+            "c",
+            "ER2"
+          ],
+          [
+            "c",
+            "EF56"
+          ],
+          [
+            "BE",
+            "IE"
+          ],
+          [
+            "BE",
+            "EA1"
+          ],
+          [
+            "BE",
+            "EA0"
+          ],
+          [
+            "BE",
+            "EP1"
+          ],
+          [
+            "BE",
+            "EU1"
+          ],
+          [
+            "BE",
+            "EW1"
+          ],
+          [
+            "BE",
+            "EK2"
+          ],
+          [
+            "BE",
+            "ER2"
+          ],
+          [
+            "BE",
+            "EF56"
+          ],
+          [
+            "IE",
+            "EA1"
+          ],
+          [
+            "IE",
+            "EA0"
+          ],
+          [
+            "IE",
+            "EP1"
+          ],
+          [
+            "IE",
+            "EU1"
+          ],
+          [
+            "IE",
+            "EW1"
+          ],
+          [
+            "IE",
+            "EK2"
+          ],
+          [
+            "IE",
+            "ER2"
+          ],
+          [
+            "IE",
+            "EF56"
+          ],
+          [
+            "EA1",
+            "EA0"
+          ],
+          [
+            "EA1",
+            "EP1"
+          ],
+          [
+            "EA1",
+            "EU1"
+          ],
+          [
+            "EA1",
+            "EW1"
+          ],
+          [
+            "EA1",
+            "EK2"
+          ],
+          [
+            "EA1",
+            "ER2"
+          ],
+          [
+            "EA1",
+            "EF56"
+          ],
+          [
+            "EA0",
+            "EP1"
+          ],
+          [
+            "EA0",
+            "EU1"
+          ],
+          [
+            "EA0",
+            "EW1"
+          ],
+          [
+            "EA0",
+            "EK2"
+          ],
+          [
+            "EA0",
+            "ER2"
+          ],
+          [
+            "EA0",
+            "EF56"
+          ],
+          [
+            "EP1",
+            "EU1"
+          ],
+          [
+            "EP1",
+            "EW1"
+          ],
+          [
+            "EP1",
+            "EK2"
+          ],
+          [
+            "EP1",
+            "ER2"
+          ],
+          [
+            "EP1",
+            "EF56"
+          ],
+          [
+            "EU1",
+            "EW1"
+          ],
+          [
+            "EU1",
+            "EK2"
+          ],
+          [
+            "EU1",
+            "ER2"
+          ],
+          [
+            "EU1",
+            "EF56"
+          ],
+          [
+            "EW1",
+            "EK2"
+          ],
+          [
+            "EW1",
+            "ER2"
+          ],
+          [
+            "EW1",
+            "EF56"
+          ],
+          [
+            "EK2",
+            "ER2"
+          ],
+          [
+            "EK2",
+            "EF56"
+          ],
+          [
+            "ER2",
+            "EF56"
+          ]
+        ]
+      },
+      {
+        "id": "G",
+        "e_move": 5,
+        "program_index": 12,
+        "declared_producer": [
+          "BE",
+          "c0"
+        ],
+        "first_paid_consumer": {
+          "id": "b",
+          "program_index": 13,
+          "e_move": 6
+        },
+        "incident_drawables_in_final_state": [
+          "c0",
+          "BE",
+          "b",
+          "GDa",
+          "GDb"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c0",
+            "BE"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c0",
+            "BE"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c0",
+            "BE"
+          ],
+          [
+            "c0",
+            "b"
+          ],
+          [
+            "c0",
+            "GDa"
+          ],
+          [
+            "c0",
+            "GDb"
+          ],
+          [
+            "BE",
+            "b"
+          ],
+          [
+            "BE",
+            "GDa"
+          ],
+          [
+            "BE",
+            "GDb"
+          ],
+          [
+            "b",
+            "GDa"
+          ],
+          [
+            "b",
+            "GDb"
+          ],
+          [
+            "GDa",
+            "GDb"
+          ]
+        ]
+      },
+      {
+        "id": "F",
+        "e_move": 6,
+        "program_index": 14,
+        "declared_producer": [
+          "b",
+          "c0"
+        ],
+        "first_paid_consumer": {
+          "id": "FO",
+          "program_index": 28,
+          "e_move": 12
+        },
+        "incident_drawables_in_final_state": [
+          "c0",
+          "b",
+          "FO"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c0",
+            "b"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c0",
+            "b"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c0",
+            "b"
+          ],
+          [
+            "c0",
+            "FO"
+          ],
+          [
+            "b",
+            "FO"
+          ]
+        ]
+      },
+      {
+        "id": "H",
+        "e_move": 7,
+        "program_index": 16,
+        "declared_producer": [
+          "DM1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "HCa",
+          "program_index": 61,
+          "e_move": 27
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "DM1",
+          "HCa",
+          "I1H",
+          "HCb"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "DM1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "DM1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "DM1"
+          ],
+          [
+            "c",
+            "HCa"
+          ],
+          [
+            "c",
+            "I1H"
+          ],
+          [
+            "c",
+            "HCb"
+          ],
+          [
+            "DM1",
+            "HCa"
+          ],
+          [
+            "DM1",
+            "I1H"
+          ],
+          [
+            "DM1",
+            "HCb"
+          ],
+          [
+            "HCa",
+            "I1H"
+          ],
+          [
+            "HCa",
+            "HCb"
+          ],
+          [
+            "I1H",
+            "HCb"
+          ]
+        ]
+      },
+      {
+        "id": "I",
+        "e_move": 7,
+        "program_index": 17,
+        "declared_producer": [
+          "DM1",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "IE",
+          "program_index": 18,
+          "e_move": 8
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "DM1",
+          "IE",
+          "NI"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "DM1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "DM1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "DM1"
+          ],
+          [
+            "b",
+            "IE"
+          ],
+          [
+            "b",
+            "NI"
+          ],
+          [
+            "DM1",
+            "IE"
+          ],
+          [
+            "DM1",
+            "NI"
+          ],
+          [
+            "IE",
+            "NI"
+          ]
+        ]
+      },
+      {
+        "id": "K",
+        "e_move": 8,
+        "program_index": 19,
+        "declared_producer": [
+          "IE",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "KL",
+          "program_index": 23,
+          "e_move": 10
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "IE",
+          "KL",
+          "ZK"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "IE"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "IE"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "IE"
+          ],
+          [
+            "c",
+            "KL"
+          ],
+          [
+            "c",
+            "ZK"
+          ],
+          [
+            "IE",
+            "KL"
+          ],
+          [
+            "IE",
+            "ZK"
+          ],
+          [
+            "KL",
+            "ZK"
+          ]
+        ]
+      },
+      {
+        "id": "J",
+        "e_move": 8,
+        "program_index": 20,
+        "declared_producer": [
+          "IE",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "DJ",
+          "program_index": 21,
+          "e_move": 9
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "IE",
+          "DJ"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "IE"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "IE"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "IE"
+          ],
+          [
+            "a",
+            "DJ"
+          ],
+          [
+            "IE",
+            "DJ"
+          ]
+        ]
+      },
+      {
+        "id": "L",
+        "e_move": 9,
+        "program_index": 22,
+        "declared_producer": [
+          "DJ",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "KL",
+          "program_index": 23,
+          "e_move": 10
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "DJ",
+          "KL",
+          "LB0",
+          "LB1",
+          "LQ1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "DJ"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "DJ"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "DJ"
+          ],
+          [
+            "c",
+            "KL"
+          ],
+          [
+            "c",
+            "LB0"
+          ],
+          [
+            "c",
+            "LB1"
+          ],
+          [
+            "c",
+            "LQ1"
+          ],
+          [
+            "DJ",
+            "KL"
+          ],
+          [
+            "DJ",
+            "LB0"
+          ],
+          [
+            "DJ",
+            "LB1"
+          ],
+          [
+            "DJ",
+            "LQ1"
+          ],
+          [
+            "KL",
+            "LB0"
+          ],
+          [
+            "KL",
+            "LB1"
+          ],
+          [
+            "KL",
+            "LQ1"
+          ],
+          [
+            "LB0",
+            "LB1"
+          ],
+          [
+            "LB0",
+            "LQ1"
+          ],
+          [
+            "LB1",
+            "LQ1"
+          ]
+        ]
+      },
+      {
+        "id": "N",
+        "e_move": 10,
+        "program_index": 24,
+        "declared_producer": [
+          "KL",
+          "BE"
+        ],
+        "first_paid_consumer": {
+          "id": "NI",
+          "program_index": 26,
+          "e_move": 11
+        },
+        "incident_drawables_in_final_state": [
+          "BE",
+          "KL",
+          "NI"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "BE",
+            "KL"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "BE",
+            "KL"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "BE",
+            "KL"
+          ],
+          [
+            "BE",
+            "NI"
+          ],
+          [
+            "KL",
+            "NI"
+          ]
+        ]
+      },
+      {
+        "id": "M",
+        "e_move": 10,
+        "program_index": 25,
+        "declared_producer": [
+          "KL",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "RM",
+          "program_index": 35,
+          "e_move": 15
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "KL",
+          "RM",
+          "SM"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "KL"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "KL"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "KL"
+          ],
+          [
+            "a",
+            "RM"
+          ],
+          [
+            "a",
+            "SM"
+          ],
+          [
+            "KL",
+            "RM"
+          ],
+          [
+            "KL",
+            "SM"
+          ],
+          [
+            "RM",
+            "SM"
+          ]
+        ]
+      },
+      {
+        "id": "O",
+        "e_move": 11,
+        "program_index": 27,
+        "declared_producer": [
+          "NI",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "FO",
+          "program_index": 28,
+          "e_move": 12
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "NI",
+          "FO"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "NI"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "NI"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "NI"
+          ],
+          [
+            "a",
+            "FO"
+          ],
+          [
+            "NI",
+            "FO"
+          ]
+        ]
+      },
+      {
+        "id": "A0",
+        "e_move": 12,
+        "program_index": 29,
+        "declared_producer": [
+          "FO",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BA0",
+          "program_index": 31,
+          "e_move": 13
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "FO",
+          "BA0",
+          "EA0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "FO"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "FO"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "FO"
+          ],
+          [
+            "c",
+            "BA0"
+          ],
+          [
+            "c",
+            "EA0"
+          ],
+          [
+            "FO",
+            "BA0"
+          ],
+          [
+            "FO",
+            "EA0"
+          ],
+          [
+            "BA0",
+            "EA0"
+          ]
+        ]
+      },
+      {
+        "id": "A1",
+        "e_move": 12,
+        "program_index": 30,
+        "declared_producer": [
+          "FO",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BA1",
+          "program_index": 33,
+          "e_move": 14
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "FO",
+          "BA1",
+          "EA1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "FO"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "FO"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "FO"
+          ],
+          [
+            "c",
+            "BA1"
+          ],
+          [
+            "c",
+            "EA1"
+          ],
+          [
+            "FO",
+            "BA1"
+          ],
+          [
+            "FO",
+            "EA1"
+          ],
+          [
+            "BA1",
+            "EA1"
+          ]
+        ]
+      },
+      {
+        "id": "R",
+        "e_move": 13,
+        "program_index": 32,
+        "declared_producer": [
+          "BA0",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "RM",
+          "program_index": 35,
+          "e_move": 15
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BA0",
+          "RM",
+          "RX",
+          "RS1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BA0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BA0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BA0"
+          ],
+          [
+            "b",
+            "RM"
+          ],
+          [
+            "b",
+            "RX"
+          ],
+          [
+            "b",
+            "RS1"
+          ],
+          [
+            "BA0",
+            "RM"
+          ],
+          [
+            "BA0",
+            "RX"
+          ],
+          [
+            "BA0",
+            "RS1"
+          ],
+          [
+            "RM",
+            "RX"
+          ],
+          [
+            "RM",
+            "RS1"
+          ],
+          [
+            "RX",
+            "RS1"
+          ]
+        ]
+      },
+      {
+        "id": "S",
+        "e_move": 14,
+        "program_index": 34,
+        "declared_producer": [
+          "BA1",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "SM",
+          "program_index": 38,
+          "e_move": 16
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BA1",
+          "SM",
+          "YS"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BA1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BA1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BA1"
+          ],
+          [
+            "b",
+            "SM"
+          ],
+          [
+            "b",
+            "YS"
+          ],
+          [
+            "BA1",
+            "SM"
+          ],
+          [
+            "BA1",
+            "YS"
+          ],
+          [
+            "SM",
+            "YS"
+          ]
+        ]
+      },
+      {
+        "id": "B0",
+        "e_move": 15,
+        "program_index": 36,
+        "declared_producer": [
+          "RM",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "LB0",
+          "program_index": 43,
+          "e_move": 18
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "RM",
+          "LB0",
+          "B0B3",
+          "CdB0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "RM"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "RM"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "RM"
+          ],
+          [
+            "c",
+            "LB0"
+          ],
+          [
+            "c",
+            "B0B3"
+          ],
+          [
+            "c",
+            "CdB0"
+          ],
+          [
+            "RM",
+            "LB0"
+          ],
+          [
+            "RM",
+            "B0B3"
+          ],
+          [
+            "RM",
+            "CdB0"
+          ],
+          [
+            "LB0",
+            "B0B3"
+          ],
+          [
+            "LB0",
+            "CdB0"
+          ],
+          [
+            "B0B3",
+            "CdB0"
+          ]
+        ]
+      },
+      {
+        "id": "B2",
+        "e_move": 15,
+        "program_index": 37,
+        "declared_producer": [
+          "RM",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "B2B3",
+          "program_index": 57,
+          "e_move": 25
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "RM",
+          "B2B3"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "RM"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "RM"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "RM"
+          ],
+          [
+            "c",
+            "B2B3"
+          ],
+          [
+            "RM",
+            "B2B3"
+          ]
+        ]
+      },
+      {
+        "id": "B1",
+        "e_move": 16,
+        "program_index": 39,
+        "declared_producer": [
+          "SM",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "LB1",
+          "program_index": 49,
+          "e_move": 21
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "SM",
+          "LB1",
+          "B1Cc"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "SM"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "SM"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "SM"
+          ],
+          [
+            "c",
+            "LB1"
+          ],
+          [
+            "c",
+            "B1Cc"
+          ],
+          [
+            "SM",
+            "LB1"
+          ],
+          [
+            "SM",
+            "B1Cc"
+          ],
+          [
+            "LB1",
+            "B1Cc"
+          ]
+        ]
+      },
+      {
+        "id": "B3",
+        "e_move": 16,
+        "program_index": 40,
+        "declared_producer": [
+          "SM",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "B0B3",
+          "program_index": 53,
+          "e_move": 23
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "SM",
+          "B0B3",
+          "B2B3"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "SM"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "SM"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "SM"
+          ],
+          [
+            "c",
+            "B0B3"
+          ],
+          [
+            "c",
+            "B2B3"
+          ],
+          [
+            "SM",
+            "B0B3"
+          ],
+          [
+            "SM",
+            "B2B3"
+          ],
+          [
+            "B0B3",
+            "B2B3"
+          ]
+        ]
+      },
+      {
+        "id": "T",
+        "e_move": 17,
+        "program_index": 42,
+        "declared_producer": [
+          "EA1",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "UT",
+          "program_index": 45,
+          "e_move": 19
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "EA1",
+          "UT"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "EA1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "EA1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "EA1"
+          ],
+          [
+            "a",
+            "UT"
+          ],
+          [
+            "EA1",
+            "UT"
+          ]
+        ]
+      },
+      {
+        "id": "U",
+        "e_move": 18,
+        "program_index": 44,
+        "declared_producer": [
+          "LB0",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "UT",
+          "program_index": 45,
+          "e_move": 19
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "LB0",
+          "UT"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "LB0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "LB0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "LB0"
+          ],
+          [
+            "b",
+            "UT"
+          ],
+          [
+            "LB0",
+            "UT"
+          ]
+        ]
+      },
+      {
+        "id": "Ca",
+        "e_move": 19,
+        "program_index": 46,
+        "declared_producer": [
+          "UT",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "HCa",
+          "program_index": 61,
+          "e_move": 27
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "UT",
+          "HCa"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "UT"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "UT"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "UT"
+          ],
+          [
+            "c",
+            "HCa"
+          ],
+          [
+            "UT",
+            "HCa"
+          ]
+        ]
+      },
+      {
+        "id": "V",
+        "e_move": 20,
+        "program_index": 48,
+        "declared_producer": [
+          "EA0",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "VW",
+          "program_index": 51,
+          "e_move": 22
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "EA0",
+          "VW"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "EA0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "EA0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "EA0"
+          ],
+          [
+            "a",
+            "VW"
+          ],
+          [
+            "EA0",
+            "VW"
+          ]
+        ]
+      },
+      {
+        "id": "W",
+        "e_move": 21,
+        "program_index": 50,
+        "declared_producer": [
+          "LB1",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "VW",
+          "program_index": 51,
+          "e_move": 22
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "LB1",
+          "VW"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "LB1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "LB1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "LB1"
+          ],
+          [
+            "b",
+            "VW"
+          ],
+          [
+            "LB1",
+            "VW"
+          ]
+        ]
+      },
+      {
+        "id": "Cb",
+        "e_move": 22,
+        "program_index": 52,
+        "declared_producer": [
+          "VW",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "HCb",
+          "program_index": 80,
+          "e_move": 36
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "VW",
+          "HCb"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "VW"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "VW"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "VW"
+          ],
+          [
+            "c",
+            "HCb"
+          ],
+          [
+            "VW",
+            "HCb"
+          ]
+        ]
+      },
+      {
+        "id": "X",
+        "e_move": 23,
+        "program_index": 54,
+        "declared_producer": [
+          "B0B3",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "RX",
+          "program_index": 55,
+          "e_move": 24
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "B0B3",
+          "RX"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "B0B3"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "B0B3"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "B0B3"
+          ],
+          [
+            "a",
+            "RX"
+          ],
+          [
+            "B0B3",
+            "RX"
+          ]
+        ]
+      },
+      {
+        "id": "Cc",
+        "e_move": 24,
+        "program_index": 56,
+        "declared_producer": [
+          "RX",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "B1Cc",
+          "program_index": 65,
+          "e_move": 29
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "RX",
+          "B1Cc",
+          "R1Cc"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "RX"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "RX"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "RX"
+          ],
+          [
+            "c",
+            "B1Cc"
+          ],
+          [
+            "c",
+            "R1Cc"
+          ],
+          [
+            "RX",
+            "B1Cc"
+          ],
+          [
+            "RX",
+            "R1Cc"
+          ],
+          [
+            "B1Cc",
+            "R1Cc"
+          ]
+        ]
+      },
+      {
+        "id": "Y",
+        "e_move": 25,
+        "program_index": 58,
+        "declared_producer": [
+          "B2B3",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "YS",
+          "program_index": 59,
+          "e_move": 26
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "B2B3",
+          "YS"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "B2B3"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "B2B3"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "B2B3"
+          ],
+          [
+            "a",
+            "YS"
+          ],
+          [
+            "B2B3",
+            "YS"
+          ]
+        ]
+      },
+      {
+        "id": "Cd",
+        "e_move": 26,
+        "program_index": 60,
+        "declared_producer": [
+          "YS",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "CdN1",
+          "program_index": 78,
+          "e_move": 35
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "YS",
+          "CdN1",
+          "CdB0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "YS"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "YS"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "YS"
+          ],
+          [
+            "c",
+            "CdN1"
+          ],
+          [
+            "c",
+            "CdB0"
+          ],
+          [
+            "YS",
+            "CdN1"
+          ],
+          [
+            "YS",
+            "CdB0"
+          ],
+          [
+            "CdN1",
+            "CdB0"
+          ]
+        ]
+      },
+      {
+        "id": "Z",
+        "e_move": 27,
+        "program_index": 62,
+        "declared_producer": [
+          "HCa",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "ZK",
+          "program_index": 63,
+          "e_move": 28
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "HCa",
+          "ZK",
+          "BZ",
+          "X1Z"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "HCa"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "HCa"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "HCa"
+          ],
+          [
+            "b",
+            "ZK"
+          ],
+          [
+            "b",
+            "BZ"
+          ],
+          [
+            "b",
+            "X1Z"
+          ],
+          [
+            "HCa",
+            "ZK"
+          ],
+          [
+            "HCa",
+            "BZ"
+          ],
+          [
+            "HCa",
+            "X1Z"
+          ],
+          [
+            "ZK",
+            "BZ"
+          ],
+          [
+            "ZK",
+            "X1Z"
+          ],
+          [
+            "BZ",
+            "X1Z"
+          ]
+        ]
+      },
+      {
+        "id": "H1",
+        "e_move": 28,
+        "program_index": 64,
+        "declared_producer": [
+          "ZK",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "K1H1",
+          "program_index": 71,
+          "e_move": 32
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "ZK",
+          "K1H1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "ZK"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "ZK"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "ZK"
+          ],
+          [
+            "a",
+            "K1H1"
+          ],
+          [
+            "ZK",
+            "K1H1"
+          ]
+        ]
+      },
+      {
+        "id": "I1",
+        "e_move": 29,
+        "program_index": 66,
+        "declared_producer": [
+          "B1Cc",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "I1H",
+          "program_index": 67,
+          "e_move": 30
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "B1Cc",
+          "I1H"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "B1Cc"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "B1Cc"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "B1Cc"
+          ],
+          [
+            "b",
+            "I1H"
+          ],
+          [
+            "B1Cc",
+            "I1H"
+          ]
+        ]
+      },
+      {
+        "id": "J1",
+        "e_move": 30,
+        "program_index": 68,
+        "declared_producer": [
+          "I1H",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BJ1",
+          "program_index": 69,
+          "e_move": 31
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "I1H",
+          "BJ1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "I1H"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "I1H"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "I1H"
+          ],
+          [
+            "c",
+            "BJ1"
+          ],
+          [
+            "I1H",
+            "BJ1"
+          ]
+        ]
+      },
+      {
+        "id": "K1",
+        "e_move": 31,
+        "program_index": 70,
+        "declared_producer": [
+          "BJ1",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "K1H1",
+          "program_index": 71,
+          "e_move": 32
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BJ1",
+          "K1H1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BJ1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BJ1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BJ1"
+          ],
+          [
+            "b",
+            "K1H1"
+          ],
+          [
+            "BJ1",
+            "K1H1"
+          ]
+        ]
+      },
+      {
+        "id": "Da",
+        "e_move": 32,
+        "program_index": 72,
+        "declared_producer": [
+          "K1H1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "GDa",
+          "program_index": 106,
+          "e_move": 48
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "K1H1",
+          "GDa"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "K1H1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "K1H1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "K1H1"
+          ],
+          [
+            "c",
+            "GDa"
+          ],
+          [
+            "K1H1",
+            "GDa"
+          ]
+        ]
+      },
+      {
+        "id": "Db",
+        "e_move": 32,
+        "program_index": 73,
+        "declared_producer": [
+          "K1H1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "GDb",
+          "program_index": 124,
+          "e_move": 57
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "K1H1",
+          "GDb"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "K1H1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "K1H1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "K1H1"
+          ],
+          [
+            "c",
+            "GDb"
+          ],
+          [
+            "K1H1",
+            "GDb"
+          ]
+        ]
+      },
+      {
+        "id": "L1",
+        "e_move": 33,
+        "program_index": 75,
+        "declared_producer": [
+          "BZ",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "c_M1L1",
+          "program_index": 76,
+          "e_move": 34
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "BZ",
+          "c_M1L1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "BZ"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "BZ"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "BZ"
+          ],
+          [
+            "c",
+            "c_M1L1"
+          ],
+          [
+            "BZ",
+            "c_M1L1"
+          ]
+        ]
+      },
+      {
+        "id": "N1",
+        "e_move": 34,
+        "program_index": 77,
+        "declared_producer": [
+          "c_M1L1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "CdN1",
+          "program_index": 78,
+          "e_move": 35
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "c_M1L1",
+          "CdN1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "c_M1L1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "c_M1L1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "c_M1L1"
+          ],
+          [
+            "c",
+            "CdN1"
+          ],
+          [
+            "c_M1L1",
+            "CdN1"
+          ]
+        ]
+      },
+      {
+        "id": "O1",
+        "e_move": 35,
+        "program_index": 79,
+        "declared_producer": [
+          "CdN1",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "V1O1",
+          "program_index": 94,
+          "e_move": 43
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "CdN1",
+          "V1O1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "CdN1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "CdN1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "CdN1"
+          ],
+          [
+            "b",
+            "V1O1"
+          ],
+          [
+            "CdN1",
+            "V1O1"
+          ]
+        ]
+      },
+      {
+        "id": "P1",
+        "e_move": 36,
+        "program_index": 81,
+        "declared_producer": [
+          "HCb",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "EP1",
+          "program_index": 82,
+          "e_move": 37
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "HCb",
+          "EP1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "HCb"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "HCb"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "HCb"
+          ],
+          [
+            "a",
+            "EP1"
+          ],
+          [
+            "HCb",
+            "EP1"
+          ]
+        ]
+      },
+      {
+        "id": "Q1",
+        "e_move": 37,
+        "program_index": 83,
+        "declared_producer": [
+          "EP1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "LQ1",
+          "program_index": 84,
+          "e_move": 38
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "EP1",
+          "LQ1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "EP1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "EP1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "EP1"
+          ],
+          [
+            "c",
+            "LQ1"
+          ],
+          [
+            "EP1",
+            "LQ1"
+          ]
+        ]
+      },
+      {
+        "id": "R1",
+        "e_move": 38,
+        "program_index": 85,
+        "declared_producer": [
+          "LQ1",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "R1Cc",
+          "program_index": 86,
+          "e_move": 39
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "LQ1",
+          "R1Cc"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "LQ1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "LQ1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "LQ1"
+          ],
+          [
+            "b",
+            "R1Cc"
+          ],
+          [
+            "LQ1",
+            "R1Cc"
+          ]
+        ]
+      },
+      {
+        "id": "S1",
+        "e_move": 39,
+        "program_index": 87,
+        "declared_producer": [
+          "R1Cc",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "T1S1",
+          "program_index": 90,
+          "e_move": 41
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "R1Cc",
+          "T1S1",
+          "RS1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "R1Cc"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "R1Cc"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "R1Cc"
+          ],
+          [
+            "c",
+            "T1S1"
+          ],
+          [
+            "c",
+            "RS1"
+          ],
+          [
+            "R1Cc",
+            "T1S1"
+          ],
+          [
+            "R1Cc",
+            "RS1"
+          ],
+          [
+            "T1S1",
+            "RS1"
+          ]
+        ]
+      },
+      {
+        "id": "T1",
+        "e_move": 40,
+        "program_index": 89,
+        "declared_producer": [
+          "CdB0",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "T1S1",
+          "program_index": 90,
+          "e_move": 41
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "CdB0",
+          "T1S1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "CdB0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "CdB0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "CdB0"
+          ],
+          [
+            "b",
+            "T1S1"
+          ],
+          [
+            "CdB0",
+            "T1S1"
+          ]
+        ]
+      },
+      {
+        "id": "U1",
+        "e_move": 41,
+        "program_index": 91,
+        "declared_producer": [
+          "T1S1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "EU1",
+          "program_index": 92,
+          "e_move": 42
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "T1S1",
+          "EU1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "T1S1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "T1S1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "T1S1"
+          ],
+          [
+            "c",
+            "EU1"
+          ],
+          [
+            "T1S1",
+            "EU1"
+          ]
+        ]
+      },
+      {
+        "id": "V1",
+        "e_move": 42,
+        "program_index": 93,
+        "declared_producer": [
+          "EU1",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "V1O1",
+          "program_index": 94,
+          "e_move": 43
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "EU1",
+          "V1O1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "EU1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "EU1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "EU1"
+          ],
+          [
+            "a",
+            "V1O1"
+          ],
+          [
+            "EU1",
+            "V1O1"
+          ]
+        ]
+      },
+      {
+        "id": "Dc",
+        "e_move": 43,
+        "program_index": 95,
+        "declared_producer": [
+          "V1O1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "DcD0",
+          "program_index": 114,
+          "e_move": 52
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "V1O1",
+          "DcD0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "V1O1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "V1O1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "V1O1"
+          ],
+          [
+            "c",
+            "DcD0"
+          ],
+          [
+            "V1O1",
+            "DcD0"
+          ]
+        ]
+      },
+      {
+        "id": "Dd",
+        "e_move": 43,
+        "program_index": 96,
+        "declared_producer": [
+          "V1O1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "D8Dd",
+          "program_index": 132,
+          "e_move": 61
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "V1O1",
+          "D8Dd"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "V1O1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "V1O1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "V1O1"
+          ],
+          [
+            "c",
+            "D8Dd"
+          ],
+          [
+            "V1O1",
+            "D8Dd"
+          ]
+        ]
+      },
+      {
+        "id": "W1",
+        "e_move": 44,
+        "program_index": 98,
+        "declared_producer": [
+          "RS1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "EW1",
+          "program_index": 99,
+          "e_move": 45
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "RS1",
+          "EW1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "RS1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "RS1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "RS1"
+          ],
+          [
+            "c",
+            "EW1"
+          ],
+          [
+            "RS1",
+            "EW1"
+          ]
+        ]
+      },
+      {
+        "id": "X1",
+        "e_move": 45,
+        "program_index": 100,
+        "declared_producer": [
+          "EW1",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "X1Z",
+          "program_index": 101,
+          "e_move": 46
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "EW1",
+          "X1Z"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "EW1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "EW1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "EW1"
+          ],
+          [
+            "a",
+            "X1Z"
+          ],
+          [
+            "EW1",
+            "X1Z"
+          ]
+        ]
+      },
+      {
+        "id": "D0",
+        "e_move": 46,
+        "program_index": 102,
+        "declared_producer": [
+          "X1Z",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BD0",
+          "program_index": 104,
+          "e_move": 47
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "X1Z",
+          "BD0",
+          "DcD0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "X1Z"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "X1Z"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "X1Z"
+          ],
+          [
+            "c",
+            "BD0"
+          ],
+          [
+            "c",
+            "DcD0"
+          ],
+          [
+            "X1Z",
+            "BD0"
+          ],
+          [
+            "X1Z",
+            "DcD0"
+          ],
+          [
+            "BD0",
+            "DcD0"
+          ]
+        ]
+      },
+      {
+        "id": "D8",
+        "e_move": 46,
+        "program_index": 103,
+        "declared_producer": [
+          "X1Z",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BD8",
+          "program_index": 122,
+          "e_move": 56
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "X1Z",
+          "BD8",
+          "D8Dd"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "X1Z"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "X1Z"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "X1Z"
+          ],
+          [
+            "c",
+            "BD8"
+          ],
+          [
+            "c",
+            "D8Dd"
+          ],
+          [
+            "X1Z",
+            "BD8"
+          ],
+          [
+            "X1Z",
+            "D8Dd"
+          ],
+          [
+            "BD8",
+            "D8Dd"
+          ]
+        ]
+      },
+      {
+        "id": "Y1",
+        "e_move": 47,
+        "program_index": 105,
+        "declared_producer": [
+          "BD0",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "H2Y1",
+          "program_index": 110,
+          "e_move": 50
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BD0",
+          "H2Y1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BD0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BD0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BD0"
+          ],
+          [
+            "b",
+            "H2Y1"
+          ],
+          [
+            "BD0",
+            "H2Y1"
+          ]
+        ]
+      },
+      {
+        "id": "Z1",
+        "e_move": 48,
+        "program_index": 107,
+        "declared_producer": [
+          "GDa",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "DZ1",
+          "program_index": 108,
+          "e_move": 49
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "GDa",
+          "DZ1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "GDa"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "GDa"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "GDa"
+          ],
+          [
+            "c",
+            "DZ1"
+          ],
+          [
+            "GDa",
+            "DZ1"
+          ]
+        ]
+      },
+      {
+        "id": "H2",
+        "e_move": 49,
+        "program_index": 109,
+        "declared_producer": [
+          "DZ1",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "H2Y1",
+          "program_index": 110,
+          "e_move": 50
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "DZ1",
+          "H2Y1"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "DZ1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "DZ1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "DZ1"
+          ],
+          [
+            "a",
+            "H2Y1"
+          ],
+          [
+            "DZ1",
+            "H2Y1"
+          ]
+        ]
+      },
+      {
+        "id": "E0",
+        "e_move": 50,
+        "program_index": 111,
+        "declared_producer": [
+          "H2Y1",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BE0",
+          "program_index": 112,
+          "e_move": 51
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "H2Y1",
+          "BE0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "H2Y1"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "H2Y1"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "H2Y1"
+          ],
+          [
+            "c",
+            "BE0"
+          ],
+          [
+            "H2Y1",
+            "BE0"
+          ]
+        ]
+      },
+      {
+        "id": "I2",
+        "e_move": 51,
+        "program_index": 113,
+        "declared_producer": [
+          "BE0",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "L2I2",
+          "program_index": 120,
+          "e_move": 55
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BE0",
+          "L2I2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BE0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BE0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BE0"
+          ],
+          [
+            "b",
+            "L2I2"
+          ],
+          [
+            "BE0",
+            "L2I2"
+          ]
+        ]
+      },
+      {
+        "id": "J2",
+        "e_move": 52,
+        "program_index": 115,
+        "declared_producer": [
+          "DcD0",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "AJ2",
+          "program_index": 116,
+          "e_move": 53
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "DcD0",
+          "AJ2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "DcD0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "DcD0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "DcD0"
+          ],
+          [
+            "b",
+            "AJ2"
+          ],
+          [
+            "DcD0",
+            "AJ2"
+          ]
+        ]
+      },
+      {
+        "id": "K2",
+        "e_move": 53,
+        "program_index": 117,
+        "declared_producer": [
+          "AJ2",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "EK2",
+          "program_index": 118,
+          "e_move": 54
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "AJ2",
+          "EK2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "AJ2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "AJ2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "AJ2"
+          ],
+          [
+            "c",
+            "EK2"
+          ],
+          [
+            "AJ2",
+            "EK2"
+          ]
+        ]
+      },
+      {
+        "id": "L2",
+        "e_move": 54,
+        "program_index": 119,
+        "declared_producer": [
+          "EK2",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "L2I2",
+          "program_index": 120,
+          "e_move": 55
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "EK2",
+          "L2I2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "EK2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "EK2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "EK2"
+          ],
+          [
+            "a",
+            "L2I2"
+          ],
+          [
+            "EK2",
+            "L2I2"
+          ]
+        ]
+      },
+      {
+        "id": "F0",
+        "e_move": 55,
+        "program_index": 121,
+        "declared_producer": [
+          "L2I2",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BF0",
+          "program_index": 140,
+          "e_move": 65
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "L2I2",
+          "BF0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "L2I2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "L2I2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "L2I2"
+          ],
+          [
+            "c",
+            "BF0"
+          ],
+          [
+            "L2I2",
+            "BF0"
+          ]
+        ]
+      },
+      {
+        "id": "M2",
+        "e_move": 56,
+        "program_index": 123,
+        "declared_producer": [
+          "BD8",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "M2O2",
+          "program_index": 128,
+          "e_move": 59
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BD8",
+          "M2O2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BD8"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BD8"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BD8"
+          ],
+          [
+            "b",
+            "M2O2"
+          ],
+          [
+            "BD8",
+            "M2O2"
+          ]
+        ]
+      },
+      {
+        "id": "N2",
+        "e_move": 57,
+        "program_index": 125,
+        "declared_producer": [
+          "GDb",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "DN2",
+          "program_index": 126,
+          "e_move": 58
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "GDb",
+          "DN2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "GDb"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "GDb"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "GDb"
+          ],
+          [
+            "c",
+            "DN2"
+          ],
+          [
+            "GDb",
+            "DN2"
+          ]
+        ]
+      },
+      {
+        "id": "O2",
+        "e_move": 58,
+        "program_index": 127,
+        "declared_producer": [
+          "DN2",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "M2O2",
+          "program_index": 128,
+          "e_move": 59
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "DN2",
+          "M2O2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "DN2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "DN2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "DN2"
+          ],
+          [
+            "a",
+            "M2O2"
+          ],
+          [
+            "DN2",
+            "M2O2"
+          ]
+        ]
+      },
+      {
+        "id": "E24",
+        "e_move": 59,
+        "program_index": 129,
+        "declared_producer": [
+          "M2O2",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BE24",
+          "program_index": 130,
+          "e_move": 60
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "M2O2",
+          "BE24"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "M2O2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "M2O2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "M2O2"
+          ],
+          [
+            "c",
+            "BE24"
+          ],
+          [
+            "M2O2",
+            "BE24"
+          ]
+        ]
+      },
+      {
+        "id": "P2",
+        "e_move": 60,
+        "program_index": 131,
+        "declared_producer": [
+          "BE24",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "S2P2",
+          "program_index": 138,
+          "e_move": 64
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BE24",
+          "S2P2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BE24"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BE24"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BE24"
+          ],
+          [
+            "b",
+            "S2P2"
+          ],
+          [
+            "BE24",
+            "S2P2"
+          ]
+        ]
+      },
+      {
+        "id": "Q2",
+        "e_move": 61,
+        "program_index": 133,
+        "declared_producer": [
+          "D8Dd",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "AQ2",
+          "program_index": 134,
+          "e_move": 62
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "D8Dd",
+          "AQ2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "D8Dd"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "D8Dd"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "D8Dd"
+          ],
+          [
+            "b",
+            "AQ2"
+          ],
+          [
+            "D8Dd",
+            "AQ2"
+          ]
+        ]
+      },
+      {
+        "id": "R2",
+        "e_move": 62,
+        "program_index": 135,
+        "declared_producer": [
+          "AQ2",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "ER2",
+          "program_index": 136,
+          "e_move": 63
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "AQ2",
+          "ER2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "AQ2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "AQ2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "AQ2"
+          ],
+          [
+            "c",
+            "ER2"
+          ],
+          [
+            "AQ2",
+            "ER2"
+          ]
+        ]
+      },
+      {
+        "id": "S2",
+        "e_move": 63,
+        "program_index": 137,
+        "declared_producer": [
+          "ER2",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "S2P2",
+          "program_index": 138,
+          "e_move": 64
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "ER2",
+          "S2P2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "ER2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "ER2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "ER2"
+          ],
+          [
+            "a",
+            "S2P2"
+          ],
+          [
+            "ER2",
+            "S2P2"
+          ]
+        ]
+      },
+      {
+        "id": "F56",
+        "e_move": 64,
+        "program_index": 139,
+        "declared_producer": [
+          "S2P2",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "EF56",
+          "program_index": 142,
+          "e_move": 66
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "S2P2",
+          "EF56"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "S2P2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "S2P2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "S2P2"
+          ],
+          [
+            "c",
+            "EF56"
+          ],
+          [
+            "S2P2",
+            "EF56"
+          ]
+        ]
+      },
+      {
+        "id": "T2",
+        "e_move": 65,
+        "program_index": 141,
+        "declared_producer": [
+          "BF0",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "U2T2",
+          "program_index": 144,
+          "e_move": 67
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BF0",
+          "U2T2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BF0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BF0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BF0"
+          ],
+          [
+            "b",
+            "U2T2"
+          ],
+          [
+            "BF0",
+            "U2T2"
+          ]
+        ]
+      },
+      {
+        "id": "U2",
+        "e_move": 66,
+        "program_index": 143,
+        "declared_producer": [
+          "EF56",
+          "a"
+        ],
+        "first_paid_consumer": {
+          "id": "U2T2",
+          "program_index": 144,
+          "e_move": 67
+        },
+        "incident_drawables_in_final_state": [
+          "a",
+          "EF56",
+          "U2T2"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "a",
+            "EF56"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "a",
+            "EF56"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "a",
+            "EF56"
+          ],
+          [
+            "a",
+            "U2T2"
+          ],
+          [
+            "EF56",
+            "U2T2"
+          ]
+        ]
+      },
+      {
+        "id": "G0",
+        "e_move": 67,
+        "program_index": 145,
+        "declared_producer": [
+          "U2T2",
+          "c"
+        ],
+        "first_paid_consumer": {
+          "id": "BG0",
+          "program_index": 146,
+          "e_move": 68
+        },
+        "incident_drawables_in_final_state": [
+          "c",
+          "U2T2",
+          "BG0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c",
+            "U2T2"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c",
+            "U2T2"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c",
+            "U2T2"
+          ],
+          [
+            "c",
+            "BG0"
+          ],
+          [
+            "U2T2",
+            "BG0"
+          ]
+        ]
+      },
+      {
+        "id": "V2",
+        "e_move": 68,
+        "program_index": 147,
+        "declared_producer": [
+          "BG0",
+          "b"
+        ],
+        "first_paid_consumer": {
+          "id": "target_transfer",
+          "program_index": 148,
+          "e_move": 69
+        },
+        "incident_drawables_in_final_state": [
+          "b",
+          "BG0"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "b",
+            "BG0"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "b",
+            "BG0"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "b",
+            "BG0"
+          ]
+        ]
+      },
+      {
+        "id": "W2_minus",
+        "e_move": 69,
+        "program_index": 149,
+        "declared_producer": [
+          "target_transfer",
+          "c0"
+        ],
+        "first_paid_consumer": null,
+        "incident_drawables_in_final_state": [
+          "c0",
+          "target_transfer"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c0",
+            "target_transfer"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c0",
+            "target_transfer"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c0",
+            "target_transfer"
+          ]
+        ]
+      },
+      {
+        "id": "W2_plus",
+        "e_move": 69,
+        "program_index": 150,
+        "declared_producer": [
+          "target_transfer",
+          "c0"
+        ],
+        "first_paid_consumer": null,
+        "incident_drawables_in_final_state": [
+          "c0",
+          "target_transfer"
+        ],
+        "producers_at_declared_binding": [
+          [
+            "c0",
+            "target_transfer"
+          ]
+        ],
+        "producers_before_first_paid_use": [
+          [
+            "c0",
+            "target_transfer"
+          ]
+        ],
+        "producers_in_final_state": [
+          [
+            "c0",
+            "target_transfer"
+          ]
+        ]
+      }
+    ],
+    "drawables": [
+      {
+        "id": "a",
+        "e_move": 1,
+        "program_index": 1,
+        "kind": "line",
+        "declared_definition": [
+          "C",
+          "B"
+        ],
+        "incident_named_points": [
+          "B",
+          "C",
+          "M1",
+          "A",
+          "J",
+          "M",
+          "O",
+          "T",
+          "V",
+          "X",
+          "Y",
+          "H1",
+          "P1",
+          "V1",
+          "X1",
+          "H2",
+          "L2",
+          "O2",
+          "S2",
+          "U2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "C"
+          ],
+          [
+            "B",
+            "M1"
+          ],
+          [
+            "B",
+            "A"
+          ],
+          [
+            "B",
+            "J"
+          ],
+          [
+            "B",
+            "M"
+          ],
+          [
+            "B",
+            "O"
+          ],
+          [
+            "B",
+            "T"
+          ],
+          [
+            "B",
+            "V"
+          ],
+          [
+            "B",
+            "X"
+          ],
+          [
+            "B",
+            "Y"
+          ],
+          [
+            "B",
+            "H1"
+          ],
+          [
+            "B",
+            "P1"
+          ],
+          [
+            "B",
+            "V1"
+          ],
+          [
+            "B",
+            "X1"
+          ],
+          [
+            "B",
+            "H2"
+          ],
+          [
+            "B",
+            "L2"
+          ],
+          [
+            "B",
+            "O2"
+          ],
+          [
+            "B",
+            "S2"
+          ],
+          [
+            "B",
+            "U2"
+          ],
+          [
+            "C",
+            "M1"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "J"
+          ],
+          [
+            "C",
+            "M"
+          ],
+          [
+            "C",
+            "O"
+          ],
+          [
+            "C",
+            "T"
+          ],
+          [
+            "C",
+            "V"
+          ],
+          [
+            "C",
+            "X"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "C",
+            "H1"
+          ],
+          [
+            "C",
+            "P1"
+          ],
+          [
+            "C",
+            "V1"
+          ],
+          [
+            "C",
+            "X1"
+          ],
+          [
+            "C",
+            "H2"
+          ],
+          [
+            "C",
+            "L2"
+          ],
+          [
+            "C",
+            "O2"
+          ],
+          [
+            "C",
+            "S2"
+          ],
+          [
+            "C",
+            "U2"
+          ],
+          [
+            "M1",
+            "A"
+          ],
+          [
+            "M1",
+            "J"
+          ],
+          [
+            "M1",
+            "M"
+          ],
+          [
+            "M1",
+            "O"
+          ],
+          [
+            "M1",
+            "T"
+          ],
+          [
+            "M1",
+            "V"
+          ],
+          [
+            "M1",
+            "X"
+          ],
+          [
+            "M1",
+            "Y"
+          ],
+          [
+            "M1",
+            "H1"
+          ],
+          [
+            "M1",
+            "P1"
+          ],
+          [
+            "M1",
+            "V1"
+          ],
+          [
+            "M1",
+            "X1"
+          ],
+          [
+            "M1",
+            "H2"
+          ],
+          [
+            "M1",
+            "L2"
+          ],
+          [
+            "M1",
+            "O2"
+          ],
+          [
+            "M1",
+            "S2"
+          ],
+          [
+            "M1",
+            "U2"
+          ],
+          [
+            "A",
+            "J"
+          ],
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "O"
+          ],
+          [
+            "A",
+            "T"
+          ],
+          [
+            "A",
+            "V"
+          ],
+          [
+            "A",
+            "X"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "A",
+            "H1"
+          ],
+          [
+            "A",
+            "P1"
+          ],
+          [
+            "A",
+            "V1"
+          ],
+          [
+            "A",
+            "X1"
+          ],
+          [
+            "A",
+            "H2"
+          ],
+          [
+            "A",
+            "L2"
+          ],
+          [
+            "A",
+            "O2"
+          ],
+          [
+            "A",
+            "S2"
+          ],
+          [
+            "A",
+            "U2"
+          ],
+          [
+            "J",
+            "M"
+          ],
+          [
+            "J",
+            "O"
+          ],
+          [
+            "J",
+            "T"
+          ],
+          [
+            "J",
+            "V"
+          ],
+          [
+            "J",
+            "X"
+          ],
+          [
+            "J",
+            "Y"
+          ],
+          [
+            "J",
+            "H1"
+          ],
+          [
+            "J",
+            "P1"
+          ],
+          [
+            "J",
+            "V1"
+          ],
+          [
+            "J",
+            "X1"
+          ],
+          [
+            "J",
+            "H2"
+          ],
+          [
+            "J",
+            "L2"
+          ],
+          [
+            "J",
+            "O2"
+          ],
+          [
+            "J",
+            "S2"
+          ],
+          [
+            "J",
+            "U2"
+          ],
+          [
+            "M",
+            "O"
+          ],
+          [
+            "M",
+            "T"
+          ],
+          [
+            "M",
+            "V"
+          ],
+          [
+            "M",
+            "X"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "M",
+            "H1"
+          ],
+          [
+            "M",
+            "P1"
+          ],
+          [
+            "M",
+            "V1"
+          ],
+          [
+            "M",
+            "X1"
+          ],
+          [
+            "M",
+            "H2"
+          ],
+          [
+            "M",
+            "L2"
+          ],
+          [
+            "M",
+            "O2"
+          ],
+          [
+            "M",
+            "S2"
+          ],
+          [
+            "M",
+            "U2"
+          ],
+          [
+            "O",
+            "T"
+          ],
+          [
+            "O",
+            "V"
+          ],
+          [
+            "O",
+            "X"
+          ],
+          [
+            "O",
+            "Y"
+          ],
+          [
+            "O",
+            "H1"
+          ],
+          [
+            "O",
+            "P1"
+          ],
+          [
+            "O",
+            "V1"
+          ],
+          [
+            "O",
+            "X1"
+          ],
+          [
+            "O",
+            "H2"
+          ],
+          [
+            "O",
+            "L2"
+          ],
+          [
+            "O",
+            "O2"
+          ],
+          [
+            "O",
+            "S2"
+          ],
+          [
+            "O",
+            "U2"
+          ],
+          [
+            "T",
+            "V"
+          ],
+          [
+            "T",
+            "X"
+          ],
+          [
+            "T",
+            "Y"
+          ],
+          [
+            "T",
+            "H1"
+          ],
+          [
+            "T",
+            "P1"
+          ],
+          [
+            "T",
+            "V1"
+          ],
+          [
+            "T",
+            "X1"
+          ],
+          [
+            "T",
+            "H2"
+          ],
+          [
+            "T",
+            "L2"
+          ],
+          [
+            "T",
+            "O2"
+          ],
+          [
+            "T",
+            "S2"
+          ],
+          [
+            "T",
+            "U2"
+          ],
+          [
+            "V",
+            "X"
+          ],
+          [
+            "V",
+            "Y"
+          ],
+          [
+            "V",
+            "H1"
+          ],
+          [
+            "V",
+            "P1"
+          ],
+          [
+            "V",
+            "V1"
+          ],
+          [
+            "V",
+            "X1"
+          ],
+          [
+            "V",
+            "H2"
+          ],
+          [
+            "V",
+            "L2"
+          ],
+          [
+            "V",
+            "O2"
+          ],
+          [
+            "V",
+            "S2"
+          ],
+          [
+            "V",
+            "U2"
+          ],
+          [
+            "X",
+            "Y"
+          ],
+          [
+            "X",
+            "H1"
+          ],
+          [
+            "X",
+            "P1"
+          ],
+          [
+            "X",
+            "V1"
+          ],
+          [
+            "X",
+            "X1"
+          ],
+          [
+            "X",
+            "H2"
+          ],
+          [
+            "X",
+            "L2"
+          ],
+          [
+            "X",
+            "O2"
+          ],
+          [
+            "X",
+            "S2"
+          ],
+          [
+            "X",
+            "U2"
+          ],
+          [
+            "Y",
+            "H1"
+          ],
+          [
+            "Y",
+            "P1"
+          ],
+          [
+            "Y",
+            "V1"
+          ],
+          [
+            "Y",
+            "X1"
+          ],
+          [
+            "Y",
+            "H2"
+          ],
+          [
+            "Y",
+            "L2"
+          ],
+          [
+            "Y",
+            "O2"
+          ],
+          [
+            "Y",
+            "S2"
+          ],
+          [
+            "Y",
+            "U2"
+          ],
+          [
+            "H1",
+            "P1"
+          ],
+          [
+            "H1",
+            "V1"
+          ],
+          [
+            "H1",
+            "X1"
+          ],
+          [
+            "H1",
+            "H2"
+          ],
+          [
+            "H1",
+            "L2"
+          ],
+          [
+            "H1",
+            "O2"
+          ],
+          [
+            "H1",
+            "S2"
+          ],
+          [
+            "H1",
+            "U2"
+          ],
+          [
+            "P1",
+            "V1"
+          ],
+          [
+            "P1",
+            "X1"
+          ],
+          [
+            "P1",
+            "H2"
+          ],
+          [
+            "P1",
+            "L2"
+          ],
+          [
+            "P1",
+            "O2"
+          ],
+          [
+            "P1",
+            "S2"
+          ],
+          [
+            "P1",
+            "U2"
+          ],
+          [
+            "V1",
+            "X1"
+          ],
+          [
+            "V1",
+            "H2"
+          ],
+          [
+            "V1",
+            "L2"
+          ],
+          [
+            "V1",
+            "O2"
+          ],
+          [
+            "V1",
+            "S2"
+          ],
+          [
+            "V1",
+            "U2"
+          ],
+          [
+            "X1",
+            "H2"
+          ],
+          [
+            "X1",
+            "L2"
+          ],
+          [
+            "X1",
+            "O2"
+          ],
+          [
+            "X1",
+            "S2"
+          ],
+          [
+            "X1",
+            "U2"
+          ],
+          [
+            "H2",
+            "L2"
+          ],
+          [
+            "H2",
+            "O2"
+          ],
+          [
+            "H2",
+            "S2"
+          ],
+          [
+            "H2",
+            "U2"
+          ],
+          [
+            "L2",
+            "O2"
+          ],
+          [
+            "L2",
+            "S2"
+          ],
+          [
+            "L2",
+            "U2"
+          ],
+          [
+            "O2",
+            "S2"
+          ],
+          [
+            "O2",
+            "U2"
+          ],
+          [
+            "S2",
+            "U2"
+          ]
+        ]
+      },
+      {
+        "id": "q",
+        "e_move": 2,
+        "program_index": 3,
+        "kind": "circle",
+        "declared_definition": [
+          "B",
+          "C"
+        ],
+        "incident_named_points": [
+          "C",
+          "q_c0_left",
+          "q_c0_right"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "C"
+          ],
+          [
+            "B",
+            "q_c0_left"
+          ],
+          [
+            "B",
+            "q_c0_right"
+          ]
+        ]
+      },
+      {
+        "id": "d",
+        "e_move": 3,
+        "program_index": 6,
+        "kind": "line",
+        "declared_definition": [
+          "q_c0_left",
+          "q_c0_right"
+        ],
+        "incident_named_points": [
+          "q_c0_left",
+          "q_c0_right",
+          "A",
+          "D",
+          "E"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "q_c0_left",
+            "q_c0_right"
+          ],
+          [
+            "q_c0_left",
+            "A"
+          ],
+          [
+            "q_c0_left",
+            "D"
+          ],
+          [
+            "q_c0_left",
+            "E"
+          ],
+          [
+            "q_c0_right",
+            "A"
+          ],
+          [
+            "q_c0_right",
+            "D"
+          ],
+          [
+            "q_c0_right",
+            "E"
+          ],
+          [
+            "A",
+            "D"
+          ],
+          [
+            "A",
+            "E"
+          ],
+          [
+            "D",
+            "E"
+          ]
+        ]
+      },
+      {
+        "id": "c",
+        "e_move": 4,
+        "program_index": 8,
+        "kind": "circle",
+        "declared_definition": [
+          "A",
+          "B"
+        ],
+        "incident_named_points": [
+          "B",
+          "C",
+          "D",
+          "E",
+          "H",
+          "K",
+          "L",
+          "A0",
+          "A1",
+          "B0",
+          "B2",
+          "B1",
+          "B3",
+          "Ca",
+          "Cb",
+          "Cc",
+          "Cd",
+          "J1",
+          "Da",
+          "Db",
+          "L1",
+          "N1",
+          "Q1",
+          "S1",
+          "U1",
+          "Dc",
+          "Dd",
+          "W1",
+          "D0",
+          "D8",
+          "Z1",
+          "E0",
+          "K2",
+          "F0",
+          "N2",
+          "E24",
+          "R2",
+          "F56",
+          "G0"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "A",
+            "D"
+          ],
+          [
+            "A",
+            "E"
+          ],
+          [
+            "A",
+            "H"
+          ],
+          [
+            "A",
+            "K"
+          ],
+          [
+            "A",
+            "L"
+          ],
+          [
+            "A",
+            "A0"
+          ],
+          [
+            "A",
+            "A1"
+          ],
+          [
+            "A",
+            "B0"
+          ],
+          [
+            "A",
+            "B2"
+          ],
+          [
+            "A",
+            "B1"
+          ],
+          [
+            "A",
+            "B3"
+          ],
+          [
+            "A",
+            "Ca"
+          ],
+          [
+            "A",
+            "Cb"
+          ],
+          [
+            "A",
+            "Cc"
+          ],
+          [
+            "A",
+            "Cd"
+          ],
+          [
+            "A",
+            "J1"
+          ],
+          [
+            "A",
+            "Da"
+          ],
+          [
+            "A",
+            "Db"
+          ],
+          [
+            "A",
+            "L1"
+          ],
+          [
+            "A",
+            "N1"
+          ],
+          [
+            "A",
+            "Q1"
+          ],
+          [
+            "A",
+            "S1"
+          ],
+          [
+            "A",
+            "U1"
+          ],
+          [
+            "A",
+            "Dc"
+          ],
+          [
+            "A",
+            "Dd"
+          ],
+          [
+            "A",
+            "W1"
+          ],
+          [
+            "A",
+            "D0"
+          ],
+          [
+            "A",
+            "D8"
+          ],
+          [
+            "A",
+            "Z1"
+          ],
+          [
+            "A",
+            "E0"
+          ],
+          [
+            "A",
+            "K2"
+          ],
+          [
+            "A",
+            "F0"
+          ],
+          [
+            "A",
+            "N2"
+          ],
+          [
+            "A",
+            "E24"
+          ],
+          [
+            "A",
+            "R2"
+          ],
+          [
+            "A",
+            "F56"
+          ],
+          [
+            "A",
+            "G0"
+          ]
+        ]
+      },
+      {
+        "id": "BE",
+        "e_move": 5,
+        "program_index": 11,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "E"
+        ],
+        "incident_named_points": [
+          "B",
+          "E",
+          "G",
+          "N"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "E"
+          ],
+          [
+            "B",
+            "G"
+          ],
+          [
+            "B",
+            "N"
+          ],
+          [
+            "E",
+            "G"
+          ],
+          [
+            "E",
+            "N"
+          ],
+          [
+            "G",
+            "N"
+          ]
+        ]
+      },
+      {
+        "id": "b",
+        "e_move": 6,
+        "program_index": 13,
+        "kind": "line",
+        "declared_definition": [
+          "C",
+          "G"
+        ],
+        "incident_named_points": [
+          "C",
+          "G",
+          "F",
+          "I",
+          "R",
+          "S",
+          "U",
+          "W",
+          "Z",
+          "I1",
+          "K1",
+          "O1",
+          "R1",
+          "T1",
+          "Y1",
+          "I2",
+          "J2",
+          "M2",
+          "P2",
+          "Q2",
+          "T2",
+          "V2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "C",
+            "G"
+          ],
+          [
+            "C",
+            "F"
+          ],
+          [
+            "C",
+            "I"
+          ],
+          [
+            "C",
+            "R"
+          ],
+          [
+            "C",
+            "S"
+          ],
+          [
+            "C",
+            "U"
+          ],
+          [
+            "C",
+            "W"
+          ],
+          [
+            "C",
+            "Z"
+          ],
+          [
+            "C",
+            "I1"
+          ],
+          [
+            "C",
+            "K1"
+          ],
+          [
+            "C",
+            "O1"
+          ],
+          [
+            "C",
+            "R1"
+          ],
+          [
+            "C",
+            "T1"
+          ],
+          [
+            "C",
+            "Y1"
+          ],
+          [
+            "C",
+            "I2"
+          ],
+          [
+            "C",
+            "J2"
+          ],
+          [
+            "C",
+            "M2"
+          ],
+          [
+            "C",
+            "P2"
+          ],
+          [
+            "C",
+            "Q2"
+          ],
+          [
+            "C",
+            "T2"
+          ],
+          [
+            "C",
+            "V2"
+          ],
+          [
+            "G",
+            "F"
+          ],
+          [
+            "G",
+            "I"
+          ],
+          [
+            "G",
+            "R"
+          ],
+          [
+            "G",
+            "S"
+          ],
+          [
+            "G",
+            "U"
+          ],
+          [
+            "G",
+            "W"
+          ],
+          [
+            "G",
+            "Z"
+          ],
+          [
+            "G",
+            "I1"
+          ],
+          [
+            "G",
+            "K1"
+          ],
+          [
+            "G",
+            "O1"
+          ],
+          [
+            "G",
+            "R1"
+          ],
+          [
+            "G",
+            "T1"
+          ],
+          [
+            "G",
+            "Y1"
+          ],
+          [
+            "G",
+            "I2"
+          ],
+          [
+            "G",
+            "J2"
+          ],
+          [
+            "G",
+            "M2"
+          ],
+          [
+            "G",
+            "P2"
+          ],
+          [
+            "G",
+            "Q2"
+          ],
+          [
+            "G",
+            "T2"
+          ],
+          [
+            "G",
+            "V2"
+          ],
+          [
+            "F",
+            "I"
+          ],
+          [
+            "F",
+            "R"
+          ],
+          [
+            "F",
+            "S"
+          ],
+          [
+            "F",
+            "U"
+          ],
+          [
+            "F",
+            "W"
+          ],
+          [
+            "F",
+            "Z"
+          ],
+          [
+            "F",
+            "I1"
+          ],
+          [
+            "F",
+            "K1"
+          ],
+          [
+            "F",
+            "O1"
+          ],
+          [
+            "F",
+            "R1"
+          ],
+          [
+            "F",
+            "T1"
+          ],
+          [
+            "F",
+            "Y1"
+          ],
+          [
+            "F",
+            "I2"
+          ],
+          [
+            "F",
+            "J2"
+          ],
+          [
+            "F",
+            "M2"
+          ],
+          [
+            "F",
+            "P2"
+          ],
+          [
+            "F",
+            "Q2"
+          ],
+          [
+            "F",
+            "T2"
+          ],
+          [
+            "F",
+            "V2"
+          ],
+          [
+            "I",
+            "R"
+          ],
+          [
+            "I",
+            "S"
+          ],
+          [
+            "I",
+            "U"
+          ],
+          [
+            "I",
+            "W"
+          ],
+          [
+            "I",
+            "Z"
+          ],
+          [
+            "I",
+            "I1"
+          ],
+          [
+            "I",
+            "K1"
+          ],
+          [
+            "I",
+            "O1"
+          ],
+          [
+            "I",
+            "R1"
+          ],
+          [
+            "I",
+            "T1"
+          ],
+          [
+            "I",
+            "Y1"
+          ],
+          [
+            "I",
+            "I2"
+          ],
+          [
+            "I",
+            "J2"
+          ],
+          [
+            "I",
+            "M2"
+          ],
+          [
+            "I",
+            "P2"
+          ],
+          [
+            "I",
+            "Q2"
+          ],
+          [
+            "I",
+            "T2"
+          ],
+          [
+            "I",
+            "V2"
+          ],
+          [
+            "R",
+            "S"
+          ],
+          [
+            "R",
+            "U"
+          ],
+          [
+            "R",
+            "W"
+          ],
+          [
+            "R",
+            "Z"
+          ],
+          [
+            "R",
+            "I1"
+          ],
+          [
+            "R",
+            "K1"
+          ],
+          [
+            "R",
+            "O1"
+          ],
+          [
+            "R",
+            "R1"
+          ],
+          [
+            "R",
+            "T1"
+          ],
+          [
+            "R",
+            "Y1"
+          ],
+          [
+            "R",
+            "I2"
+          ],
+          [
+            "R",
+            "J2"
+          ],
+          [
+            "R",
+            "M2"
+          ],
+          [
+            "R",
+            "P2"
+          ],
+          [
+            "R",
+            "Q2"
+          ],
+          [
+            "R",
+            "T2"
+          ],
+          [
+            "R",
+            "V2"
+          ],
+          [
+            "S",
+            "U"
+          ],
+          [
+            "S",
+            "W"
+          ],
+          [
+            "S",
+            "Z"
+          ],
+          [
+            "S",
+            "I1"
+          ],
+          [
+            "S",
+            "K1"
+          ],
+          [
+            "S",
+            "O1"
+          ],
+          [
+            "S",
+            "R1"
+          ],
+          [
+            "S",
+            "T1"
+          ],
+          [
+            "S",
+            "Y1"
+          ],
+          [
+            "S",
+            "I2"
+          ],
+          [
+            "S",
+            "J2"
+          ],
+          [
+            "S",
+            "M2"
+          ],
+          [
+            "S",
+            "P2"
+          ],
+          [
+            "S",
+            "Q2"
+          ],
+          [
+            "S",
+            "T2"
+          ],
+          [
+            "S",
+            "V2"
+          ],
+          [
+            "U",
+            "W"
+          ],
+          [
+            "U",
+            "Z"
+          ],
+          [
+            "U",
+            "I1"
+          ],
+          [
+            "U",
+            "K1"
+          ],
+          [
+            "U",
+            "O1"
+          ],
+          [
+            "U",
+            "R1"
+          ],
+          [
+            "U",
+            "T1"
+          ],
+          [
+            "U",
+            "Y1"
+          ],
+          [
+            "U",
+            "I2"
+          ],
+          [
+            "U",
+            "J2"
+          ],
+          [
+            "U",
+            "M2"
+          ],
+          [
+            "U",
+            "P2"
+          ],
+          [
+            "U",
+            "Q2"
+          ],
+          [
+            "U",
+            "T2"
+          ],
+          [
+            "U",
+            "V2"
+          ],
+          [
+            "W",
+            "Z"
+          ],
+          [
+            "W",
+            "I1"
+          ],
+          [
+            "W",
+            "K1"
+          ],
+          [
+            "W",
+            "O1"
+          ],
+          [
+            "W",
+            "R1"
+          ],
+          [
+            "W",
+            "T1"
+          ],
+          [
+            "W",
+            "Y1"
+          ],
+          [
+            "W",
+            "I2"
+          ],
+          [
+            "W",
+            "J2"
+          ],
+          [
+            "W",
+            "M2"
+          ],
+          [
+            "W",
+            "P2"
+          ],
+          [
+            "W",
+            "Q2"
+          ],
+          [
+            "W",
+            "T2"
+          ],
+          [
+            "W",
+            "V2"
+          ],
+          [
+            "Z",
+            "I1"
+          ],
+          [
+            "Z",
+            "K1"
+          ],
+          [
+            "Z",
+            "O1"
+          ],
+          [
+            "Z",
+            "R1"
+          ],
+          [
+            "Z",
+            "T1"
+          ],
+          [
+            "Z",
+            "Y1"
+          ],
+          [
+            "Z",
+            "I2"
+          ],
+          [
+            "Z",
+            "J2"
+          ],
+          [
+            "Z",
+            "M2"
+          ],
+          [
+            "Z",
+            "P2"
+          ],
+          [
+            "Z",
+            "Q2"
+          ],
+          [
+            "Z",
+            "T2"
+          ],
+          [
+            "Z",
+            "V2"
+          ],
+          [
+            "I1",
+            "K1"
+          ],
+          [
+            "I1",
+            "O1"
+          ],
+          [
+            "I1",
+            "R1"
+          ],
+          [
+            "I1",
+            "T1"
+          ],
+          [
+            "I1",
+            "Y1"
+          ],
+          [
+            "I1",
+            "I2"
+          ],
+          [
+            "I1",
+            "J2"
+          ],
+          [
+            "I1",
+            "M2"
+          ],
+          [
+            "I1",
+            "P2"
+          ],
+          [
+            "I1",
+            "Q2"
+          ],
+          [
+            "I1",
+            "T2"
+          ],
+          [
+            "I1",
+            "V2"
+          ],
+          [
+            "K1",
+            "O1"
+          ],
+          [
+            "K1",
+            "R1"
+          ],
+          [
+            "K1",
+            "T1"
+          ],
+          [
+            "K1",
+            "Y1"
+          ],
+          [
+            "K1",
+            "I2"
+          ],
+          [
+            "K1",
+            "J2"
+          ],
+          [
+            "K1",
+            "M2"
+          ],
+          [
+            "K1",
+            "P2"
+          ],
+          [
+            "K1",
+            "Q2"
+          ],
+          [
+            "K1",
+            "T2"
+          ],
+          [
+            "K1",
+            "V2"
+          ],
+          [
+            "O1",
+            "R1"
+          ],
+          [
+            "O1",
+            "T1"
+          ],
+          [
+            "O1",
+            "Y1"
+          ],
+          [
+            "O1",
+            "I2"
+          ],
+          [
+            "O1",
+            "J2"
+          ],
+          [
+            "O1",
+            "M2"
+          ],
+          [
+            "O1",
+            "P2"
+          ],
+          [
+            "O1",
+            "Q2"
+          ],
+          [
+            "O1",
+            "T2"
+          ],
+          [
+            "O1",
+            "V2"
+          ],
+          [
+            "R1",
+            "T1"
+          ],
+          [
+            "R1",
+            "Y1"
+          ],
+          [
+            "R1",
+            "I2"
+          ],
+          [
+            "R1",
+            "J2"
+          ],
+          [
+            "R1",
+            "M2"
+          ],
+          [
+            "R1",
+            "P2"
+          ],
+          [
+            "R1",
+            "Q2"
+          ],
+          [
+            "R1",
+            "T2"
+          ],
+          [
+            "R1",
+            "V2"
+          ],
+          [
+            "T1",
+            "Y1"
+          ],
+          [
+            "T1",
+            "I2"
+          ],
+          [
+            "T1",
+            "J2"
+          ],
+          [
+            "T1",
+            "M2"
+          ],
+          [
+            "T1",
+            "P2"
+          ],
+          [
+            "T1",
+            "Q2"
+          ],
+          [
+            "T1",
+            "T2"
+          ],
+          [
+            "T1",
+            "V2"
+          ],
+          [
+            "Y1",
+            "I2"
+          ],
+          [
+            "Y1",
+            "J2"
+          ],
+          [
+            "Y1",
+            "M2"
+          ],
+          [
+            "Y1",
+            "P2"
+          ],
+          [
+            "Y1",
+            "Q2"
+          ],
+          [
+            "Y1",
+            "T2"
+          ],
+          [
+            "Y1",
+            "V2"
+          ],
+          [
+            "I2",
+            "J2"
+          ],
+          [
+            "I2",
+            "M2"
+          ],
+          [
+            "I2",
+            "P2"
+          ],
+          [
+            "I2",
+            "Q2"
+          ],
+          [
+            "I2",
+            "T2"
+          ],
+          [
+            "I2",
+            "V2"
+          ],
+          [
+            "J2",
+            "M2"
+          ],
+          [
+            "J2",
+            "P2"
+          ],
+          [
+            "J2",
+            "Q2"
+          ],
+          [
+            "J2",
+            "T2"
+          ],
+          [
+            "J2",
+            "V2"
+          ],
+          [
+            "M2",
+            "P2"
+          ],
+          [
+            "M2",
+            "Q2"
+          ],
+          [
+            "M2",
+            "T2"
+          ],
+          [
+            "M2",
+            "V2"
+          ],
+          [
+            "P2",
+            "Q2"
+          ],
+          [
+            "P2",
+            "T2"
+          ],
+          [
+            "P2",
+            "V2"
+          ],
+          [
+            "Q2",
+            "T2"
+          ],
+          [
+            "Q2",
+            "V2"
+          ],
+          [
+            "T2",
+            "V2"
+          ]
+        ]
+      },
+      {
+        "id": "DM1",
+        "e_move": 7,
+        "program_index": 15,
+        "kind": "line",
+        "declared_definition": [
+          "D",
+          "M1"
+        ],
+        "incident_named_points": [
+          "M1",
+          "D",
+          "H",
+          "I"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "M1",
+            "D"
+          ],
+          [
+            "M1",
+            "H"
+          ],
+          [
+            "M1",
+            "I"
+          ],
+          [
+            "D",
+            "H"
+          ],
+          [
+            "D",
+            "I"
+          ],
+          [
+            "H",
+            "I"
+          ]
+        ]
+      },
+      {
+        "id": "IE",
+        "e_move": 8,
+        "program_index": 18,
+        "kind": "line",
+        "declared_definition": [
+          "I",
+          "E"
+        ],
+        "incident_named_points": [
+          "E",
+          "I",
+          "K",
+          "J"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "I"
+          ],
+          [
+            "E",
+            "K"
+          ],
+          [
+            "E",
+            "J"
+          ],
+          [
+            "I",
+            "K"
+          ],
+          [
+            "I",
+            "J"
+          ],
+          [
+            "K",
+            "J"
+          ]
+        ]
+      },
+      {
+        "id": "DJ",
+        "e_move": 9,
+        "program_index": 21,
+        "kind": "line",
+        "declared_definition": [
+          "D",
+          "J"
+        ],
+        "incident_named_points": [
+          "D",
+          "J",
+          "L"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "D",
+            "J"
+          ],
+          [
+            "D",
+            "L"
+          ],
+          [
+            "J",
+            "L"
+          ]
+        ]
+      },
+      {
+        "id": "KL",
+        "e_move": 10,
+        "program_index": 23,
+        "kind": "line",
+        "declared_definition": [
+          "K",
+          "L"
+        ],
+        "incident_named_points": [
+          "K",
+          "L",
+          "N",
+          "M"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "K",
+            "L"
+          ],
+          [
+            "K",
+            "N"
+          ],
+          [
+            "K",
+            "M"
+          ],
+          [
+            "L",
+            "N"
+          ],
+          [
+            "L",
+            "M"
+          ],
+          [
+            "N",
+            "M"
+          ]
+        ]
+      },
+      {
+        "id": "NI",
+        "e_move": 11,
+        "program_index": 26,
+        "kind": "line",
+        "declared_definition": [
+          "N",
+          "I"
+        ],
+        "incident_named_points": [
+          "I",
+          "N",
+          "O"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "I",
+            "N"
+          ],
+          [
+            "I",
+            "O"
+          ],
+          [
+            "N",
+            "O"
+          ]
+        ]
+      },
+      {
+        "id": "FO",
+        "e_move": 12,
+        "program_index": 28,
+        "kind": "line",
+        "declared_definition": [
+          "F",
+          "O"
+        ],
+        "incident_named_points": [
+          "F",
+          "O",
+          "A0",
+          "A1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "F",
+            "O"
+          ],
+          [
+            "F",
+            "A0"
+          ],
+          [
+            "F",
+            "A1"
+          ],
+          [
+            "O",
+            "A0"
+          ],
+          [
+            "O",
+            "A1"
+          ],
+          [
+            "A0",
+            "A1"
+          ]
+        ]
+      },
+      {
+        "id": "BA0",
+        "e_move": 13,
+        "program_index": 31,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "A0"
+        ],
+        "incident_named_points": [
+          "B",
+          "A0",
+          "R"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "A0"
+          ],
+          [
+            "B",
+            "R"
+          ],
+          [
+            "A0",
+            "R"
+          ]
+        ]
+      },
+      {
+        "id": "BA1",
+        "e_move": 14,
+        "program_index": 33,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "A1"
+        ],
+        "incident_named_points": [
+          "B",
+          "A1",
+          "S"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "A1"
+          ],
+          [
+            "B",
+            "S"
+          ],
+          [
+            "A1",
+            "S"
+          ]
+        ]
+      },
+      {
+        "id": "RM",
+        "e_move": 15,
+        "program_index": 35,
+        "kind": "line",
+        "declared_definition": [
+          "R",
+          "M"
+        ],
+        "incident_named_points": [
+          "M",
+          "R",
+          "B0",
+          "B2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "M",
+            "R"
+          ],
+          [
+            "M",
+            "B0"
+          ],
+          [
+            "M",
+            "B2"
+          ],
+          [
+            "R",
+            "B0"
+          ],
+          [
+            "R",
+            "B2"
+          ],
+          [
+            "B0",
+            "B2"
+          ]
+        ]
+      },
+      {
+        "id": "SM",
+        "e_move": 16,
+        "program_index": 38,
+        "kind": "line",
+        "declared_definition": [
+          "S",
+          "M"
+        ],
+        "incident_named_points": [
+          "M",
+          "S",
+          "B1",
+          "B3"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "M",
+            "S"
+          ],
+          [
+            "M",
+            "B1"
+          ],
+          [
+            "M",
+            "B3"
+          ],
+          [
+            "S",
+            "B1"
+          ],
+          [
+            "S",
+            "B3"
+          ],
+          [
+            "B1",
+            "B3"
+          ]
+        ]
+      },
+      {
+        "id": "EA1",
+        "e_move": 17,
+        "program_index": 41,
+        "kind": "line",
+        "declared_definition": [
+          "E",
+          "A1"
+        ],
+        "incident_named_points": [
+          "E",
+          "A1",
+          "T"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "A1"
+          ],
+          [
+            "E",
+            "T"
+          ],
+          [
+            "A1",
+            "T"
+          ]
+        ]
+      },
+      {
+        "id": "LB0",
+        "e_move": 18,
+        "program_index": 43,
+        "kind": "line",
+        "declared_definition": [
+          "L",
+          "B0"
+        ],
+        "incident_named_points": [
+          "L",
+          "B0",
+          "U"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "L",
+            "B0"
+          ],
+          [
+            "L",
+            "U"
+          ],
+          [
+            "B0",
+            "U"
+          ]
+        ]
+      },
+      {
+        "id": "UT",
+        "e_move": 19,
+        "program_index": 45,
+        "kind": "line",
+        "declared_definition": [
+          "U",
+          "T"
+        ],
+        "incident_named_points": [
+          "T",
+          "U",
+          "Ca"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "T",
+            "U"
+          ],
+          [
+            "T",
+            "Ca"
+          ],
+          [
+            "U",
+            "Ca"
+          ]
+        ]
+      },
+      {
+        "id": "EA0",
+        "e_move": 20,
+        "program_index": 47,
+        "kind": "line",
+        "declared_definition": [
+          "E",
+          "A0"
+        ],
+        "incident_named_points": [
+          "E",
+          "A0",
+          "V"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "A0"
+          ],
+          [
+            "E",
+            "V"
+          ],
+          [
+            "A0",
+            "V"
+          ]
+        ]
+      },
+      {
+        "id": "LB1",
+        "e_move": 21,
+        "program_index": 49,
+        "kind": "line",
+        "declared_definition": [
+          "L",
+          "B1"
+        ],
+        "incident_named_points": [
+          "L",
+          "B1",
+          "W"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "L",
+            "B1"
+          ],
+          [
+            "L",
+            "W"
+          ],
+          [
+            "B1",
+            "W"
+          ]
+        ]
+      },
+      {
+        "id": "VW",
+        "e_move": 22,
+        "program_index": 51,
+        "kind": "line",
+        "declared_definition": [
+          "V",
+          "W"
+        ],
+        "incident_named_points": [
+          "V",
+          "W",
+          "Cb"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "V",
+            "W"
+          ],
+          [
+            "V",
+            "Cb"
+          ],
+          [
+            "W",
+            "Cb"
+          ]
+        ]
+      },
+      {
+        "id": "B0B3",
+        "e_move": 23,
+        "program_index": 53,
+        "kind": "line",
+        "declared_definition": [
+          "B0",
+          "B3"
+        ],
+        "incident_named_points": [
+          "B0",
+          "B3",
+          "X"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B0",
+            "B3"
+          ],
+          [
+            "B0",
+            "X"
+          ],
+          [
+            "B3",
+            "X"
+          ]
+        ]
+      },
+      {
+        "id": "RX",
+        "e_move": 24,
+        "program_index": 55,
+        "kind": "line",
+        "declared_definition": [
+          "R",
+          "X"
+        ],
+        "incident_named_points": [
+          "R",
+          "X",
+          "Cc"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "R",
+            "X"
+          ],
+          [
+            "R",
+            "Cc"
+          ],
+          [
+            "X",
+            "Cc"
+          ]
+        ]
+      },
+      {
+        "id": "B2B3",
+        "e_move": 25,
+        "program_index": 57,
+        "kind": "line",
+        "declared_definition": [
+          "B2",
+          "B3"
+        ],
+        "incident_named_points": [
+          "B2",
+          "B3",
+          "Y"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B2",
+            "B3"
+          ],
+          [
+            "B2",
+            "Y"
+          ],
+          [
+            "B3",
+            "Y"
+          ]
+        ]
+      },
+      {
+        "id": "YS",
+        "e_move": 26,
+        "program_index": 59,
+        "kind": "line",
+        "declared_definition": [
+          "Y",
+          "S"
+        ],
+        "incident_named_points": [
+          "S",
+          "Y",
+          "Cd"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "S",
+            "Y"
+          ],
+          [
+            "S",
+            "Cd"
+          ],
+          [
+            "Y",
+            "Cd"
+          ]
+        ]
+      },
+      {
+        "id": "HCa",
+        "e_move": 27,
+        "program_index": 61,
+        "kind": "line",
+        "declared_definition": [
+          "H",
+          "Ca"
+        ],
+        "incident_named_points": [
+          "H",
+          "Ca",
+          "Z"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "H",
+            "Ca"
+          ],
+          [
+            "H",
+            "Z"
+          ],
+          [
+            "Ca",
+            "Z"
+          ]
+        ]
+      },
+      {
+        "id": "ZK",
+        "e_move": 28,
+        "program_index": 63,
+        "kind": "line",
+        "declared_definition": [
+          "Z",
+          "K"
+        ],
+        "incident_named_points": [
+          "K",
+          "Z",
+          "H1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "K",
+            "Z"
+          ],
+          [
+            "K",
+            "H1"
+          ],
+          [
+            "Z",
+            "H1"
+          ]
+        ]
+      },
+      {
+        "id": "B1Cc",
+        "e_move": 29,
+        "program_index": 65,
+        "kind": "line",
+        "declared_definition": [
+          "B1",
+          "Cc"
+        ],
+        "incident_named_points": [
+          "B1",
+          "Cc",
+          "I1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B1",
+            "Cc"
+          ],
+          [
+            "B1",
+            "I1"
+          ],
+          [
+            "Cc",
+            "I1"
+          ]
+        ]
+      },
+      {
+        "id": "I1H",
+        "e_move": 30,
+        "program_index": 67,
+        "kind": "line",
+        "declared_definition": [
+          "I1",
+          "H"
+        ],
+        "incident_named_points": [
+          "H",
+          "I1",
+          "J1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "H",
+            "I1"
+          ],
+          [
+            "H",
+            "J1"
+          ],
+          [
+            "I1",
+            "J1"
+          ]
+        ]
+      },
+      {
+        "id": "BJ1",
+        "e_move": 31,
+        "program_index": 69,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "J1"
+        ],
+        "incident_named_points": [
+          "B",
+          "J1",
+          "K1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "J1"
+          ],
+          [
+            "B",
+            "K1"
+          ],
+          [
+            "J1",
+            "K1"
+          ]
+        ]
+      },
+      {
+        "id": "K1H1",
+        "e_move": 32,
+        "program_index": 71,
+        "kind": "line",
+        "declared_definition": [
+          "K1",
+          "H1"
+        ],
+        "incident_named_points": [
+          "H1",
+          "K1",
+          "Da",
+          "Db"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "H1",
+            "K1"
+          ],
+          [
+            "H1",
+            "Da"
+          ],
+          [
+            "H1",
+            "Db"
+          ],
+          [
+            "K1",
+            "Da"
+          ],
+          [
+            "K1",
+            "Db"
+          ],
+          [
+            "Da",
+            "Db"
+          ]
+        ]
+      },
+      {
+        "id": "BZ",
+        "e_move": 33,
+        "program_index": 74,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "Z"
+        ],
+        "incident_named_points": [
+          "B",
+          "Z",
+          "L1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "Z"
+          ],
+          [
+            "B",
+            "L1"
+          ],
+          [
+            "Z",
+            "L1"
+          ]
+        ]
+      },
+      {
+        "id": "c_M1L1",
+        "e_move": 34,
+        "program_index": 76,
+        "kind": "circle",
+        "declared_definition": [
+          "M1",
+          "L1"
+        ],
+        "incident_named_points": [
+          "L1",
+          "N1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "M1",
+            "L1"
+          ],
+          [
+            "M1",
+            "N1"
+          ]
+        ]
+      },
+      {
+        "id": "CdN1",
+        "e_move": 35,
+        "program_index": 78,
+        "kind": "line",
+        "declared_definition": [
+          "Cd",
+          "N1"
+        ],
+        "incident_named_points": [
+          "Cd",
+          "N1",
+          "O1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "Cd",
+            "N1"
+          ],
+          [
+            "Cd",
+            "O1"
+          ],
+          [
+            "N1",
+            "O1"
+          ]
+        ]
+      },
+      {
+        "id": "HCb",
+        "e_move": 36,
+        "program_index": 80,
+        "kind": "line",
+        "declared_definition": [
+          "H",
+          "Cb"
+        ],
+        "incident_named_points": [
+          "H",
+          "Cb",
+          "P1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "H",
+            "Cb"
+          ],
+          [
+            "H",
+            "P1"
+          ],
+          [
+            "Cb",
+            "P1"
+          ]
+        ]
+      },
+      {
+        "id": "EP1",
+        "e_move": 37,
+        "program_index": 82,
+        "kind": "line",
+        "declared_definition": [
+          "E",
+          "P1"
+        ],
+        "incident_named_points": [
+          "E",
+          "P1",
+          "Q1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "P1"
+          ],
+          [
+            "E",
+            "Q1"
+          ],
+          [
+            "P1",
+            "Q1"
+          ]
+        ]
+      },
+      {
+        "id": "LQ1",
+        "e_move": 38,
+        "program_index": 84,
+        "kind": "line",
+        "declared_definition": [
+          "L",
+          "Q1"
+        ],
+        "incident_named_points": [
+          "L",
+          "Q1",
+          "R1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "L",
+            "Q1"
+          ],
+          [
+            "L",
+            "R1"
+          ],
+          [
+            "Q1",
+            "R1"
+          ]
+        ]
+      },
+      {
+        "id": "R1Cc",
+        "e_move": 39,
+        "program_index": 86,
+        "kind": "line",
+        "declared_definition": [
+          "R1",
+          "Cc"
+        ],
+        "incident_named_points": [
+          "Cc",
+          "R1",
+          "S1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "Cc",
+            "R1"
+          ],
+          [
+            "Cc",
+            "S1"
+          ],
+          [
+            "R1",
+            "S1"
+          ]
+        ]
+      },
+      {
+        "id": "CdB0",
+        "e_move": 40,
+        "program_index": 88,
+        "kind": "line",
+        "declared_definition": [
+          "Cd",
+          "B0"
+        ],
+        "incident_named_points": [
+          "B0",
+          "Cd",
+          "T1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B0",
+            "Cd"
+          ],
+          [
+            "B0",
+            "T1"
+          ],
+          [
+            "Cd",
+            "T1"
+          ]
+        ]
+      },
+      {
+        "id": "T1S1",
+        "e_move": 41,
+        "program_index": 90,
+        "kind": "line",
+        "declared_definition": [
+          "T1",
+          "S1"
+        ],
+        "incident_named_points": [
+          "S1",
+          "T1",
+          "U1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "S1",
+            "T1"
+          ],
+          [
+            "S1",
+            "U1"
+          ],
+          [
+            "T1",
+            "U1"
+          ]
+        ]
+      },
+      {
+        "id": "EU1",
+        "e_move": 42,
+        "program_index": 92,
+        "kind": "line",
+        "declared_definition": [
+          "E",
+          "U1"
+        ],
+        "incident_named_points": [
+          "E",
+          "U1",
+          "V1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "U1"
+          ],
+          [
+            "E",
+            "V1"
+          ],
+          [
+            "U1",
+            "V1"
+          ]
+        ]
+      },
+      {
+        "id": "V1O1",
+        "e_move": 43,
+        "program_index": 94,
+        "kind": "line",
+        "declared_definition": [
+          "V1",
+          "O1"
+        ],
+        "incident_named_points": [
+          "O1",
+          "V1",
+          "Dc",
+          "Dd"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "O1",
+            "V1"
+          ],
+          [
+            "O1",
+            "Dc"
+          ],
+          [
+            "O1",
+            "Dd"
+          ],
+          [
+            "V1",
+            "Dc"
+          ],
+          [
+            "V1",
+            "Dd"
+          ],
+          [
+            "Dc",
+            "Dd"
+          ]
+        ]
+      },
+      {
+        "id": "RS1",
+        "e_move": 44,
+        "program_index": 97,
+        "kind": "line",
+        "declared_definition": [
+          "R",
+          "S1"
+        ],
+        "incident_named_points": [
+          "R",
+          "S1",
+          "W1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "R",
+            "S1"
+          ],
+          [
+            "R",
+            "W1"
+          ],
+          [
+            "S1",
+            "W1"
+          ]
+        ]
+      },
+      {
+        "id": "EW1",
+        "e_move": 45,
+        "program_index": 99,
+        "kind": "line",
+        "declared_definition": [
+          "E",
+          "W1"
+        ],
+        "incident_named_points": [
+          "E",
+          "W1",
+          "X1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "W1"
+          ],
+          [
+            "E",
+            "X1"
+          ],
+          [
+            "W1",
+            "X1"
+          ]
+        ]
+      },
+      {
+        "id": "X1Z",
+        "e_move": 46,
+        "program_index": 101,
+        "kind": "line",
+        "declared_definition": [
+          "X1",
+          "Z"
+        ],
+        "incident_named_points": [
+          "Z",
+          "X1",
+          "D0",
+          "D8"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "Z",
+            "X1"
+          ],
+          [
+            "Z",
+            "D0"
+          ],
+          [
+            "Z",
+            "D8"
+          ],
+          [
+            "X1",
+            "D0"
+          ],
+          [
+            "X1",
+            "D8"
+          ],
+          [
+            "D0",
+            "D8"
+          ]
+        ]
+      },
+      {
+        "id": "BD0",
+        "e_move": 47,
+        "program_index": 104,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "D0"
+        ],
+        "incident_named_points": [
+          "B",
+          "D0",
+          "Y1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "D0"
+          ],
+          [
+            "B",
+            "Y1"
+          ],
+          [
+            "D0",
+            "Y1"
+          ]
+        ]
+      },
+      {
+        "id": "GDa",
+        "e_move": 48,
+        "program_index": 106,
+        "kind": "line",
+        "declared_definition": [
+          "G",
+          "Da"
+        ],
+        "incident_named_points": [
+          "G",
+          "Da",
+          "Z1"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "G",
+            "Da"
+          ],
+          [
+            "G",
+            "Z1"
+          ],
+          [
+            "Da",
+            "Z1"
+          ]
+        ]
+      },
+      {
+        "id": "DZ1",
+        "e_move": 49,
+        "program_index": 108,
+        "kind": "line",
+        "declared_definition": [
+          "D",
+          "Z1"
+        ],
+        "incident_named_points": [
+          "D",
+          "Z1",
+          "H2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "D",
+            "Z1"
+          ],
+          [
+            "D",
+            "H2"
+          ],
+          [
+            "Z1",
+            "H2"
+          ]
+        ]
+      },
+      {
+        "id": "H2Y1",
+        "e_move": 50,
+        "program_index": 110,
+        "kind": "line",
+        "declared_definition": [
+          "H2",
+          "Y1"
+        ],
+        "incident_named_points": [
+          "Y1",
+          "H2",
+          "E0"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "Y1",
+            "H2"
+          ],
+          [
+            "Y1",
+            "E0"
+          ],
+          [
+            "H2",
+            "E0"
+          ]
+        ]
+      },
+      {
+        "id": "BE0",
+        "e_move": 51,
+        "program_index": 112,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "E0"
+        ],
+        "incident_named_points": [
+          "B",
+          "E0",
+          "I2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "E0"
+          ],
+          [
+            "B",
+            "I2"
+          ],
+          [
+            "E0",
+            "I2"
+          ]
+        ]
+      },
+      {
+        "id": "DcD0",
+        "e_move": 52,
+        "program_index": 114,
+        "kind": "line",
+        "declared_definition": [
+          "Dc",
+          "D0"
+        ],
+        "incident_named_points": [
+          "Dc",
+          "D0",
+          "J2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "Dc",
+            "D0"
+          ],
+          [
+            "Dc",
+            "J2"
+          ],
+          [
+            "D0",
+            "J2"
+          ]
+        ]
+      },
+      {
+        "id": "AJ2",
+        "e_move": 53,
+        "program_index": 116,
+        "kind": "line",
+        "declared_definition": [
+          "A",
+          "J2"
+        ],
+        "incident_named_points": [
+          "A",
+          "J2",
+          "K2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "A",
+            "J2"
+          ],
+          [
+            "A",
+            "K2"
+          ],
+          [
+            "J2",
+            "K2"
+          ]
+        ]
+      },
+      {
+        "id": "EK2",
+        "e_move": 54,
+        "program_index": 118,
+        "kind": "line",
+        "declared_definition": [
+          "E",
+          "K2"
+        ],
+        "incident_named_points": [
+          "E",
+          "K2",
+          "L2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "K2"
+          ],
+          [
+            "E",
+            "L2"
+          ],
+          [
+            "K2",
+            "L2"
+          ]
+        ]
+      },
+      {
+        "id": "L2I2",
+        "e_move": 55,
+        "program_index": 120,
+        "kind": "line",
+        "declared_definition": [
+          "L2",
+          "I2"
+        ],
+        "incident_named_points": [
+          "I2",
+          "L2",
+          "F0"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "I2",
+            "L2"
+          ],
+          [
+            "I2",
+            "F0"
+          ],
+          [
+            "L2",
+            "F0"
+          ]
+        ]
+      },
+      {
+        "id": "BD8",
+        "e_move": 56,
+        "program_index": 122,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "D8"
+        ],
+        "incident_named_points": [
+          "B",
+          "D8",
+          "M2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "D8"
+          ],
+          [
+            "B",
+            "M2"
+          ],
+          [
+            "D8",
+            "M2"
+          ]
+        ]
+      },
+      {
+        "id": "GDb",
+        "e_move": 57,
+        "program_index": 124,
+        "kind": "line",
+        "declared_definition": [
+          "G",
+          "Db"
+        ],
+        "incident_named_points": [
+          "G",
+          "Db",
+          "N2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "G",
+            "Db"
+          ],
+          [
+            "G",
+            "N2"
+          ],
+          [
+            "Db",
+            "N2"
+          ]
+        ]
+      },
+      {
+        "id": "DN2",
+        "e_move": 58,
+        "program_index": 126,
+        "kind": "line",
+        "declared_definition": [
+          "D",
+          "N2"
+        ],
+        "incident_named_points": [
+          "D",
+          "N2",
+          "O2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "D",
+            "N2"
+          ],
+          [
+            "D",
+            "O2"
+          ],
+          [
+            "N2",
+            "O2"
+          ]
+        ]
+      },
+      {
+        "id": "M2O2",
+        "e_move": 59,
+        "program_index": 128,
+        "kind": "line",
+        "declared_definition": [
+          "M2",
+          "O2"
+        ],
+        "incident_named_points": [
+          "M2",
+          "O2",
+          "E24"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "M2",
+            "O2"
+          ],
+          [
+            "M2",
+            "E24"
+          ],
+          [
+            "O2",
+            "E24"
+          ]
+        ]
+      },
+      {
+        "id": "BE24",
+        "e_move": 60,
+        "program_index": 130,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "E24"
+        ],
+        "incident_named_points": [
+          "B",
+          "E24",
+          "P2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "E24"
+          ],
+          [
+            "B",
+            "P2"
+          ],
+          [
+            "E24",
+            "P2"
+          ]
+        ]
+      },
+      {
+        "id": "D8Dd",
+        "e_move": 61,
+        "program_index": 132,
+        "kind": "line",
+        "declared_definition": [
+          "D8",
+          "Dd"
+        ],
+        "incident_named_points": [
+          "Dd",
+          "D8",
+          "Q2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "Dd",
+            "D8"
+          ],
+          [
+            "Dd",
+            "Q2"
+          ],
+          [
+            "D8",
+            "Q2"
+          ]
+        ]
+      },
+      {
+        "id": "AQ2",
+        "e_move": 62,
+        "program_index": 134,
+        "kind": "line",
+        "declared_definition": [
+          "A",
+          "Q2"
+        ],
+        "incident_named_points": [
+          "A",
+          "Q2",
+          "R2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "A",
+            "Q2"
+          ],
+          [
+            "A",
+            "R2"
+          ],
+          [
+            "Q2",
+            "R2"
+          ]
+        ]
+      },
+      {
+        "id": "ER2",
+        "e_move": 63,
+        "program_index": 136,
+        "kind": "line",
+        "declared_definition": [
+          "E",
+          "R2"
+        ],
+        "incident_named_points": [
+          "E",
+          "R2",
+          "S2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "R2"
+          ],
+          [
+            "E",
+            "S2"
+          ],
+          [
+            "R2",
+            "S2"
+          ]
+        ]
+      },
+      {
+        "id": "S2P2",
+        "e_move": 64,
+        "program_index": 138,
+        "kind": "line",
+        "declared_definition": [
+          "S2",
+          "P2"
+        ],
+        "incident_named_points": [
+          "P2",
+          "S2",
+          "F56"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "P2",
+            "S2"
+          ],
+          [
+            "P2",
+            "F56"
+          ],
+          [
+            "S2",
+            "F56"
+          ]
+        ]
+      },
+      {
+        "id": "BF0",
+        "e_move": 65,
+        "program_index": 140,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "F0"
+        ],
+        "incident_named_points": [
+          "B",
+          "F0",
+          "T2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "F0"
+          ],
+          [
+            "B",
+            "T2"
+          ],
+          [
+            "F0",
+            "T2"
+          ]
+        ]
+      },
+      {
+        "id": "EF56",
+        "e_move": 66,
+        "program_index": 142,
+        "kind": "line",
+        "declared_definition": [
+          "E",
+          "F56"
+        ],
+        "incident_named_points": [
+          "E",
+          "F56",
+          "U2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "E",
+            "F56"
+          ],
+          [
+            "E",
+            "U2"
+          ],
+          [
+            "F56",
+            "U2"
+          ]
+        ]
+      },
+      {
+        "id": "U2T2",
+        "e_move": 67,
+        "program_index": 144,
+        "kind": "line",
+        "declared_definition": [
+          "U2",
+          "T2"
+        ],
+        "incident_named_points": [
+          "T2",
+          "U2",
+          "G0"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "T2",
+            "U2"
+          ],
+          [
+            "T2",
+            "G0"
+          ],
+          [
+            "U2",
+            "G0"
+          ]
+        ]
+      },
+      {
+        "id": "BG0",
+        "e_move": 68,
+        "program_index": 146,
+        "kind": "line",
+        "declared_definition": [
+          "B",
+          "G0"
+        ],
+        "incident_named_points": [
+          "B",
+          "G0",
+          "V2"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "B",
+            "G0"
+          ],
+          [
+            "B",
+            "V2"
+          ],
+          [
+            "G0",
+            "V2"
+          ]
+        ]
+      },
+      {
+        "id": "target_transfer",
+        "e_move": 69,
+        "program_index": 148,
+        "kind": "circle",
+        "declared_definition": [
+          "V2",
+          "C"
+        ],
+        "incident_named_points": [
+          "C",
+          "W2_minus",
+          "W2_plus"
+        ],
+        "exact_named_point_definitions": [
+          [
+            "V2",
+            "C"
+          ],
+          [
+            "V2",
+            "W2_minus"
+          ],
+          [
+            "V2",
+            "W2_plus"
+          ]
+        ]
+      }
+    ],
+    "initial_points": [
+      "B",
+      "C"
+    ],
+    "initial_drawables": [
+      "c0"
+    ],
+    "target_witnesses": [
+      [
+        "G",
+        "W2_minus"
+      ],
+      [
+        "G",
+        "W2_plus"
+      ]
+    ]
+  },
+  "full_universe_closure": {
+    "target_reached": true,
+    "reached_named_points": 83,
+    "reached_drawables": 70,
+    "reached_target_witnesses": [
+      [
+        "G",
+        "W2_minus"
+      ],
+      [
+        "G",
+        "W2_plus"
+      ]
+    ]
+  },
+  "single_deletion_trials": [
+    {
+      "removed": "a",
+      "e_move": 1,
+      "target_reached": false,
+      "reached_named_points": 4,
+      "reached_drawables": 3,
+      "available_target_points": []
+    },
+    {
+      "removed": "q",
+      "e_move": 2,
+      "target_reached": false,
+      "reached_named_points": 3,
+      "reached_drawables": 2,
+      "available_target_points": []
+    },
+    {
+      "removed": "d",
+      "e_move": 3,
+      "target_reached": false,
+      "reached_named_points": 5,
+      "reached_drawables": 3,
+      "available_target_points": []
+    },
+    {
+      "removed": "c",
+      "e_move": 4,
+      "target_reached": false,
+      "reached_named_points": 6,
+      "reached_drawables": 4,
+      "available_target_points": []
+    },
+    {
+      "removed": "BE",
+      "e_move": 5,
+      "target_reached": false,
+      "reached_named_points": 9,
+      "reached_drawables": 6,
+      "available_target_points": []
+    },
+    {
+      "removed": "b",
+      "e_move": 6,
+      "target_reached": false,
+      "reached_named_points": 10,
+      "reached_drawables": 7,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "DM1",
+      "e_move": 7,
+      "target_reached": false,
+      "reached_named_points": 10,
+      "reached_drawables": 7,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "IE",
+      "e_move": 8,
+      "target_reached": false,
+      "reached_named_points": 12,
+      "reached_drawables": 8,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "DJ",
+      "e_move": 9,
+      "target_reached": false,
+      "reached_named_points": 14,
+      "reached_drawables": 9,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "KL",
+      "e_move": 10,
+      "target_reached": false,
+      "reached_named_points": 15,
+      "reached_drawables": 10,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "NI",
+      "e_move": 11,
+      "target_reached": false,
+      "reached_named_points": 17,
+      "reached_drawables": 11,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "FO",
+      "e_move": 12,
+      "target_reached": false,
+      "reached_named_points": 18,
+      "reached_drawables": 12,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BA0",
+      "e_move": 13,
+      "target_reached": false,
+      "reached_named_points": 30,
+      "reached_drawables": 22,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BA1",
+      "e_move": 14,
+      "target_reached": false,
+      "reached_named_points": 31,
+      "reached_drawables": 23,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "RM",
+      "e_move": 15,
+      "target_reached": false,
+      "reached_named_points": 31,
+      "reached_drawables": 23,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "SM",
+      "e_move": 16,
+      "target_reached": false,
+      "reached_named_points": 32,
+      "reached_drawables": 24,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "EA1",
+      "e_move": 17,
+      "target_reached": false,
+      "reached_named_points": 46,
+      "reached_drawables": 37,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "LB0",
+      "e_move": 18,
+      "target_reached": false,
+      "reached_named_points": 46,
+      "reached_drawables": 37,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "UT",
+      "e_move": 19,
+      "target_reached": false,
+      "reached_named_points": 47,
+      "reached_drawables": 38,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "EA0",
+      "e_move": 20,
+      "target_reached": false,
+      "reached_named_points": 49,
+      "reached_drawables": 39,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "LB1",
+      "e_move": 21,
+      "target_reached": false,
+      "reached_named_points": 49,
+      "reached_drawables": 39,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "VW",
+      "e_move": 22,
+      "target_reached": false,
+      "reached_named_points": 50,
+      "reached_drawables": 40,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "B0B3",
+      "e_move": 23,
+      "target_reached": false,
+      "reached_named_points": 43,
+      "reached_drawables": 34,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "RX",
+      "e_move": 24,
+      "target_reached": false,
+      "reached_named_points": 44,
+      "reached_drawables": 35,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "B2B3",
+      "e_move": 25,
+      "target_reached": false,
+      "reached_named_points": 61,
+      "reached_drawables": 50,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "YS",
+      "e_move": 26,
+      "target_reached": false,
+      "reached_named_points": 62,
+      "reached_drawables": 51,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "HCa",
+      "e_move": 27,
+      "target_reached": false,
+      "reached_named_points": 48,
+      "reached_drawables": 39,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "ZK",
+      "e_move": 28,
+      "target_reached": false,
+      "reached_named_points": 64,
+      "reached_drawables": 53,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "B1Cc",
+      "e_move": 29,
+      "target_reached": false,
+      "reached_named_points": 62,
+      "reached_drawables": 51,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "I1H",
+      "e_move": 30,
+      "target_reached": false,
+      "reached_named_points": 63,
+      "reached_drawables": 52,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BJ1",
+      "e_move": 31,
+      "target_reached": false,
+      "reached_named_points": 64,
+      "reached_drawables": 53,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "K1H1",
+      "e_move": 32,
+      "target_reached": false,
+      "reached_named_points": 65,
+      "reached_drawables": 54,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BZ",
+      "e_move": 33,
+      "target_reached": false,
+      "reached_named_points": 64,
+      "reached_drawables": 53,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "c_M1L1",
+      "e_move": 34,
+      "target_reached": false,
+      "reached_named_points": 65,
+      "reached_drawables": 54,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "CdN1",
+      "e_move": 35,
+      "target_reached": false,
+      "reached_named_points": 66,
+      "reached_drawables": 55,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "HCb",
+      "e_move": 36,
+      "target_reached": false,
+      "reached_named_points": 51,
+      "reached_drawables": 41,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "EP1",
+      "e_move": 37,
+      "target_reached": false,
+      "reached_named_points": 52,
+      "reached_drawables": 42,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "LQ1",
+      "e_move": 38,
+      "target_reached": false,
+      "reached_named_points": 53,
+      "reached_drawables": 43,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "R1Cc",
+      "e_move": 39,
+      "target_reached": false,
+      "reached_named_points": 54,
+      "reached_drawables": 44,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "CdB0",
+      "e_move": 40,
+      "target_reached": false,
+      "reached_named_points": 64,
+      "reached_drawables": 53,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "T1S1",
+      "e_move": 41,
+      "target_reached": false,
+      "reached_named_points": 65,
+      "reached_drawables": 54,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "EU1",
+      "e_move": 42,
+      "target_reached": false,
+      "reached_named_points": 66,
+      "reached_drawables": 55,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "V1O1",
+      "e_move": 43,
+      "target_reached": false,
+      "reached_named_points": 67,
+      "reached_drawables": 56,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "RS1",
+      "e_move": 44,
+      "target_reached": false,
+      "reached_named_points": 59,
+      "reached_drawables": 48,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "EW1",
+      "e_move": 45,
+      "target_reached": false,
+      "reached_named_points": 60,
+      "reached_drawables": 49,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "X1Z",
+      "e_move": 46,
+      "target_reached": false,
+      "reached_named_points": 61,
+      "reached_drawables": 50,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BD0",
+      "e_move": 47,
+      "target_reached": false,
+      "reached_named_points": 74,
+      "reached_drawables": 62,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "GDa",
+      "e_move": 48,
+      "target_reached": false,
+      "reached_named_points": 73,
+      "reached_drawables": 61,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "DZ1",
+      "e_move": 49,
+      "target_reached": false,
+      "reached_named_points": 74,
+      "reached_drawables": 62,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "H2Y1",
+      "e_move": 50,
+      "target_reached": false,
+      "reached_named_points": 75,
+      "reached_drawables": 63,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BE0",
+      "e_move": 51,
+      "target_reached": false,
+      "reached_named_points": 76,
+      "reached_drawables": 64,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "DcD0",
+      "e_move": 52,
+      "target_reached": false,
+      "reached_named_points": 74,
+      "reached_drawables": 62,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "AJ2",
+      "e_move": 53,
+      "target_reached": false,
+      "reached_named_points": 75,
+      "reached_drawables": 63,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "EK2",
+      "e_move": 54,
+      "target_reached": false,
+      "reached_named_points": 76,
+      "reached_drawables": 64,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "L2I2",
+      "e_move": 55,
+      "target_reached": false,
+      "reached_named_points": 77,
+      "reached_drawables": 65,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BD8",
+      "e_move": 56,
+      "target_reached": false,
+      "reached_named_points": 74,
+      "reached_drawables": 62,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "GDb",
+      "e_move": 57,
+      "target_reached": false,
+      "reached_named_points": 73,
+      "reached_drawables": 61,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "DN2",
+      "e_move": 58,
+      "target_reached": false,
+      "reached_named_points": 74,
+      "reached_drawables": 62,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "M2O2",
+      "e_move": 59,
+      "target_reached": false,
+      "reached_named_points": 75,
+      "reached_drawables": 63,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BE24",
+      "e_move": 60,
+      "target_reached": false,
+      "reached_named_points": 76,
+      "reached_drawables": 64,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "D8Dd",
+      "e_move": 61,
+      "target_reached": false,
+      "reached_named_points": 74,
+      "reached_drawables": 62,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "AQ2",
+      "e_move": 62,
+      "target_reached": false,
+      "reached_named_points": 75,
+      "reached_drawables": 63,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "ER2",
+      "e_move": 63,
+      "target_reached": false,
+      "reached_named_points": 76,
+      "reached_drawables": 64,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "S2P2",
+      "e_move": 64,
+      "target_reached": false,
+      "reached_named_points": 77,
+      "reached_drawables": 65,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BF0",
+      "e_move": 65,
+      "target_reached": false,
+      "reached_named_points": 78,
+      "reached_drawables": 66,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "EF56",
+      "e_move": 66,
+      "target_reached": false,
+      "reached_named_points": 78,
+      "reached_drawables": 66,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "U2T2",
+      "e_move": 67,
+      "target_reached": false,
+      "reached_named_points": 79,
+      "reached_drawables": 67,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "BG0",
+      "e_move": 68,
+      "target_reached": false,
+      "reached_named_points": 80,
+      "reached_drawables": 68,
+      "available_target_points": [
+        "G"
+      ]
+    },
+    {
+      "removed": "target_transfer",
+      "e_move": 69,
+      "target_reached": false,
+      "reached_named_points": 81,
+      "reached_drawables": 69,
+      "available_target_points": [
+        "G"
+      ]
+    }
+  ],
+  "irreducibility_result": {
+    "method": "monotone_single_deletion_exhaustion",
+    "all_paid_draws_individually_necessary": true,
+    "removable_paid_draws": [],
+    "minimum_required_paid_draws_within_universe": 69,
+    "required_paid_draws": [
+      "a",
+      "q",
+      "d",
+      "c",
+      "BE",
+      "b",
+      "DM1",
+      "IE",
+      "DJ",
+      "KL",
+      "NI",
+      "FO",
+      "BA0",
+      "BA1",
+      "RM",
+      "SM",
+      "EA1",
+      "LB0",
+      "UT",
+      "EA0",
+      "LB1",
+      "VW",
+      "B0B3",
+      "RX",
+      "B2B3",
+      "YS",
+      "HCa",
+      "ZK",
+      "B1Cc",
+      "I1H",
+      "BJ1",
+      "K1H1",
+      "BZ",
+      "c_M1L1",
+      "CdN1",
+      "HCb",
+      "EP1",
+      "LQ1",
+      "R1Cc",
+      "CdB0",
+      "T1S1",
+      "EU1",
+      "V1O1",
+      "RS1",
+      "EW1",
+      "X1Z",
+      "BD0",
+      "GDa",
+      "DZ1",
+      "H2Y1",
+      "BE0",
+      "DcD0",
+      "AJ2",
+      "EK2",
+      "L2I2",
+      "BD8",
+      "GDb",
+      "DN2",
+      "M2O2",
+      "BE24",
+      "D8Dd",
+      "AQ2",
+      "ER2",
+      "S2P2",
+      "BF0",
+      "EF56",
+      "U2T2",
+      "BG0",
+      "target_transfer"
+    ],
+    "proof_argument": "可构造闭包关于允许使用的付费对象集合单调。若删除任意一个对象后，即使保留其余全部对象仍不能到达目标，则任何更小子集也不能到达目标；因此本对象与具名点宇宙内的最小值为 69。"
+  }
+}

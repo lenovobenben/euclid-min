@@ -1,0 +1,1543 @@
+{
+  "schema": "euclid-min-tail-cross-pair-all-point-line-search/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "full_intersection_closure_report": "full-intersection-closure-69e.json",
+    "full_intersection_closure_report_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294",
+    "geometry_algebra_ir": "geometry-algebra-baseline-69e.json",
+    "geometry_algebra_ir_sha256": "10bd1078cca58e4de894d8476101e252289b8f0220e141cd16e81008e56ed655",
+    "named_prefix_search": "tail-cross-pair-direct-search-46e.json",
+    "named_prefix_search_sha256": "fe5be2306e9a0faeb89f8d329f110d32070c4119adef6886b0180c9938e100e1"
+  },
+  "semantics": {
+    "state": "all_989_arrangement_points_available_after_46E",
+    "candidate": "one_new_line_through_two_available_arrangement_points",
+    "success": "line_intersects_encoding_circle_at_one_low_tail_and_one_high_tail_root",
+    "exactness": "128_bit_strict_real_balls_with_exact_incidence_fallback"
+  },
+  "root_sets": {
+    "low_tail": [
+      "period.e0",
+      "period.e16",
+      "work.e-low-0",
+      "work.e-low-1",
+      "period.f0",
+      "period.f32"
+    ],
+    "high_tail": [
+      "period.e8",
+      "period.e24",
+      "work.e-high-0",
+      "work.e-high-1",
+      "period.f24",
+      "period.f56"
+    ]
+  },
+  "universe": {
+    "available_points": 989,
+    "exact_coordinate_points": 763,
+    "abstract_residual_points": 226,
+    "abstract_producer_groups": [
+      {
+        "origin": "circle_circle_residual",
+        "producer": [
+          "c0",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "circle_circle_residual",
+        "producer": [
+          "q",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "B0B3",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "B0B3",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "B1Cc",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "B1Cc",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "B1Cc",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "B2B3",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "B2B3",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "B2B3",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BA0",
+          "c0"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BA0",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BA0",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BA1",
+          "c0"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BA1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BA1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BE",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BJ1",
+          "c0"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BJ1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BJ1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BZ",
+          "c0"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BZ",
+          "c_M1L1"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "BZ",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "CdB0",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "CdB0",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "CdN1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "CdN1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "CdN1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "DJ",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "DJ",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "DM1",
+          "c0"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "DM1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "DM1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EA0",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EA0",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EA0",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EA1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EA1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EA1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EP1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EP1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EP1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EU1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EU1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EU1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EW1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EW1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "EW1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "FO",
+          "c0"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "FO",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "HCa",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "HCa",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "HCa",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "HCb",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "HCb",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "I1H",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "I1H",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "I1H",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "IE",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "IE",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "K1H1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "K1H1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "K1H1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "KL",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "KL",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "LB0",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "LB0",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "LB0",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "LB1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "LB1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "LB1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "LQ1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "LQ1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "NI",
+          "c"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "NI",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "NI",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "R1Cc",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "R1Cc",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "R1Cc",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RM",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RM",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RM",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RS1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RS1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RS1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RX",
+          "c"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RX",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RX",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "RX",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "SM",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "SM",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "SM",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "T1S1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "T1S1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "T1S1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "UT",
+          "c"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "UT",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "UT",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "UT",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "V1O1",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "V1O1",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "V1O1",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "VW",
+          "c"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "VW",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "VW",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "VW",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "X1Z",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "X1Z",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "X1Z",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "YS",
+          "c"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "YS",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "YS",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "YS",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "ZK",
+          "c"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "ZK",
+          "c0"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "ZK",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "ZK",
+          "q"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "a",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "a",
+          "q"
+        ],
+        "materialized_branches": 1,
+        "abstract_branches": 1
+      },
+      {
+        "origin": "line_circle_residual",
+        "producer": [
+          "b",
+          "c_M1L1"
+        ],
+        "materialized_branches": 0,
+        "abstract_branches": 2
+      }
+    ],
+    "ambiguous_point_pairs": []
+  },
+  "summary": {
+    "cross_root_lines": 36,
+    "strict_ball_incidence_checks": 35604,
+    "strict_ball_survivors": 0,
+    "exact_coordinate_fallbacks": 0,
+    "abstract_incidence_fallbacks": 0,
+    "definitions_found": 0,
+    "new_definitions_found": 0,
+    "root_pairs_with_new_line": 0
+  },
+  "results": [
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.e8",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.e24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "work.e-high-0",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "work.e-high-1",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.f24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.f56",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.e8",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.e24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "work.e-high-0",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "work.e-high-1",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.f24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.f56",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.e8",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.e24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "work.e-high-0",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "work.e-high-1",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.f24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.f56",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.e8",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.e24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "work.e-high-0",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "work.e-high-1",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.f24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.f56",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.e8",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.e24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "work.e-high-0",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "work.e-high-1",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.f24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.f56",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.e8",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.e24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "work.e-high-0",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "work.e-high-1",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.f24",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.f56",
+      "incident_points": [],
+      "incident_exact_points": 0,
+      "incident_abstract_points": 0,
+      "definitions": [],
+      "definition_count": 0,
+      "new_definition_count": 0,
+      "existing_drawable_references": []
+    }
+  ],
+  "candidate_root_pairs": [],
+  "conclusion": {
+    "status": "exhausted_no_candidate",
+    "minimality_claim": "none"
+  },
+  "limitations": [
+    "只审计一笔直线跨两个尾部直接产生根对，圆候选另行处理。",
+    "不覆盖先加入一个新对象产生中间点、再用第二个对象联合产出的程序。",
+    "空结果只排除该有限候选类，不证明两个尾部的 18E 最优。"
+  ]
+}

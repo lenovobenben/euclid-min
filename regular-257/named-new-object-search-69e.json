@@ -1,0 +1,2116 @@
+{
+  "schema": "euclid-min-regular-257-named-new-object-search-report/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "semantic_dependency_report": "semantic-dependencies-69e.json",
+    "semantic_dependency_report_sha256": "f515d3f8735f3c33b868fbd7469f2a7d941cf1f3dda586176f9af7079e845ba1",
+    "full_intersection_closure_report": "full-intersection-closure-69e.json",
+    "full_intersection_closure_report_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294"
+  },
+  "semantics": {
+    "point_universe": "the_83_named_points",
+    "old_drawable_universe": "the_69_verified_paid_drawables",
+    "new_drawables": "one_new_line_or_circle_defined_by_named_points",
+    "candidate_pruning": "只保留经过额外具名点的新对象；只经过定义点的对象不能在具名点闭包中产生新点。",
+    "limitations": [
+      "新对象与旧对象产生的未命名交点尚未纳入本轮搜索。",
+      "本轮只加入一个新对象；结论不是所有 68E 构造的不存在性证明。"
+    ]
+  },
+  "enumeration": {
+    "named_points": 83,
+    "point_pairs": 3403,
+    "point_triples": 91881,
+    "collinear_triples": 2786,
+    "rich_line_geometries": 69,
+    "new_rich_line_candidates": 4,
+    "new_rich_circle_candidates": 143,
+    "circle_radius_pairs": 275643,
+    "circle_ball_excluded_pairs": 274718,
+    "circle_exact_distance_checks": 925
+  },
+  "collinearity_filter": {
+    "kind": "rigorous_real_ball_determinant",
+    "precision_bits": 128,
+    "ball_excluded_triples": 18875,
+    "exact_collinearity_checks": 73006
+  },
+  "candidates": [
+    {
+      "id": "NL0001",
+      "kind": "line",
+      "canonical_definition": [
+        "B",
+        "D"
+      ],
+      "incident_named_points": [
+        "B",
+        "D",
+        "F"
+      ],
+      "definition_count": 3
+    },
+    {
+      "id": "NL0002",
+      "kind": "line",
+      "canonical_definition": [
+        "D",
+        "R"
+      ],
+      "incident_named_points": [
+        "D",
+        "R",
+        "T"
+      ],
+      "definition_count": 3
+    },
+    {
+      "id": "NL0003",
+      "kind": "line",
+      "canonical_definition": [
+        "D",
+        "S"
+      ],
+      "incident_named_points": [
+        "D",
+        "S",
+        "V"
+      ],
+      "definition_count": 3
+    },
+    {
+      "id": "NL0004",
+      "kind": "line",
+      "canonical_definition": [
+        "E",
+        "F"
+      ],
+      "incident_named_points": [
+        "E",
+        "F",
+        "H"
+      ],
+      "definition_count": 3
+    },
+    {
+      "id": "NC0001",
+      "kind": "circle",
+      "canonical_definition": [
+        "A",
+        "G"
+      ],
+      "center": "A",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0002",
+      "kind": "circle",
+      "canonical_definition": [
+        "A",
+        "q_c0_left"
+      ],
+      "center": "A",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0003",
+      "kind": "circle",
+      "canonical_definition": [
+        "B",
+        "D"
+      ],
+      "center": "B",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0004",
+      "kind": "circle",
+      "canonical_definition": [
+        "B",
+        "G"
+      ],
+      "center": "B",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0005",
+      "kind": "circle",
+      "canonical_definition": [
+        "B",
+        "K"
+      ],
+      "center": "B",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0006",
+      "kind": "circle",
+      "canonical_definition": [
+        "B",
+        "L1"
+      ],
+      "center": "B",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0007",
+      "kind": "circle",
+      "canonical_definition": [
+        "C",
+        "D"
+      ],
+      "center": "C",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0008",
+      "kind": "circle",
+      "canonical_definition": [
+        "C",
+        "K"
+      ],
+      "center": "C",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0009",
+      "kind": "circle",
+      "canonical_definition": [
+        "C",
+        "L1"
+      ],
+      "center": "C",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0010",
+      "kind": "circle",
+      "canonical_definition": [
+        "D",
+        "B"
+      ],
+      "center": "D",
+      "incident_named_points": [
+        "B",
+        "C",
+        "F"
+      ],
+      "definition_count": 3
+    },
+    {
+      "id": "NC0011",
+      "kind": "circle",
+      "canonical_definition": [
+        "D",
+        "M1"
+      ],
+      "center": "D",
+      "incident_named_points": [
+        "M1",
+        "G"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0012",
+      "kind": "circle",
+      "canonical_definition": [
+        "E",
+        "B"
+      ],
+      "center": "E",
+      "incident_named_points": [
+        "B",
+        "C",
+        "G"
+      ],
+      "definition_count": 3
+    },
+    {
+      "id": "NC0013",
+      "kind": "circle",
+      "canonical_definition": [
+        "E",
+        "M1"
+      ],
+      "center": "E",
+      "incident_named_points": [
+        "M1",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0014",
+      "kind": "circle",
+      "canonical_definition": [
+        "F",
+        "B"
+      ],
+      "center": "F",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0015",
+      "kind": "circle",
+      "canonical_definition": [
+        "F",
+        "W2_minus"
+      ],
+      "center": "F",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0016",
+      "kind": "circle",
+      "canonical_definition": [
+        "G",
+        "B"
+      ],
+      "center": "G",
+      "incident_named_points": [
+        "B",
+        "M1",
+        "H"
+      ],
+      "definition_count": 3
+    },
+    {
+      "id": "NC0017",
+      "kind": "circle",
+      "canonical_definition": [
+        "G",
+        "W2_minus"
+      ],
+      "center": "G",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0018",
+      "kind": "circle",
+      "canonical_definition": [
+        "H1",
+        "D"
+      ],
+      "center": "H1",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0019",
+      "kind": "circle",
+      "canonical_definition": [
+        "H1",
+        "G"
+      ],
+      "center": "H1",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0020",
+      "kind": "circle",
+      "canonical_definition": [
+        "H1",
+        "K"
+      ],
+      "center": "H1",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0021",
+      "kind": "circle",
+      "canonical_definition": [
+        "H1",
+        "L1"
+      ],
+      "center": "H1",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0022",
+      "kind": "circle",
+      "canonical_definition": [
+        "H1",
+        "q_c0_left"
+      ],
+      "center": "H1",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0023",
+      "kind": "circle",
+      "canonical_definition": [
+        "H2",
+        "D"
+      ],
+      "center": "H2",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0024",
+      "kind": "circle",
+      "canonical_definition": [
+        "H2",
+        "G"
+      ],
+      "center": "H2",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0025",
+      "kind": "circle",
+      "canonical_definition": [
+        "H2",
+        "K"
+      ],
+      "center": "H2",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0026",
+      "kind": "circle",
+      "canonical_definition": [
+        "H2",
+        "L1"
+      ],
+      "center": "H2",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0027",
+      "kind": "circle",
+      "canonical_definition": [
+        "H2",
+        "q_c0_left"
+      ],
+      "center": "H2",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0028",
+      "kind": "circle",
+      "canonical_definition": [
+        "I",
+        "B"
+      ],
+      "center": "I",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0029",
+      "kind": "circle",
+      "canonical_definition": [
+        "I",
+        "W2_minus"
+      ],
+      "center": "I",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0030",
+      "kind": "circle",
+      "canonical_definition": [
+        "I1",
+        "B"
+      ],
+      "center": "I1",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0031",
+      "kind": "circle",
+      "canonical_definition": [
+        "I1",
+        "W2_minus"
+      ],
+      "center": "I1",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0032",
+      "kind": "circle",
+      "canonical_definition": [
+        "I2",
+        "B"
+      ],
+      "center": "I2",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0033",
+      "kind": "circle",
+      "canonical_definition": [
+        "I2",
+        "W2_minus"
+      ],
+      "center": "I2",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0034",
+      "kind": "circle",
+      "canonical_definition": [
+        "J",
+        "D"
+      ],
+      "center": "J",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0035",
+      "kind": "circle",
+      "canonical_definition": [
+        "J",
+        "G"
+      ],
+      "center": "J",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0036",
+      "kind": "circle",
+      "canonical_definition": [
+        "J",
+        "K"
+      ],
+      "center": "J",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0037",
+      "kind": "circle",
+      "canonical_definition": [
+        "J",
+        "L1"
+      ],
+      "center": "J",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0038",
+      "kind": "circle",
+      "canonical_definition": [
+        "J",
+        "q_c0_left"
+      ],
+      "center": "J",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0039",
+      "kind": "circle",
+      "canonical_definition": [
+        "J2",
+        "B"
+      ],
+      "center": "J2",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0040",
+      "kind": "circle",
+      "canonical_definition": [
+        "J2",
+        "W2_minus"
+      ],
+      "center": "J2",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0041",
+      "kind": "circle",
+      "canonical_definition": [
+        "K1",
+        "B"
+      ],
+      "center": "K1",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0042",
+      "kind": "circle",
+      "canonical_definition": [
+        "K1",
+        "W2_minus"
+      ],
+      "center": "K1",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0043",
+      "kind": "circle",
+      "canonical_definition": [
+        "L2",
+        "D"
+      ],
+      "center": "L2",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0044",
+      "kind": "circle",
+      "canonical_definition": [
+        "L2",
+        "G"
+      ],
+      "center": "L2",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0045",
+      "kind": "circle",
+      "canonical_definition": [
+        "L2",
+        "K"
+      ],
+      "center": "L2",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0046",
+      "kind": "circle",
+      "canonical_definition": [
+        "L2",
+        "L1"
+      ],
+      "center": "L2",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0047",
+      "kind": "circle",
+      "canonical_definition": [
+        "L2",
+        "q_c0_left"
+      ],
+      "center": "L2",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0048",
+      "kind": "circle",
+      "canonical_definition": [
+        "M",
+        "B"
+      ],
+      "center": "M",
+      "incident_named_points": [
+        "B",
+        "N"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0049",
+      "kind": "circle",
+      "canonical_definition": [
+        "M",
+        "D"
+      ],
+      "center": "M",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0050",
+      "kind": "circle",
+      "canonical_definition": [
+        "M",
+        "G"
+      ],
+      "center": "M",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0051",
+      "kind": "circle",
+      "canonical_definition": [
+        "M",
+        "K"
+      ],
+      "center": "M",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0052",
+      "kind": "circle",
+      "canonical_definition": [
+        "M",
+        "L1"
+      ],
+      "center": "M",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0053",
+      "kind": "circle",
+      "canonical_definition": [
+        "M",
+        "q_c0_left"
+      ],
+      "center": "M",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0054",
+      "kind": "circle",
+      "canonical_definition": [
+        "M1",
+        "D"
+      ],
+      "center": "M1",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0055",
+      "kind": "circle",
+      "canonical_definition": [
+        "M1",
+        "G"
+      ],
+      "center": "M1",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0056",
+      "kind": "circle",
+      "canonical_definition": [
+        "M1",
+        "K"
+      ],
+      "center": "M1",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0057",
+      "kind": "circle",
+      "canonical_definition": [
+        "M1",
+        "q_c0_left"
+      ],
+      "center": "M1",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0058",
+      "kind": "circle",
+      "canonical_definition": [
+        "M2",
+        "B"
+      ],
+      "center": "M2",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0059",
+      "kind": "circle",
+      "canonical_definition": [
+        "M2",
+        "W2_minus"
+      ],
+      "center": "M2",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0060",
+      "kind": "circle",
+      "canonical_definition": [
+        "O",
+        "D"
+      ],
+      "center": "O",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0061",
+      "kind": "circle",
+      "canonical_definition": [
+        "O",
+        "G"
+      ],
+      "center": "O",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0062",
+      "kind": "circle",
+      "canonical_definition": [
+        "O",
+        "K"
+      ],
+      "center": "O",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0063",
+      "kind": "circle",
+      "canonical_definition": [
+        "O",
+        "L1"
+      ],
+      "center": "O",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0064",
+      "kind": "circle",
+      "canonical_definition": [
+        "O",
+        "q_c0_left"
+      ],
+      "center": "O",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0065",
+      "kind": "circle",
+      "canonical_definition": [
+        "O1",
+        "B"
+      ],
+      "center": "O1",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0066",
+      "kind": "circle",
+      "canonical_definition": [
+        "O1",
+        "W2_minus"
+      ],
+      "center": "O1",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0067",
+      "kind": "circle",
+      "canonical_definition": [
+        "O2",
+        "D"
+      ],
+      "center": "O2",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0068",
+      "kind": "circle",
+      "canonical_definition": [
+        "O2",
+        "G"
+      ],
+      "center": "O2",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0069",
+      "kind": "circle",
+      "canonical_definition": [
+        "O2",
+        "K"
+      ],
+      "center": "O2",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0070",
+      "kind": "circle",
+      "canonical_definition": [
+        "O2",
+        "L1"
+      ],
+      "center": "O2",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0071",
+      "kind": "circle",
+      "canonical_definition": [
+        "O2",
+        "q_c0_left"
+      ],
+      "center": "O2",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0072",
+      "kind": "circle",
+      "canonical_definition": [
+        "P1",
+        "D"
+      ],
+      "center": "P1",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0073",
+      "kind": "circle",
+      "canonical_definition": [
+        "P1",
+        "G"
+      ],
+      "center": "P1",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0074",
+      "kind": "circle",
+      "canonical_definition": [
+        "P1",
+        "K"
+      ],
+      "center": "P1",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0075",
+      "kind": "circle",
+      "canonical_definition": [
+        "P1",
+        "L1"
+      ],
+      "center": "P1",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0076",
+      "kind": "circle",
+      "canonical_definition": [
+        "P1",
+        "q_c0_left"
+      ],
+      "center": "P1",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0077",
+      "kind": "circle",
+      "canonical_definition": [
+        "P2",
+        "B"
+      ],
+      "center": "P2",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0078",
+      "kind": "circle",
+      "canonical_definition": [
+        "P2",
+        "W2_minus"
+      ],
+      "center": "P2",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0079",
+      "kind": "circle",
+      "canonical_definition": [
+        "Q2",
+        "B"
+      ],
+      "center": "Q2",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0080",
+      "kind": "circle",
+      "canonical_definition": [
+        "Q2",
+        "W2_minus"
+      ],
+      "center": "Q2",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0081",
+      "kind": "circle",
+      "canonical_definition": [
+        "R",
+        "B"
+      ],
+      "center": "R",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0082",
+      "kind": "circle",
+      "canonical_definition": [
+        "R",
+        "W2_minus"
+      ],
+      "center": "R",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0083",
+      "kind": "circle",
+      "canonical_definition": [
+        "R1",
+        "B"
+      ],
+      "center": "R1",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0084",
+      "kind": "circle",
+      "canonical_definition": [
+        "R1",
+        "W2_minus"
+      ],
+      "center": "R1",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0085",
+      "kind": "circle",
+      "canonical_definition": [
+        "S",
+        "B"
+      ],
+      "center": "S",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0086",
+      "kind": "circle",
+      "canonical_definition": [
+        "S",
+        "W2_minus"
+      ],
+      "center": "S",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0087",
+      "kind": "circle",
+      "canonical_definition": [
+        "S2",
+        "D"
+      ],
+      "center": "S2",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0088",
+      "kind": "circle",
+      "canonical_definition": [
+        "S2",
+        "G"
+      ],
+      "center": "S2",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0089",
+      "kind": "circle",
+      "canonical_definition": [
+        "S2",
+        "K"
+      ],
+      "center": "S2",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0090",
+      "kind": "circle",
+      "canonical_definition": [
+        "S2",
+        "L1"
+      ],
+      "center": "S2",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0091",
+      "kind": "circle",
+      "canonical_definition": [
+        "S2",
+        "q_c0_left"
+      ],
+      "center": "S2",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0092",
+      "kind": "circle",
+      "canonical_definition": [
+        "T",
+        "D"
+      ],
+      "center": "T",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0093",
+      "kind": "circle",
+      "canonical_definition": [
+        "T",
+        "G"
+      ],
+      "center": "T",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0094",
+      "kind": "circle",
+      "canonical_definition": [
+        "T",
+        "K"
+      ],
+      "center": "T",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0095",
+      "kind": "circle",
+      "canonical_definition": [
+        "T",
+        "L1"
+      ],
+      "center": "T",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0096",
+      "kind": "circle",
+      "canonical_definition": [
+        "T",
+        "q_c0_left"
+      ],
+      "center": "T",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0097",
+      "kind": "circle",
+      "canonical_definition": [
+        "T1",
+        "B"
+      ],
+      "center": "T1",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0098",
+      "kind": "circle",
+      "canonical_definition": [
+        "T1",
+        "W2_minus"
+      ],
+      "center": "T1",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0099",
+      "kind": "circle",
+      "canonical_definition": [
+        "T2",
+        "B"
+      ],
+      "center": "T2",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0100",
+      "kind": "circle",
+      "canonical_definition": [
+        "T2",
+        "W2_minus"
+      ],
+      "center": "T2",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0101",
+      "kind": "circle",
+      "canonical_definition": [
+        "U",
+        "B"
+      ],
+      "center": "U",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0102",
+      "kind": "circle",
+      "canonical_definition": [
+        "U",
+        "W2_minus"
+      ],
+      "center": "U",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0103",
+      "kind": "circle",
+      "canonical_definition": [
+        "U2",
+        "D"
+      ],
+      "center": "U2",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0104",
+      "kind": "circle",
+      "canonical_definition": [
+        "U2",
+        "G"
+      ],
+      "center": "U2",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0105",
+      "kind": "circle",
+      "canonical_definition": [
+        "U2",
+        "K"
+      ],
+      "center": "U2",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0106",
+      "kind": "circle",
+      "canonical_definition": [
+        "U2",
+        "L1"
+      ],
+      "center": "U2",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0107",
+      "kind": "circle",
+      "canonical_definition": [
+        "U2",
+        "q_c0_left"
+      ],
+      "center": "U2",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0108",
+      "kind": "circle",
+      "canonical_definition": [
+        "V",
+        "D"
+      ],
+      "center": "V",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0109",
+      "kind": "circle",
+      "canonical_definition": [
+        "V",
+        "G"
+      ],
+      "center": "V",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0110",
+      "kind": "circle",
+      "canonical_definition": [
+        "V",
+        "K"
+      ],
+      "center": "V",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0111",
+      "kind": "circle",
+      "canonical_definition": [
+        "V",
+        "L1"
+      ],
+      "center": "V",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0112",
+      "kind": "circle",
+      "canonical_definition": [
+        "V",
+        "q_c0_left"
+      ],
+      "center": "V",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0113",
+      "kind": "circle",
+      "canonical_definition": [
+        "V1",
+        "D"
+      ],
+      "center": "V1",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0114",
+      "kind": "circle",
+      "canonical_definition": [
+        "V1",
+        "G"
+      ],
+      "center": "V1",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0115",
+      "kind": "circle",
+      "canonical_definition": [
+        "V1",
+        "K"
+      ],
+      "center": "V1",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0116",
+      "kind": "circle",
+      "canonical_definition": [
+        "V1",
+        "L1"
+      ],
+      "center": "V1",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0117",
+      "kind": "circle",
+      "canonical_definition": [
+        "V1",
+        "q_c0_left"
+      ],
+      "center": "V1",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0118",
+      "kind": "circle",
+      "canonical_definition": [
+        "V2",
+        "B"
+      ],
+      "center": "V2",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0119",
+      "kind": "circle",
+      "canonical_definition": [
+        "W",
+        "B"
+      ],
+      "center": "W",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0120",
+      "kind": "circle",
+      "canonical_definition": [
+        "W",
+        "W2_minus"
+      ],
+      "center": "W",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0121",
+      "kind": "circle",
+      "canonical_definition": [
+        "X",
+        "D"
+      ],
+      "center": "X",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0122",
+      "kind": "circle",
+      "canonical_definition": [
+        "X",
+        "G"
+      ],
+      "center": "X",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0123",
+      "kind": "circle",
+      "canonical_definition": [
+        "X",
+        "K"
+      ],
+      "center": "X",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0124",
+      "kind": "circle",
+      "canonical_definition": [
+        "X",
+        "L1"
+      ],
+      "center": "X",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0125",
+      "kind": "circle",
+      "canonical_definition": [
+        "X",
+        "q_c0_left"
+      ],
+      "center": "X",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0126",
+      "kind": "circle",
+      "canonical_definition": [
+        "X1",
+        "D"
+      ],
+      "center": "X1",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0127",
+      "kind": "circle",
+      "canonical_definition": [
+        "X1",
+        "G"
+      ],
+      "center": "X1",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0128",
+      "kind": "circle",
+      "canonical_definition": [
+        "X1",
+        "K"
+      ],
+      "center": "X1",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0129",
+      "kind": "circle",
+      "canonical_definition": [
+        "X1",
+        "L1"
+      ],
+      "center": "X1",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0130",
+      "kind": "circle",
+      "canonical_definition": [
+        "X1",
+        "q_c0_left"
+      ],
+      "center": "X1",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0131",
+      "kind": "circle",
+      "canonical_definition": [
+        "Y",
+        "D"
+      ],
+      "center": "Y",
+      "incident_named_points": [
+        "D",
+        "E"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0132",
+      "kind": "circle",
+      "canonical_definition": [
+        "Y",
+        "G"
+      ],
+      "center": "Y",
+      "incident_named_points": [
+        "G",
+        "F"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0133",
+      "kind": "circle",
+      "canonical_definition": [
+        "Y",
+        "K"
+      ],
+      "center": "Y",
+      "incident_named_points": [
+        "K",
+        "L"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0134",
+      "kind": "circle",
+      "canonical_definition": [
+        "Y",
+        "L1"
+      ],
+      "center": "Y",
+      "incident_named_points": [
+        "L1",
+        "N1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0135",
+      "kind": "circle",
+      "canonical_definition": [
+        "Y",
+        "q_c0_left"
+      ],
+      "center": "Y",
+      "incident_named_points": [
+        "q_c0_left",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0136",
+      "kind": "circle",
+      "canonical_definition": [
+        "Y1",
+        "B"
+      ],
+      "center": "Y1",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0137",
+      "kind": "circle",
+      "canonical_definition": [
+        "Y1",
+        "W2_minus"
+      ],
+      "center": "Y1",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0138",
+      "kind": "circle",
+      "canonical_definition": [
+        "Z",
+        "B"
+      ],
+      "center": "Z",
+      "incident_named_points": [
+        "B",
+        "M1"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0139",
+      "kind": "circle",
+      "canonical_definition": [
+        "Z",
+        "W2_minus"
+      ],
+      "center": "Z",
+      "incident_named_points": [
+        "W2_minus",
+        "W2_plus"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0140",
+      "kind": "circle",
+      "canonical_definition": [
+        "q_c0_left",
+        "B"
+      ],
+      "center": "q_c0_left",
+      "incident_named_points": [
+        "B",
+        "C"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0141",
+      "kind": "circle",
+      "canonical_definition": [
+        "q_c0_left",
+        "M1"
+      ],
+      "center": "q_c0_left",
+      "incident_named_points": [
+        "M1",
+        "q_c0_right"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0142",
+      "kind": "circle",
+      "canonical_definition": [
+        "q_c0_right",
+        "B"
+      ],
+      "center": "q_c0_right",
+      "incident_named_points": [
+        "B",
+        "C"
+      ],
+      "definition_count": 2
+    },
+    {
+      "id": "NC0143",
+      "kind": "circle",
+      "canonical_definition": [
+        "q_c0_right",
+        "M1"
+      ],
+      "center": "q_c0_right",
+      "incident_named_points": [
+        "M1",
+        "q_c0_left"
+      ],
+      "definition_count": 2
+    }
+  ],
+  "search": {
+    "target_score": 68,
+    "removed_old_draws": 2,
+    "added_new_draws": 1,
+    "removed_pairs_tested": 2346,
+    "next_removed_pair_index": 2346,
+    "candidate_count": 147,
+    "closure_trials": 344862,
+    "constructible_candidate_trials": 155405,
+    "solutions": [],
+    "solutions_found": 0,
+    "status": "exhausted_no_solution"
+  },
+  "conclusion": "若结果为空，则在具名点定义的单新对象候选宇宙内，不存在删除至少两个旧对象而取得净降步的方案。"
+}

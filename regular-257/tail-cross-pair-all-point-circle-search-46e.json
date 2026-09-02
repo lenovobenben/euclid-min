@@ -1,0 +1,859 @@
+{
+  "schema": "euclid-min-tail-cross-pair-all-point-circle-search/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "full_intersection_closure_report": "full-intersection-closure-69e.json",
+    "full_intersection_closure_report_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294",
+    "geometry_algebra_ir": "geometry-algebra-baseline-69e.json",
+    "geometry_algebra_ir_sha256": "10bd1078cca58e4de894d8476101e252289b8f0220e141cd16e81008e56ed655",
+    "all_point_line_search": "tail-cross-pair-all-point-line-search-46e.json",
+    "all_point_line_search_sha256": "bca04fc588d722f5f1eb7ae714559c5e3c13b84ad5ec3221f1fa8d69a3d17223"
+  },
+  "semantics": {
+    "state": "all_989_arrangement_points_available_after_46E",
+    "candidate": "one_new_circle_with_available_center_and_available_through_point",
+    "necessary_center_condition": "center_lies_on_perpendicular_bisector_of_cross_tail_root_pair",
+    "exactness": "128_bit_strict_real_balls_with_exact_incidence_and_geometry_identity_fallback"
+  },
+  "root_sets": {
+    "low_tail": [
+      "period.e0",
+      "period.e16",
+      "work.e-low-0",
+      "work.e-low-1",
+      "period.f0",
+      "period.f32"
+    ],
+    "high_tail": [
+      "period.e8",
+      "period.e24",
+      "work.e-high-0",
+      "work.e-high-1",
+      "period.f24",
+      "period.f56"
+    ]
+  },
+  "universe": {
+    "available_points": 989,
+    "exact_coordinate_points": 763,
+    "abstract_residual_points": 226,
+    "ambiguous_point_pairs": []
+  },
+  "summary": {
+    "cross_root_pairs": 36,
+    "strict_ball_center_checks": 35604,
+    "strict_ball_survivors": 36,
+    "exact_center_fallbacks": 36,
+    "abstract_center_fallbacks": 0,
+    "center_incidences": 36,
+    "existing_circle_center_incidences": 36,
+    "new_exact_center_incidences": 0,
+    "new_abstract_center_incidences": 0,
+    "root_pairs_requiring_through_point_audit": 0
+  },
+  "results": [
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.e8",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.e24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "work.e-high-0",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "work.e-high-1",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.f24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.f56",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.e8",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.e24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "work.e-high-0",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "work.e-high-1",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.f24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.f56",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.e8",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.e24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "work.e-high-0",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "work.e-high-1",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.f24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.f56",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.e8",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.e24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "work.e-high-0",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "work.e-high-1",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.f24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.f56",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.e8",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.e24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "work.e-high-0",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "work.e-high-1",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.f24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.f56",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.e8",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.e24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "work.e-high-0",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "work.e-high-1",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.f24",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.f56",
+      "center_points": [
+        "A"
+      ],
+      "exact_center_points": [
+        "A"
+      ],
+      "abstract_center_points": [],
+      "existing_circle_centers": [
+        {
+          "center": "A",
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "new_exact_center_points": [],
+      "new_abstract_center_points": [],
+      "unresolved_new_center_count": 0
+    }
+  ],
+  "candidate_root_pairs": [],
+  "conclusion": {
+    "status": "exhausted_no_new_circle_center",
+    "minimality_claim": "none"
+  },
+  "limitations": [
+    "若发现新圆心，还必须继续证明存在同半径的可用圆上点；本报告不会把圆心条件误当充分条件。",
+    "只审计一笔圆跨两个尾部直接产生根对，不覆盖两笔或更多新对象的联合程序。",
+    "空结果只排除该有限候选类，不证明两个尾部的 18E 最优。"
+  ]
+}

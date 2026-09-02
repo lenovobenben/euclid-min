@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/all-point-circle-search.schema.json",
+  "title": "Euclid-Min regular-257 all-point circle search v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source", "semantics", "universe", "parallelization", "search"],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-regular-257-all-point-circle-search/v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256",
+        "candidate_frontier_report",
+        "candidate_frontier_report_sha256",
+        "residual_point_ball_audit",
+        "residual_point_ball_audit_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure_report": {
+          "const": "full-intersection-closure-69e.json"
+        },
+        "full_intersection_closure_report_sha256": { "$ref": "#/$defs/sha256" },
+        "candidate_frontier_report": {
+          "const": "full-point-candidate-frontier-69e.json"
+        },
+        "candidate_frontier_report_sha256": { "$ref": "#/$defs/sha256" },
+        "residual_point_ball_audit": {
+          "const": "residual-point-ball-audit-68e.json"
+        },
+        "residual_point_ball_audit_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "removed_paid_drawables",
+        "candidate_e_move",
+        "candidate_family",
+        "target_events",
+        "strictness",
+        "limitations"
+      ],
+      "properties": {
+        "removed_paid_drawables": { "const": ["BG0", "target_transfer"] },
+        "candidate_e_move": { "const": 68 },
+        "candidate_family": {
+          "const": "one_circle_with_distinct_available_center_and_through_point"
+        },
+        "target_events": {
+          "const": [
+            "the_two_new_intersections_of_candidate_circle_and_c0_are_adjacent",
+            "a_new_candidate_intersection_on_c0_is_adjacent_to_an_already_available_point_on_c0"
+          ]
+        },
+        "strictness": { "type": "string", "minLength": 1 },
+        "limitations": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "available_points",
+        "exact_coordinate_points",
+        "strict_ball_residual_points",
+        "available_target_circle_points",
+        "existing_target_carriers",
+        "circle_definitions"
+      ],
+      "properties": {
+        "available_points": { "const": 2103 },
+        "exact_coordinate_points": { "const": 1759 },
+        "strict_ball_residual_points": { "const": 344 },
+        "available_target_circle_points": { "const": 115 },
+        "existing_target_carriers": { "const": 67 },
+        "circle_definitions": { "const": 4420506 }
+      }
+    },
+    "parallelization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workers", "chunk_size", "chunk_count"],
+      "properties": {
+        "workers": { "const": 8 },
+        "chunk_size": { "const": 1000 },
+        "chunk_count": { "const": 4421 }
+      }
+    },
+    "search": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "definitions_tested",
+        "ball_relation_checks",
+        "ball_excluded_definitions",
+        "redrawn_target_circle_definitions",
+        "redrawn_target_circle_count",
+        "unresolved_definitions",
+        "unresolved_count",
+        "solutions_found",
+        "status"
+      ],
+      "properties": {
+        "definitions_tested": { "const": 4420506 },
+        "ball_relation_checks": { "const": 605593682 },
+        "ball_excluded_definitions": { "const": 4420391 },
+        "redrawn_target_circle_definitions": {
+          "type": "array",
+          "minItems": 115,
+          "maxItems": 115,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["definition_index", "center", "through"],
+            "properties": {
+              "definition_index": { "type": "integer", "minimum": 0, "maximum": 4420505 },
+              "center": { "const": "C" },
+              "through": { "$ref": "#/$defs/id" }
+            }
+          }
+        },
+        "redrawn_target_circle_count": { "const": 115 },
+        "unresolved_definitions": { "type": "array", "maxItems": 0 },
+        "unresolved_count": { "const": 0 },
+        "solutions_found": { "const": 0 },
+        "status": { "const": "exhausted_no_solution" }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    }
+  }
+}

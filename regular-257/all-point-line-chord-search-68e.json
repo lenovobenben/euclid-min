@@ -1,0 +1,46 @@
+{
+  "schema": "euclid-min-regular-257-all-point-line-chord-search/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "full_intersection_closure_report": "full-intersection-closure-69e.json",
+    "full_intersection_closure_report_sha256": "c22dc2fec78d560cfd112de01698506ff94e2ecc372897f2c4243cb5c6f28294",
+    "candidate_frontier_report": "full-point-candidate-frontier-69e.json",
+    "candidate_frontier_report_sha256": "fabd29e6fe05e32b9ec5e102aa67802819a88e060df2be3b5c5ca4f4ed121bf8",
+    "residual_point_ball_audit": "residual-point-ball-audit-68e.json",
+    "residual_point_ball_audit_sha256": "c2bd9afe37f3a17bc3e9909d5b26b73aa982a280adb2ccd509816fa997c49afa"
+  },
+  "semantics": {
+    "removed_paid_drawables": [
+      "BG0",
+      "target_transfer"
+    ],
+    "candidate_e_move": 68,
+    "candidate_family": "one_line_through_two_distinct_available_points",
+    "target_event": "the_two_new_intersections_of_candidate_line_and_c0_are_adjacent",
+    "strictness": "每个否定结果均来自不含 0 的 128 位严格实球残差；区间未能排除的定义只记为未决，不会被误报为无解。",
+    "limitations": [
+      "本报告尚未检查新交点邻接已有目标圆点的直线事件。",
+      "本报告尚未检查全部点定义的圆候选。"
+    ]
+  },
+  "universe": {
+    "available_points": 2103,
+    "exact_coordinate_points": 1759,
+    "strict_ball_residual_points": 344,
+    "line_definitions": 2210253
+  },
+  "parallelization": {
+    "workers": 8,
+    "chunk_size": 1000,
+    "chunk_count": 2211
+  },
+  "search": {
+    "definitions_tested": 2210253,
+    "ball_excluded_definitions": 2210253,
+    "unresolved_definitions": [],
+    "unresolved_count": 0,
+    "solutions_found": 0,
+    "status": "exhausted_no_solution"
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/named-new-object-search.schema.json",
+  "title": "Euclid-Min regular-257 named-point new-object search report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "enumeration",
+    "collinearity_filter",
+    "candidates",
+    "search",
+    "conclusion"
+  ],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-regular-257-named-new-object-search-report/v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "semantic_dependency_report",
+        "semantic_dependency_report_sha256",
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "semantic_dependency_report": {
+          "const": "semantic-dependencies-69e.json"
+        },
+        "semantic_dependency_report_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure_report": {
+          "const": "full-intersection-closure-69e.json"
+        },
+        "full_intersection_closure_report_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "point_universe",
+        "old_drawable_universe",
+        "new_drawables",
+        "candidate_pruning",
+        "limitations"
+      ],
+      "properties": {
+        "point_universe": { "const": "the_83_named_points" },
+        "old_drawable_universe": {
+          "const": "the_69_verified_paid_drawables"
+        },
+        "new_drawables": {
+          "const": "one_new_line_or_circle_defined_by_named_points"
+        },
+        "candidate_pruning": { "type": "string", "minLength": 1 },
+        "limitations": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "enumeration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "named_points",
+        "point_pairs",
+        "point_triples",
+        "collinear_triples",
+        "rich_line_geometries",
+        "new_rich_line_candidates",
+        "new_rich_circle_candidates",
+        "circle_radius_pairs",
+        "circle_ball_excluded_pairs",
+        "circle_exact_distance_checks"
+      ],
+      "properties": {
+        "named_points": { "const": 83 },
+        "point_pairs": { "const": 3403 },
+        "point_triples": { "const": 91881 },
+        "collinear_triples": { "const": 2786 },
+        "rich_line_geometries": { "const": 69 },
+        "new_rich_line_candidates": { "const": 4 },
+        "new_rich_circle_candidates": { "const": 143 },
+        "circle_radius_pairs": { "const": 275643 },
+        "circle_ball_excluded_pairs": { "const": 274718 },
+        "circle_exact_distance_checks": { "const": 925 }
+      }
+    },
+    "collinearity_filter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "precision_bits",
+        "ball_excluded_triples",
+        "exact_collinearity_checks"
+      ],
+      "properties": {
+        "kind": { "const": "rigorous_real_ball_determinant" },
+        "precision_bits": { "const": 128 },
+        "ball_excluded_triples": { "type": "integer", "minimum": 0 },
+        "exact_collinearity_checks": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 147,
+      "maxItems": 147,
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "search": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_score",
+        "removed_old_draws",
+        "added_new_draws",
+        "removed_pairs_tested",
+        "next_removed_pair_index",
+        "candidate_count",
+        "closure_trials",
+        "constructible_candidate_trials",
+        "solutions",
+        "solutions_found",
+        "status"
+      ],
+      "properties": {
+        "target_score": { "const": 68 },
+        "removed_old_draws": { "const": 2 },
+        "added_new_draws": { "const": 1 },
+        "removed_pairs_tested": { "const": 2346 },
+        "next_removed_pair_index": { "const": 2346 },
+        "candidate_count": { "const": 147 },
+        "closure_trials": { "const": 344862 },
+        "constructible_candidate_trials": { "const": 155405 },
+        "solutions": { "type": "array", "maxItems": 0 },
+        "solutions_found": { "const": 0 },
+        "status": { "const": "exhausted_no_solution" }
+      }
+    },
+    "conclusion": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "idList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "lineCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "canonical_definition",
+        "incident_named_points",
+        "definition_count"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^NL[0-9]{4}$" },
+        "kind": { "const": "line" },
+        "canonical_definition": {
+          "allOf": [{ "$ref": "#/$defs/idList" }, { "minItems": 2, "maxItems": 2 }]
+        },
+        "incident_named_points": {
+          "allOf": [{ "$ref": "#/$defs/idList" }, { "minItems": 3 }]
+        },
+        "definition_count": { "type": "integer", "minimum": 3 }
+      }
+    },
+    "circleCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "canonical_definition",
+        "center",
+        "incident_named_points",
+        "definition_count"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^NC[0-9]{4}$" },
+        "kind": { "const": "circle" },
+        "canonical_definition": {
+          "allOf": [{ "$ref": "#/$defs/idList" }, { "minItems": 2, "maxItems": 2 }]
+        },
+        "center": { "$ref": "#/$defs/id" },
+        "incident_named_points": {
+          "allOf": [{ "$ref": "#/$defs/idList" }, { "minItems": 2 }]
+        },
+        "definition_count": { "type": "integer", "minimum": 2 }
+      }
+    },
+    "candidate": {
+      "oneOf": [
+        { "$ref": "#/$defs/lineCandidate" },
+        { "$ref": "#/$defs/circleCandidate" }
+      ]
+    }
+  }
+}

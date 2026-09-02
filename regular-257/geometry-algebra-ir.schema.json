@@ -1,0 +1,383 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/geometry-algebra-ir.schema.json",
+  "title": "Euclid-Min geometry-algebra IR baseline v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "model",
+    "charts",
+    "symbols",
+    "algebraic_relations",
+    "representations",
+    "transitions",
+    "baseline_macro_partition",
+    "cost_audit",
+    "consistency",
+    "limitations"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-geometry-algebra-ir/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "construction_sha256",
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "construction_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure_report": { "const": "full-intersection-closure-69e.json" },
+        "full_intersection_closure_report_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "paid_transition",
+        "free_closure",
+        "persistence",
+        "geometry_identity",
+        "contextual_cost"
+      ],
+      "properties": {
+        "state": { "const": "available_points + available_drawables + algebraic_representations" },
+        "paid_transition": { "const": "add_one_new_distinct_line_or_circle_defined_by_available_points" },
+        "free_closure": { "const": "add_all_finite_real_intersections_of_available_drawables" },
+        "persistence": { "const": "monotone_no_erasure" },
+        "geometry_identity": { "const": "exact_geometric_equality_not_definition_syntax" },
+        "contextual_cost": { "const": "number_of_distinct_paid_drawables_added_to_input_state" }
+      }
+    },
+    "charts": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "carrier", "formula", "domain"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "carrier": { "type": "string", "minLength": 1 },
+          "formula": { "type": "string", "minLength": 1 },
+          "domain": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "symbols": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/symbol" }
+    },
+    "algebraic_relations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/relation" }
+    },
+    "representations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/representation" }
+    },
+    "transitions": {
+      "type": "array",
+      "minItems": 69,
+      "maxItems": 69,
+      "items": { "$ref": "#/$defs/transition" }
+    },
+    "baseline_macro_partition": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/macro" }
+    },
+    "cost_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "construction_cost_e",
+        "distinct_paid_drawables",
+        "lines",
+        "circles",
+        "initial_points",
+        "full_closure_points",
+        "free_points_born_after_paid_transitions",
+        "explicit_free_bindings",
+        "named_bindings_available_earlier",
+        "definition_point_references",
+        "distinct_definition_points",
+        "reused_definition_points",
+        "max_free_point_fanout"
+      ],
+      "properties": {
+        "construction_cost_e": { "const": 69 },
+        "distinct_paid_drawables": { "const": 69 },
+        "lines": { "const": 65 },
+        "circles": { "const": 4 },
+        "initial_points": { "const": 2 },
+        "full_closure_points": { "const": 2287 },
+        "free_points_born_after_paid_transitions": { "const": 2285 },
+        "explicit_free_bindings": { "const": 81 },
+        "named_bindings_available_earlier": { "type": "integer", "minimum": 0 },
+        "definition_point_references": { "const": 138 },
+        "distinct_definition_points": { "type": "integer", "minimum": 2 },
+        "reused_definition_points": { "type": "array", "items": { "$ref": "#/$defs/useCount" } },
+        "max_free_point_fanout": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["e_move", "drawable", "point_count"],
+          "properties": {
+            "e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+            "drawable": { "$ref": "#/$defs/id" },
+            "point_count": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "consistency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "all_expression_symbol_references_resolved",
+        "all_quadratic_relations_exact",
+        "all_representations_exact",
+        "all_draw_definitions_causally_available",
+        "all_named_bindings_not_later_than_declared_use",
+        "target_bridge"
+      ],
+      "properties": {
+        "all_expression_symbol_references_resolved": { "const": true },
+        "all_quadratic_relations_exact": { "const": true },
+        "all_representations_exact": { "const": true },
+        "all_draw_definitions_causally_available": { "const": true },
+        "all_named_bindings_not_later_than_declared_use": { "const": true },
+        "target_bridge": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source_symbol", "carrier", "exact_claim", "verified"],
+          "properties": {
+            "source_symbol": { "const": "period.g0" },
+            "carrier": { "const": "radical_axis(target_transfer,c0)" },
+            "exact_claim": { "const": "x = g0 = 2*cos(2*pi/257)" },
+            "verified": { "const": true }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9._-]*$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "expression": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "value"],
+          "properties": {
+            "op": { "const": "const" },
+            "value": { "type": "integer" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "id"],
+          "properties": {
+            "op": { "const": "symbol" },
+            "id": { "$ref": "#/$defs/id" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "args"],
+          "properties": {
+            "op": { "enum": ["add", "mul"] },
+            "args": {
+              "type": "array",
+              "minItems": 2,
+              "items": { "$ref": "#/$defs/expression" }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "arg"],
+          "properties": {
+            "op": { "const": "neg" },
+            "arg": { "$ref": "#/$defs/expression" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "numerator", "denominator"],
+          "properties": {
+            "op": { "const": "div" },
+            "numerator": { "$ref": "#/$defs/expression" },
+            "denominator": { "$ref": "#/$defs/expression" }
+          }
+        }
+      ]
+    },
+    "symbol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "description"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "enum": ["constant", "quadratic_root", "derived_expression"] },
+        "description": { "type": "string", "minLength": 1 },
+        "producer_relation": { "$ref": "#/$defs/id" },
+        "expression": { "$ref": "#/$defs/expression" }
+      }
+    },
+    "materializedRoot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["symbol", "point"],
+      "properties": {
+        "symbol": { "$ref": "#/$defs/id" },
+        "point": { "$ref": "#/$defs/id" }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "roots", "sum", "product", "materialized_roots", "verified"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "quadratic_root_pair" },
+        "roots": {
+          "type": "array",
+          "prefixItems": [{ "$ref": "#/$defs/id" }, { "$ref": "#/$defs/id" }],
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "sum": { "$ref": "#/$defs/expression" },
+        "product": { "$ref": "#/$defs/expression" },
+        "materialized_roots": { "type": "array", "items": { "$ref": "#/$defs/materializedRoot" } },
+        "verified": { "const": true }
+      }
+    },
+    "carrier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "references"],
+      "properties": {
+        "kind": { "enum": ["point", "radical_axis"] },
+        "references": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "arrangement_point_id": { "$ref": "#/$defs/id" }
+      }
+    },
+    "representation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "symbol", "carrier", "chart", "available_e_move", "verification"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "symbol": { "$ref": "#/$defs/id" },
+        "carrier": { "$ref": "#/$defs/carrier" },
+        "chart": { "$ref": "#/$defs/id" },
+        "available_e_move": { "type": "integer", "minimum": 0, "maximum": 69 },
+        "bound_e_move": { "type": "integer", "minimum": 0, "maximum": 69 },
+        "verification": { "const": "exact_cyclotomic_equality" }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "e_move",
+        "drawable",
+        "kind",
+        "definition_points",
+        "definition_point_birth_e_moves",
+        "marginal_cost_e",
+        "free_points_born",
+        "explicit_bindings",
+        "algebraic_representations_born"
+      ],
+      "properties": {
+        "e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "drawable": { "$ref": "#/$defs/id" },
+        "kind": { "enum": ["line", "circle"] },
+        "definition_points": {
+          "type": "array",
+          "prefixItems": [{ "$ref": "#/$defs/id" }, { "$ref": "#/$defs/id" }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "definition_point_birth_e_moves": {
+          "type": "array",
+          "prefixItems": [
+            { "type": "integer", "minimum": 0, "maximum": 68 },
+            { "type": "integer", "minimum": 0, "maximum": 68 }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "marginal_cost_e": { "const": 1 },
+        "free_points_born": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "explicit_bindings": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "algebraic_representations_born": { "type": "array", "items": { "$ref": "#/$defs/id" } }
+      }
+    },
+    "macro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "first_e_move",
+        "last_e_move",
+        "observed_contextual_cost_e",
+        "paid_drawables",
+        "input_symbols",
+        "output_symbols",
+        "output_representations",
+        "interpretation"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "first_e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "last_e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "observed_contextual_cost_e": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "paid_drawables": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/id" } },
+        "input_symbols": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "output_symbols": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/id" } },
+        "output_representations": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "interpretation": { "type": "string", "minLength": 1 }
+      }
+    },
+    "useCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["point", "use_count"],
+      "properties": {
+        "point": { "$ref": "#/$defs/id" },
+        "use_count": { "type": "integer", "minimum": 2 }
+      }
+    }
+  }
+}

@@ -1,0 +1,2075 @@
+{
+  "schema": "euclid-min-tail-cross-pair-direct-search/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "geometry_algebra_ir": "geometry-algebra-baseline-69e.json",
+    "geometry_algebra_ir_sha256": "10bd1078cca58e4de894d8476101e252289b8f0220e141cd16e81008e56ed655",
+    "tail_gadget_library": "geometry-gadgets-tail-69e.json",
+    "tail_gadget_library_sha256": "3a13614ea17ccc62182ada370838949b8e979c5301a9483c375ef39ab3eaef2a"
+  },
+  "semantics": {
+    "state": "all_named_points_and_paid_drawables_available_after_46E",
+    "candidate": "one_new_line_or_circle_defined_only_by_two_named_prefix_points",
+    "success": "candidate_intersects_encoding_circle_at_one_low_tail_and_one_high_tail_root",
+    "geometry": "exact_cyclotomic_incidence_without_float_tolerance"
+  },
+  "root_sets": {
+    "low_tail": [
+      "period.e0",
+      "period.e16",
+      "work.e-low-0",
+      "work.e-low-1",
+      "period.f0",
+      "period.f32"
+    ],
+    "high_tail": [
+      "period.e8",
+      "period.e24",
+      "work.e-high-0",
+      "work.e-high-1",
+      "period.f24",
+      "period.f56"
+    ]
+  },
+  "summary": {
+    "prefix_named_points": 59,
+    "prefix_drawables": 47,
+    "cross_root_pairs": 36,
+    "line_definitions_found": 0,
+    "circle_definitions_found": 1080,
+    "existing_redraw_definitions": 1080,
+    "new_direct_definitions_found": 0,
+    "distinct_new_line_geometries_found": 0,
+    "distinct_new_circle_geometries_found": 0,
+    "root_pairs_with_direct_realization": 0
+  },
+  "results": [
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.e8",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.e24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "work.e-high-0",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "work.e-high-1",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.f24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e0",
+      "high_symbol": "period.f56",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.e8",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.e24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "work.e-high-0",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "work.e-high-1",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.f24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.e16",
+      "high_symbol": "period.f56",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.e8",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.e24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "work.e-high-0",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "work.e-high-1",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.f24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-0",
+      "high_symbol": "period.f56",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.e8",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.e24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "work.e-high-0",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "work.e-high-1",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.f24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "work.e-low-1",
+      "high_symbol": "period.f56",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.e8",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.e24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "work.e-high-0",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "work.e-high-1",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.f24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f0",
+      "high_symbol": "period.f56",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.e8",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.e24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "work.e-high-0",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "work.e-high-1",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.f24",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    },
+    {
+      "low_symbol": "period.f32",
+      "high_symbol": "period.f56",
+      "line": {
+        "incident_prefix_points": [],
+        "definitions": [],
+        "definition_count": 0,
+        "new_definition_count": 0,
+        "existing_drawable_references": []
+      },
+      "circles": [
+        {
+          "center": "A",
+          "through_points": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "H",
+            "K",
+            "L",
+            "A0",
+            "A1",
+            "B0",
+            "B2",
+            "B1",
+            "B3",
+            "Ca",
+            "Cb",
+            "Cc",
+            "Cd",
+            "J1",
+            "Da",
+            "Db",
+            "L1",
+            "N1",
+            "Q1",
+            "S1",
+            "U1",
+            "Dc",
+            "Dd",
+            "W1",
+            "D0",
+            "D8"
+          ],
+          "definition_count": 30,
+          "new_definition_count": 0,
+          "existing_drawable_references": [
+            "c"
+          ]
+        }
+      ],
+      "circle_definition_count": 30,
+      "new_circle_definition_count": 0,
+      "new_direct_definition_count": 0
+    }
+  ],
+  "root_pair_hits": [],
+  "conclusion": {
+    "status": "exhausted_no_candidate",
+    "minimality_claim": "none"
+  },
+  "limitations": [
+    "只允许使用 46E 时已经具名的点定义新对象，尚未使用可用的未命名安排点。",
+    "只检查一笔对象直接同时产生一个低尾部根和一个高尾部根，不覆盖多笔联合程序。",
+    "空结果只排除该有限候选类，不证明两个尾部的 18E 最优。"
+  ]
+}

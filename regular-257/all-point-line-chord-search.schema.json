@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/all-point-line-chord-search.schema.json",
+  "title": "Euclid-Min regular-257 all-point line chord search v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source", "semantics", "universe", "parallelization", "search"],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-regular-257-all-point-line-chord-search/v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256",
+        "candidate_frontier_report",
+        "candidate_frontier_report_sha256",
+        "residual_point_ball_audit",
+        "residual_point_ball_audit_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure_report": {
+          "const": "full-intersection-closure-69e.json"
+        },
+        "full_intersection_closure_report_sha256": { "$ref": "#/$defs/sha256" },
+        "candidate_frontier_report": {
+          "const": "full-point-candidate-frontier-69e.json"
+        },
+        "candidate_frontier_report_sha256": { "$ref": "#/$defs/sha256" },
+        "residual_point_ball_audit": {
+          "const": "residual-point-ball-audit-68e.json"
+        },
+        "residual_point_ball_audit_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "removed_paid_drawables",
+        "candidate_e_move",
+        "candidate_family",
+        "target_event",
+        "strictness",
+        "limitations"
+      ],
+      "properties": {
+        "removed_paid_drawables": { "const": ["BG0", "target_transfer"] },
+        "candidate_e_move": { "const": 68 },
+        "candidate_family": {
+          "const": "one_line_through_two_distinct_available_points"
+        },
+        "target_event": {
+          "const": "the_two_new_intersections_of_candidate_line_and_c0_are_adjacent"
+        },
+        "strictness": { "type": "string", "minLength": 1 },
+        "limitations": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "available_points",
+        "exact_coordinate_points",
+        "strict_ball_residual_points",
+        "line_definitions"
+      ],
+      "properties": {
+        "available_points": { "const": 2103 },
+        "exact_coordinate_points": { "const": 1759 },
+        "strict_ball_residual_points": { "const": 344 },
+        "line_definitions": { "const": 2210253 }
+      }
+    },
+    "parallelization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workers", "chunk_size", "chunk_count"],
+      "properties": {
+        "workers": { "const": 8 },
+        "chunk_size": { "const": 1000 },
+        "chunk_count": { "const": 2211 }
+      }
+    },
+    "search": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "definitions_tested",
+        "ball_excluded_definitions",
+        "unresolved_definitions",
+        "unresolved_count",
+        "solutions_found",
+        "status"
+      ],
+      "properties": {
+        "definitions_tested": { "const": 2210253 },
+        "ball_excluded_definitions": { "const": 2210253 },
+        "unresolved_definitions": { "type": "array", "maxItems": 0 },
+        "unresolved_count": { "const": 0 },
+        "solutions_found": { "const": 0 },
+        "status": { "const": "exhausted_no_solution" }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

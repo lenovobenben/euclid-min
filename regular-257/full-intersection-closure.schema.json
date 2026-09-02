@@ -1,0 +1,346 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/full-intersection-closure.schema.json",
+  "title": "Euclid-Min regular-257 full intersection closure report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "summary",
+    "arrangement",
+    "full_closure",
+    "single_deletion_trials",
+    "irreducibility_result"
+  ],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-regular-257-full-intersection-closure-report/v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "construction_sha256",
+        "verification_report",
+        "semantic_dependency_report",
+        "semantic_dependency_report_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "construction_sha256": { "$ref": "#/$defs/sha256" },
+        "verification_report": { "const": "verification-69e.json" },
+        "semantic_dependency_report": {
+          "const": "semantic-dependencies-69e.json"
+        },
+        "semantic_dependency_report_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "point_universe",
+        "drawable_universe",
+        "scheduling",
+        "cycle_policy",
+        "limitations"
+      ],
+      "properties": {
+        "point_universe": {
+          "const": "all_finite_real_intersections_of_the_70_existing_drawables"
+        },
+        "drawable_universe": {
+          "const": "initial_circle_and_69_verified_paid_drawables"
+        },
+        "scheduling": {
+          "const": "monotone_forward_closure_with_paid_draw_reordering"
+        },
+        "cycle_policy": {
+          "const": "an_object_or_point_must_be_available_before_it_is_used"
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "drawable_pairs",
+        "line_line_pairs",
+        "line_circle_pairs",
+        "circle_circle_pairs",
+        "raw_intersection_count",
+        "unique_finite_real_points",
+        "named_points",
+        "unnamed_points",
+        "point_producer_pairs",
+        "drawable_definition_pairs",
+        "single_deletion_trials",
+        "individually_removable_paid_draws"
+      ],
+      "properties": {
+        "drawable_pairs": { "const": 2415 },
+        "line_line_pairs": { "const": 2080 },
+        "line_circle_pairs": { "const": 325 },
+        "circle_circle_pairs": { "const": 10 },
+        "raw_intersection_count": { "const": 2706 },
+        "unique_finite_real_points": { "const": 2287 },
+        "named_points": { "const": 83 },
+        "unnamed_points": { "const": 2204 },
+        "point_producer_pairs": { "const": 2706 },
+        "drawable_definition_pairs": { "const": 133558 },
+        "single_deletion_trials": { "const": 69 },
+        "individually_removable_paid_draws": { "const": 0 }
+      }
+    },
+    "arrangement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "points",
+        "drawables",
+        "initial_points",
+        "initial_drawables",
+        "target_witnesses",
+        "line_line_pairs",
+        "line_circle_pairs",
+        "circle_circle_pairs"
+      ],
+      "properties": {
+        "points": {
+          "type": "array",
+          "minItems": 2287,
+          "maxItems": 2287,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/pointNode" }
+        },
+        "drawables": {
+          "type": "array",
+          "minItems": 69,
+          "maxItems": 69,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/drawableNode" }
+        },
+        "initial_points": { "const": ["B", "C"] },
+        "initial_drawables": { "const": ["c0"] },
+        "target_witnesses": {
+          "const": [["G", "W2_minus"], ["G", "W2_plus"]]
+        },
+        "line_line_pairs": { "const": 2080 },
+        "line_circle_pairs": { "const": 325 },
+        "circle_circle_pairs": { "const": 10 }
+      }
+    },
+    "full_closure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_reached",
+        "reached_points",
+        "reached_drawables",
+        "reached_target_witnesses"
+      ],
+      "properties": {
+        "target_reached": { "const": true },
+        "reached_points": { "const": 2287 },
+        "reached_drawables": { "const": 70 },
+        "reached_target_witnesses": {
+          "const": [["G", "W2_minus"], ["G", "W2_plus"]]
+        }
+      }
+    },
+    "single_deletion_trials": {
+      "type": "array",
+      "minItems": 69,
+      "maxItems": 69,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/deletionTrial" }
+    },
+    "irreducibility_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "all_paid_draws_individually_necessary",
+        "removable_paid_draws",
+        "minimum_required_paid_draws_within_fixed_object_universe",
+        "required_paid_draws",
+        "proof_argument"
+      ],
+      "properties": {
+        "method": {
+          "const": "full_intersection_monotone_single_deletion_exhaustion"
+        },
+        "all_paid_draws_individually_necessary": { "const": true },
+        "removable_paid_draws": { "type": "array", "maxItems": 0 },
+        "minimum_required_paid_draws_within_fixed_object_universe": {
+          "const": 69
+        },
+        "required_paid_draws": {
+          "type": "array",
+          "minItems": 69,
+          "maxItems": 69,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "proof_argument": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "idList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "pointNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "names",
+        "origin",
+        "incident_drawables",
+        "producer_pair_count"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "names": {
+          "allOf": [
+            { "$ref": "#/$defs/idList" },
+            { "maxItems": 1 }
+          ]
+        },
+        "origin": {
+          "enum": [
+            "line_line",
+            "circle_triple",
+            "circle_circle_on_line",
+            "circle_circle_residual",
+            "line_circle_residual"
+          ]
+        },
+        "incident_drawables": {
+          "allOf": [
+            { "$ref": "#/$defs/idList" },
+            { "minItems": 2 }
+          ]
+        },
+        "producer_pair_count": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "lineCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "incident_points", "definition_count"],
+      "properties": {
+        "kind": { "const": "two_incident_points" },
+        "incident_points": {
+          "allOf": [
+            { "$ref": "#/$defs/idList" },
+            { "minItems": 2 }
+          ]
+        },
+        "definition_count": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "circleCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "center_points",
+        "through_points",
+        "definition_count"
+      ],
+      "properties": {
+        "kind": { "const": "center_and_incident_point" },
+        "center_points": {
+          "allOf": [
+            { "$ref": "#/$defs/idList" },
+            { "minItems": 1 }
+          ]
+        },
+        "through_points": {
+          "allOf": [
+            { "$ref": "#/$defs/idList" },
+            { "minItems": 1 }
+          ]
+        },
+        "definition_count": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "drawableNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "e_move",
+        "kind",
+        "declared_definition",
+        "condition"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "kind": { "enum": ["line", "circle"] },
+        "declared_definition": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "condition": {
+          "oneOf": [
+            { "$ref": "#/$defs/lineCondition" },
+            { "$ref": "#/$defs/circleCondition" }
+          ]
+        }
+      }
+    },
+    "deletionTrial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "removed",
+        "e_move",
+        "target_reached",
+        "reached_points",
+        "reached_drawables",
+        "available_target_points"
+      ],
+      "properties": {
+        "removed": { "$ref": "#/$defs/id" },
+        "e_move": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "target_reached": { "const": false },
+        "reached_points": { "type": "integer", "minimum": 2, "maximum": 2287 },
+        "reached_drawables": { "type": "integer", "minimum": 1, "maximum": 69 },
+        "available_target_points": {
+          "type": "array",
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": { "enum": ["G", "W2_minus", "W2_plus"] }
+        }
+      }
+    }
+  }
+}

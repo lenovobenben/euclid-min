@@ -1,0 +1,710 @@
+{
+  "schema": "euclid-min-regular-257-synthesis-live-slice/v1",
+  "source": {
+    "certificate": "construction-69e.json",
+    "certificate_sha256": "9b47738d955099547e15369f35cde40fa52c8c5d7594294d372f1ad753c6b10b",
+    "construction_sha256": "6c4b0113fae6ab513d3a1564a268415fa1dd96952e14753201880b776f6fe3d3",
+    "geometry_algebra_ir": "geometry-algebra-baseline-69e.json",
+    "geometry_algebra_ir_sha256": "10bd1078cca58e4de894d8476101e252289b8f0220e141cd16e81008e56ed655",
+    "geometry_gadget_library": "geometry-gadgets-tail-69e.json",
+    "geometry_gadget_library_sha256": "3a13614ea17ccc62182ada370838949b8e979c5301a9483c375ef39ab3eaef2a"
+  },
+  "semantics": {
+    "algebraic_liveness": "a quadratic relation is active when at least one root is demanded; the sibling root is a free byproduct, not a required output",
+    "geometric_liveness": "declared certificate dependency cone, with intersections free and all traces persistent",
+    "optimization_use": "shrink replacement interfaces before exact stateful geometric costing"
+  },
+  "algebraic_slice": {
+    "root_goal": "period.g0",
+    "active_symbols": [
+      "period.a0",
+      "period.a1",
+      "period.b0",
+      "period.b2",
+      "period.b1",
+      "period.b3",
+      "work.ca",
+      "work.cb",
+      "work.cc",
+      "work.cd",
+      "work.da",
+      "work.db",
+      "work.dc",
+      "work.dd",
+      "period.d0",
+      "period.d8",
+      "work.e-low-0",
+      "period.e0",
+      "period.f0",
+      "work.e-high-1",
+      "period.e24",
+      "period.f56",
+      "period.g0"
+    ],
+    "active_quadratic_roots": [
+      "period.a0",
+      "period.a1",
+      "period.b0",
+      "period.b2",
+      "period.b1",
+      "period.b3",
+      "work.ca",
+      "work.cb",
+      "work.cc",
+      "work.cd",
+      "work.da",
+      "work.db",
+      "work.dc",
+      "work.dd",
+      "period.d0",
+      "period.d8",
+      "work.e-low-0",
+      "period.e0",
+      "period.f0",
+      "work.e-high-1",
+      "period.e24",
+      "period.f56",
+      "period.g0"
+    ],
+    "free_sibling_byproduct_roots": [
+      "work.ca-conjugate",
+      "work.cb-conjugate",
+      "work.cc-conjugate",
+      "work.cd-conjugate",
+      "work.e-low-1",
+      "period.e16",
+      "period.f32",
+      "work.e-high-0",
+      "period.e8",
+      "period.f24",
+      "period.g64"
+    ],
+    "inactive_quadratic_roots": [],
+    "active_relations": [
+      "relation.a",
+      "relation.b-even",
+      "relation.b-odd",
+      "relation.c-a",
+      "relation.c-b",
+      "relation.c-c",
+      "relation.c-d",
+      "relation.d-ab",
+      "relation.d-cd",
+      "relation.d-main",
+      "relation.e-low-aux",
+      "relation.e0",
+      "relation.f0",
+      "relation.e-high-aux",
+      "relation.e24",
+      "relation.f56",
+      "relation.g0"
+    ],
+    "inactive_relations": [],
+    "relation_liveness": [
+      {
+        "id": "relation.a",
+        "demanded_roots": [
+          "period.a0",
+          "period.a1"
+        ],
+        "free_sibling_byproducts": [],
+        "input_symbols": []
+      },
+      {
+        "id": "relation.b-even",
+        "demanded_roots": [
+          "period.b0",
+          "period.b2"
+        ],
+        "free_sibling_byproducts": [],
+        "input_symbols": [
+          "period.a0"
+        ]
+      },
+      {
+        "id": "relation.b-odd",
+        "demanded_roots": [
+          "period.b1",
+          "period.b3"
+        ],
+        "free_sibling_byproducts": [],
+        "input_symbols": [
+          "period.a1"
+        ]
+      },
+      {
+        "id": "relation.c-a",
+        "demanded_roots": [
+          "work.ca"
+        ],
+        "free_sibling_byproducts": [
+          "work.ca-conjugate"
+        ],
+        "input_symbols": [
+          "period.a1",
+          "period.b0"
+        ]
+      },
+      {
+        "id": "relation.c-b",
+        "demanded_roots": [
+          "work.cb"
+        ],
+        "free_sibling_byproducts": [
+          "work.cb-conjugate"
+        ],
+        "input_symbols": [
+          "period.a0",
+          "period.b1"
+        ]
+      },
+      {
+        "id": "relation.c-c",
+        "demanded_roots": [
+          "work.cc"
+        ],
+        "free_sibling_byproducts": [
+          "work.cc-conjugate"
+        ],
+        "input_symbols": [
+          "period.a0",
+          "period.b0",
+          "period.b3"
+        ]
+      },
+      {
+        "id": "relation.c-d",
+        "demanded_roots": [
+          "work.cd"
+        ],
+        "free_sibling_byproducts": [
+          "work.cd-conjugate"
+        ],
+        "input_symbols": [
+          "period.a1",
+          "period.b2",
+          "period.b3"
+        ]
+      },
+      {
+        "id": "relation.d-ab",
+        "demanded_roots": [
+          "work.da",
+          "work.db"
+        ],
+        "free_sibling_byproducts": [],
+        "input_symbols": [
+          "period.b1",
+          "work.ca",
+          "work.cc"
+        ]
+      },
+      {
+        "id": "relation.d-cd",
+        "demanded_roots": [
+          "work.dc",
+          "work.dd"
+        ],
+        "free_sibling_byproducts": [],
+        "input_symbols": [
+          "period.b0",
+          "work.ca",
+          "work.cb",
+          "work.cc",
+          "work.cd"
+        ]
+      },
+      {
+        "id": "relation.d-main",
+        "demanded_roots": [
+          "period.d0",
+          "period.d8"
+        ],
+        "free_sibling_byproducts": [],
+        "input_symbols": [
+          "period.a0",
+          "work.ca",
+          "work.cb",
+          "work.cc"
+        ]
+      },
+      {
+        "id": "relation.e-low-aux",
+        "demanded_roots": [
+          "work.e-low-0"
+        ],
+        "free_sibling_byproducts": [
+          "work.e-low-1"
+        ],
+        "input_symbols": [
+          "work.dc",
+          "period.d0"
+        ]
+      },
+      {
+        "id": "relation.e0",
+        "demanded_roots": [
+          "period.e0"
+        ],
+        "free_sibling_byproducts": [
+          "period.e16"
+        ],
+        "input_symbols": [
+          "work.da",
+          "period.d0"
+        ]
+      },
+      {
+        "id": "relation.f0",
+        "demanded_roots": [
+          "period.f0"
+        ],
+        "free_sibling_byproducts": [
+          "period.f32"
+        ],
+        "input_symbols": [
+          "work.e-low-0",
+          "period.e0"
+        ]
+      },
+      {
+        "id": "relation.e-high-aux",
+        "demanded_roots": [
+          "work.e-high-1"
+        ],
+        "free_sibling_byproducts": [
+          "work.e-high-0"
+        ],
+        "input_symbols": [
+          "work.dd",
+          "period.d8"
+        ]
+      },
+      {
+        "id": "relation.e24",
+        "demanded_roots": [
+          "period.e24"
+        ],
+        "free_sibling_byproducts": [
+          "period.e8"
+        ],
+        "input_symbols": [
+          "work.db",
+          "period.d8"
+        ]
+      },
+      {
+        "id": "relation.f56",
+        "demanded_roots": [
+          "period.f56"
+        ],
+        "free_sibling_byproducts": [
+          "period.f24"
+        ],
+        "input_symbols": [
+          "work.e-high-1",
+          "period.e24"
+        ]
+      },
+      {
+        "id": "relation.g0",
+        "demanded_roots": [
+          "period.g0"
+        ],
+        "free_sibling_byproducts": [
+          "period.g64"
+        ],
+        "input_symbols": [
+          "period.f0",
+          "period.f56"
+        ]
+      }
+    ],
+    "summary": {
+      "quadratic_roots_total": 34,
+      "demanded_quadratic_roots": 23,
+      "free_sibling_byproduct_roots": 11,
+      "inactive_quadratic_roots": 0,
+      "relations_total": 17,
+      "active_relations": 17,
+      "inactive_relations": 0
+    }
+  },
+  "baseline_macro_liveness": [
+    {
+      "id": "macro.bootstrap",
+      "first_e_move": 1,
+      "last_e_move": 9,
+      "observed_contextual_cost_e": 9,
+      "demanded_output_symbols": [],
+      "free_byproduct_output_symbols": [],
+      "classification": "geometric_foundation_or_transfer"
+    },
+    {
+      "id": "macro.a-pair",
+      "first_e_move": 10,
+      "last_e_move": 12,
+      "observed_contextual_cost_e": 3,
+      "demanded_output_symbols": [
+        "period.a0",
+        "period.a1"
+      ],
+      "free_byproduct_output_symbols": [],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.b-pairs-joint",
+      "first_e_move": 13,
+      "last_e_move": 16,
+      "observed_contextual_cost_e": 4,
+      "demanded_output_symbols": [
+        "period.b0",
+        "period.b1",
+        "period.b2",
+        "period.b3"
+      ],
+      "free_byproduct_output_symbols": [],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.c-layer",
+      "first_e_move": 17,
+      "last_e_move": 26,
+      "observed_contextual_cost_e": 10,
+      "demanded_output_symbols": [
+        "work.ca",
+        "work.cb",
+        "work.cc",
+        "work.cd"
+      ],
+      "free_byproduct_output_symbols": [
+        "work.ca-conjugate",
+        "work.cb-conjugate",
+        "work.cc-conjugate",
+        "work.cd-conjugate"
+      ],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.d-ab",
+      "first_e_move": 27,
+      "last_e_move": 32,
+      "observed_contextual_cost_e": 6,
+      "demanded_output_symbols": [
+        "work.da",
+        "work.db"
+      ],
+      "free_byproduct_output_symbols": [],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.d-cd",
+      "first_e_move": 33,
+      "last_e_move": 43,
+      "observed_contextual_cost_e": 11,
+      "demanded_output_symbols": [
+        "work.dc",
+        "work.dd"
+      ],
+      "free_byproduct_output_symbols": [],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.d-main",
+      "first_e_move": 44,
+      "last_e_move": 46,
+      "observed_contextual_cost_e": 3,
+      "demanded_output_symbols": [
+        "period.d0",
+        "period.d8"
+      ],
+      "free_byproduct_output_symbols": [],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.low-tail",
+      "first_e_move": 47,
+      "last_e_move": 55,
+      "observed_contextual_cost_e": 9,
+      "demanded_output_symbols": [
+        "period.e0",
+        "work.e-low-0",
+        "period.f0"
+      ],
+      "free_byproduct_output_symbols": [
+        "period.e16",
+        "work.e-low-1",
+        "period.f32"
+      ],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.high-tail",
+      "first_e_move": 56,
+      "last_e_move": 64,
+      "observed_contextual_cost_e": 9,
+      "demanded_output_symbols": [
+        "period.e24",
+        "work.e-high-1",
+        "period.f56"
+      ],
+      "free_byproduct_output_symbols": [
+        "period.e8",
+        "work.e-high-0",
+        "period.f24"
+      ],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.g0",
+      "first_e_move": 65,
+      "last_e_move": 67,
+      "observed_contextual_cost_e": 3,
+      "demanded_output_symbols": [
+        "period.g0"
+      ],
+      "free_byproduct_output_symbols": [
+        "period.g64"
+      ],
+      "classification": "algebraically_active"
+    },
+    {
+      "id": "macro.target-transfer",
+      "first_e_move": 68,
+      "last_e_move": 69,
+      "observed_contextual_cost_e": 2,
+      "demanded_output_symbols": [
+        "period.g0"
+      ],
+      "free_byproduct_output_symbols": [],
+      "classification": "algebraically_active"
+    }
+  ],
+  "geometric_slice": {
+    "target_object": "target_transfer",
+    "target_declared_dependency_paid_drawables": [
+      "a",
+      "q",
+      "d",
+      "c",
+      "BE",
+      "b",
+      "DM1",
+      "IE",
+      "DJ",
+      "KL",
+      "NI",
+      "FO",
+      "BA0",
+      "BA1",
+      "RM",
+      "SM",
+      "EA1",
+      "LB0",
+      "UT",
+      "EA0",
+      "LB1",
+      "VW",
+      "B0B3",
+      "RX",
+      "B2B3",
+      "YS",
+      "HCa",
+      "ZK",
+      "B1Cc",
+      "I1H",
+      "BJ1",
+      "K1H1",
+      "BZ",
+      "c_M1L1",
+      "CdN1",
+      "HCb",
+      "EP1",
+      "LQ1",
+      "R1Cc",
+      "CdB0",
+      "T1S1",
+      "EU1",
+      "V1O1",
+      "RS1",
+      "EW1",
+      "X1Z",
+      "BD0",
+      "GDa",
+      "DZ1",
+      "H2Y1",
+      "BE0",
+      "DcD0",
+      "AJ2",
+      "EK2",
+      "L2I2",
+      "BD8",
+      "GDb",
+      "DN2",
+      "M2O2",
+      "BE24",
+      "D8Dd",
+      "AQ2",
+      "ER2",
+      "S2P2",
+      "BF0",
+      "EF56",
+      "U2T2",
+      "BG0",
+      "target_transfer"
+    ],
+    "target_declared_dependency_paid_count": 69,
+    "tail_regions": [
+      {
+        "id": "low-tail-47-55",
+        "root_point": "F0",
+        "first_e_move": 47,
+        "last_e_move": 55,
+        "live_paid_drawables": [
+          "BD0",
+          "GDa",
+          "DZ1",
+          "H2Y1",
+          "BE0",
+          "DcD0",
+          "AJ2",
+          "EK2",
+          "L2I2"
+        ],
+        "directly_dead_paid_drawables": []
+      },
+      {
+        "id": "high-tail-56-64",
+        "root_point": "F56",
+        "first_e_move": 56,
+        "last_e_move": 64,
+        "live_paid_drawables": [
+          "BD8",
+          "GDb",
+          "DN2",
+          "M2O2",
+          "BE24",
+          "D8Dd",
+          "AQ2",
+          "ER2",
+          "S2P2"
+        ],
+        "directly_dead_paid_drawables": []
+      },
+      {
+        "id": "joint-tail-47-64",
+        "root_point": "F0+F56",
+        "first_e_move": 47,
+        "last_e_move": 64,
+        "live_paid_drawables": [
+          "BD0",
+          "GDa",
+          "DZ1",
+          "H2Y1",
+          "BE0",
+          "DcD0",
+          "AJ2",
+          "EK2",
+          "L2I2",
+          "BD8",
+          "GDb",
+          "DN2",
+          "M2O2",
+          "BE24",
+          "D8Dd",
+          "AQ2",
+          "ER2",
+          "S2P2"
+        ],
+        "directly_dead_paid_drawables": []
+      }
+    ],
+    "conclusion": "活跃输出减少了，但原始尾部程序的 18 个付费对象仍全部服务于 F0 或 F56；68E 必须重编译接口，不能靠删除基线死代码得到。"
+  },
+  "synthesis_contract": {
+    "id": "contract.joint-tail-at-46e-to-68e",
+    "replace_e_moves": [
+      47,
+      64
+    ],
+    "input_state_after_e_move": 46,
+    "required_geometric_points": [
+      "A",
+      "B",
+      "D",
+      "D0",
+      "D8",
+      "Da",
+      "Db",
+      "Dc",
+      "Dd",
+      "E",
+      "G"
+    ],
+    "required_geometric_drawables": [
+      "a",
+      "b",
+      "c"
+    ],
+    "input_symbols": [
+      "work.da",
+      "work.dc",
+      "period.d0",
+      "work.db",
+      "work.dd",
+      "period.d8"
+    ],
+    "input_representations": [
+      "repr.D0",
+      "repr.D8",
+      "repr.Da",
+      "repr.Db",
+      "repr.Dc",
+      "repr.Dd"
+    ],
+    "required_output_symbols": [
+      "period.f0",
+      "period.f56"
+    ],
+    "required_output_representations": [
+      "repr.F0",
+      "repr.F56"
+    ],
+    "internal_demanded_symbols_not_in_output_interface": [
+      "work.e-low-0",
+      "period.e0",
+      "work.e-high-1",
+      "period.e24"
+    ],
+    "free_sibling_byproducts_not_in_output_interface": [
+      "work.e-low-1",
+      "period.e16",
+      "period.f32",
+      "work.e-high-0",
+      "period.e8",
+      "period.f24"
+    ],
+    "baseline_contextual_cost_e": 18,
+    "maximum_candidate_contextual_cost_e": 17,
+    "downstream_fixed_suffix_cost_e": 5,
+    "resulting_total_upper_bound_e": 68,
+    "success_requirements": [
+      "候选从精确 46E 前缀状态出发。",
+      "每个新增对象都由当时可用的两个点定义，且按几何恒等去重。",
+      "每笔之后加入全部有限实交点，交点不计 E。",
+      "在不超过 17 个不同新对象内精确物化 period.f0 与 period.f56。",
+      "复用原 65E—69E 后缀后，目标在不晚于 68E 首次出现。"
+    ]
+  },
+  "conclusions": [
+    "当前高斯周期分解的 17 个二次关系全部活跃，不能直接删去某一整层关系。",
+    "34 个二次根中只有 23 个被目标继续消费，另 11 个只是活跃关系免费带出的共轭根。",
+    "联合尾部替换的外部输出只需 F0 与 F56；原先十二个宏输出不应继续作为合成器的硬约束。",
+    "基线尾部 18 条直线全部在 F0/F56 的声明式依赖锥中，因此目标是重新合成至多 17E，而不是删死代码。"
+  ],
+  "limitations": [
+    "活跃切片只缩小必要接口，不证明 17E 联合尾部一定存在。",
+    "代数常数在关系式中作为字面量出现；其现实几何载体仍属于 46E 前缀状态。",
+    "几何活跃性沿基线声明绑定计算；替代程序仍须通过精确重放与完整免费闭包验证。"
+  ]
+}

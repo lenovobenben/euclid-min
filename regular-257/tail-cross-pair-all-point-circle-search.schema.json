@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/tail-cross-pair-all-point-circle-search.schema.json",
+  "title": "Euclid-Min 46E all-point cross-tail circle search v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "root_sets",
+    "universe",
+    "summary",
+    "results",
+    "candidate_root_pairs",
+    "conclusion",
+    "limitations"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-tail-cross-pair-all-point-circle-search/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256",
+        "geometry_algebra_ir",
+        "geometry_algebra_ir_sha256",
+        "all_point_line_search",
+        "all_point_line_search_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure_report": { "const": "full-intersection-closure-69e.json" },
+        "full_intersection_closure_report_sha256": { "$ref": "#/$defs/sha256" },
+        "geometry_algebra_ir": { "const": "geometry-algebra-baseline-69e.json" },
+        "geometry_algebra_ir_sha256": { "$ref": "#/$defs/sha256" },
+        "all_point_line_search": { "const": "tail-cross-pair-all-point-line-search-46e.json" },
+        "all_point_line_search_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "candidate", "necessary_center_condition", "exactness"],
+      "properties": {
+        "state": { "const": "all_989_arrangement_points_available_after_46E" },
+        "candidate": { "const": "one_new_circle_with_available_center_and_available_through_point" },
+        "necessary_center_condition": { "const": "center_lies_on_perpendicular_bisector_of_cross_tail_root_pair" },
+        "exactness": { "const": "128_bit_strict_real_balls_with_exact_incidence_and_geometry_identity_fallback" }
+      }
+    },
+    "root_sets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["low_tail", "high_tail"],
+      "properties": {
+        "low_tail": { "$ref": "#/$defs/idArray6" },
+        "high_tail": { "$ref": "#/$defs/idArray6" }
+      }
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "available_points",
+        "exact_coordinate_points",
+        "abstract_residual_points",
+        "ambiguous_point_pairs"
+      ],
+      "properties": {
+        "available_points": { "const": 989 },
+        "exact_coordinate_points": { "const": 763 },
+        "abstract_residual_points": { "const": 226 },
+        "ambiguous_point_pairs": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cross_root_pairs",
+        "strict_ball_center_checks",
+        "strict_ball_survivors",
+        "exact_center_fallbacks",
+        "abstract_center_fallbacks",
+        "center_incidences",
+        "existing_circle_center_incidences",
+        "new_exact_center_incidences",
+        "new_abstract_center_incidences",
+        "root_pairs_requiring_through_point_audit"
+      ],
+      "properties": {
+        "cross_root_pairs": { "const": 36 },
+        "strict_ball_center_checks": { "const": 35604 },
+        "strict_ball_survivors": { "type": "integer", "minimum": 0 },
+        "exact_center_fallbacks": { "type": "integer", "minimum": 0 },
+        "abstract_center_fallbacks": { "type": "integer", "minimum": 0 },
+        "center_incidences": { "type": "integer", "minimum": 0 },
+        "existing_circle_center_incidences": { "type": "integer", "minimum": 0 },
+        "new_exact_center_incidences": { "type": "integer", "minimum": 0 },
+        "new_abstract_center_incidences": { "type": "integer", "minimum": 0 },
+        "root_pairs_requiring_through_point_audit": { "type": "integer", "minimum": 0, "maximum": 36 }
+      }
+    },
+    "results": {
+      "type": "array",
+      "minItems": 36,
+      "maxItems": 36,
+      "items": { "$ref": "#/$defs/result" }
+    },
+    "candidate_root_pairs": { "type": "array", "items": { "$ref": "#/$defs/pair" } },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "minimality_claim"],
+      "properties": {
+        "status": { "enum": ["requires_through_point_audit", "exhausted_no_new_circle_center"] },
+        "minimality_claim": { "const": "none" }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9._-]*$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "idArray": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+    "idArray6": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "pair": {
+      "type": "array",
+      "prefixItems": [{ "$ref": "#/$defs/id" }, { "$ref": "#/$defs/id" }],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "existingCircleCenter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["center", "existing_drawable_references"],
+      "properties": {
+        "center": { "$ref": "#/$defs/id" },
+        "existing_drawable_references": { "$ref": "#/$defs/idArray" }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "low_symbol",
+        "high_symbol",
+        "center_points",
+        "exact_center_points",
+        "abstract_center_points",
+        "existing_circle_centers",
+        "new_exact_center_points",
+        "new_abstract_center_points",
+        "unresolved_new_center_count"
+      ],
+      "properties": {
+        "low_symbol": { "$ref": "#/$defs/id" },
+        "high_symbol": { "$ref": "#/$defs/id" },
+        "center_points": { "$ref": "#/$defs/idArray" },
+        "exact_center_points": { "$ref": "#/$defs/idArray" },
+        "abstract_center_points": { "$ref": "#/$defs/idArray" },
+        "existing_circle_centers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/existingCircleCenter" }
+        },
+        "new_exact_center_points": { "$ref": "#/$defs/idArray" },
+        "new_abstract_center_points": { "$ref": "#/$defs/idArray" },
+        "unresolved_new_center_count": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

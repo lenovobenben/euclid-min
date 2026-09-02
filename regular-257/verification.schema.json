@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/verification.schema.json",
+  "title": "Euclid-Min regular-257 verification report v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "certificate_sha256",
+    "construction_sha256",
+    "profile",
+    "verifier",
+    "valid",
+    "verification_scope",
+    "program_entries",
+    "proof_hints_verified",
+    "draws",
+    "bound_point_names",
+    "score",
+    "target_witnesses",
+    "first_bound_target_e_move",
+    "automatic_closure_target_audit",
+    "first_target_sources"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-regular-257-verification-report/v2" },
+    "certificate_sha256": { "$ref": "#/$defs/sha256" },
+    "construction_sha256": { "$ref": "#/$defs/sha256" },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": { "const": "regular-257-free-edge-e-fixed-v1" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "sage_version", "exact_backend"],
+      "properties": {
+        "name": { "const": "verify_69e_certificate.py" },
+        "version": { "const": "2" },
+        "sage_version": { "type": "string", "minLength": 1 },
+        "exact_backend": {
+          "const": "CyclotomicField(257)+UniversalCyclotomicField"
+        }
+      }
+    },
+    "valid": { "const": true },
+    "verification_scope": {
+      "const": "explicit_bindings_and_complete_target_closure_audit"
+    },
+    "program_entries": { "const": 150 },
+    "proof_hints_verified": { "const": 81 },
+    "draws": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lines", "circles", "duplicates"],
+      "properties": {
+        "lines": { "const": 65 },
+        "circles": { "const": 4 },
+        "duplicates": { "const": 0 }
+      }
+    },
+    "bound_point_names": { "const": 83 },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric", "e_move"],
+      "properties": {
+        "metric": { "const": "e_move" },
+        "e_move": { "const": 69 }
+      }
+    },
+    "target_witnesses": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/pointPair" }
+    },
+    "first_bound_target_e_move": { "const": 69 },
+    "automatic_closure_target_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "method", "first_target_e_move"],
+      "properties": {
+        "status": { "const": "complete" },
+        "method": { "const": "exact_rotated_chord_carriers" },
+        "first_target_e_move": { "const": 69 }
+      }
+    },
+    "first_target_sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["new_object", "source_object", "orientation"],
+        "properties": {
+          "new_object": { "const": "target_transfer" },
+          "source_object": { "$ref": "#/$defs/id" },
+          "orientation": { "enum": ["minus", "plus"] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    },
+    "pointPair": {
+      "type": "array",
+      "prefixItems": [
+        { "$ref": "#/$defs/id" },
+        { "$ref": "#/$defs/id" }
+      ],
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true
+    }
+  }
+}

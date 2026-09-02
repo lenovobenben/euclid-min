@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/tail-cross-pair-all-point-line-search.schema.json",
+  "title": "Euclid-Min 46E all-point cross-tail line search v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "semantics",
+    "root_sets",
+    "universe",
+    "summary",
+    "results",
+    "candidate_root_pairs",
+    "conclusion",
+    "limitations"
+  ],
+  "properties": {
+    "schema": { "const": "euclid-min-tail-cross-pair-all-point-line-search/v1" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256",
+        "geometry_algebra_ir",
+        "geometry_algebra_ir_sha256",
+        "named_prefix_search",
+        "named_prefix_search_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure_report": { "const": "full-intersection-closure-69e.json" },
+        "full_intersection_closure_report_sha256": { "$ref": "#/$defs/sha256" },
+        "geometry_algebra_ir": { "const": "geometry-algebra-baseline-69e.json" },
+        "geometry_algebra_ir_sha256": { "$ref": "#/$defs/sha256" },
+        "named_prefix_search": { "const": "tail-cross-pair-direct-search-46e.json" },
+        "named_prefix_search_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "candidate", "success", "exactness"],
+      "properties": {
+        "state": { "const": "all_989_arrangement_points_available_after_46E" },
+        "candidate": { "const": "one_new_line_through_two_available_arrangement_points" },
+        "success": { "const": "line_intersects_encoding_circle_at_one_low_tail_and_one_high_tail_root" },
+        "exactness": { "const": "128_bit_strict_real_balls_with_exact_incidence_fallback" }
+      }
+    },
+    "root_sets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["low_tail", "high_tail"],
+      "properties": {
+        "low_tail": { "$ref": "#/$defs/idArray6" },
+        "high_tail": { "$ref": "#/$defs/idArray6" }
+      }
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "available_points",
+        "exact_coordinate_points",
+        "abstract_residual_points",
+        "abstract_producer_groups",
+        "ambiguous_point_pairs"
+      ],
+      "properties": {
+        "available_points": { "const": 989 },
+        "exact_coordinate_points": { "const": 763 },
+        "abstract_residual_points": { "const": 226 },
+        "abstract_producer_groups": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/producerGroup" }
+        },
+        "ambiguous_point_pairs": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cross_root_lines",
+        "strict_ball_incidence_checks",
+        "strict_ball_survivors",
+        "exact_coordinate_fallbacks",
+        "abstract_incidence_fallbacks",
+        "definitions_found",
+        "new_definitions_found",
+        "root_pairs_with_new_line"
+      ],
+      "properties": {
+        "cross_root_lines": { "const": 36 },
+        "strict_ball_incidence_checks": { "const": 35604 },
+        "strict_ball_survivors": { "type": "integer", "minimum": 0 },
+        "exact_coordinate_fallbacks": { "type": "integer", "minimum": 0 },
+        "abstract_incidence_fallbacks": { "type": "integer", "minimum": 0 },
+        "definitions_found": { "type": "integer", "minimum": 0 },
+        "new_definitions_found": { "type": "integer", "minimum": 0 },
+        "root_pairs_with_new_line": { "type": "integer", "minimum": 0, "maximum": 36 }
+      }
+    },
+    "results": {
+      "type": "array",
+      "minItems": 36,
+      "maxItems": 36,
+      "items": { "$ref": "#/$defs/result" }
+    },
+    "candidate_root_pairs": { "type": "array", "items": { "$ref": "#/$defs/pair" } },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "minimality_claim"],
+      "properties": {
+        "status": { "enum": ["candidate_found", "exhausted_no_candidate"] },
+        "minimality_claim": { "const": "none" }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9._-]*$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "idArray": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+    "idArray6": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "pair": {
+      "type": "array",
+      "prefixItems": [{ "$ref": "#/$defs/id" }, { "$ref": "#/$defs/id" }],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "producerGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "producer", "materialized_branches", "abstract_branches"],
+      "properties": {
+        "origin": { "enum": ["line_circle_residual", "circle_circle_residual"] },
+        "producer": { "$ref": "#/$defs/pair" },
+        "materialized_branches": { "type": "integer", "minimum": 0, "maximum": 2 },
+        "abstract_branches": { "type": "integer", "minimum": 1, "maximum": 2 }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "low_symbol",
+        "high_symbol",
+        "incident_points",
+        "incident_exact_points",
+        "incident_abstract_points",
+        "definitions",
+        "definition_count",
+        "new_definition_count",
+        "existing_drawable_references"
+      ],
+      "properties": {
+        "low_symbol": { "$ref": "#/$defs/id" },
+        "high_symbol": { "$ref": "#/$defs/id" },
+        "incident_points": { "$ref": "#/$defs/idArray" },
+        "incident_exact_points": { "type": "integer", "minimum": 0 },
+        "incident_abstract_points": { "type": "integer", "minimum": 0 },
+        "definitions": { "type": "array", "items": { "$ref": "#/$defs/pair" } },
+        "definition_count": { "type": "integer", "minimum": 0 },
+        "new_definition_count": { "type": "integer", "minimum": 0 },
+        "existing_drawable_references": { "$ref": "#/$defs/idArray" }
+      }
+    }
+  }
+}

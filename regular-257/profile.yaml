@@ -1,0 +1,70 @@
+schema: euclid-min-regular-257-profile/v1
+id: regular-257-free-edge-e-fixed-v1
+
+problem:
+  id: regular-257-free-edge
+  type: regular_polygon_free_edge
+  polygon_sides: 257
+  semantics: fixed_instance
+
+initial_objects:
+  points:
+    - id: C
+      coordinates: [0, -1]
+    - id: B
+      coordinates: [0, 1]
+  circles:
+    - id: c0
+      center: C
+      through: B
+  cost: free
+
+tools:
+  straightedge: true
+  collapsing_compass: true
+  non_collapsing_compass: false
+
+operations:
+  line:
+    enabled: true
+    requires_distinct_points: true
+  circle_center_through:
+    enabled: true
+    requires_distinct_points: true
+  duplicate_objects:
+    legal: true
+    charged: true
+    add_intersections: false
+
+points:
+  source: initial_or_intersection_only
+  arbitrary_points: false
+  half_generic_points: false
+
+intersections:
+  generation: automatic_new_object_closure
+  domain: finite_real
+  point_identity: exact_coordinates
+  ordering: lexicographic_xy_ascending
+  index_base: 0
+  coincident_objects: no_isolated_intersections
+
+metric:
+  primary: e_move
+  line_cost: 1
+  circle_cost: 1
+  intersection_binding_cost: 0
+
+target:
+  type: any_adjacent_pair
+  center: C
+  circle: c0
+  polygon_sides: 257
+  orientation: either
+  witness: point_pair_in_state
+  equality: exact_chord_squared
+
+canonicalization:
+  serialization: rfc8785_jcs
+  encoding: utf-8
+  digest: sha256

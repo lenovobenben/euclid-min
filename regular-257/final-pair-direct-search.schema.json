@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/final-pair-direct-search.schema.json",
+  "title": "Euclid-Min regular-257 final-pair direct search summary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source", "semantics", "universe", "search", "conclusion"],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-regular-257-final-pair-direct-search/v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_frontier_report",
+        "candidate_frontier_report_sha256",
+        "line_chord_report",
+        "line_chord_report_sha256",
+        "line_adjacent_report",
+        "line_adjacent_report_sha256",
+        "circle_report",
+        "circle_report_sha256"
+      ],
+      "properties": {
+        "candidate_frontier_report": { "const": "full-point-candidate-frontier-69e.json" },
+        "candidate_frontier_report_sha256": { "$ref": "#/$defs/sha256" },
+        "line_chord_report": { "const": "final-pair-line-chord-search-68e.json" },
+        "line_chord_report_sha256": { "$ref": "#/$defs/sha256" },
+        "line_adjacent_report": { "const": "final-pair-line-adjacent-search-68e.json" },
+        "line_adjacent_report_sha256": { "$ref": "#/$defs/sha256" },
+        "circle_report": { "const": "final-pair-circle-search-68e.json" },
+        "circle_report_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "removed_paid_drawables",
+        "selected_paid_drawables",
+        "candidate_e_move",
+        "candidate_definition_points",
+        "covered_candidate_families",
+        "exhaustive_target_events",
+        "completeness_argument",
+        "limitations"
+      ],
+      "properties": {
+        "removed_paid_drawables": { "const": ["BG0", "target_transfer"] },
+        "selected_paid_drawables": { "const": 67 },
+        "candidate_e_move": { "const": 68 },
+        "candidate_definition_points": {
+          "const": "available_points_with_materialized_exact_coordinates"
+        },
+        "covered_candidate_families": {
+          "const": [
+            "line_through_two_distinct_definition_points",
+            "circle_with_distinct_center_and_through_definition_points"
+          ]
+        },
+        "exhaustive_target_events": {
+          "const": [
+            "the_two_new_intersections_of_candidate_and_c0_are_adjacent",
+            "a_new_candidate_intersection_on_c0_is_adjacent_to_an_already_available_point_on_c0"
+          ]
+        },
+        "completeness_argument": { "type": "string", "minLength": 1 },
+        "limitations": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "available_points",
+        "available_exact_coordinate_points",
+        "available_abstract_residual_points",
+        "global_abstract_residual_points",
+        "line_definitions",
+        "circle_definitions",
+        "drawable_definitions"
+      ],
+      "properties": {
+        "available_points": { "const": 2103 },
+        "available_exact_coordinate_points": { "const": 1759 },
+        "available_abstract_residual_points": { "const": 344 },
+        "global_abstract_residual_points": { "const": 474 },
+        "line_definitions": { "const": 1546161 },
+        "circle_definitions": { "const": 3092322 },
+        "drawable_definitions": { "const": 4638483 }
+      }
+    },
+    "search": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "line_chord_definitions_tested",
+        "line_adjacent_definitions_tested",
+        "circle_definitions_tested",
+        "circle_exact_fallbacks",
+        "solutions_found",
+        "status"
+      ],
+      "properties": {
+        "line_chord_definitions_tested": { "const": 1546161 },
+        "line_adjacent_definitions_tested": { "const": 1546161 },
+        "circle_definitions_tested": { "const": 3092322 },
+        "circle_exact_fallbacks": { "const": 6 },
+        "solutions_found": { "const": 0 },
+        "status": {
+          "const": "exhausted_no_solution_in_materialized_exact_maximum_frontier"
+        }
+      }
+    },
+    "conclusion": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

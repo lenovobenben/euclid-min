@@ -1,0 +1,70 @@
+step,type,object,defining_points,free_points,start_seconds,notes
+1,line,a,C B,M1=a∩c0（异于B）,69.0,
+2,circle,q,B C,,72.5,圆心B且经过C
+3,line,d,q∩c0 的两个交点,A=a∩d,74.0,
+4,circle,c,A B,D E=c∩d,77.0,编码单位圆
+5,line,BE,B E,G=BE∩c0（异于B）,78.5,
+6,line,b,C G,F=b∩c0（异于G）,80.5,b:y=-1
+7,line,DM1,D M1,H=DM1∩c；I=DM1∩b,85.0,H编码-2
+8,line,IE,I E,K=IE∩c；J=IE∩a,91.5,K编码-4
+9,line,DJ,D J,L=DJ∩c,95.0,L编码4
+10,line,KL,K L,N=KL∩BE；M=KL∩a,101.5,M=(0,-15/17)
+11,line,NI,N I,O=NI∩a,108.0,O=(0,-63/65)
+12,line,FO,F O,A0 A1=FO∩c,115.5,a0+a1=-1；a0a1=-64
+13,line,BA0,B A0,R=BA0∩b,126.0,
+14,line,BA1,B A1,S=BA1∩b,128.0,
+15,line,RM,R M,B0 B2=RM∩c,134.5,b0+b2=a0；b0b2=-16
+16,line,SM,S M,B1 B3=SM∩c,144.5,b1+b3=a1；b1b3=-16
+17,line,EA1,E A1,T=EA1∩a,157.0,
+18,line,LB0,L B0,U=LB0∩b,158.5,
+19,line,UT,U T,Ca=UT∩c,165.5,Ca=c0+2
+20,line,EA0,E A0,V=EA0∩a,172.5,
+21,line,LB1,L B1,W=LB1∩b,174.5,
+22,line,VW,V W,Cb=VW∩c,181.0,Cb=c5+2
+23,line,B0B3,B0 B3,X=B0B3∩a,187.5,
+24,line,RX,R X,Cc=RX∩c,191.0,Cc=c0+c2
+25,line,B2B3,B2 B3,Y=B2B3∩a,198.5,
+26,line,YS,Y S,Cd=YS∩c,203.0,Cd=c1+c7
+27,line,HCa,H Ca,Z=HCa∩b,212.0,
+28,line,ZK,Z K,H1=ZK∩a,218.0,
+29,line,B1Cc,B1 Cc,I1=B1Cc∩b,224.5,
+30,line,I1H,I1 H,J1=I1H∩c（异于H）,230.5,
+31,line,BJ1,B J1,K1=BJ1∩b,236.5,
+32,line,K1H1,K1 H1,Da Db=K1H1∩c,243.0,
+33,line,BZ,B Z,L1=BZ∩c（异于B）,253.5,
+34,circle,c_M1L1,M1 L1,N1=c_M1L1∩c（异于L1）,259.5,圆心M1且经过L1
+35,line,CdN1,Cd N1,O1=CdN1∩b,264.0,
+36,line,HCb,H Cb,P1=HCb∩a,271.0,
+37,line,EP1,E P1,Q1=EP1∩c（异于E）,274.5,
+38,line,LQ1,L Q1,R1=LQ1∩b,279.5,
+39,line,R1Cc,R1 Cc,S1=R1Cc∩c（异于Cc）,284.0,
+40,line,CdB0,Cd B0,T1=CdB0∩b,290.0,
+41,line,T1S1,T1 S1,U1=T1S1∩c（异于S1）,295.0,
+42,line,EU1,E U1,V1=EU1∩a,300.5,
+43,line,V1O1,V1 O1,Dc Dd=V1O1∩c,307.5,
+44,line,RS1,R S1,W1=RS1∩c（异于S1）,318.0,
+45,line,EW1,E W1,X1=EW1∩a,324.0,
+46,line,X1Z,X1 Z,D0 D8=X1Z∩c,330.5,
+47,line,BD0,B D0,Y1=BD0∩b,343.5,
+48,line,GDa,G Da,Z1=GDa∩c（异于Da）,350.0,
+49,line,DZ1,D Z1,H2=DZ1∩a,356.0,
+50,line,H2Y1,H2 Y1,E0=H2Y1∩c,362.5,
+51,line,BE0,B E0,I2=BE0∩b,369.0,
+52,line,DcD0,Dc D0,J2=DcD0∩b,375.5,
+53,line,AJ2,A J2,K2=AJ2∩c（视频所示分支）,381.5,
+54,line,EK2,E K2,L2=EK2∩a,387.0,
+55,line,L2I2,L2 I2,F0=L2I2∩c,393.0,
+56,line,BD8,B D8,M2=BD8∩b,399.0,
+57,line,GDb,G Db,N2=GDb∩c（异于Db）,405.5,
+58,line,DN2,D N2,O2=DN2∩a,411.5,
+59,line,M2O2,M2 O2,E24=M2O2∩c,417.0,
+60,line,BE24,B E24,P2=BE24∩b,424.5,
+61,line,D8Dd,D8 Dd,Q2=D8Dd∩b,430.0,
+62,line,AQ2,A Q2,R2=AQ2∩c（与Q2反向）,436.0,
+63,line,ER2,E R2,S2=ER2∩a,439.5,
+64,line,S2P2,S2 P2,F56=S2P2∩c,446.5,
+65,line,BF0,B F0,T2=BF0∩b,455.5,
+66,line,EF56,E F56,U2=EF56∩a,460.5,
+67,line,U2T2,U2 T2,G0=U2T2∩c,464.0,G0=g0=2cos(2π/257)
+68,line,BG0,B G0,V2=BG0∩b,471.5,
+69,circle,target_transfer,V2 C,W2±=target_transfer∩c0,475.0,圆心V2且经过C

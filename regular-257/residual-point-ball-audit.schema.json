@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/regular-257/residual-point-ball-audit.schema.json",
+  "title": "Euclid-Min regular-257 residual point ball audit v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source", "semantics", "precision_bits", "universe", "audit"],
+  "properties": {
+    "schema": {
+      "const": "euclid-min-regular-257-residual-point-ball-audit/v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "certificate",
+        "certificate_sha256",
+        "full_intersection_closure_report",
+        "full_intersection_closure_report_sha256",
+        "candidate_frontier_report",
+        "candidate_frontier_report_sha256"
+      ],
+      "properties": {
+        "certificate": { "const": "construction-69e.json" },
+        "certificate_sha256": { "$ref": "#/$defs/sha256" },
+        "full_intersection_closure_report": {
+          "const": "full-intersection-closure-69e.json"
+        },
+        "full_intersection_closure_report_sha256": { "$ref": "#/$defs/sha256" },
+        "candidate_frontier_report": {
+          "const": "full-point-candidate-frontier-69e.json"
+        },
+        "candidate_frontier_report_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["removed_paid_drawables", "purpose", "limitations"],
+      "properties": {
+        "removed_paid_drawables": { "const": ["BG0", "target_transfer"] },
+        "purpose": { "type": "string", "minLength": 1 },
+        "limitations": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "precision_bits": { "const": 128 },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "available_points",
+        "materialized_exact_points",
+        "materialized_residual_points",
+        "line_circle_residual_points",
+        "circle_circle_residual_points",
+        "residual_producer_groups"
+      ],
+      "properties": {
+        "available_points": { "const": 2103 },
+        "materialized_exact_points": { "const": 1759 },
+        "materialized_residual_points": { "const": 344 },
+        "line_circle_residual_points": { "const": 340 },
+        "circle_circle_residual_points": { "const": 4 },
+        "residual_producer_groups": { "const": 186 }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "incidence_checks",
+        "failed_incidences",
+        "ambiguous_point_pairs",
+        "all_residual_points_materialized",
+        "all_incidences_enclosed",
+        "all_available_points_separated",
+        "status"
+      ],
+      "properties": {
+        "incidence_checks": { "const": 4338 },
+        "failed_incidences": { "type": "array", "maxItems": 0 },
+        "ambiguous_point_pairs": { "type": "array", "maxItems": 0 },
+        "all_residual_points_materialized": { "const": true },
+        "all_incidences_enclosed": { "const": true },
+        "all_available_points_separated": { "const": true },
+        "status": { "const": "complete" }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}
