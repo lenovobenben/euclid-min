@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/fixed-prefix-two-step-search-v1.schema.json",
+  "title": "Euclid-Min exact fixed-prefix two-step search v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "mode",
+    "source",
+    "scope",
+    "progress",
+    "coverage",
+    "result",
+    "checkpoint",
+    "environment",
+    "elapsed_seconds_this_invocation",
+    "interpretation"
+  ],
+  "properties": {
+    "schema": {"const": "euclid-min-fixed-prefix-two-step-search/v1"},
+    "mode": {"enum": ["exact_partial", "exact_fixed_prefix_exhaustive"]},
+    "source": {
+      "type": "object",
+      "required": ["input_sha256"],
+      "properties": {
+        "input_sha256": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/sha256"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "prefix_e_move",
+        "extension_budget_e",
+        "prefix_points",
+        "prefix_lines",
+        "prefix_circles",
+        "precursor_candidates",
+        "terminal_restriction"
+      ],
+      "properties": {
+        "prefix_e_move": {"type": "integer", "minimum": 0},
+        "extension_budget_e": {"type": "integer", "minimum": 1},
+        "prefix_points": {"type": "integer", "minimum": 2},
+        "prefix_lines": {"type": "integer", "minimum": 0},
+        "prefix_circles": {"type": "integer", "minimum": 1},
+        "precursor_candidates": {"type": "integer", "minimum": 1},
+        "terminal_restriction": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "progress": {
+      "type": "object",
+      "required": [
+        "status",
+        "exhausted",
+        "completed_shards",
+        "total_shards",
+        "remaining_shards",
+        "completed_precursor_candidates"
+      ],
+      "properties": {
+        "status": {"enum": ["found", "exhausted_no_hit", "paused"]},
+        "exhausted": {"type": "boolean"},
+        "completed_shards": {"type": "integer", "minimum": 0},
+        "total_shards": {"type": "integer", "minimum": 1},
+        "remaining_shards": {"type": "integer", "minimum": 0},
+        "completed_precursor_candidates": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "coverage": {
+      "type": "object",
+      "required": [
+        "precursor_lines",
+        "precursor_circles",
+        "new_points_total",
+        "terminal_parameterizations",
+        "terminal_candidates"
+      ],
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "result": {
+      "type": "object",
+      "required": [
+        "successful_branches",
+        "first_hit",
+        "candidate_certificate",
+        "candidate_certificate_valid"
+      ],
+      "properties": {
+        "successful_branches": {"type": "integer", "minimum": 0},
+        "first_hit": {"type": ["object", "null"]},
+        "candidate_certificate": {"type": ["string", "null"]},
+        "candidate_certificate_valid": {"type": ["boolean", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": ["schema", "task_signature", "revision", "status"],
+      "properties": {
+        "schema": {"const": "euclid-min-sharded-search-checkpoint/v1"},
+        "task_signature": {"$ref": "#/$defs/sha256"},
+        "revision": {"type": "integer", "minimum": 0},
+        "status": {"enum": ["running", "paused", "completed"]}
+      },
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object",
+      "required": ["sage_version"],
+      "properties": {"sage_version": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    },
+    "elapsed_seconds_this_invocation": {"type": "number", "minimum": 0},
+    "interpretation": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

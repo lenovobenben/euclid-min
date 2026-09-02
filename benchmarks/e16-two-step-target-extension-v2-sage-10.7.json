@@ -1,0 +1,276 @@
+{
+  "schema": "euclid-min-fixed-prefix-two-step-search/v2",
+  "mode": "exact_fixed_prefix_exhaustive",
+  "source": {
+    "input_sha256": {
+      "profiles/regular-17-e-fixed-v1.yaml": "f948f19de41e0a796e43e3c5ac42109a8cd9df2e4745a392a3a58451ae690101",
+      "baselines/regular-17/detemple-1991-carlyle-improved-converted/construction.json": "652ce4f04f264bf238e9e5cc7812ec568f90791b3b0a26e16a92c90eb819c13d",
+      "baselines/regular-17/detemple-1991-carlyle-improved-converted/geometry-algebra-ir.json": "ae2c1f4bf3e23c07d5deb11d364ba584a0606fc2b30aeb3d24eb65c29532e9fb",
+      "sage/experiments/search_e16_two_step_target_extension_v2.py": "1251fd298bc54b9ea55f75eb86b8a69a38c36799e214a30d7bad9f177fe30be4",
+      "sage/experiments/search_e16_two_step_target_extension.py": "eabcc25cbd1debaee1c7b0b87f0f89bcc1ec349390a03b41c7055d3a7ad54998",
+      "sage/experiments/search_e17_one_step_target_extension.py": "6a6e515441983cd264dc12c405d0d4e419c307efde36309face04f94ea253272",
+      "sage/euclid_min/search/backward.py": "241242a94946660b4cfa0b252619a26490835cc136f883d073b273a9ca0bafeb",
+      "sage/euclid_min/search/candidates.py": "256c16e03d5e879275133ef7ff7b9d3ac27e0275b6ecfe0398d1c0184112a708",
+      "sage/euclid_min/search/incidence.py": "8647550f95ec0a8643af0bafeab609cece963e9765d861c0e4d63abd8c61f453",
+      "sage/euclid_min/search/durable_journal.py": "7186a0a37a46af8f43eb5f092fce5bfe760c8377048f4756696e51f5f54346ff"
+    },
+    "legacy_imports": [
+      {
+        "source_path": "benchmarks/e16-two-step-target-extension-checkpoint-sage-10.7.json",
+        "source_sha256": "dc2e9ceae1b8e3bd517ea847370f947c3aaa1f923cf9e09c8bf7143ce8cb3047",
+        "source_task_signature": "b56efe8c05cc031e71c933bb3da533c7b7766814e8634cba3eb429b3bfa2e221",
+        "ranges": [
+          [
+            0,
+            32
+          ],
+          [
+            32,
+            64
+          ],
+          [
+            64,
+            96
+          ],
+          [
+            96,
+            128
+          ],
+          [
+            128,
+            160
+          ],
+          [
+            160,
+            192
+          ],
+          [
+            192,
+            224
+          ],
+          [
+            224,
+            256
+          ],
+          [
+            256,
+            288
+          ],
+          [
+            288,
+            320
+          ],
+          [
+            320,
+            352
+          ],
+          [
+            352,
+            384
+          ],
+          [
+            384,
+            416
+          ],
+          [
+            416,
+            448
+          ],
+          [
+            448,
+            480
+          ],
+          [
+            480,
+            512
+          ],
+          [
+            512,
+            544
+          ],
+          [
+            544,
+            576
+          ],
+          [
+            576,
+            608
+          ],
+          [
+            608,
+            640
+          ],
+          [
+            640,
+            672
+          ],
+          [
+            672,
+            704
+          ],
+          [
+            704,
+            736
+          ],
+          [
+            736,
+            768
+          ],
+          [
+            768,
+            800
+          ],
+          [
+            800,
+            832
+          ],
+          [
+            832,
+            864
+          ],
+          [
+            864,
+            896
+          ],
+          [
+            896,
+            928
+          ],
+          [
+            928,
+            960
+          ],
+          [
+            960,
+            992
+          ],
+          [
+            992,
+            1024
+          ],
+          [
+            1024,
+            1056
+          ],
+          [
+            1056,
+            1088
+          ],
+          [
+            1088,
+            1120
+          ],
+          [
+            1120,
+            1152
+          ],
+          [
+            1152,
+            1184
+          ],
+          [
+            1184,
+            1216
+          ],
+          [
+            1216,
+            1248
+          ],
+          [
+            1248,
+            1280
+          ],
+          [
+            1280,
+            1312
+          ],
+          [
+            1312,
+            1344
+          ],
+          [
+            1344,
+            1376
+          ],
+          [
+            1376,
+            1408
+          ],
+          [
+            1408,
+            1440
+          ],
+          [
+            1440,
+            1472
+          ],
+          [
+            1696,
+            1728
+          ],
+          [
+            1728,
+            1760
+          ],
+          [
+            1760,
+            1792
+          ]
+        ],
+        "completed_candidates": 1568,
+        "aggregate": {
+          "precursor_lines": 1568,
+          "precursor_circles": 0,
+          "new_points_total": 28739,
+          "terminal_parameterizations": 11822646,
+          "terminal_candidates": 0,
+          "deferred_relations": 0,
+          "structural_existing_objects": 0
+        }
+      }
+    ]
+  },
+  "scope": {
+    "prefix_e_move": 16,
+    "extension_budget_e": 2,
+    "prefix_points": 128,
+    "prefix_lines": 7,
+    "prefix_circles": 10,
+    "precursor_candidates": 22454,
+    "terminal_restriction": "parent_has_no_one_step_target_so_terminal_uses_at_least_one_precursor_point"
+  },
+  "progress": {
+    "status": "completed",
+    "scan_complete": true,
+    "exhausted": true,
+    "completed_precursor_candidates": 22454,
+    "remaining_precursor_candidates": 0,
+    "durable_events": 20889,
+    "checkpoint_granularity": "one_precursor_candidate"
+  },
+  "coverage": {
+    "precursor_lines": 7219,
+    "precursor_circles": 15235,
+    "new_points_total": 486262,
+    "terminal_parameterizations": 202855848,
+    "terminal_candidates": 0,
+    "deferred_relations": 0,
+    "structural_existing_objects": 28072
+  },
+  "result": {
+    "successful_branches": 0,
+    "first_hit": null,
+    "unresolved_relations": 0
+  },
+  "checkpoint": {
+    "schema": "euclid-min-durable-search-journal/v1",
+    "task_signature": "af172f07795d71a02c0ad2f112c4f93fc95609079e3e5b0c7d5646f4301f8994",
+    "last_event_sha256": "d80423e7a6c0e2c5428149a04cec6ce151a082c26fc38b0b9e63af9dc9e35cb9",
+    "status": "completed"
+  },
+  "environment": {
+    "sage_version": "10.7"
+  },
+  "elapsed_seconds_this_invocation": 17405.696708241,
+  "interpretation": "每个首步候选完成后立即追加并 fsync；中断或死机后最多重算当前正在执行的候选。区间未决关系保存在日志中，不作为否定结论。只有扫描完成、无命中且未决关系为零时，才精确排除该固定 16E 前缀的全部两笔扩展；这不是全局 18E 下界。"
+}

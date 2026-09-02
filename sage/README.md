@@ -196,6 +196,40 @@ sage -python sage/experiments/search_final_tail_two_step.py
 1 E 的局部窗口也未命中。项目因此停止继续扩大当前 beam，详见
 `docs/M6_SUFFIX_SEARCH.md` 第 8 节。
 
+## 几何—代数 IR 与可恢复分片搜索
+
+确定性生成 19E 基线的完整闭包、二次关系和上下文成本：
+
+```bash
+sage -python sage/experiments/build_regular17_geometry_algebra_ir.py
+```
+
+精确穷尽固定 17E 状态的全部一步目标扩展：
+
+```bash
+sage -python sage/experiments/search_e17_one_step_target_extension.py
+```
+
+固定 17E 一步搜索使用原子分片检查点。运行中断后重复同一命令会从未完成分片
+继续；使用 `--max-shards 1` 可以演示完成一个新分片后主动暂停。
+
+耗时更长的固定 16E 两步搜索使用候选级追加日志：
+
+```bash
+sage -python sage/experiments/search_e16_two_step_target_extension_v2.py \
+  --workers 8
+```
+
+每个首步候选完成后立即 `fsync`，日志以 SHA-256 链校验。`Ctrl+C`、Docker 异常
+退出或整机死机后，重复同一命令即可恢复，最多重算中断时正在 worker 中执行的
+候选。未能由严格区间裁决的等式会写入 `deferred`，不会被误报为排除结论。输入
+文件、算法脚本、profile 或配置变化时，任务签名校验会拒绝错误续跑。设计和当前
+结论见 `docs/GEOMETRY_ALGEBRA_IR.md`。
+
+该搜索现已完成：22,454 个首步候选和 202,855,848 个受限末笔参数化全部覆盖，
+0 命中、0 未决关系。它严格排除的是已验证固定 16E 前缀之后的至多两笔扩展，
+不是全局 18E 下界。
+
 ## 精确性边界
 
 - 所有几何坐标进入对象时立即转换为 `AA`；

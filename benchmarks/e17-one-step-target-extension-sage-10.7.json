@@ -1,0 +1,53 @@
+{
+  "schema": "euclid-min-fixed-prefix-one-step-search/v1",
+  "mode": "exact_fixed_prefix_exhaustive",
+  "source": {
+    "certificate_sha256": "652ce4f04f264bf238e9e5cc7812ec568f90791b3b0a26e16a92c90eb819c13d",
+    "geometry_algebra_ir_sha256": "ae2c1f4bf3e23c07d5deb11d364ba584a0606fc2b30aeb3d24eb65c29532e9fb"
+  },
+  "scope": {
+    "prefix_e_move": 17,
+    "extension_budget_e": 1,
+    "prefix_points": 147,
+    "prefix_lines": 7,
+    "prefix_circles": 11,
+    "targets": [
+      "B_plus",
+      "B_minus"
+    ]
+  },
+  "coverage": {
+    "shards": 126,
+    "completed_shards": 126,
+    "parameterizations": 32193,
+    "tested_parameterizations": 32193,
+    "line_parameterizations": 10731,
+    "circle_parameterizations": 21462,
+    "target_incident_parameterizations": 15,
+    "existing_object_parameterizations": 15
+  },
+  "result": {
+    "raw_new_target_parameterizations": 0,
+    "unique_new_target_objects": 0,
+    "hits": [],
+    "candidate_certificate": null,
+    "candidate_certificate_valid": null
+  },
+  "checkpoint": {
+    "schema": "euclid-min-sharded-search-checkpoint/v1",
+    "task_signature": "6865666cc1d9a4f8eee4671046ee6051ac229ab1a852a0348928f08d5ba0e212",
+    "revision": 127,
+    "status": "completed"
+  },
+  "reference_replay": {
+    "method": "full_exact_candidate_generation_then_object_contains",
+    "unique_new_candidates": 30021,
+    "unique_new_target_objects": 0,
+    "agrees_with_sharded_scan": true
+  },
+  "environment": {
+    "sage_version": "10.7"
+  },
+  "elapsed_seconds_this_invocation": 65.13215401799971,
+  "interpretation": "该结果精确穷尽已验证 19E 路线固定前 17E 状态的所有一步合法扩展；零命中只排除把这个固定前缀直接延长为 18E，不排除其他 18E 前缀或全局 18E 构造。"
+}

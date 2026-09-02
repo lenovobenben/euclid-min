@@ -1,0 +1,56 @@
+{
+  "schema": "euclid-min-fixed-prefix-two-step-search/v1",
+  "mode": "exact_partial",
+  "source": {
+    "input_sha256": {
+      "baselines/regular-17/detemple-1991-carlyle-improved-converted/construction.json": "652ce4f04f264bf238e9e5cc7812ec568f90791b3b0a26e16a92c90eb819c13d",
+      "baselines/regular-17/detemple-1991-carlyle-improved-converted/geometry-algebra-ir.json": "ae2c1f4bf3e23c07d5deb11d364ba584a0606fc2b30aeb3d24eb65c29532e9fb",
+      "sage/experiments/search_e16_two_step_target_extension.py": "eabcc25cbd1debaee1c7b0b87f0f89bcc1ec349390a03b41c7055d3a7ad54998",
+      "sage/euclid_min/search/backward.py": "241242a94946660b4cfa0b252619a26490835cc136f883d073b273a9ca0bafeb",
+      "sage/euclid_min/search/candidates.py": "256c16e03d5e879275133ef7ff7b9d3ac27e0275b6ecfe0398d1c0184112a708",
+      "sage/euclid_min/search/sharded_checkpoint.py": "16bd399710dc69fb8a372bf2bc96123689a886d7c7aa034a9149d64a28ae1508",
+      "sage/experiments/search_e17_one_step_target_extension.py": "6a6e515441983cd264dc12c405d0d4e419c307efde36309face04f94ea253272"
+    }
+  },
+  "scope": {
+    "prefix_e_move": 16,
+    "extension_budget_e": 2,
+    "prefix_points": 128,
+    "prefix_lines": 7,
+    "prefix_circles": 10,
+    "precursor_candidates": 22454,
+    "terminal_restriction": "parent_has_no_one_step_target_so_terminal_uses_at_least_one_precursor_point"
+  },
+  "progress": {
+    "status": "paused",
+    "exhausted": false,
+    "completed_shards": 49,
+    "total_shards": 702,
+    "remaining_shards": 653,
+    "completed_precursor_candidates": 1568
+  },
+  "coverage": {
+    "precursor_lines": 1568,
+    "precursor_circles": 0,
+    "new_points_total": 28739,
+    "terminal_parameterizations": 11822646,
+    "terminal_candidates": 0
+  },
+  "result": {
+    "successful_branches": 0,
+    "first_hit": null,
+    "candidate_certificate": null,
+    "candidate_certificate_valid": null
+  },
+  "checkpoint": {
+    "schema": "euclid-min-sharded-search-checkpoint/v1",
+    "task_signature": "b56efe8c05cc031e71c933bb3da533c7b7766814e8634cba3eb429b3bfa2e221",
+    "revision": 50,
+    "status": "paused"
+  },
+  "environment": {
+    "sage_version": "10.7"
+  },
+  "elapsed_seconds_this_invocation": 7544.031423265,
+  "interpretation": "命中会由独立 verifier 生成有效上界；只有 exhausted_no_hit 才精确排除已验证固定 16E 前缀的全部两笔扩展。该有限结论不排除其他 16E 前缀，也不是全局 18E 下界。"
+}
