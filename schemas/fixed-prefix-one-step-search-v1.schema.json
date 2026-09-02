@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/fixed-prefix-one-step-search-v1.schema.json",
+  "title": "Euclid-Min exact fixed-prefix one-step search v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "mode",
+    "source",
+    "scope",
+    "coverage",
+    "result",
+    "checkpoint",
+    "reference_replay",
+    "environment",
+    "elapsed_seconds_this_invocation",
+    "interpretation"
+  ],
+  "properties": {
+    "schema": {"const": "euclid-min-fixed-prefix-one-step-search/v1"},
+    "mode": {"const": "exact_fixed_prefix_exhaustive"},
+    "source": {
+      "type": "object",
+      "required": ["certificate_sha256", "geometry_algebra_ir_sha256"],
+      "properties": {
+        "certificate_sha256": {"$ref": "#/$defs/sha256"},
+        "geometry_algebra_ir_sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "prefix_e_move",
+        "extension_budget_e",
+        "prefix_points",
+        "prefix_lines",
+        "prefix_circles",
+        "targets"
+      ],
+      "properties": {
+        "prefix_e_move": {"type": "integer", "minimum": 0},
+        "extension_budget_e": {"type": "integer", "minimum": 1},
+        "prefix_points": {"type": "integer", "minimum": 2},
+        "prefix_lines": {"type": "integer", "minimum": 0},
+        "prefix_circles": {"type": "integer", "minimum": 1},
+        "targets": {
+          "type": "array",
+          "items": {"enum": ["B_plus", "B_minus"]},
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "coverage": {
+      "type": "object",
+      "required": [
+        "shards",
+        "completed_shards",
+        "parameterizations",
+        "tested_parameterizations",
+        "line_parameterizations",
+        "circle_parameterizations",
+        "target_incident_parameterizations",
+        "existing_object_parameterizations"
+      ],
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "result": {
+      "type": "object",
+      "required": [
+        "raw_new_target_parameterizations",
+        "unique_new_target_objects",
+        "hits",
+        "candidate_certificate",
+        "candidate_certificate_valid"
+      ],
+      "properties": {
+        "raw_new_target_parameterizations": {"type": "integer", "minimum": 0},
+        "unique_new_target_objects": {"type": "integer", "minimum": 0},
+        "hits": {"type": "array", "items": {"type": "object"}},
+        "candidate_certificate": {"type": ["string", "null"]},
+        "candidate_certificate_valid": {"type": ["boolean", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": ["schema", "task_signature", "revision", "status"],
+      "properties": {
+        "schema": {"const": "euclid-min-sharded-search-checkpoint/v1"},
+        "task_signature": {"$ref": "#/$defs/sha256"},
+        "revision": {"type": "integer", "minimum": 0},
+        "status": {"enum": ["running", "paused", "completed"]}
+      },
+      "additionalProperties": false
+    },
+    "reference_replay": {
+      "type": "object",
+      "required": [
+        "method",
+        "unique_new_candidates",
+        "unique_new_target_objects",
+        "agrees_with_sharded_scan"
+      ],
+      "properties": {
+        "method": {"type": "string", "minLength": 1},
+        "unique_new_candidates": {"type": "integer", "minimum": 0},
+        "unique_new_target_objects": {"type": "integer", "minimum": 0},
+        "agrees_with_sharded_scan": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object",
+      "required": ["sage_version"],
+      "properties": {"sage_version": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    },
+    "elapsed_seconds_this_invocation": {"type": "number", "minimum": 0},
+    "interpretation": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

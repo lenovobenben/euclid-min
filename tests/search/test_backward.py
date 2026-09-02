@@ -13,8 +13,10 @@ from euclid_min.search.backward import (
     expand_regular17_two_step_obligations,
     generate_regular17_terminal_candidates,
     generate_regular17_terminal_candidates_direct,
+    generate_regular17_terminal_candidates_using_new_points,
     is_regular17_terminal_step,
     regular17_targets_on_step,
+    terminal_parameterizations_using_new_points,
 )
 from euclid_min.search.candidates import generate_candidates
 from euclid_min.search.export import node_from_steps, steps_from_program
@@ -151,6 +153,40 @@ class BackwardTerminalConstraintTests(unittest.TestCase):
                 for drawable in origin.supporting_drawables
             )
         )
+
+    def test_new_point_terminal_restriction_recovers_known_final_step(self):
+        certificate = json.loads(IMPROVED_CERTIFICATE.read_text(encoding="utf-8"))
+        steps = steps_from_program(certificate["construction"]["program"])
+        state = node_from_steps(steps[:17]).state
+        self.assertEqual(generate_regular17_terminal_candidates_direct(state), ())
+
+        precursor = Candidate(
+            steps[17].op,
+            steps[17].first,
+            steps[17].second,
+        )
+        child = state.clone()
+        addition = child.draw_circle(precursor.first, precursor.second)
+        self.assertTrue(addition.new_object)
+        full = generate_regular17_terminal_candidates_direct(child)
+        restricted = generate_regular17_terminal_candidates_using_new_points(
+            child,
+            addition.new_points,
+        )
+
+        self.assertEqual(restricted, full)
+        self.assertTrue(
+            any(
+                candidate.drawable() == steps[18].drawable()
+                for candidate in restricted
+            )
+        )
+        restricted_count = terminal_parameterizations_using_new_points(
+            child,
+            addition.new_points,
+        )
+        full_count = 3 * len(child.points) * (len(child.points) - 1) // 2
+        self.assertLess(restricted_count, full_count)
 
 
 if __name__ == "__main__":

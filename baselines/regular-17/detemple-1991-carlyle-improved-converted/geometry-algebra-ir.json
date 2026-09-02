@@ -1,0 +1,3111 @@
+{
+  "schema": "euclid-min-geometry-algebra-ir/v1",
+  "problem": "regular-17-adjacent-vertex",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "source": {
+    "certificate": "baselines/regular-17/detemple-1991-carlyle-improved-converted/construction.json",
+    "certificate_sha256": "652ce4f04f264bf238e9e5cc7812ec568f90791b3b0a26e16a92c90eb819c13d",
+    "construction_sha256": "2248c9683f876e4a87d0a1b0bacdd4ae40f21c2d9d121e9586a749d840d9264b"
+  },
+  "semantics": {
+    "state": "monotone_points_drawables_representations",
+    "charged_draw_operation_cost_e": 1,
+    "intersection_binding_cost_e": 0,
+    "closure": "all_finite_real_intersections_after_each_new_object",
+    "contextual_cost": "number_of_distinct_new_drawables_in_context",
+    "duplicate_draw_note": "正式 profile 仍对重复绘制收费；本基线没有重复对象，故收费成本与上下文新增对象成本相等。"
+  },
+  "arrangement": {
+    "drawables": [
+      {
+        "id": "unit_circle",
+        "operation": "initial_circle",
+        "birth_e_move": 0
+      },
+      {
+        "id": "x_axis",
+        "operation": "line",
+        "birth_e_move": 1
+      },
+      {
+        "id": "c_A_Q",
+        "operation": "circle",
+        "birth_e_move": 2
+      },
+      {
+        "id": "c_Q_A",
+        "operation": "circle",
+        "birth_e_move": 3
+      },
+      {
+        "id": "y_axis",
+        "operation": "line",
+        "birth_e_move": 4
+      },
+      {
+        "id": "c_Q_O",
+        "operation": "circle",
+        "birth_e_move": 5
+      },
+      {
+        "id": "bisector_QO",
+        "operation": "line",
+        "birth_e_move": 6
+      },
+      {
+        "id": "c_Qhalf_O",
+        "operation": "circle",
+        "birth_e_move": 7
+      },
+      {
+        "id": "c_O_Qhalf",
+        "operation": "circle",
+        "birth_e_move": 8
+      },
+      {
+        "id": "bisector_Qhalf_O",
+        "operation": "line",
+        "birth_e_move": 9
+      },
+      {
+        "id": "c_Qquarter_Ay",
+        "operation": "circle",
+        "birth_e_move": 10
+      },
+      {
+        "id": "c_M0_2_Ay",
+        "operation": "circle",
+        "birth_e_move": 11
+      },
+      {
+        "id": "c_M1_2_Ay",
+        "operation": "circle",
+        "birth_e_move": 12
+      },
+      {
+        "id": "c_direct_y",
+        "operation": "circle",
+        "birth_e_move": 13
+      },
+      {
+        "id": "m_center_helper_1",
+        "operation": "line",
+        "birth_e_move": 14
+      },
+      {
+        "id": "m_center_helper_2",
+        "operation": "line",
+        "birth_e_move": 15
+      },
+      {
+        "id": "line_Y_H0_4",
+        "operation": "line",
+        "birth_e_move": 16
+      },
+      {
+        "id": "c_M0_4_Ay",
+        "operation": "circle",
+        "birth_e_move": 17
+      },
+      {
+        "id": "target_helper_circle",
+        "operation": "circle",
+        "birth_e_move": 18
+      },
+      {
+        "id": "target_line",
+        "operation": "line",
+        "birth_e_move": 19
+      }
+    ],
+    "points": [
+      {
+        "id": "point.O",
+        "birth_e_move": 0,
+        "aliases": [
+          "O"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "y_axis",
+          "c_Q_O",
+          "c_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.A",
+        "birth_e_move": 0,
+        "aliases": [
+          "A"
+        ],
+        "incident_drawables": [
+          "unit_circle",
+          "x_axis",
+          "c_Q_A"
+        ]
+      },
+      {
+        "id": "point.e01.001",
+        "birth_e_move": 1,
+        "aliases": [
+          "Q"
+        ],
+        "incident_drawables": [
+          "unit_circle",
+          "x_axis",
+          "c_A_Q",
+          "c_Qhalf_O",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e02.001",
+        "birth_e_move": 2,
+        "aliases": [],
+        "incident_drawables": [
+          "x_axis",
+          "c_A_Q"
+        ]
+      },
+      {
+        "id": "point.e03.001",
+        "birth_e_move": 3,
+        "aliases": [],
+        "incident_drawables": [
+          "x_axis",
+          "c_Q_A"
+        ]
+      },
+      {
+        "id": "point.e03.002",
+        "birth_e_move": 3,
+        "aliases": [
+          "y_axis_low"
+        ],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_Q_A",
+          "y_axis"
+        ]
+      },
+      {
+        "id": "point.e03.003",
+        "birth_e_move": 3,
+        "aliases": [
+          "y_axis_high"
+        ],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_Q_A",
+          "y_axis"
+        ]
+      },
+      {
+        "id": "point.e04.001",
+        "birth_e_move": 4,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "y_axis",
+          "c_Qquarter_Ay",
+          "c_M0_2_Ay",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e04.002",
+        "birth_e_move": 4,
+        "aliases": [
+          "Ay"
+        ],
+        "incident_drawables": [
+          "unit_circle",
+          "y_axis",
+          "c_Qquarter_Ay",
+          "c_M0_2_Ay",
+          "c_M1_2_Ay",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e05.001",
+        "birth_e_move": 5,
+        "aliases": [],
+        "incident_drawables": [
+          "x_axis",
+          "c_Q_O"
+        ]
+      },
+      {
+        "id": "point.e05.002",
+        "birth_e_move": 5,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_Q_O"
+        ]
+      },
+      {
+        "id": "point.e05.003",
+        "birth_e_move": 5,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_Q_O"
+        ]
+      },
+      {
+        "id": "point.e05.004",
+        "birth_e_move": 5,
+        "aliases": [
+          "eq_QO_low"
+        ],
+        "incident_drawables": [
+          "unit_circle",
+          "c_Q_O",
+          "bisector_QO"
+        ]
+      },
+      {
+        "id": "point.e05.005",
+        "birth_e_move": 5,
+        "aliases": [
+          "eq_QO_high"
+        ],
+        "incident_drawables": [
+          "unit_circle",
+          "c_Q_O",
+          "bisector_QO"
+        ]
+      },
+      {
+        "id": "point.e06.001",
+        "birth_e_move": 6,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "bisector_QO"
+        ]
+      },
+      {
+        "id": "point.e06.002",
+        "birth_e_move": 6,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "bisector_QO"
+        ]
+      },
+      {
+        "id": "point.e06.003",
+        "birth_e_move": 6,
+        "aliases": [
+          "Qhalf"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "bisector_QO",
+          "c_O_Qhalf"
+        ]
+      },
+      {
+        "id": "point.e06.004",
+        "birth_e_move": 6,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "bisector_QO"
+        ]
+      },
+      {
+        "id": "point.e06.005",
+        "birth_e_move": 6,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "bisector_QO"
+        ]
+      },
+      {
+        "id": "point.e07.001",
+        "birth_e_move": 7,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "c_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e07.002",
+        "birth_e_move": 7,
+        "aliases": [
+          "direct_y_center"
+        ],
+        "incident_drawables": [
+          "bisector_QO",
+          "c_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e08.001",
+        "birth_e_move": 8,
+        "aliases": [
+          "b_Qhalf_low"
+        ],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "c_O_Qhalf",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e08.002",
+        "birth_e_move": 8,
+        "aliases": [
+          "b_Qhalf_high"
+        ],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "c_O_Qhalf",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e08.003",
+        "birth_e_move": 8,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "c_O_Qhalf"
+        ]
+      },
+      {
+        "id": "point.e08.004",
+        "birth_e_move": 8,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "c_O_Qhalf"
+        ]
+      },
+      {
+        "id": "point.e08.005",
+        "birth_e_move": 8,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "c_O_Qhalf"
+        ]
+      },
+      {
+        "id": "point.e08.006",
+        "birth_e_move": 8,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "c_O_Qhalf"
+        ]
+      },
+      {
+        "id": "point.e08.007",
+        "birth_e_move": 8,
+        "aliases": [
+          "positive_half"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "c_O_Qhalf",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e09.001",
+        "birth_e_move": 9,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e09.002",
+        "birth_e_move": 9,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e09.003",
+        "birth_e_move": 9,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e09.004",
+        "birth_e_move": 9,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e09.005",
+        "birth_e_move": 9,
+        "aliases": [
+          "Qquarter"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e09.006",
+        "birth_e_move": 9,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e09.007",
+        "birth_e_move": 9,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e09.008",
+        "birth_e_move": 9,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e09.009",
+        "birth_e_move": 9,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "bisector_Qhalf_O"
+        ]
+      },
+      {
+        "id": "point.e10.001",
+        "birth_e_move": 10,
+        "aliases": [
+          "M1_2"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "c_Qquarter_Ay"
+        ]
+      },
+      {
+        "id": "point.e10.002",
+        "birth_e_move": 10,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_Qquarter_Ay"
+        ]
+      },
+      {
+        "id": "point.e10.003",
+        "birth_e_move": 10,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_Qquarter_Ay"
+        ]
+      },
+      {
+        "id": "point.e10.004",
+        "birth_e_move": 10,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "c_Qquarter_Ay"
+        ]
+      },
+      {
+        "id": "point.e10.005",
+        "birth_e_move": 10,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "c_Qquarter_Ay"
+        ]
+      },
+      {
+        "id": "point.e10.006",
+        "birth_e_move": 10,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "c_Qquarter_Ay"
+        ]
+      },
+      {
+        "id": "point.e10.007",
+        "birth_e_move": 10,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "c_Qquarter_Ay"
+        ]
+      },
+      {
+        "id": "point.e10.008",
+        "birth_e_move": 10,
+        "aliases": [
+          "scaled_circle_low"
+        ],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "c_Qquarter_Ay",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e10.009",
+        "birth_e_move": 10,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "c_Qquarter_Ay"
+        ]
+      },
+      {
+        "id": "point.e10.010",
+        "birth_e_move": 10,
+        "aliases": [
+          "M0_2"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "c_Qquarter_Ay",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e11.001",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "x_axis",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.002",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.003",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.004",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.005",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.006",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.007",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.008",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.009",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.010",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.011",
+        "birth_e_move": 11,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "c_M0_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e11.012",
+        "birth_e_move": 11,
+        "aliases": [
+          "H0_4"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "c_M0_2_Ay",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e12.001",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "x_axis",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.002",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.003",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.004",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.005",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.006",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.007",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.008",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.009",
+        "birth_e_move": 12,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "c_M1_2_Ay"
+        ]
+      },
+      {
+        "id": "point.e12.010",
+        "birth_e_move": 12,
+        "aliases": [
+          "H1_4"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "c_M1_2_Ay",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.001",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.002",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "x_axis",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.003",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qquarter_Ay",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.004",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.005",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.006",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.007",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M1_2_Ay",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.008",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.009",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.010",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.011",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.012",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.013",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.014",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.015",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.016",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.017",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.018",
+        "birth_e_move": 13,
+        "aliases": [
+          "Y"
+        ],
+        "incident_drawables": [
+          "y_axis",
+          "c_direct_y",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e13.019",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.020",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.021",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e13.022",
+        "birth_e_move": 13,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qquarter_Ay",
+          "c_direct_y"
+        ]
+      },
+      {
+        "id": "point.e14.001",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.002",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M1_2_Ay",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.003",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.004",
+        "birth_e_move": 14,
+        "aliases": [
+          "m_center_helper_point"
+        ],
+        "incident_drawables": [
+          "bisector_QO",
+          "m_center_helper_1",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e14.005",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.006",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.007",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.008",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M1_2_Ay",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.009",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.010",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.011",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e14.012",
+        "birth_e_move": 14,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "m_center_helper_1"
+        ]
+      },
+      {
+        "id": "point.e15.001",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.002",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M1_2_Ay",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.003",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.004",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qquarter_Ay",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.005",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.006",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.007",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.008",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.009",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.010",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M1_2_Ay",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.011",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qquarter_Ay",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.012",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.013",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.014",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e15.015",
+        "birth_e_move": 15,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "m_center_helper_2"
+        ]
+      },
+      {
+        "id": "point.e16.001",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.002",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.003",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.004",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.005",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "c_direct_y",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.006",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.007",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.008",
+        "birth_e_move": 16,
+        "aliases": [
+          "M0_4"
+        ],
+        "incident_drawables": [
+          "m_center_helper_2",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.009",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "m_center_helper_1",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e16.010",
+        "birth_e_move": 16,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "line_Y_H0_4"
+        ]
+      },
+      {
+        "id": "point.e17.001",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.002",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.003",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_direct_y",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.004",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "line_Y_H0_4",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.005",
+        "birth_e_move": 17,
+        "aliases": [
+          "H4_8"
+        ],
+        "incident_drawables": [
+          "x_axis",
+          "c_M0_4_Ay",
+          "target_helper_circle"
+        ]
+      },
+      {
+        "id": "point.e17.006",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_direct_y",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.007",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.008",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M1_2_Ay",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.009",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "m_center_helper_2",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.010",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.011",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "m_center_helper_1",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.012",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qquarter_Ay",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.013",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.014",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.015",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "m_center_helper_2",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.016",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "x_axis",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.017",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "line_Y_H0_4",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.018",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "m_center_helper_1",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e17.019",
+        "birth_e_move": 17,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "c_M0_4_Ay"
+        ]
+      },
+      {
+        "id": "point.e18.001",
+        "birth_e_move": 18,
+        "aliases": [],
+        "incident_drawables": [
+          "x_axis",
+          "target_helper_circle"
+        ]
+      },
+      {
+        "id": "point.e18.002",
+        "birth_e_move": 18,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "target_helper_circle"
+        ]
+      },
+      {
+        "id": "point.e18.003",
+        "birth_e_move": 18,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "target_helper_circle"
+        ]
+      },
+      {
+        "id": "point.e18.004",
+        "birth_e_move": 18,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "target_helper_circle"
+        ]
+      },
+      {
+        "id": "point.e18.005",
+        "birth_e_move": 18,
+        "aliases": [
+          "target_helper_point"
+        ],
+        "incident_drawables": [
+          "c_Q_O",
+          "target_helper_circle",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e18.006",
+        "birth_e_move": 18,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "target_helper_circle"
+        ]
+      },
+      {
+        "id": "point.e18.007",
+        "birth_e_move": 18,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "target_helper_circle"
+        ]
+      },
+      {
+        "id": "point.e18.008",
+        "birth_e_move": 18,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_4_Ay",
+          "target_helper_circle"
+        ]
+      },
+      {
+        "id": "point.e19.001",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.002",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M1_2_Ay",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.003",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_O",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.004",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_direct_y",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.005",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qquarter_Ay",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.006",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_QO",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.007",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.008",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.009",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "bisector_Qhalf_O",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.010",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "target_helper_circle",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.011",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qhalf_O",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.012",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "y_axis",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.013",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_4_Ay",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.014",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M1_2_Ay",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.015",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_O_Qhalf",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.016",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_direct_y",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.017",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Qquarter_Ay",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.018",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "m_center_helper_2",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.019",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "unit_circle",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.020",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_Q_A",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.021",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "m_center_helper_1",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.022",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "line_Y_H0_4",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.023",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_2_Ay",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.024",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_M0_4_Ay",
+          "target_line"
+        ]
+      },
+      {
+        "id": "point.e19.025",
+        "birth_e_move": 19,
+        "aliases": [],
+        "incident_drawables": [
+          "c_A_Q",
+          "target_line"
+        ]
+      }
+    ]
+  },
+  "transitions": [
+    {
+      "e_move": 1,
+      "program_index": 0,
+      "drawable": "x_axis",
+      "operation": "line",
+      "definition_references": [
+        "O",
+        "A"
+      ],
+      "definition_point_ids": [
+        "point.O",
+        "point.A"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        0
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e01.001"
+      ],
+      "explicit_bindings_after_draw": [
+        "Q"
+      ]
+    },
+    {
+      "e_move": 2,
+      "program_index": 2,
+      "drawable": "c_A_Q",
+      "operation": "circle",
+      "definition_references": [
+        "A",
+        "Q"
+      ],
+      "definition_point_ids": [
+        "point.A",
+        "point.e01.001"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        1
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e02.001"
+      ],
+      "explicit_bindings_after_draw": []
+    },
+    {
+      "e_move": 3,
+      "program_index": 3,
+      "drawable": "c_Q_A",
+      "operation": "circle",
+      "definition_references": [
+        "Q",
+        "A"
+      ],
+      "definition_point_ids": [
+        "point.e01.001",
+        "point.A"
+      ],
+      "definition_point_birth_e_moves": [
+        1,
+        0
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e03.001",
+        "point.e03.002",
+        "point.e03.003"
+      ],
+      "explicit_bindings_after_draw": [
+        "y_axis_low",
+        "y_axis_high"
+      ]
+    },
+    {
+      "e_move": 4,
+      "program_index": 6,
+      "drawable": "y_axis",
+      "operation": "line",
+      "definition_references": [
+        "y_axis_low",
+        "y_axis_high"
+      ],
+      "definition_point_ids": [
+        "point.e03.002",
+        "point.e03.003"
+      ],
+      "definition_point_birth_e_moves": [
+        3,
+        3
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e04.001",
+        "point.e04.002"
+      ],
+      "explicit_bindings_after_draw": [
+        "Ay"
+      ]
+    },
+    {
+      "e_move": 5,
+      "program_index": 8,
+      "drawable": "c_Q_O",
+      "operation": "circle",
+      "definition_references": [
+        "Q",
+        "O"
+      ],
+      "definition_point_ids": [
+        "point.e01.001",
+        "point.O"
+      ],
+      "definition_point_birth_e_moves": [
+        1,
+        0
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e05.001",
+        "point.e05.002",
+        "point.e05.003",
+        "point.e05.004",
+        "point.e05.005"
+      ],
+      "explicit_bindings_after_draw": [
+        "eq_QO_low",
+        "eq_QO_high"
+      ]
+    },
+    {
+      "e_move": 6,
+      "program_index": 11,
+      "drawable": "bisector_QO",
+      "operation": "line",
+      "definition_references": [
+        "eq_QO_low",
+        "eq_QO_high"
+      ],
+      "definition_point_ids": [
+        "point.e05.004",
+        "point.e05.005"
+      ],
+      "definition_point_birth_e_moves": [
+        5,
+        5
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e06.001",
+        "point.e06.002",
+        "point.e06.003",
+        "point.e06.004",
+        "point.e06.005"
+      ],
+      "explicit_bindings_after_draw": [
+        "Qhalf"
+      ]
+    },
+    {
+      "e_move": 7,
+      "program_index": 13,
+      "drawable": "c_Qhalf_O",
+      "operation": "circle",
+      "definition_references": [
+        "Qhalf",
+        "O"
+      ],
+      "definition_point_ids": [
+        "point.e06.003",
+        "point.O"
+      ],
+      "definition_point_birth_e_moves": [
+        6,
+        0
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e07.001",
+        "point.e07.002"
+      ],
+      "explicit_bindings_after_draw": []
+    },
+    {
+      "e_move": 8,
+      "program_index": 14,
+      "drawable": "c_O_Qhalf",
+      "operation": "circle",
+      "definition_references": [
+        "O",
+        "Qhalf"
+      ],
+      "definition_point_ids": [
+        "point.O",
+        "point.e06.003"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        6
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e08.001",
+        "point.e08.002",
+        "point.e08.003",
+        "point.e08.004",
+        "point.e08.005",
+        "point.e08.006",
+        "point.e08.007"
+      ],
+      "explicit_bindings_after_draw": [
+        "b_Qhalf_low",
+        "b_Qhalf_high"
+      ]
+    },
+    {
+      "e_move": 9,
+      "program_index": 17,
+      "drawable": "bisector_Qhalf_O",
+      "operation": "line",
+      "definition_references": [
+        "b_Qhalf_low",
+        "b_Qhalf_high"
+      ],
+      "definition_point_ids": [
+        "point.e08.001",
+        "point.e08.002"
+      ],
+      "definition_point_birth_e_moves": [
+        8,
+        8
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e09.001",
+        "point.e09.002",
+        "point.e09.003",
+        "point.e09.004",
+        "point.e09.005",
+        "point.e09.006",
+        "point.e09.007",
+        "point.e09.008",
+        "point.e09.009"
+      ],
+      "explicit_bindings_after_draw": [
+        "Qquarter"
+      ]
+    },
+    {
+      "e_move": 10,
+      "program_index": 19,
+      "drawable": "c_Qquarter_Ay",
+      "operation": "circle",
+      "definition_references": [
+        "Qquarter",
+        "Ay"
+      ],
+      "definition_point_ids": [
+        "point.e09.005",
+        "point.e04.002"
+      ],
+      "definition_point_birth_e_moves": [
+        9,
+        4
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e10.001",
+        "point.e10.002",
+        "point.e10.003",
+        "point.e10.004",
+        "point.e10.005",
+        "point.e10.006",
+        "point.e10.007",
+        "point.e10.008",
+        "point.e10.009",
+        "point.e10.010"
+      ],
+      "explicit_bindings_after_draw": [
+        "M1_2",
+        "M0_2"
+      ]
+    },
+    {
+      "e_move": 11,
+      "program_index": 22,
+      "drawable": "c_M0_2_Ay",
+      "operation": "circle",
+      "definition_references": [
+        "M0_2",
+        "Ay"
+      ],
+      "definition_point_ids": [
+        "point.e10.010",
+        "point.e04.002"
+      ],
+      "definition_point_birth_e_moves": [
+        10,
+        4
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e11.001",
+        "point.e11.002",
+        "point.e11.003",
+        "point.e11.004",
+        "point.e11.005",
+        "point.e11.006",
+        "point.e11.007",
+        "point.e11.008",
+        "point.e11.009",
+        "point.e11.010",
+        "point.e11.011",
+        "point.e11.012"
+      ],
+      "explicit_bindings_after_draw": [
+        "H0_4"
+      ]
+    },
+    {
+      "e_move": 12,
+      "program_index": 24,
+      "drawable": "c_M1_2_Ay",
+      "operation": "circle",
+      "definition_references": [
+        "M1_2",
+        "Ay"
+      ],
+      "definition_point_ids": [
+        "point.e10.001",
+        "point.e04.002"
+      ],
+      "definition_point_birth_e_moves": [
+        10,
+        4
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e12.001",
+        "point.e12.002",
+        "point.e12.003",
+        "point.e12.004",
+        "point.e12.005",
+        "point.e12.006",
+        "point.e12.007",
+        "point.e12.008",
+        "point.e12.009",
+        "point.e12.010"
+      ],
+      "explicit_bindings_after_draw": [
+        "H1_4",
+        "direct_y_center"
+      ]
+    },
+    {
+      "e_move": 13,
+      "program_index": 27,
+      "drawable": "c_direct_y",
+      "operation": "circle",
+      "definition_references": [
+        "direct_y_center",
+        "H1_4"
+      ],
+      "definition_point_ids": [
+        "point.e07.002",
+        "point.e12.010"
+      ],
+      "definition_point_birth_e_moves": [
+        7,
+        12
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e13.001",
+        "point.e13.002",
+        "point.e13.003",
+        "point.e13.004",
+        "point.e13.005",
+        "point.e13.006",
+        "point.e13.007",
+        "point.e13.008",
+        "point.e13.009",
+        "point.e13.010",
+        "point.e13.011",
+        "point.e13.012",
+        "point.e13.013",
+        "point.e13.014",
+        "point.e13.015",
+        "point.e13.016",
+        "point.e13.017",
+        "point.e13.018",
+        "point.e13.019",
+        "point.e13.020",
+        "point.e13.021",
+        "point.e13.022"
+      ],
+      "explicit_bindings_after_draw": [
+        "Y",
+        "positive_half",
+        "scaled_circle_low"
+      ]
+    },
+    {
+      "e_move": 14,
+      "program_index": 31,
+      "drawable": "m_center_helper_1",
+      "operation": "line",
+      "definition_references": [
+        "M0_2",
+        "scaled_circle_low"
+      ],
+      "definition_point_ids": [
+        "point.e10.010",
+        "point.e10.008"
+      ],
+      "definition_point_birth_e_moves": [
+        10,
+        10
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e14.001",
+        "point.e14.002",
+        "point.e14.003",
+        "point.e14.004",
+        "point.e14.005",
+        "point.e14.006",
+        "point.e14.007",
+        "point.e14.008",
+        "point.e14.009",
+        "point.e14.010",
+        "point.e14.011",
+        "point.e14.012"
+      ],
+      "explicit_bindings_after_draw": [
+        "m_center_helper_point"
+      ]
+    },
+    {
+      "e_move": 15,
+      "program_index": 33,
+      "drawable": "m_center_helper_2",
+      "operation": "line",
+      "definition_references": [
+        "m_center_helper_point",
+        "positive_half"
+      ],
+      "definition_point_ids": [
+        "point.e14.004",
+        "point.e08.007"
+      ],
+      "definition_point_birth_e_moves": [
+        14,
+        8
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e15.001",
+        "point.e15.002",
+        "point.e15.003",
+        "point.e15.004",
+        "point.e15.005",
+        "point.e15.006",
+        "point.e15.007",
+        "point.e15.008",
+        "point.e15.009",
+        "point.e15.010",
+        "point.e15.011",
+        "point.e15.012",
+        "point.e15.013",
+        "point.e15.014",
+        "point.e15.015"
+      ],
+      "explicit_bindings_after_draw": []
+    },
+    {
+      "e_move": 16,
+      "program_index": 34,
+      "drawable": "line_Y_H0_4",
+      "operation": "line",
+      "definition_references": [
+        "Y",
+        "H0_4"
+      ],
+      "definition_point_ids": [
+        "point.e13.018",
+        "point.e11.012"
+      ],
+      "definition_point_birth_e_moves": [
+        13,
+        11
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e16.001",
+        "point.e16.002",
+        "point.e16.003",
+        "point.e16.004",
+        "point.e16.005",
+        "point.e16.006",
+        "point.e16.007",
+        "point.e16.008",
+        "point.e16.009",
+        "point.e16.010"
+      ],
+      "explicit_bindings_after_draw": [
+        "M0_4"
+      ]
+    },
+    {
+      "e_move": 17,
+      "program_index": 36,
+      "drawable": "c_M0_4_Ay",
+      "operation": "circle",
+      "definition_references": [
+        "M0_4",
+        "Ay"
+      ],
+      "definition_point_ids": [
+        "point.e16.008",
+        "point.e04.002"
+      ],
+      "definition_point_birth_e_moves": [
+        16,
+        4
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e17.001",
+        "point.e17.002",
+        "point.e17.003",
+        "point.e17.004",
+        "point.e17.005",
+        "point.e17.006",
+        "point.e17.007",
+        "point.e17.008",
+        "point.e17.009",
+        "point.e17.010",
+        "point.e17.011",
+        "point.e17.012",
+        "point.e17.013",
+        "point.e17.014",
+        "point.e17.015",
+        "point.e17.016",
+        "point.e17.017",
+        "point.e17.018",
+        "point.e17.019"
+      ],
+      "explicit_bindings_after_draw": [
+        "H4_8"
+      ]
+    },
+    {
+      "e_move": 18,
+      "program_index": 38,
+      "drawable": "target_helper_circle",
+      "operation": "circle",
+      "definition_references": [
+        "O",
+        "H4_8"
+      ],
+      "definition_point_ids": [
+        "point.O",
+        "point.e17.005"
+      ],
+      "definition_point_birth_e_moves": [
+        0,
+        17
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e18.001",
+        "point.e18.002",
+        "point.e18.003",
+        "point.e18.004",
+        "point.e18.005",
+        "point.e18.006",
+        "point.e18.007",
+        "point.e18.008"
+      ],
+      "explicit_bindings_after_draw": [
+        "target_helper_point"
+      ]
+    },
+    {
+      "e_move": 19,
+      "program_index": 40,
+      "drawable": "target_line",
+      "operation": "line",
+      "definition_references": [
+        "Q",
+        "target_helper_point"
+      ],
+      "definition_point_ids": [
+        "point.e01.001",
+        "point.e18.005"
+      ],
+      "definition_point_birth_e_moves": [
+        1,
+        18
+      ],
+      "charged_cost_e": 1,
+      "marginal_new_object_cost_e": 1,
+      "free_points_born": [
+        "point.e19.001",
+        "point.e19.002",
+        "point.e19.003",
+        "point.e19.004",
+        "point.e19.005",
+        "point.e19.006",
+        "point.e19.007",
+        "point.e19.008",
+        "point.e19.009",
+        "point.e19.010",
+        "point.e19.011",
+        "point.e19.012",
+        "point.e19.013",
+        "point.e19.014",
+        "point.e19.015",
+        "point.e19.016",
+        "point.e19.017",
+        "point.e19.018",
+        "point.e19.019",
+        "point.e19.020",
+        "point.e19.021",
+        "point.e19.022",
+        "point.e19.023",
+        "point.e19.024",
+        "point.e19.025"
+      ],
+      "explicit_bindings_after_draw": []
+    }
+  ],
+  "algebraic_symbols": [
+    {
+      "id": "period.eta0_2_half",
+      "kind": "quadratic_root",
+      "description": "半尺度周期 eta_0,2/2"
+    },
+    {
+      "id": "period.eta1_2_half",
+      "kind": "quadratic_root",
+      "description": "半尺度周期 eta_1,2/2"
+    },
+    {
+      "id": "period.eta0_2",
+      "kind": "derived",
+      "description": "周期 eta_0,2"
+    },
+    {
+      "id": "period.eta1_2",
+      "kind": "derived",
+      "description": "周期 eta_1,2"
+    },
+    {
+      "id": "period.eta0_4",
+      "kind": "quadratic_root",
+      "description": "周期 eta_0,4"
+    },
+    {
+      "id": "period.eta2_4",
+      "kind": "quadratic_root",
+      "description": "eta_0,4 同一 Carlyle 圆免费产生的兄弟根 eta_2,4"
+    },
+    {
+      "id": "period.eta1_4",
+      "kind": "quadratic_root",
+      "description": "周期 eta_1,4"
+    },
+    {
+      "id": "period.eta3_4",
+      "kind": "quadratic_root",
+      "description": "eta_1,4 同一 Carlyle 圆免费产生的兄弟根 eta_3,4"
+    },
+    {
+      "id": "period.eta0_8",
+      "kind": "quadratic_root",
+      "description": "目标迹 2*cos(2*pi/17)"
+    },
+    {
+      "id": "period.eta4_8",
+      "kind": "quadratic_root",
+      "description": "当前 19E 目标桥使用的兄弟根 eta_4,8"
+    }
+  ],
+  "algebraic_relations": [
+    {
+      "id": "relation.eta2-half",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.eta0_2_half",
+        "period.eta1_2_half"
+      ],
+      "sum": {
+        "op": "rational",
+        "numerator": -1,
+        "denominator": 2
+      },
+      "product": {
+        "op": "rational",
+        "numerator": -1,
+        "denominator": 1
+      },
+      "verified": true,
+      "materialized_representations": [
+        "repr.M0_2.x",
+        "repr.M1_2.x"
+      ]
+    },
+    {
+      "id": "relation.scale-eta0-2",
+      "kind": "definition",
+      "output": "period.eta0_2",
+      "expression": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "rational",
+            "numerator": 2,
+            "denominator": 1
+          },
+          {
+            "op": "symbol",
+            "id": "period.eta0_2_half"
+          }
+        ]
+      },
+      "verified": true,
+      "materialized_representations": [
+        "repr.M0_2.twice-x"
+      ]
+    },
+    {
+      "id": "relation.scale-eta1-2",
+      "kind": "definition",
+      "output": "period.eta1_2",
+      "expression": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "rational",
+            "numerator": 2,
+            "denominator": 1
+          },
+          {
+            "op": "symbol",
+            "id": "period.eta1_2_half"
+          }
+        ]
+      },
+      "verified": true,
+      "materialized_representations": [
+        "repr.M1_2.twice-x"
+      ]
+    },
+    {
+      "id": "relation.eta4-even",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.eta0_4",
+        "period.eta2_4"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.eta0_2"
+      },
+      "product": {
+        "op": "rational",
+        "numerator": -1,
+        "denominator": 1
+      },
+      "verified": true,
+      "materialized_representations": [
+        "repr.H0_4.x",
+        "repr.M0_4.twice-x",
+        "repr.auto.H2_4.x"
+      ]
+    },
+    {
+      "id": "relation.eta4-odd",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.eta1_4",
+        "period.eta3_4"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.eta1_2"
+      },
+      "product": {
+        "op": "rational",
+        "numerator": -1,
+        "denominator": 1
+      },
+      "verified": true,
+      "materialized_representations": [
+        "repr.H1_4.x",
+        "repr.M0_4.twice-y-minus-one",
+        "repr.Y.y-minus-one",
+        "repr.auto.H3_4.x"
+      ]
+    },
+    {
+      "id": "relation.eta8-target-pair",
+      "kind": "quadratic_root_pair",
+      "roots": [
+        "period.eta0_8",
+        "period.eta4_8"
+      ],
+      "sum": {
+        "op": "symbol",
+        "id": "period.eta0_4"
+      },
+      "product": {
+        "op": "symbol",
+        "id": "period.eta1_4"
+      },
+      "verified": true,
+      "materialized_representations": [
+        "repr.H4_8.x",
+        "repr.auto.H0_8.x",
+        "repr.target.B_plus.twice-x"
+      ]
+    }
+  ],
+  "representations": [
+    {
+      "id": "repr.M0_2.x",
+      "symbol": "period.eta0_2_half",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e10.010",
+        "reference": "M0_2"
+      },
+      "chart": "x",
+      "available_e_move": 10,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 10
+    },
+    {
+      "id": "repr.M0_2.twice-x",
+      "symbol": "period.eta0_2",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e10.010",
+        "reference": "M0_2"
+      },
+      "chart": "2*x",
+      "available_e_move": 10,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 10
+    },
+    {
+      "id": "repr.M1_2.x",
+      "symbol": "period.eta1_2_half",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e10.001",
+        "reference": "M1_2"
+      },
+      "chart": "x",
+      "available_e_move": 10,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 10
+    },
+    {
+      "id": "repr.M1_2.twice-x",
+      "symbol": "period.eta1_2",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e10.001",
+        "reference": "M1_2"
+      },
+      "chart": "2*x",
+      "available_e_move": 10,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 10
+    },
+    {
+      "id": "repr.H0_4.x",
+      "symbol": "period.eta0_4",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e11.012",
+        "reference": "H0_4"
+      },
+      "chart": "x",
+      "available_e_move": 11,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 11
+    },
+    {
+      "id": "repr.auto.H2_4.x",
+      "symbol": "period.eta2_4",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e11.001"
+      },
+      "chart": "x",
+      "available_e_move": 11,
+      "verification": "exact_AA_equality"
+    },
+    {
+      "id": "repr.H1_4.x",
+      "symbol": "period.eta1_4",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e12.010",
+        "reference": "H1_4"
+      },
+      "chart": "x",
+      "available_e_move": 12,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 12
+    },
+    {
+      "id": "repr.auto.H3_4.x",
+      "symbol": "period.eta3_4",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e12.001"
+      },
+      "chart": "x",
+      "available_e_move": 12,
+      "verification": "exact_AA_equality"
+    },
+    {
+      "id": "repr.Y.y-minus-one",
+      "symbol": "period.eta1_4",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e13.018",
+        "reference": "Y"
+      },
+      "chart": "y-1",
+      "available_e_move": 13,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 13
+    },
+    {
+      "id": "repr.M0_4.twice-x",
+      "symbol": "period.eta0_4",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e16.008",
+        "reference": "M0_4"
+      },
+      "chart": "2*x",
+      "available_e_move": 16,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 16
+    },
+    {
+      "id": "repr.M0_4.twice-y-minus-one",
+      "symbol": "period.eta1_4",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e16.008",
+        "reference": "M0_4"
+      },
+      "chart": "2*y-1",
+      "available_e_move": 16,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 16
+    },
+    {
+      "id": "repr.auto.H0_8.x",
+      "symbol": "period.eta0_8",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e17.016"
+      },
+      "chart": "x",
+      "available_e_move": 17,
+      "verification": "exact_AA_equality"
+    },
+    {
+      "id": "repr.H4_8.x",
+      "symbol": "period.eta4_8",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e17.005",
+        "reference": "H4_8"
+      },
+      "chart": "x",
+      "available_e_move": 17,
+      "verification": "exact_AA_equality",
+      "bound_e_move": 17
+    },
+    {
+      "id": "repr.target.B_plus.twice-x",
+      "symbol": "period.eta0_8",
+      "carrier": {
+        "kind": "point",
+        "point_id": "point.e19.019"
+      },
+      "chart": "2*x",
+      "available_e_move": 19,
+      "verification": "exact_AA_equality"
+    }
+  ],
+  "baseline_macro_partition": [
+    {
+      "id": "macro.axes",
+      "first_e_move": 1,
+      "last_e_move": 4,
+      "observed_charged_cost_e": 4,
+      "observed_contextual_new_object_cost_e": 4,
+      "paid_drawables": [
+        "x_axis",
+        "c_A_Q",
+        "c_Q_A",
+        "y_axis"
+      ],
+      "input_symbols": [],
+      "output_symbols": [],
+      "output_representations": [],
+      "interpretation": "从 O、A 和单位圆建立横轴、纵轴及方向点。"
+    },
+    {
+      "id": "macro.half-scale-bootstrap",
+      "first_e_move": 5,
+      "last_e_move": 9,
+      "observed_charged_cost_e": 5,
+      "observed_contextual_new_object_cost_e": 5,
+      "paid_drawables": [
+        "c_Q_O",
+        "bisector_QO",
+        "c_Qhalf_O",
+        "c_O_Qhalf",
+        "bisector_Qhalf_O"
+      ],
+      "input_symbols": [],
+      "output_symbols": [],
+      "output_representations": [],
+      "interpretation": "建立 -1/2、-1/4 与半尺度 Carlyle 圆所需痕迹。"
+    },
+    {
+      "id": "macro.eta2-half-pair",
+      "first_e_move": 10,
+      "last_e_move": 10,
+      "observed_charged_cost_e": 1,
+      "observed_contextual_new_object_cost_e": 1,
+      "paid_drawables": [
+        "c_Qquarter_Ay"
+      ],
+      "input_symbols": [],
+      "output_symbols": [
+        "period.eta0_2_half",
+        "period.eta1_2_half"
+      ],
+      "output_representations": [
+        "repr.M0_2.x",
+        "repr.M1_2.x"
+      ],
+      "interpretation": "一只圆同时产生两个半尺度 eta_2 根。"
+    },
+    {
+      "id": "macro.eta4-pairs",
+      "first_e_move": 11,
+      "last_e_move": 12,
+      "observed_charged_cost_e": 2,
+      "observed_contextual_new_object_cost_e": 2,
+      "paid_drawables": [
+        "c_M0_2_Ay",
+        "c_M1_2_Ay"
+      ],
+      "input_symbols": [
+        "period.eta0_2",
+        "period.eta1_2"
+      ],
+      "output_symbols": [
+        "period.eta0_4",
+        "period.eta2_4",
+        "period.eta1_4",
+        "period.eta3_4"
+      ],
+      "output_representations": [
+        "repr.H0_4.x",
+        "repr.H1_4.x",
+        "repr.auto.H2_4.x",
+        "repr.auto.H3_4.x"
+      ],
+      "interpretation": "两只圆分别产生偶、奇两组 eta_4 根。"
+    },
+    {
+      "id": "macro.locate-M0_4",
+      "first_e_move": 13,
+      "last_e_move": 16,
+      "observed_charged_cost_e": 4,
+      "observed_contextual_new_object_cost_e": 4,
+      "paid_drawables": [
+        "c_direct_y",
+        "m_center_helper_1",
+        "m_center_helper_2",
+        "line_Y_H0_4"
+      ],
+      "input_symbols": [
+        "period.eta0_4",
+        "period.eta1_4"
+      ],
+      "output_symbols": [
+        "period.eta0_4",
+        "period.eta1_4"
+      ],
+      "output_representations": [
+        "repr.M0_4.twice-x",
+        "repr.M0_4.twice-y-minus-one",
+        "repr.Y.y-minus-one"
+      ],
+      "interpretation": "直接得到 Y，并用三条线定位最后一个 Carlyle 圆心。"
+    },
+    {
+      "id": "macro.eta8-target-pair",
+      "first_e_move": 17,
+      "last_e_move": 17,
+      "observed_charged_cost_e": 1,
+      "observed_contextual_new_object_cost_e": 1,
+      "paid_drawables": [
+        "c_M0_4_Ay"
+      ],
+      "input_symbols": [
+        "period.eta0_4",
+        "period.eta1_4"
+      ],
+      "output_symbols": [
+        "period.eta0_8",
+        "period.eta4_8"
+      ],
+      "output_representations": [
+        "repr.H4_8.x",
+        "repr.auto.H0_8.x"
+      ],
+      "interpretation": "一只圆同时产生目标迹和当前尾部使用的兄弟根。"
+    },
+    {
+      "id": "macro.target-bridge",
+      "first_e_move": 18,
+      "last_e_move": 19,
+      "observed_charged_cost_e": 2,
+      "observed_contextual_new_object_cost_e": 2,
+      "paid_drawables": [
+        "target_helper_circle",
+        "target_line"
+      ],
+      "input_symbols": [
+        "period.eta4_8"
+      ],
+      "output_symbols": [
+        "period.eta0_8"
+      ],
+      "output_representations": [
+        "repr.target.B_plus.twice-x"
+      ],
+      "interpretation": "利用兄弟根、已有圆和一条目标线命中 B_plus。"
+    }
+  ],
+  "live_slice": {
+    "algebraic": {
+      "root_goal": "period.eta4_8",
+      "active_relations": [
+        "relation.eta2-half",
+        "relation.scale-eta0-2",
+        "relation.scale-eta1-2",
+        "relation.eta4-even",
+        "relation.eta4-odd",
+        "relation.eta8-target-pair"
+      ],
+      "live_symbols": [
+        "period.eta0_2",
+        "period.eta0_2_half",
+        "period.eta0_4",
+        "period.eta1_2",
+        "period.eta1_2_half",
+        "period.eta1_4",
+        "period.eta4_8"
+      ],
+      "consumed_quadratic_roots": [
+        "period.eta0_2_half",
+        "period.eta0_4",
+        "period.eta1_2_half",
+        "period.eta1_4",
+        "period.eta4_8"
+      ],
+      "free_sibling_roots": [
+        "period.eta0_8",
+        "period.eta2_4",
+        "period.eta3_4"
+      ],
+      "target_relevant_free_roots": [
+        "period.eta0_8"
+      ]
+    },
+    "geometry": {
+      "root": "target_line",
+      "paid_objects": [
+        "bisector_QO",
+        "bisector_Qhalf_O",
+        "c_A_Q",
+        "c_M0_2_Ay",
+        "c_M0_4_Ay",
+        "c_M1_2_Ay",
+        "c_O_Qhalf",
+        "c_Q_A",
+        "c_Q_O",
+        "c_Qhalf_O",
+        "c_Qquarter_Ay",
+        "c_direct_y",
+        "line_Y_H0_4",
+        "m_center_helper_1",
+        "m_center_helper_2",
+        "target_helper_circle",
+        "target_line",
+        "x_axis",
+        "y_axis"
+      ],
+      "live_paid_objects": [
+        "bisector_QO",
+        "bisector_Qhalf_O",
+        "c_A_Q",
+        "c_M0_2_Ay",
+        "c_M0_4_Ay",
+        "c_M1_2_Ay",
+        "c_O_Qhalf",
+        "c_Q_A",
+        "c_Q_O",
+        "c_Qhalf_O",
+        "c_Qquarter_Ay",
+        "c_direct_y",
+        "line_Y_H0_4",
+        "m_center_helper_1",
+        "m_center_helper_2",
+        "target_helper_circle",
+        "target_line",
+        "x_axis",
+        "y_axis"
+      ],
+      "non_ancestor_paid_objects": [],
+      "all_paid_objects_live": true
+    }
+  },
+  "cost_audit": {
+    "charged_e_move": 19,
+    "contextual_new_object_e_move": 19,
+    "lines": 8,
+    "circles": 11,
+    "full_closure_points": 180,
+    "explicit_intersection_bindings": 22,
+    "unbound_free_closure_points": 156
+  },
+  "consistency": {
+    "all_algebraic_relations_verified": true,
+    "target_bridge": {
+      "target": "B_plus",
+      "target_point_id": "point.e19.019",
+      "target_point_birth_e_move": 19,
+      "eta0_8_equals_twice_target_x": true,
+      "target_line_contains_target": true,
+      "unit_circle_contains_target": true,
+      "verified": true
+    }
+  },
+  "producer": {
+    "name": "euclid-min-regular17-ga-ir-builder",
+    "version": 1
+  }
+}

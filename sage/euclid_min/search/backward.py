@@ -157,6 +157,96 @@ def generate_regular17_terminal_candidates_direct(
     return tuple(candidates)
 
 
+def terminal_parameterizations_using_new_points(
+    state: GeometryState,
+    new_points: tuple[Point, ...],
+) -> int:
+    """返回至少使用一个指定新点的终步基础操作参数化数量。"""
+
+    if not new_points:
+        return 0
+    if len(set(map(id, new_points))) != len(new_points):
+        # ``Point`` 的 AA 坐标不承诺可哈希；先快速拦截同一对象，再做精确检查。
+        raise ValueError("新点列表包含重复对象")
+    if any(
+        not state.contains_point(point)
+        for point in new_points
+    ):
+        raise ValueError("指定新点不属于当前状态")
+    if any(
+        first == second
+        for index, first in enumerate(new_points)
+        for second in new_points[index + 1 :]
+    ):
+        raise ValueError("新点列表包含数学上相同的点")
+    point_count = len(state.points)
+    old_point_count = point_count - len(new_points)
+    if old_point_count < 0:
+        raise ValueError("新点数量超过状态点数")
+    # 全部线/圆参数化减去完全由旧点定义的参数化。
+    return 3 * (
+        point_count * (point_count - 1)
+        - old_point_count * (old_point_count - 1)
+    ) // 2
+
+
+def generate_regular17_terminal_candidates_using_new_points(
+    state: GeometryState,
+    new_points: tuple[Point, ...],
+) -> tuple[Candidate, ...]:
+    """精确生成至少使用一个指定新点的不同终步目标对象。
+
+    若父状态已经完整确认不存在一步目标候选，那么加入一个首步对象后，任何合法
+    两步命中的末笔都必须使用至少一个首步新交点：完全由旧点定义的末笔在父状态
+    中已经可画。调用方必须先核对这一前提；本函数只实现受限终步生成。
+    """
+
+    terminal_parameterizations_using_new_points(state, new_points)
+    if not new_points:
+        return ()
+    points = tuple(sorted(state.points))
+    target_points = tuple(adjacent_targets().values())
+    known_objects: list[Drawable] = list(state.drawables)
+    candidates: list[Candidate] = []
+
+    def is_new_point(point: Point) -> bool:
+        return any(point == new_point for new_point in new_points)
+
+    def add_if_new(candidate: Candidate) -> None:
+        drawable = candidate.drawable()
+        if any(
+            type(existing) is type(drawable) and existing == drawable
+            for existing in known_objects
+        ):
+            return
+        known_objects.append(drawable)
+        candidates.append(candidate)
+
+    for first_index, first in enumerate(points):
+        for second in points[first_index + 1 :]:
+            if not (is_new_point(first) or is_new_point(second)):
+                continue
+            if any(
+                _points_are_collinear(first, second, target)
+                for target in target_points
+            ):
+                add_if_new(Candidate("line", first, second))
+
+    for center in points:
+        for through in points:
+            if center == through:
+                continue
+            if not (is_new_point(center) or is_new_point(through)):
+                continue
+            if any(
+                _points_are_equidistant(center, through, target)
+                for target in target_points
+            ):
+                add_if_new(Candidate("circle", center, through))
+
+    return tuple(candidates)
+
+
 def expand_regular17_precursor_obligation(
     state: GeometryState,
     precursor: Candidate,

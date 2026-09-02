@@ -1,0 +1,394 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://euclid-min.local/schemas/geometry-algebra-ir-v1.schema.json",
+  "title": "Euclid-Min geometry-algebra IR v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "problem",
+    "profile",
+    "source",
+    "semantics",
+    "arrangement",
+    "transitions",
+    "algebraic_symbols",
+    "algebraic_relations",
+    "representations",
+    "baseline_macro_partition",
+    "live_slice",
+    "cost_audit",
+    "consistency",
+    "producer"
+  ],
+  "properties": {
+    "schema": {"const": "euclid-min-geometry-algebra-ir/v1"},
+    "problem": {"type": "string", "minLength": 1},
+    "profile": {"$ref": "#/$defs/profile"},
+    "source": {
+      "type": "object",
+      "required": ["certificate", "certificate_sha256", "construction_sha256"],
+      "properties": {
+        "certificate": {"type": "string", "minLength": 1},
+        "certificate_sha256": {"$ref": "#/$defs/sha256"},
+        "construction_sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "semantics": {"type": "object"},
+    "arrangement": {
+      "type": "object",
+      "required": ["drawables", "points"],
+      "properties": {
+        "drawables": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/drawable"}
+        },
+        "points": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/point"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "transitions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/transition"}
+    },
+    "algebraic_symbols": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/symbol"}
+    },
+    "algebraic_relations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/relation"}
+    },
+    "representations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/representation"}
+    },
+    "baseline_macro_partition": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/macro"}
+    },
+    "live_slice": {"type": "object"},
+    "cost_audit": {
+      "type": "object",
+      "required": [
+        "charged_e_move",
+        "contextual_new_object_e_move",
+        "lines",
+        "circles",
+        "full_closure_points",
+        "explicit_intersection_bindings",
+        "unbound_free_closure_points"
+      ],
+      "properties": {
+        "charged_e_move": {"type": "integer", "minimum": 0},
+        "contextual_new_object_e_move": {"type": "integer", "minimum": 0},
+        "lines": {"type": "integer", "minimum": 0},
+        "circles": {"type": "integer", "minimum": 0},
+        "full_closure_points": {"type": "integer", "minimum": 2},
+        "explicit_intersection_bindings": {"type": "integer", "minimum": 0},
+        "unbound_free_closure_points": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "consistency": {"type": "object"},
+    "producer": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "profile": {
+      "type": "object",
+      "required": ["id", "sha256"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "drawable": {
+      "type": "object",
+      "required": ["id", "operation", "birth_e_move"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "operation": {
+          "enum": ["initial_circle", "line", "circle"]
+        },
+        "birth_e_move": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "point": {
+      "type": "object",
+      "required": ["id", "birth_e_move", "aliases", "incident_drawables"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "birth_e_move": {"type": "integer", "minimum": 0},
+        "aliases": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "incident_drawables": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "transition": {
+      "type": "object",
+      "required": [
+        "e_move",
+        "program_index",
+        "drawable",
+        "operation",
+        "definition_references",
+        "definition_point_ids",
+        "definition_point_birth_e_moves",
+        "charged_cost_e",
+        "marginal_new_object_cost_e",
+        "free_points_born",
+        "explicit_bindings_after_draw"
+      ],
+      "properties": {
+        "e_move": {"type": "integer", "minimum": 1},
+        "program_index": {"type": "integer", "minimum": 0},
+        "drawable": {"type": "string", "minLength": 1},
+        "operation": {"enum": ["line", "circle"]},
+        "definition_references": {"$ref": "#/$defs/stringPair"},
+        "definition_point_ids": {"$ref": "#/$defs/stringPair"},
+        "definition_point_birth_e_moves": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "integer", "minimum": 0}
+        },
+        "charged_cost_e": {"const": 1},
+        "marginal_new_object_cost_e": {"enum": [0, 1]},
+        "free_points_born": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "explicit_bindings_after_draw": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "stringPair": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "symbol": {
+      "type": "object",
+      "required": ["id", "kind", "description"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["derived", "quadratic_root"]},
+        "description": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "expression": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["op", "numerator", "denominator"],
+          "properties": {
+            "op": {"const": "rational"},
+            "numerator": {"type": "integer"},
+            "denominator": {"type": "integer", "minimum": 1}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["op", "id"],
+          "properties": {
+            "op": {"const": "symbol"},
+            "id": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["op", "args"],
+          "properties": {
+            "op": {"enum": ["add", "mul"]},
+            "args": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/expression"}
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["op", "arg"],
+          "properties": {
+            "op": {"const": "neg"},
+            "arg": {"$ref": "#/$defs/expression"}
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["op", "numerator", "denominator"],
+          "properties": {
+            "op": {"const": "div"},
+            "numerator": {"$ref": "#/$defs/expression"},
+            "denominator": {"$ref": "#/$defs/expression"}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "relation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "kind",
+            "roots",
+            "sum",
+            "product",
+            "verified",
+            "materialized_representations"
+          ],
+          "properties": {
+            "id": {"type": "string", "minLength": 1},
+            "kind": {"const": "quadratic_root_pair"},
+            "roots": {"$ref": "#/$defs/stringPair"},
+            "sum": {"$ref": "#/$defs/expression"},
+            "product": {"$ref": "#/$defs/expression"},
+            "verified": {"const": true},
+            "materialized_representations": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1},
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "kind",
+            "output",
+            "expression",
+            "verified",
+            "materialized_representations"
+          ],
+          "properties": {
+            "id": {"type": "string", "minLength": 1},
+            "kind": {"const": "definition"},
+            "output": {"type": "string", "minLength": 1},
+            "expression": {"$ref": "#/$defs/expression"},
+            "verified": {"const": true},
+            "materialized_representations": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1},
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "representation": {
+      "type": "object",
+      "required": [
+        "id",
+        "symbol",
+        "carrier",
+        "chart",
+        "available_e_move",
+        "verification"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "symbol": {"type": "string", "minLength": 1},
+        "carrier": {
+          "type": "object",
+          "required": ["kind", "point_id"],
+          "properties": {
+            "kind": {"const": "point"},
+            "point_id": {"type": "string", "minLength": 1},
+            "reference": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": false
+        },
+        "chart": {"type": "string", "minLength": 1},
+        "available_e_move": {"type": "integer", "minimum": 0},
+        "bound_e_move": {"type": "integer", "minimum": 0},
+        "verification": {"const": "exact_AA_equality"}
+      },
+      "additionalProperties": false
+    },
+    "macro": {
+      "type": "object",
+      "required": [
+        "id",
+        "first_e_move",
+        "last_e_move",
+        "observed_charged_cost_e",
+        "observed_contextual_new_object_cost_e",
+        "paid_drawables",
+        "input_symbols",
+        "output_symbols",
+        "output_representations",
+        "interpretation"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "first_e_move": {"type": "integer", "minimum": 1},
+        "last_e_move": {"type": "integer", "minimum": 1},
+        "observed_charged_cost_e": {"type": "integer", "minimum": 1},
+        "observed_contextual_new_object_cost_e": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "paid_drawables": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "input_symbols": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "output_symbols": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "output_representations": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "interpretation": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  }
+}
