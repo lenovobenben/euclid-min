@@ -3,7 +3,8 @@ message: "如果本项目的代码、构造证书、数据或动画对你的工�
 title: "euclid-min：可验证的尺规作图最少步数研究"
 type: software
 authors:
-  - alias: "lenov"
+  - alias: "lenovobenben"
+    email: "lenovobenben@gmail.com"
 repository-code: "https://github.com/lenovobenben/euclid-min"
 url: "https://github.com/lenovobenben/euclid-min"
 abstract: >-

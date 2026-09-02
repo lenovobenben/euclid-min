@@ -1,6 +1,6 @@
 # 许可范围
 
-版权所有 © 2026 euclid-min contributors。
+版权所有 © 2026 lenovobenben。
 
 本仓库包含软件、数学文字、构造证书、搜索数据和动画，因此采用分范围双协议。两个协议都只适用于贡献者有权授权的内容。
 
@@ -27,7 +27,7 @@
 
 推荐署名方式：
 
-> euclid-min contributors，*euclid-min*，<https://github.com/lenovobenben/euclid-min>，CC BY 4.0；如有修改请注明。
+> lenovobenben，*euclid-min*，<https://github.com/lenovobenben/euclid-min>，CC BY 4.0；如有修改请注明。
 
 ## 不受本项目许可改变的内容
 
