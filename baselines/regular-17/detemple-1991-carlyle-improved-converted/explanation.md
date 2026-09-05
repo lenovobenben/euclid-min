@@ -1,5 +1,9 @@
 # DeTemple 1991 修改版 Carlyle 圆构造的 19 E 转写
 
+> 历史基线：19 E 曾是本项目在 `regular-17-e-fixed-v1` 下的已验证上界。
+> 当前上界已经更新为 [17 E](../eddy119-2026-adapted-17e/explanation.md)；本目录继续
+> 保留用于来源转换、依赖分析和差分审计。
+
 ## 结论与证据等级
 
 本目录把 DeTemple 论文第 104 页明确给出的两项修改转写为
@@ -17,8 +21,8 @@ SageMath 10.7 reference verifier 从磁盘独立加载证书并精确重放为�
 重复绘制：0
 ```
 
-因此 19 E 是同一 profile 下比原 32 E baseline 短 13 E 的新已验证上界。它不是
-lower-bound proof，也不支持“全局最优”或“文献最短”声明。
+该结果发布时，19 E 是同一 profile 下比原 32 E baseline 短 13 E 的新已验证
+上界。它不是 lower-bound proof，也不支持“全局最优”或“文献最短”声明。
 
 ## 来源与模型差异
 
