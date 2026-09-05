@@ -9,7 +9,7 @@ repository-code: "https://github.com/lenovobenben/euclid-min"
 url: "https://github.com/lenovobenben/euclid-min"
 abstract: >-
   euclid-min 研究固定尺规模型下的最少作图步数，提供正十七边形
-  19E 构造、精确证书、可重放验证器、搜索程序、研究数据与动画，
+  17E 构造、精确证书、可重放验证器、搜索程序、研究数据与动画，
   并保存正257边形的独立研究结果。
 keywords:
   - straightedge-and-compass construction

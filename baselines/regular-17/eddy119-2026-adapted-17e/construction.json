@@ -1,0 +1,321 @@
+{
+  "schema": "euclid-min-certificate/v1",
+  "problem": "regular-17-adjacent-vertex",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "construction": {
+    "id": "eddy119-public-prefix-adapted-17e",
+    "title": "17 E adjacent-vertex construction adapted from Eddy119 public 37-move construction",
+    "description": "Source: Eddy119, 2026-02-28, https://gist.github.com/mrflip/a973b1c60f4a38fc3277ddd57ce65b28?permalink_comment_id=6006486 . Adapted on 2026-09-05 by keeping the first 18 distinct drawable objects, making d1 the free unit circle, removing unused d17, and drawing the diameter through the negative target. All point inputs are initial points or exact intersection bindings.",
+    "program": [
+      {
+        "id": "d2",
+        "op": "circle",
+        "center": "A",
+        "through": "O"
+      },
+      {
+        "id": "d3",
+        "op": "line",
+        "through": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "p2",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "d2"
+        ],
+        "index": 0
+      },
+      {
+        "id": "p3",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "d2"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d4",
+        "op": "line",
+        "through": [
+          "p2",
+          "p3"
+        ]
+      },
+      {
+        "id": "p6",
+        "op": "intersect",
+        "objects": [
+          "d3",
+          "d4"
+        ],
+        "index": 0
+      },
+      {
+        "id": "d5",
+        "op": "circle",
+        "center": "A",
+        "through": "p6"
+      },
+      {
+        "id": "p9",
+        "op": "intersect",
+        "objects": [
+          "d3",
+          "d5"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d6",
+        "op": "circle",
+        "center": "p6",
+        "through": "p9"
+      },
+      {
+        "id": "p12",
+        "op": "intersect",
+        "objects": [
+          "d2",
+          "d6"
+        ],
+        "index": 1
+      },
+      {
+        "id": "p13",
+        "op": "intersect",
+        "objects": [
+          "d2",
+          "d6"
+        ],
+        "index": 0
+      },
+      {
+        "id": "d7",
+        "op": "line",
+        "through": [
+          "p12",
+          "p13"
+        ]
+      },
+      {
+        "id": "p17",
+        "op": "intersect",
+        "objects": [
+          "d3",
+          "d7"
+        ],
+        "index": 0
+      },
+      {
+        "id": "p15",
+        "op": "intersect",
+        "objects": [
+          "d4",
+          "d6"
+        ],
+        "index": 0
+      },
+      {
+        "id": "d8",
+        "op": "circle",
+        "center": "p17",
+        "through": "p15"
+      },
+      {
+        "id": "p26",
+        "op": "intersect",
+        "objects": [
+          "d3",
+          "d8"
+        ],
+        "index": 0
+      },
+      {
+        "id": "d9",
+        "op": "circle",
+        "center": "p26",
+        "through": "p15"
+      },
+      {
+        "id": "p27",
+        "op": "intersect",
+        "objects": [
+          "d3",
+          "d8"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d10",
+        "op": "circle",
+        "center": "p27",
+        "through": "p15"
+      },
+      {
+        "id": "p37",
+        "op": "intersect",
+        "objects": [
+          "d3",
+          "d9"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d11",
+        "op": "circle",
+        "center": "p6",
+        "through": "p37"
+      },
+      {
+        "id": "p54",
+        "op": "intersect",
+        "objects": [
+          "d4",
+          "d11"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d12",
+        "op": "circle",
+        "center": "p54",
+        "through": "p6"
+      },
+      {
+        "id": "p69",
+        "op": "intersect",
+        "objects": [
+          "d11",
+          "d12"
+        ],
+        "index": 0
+      },
+      {
+        "id": "p68",
+        "op": "intersect",
+        "objects": [
+          "d11",
+          "d12"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d13",
+        "op": "line",
+        "through": [
+          "p69",
+          "p68"
+        ]
+      },
+      {
+        "id": "p45",
+        "op": "intersect",
+        "objects": [
+          "d3",
+          "d10"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d14",
+        "op": "line",
+        "through": [
+          "p54",
+          "p45"
+        ]
+      },
+      {
+        "id": "p90",
+        "op": "intersect",
+        "objects": [
+          "d13",
+          "d14"
+        ],
+        "index": 0
+      },
+      {
+        "id": "d15",
+        "op": "circle",
+        "center": "p90",
+        "through": "O"
+      },
+      {
+        "id": "p24",
+        "op": "intersect",
+        "objects": [
+          "d2",
+          "d8"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d16",
+        "op": "line",
+        "through": [
+          "A",
+          "p24"
+        ]
+      },
+      {
+        "id": "p134",
+        "op": "intersect",
+        "objects": [
+          "d15",
+          "d16"
+        ],
+        "index": 1
+      },
+      {
+        "id": "d18",
+        "op": "circle",
+        "center": "A",
+        "through": "p134"
+      },
+      {
+        "id": "opposite_target",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "d18"
+        ],
+        "index": 0
+      },
+      {
+        "id": "target_diameter",
+        "op": "line",
+        "through": [
+          "O",
+          "opposite_target"
+        ]
+      }
+    ]
+  },
+  "assertions": {
+    "score": {
+      "metric": "e_move",
+      "e_move": 17
+    },
+    "targets": [
+      "B_plus"
+    ],
+    "claim": "verified_construction"
+  },
+  "software": {
+    "producer": {
+      "name": "public-source-exact-converter",
+      "version": "1.0.0"
+    }
+  },
+  "integrity": {
+    "construction_sha256": "99c80e4ef288e73c3657f2da056b1ec3b9609cd5f7231bcad690f6bc0a722252"
+  }
+}

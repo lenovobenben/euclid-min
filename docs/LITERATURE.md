@@ -5,23 +5,26 @@
 ## 1. 当前状态
 
 ```text
-系统检索：尚未开始
-定向来源复核：DeTemple 1991 构造、Labelle 计数、Grozdev–Dekov 2015 和 Demaine–Luo 2025 已核对
-已录入构造：2
-已通过验证器的构造：2
-可用于同一规则配置比较的条目：2（经转换）
+系统检索：进行中；2026-09-05 已完成一轮公开网络检索和计数口径核对
+定向来源复核：DeTemple 1991、Arnaudiès–Delezoïde 2003、Labelle、Grozdev–Dekov 2015、Demaine–Luo 2025 和 Eddy119 2026 已核对
+已录入构造：3
+已通过验证器的构造：3
+可用于同一规则配置比较的条目：3（经转换）
 ```
 
-当前项目的已验证构造上界为 19 E，原 32 E 条目作为首个项目基线保留。系统文献检索尚未完成，因此不能把 19 E 称为文献最短、最短已知或世界纪录。
+当前项目的已验证构造上界为 17 E，原 32 E 和 19 E 条目作为历史基线保留。系统文献检索尚未完成，也没有 0–16 E 的完备下界，因此不能把 17 E 称为文献最短、最短已知、世界纪录或全局最优。
 
 ### 已验证构造基线
 
 | ID | 来源 | 可比性 | 当前规则重算 | 状态 |
 |---|---|---|---:|---|
 | `detemple-1991-carlyle-converted` | DeTemple, 1991, §4, pp. 102–104, Fig. 3, steps (i)–(x) | `converted` | 32 E | Sage 验证器通过 |
-| `detemple-1991-carlyle-improved-converted` | DeTemple, 1991, §4, p. 104，再加入项目内的依赖清理和局部精确替换 | `converted` | 19 E | Sage 验证器通过；项目当前上界 |
+| `detemple-1991-carlyle-improved-converted` | DeTemple, 1991, §4, p. 104，再加入项目内的依赖清理和局部精确替换 | `converted` | 19 E | Sage 验证器通过；历史上界 |
+| `eddy119-2026-adapted-17e` | Eddy119, 2026-02-28，公开 37-move 构造的相关前缀，再加入项目内的目标转换和依赖裁剪 | `converted` | 17 E | Sage 验证器和独立根式检查通过；项目当前上界 |
 
 原文从单位圆和两条坐标轴开始，使用现代不折叠圆规，并报告未经修改构造的 Lemoine 简洁度为 51、修改版为 45。本项目两条转写均把坐标轴计费：未经修改路线并展开两次距离搬运后为 32 E；应用原文修改、删除被取代分支，并以局部精确窗口替换中段和末段后为 19 E。原文 51/45 与本项目的 32/19 E 只能并列记录，不能跨指标直接比较；本项目内部的 32 E 与 19 E 使用同一规则配置，可以直接比较。
+
+Eddy119 原帖报告的是完成整个正十七边形的 37 moves，没有报告 17 E。项目保留其前 18 个不同图元，将首个单位圆识别为 profile 免费对象，追加一条取对径目标的直线，得到直接转换的 18 E；再删除没有后继依赖的圆 `d17`，得到 17 E。原构造几何主干来自 Eddy119，18→17 E 的裁剪、证书和精确证明由本项目完成。
 
 ## 2. E 步计数法的来源
 
@@ -83,6 +86,8 @@ Lemoine simplicity heptadecagon
 | `labelle-complexity` | François Labelle，*The Complexity of Geometric Constructions* | 作者网页和规则已核对 | E 步基础计费原则的早期明确来源 |
 | `grozdev-dekov-2015` | Sava Grozdev、Deko Dekov，Malfatti 圆构造论文 | 全文和 Labelle 指标用法已核对 | 公开论文采用相同基础计数法的实例 |
 | `demaine-luo-euclidea` | Erik D. Demaine、Victor Luo，Euclidea 优化复杂度论文 | 正式论文全文和 E-move 定义已核对 | E-move 名称、形式定义与复杂度背景 |
+| `arnaudies-delezoide-2003` | Jean-Marie Arnaudiès、Maryse Delezoïde，正十七边形低复杂度构造 | 全文和距离搬运步骤已核对；工具模型不兼容 | 防止把 7 线 12 圆误报为当前 profile 的 18 E |
+| `eddy119-2026` | Eddy119，[公开完整 37-move 构造和 Ancient Greek Geometry 重放链接](https://gist.github.com/mrflip/a973b1c60f4a38fc3277ddd57ce65b28?permalink_comment_id=6006486) | 原帖、游戏操作语义和相关前缀已恢复；17 E 改写已验证 | 当前 17 E 上界的公开几何来源 |
 | `classical-heptadecagon` | Gauss 之后的经典正十七边形构造原始或可靠二手资料 | 待系统检索 | 首个可重放构造候选 |
 
 正式引用时必须补齐作者、标题、出版物、年份、卷期页码、DOI/稳定链接和访问状态；不得直接把本表的简写作为最终参考文献。
@@ -169,4 +174,4 @@ euclid_min:
 - 完成公开、充分的文献检索：才可以谨慎讨论“已审阅文献中的最短已知”；
 - 具有完备下界证明：才可以声称全局最优。
 
-当前项目满足“比已验证基线更短”的门槛，并可把 19 E 作为同一规则配置下后续结果的比较上界；尚不满足“已审阅文献中的最短已知”或“全局最优”的声明门槛。
+当前项目满足“比已验证基线更短”的门槛，并可把 17 E 作为同一规则配置下后续结果的比较上界；尚不满足“已审阅文献中的最短已知”或“全局最优”的声明门槛。

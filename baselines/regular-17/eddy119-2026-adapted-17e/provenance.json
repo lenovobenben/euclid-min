@@ -1,0 +1,471 @@
+{
+  "givens": {
+    "O": 0,
+    "A": 1,
+    "unit_circle": "d1"
+  },
+  "points": {
+    "0": {
+      "id": 0,
+      "x": 0,
+      "y": 0,
+      "given": true
+    },
+    "1": {
+      "id": 1,
+      "x": 1,
+      "y": 0,
+      "given": true
+    },
+    "2": {
+      "id": 2,
+      "x": 0.5,
+      "y": -0.8660254037844386,
+      "intersection_objects": [
+        "d1",
+        "d2"
+      ],
+      "must_exist_before_draw": 4
+    },
+    "3": {
+      "id": 3,
+      "x": 0.5,
+      "y": 0.8660254037844386,
+      "intersection_objects": [
+        "d1",
+        "d2"
+      ],
+      "must_exist_before_draw": 4
+    },
+    "6": {
+      "id": 6,
+      "x": 0.5,
+      "y": 0,
+      "intersection_objects": [
+        "d3",
+        "d4"
+      ],
+      "must_exist_before_draw": 5
+    },
+    "9": {
+      "id": 9,
+      "x": 1.5,
+      "y": 0,
+      "intersection_objects": [
+        "d3",
+        "d5"
+      ],
+      "must_exist_before_draw": 6
+    },
+    "12": {
+      "id": 12,
+      "x": 0.75,
+      "y": 0.9682458365518543,
+      "intersection_objects": [
+        "d2",
+        "d6"
+      ],
+      "must_exist_before_draw": 7
+    },
+    "13": {
+      "id": 13,
+      "x": 0.75,
+      "y": -0.9682458365518543,
+      "intersection_objects": [
+        "d2",
+        "d6"
+      ],
+      "must_exist_before_draw": 7
+    },
+    "17": {
+      "id": 17,
+      "x": 0.75,
+      "y": 0,
+      "intersection_objects": [
+        "d3",
+        "d7"
+      ],
+      "must_exist_before_draw": 8
+    },
+    "15": {
+      "id": 15,
+      "x": 0.5,
+      "y": -1,
+      "intersection_objects": [
+        "d4",
+        "d6"
+      ],
+      "must_exist_before_draw": 8
+    },
+    "26": {
+      "id": 26,
+      "x": -0.28077640640441515,
+      "y": 0,
+      "intersection_objects": [
+        "d3",
+        "d8"
+      ],
+      "must_exist_before_draw": 9
+    },
+    "27": {
+      "id": 27,
+      "x": 1.7807764064044151,
+      "y": 0,
+      "intersection_objects": [
+        "d3",
+        "d8"
+      ],
+      "must_exist_before_draw": 10
+    },
+    "37": {
+      "id": 37,
+      "x": 0.9879283649264852,
+      "y": 0,
+      "intersection_objects": [
+        "d3",
+        "d9"
+      ],
+      "must_exist_before_draw": 11
+    },
+    "54": {
+      "id": 54,
+      "x": 0.5,
+      "y": 0.48792836492648517,
+      "intersection_objects": [
+        "d4",
+        "d11"
+      ],
+      "must_exist_before_draw": 12
+    },
+    "69": {
+      "id": 69,
+      "x": 0.07744164074665977,
+      "y": 0.24396418246324258,
+      "intersection_objects": [
+        "d11",
+        "d12"
+      ],
+      "must_exist_before_draw": 13
+    },
+    "68": {
+      "id": 68,
+      "x": 0.9225583592533402,
+      "y": 0.24396418246324258,
+      "intersection_objects": [
+        "d11",
+        "d12"
+      ],
+      "must_exist_before_draw": 13
+    },
+    "45": {
+      "id": 45,
+      "x": 3.405703544217741,
+      "y": 0,
+      "intersection_objects": [
+        "d3",
+        "d10"
+      ],
+      "must_exist_before_draw": 14
+    },
+    "90": {
+      "id": 90,
+      "x": 1.95285177210887,
+      "y": 0.24396418246324256,
+      "intersection_objects": [
+        "d13",
+        "d14"
+      ],
+      "must_exist_before_draw": 15
+    },
+    "24": {
+      "id": 24,
+      "x": 1,
+      "y": 1,
+      "intersection_objects": [
+        "d2",
+        "d8"
+      ],
+      "must_exist_before_draw": 16
+    },
+    "134": {
+      "id": 134,
+      "x": 1,
+      "y": 1.9659461993678031,
+      "intersection_objects": [
+        "d15",
+        "d16"
+      ],
+      "must_exist_before_draw": 17
+    }
+  },
+  "objects": [
+    {
+      "id": "d1",
+      "type": "circle",
+      "a": {
+        "id": 0,
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "id": 1,
+        "x": 1,
+        "y": 0
+      }
+    },
+    {
+      "id": "d2",
+      "type": "circle",
+      "a": {
+        "id": 1,
+        "x": 1,
+        "y": 0
+      },
+      "b": {
+        "id": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "d3",
+      "type": "line",
+      "a": {
+        "id": 0,
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "id": 1,
+        "x": 1,
+        "y": 0
+      }
+    },
+    {
+      "id": "d4",
+      "type": "line",
+      "a": {
+        "id": 2,
+        "x": 0.5,
+        "y": -0.8660254037844386
+      },
+      "b": {
+        "id": 3,
+        "x": 0.5,
+        "y": 0.8660254037844386
+      }
+    },
+    {
+      "id": "d5",
+      "type": "circle",
+      "a": {
+        "id": 1,
+        "x": 1,
+        "y": 0
+      },
+      "b": {
+        "id": 6,
+        "x": 0.5,
+        "y": 0
+      }
+    },
+    {
+      "id": "d6",
+      "type": "circle",
+      "a": {
+        "id": 6,
+        "x": 0.5,
+        "y": 0
+      },
+      "b": {
+        "id": 9,
+        "x": 1.5,
+        "y": 0
+      }
+    },
+    {
+      "id": "d7",
+      "type": "line",
+      "a": {
+        "id": 12,
+        "x": 0.75,
+        "y": 0.9682458365518543
+      },
+      "b": {
+        "id": 13,
+        "x": 0.75,
+        "y": -0.9682458365518543
+      }
+    },
+    {
+      "id": "d8",
+      "type": "circle",
+      "a": {
+        "id": 17,
+        "x": 0.75,
+        "y": 0
+      },
+      "b": {
+        "id": 15,
+        "x": 0.5,
+        "y": -1
+      }
+    },
+    {
+      "id": "d9",
+      "type": "circle",
+      "a": {
+        "id": 26,
+        "x": -0.28077640640441515,
+        "y": 0
+      },
+      "b": {
+        "id": 15,
+        "x": 0.5,
+        "y": -1
+      }
+    },
+    {
+      "id": "d10",
+      "type": "circle",
+      "a": {
+        "id": 27,
+        "x": 1.7807764064044151,
+        "y": 0
+      },
+      "b": {
+        "id": 15,
+        "x": 0.5,
+        "y": -1
+      }
+    },
+    {
+      "id": "d11",
+      "type": "circle",
+      "a": {
+        "id": 6,
+        "x": 0.5,
+        "y": 0
+      },
+      "b": {
+        "id": 37,
+        "x": 0.9879283649264852,
+        "y": 0
+      }
+    },
+    {
+      "id": "d12",
+      "type": "circle",
+      "a": {
+        "id": 54,
+        "x": 0.5,
+        "y": 0.48792836492648517
+      },
+      "b": {
+        "id": 6,
+        "x": 0.5,
+        "y": 0
+      }
+    },
+    {
+      "id": "d13",
+      "type": "line",
+      "a": {
+        "id": 69,
+        "x": 0.07744164074665977,
+        "y": 0.24396418246324258
+      },
+      "b": {
+        "id": 68,
+        "x": 0.9225583592533402,
+        "y": 0.24396418246324258
+      }
+    },
+    {
+      "id": "d14",
+      "type": "line",
+      "a": {
+        "id": 54,
+        "x": 0.5,
+        "y": 0.48792836492648517
+      },
+      "b": {
+        "id": 45,
+        "x": 3.405703544217741,
+        "y": 0
+      }
+    },
+    {
+      "id": "d15",
+      "type": "circle",
+      "a": {
+        "id": 90,
+        "x": 1.95285177210887,
+        "y": 0.24396418246324256
+      },
+      "b": {
+        "id": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "d16",
+      "type": "line",
+      "a": {
+        "id": 1,
+        "x": 1,
+        "y": 0
+      },
+      "b": {
+        "id": 24,
+        "x": 1,
+        "y": 1
+      }
+    },
+    {
+      "id": "d17",
+      "type": "circle",
+      "a": {
+        "id": 134,
+        "x": 1,
+        "y": 1.9659461993678031
+      },
+      "b": {
+        "id": 1,
+        "x": 1,
+        "y": 0
+      }
+    },
+    {
+      "id": "d18",
+      "type": "circle",
+      "a": {
+        "id": 1,
+        "x": 1,
+        "y": 0
+      },
+      "b": {
+        "id": 134,
+        "x": 1,
+        "y": 1.9659461993678031
+      }
+    }
+  ],
+  "remove_draws": [
+    17
+  ],
+  "append": {
+    "type": "line",
+    "a": 0,
+    "b": {
+      "intersection_objects": [
+        "d1",
+        "d18"
+      ],
+      "x": -0.9324722294043558,
+      "y": -0.3612416661871529
+    }
+  },
+  "note": "Numerical source coordinates only. Must exact replay using above intersection objects. d17 removable as no later input uses its intersections."
+}

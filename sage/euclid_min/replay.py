@@ -123,6 +123,26 @@ class ProgramReplayer:
                 f"不支持操作 {operation!r}",
             )
 
+        # Keep the exact AA values but reduce their internal representations.
+        # This prevents equivalent nested-radical expressions from making a
+        # later exact equality check needlessly expensive.
+        self._simplify_named_value(self.names[entry_id])
+
+    @staticmethod
+    def _simplify_named_value(value: NamedObject) -> None:
+        if isinstance(value, Point):
+            coordinates = (value.x, value.y)
+        elif isinstance(value, Line):
+            coordinates = (value.a, value.b, value.c)
+        else:
+            coordinates = (
+                value.center.x,
+                value.center.y,
+                value.radius_squared,
+            )
+        for coordinate in coordinates:
+            coordinate.simplify()
+
     def _draw_line(
         self,
         entry_id: str,

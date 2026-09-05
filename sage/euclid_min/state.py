@@ -297,6 +297,19 @@ class GeometryState:
 
     @staticmethod
     def _find_equal(items, candidate):
+        # AA equality cost depends on the representation being compared.  A
+        # normalized line often has a cheap constant term even when its
+        # leading coefficient carries a deeply nested radical expression.
+        # Compare the cheap fields first without changing exact semantics.
+        if isinstance(candidate, Line):
+            for item in items:
+                if (
+                    item.c == candidate.c
+                    and item.b == candidate.b
+                    and item.a == candidate.a
+                ):
+                    return item
+            return None
         for item in items:
             if item == candidate:
                 return item

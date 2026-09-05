@@ -1,0 +1,31 @@
+id: eddy119-2026-adapted-17e
+bibliography:
+  authors:
+    - Eddy119
+  title: "17-gon, in origin, 37 moves"
+  year: 2026
+  publication: GitHub Gist comment with Ancient Greek Geometry replay links
+  stable_url: >-
+    https://gist.github.com/mrflip/a973b1c60f4a38fc3277ddd57ce65b28?permalink_comment_id=6006486
+access:
+  full_text_obtained: true
+  accessed_on: 2026-09-05
+construction:
+  exact_location: Comment dated 2026-02-28 and its two replay URLs
+  initial_objects: Origin, a unit point, and the first drawn unit circle
+  tools: Straight lines through existing points and center-through-point circles
+  free_point_rules: The replayed prefix uses intersections of existing objects
+  original_metric: Ancient Greek Geometry drawable count for the complete polygon
+  reported_score: 37
+euclid_min:
+  target_profile: regular-17-e-fixed-v1
+  comparability: converted
+  directly_comparable: false
+  conversion_notes: >-
+    Keep the first 18 distinct source drawables, identify source d1 with the
+    profile's free unit circle, remove unused circle d17, and append the line
+    through O and the negative target supplied by d18. A direct conversion is
+    18 E; removing d17 lowers it to 17 E. The original author reported 37 moves
+    for a complete polygon and did not claim a 17 E adjacent-vertex result.
+  recomputed_e_score: 17
+  verification_status: verified

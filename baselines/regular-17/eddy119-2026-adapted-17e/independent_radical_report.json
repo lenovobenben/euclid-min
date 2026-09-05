@@ -1,0 +1,42 @@
+{
+  "source_url": "https://gist.github.com/mrflip/a973b1c60f4a38fc3277ddd57ce65b28?permalink_comment_id=6006486",
+  "method": "Independent circle equations and exact nested radicals using Sage AA and QQbar; no project imports",
+  "adapted_draw_count": {
+    "lines": 7,
+    "circles": 10,
+    "E": 17
+  },
+  "checks": {
+    "circle_d15_equation_at_point_134": true,
+    "cosine_polynomial_zero": true,
+    "c_in_rational_isolating_interval": true,
+    "unique_root_in_interval": true,
+    "root_in_interval_is_simple": true,
+    "z_is_nontrivial_17th_root": true,
+    "c_equals_primitive_root_real_part": true,
+    "positive_y_equals_primitive_root_imag_part": true
+  },
+  "all_checks_passed": true,
+  "isolating_interval": {
+    "lower": "2331/2500",
+    "upper": "373/400"
+  },
+  "distinct_real_roots_in_interval": 1,
+  "real_root_multiplicities_in_interval": [
+    1
+  ],
+  "cosine_polynomial": "256*X^8 + 128*X^7 - 448*X^6 - 192*X^5 + 240*X^4 + 80*X^3 - 40*X^2 - 8*X + 1",
+  "c_minimal_polynomial": "x^8 + 1/2*x^7 - 7/4*x^6 - 3/4*x^5 + 15/16*x^4 + 5/16*x^3 - 5/32*x^2 - 1/32*x + 1/256",
+  "approximate_values_for_display_only": {
+    "left": "-0.2807764064044151?",
+    "right": "1.780776406404415?",
+    "h": "0.9879283649264853?",
+    "u": "0.4879283649264853?",
+    "v": "3.405703544217742?",
+    "d15_center_x": "1.952851772108871?",
+    "d15_center_y": "0.2439641824632427?",
+    "point_134_y": "1.965946199367804?",
+    "target_x": "0.9324722294043558?",
+    "target_y": "0.3612416661871530?"
+  }
+}
