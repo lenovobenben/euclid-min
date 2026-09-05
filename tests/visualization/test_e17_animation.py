@@ -14,14 +14,14 @@ CERTIFICATE_PATH = (
     REPOSITORY_ROOT
     / "baselines"
     / "regular-17"
-    / "detemple-1991-carlyle-improved-converted"
+    / "eddy119-2026-adapted-17e"
     / "construction.json"
 )
-GEOMETRY_PATH = REPOSITORY_ROOT / "animations" / "e19" / "geometry.json"
-MANIM_CONFIG_PATH = REPOSITORY_ROOT / "animations" / "e19" / "manim.cfg"
+GEOMETRY_PATH = REPOSITORY_ROOT / "animations" / "e17" / "geometry.json"
+MANIM_CONFIG_PATH = REPOSITORY_ROOT / "animations" / "e17" / "manim.cfg"
 
 
-class E19AnimationDataTests(unittest.TestCase):
+class E17AnimationDataTests(unittest.TestCase):
     def test_release_render_profile_is_4k_30fps(self) -> None:
         parser = configparser.ConfigParser()
         parser.read(MANIM_CONFIG_PATH, encoding="utf-8")
@@ -30,6 +30,7 @@ class E19AnimationDataTests(unittest.TestCase):
         self.assertEqual(cli.getint("pixel_width"), 3840)
         self.assertEqual(cli.getint("pixel_height"), 2160)
         self.assertEqual(cli.getint("frame_rate"), 30)
+        self.assertEqual(cli.get("media_dir"), "animations/e17/media")
 
     def test_every_draw_has_two_exported_reference_points(self) -> None:
         exported = json.loads(GEOMETRY_PATH.read_text(encoding="utf-8"))
@@ -53,15 +54,15 @@ class E19AnimationDataTests(unittest.TestCase):
         program = certificate["construction"]["program"]
         replay = ProgramReplayer().replay(program)
 
-        self.assertEqual(exported["schema"], "euclid-min-manim-e19/v1")
+        self.assertEqual(exported["schema"], "euclid-min-manim-e17/v1")
         self.assertEqual(
             exported["source"]["construction_sha256"],
             certificate["integrity"]["construction_sha256"],
         )
-        self.assertEqual(replay.e_move, 19)
-        self.assertEqual(replay.first_target_e_move, 19)
-        self.assertEqual(exported["verified_result"]["line_draws"], 8)
-        self.assertEqual(exported["verified_result"]["circle_draws"], 11)
+        self.assertEqual(replay.e_move, 17)
+        self.assertEqual(replay.first_target_e_move, 17)
+        self.assertEqual(exported["verified_result"]["line_draws"], 7)
+        self.assertEqual(exported["verified_result"]["circle_draws"], 10)
 
         self.assertEqual(len(exported["events"]), len(program))
         e_move = 0
@@ -92,8 +93,8 @@ class E19AnimationDataTests(unittest.TestCase):
                     places=14,
                 )
 
-        self.assertEqual(e_move, 19)
-        self.assertEqual(exported["events"][-1]["id"], "target_line")
+        self.assertEqual(e_move, 17)
+        self.assertEqual(exported["events"][-1]["id"], "target_diameter")
 
 
 if __name__ == "__main__":

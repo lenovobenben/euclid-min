@@ -1,4 +1,4 @@
-"""从已验证 19 E 证书导出 Manim 所需的数值几何快照。"""
+"""从已验证 17 E 证书导出 Manim 所需的数值几何快照。"""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ CERTIFICATE_PATH = (
     REPOSITORY_ROOT
     / "baselines"
     / "regular-17"
-    / "detemple-1991-carlyle-improved-converted"
+    / "eddy119-2026-adapted-17e"
     / "construction.json"
 )
 VERIFICATION_PATH = CERTIFICATE_PATH.with_name("verification.json")
@@ -82,11 +82,11 @@ def build_export() -> dict:
         if isinstance(value, Point)
     }
     target = adjacent_targets()[TargetName.B_PLUS]
-    if replay.e_move != 19 or replay.first_target_e_move != 19:
-        raise RuntimeError("权威证书不再是首次于 19 E 命中的构造")
+    if replay.e_move != 17 or replay.first_target_e_move != 17:
+        raise RuntimeError("权威证书不再是首次于 17 E 命中的构造")
 
     return {
-        "schema": "euclid-min-manim-e19/v1",
+        "schema": "euclid-min-manim-e17/v1",
         "source": {
             "certificate": str(CERTIFICATE_PATH.relative_to(REPOSITORY_ROOT)),
             "certificate_sha256": verification["certificate_sha256"],

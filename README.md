@@ -6,7 +6,7 @@ Euclid-Min 是一个研究**短尺规构造**的开源计算数学项目。项�
 
 > **正十七边形：17 E，7 条直线 + 10 个圆，SageMath 精确验证通过。**
 
-[查看证书](baselines/regular-17/eddy119-2026-adapted-17e/construction.json) · [查看验证报告](baselines/regular-17/eddy119-2026-adapted-17e/verification.json) · [阅读来源、改写与精确推导](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md)
+[观看 4K 动画](animations/e17/media/videos/e17_progress/2160p30/E17Progress.mp4) · [查看证书](baselines/regular-17/eddy119-2026-adapted-17e/construction.json) · [查看验证报告](baselines/regular-17/eddy119-2026-adapted-17e/verification.json) · [阅读来源、改写与精确推导](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md)
 
 ## 当前结果
 
@@ -24,7 +24,7 @@ Euclid-Min 是一个研究**短尺规构造**的开源计算数学项目。项�
 - 此前 19 E 证书的完整几何—代数 IR；
 - 固定 17 E 状态的全部 32,193 个一步参数化检查；
 - 固定 16 E 前缀的 22,454 个首步对象和 202,855,848 个受限末笔参数化穷尽；
-- 从此前 19 E 正式证书生成的 4K Manim 动画。
+- 从 17 E 正式证书生成的 4K Manim 动画。
 
 固定前缀检查严格排除了此前 **19 E 路线**的一步或两步压缩，但没有覆盖所有可能的更早构造前缀，也不构成 17 E 的最优性证明。
 
@@ -210,6 +210,7 @@ docker run --rm `
 | 构造证书和内容哈希格式 | [证书格式](docs/CERTIFICATE_FORMAT.md) |
 | 来源状态和基线转换 | [文献与基线台账](docs/LITERATURE.md) |
 | 17 E 来源、改写和精确推导 | [17 E 基线说明](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md) |
+| 17 E 动画、分镜与复现方法 | [Manim 动画说明](animations/e17/README.md) |
 | 此前 19 E 的完整几何—代数 IR | [几何—代数统一 IR](docs/GEOMETRY_ALGEBRA_IR.md) |
 | 搜索与证明阶段记录 | [实施路线](docs/ROADMAP.md) |
 | 0–5 E 严格下界产物 | [有界证明记录](proofs/regular-17-through-5e.json) |

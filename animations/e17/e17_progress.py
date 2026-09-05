@@ -1,4 +1,4 @@
-"""Euclid-Min 19 E 构造演示动画。"""
+"""Euclid-Min 17 E 构造演示动画。"""
 
 from __future__ import annotations
 
@@ -44,34 +44,35 @@ TARGET = "#5DE2A5"
 ALERT = "#FF7A90"
 TARGET_CIRCLE = "#F45BFF"
 
-# 第 19 步必须同时看见定直线的两个已知点 Q、P，以及直线与单位圆新切出的 B。
-# 最终结论再缩回单位圆全景，避免局部放大把 Q 裁出画面。
-TARGET_LINE_FRAME_CENTER = (-0.04, 0.18)
-TARGET_LINE_FRAME_WIDTH = 7.6
+# 第 17 步同时看见定直线的 O、N，以及直线与单位圆新切出的 B。
+TARGET_LINE_FRAME_CENTER = (0.0, 0.0)
+TARGET_LINE_FRAME_WIDTH = 9.4
 FINAL_OVERVIEW_FRAME_CENTER = (0.0, 0.0)
-FINAL_OVERVIEW_FRAME_WIDTH = 10.8
+FINAL_OVERVIEW_FRAME_WIDTH = 10.0
 
 # 正片不再为文字面板预留空间，几何图占满整个画面。
 # 直线先按最大镜头范围生成，再由相机裁切。这样临时缩远时，直线仍会穿过
-# 位于旧默认画幅之外的定位点（第 4 步的上下两个定线点尤其如此）。
-LOGICAL_BOUNDS = (-3.6, 3.6, -2.0, 2.0)
-GEOMETRY_SCALE = 2.72
-GEOMETRY_SHIFT = DOWN * 0.12
+# 位于默认画幅之外的定位点。
+LOGICAL_BOUNDS = (-2.3, 4.3, -2.4, 2.4)
+GEOMETRY_SCALE = 2.45
+GEOMETRY_SHIFT = LEFT * 1.1 + DOWN * 0.1
 
 KEY_LABELS = {
     "O": ("O", DOWN + LEFT),
     "A": ("A", DOWN + RIGHT),
-    "Q": ("Q", DOWN + LEFT),
-    "Qhalf": ("Q′", DOWN),
-    "Qquarter": ("Q″", DOWN),
-    "M1_2": ("M₁,₂", DOWN),
-    "M0_2": ("M₀,₂", DOWN),
-    "H0_4": ("H₀,₄", UP),
-    "H1_4": ("H₁,₄", DOWN),
-    "Y": ("Y", RIGHT),
-    "M0_4": ("M₀,₄", UP + RIGHT),
-    "H4_8": ("H₄,₈", DOWN),
-    "target_helper_point": ("P", UP + LEFT),
+    "p6": ("M", DOWN),
+    "p9": ("R", DOWN + RIGHT),
+    "p15": ("T", DOWN + LEFT),
+    "p17": ("K", DOWN),
+    "p26": ("L", DOWN),
+    "p27": ("R₁", DOWN),
+    "p37": ("H", UP),
+    "p54": ("U", LEFT),
+    "p45": ("V", DOWN),
+    "p90": ("C", UP),
+    "p24": ("S", LEFT),
+    "p134": ("W", RIGHT),
+    "opposite_target": ("N", DOWN + LEFT),
 }
 
 
@@ -110,13 +111,14 @@ def clipped_line(geometry: dict) -> tuple[list[float], list[float]]:
     return list(pair[0]), list(pair[1])
 
 
-class E19Progress(MovingCameraScene):
+class E17Progress(MovingCameraScene):
     def construct(self):
         config.background_color = BACKGROUND
         self.data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
         self.drawn_objects = VGroup()
         self.drawable_by_id: dict[str, Line | Circle] = {}
         self.point_objects: dict[str, VGroup] = {}
+        self.last_reference_e = self.compute_last_reference_e()
 
         self.play_intro()
         self.setup_construction()
@@ -125,6 +127,20 @@ class E19Progress(MovingCameraScene):
 
     def make_text(self, content: str, **kwargs) -> Text:
         return Text(content, font=FONT, color=kwargs.pop("color", FOREGROUND), **kwargs)
+
+    def compute_last_reference_e(self) -> dict[str, int]:
+        last_reference: dict[str, int] = {}
+        for event in self.data["events"]:
+            if event["kind"] != "draw":
+                continue
+            references = (
+                event["through"]
+                if event["op"] == "line"
+                else [event["center"], event["through"]]
+            )
+            for point_id in references:
+                last_reference[point_id] = event["e_move"]
+        return last_reference
 
     def play_intro(self) -> None:
         title = self.make_text(
@@ -140,18 +156,18 @@ class E19Progress(MovingCameraScene):
         )
         explanation.next_to(title, DOWN, buff=0.32)
 
-        old_score = self.make_text("项目基线 32 E", font_size=50, color=MUTED)
-        new_score = self.make_text("当前证书 19 E", font_size=62, color=GOLD, weight="MEDIUM")
+        old_score = self.make_text("此前上界 19 E", font_size=50, color=MUTED)
+        new_score = self.make_text("当前证书 17 E", font_size=62, color=GOLD, weight="MEDIUM")
         scores = VGroup(old_score, new_score).arrange(RIGHT, buff=2.0)
         scores.move_to(DOWN * 0.1)
         arrow = Arrow(
             old_score.get_right() + RIGHT * 0.18,
             new_score.get_left() + LEFT * 0.18,
             color=CIRCLE_BLUE,
-            stroke_width=5,
+            stroke_width=4.4,
             buff=0,
         )
-        saving = self.make_text("减少 13 E", font_size=31, color=TARGET, weight="MEDIUM")
+        saving = self.make_text("降低 2 E", font_size=31, color=TARGET, weight="MEDIUM")
         saving.next_to(scores, DOWN, buff=0.72)
 
         self.play(Write(title), FadeIn(explanation, shift=UP * 0.08), run_time=1.0)
@@ -166,7 +182,7 @@ class E19Progress(MovingCameraScene):
 
     def setup_construction(self) -> None:
         self.counter = self.make_text(
-            "00 / 19",
+            "00 / 17",
             font_size=42,
             color=GOLD,
             weight="MEDIUM",
@@ -192,7 +208,7 @@ class E19Progress(MovingCameraScene):
         self.unit_circle = Circle(
             radius=initial["unit_circle"]["radius"] * GEOMETRY_SCALE,
             color=TARGET_CIRCLE,
-            stroke_width=3.2,
+            stroke_width=2.7,
             fill_opacity=0,
         ).set_stroke(opacity=0.92)
         self.unit_circle.move_to(logical_to_scene(initial["unit_circle"]["center"]))
@@ -219,13 +235,13 @@ class E19Progress(MovingCameraScene):
                 logical_to_scene(start),
                 logical_to_scene(end),
                 color=GOLD,
-                stroke_width=3.2,
+                stroke_width=2.7,
             )
         geometry = event["geometry"]
         circle = Circle(
             radius=geometry["radius"] * GEOMETRY_SCALE,
             color=GOLD,
-            stroke_width=3.2,
+            stroke_width=2.7,
             fill_opacity=0,
         )
         circle.move_to(logical_to_scene(geometry["center"]))
@@ -236,8 +252,8 @@ class E19Progress(MovingCameraScene):
             return
         label_text, direction = KEY_LABELS[point_id]
         point = self.data["points"][point_id]
-        dot = Dot(logical_to_scene(point), radius=0.042, color=FOREGROUND)
-        label = self.make_text(label_text, font_size=15, color=FOREGROUND)
+        dot = Dot(logical_to_scene(point), radius=0.038, color=FOREGROUND)
+        label = self.make_text(label_text, font_size=17, color=FOREGROUND)
         label.next_to(dot, direction, buff=0.07)
         group = VGroup(dot, label)
         self.point_objects[point_id] = group
@@ -246,7 +262,7 @@ class E19Progress(MovingCameraScene):
 
     def update_counter(self, e_move: int):
         new_counter = self.make_text(
-            f"{e_move:02d} / 19",
+            f"{e_move:02d} / 17",
             font_size=42,
             color=GOLD,
             weight="MEDIUM",
@@ -257,17 +273,17 @@ class E19Progress(MovingCameraScene):
         return Transform(self.counter, new_counter)
 
     def adjust_camera(self, e_move: int) -> None:
-        if e_move in {5, 11, 14}:
+        if e_move == 10:
             self.play(Restore(self.camera.frame), run_time=0.65)
             return
         cues = {
-            # 第 4 步的两个定线点在单位圆上下方，必须临时扩大视野。
-            4: ((0.0, 0.0), 18.4),
-            10: ((-0.28, 0.22), 9.2),
-            13: ((-0.12, 0.5), 9.0),
-            17: ((0.52, 0.25), 9.2),
-            18: ((0.18, 0.12), 7.8),
-            19: (TARGET_LINE_FRAME_CENTER, TARGET_LINE_FRAME_WIDTH),
+            # d10、d14 和 d15 会把构造扩展到单位圆右侧。
+            9: ((0.9, 0.0), 15.4),
+            13: ((1.35, 0.1), 15.6),
+            14: ((1.35, 0.25), 17.0),
+            15: ((1.0, 0.9), 10.8),
+            16: ((0.2, 0.75), 12.8),
+            17: (TARGET_LINE_FRAME_CENTER, TARGET_LINE_FRAME_WIDTH),
         }
         cue = cues.get(e_move)
         if cue is None:
@@ -284,7 +300,7 @@ class E19Progress(MovingCameraScene):
             Circle(
                 radius=0.115,
                 color=color,
-                stroke_width=3.4,
+                stroke_width=2.8,
                 fill_opacity=0,
             ).move_to(position),
             Dot(position, radius=0.048, color=color),
@@ -308,7 +324,7 @@ class E19Progress(MovingCameraScene):
                 center,
                 through,
                 color=ALERT,
-                stroke_width=2.4,
+                stroke_width=2.0,
             ).set_z_index(7)
             overlay = VGroup(
                 radius_guide,
@@ -318,6 +334,41 @@ class E19Progress(MovingCameraScene):
         self.play(FadeIn(overlay, scale=0.72), run_time=0.22)
         return overlay
 
+    def labels_retiring_at(self, e_move: int) -> list[VGroup]:
+        keep = {"O", "A", "opposite_target"}
+        return [
+            group
+            for point_id, group in self.point_objects.items()
+            if point_id not in keep
+            and self.last_reference_e.get(point_id) == e_move
+        ]
+
+    def prepare_final_step(self) -> None:
+        background_draws = VGroup(
+            *(
+                drawable
+                for drawable_id, drawable in self.drawable_by_id.items()
+                if drawable_id != "d18"
+            )
+        )
+        old_label_groups = [
+            group
+            for point_id, group in self.point_objects.items()
+            if point_id not in {"O", "A", "opposite_target"}
+            and group in self.mobjects
+        ]
+        animations = [
+            background_draws.animate.set_stroke(opacity=0.14),
+            self.unit_circle.animate.set_stroke(
+                color=TARGET_CIRCLE,
+                width=3.4,
+                opacity=1,
+            ),
+        ]
+        if old_label_groups:
+            animations.append(FadeOut(VGroup(*old_label_groups)))
+        self.play(*animations, run_time=0.42)
+
     def play_construction(self) -> None:
         for event in self.data["events"]:
             if event["kind"] == "intersection":
@@ -326,33 +377,40 @@ class E19Progress(MovingCameraScene):
                 continue
 
             e_move = event["e_move"]
+            if e_move == 17:
+                self.prepare_final_step()
             self.adjust_camera(e_move)
             references = self.show_references(event)
             drawable = self.make_drawable(event)
             self.play(
                 Create(drawable),
                 self.update_counter(e_move),
-                run_time=0.48 if e_move < 18 else 0.8,
+                run_time=0.48 if e_move < 16 else 0.8,
             )
             self.drawn_objects.add(drawable)
             self.drawable_by_id[event["id"]] = drawable
-            if e_move < 18:
-                self.play(
+            retiring_labels = self.labels_retiring_at(e_move)
+            if e_move < 16:
+                animations = [
                     drawable.animate.set_stroke(
                         color=CIRCLE_BLUE if event["op"] == "circle" else LINE_BLUE,
-                        width=1.55,
-                        opacity=0.44,
+                        width=1.35,
+                        opacity=0.36,
                     ),
                     FadeOut(references),
-                    run_time=0.14,
-                )
-            elif e_move == 18:
-                self.play(
-                    drawable.animate.set_stroke(color=ALERT, width=2.5, opacity=0.9),
+                ]
+                if retiring_labels:
+                    animations.append(FadeOut(VGroup(*retiring_labels)))
+                self.play(*animations, run_time=0.16)
+            elif e_move == 16:
+                animations = [
+                    drawable.animate.set_stroke(color=ALERT, width=2.3, opacity=0.92),
                     FadeOut(references),
-                    run_time=0.18,
-                )
-            elif e_move == 19:
+                ]
+                if retiring_labels:
+                    animations.append(FadeOut(VGroup(*retiring_labels)))
+                self.play(*animations, run_time=0.2)
+            elif e_move == 17:
                 self.play(FadeOut(references), run_time=0.18)
                 self.wait(0.45)
 
@@ -372,26 +430,26 @@ class E19Progress(MovingCameraScene):
             *(
                 drawable
                 for drawable_id, drawable in self.drawable_by_id.items()
-                if drawable_id not in {"target_line", "target_helper_circle"}
+                if drawable_id not in {"target_diameter", "d18"}
             )
         )
-        secondary_labels = VGroup(
-            *(
-                group
-                for point_id, group in self.point_objects.items()
-                if point_id not in {"O", "A", "Q", "target_helper_point"}
-            )
-        )
-        self.play(
-            background_draws.animate.set_stroke(opacity=0.2),
-            FadeOut(secondary_labels),
+        secondary_label_groups = [
+            group
+            for point_id, group in self.point_objects.items()
+            if point_id not in {"O", "A", "opposite_target"}
+            and group in self.mobjects
+        ]
+        cleanup_animations = [
+            background_draws.animate.set_stroke(opacity=0.14),
             self.unit_circle.animate.set_stroke(
                 color=TARGET_CIRCLE,
-                width=4.2,
+                width=3.5,
                 opacity=1,
             ),
-            run_time=0.55,
-        )
+        ]
+        if secondary_label_groups:
+            cleanup_animations.append(FadeOut(VGroup(*secondary_label_groups)))
+        self.play(*cleanup_animations, run_time=0.55)
         self.play(FadeIn(target_dot, scale=1.8), FadeIn(target_label), run_time=0.35)
         self.play(pulse.animate.scale(5).set_stroke(opacity=0), run_time=0.75)
         self.play(
@@ -405,15 +463,15 @@ class E19Progress(MovingCameraScene):
         start = logical_to_scene(self.data["initial"]["A"])
         target = logical_to_scene(target_point)
         theta = math.atan2(target_point[1], target_point[0])
-        oa_ray = Line(origin, start, color=TARGET, stroke_width=3.4)
-        ob_ray = Line(origin, target, color=TARGET, stroke_width=3.4)
+        oa_ray = Line(origin, start, color=TARGET, stroke_width=2.8)
+        ob_ray = Line(origin, target, color=TARGET, stroke_width=2.8)
         angle_arc = Arc(
             radius=0.43 * GEOMETRY_SCALE,
             start_angle=0,
             angle=theta,
             arc_center=origin,
             color=TARGET,
-            stroke_width=5,
+            stroke_width=4.2,
         )
         angle_label = self.make_text(
             "∠AOB = 2π / 17",
