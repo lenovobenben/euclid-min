@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "control": false,
+  "status": "complete",
+  "elapsed_ms": 973,
+  "measured_ms": {
+    "object_from": 0,
+    "intersect": 36
+  },
+  "calls": {
+    "object_from": 1,
+    "intersect": 10
+  },
+  "result": {
+    "new_points": 18,
+    "tested_terminal_parameterizations": 3735,
+    "hits": []
+  }
+}

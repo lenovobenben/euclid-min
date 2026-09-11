@@ -1,7 +1,7 @@
 # DeTemple 1991 修改版 Carlyle 圆构造的 19 E 转写
 
 > 历史基线：19 E 曾是本项目在 `regular-17-e-fixed-v1` 下的已验证上界。
-> 当前上界已经更新为 [17 E](../eddy119-2026-adapted-17e/explanation.md)；本目录继续
+> 当前上界已经更新为 [12 E](../../../qq-ggb/README.md)；本目录继续
 > 保留用于来源转换、依赖分析和差分审计。
 
 ## 结论与证据等级

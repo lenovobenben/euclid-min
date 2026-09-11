@@ -4,31 +4,37 @@
 
 Euclid-Min 是一个研究**短尺规构造**的开源计算数学项目。项目把“什么算一步”固定为机器可执行的规则，把每条直线和每个圆完全展开，再用 SageMath 精确重放构造证书。
 
-当前主成果是正十七边形相邻顶点的 **17 E 构造**。仓库同时保留正 257 边形的独立研究记录，但正十七边形仍是项目首页和主线。
+当前主成果是正十七边形相邻顶点的 **12 E 构造**。仓库同时保留正 257 边形的独立研究记录，但正十七边形仍是项目首页和主线。
 
-> **正十七边形：17 E，7 条直线 + 10 个圆，SageMath 精确验证通过。**
+> **正十七边形：12 E，3 条直线 + 9 个付费圆，SageMath 精确验证通过。**
 
-[观看 4K 动画](animations/e17/media/videos/e17_progress/2160p30/E17Progress.mp4) · [查看证书](baselines/regular-17/eddy119-2026-adapted-17e/construction.json) · [查看验证报告](baselines/regular-17/eddy119-2026-adapted-17e/verification.json) · [阅读来源、改写与精确推导](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md)
+[12 E GeoGebra 演示](qq-ggb/ggb/README.md) · [12 E 离线网页](qq-ggb/web/README.md) · [查看证书](qq-ggb/construction-12e-011.json) · [查看验证报告](qq-ggb/verification-12e.json) · [阅读来源、改写与精确核验](qq-ggb/README.md)
 
 ## 当前结果
 
 | 研究对象 | 规则配置 | 已验证结果 | 结论边界 |
 |---|---|---:|---|
-| 正十七边形相邻顶点 | `regular-17-e-fixed-v1` | **17 E** | 当前上界；尚未证明全局最小 |
+| 正十七边形相邻顶点 | `regular-17-e-fixed-v1` | **12 E** | 当前上界；尚未证明全局最小 |
 | 正 257 边形任意相邻边 | `regular-257-free-edge-e-fixed-v1` | **69 E** | 从公开视频恢复的可复核基线，不是优化纪录 |
 
-正十七边形的 17 E 由 7 条直线和 10 个圆组成，首次命中目标恰在第 17 E，没有重复绘制。它从 Eddy119 公开的完整 37-move 构造中提取相关前缀：直接按当前目标转换为 18 E，再由项目依赖分析删除一个无用圆，得到 17 E。原作者没有宣称 17 E；几何来源、项目改写和验证责任在基线目录中分别记录。此前的 DeTemple 改写 19 E 作为历史上界保留。
+正十七边形的 12 E 构造首次在第 12 E 同时得到固定初始顶点的两个相邻顶点，没有重复绘制。几何主体来自 QQ 讨论组网友提供的 GGB 文件，原作者和最初公开出处尚未确认。
+
+原文件本身也是 12 E，但得到的是第 5、12 号顶点。本项目最初保留原分支，追加三个圆得到目标，形成 15 E 转换方案；随后只调整 K、P 的交点分支，让原有十二笔直接得到第 1、16 号顶点。节省的是到达同一目标之前的三次画圆，计数不包含后续补齐多边形。15 E 未被证明是原分支的最省转换，12 E 也未被证明全局最小。具体贡献与边界见 [QQ-GGB 说明](qq-ggb/README.md#本项目改了什么价值在哪里)。
+
+此前的 Eddy119 改写 17 E 和 DeTemple 改写 19 E、32 E 均作为历史基线保留。结合既有的 0–5 E 严格排除，当前边界为 **`5 < OPT ≤ 12`**；6–11 E 尚未全局排除。
 
 当前还完成了：
 
 - 0–5 E 的严格有界穷尽；
-- 17 E 证书的项目验证器重放和独立根式核验；
+- 12 E 证书的项目验证器重放、独立根式核验与独立证书重放；
+- K、N、P 的全部八种分支组合核验，以及范围明确的 [12 E 局部改进搜索](qq-ggb/search-hour-2026-09-11.md)；
+- 从 12 E 证书生成的可编辑 GeoGebra 演示与离线网页；
 - 此前 19 E 证书的完整几何—代数 IR；
-- 固定 17 E 状态的全部 32,193 个一步参数化检查；
-- 固定 16 E 前缀的 22,454 个首步对象和 202,855,848 个受限末笔参数化穷尽；
-- 从 17 E 正式证书生成的 4K Manim 动画。
+- 历史 19 E 路线固定 17 E 状态的全部 32,193 个一步参数化检查；
+- 历史 19 E 路线固定 16 E 前缀的 22,454 个首步对象和 202,855,848 个受限末笔参数化穷尽；
+- 从历史 17 E 正式证书生成的 [4K Manim 动画](animations/e17/README.md)。
 
-固定前缀检查严格排除了此前 **19 E 路线**的一步或两步压缩，但没有覆盖所有可能的更早构造前缀，也不构成 17 E 的最优性证明。
+这些固定前缀和局部搜索的负结果只适用于各自明确记录的范围，不能证明 12 E 最优。
 
 ## 正十七边形问题
 
@@ -101,27 +107,30 @@ E=\text{实际画出的直线数}+\text{实际画出的圆数}.
 
 总计 4 E，所有交点均为 0 E。如果直线 \(PQ\) 也作为免费初始对象，同一任务才是 3 E。这说明只有初始对象、工具能力、自由点规则、目标和计数方法全部一致的数字才能直接比较。
 
-## 17 E 的证据链
+## 12 E 的证据链
 
-17 E 不是人工看图计数，而是一份可以从零重放的精确结果：
+12 E 的分数和目标由以下证据链精确重放确认：
 
 1. [规则配置](profiles/regular-17-e-fixed-v1.yaml)固定初始对象、合法操作和目标；
-2. [来源记录](baselines/regular-17/eddy119-2026-adapted-17e/source.yaml)区分原作者的 37-move 构造和项目完成的 18→17 E 改写；
-3. [构造证书](baselines/regular-17/eddy119-2026-adapted-17e/construction.json)逐条记录画线、画圆和交点绑定；
+2. [来源记录](qq-ggb/source.yaml)记录原始 GGB 的获取渠道和摘要，并区分原始几何与本项目的分支改写；
+3. [构造证书](qq-ggb/construction-12e-011.json)逐条记录画线、画圆和交点绑定；
 4. SageMath 验证器重新计算全部几何对象，不信任证书里声明的分数；
-5. [验证报告](baselines/regular-17/eddy119-2026-adapted-17e/verification.json)确认构造合法、总分为 17 E，并精确命中 \(B_+\)；
-6. [独立根式检查](baselines/regular-17/eddy119-2026-adapted-17e/independent_radical_report.json)不导入项目代码，另行证明目标坐标等于 \((\cos(2\pi/17),\sin(2\pi/17))\)；
-7. [人类可读推导](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md)解释 17 个动作、计数转换和精确代数核验。
+5. [验证报告](qq-ggb/verification-12e.json)确认构造合法、3 条直线加 9 个付费圆，首次在第 12 E 同时命中 \(B_+\)、\(B_-\)，无重复绘制；
+6. [独立根式检查](qq-ggb/independent-12e-report.json)不导入项目代码，另行核验圆方程、嵌套根式和第 17 次单位根的精确关系；
+7. [独立证书重放](qq-ggb/independent-certificate-report.json)以另一套精确求交实现重放实际 JSON，将全部 18 个点与独立根式比较，并拒绝四个错误对照；
+8. [人类可读说明](qq-ggb/README.md)解释分支选择、计数、精确代数核验和贡献边界。
 
 构造内容摘要为：
 
 ```text
-99c80e4ef288e73c3657f2da056b1ec3b9609cd5f7231bcad690f6bc0a722252
+58e9af20902ca9de9843dd16c4dbb931cb3164287f0aa86db906a0492fd93df2
 ```
 
-浮点计算只用于动画、启发式排序和非权威分桶。几何相等、构造合法性、状态合并和目标命中均使用精确数学判断。
+数学核验中的几何相等、构造合法性、状态合并和目标命中均使用精确判断。展示坐标、GeoGebra 数值运行及兼容性检查，以及部分启发式排序和非权威分桶可以使用浮点计算；它们不替代精确证书。
 
 ## 文献与互联网核查
+
+以下为 **2026 年 9 月 5 日的历史检索记录**，早于 QQ-GGB 的 12 E 分支改写。当前来源与构造台账见 [文献与基线台账](docs/LITERATURE.md)；该检索结论仅描述当时已审阅的公开资料。
 
 截至 **2026 年 9 月 5 日**，本轮公开资料检索没有发现一份同时满足以下条件的 \(\le16\) E 构造：
 
@@ -139,9 +148,9 @@ Eddy119 于 2026 年公开了一份带可重放链接的完整正十七边形 37
 
 基于现有证据，可以使用的严谨表述是：
 
-> 在 `regular-17-e-fixed-v1` 下，项目已经验证一份 17 E 构造；它由公开 37-move 构造的相关前缀经规则转换和一步依赖裁剪得到。截至 2026 年 9 月 5 日的本轮公开资料检索，尚未发现可复核的 \(\le16\) E 同口径构造。
+> 在 `regular-17-e-fixed-v1` 下，项目已验证一份 12 E 相邻顶点构造。几何主体来自 QQ 讨论组提供的 GGB 文件；项目通过调整 K、P 的交点分支，将首次已验证的 15 E 目标转换降至 12 E。原作者、最初公开出处和该分支改写的文献优先权尚未确认。
 
-这不等于已经证明 17 E 全局最小。公开资料检索不能证明未公开构造不存在；全局最优性仍需要完备排除 0–16 E。目前严格下界仅排除 0–5 E。
+12 E 是当前已验证上界，未据此宣称文献最短或世界纪录。全局最优性还需要完备排除 6–11 E；已有严格下界仅排除 0–5 E，QQ-GGB 的局部搜索没有扩大这一全局排除范围。
 
 ## 计数法的公开依据
 
@@ -157,46 +166,48 @@ E 步不是为了得到某个纪录数字而临时设计的宣传口径。
 
 [regular-257](regular-257/README.md) 保存了对公开视频中 69E 正 257 边形构造的逐帧恢复、精确分圆域验证、证书、依赖分析和 68E 局部搜索。
 
-这一研究采用独立规则 `regular-257-free-edge-e-fixed-v1`：目标是给定圆上的任意一对相邻顶点，不要求其中一个顶点等于免费初始圆上点。因此它与正十七边形 17 E 不是同一道题，两个数字不能横向比较。
+这一研究采用独立规则 `regular-257-free-edge-e-fixed-v1`：目标是给定圆上的任意一对相邻顶点，不要求其中一个顶点等于免费初始圆上点。因此它与正十七边形任务不是同一道题，两个数字不能横向比较。
 
 当前 69 E 是由 65 条直线和 4 个圆组成的已验证基线。现有 68E 搜索只排除了若干明确冻结的局部替换和候选前沿，没有证明 69 E 最优。
 
 ## 本地复现
 
-参考环境为 SageMath 10.7。仓库中的 Python 代码统一在 SageMath 自带的 Python 环境中运行。
+参考环境为 SageMath 10.7。数学 Python 脚本在 SageMath 自带的 Python 环境中运行；演示的生成环境见各自说明。
 
-### 验证正十七边形 17 E 证书
+### 验证正十七边形 12 E 证书
 
-```powershell
-docker run --rm `
-  -v "${PWD}:/workspace" `
-  -w /workspace `
-  -e PYTHONPATH=/workspace/sage `
-  sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 `
-  sage -python -m euclid_min verify `
-  --profile profiles/regular-17-e-fixed-v1.yaml `
-  baselines/regular-17/eddy119-2026-adapted-17e/construction.json
+从仓库根目录运行，以下命令适用于 macOS/Linux，只读取证书并输出 JSON 报告。PowerShell 命令及完整重建流程见 [QQ-GGB 复现说明](qq-ggb/README.md#代码与复现)。
+
+```sh
+docker run --rm --network none \
+  -v "$PWD:/workspace:ro" -w /workspace \
+  -e PYTHONPATH=/workspace/sage -e PYTHONDONTWRITEBYTECODE=1 \
+  sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 \
+  sage -python -m euclid_min verify \
+  --profile profiles/regular-17-e-fixed-v1.yaml \
+  qq-ggb/construction-12e-011.json --json
 ```
 
-成功结果应包含：
+JSON 报告的关键字段应为：
 
-```text
-valid: true
-lines: 7
-circles: 10
-e_move: 17
-first_target_e_move: 17
-target: B_plus
+```json
+{
+  "valid": true,
+  "draw_operations": {"lines": 3, "circles": 9, "total": 12},
+  "duplicate_draws": 0,
+  "score": {"metric": "e_move", "e_move": 12},
+  "first_target_e_move": 12,
+  "targets": ["B_plus", "B_minus"]
+}
 ```
 
 ### 运行正十七边形完整测试
 
-```powershell
-docker run --rm `
-  -v "${PWD}:/workspace" `
-  -w /workspace `
-  -e PYTHONPATH=/workspace/sage `
-  sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 `
+```sh
+docker run --rm --network none \
+  -v "$PWD:/workspace:ro" -w /workspace \
+  -e PYTHONPATH=/workspace/sage -e PYTHONDONTWRITEBYTECODE=1 \
+  sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 \
   sage -python -m unittest discover -s tests -v
 ```
 
@@ -211,8 +222,11 @@ docker run --rm `
 | E 步的权威定义和可比性规则 | [计分规范](docs/METRICS.md) |
 | 构造证书和内容哈希格式 | [证书格式](docs/CERTIFICATE_FORMAT.md) |
 | 来源状态和基线转换 | [文献与基线台账](docs/LITERATURE.md) |
-| 17 E 来源、改写和精确推导 | [17 E 基线说明](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md) |
-| 17 E 动画、分镜与复现方法 | [Manim 动画说明](animations/e17/README.md) |
+| 当前 12 E 来源、分支改写、贡献和精确核验 | [QQ-GGB 研究](qq-ggb/README.md) |
+| 12 E 演示的使用与生成 | [GeoGebra](qq-ggb/ggb/README.md) · [离线网页](qq-ggb/web/README.md) |
+| 12 E 局部搜索的范围、覆盖与实测资源 | [搜索记录](qq-ggb/search-hour-2026-09-11.md) |
+| 历史 17 E 来源、改写和精确推导 | [17 E 基线说明](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md) |
+| 历史 17 E 动画、分镜与复现方法 | [Manim 动画说明](animations/e17/README.md) |
 | 此前 19 E 的完整几何—代数 IR | [几何—代数统一 IR](docs/GEOMETRY_ALGEBRA_IR.md) |
 | 搜索与证明阶段记录 | [实施路线](docs/ROADMAP.md) |
 | 0–5 E 严格下界产物 | [有界证明记录](proofs/regular-17-through-5e.json) |

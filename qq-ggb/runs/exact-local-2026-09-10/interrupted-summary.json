@@ -1,0 +1,12 @@
+{
+  "status": "stopped_for_optimization",
+  "reason": "Sage/PARI C computations did not yield to child SIGALRM; completed checkpoints preserved, unrecorded jobs not excluded",
+  "planned_jobs": 8280,
+  "recorded_jobs": 423,
+  "complete": 409,
+  "deferred": 14,
+  "errors": 0,
+  "tested_terminal_parameterizations": 719903,
+  "recorded_worker_elapsed_ms": 1143238,
+  "recorded_at_utc": "2026-09-11T00:14:35.1433563+08:00"
+}

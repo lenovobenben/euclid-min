@@ -1,0 +1,19 @@
+kind: third_party_geogebra_file
+file: 正17边形.ggb
+sha256: 4142700f7f7de84fa65b8546ecafd87b1abc037e6722b81fe9940b98483eb838
+source_channel: QQ 讨论组网友提供给用户，用户提供给本项目
+provider_identity: 未记录
+original_creator: 未确认
+provider_is_original_creator: 未确认
+original_publication: 未确认
+third_party_license: 未确认；不由本项目代原权利人重新授权
+geogebra_author_field: ""
+audit_date: "2026-09-10"
+attribution_rule: 仅标记 QQ 讨论组提供的 GGB 文件；不把文件提供者写为首创者
+project_work:
+  - 从原始 XML 恢复基础操作和交点分支
+  - 原始 12 E 程序的精确核验
+  - 保留原分支时追加三个圆的 15 E 转换
+  - 枚举 K、N、P 八种交点分支组合，得到直接命中相邻顶点的 12 E 程序
+  - 生成证书，并用既有验证器和独立根式核验
+  - 固定具名点与图元集合中的删一步检查

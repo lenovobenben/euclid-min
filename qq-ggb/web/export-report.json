@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "certificate_sha256": "cd08960edffac588f1d20935f1080f56fd515b24ff4a3b18492e0c6d69dff4a1",
+  "exact_independent_point_comparisons": 18,
+  "paid_steps": 12,
+  "line_steps": 3,
+  "circle_steps": 9,
+  "first_target_e": 12,
+  "references_available_before_drawing": true,
+  "display_only_decimal_places": 12,
+  "html_sha256": "dae10c518d08298cf4c7a6443cd285d0cc9c9e758907f1761e1b69c3274b3f8b",
+  "geometry_sha256": "588d46ccb686d3b28e816a0a2bc5493ece35f87aacbc42a4dc82d9a025f92f66"
+}

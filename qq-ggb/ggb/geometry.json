@@ -1,0 +1,561 @@
+{
+  "schema": "euclid-min-geogebra-oracle/v1",
+  "certificate_sha256": "cd08960edffac588f1d20935f1080f56fd515b24ff4a3b18492e0c6d69dff4a1",
+  "construction_sha256": "58e9af20902ca9de9843dd16c4dbb931cb3164287f0aa86db906a0492fd93df2",
+  "profile_sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014",
+  "certificate": {
+    "schema": "euclid-min-certificate/v1",
+    "problem": "regular-17-adjacent-vertex",
+    "profile": {
+      "id": "regular-17-e-fixed-v1",
+      "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+    },
+    "construction": {
+      "id": "qq-ggb-12e-branches-011",
+      "title": "QQ 讨论组提供的 GeoGebra 构造变更交点分支得到的 12 E 相邻顶点（首创者未确认）",
+      "program": [
+        {
+          "id": "ggb_f",
+          "op": "line",
+          "through": [
+            "A",
+            "O"
+          ]
+        },
+        {
+          "id": "ggb_C",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_f"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_d",
+          "op": "circle",
+          "center": "ggb_C",
+          "through": "O"
+        },
+        {
+          "id": "ggb_e",
+          "op": "circle",
+          "center": "A",
+          "through": "ggb_C"
+        },
+        {
+          "id": "ggb_D",
+          "op": "intersect",
+          "objects": [
+            "ggb_d",
+            "ggb_e"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_E",
+          "op": "intersect",
+          "objects": [
+            "ggb_d",
+            "ggb_e"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_g",
+          "op": "line",
+          "through": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "id": "ggb_F",
+          "op": "intersect",
+          "objects": [
+            "ggb_d",
+            "ggb_f"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_G",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_g"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_h",
+          "op": "circle",
+          "center": "ggb_F",
+          "through": "ggb_G"
+        },
+        {
+          "id": "ggb_H",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_d"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_i",
+          "op": "line",
+          "through": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        },
+        {
+          "id": "ggb_I",
+          "op": "intersect",
+          "objects": [
+            "ggb_f",
+            "ggb_g"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_J",
+          "op": "intersect",
+          "objects": [
+            "ggb_d",
+            "ggb_h"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_k",
+          "op": "circle",
+          "center": "ggb_I",
+          "through": "ggb_J"
+        },
+        {
+          "id": "ggb_K",
+          "op": "intersect",
+          "objects": [
+            "ggb_k",
+            "ggb_f"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_p",
+          "op": "circle",
+          "center": "ggb_K",
+          "through": "ggb_J"
+        },
+        {
+          "id": "ggb_L",
+          "op": "intersect",
+          "objects": [
+            "ggb_e",
+            "ggb_p"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_q",
+          "op": "circle",
+          "center": "ggb_C",
+          "through": "ggb_L"
+        },
+        {
+          "id": "ggb_M",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_q"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_r",
+          "op": "circle",
+          "center": "ggb_K",
+          "through": "ggb_M"
+        },
+        {
+          "id": "ggb_N",
+          "op": "intersect",
+          "objects": [
+            "ggb_p",
+            "ggb_f"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_O",
+          "op": "intersect",
+          "objects": [
+            "ggb_h",
+            "ggb_r"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_s",
+          "op": "circle",
+          "center": "ggb_N",
+          "through": "ggb_O"
+        },
+        {
+          "id": "ggb_P",
+          "op": "intersect",
+          "objects": [
+            "ggb_s",
+            "ggb_i"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_t",
+          "op": "circle",
+          "center": "ggb_C",
+          "through": "ggb_P"
+        },
+        {
+          "id": "ggb_Q",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_t"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_R",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_t"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    "assertions": {
+      "score": {
+        "metric": "e_move",
+        "e_move": 12
+      },
+      "targets": [
+        "B_plus",
+        "B_minus"
+      ],
+      "claim": "verified_construction"
+    },
+    "software": {
+      "producer": {
+        "name": "qq-ggb-branch-search",
+        "version": "1.0.0"
+      }
+    },
+    "integrity": {
+      "construction_sha256": "58e9af20902ca9de9843dd16c4dbb931cb3164287f0aa86db906a0492fd93df2"
+    }
+  },
+  "labels": {
+    "O": "O",
+    "A": "A",
+    "unit_circle": "c",
+    "ggb_O": "U",
+    "ggb_Q": "B_plus",
+    "ggb_R": "B_minus",
+    "ggb_f": "f",
+    "ggb_C": "C",
+    "ggb_d": "d",
+    "ggb_e": "e",
+    "ggb_D": "D",
+    "ggb_E": "E",
+    "ggb_g": "g",
+    "ggb_F": "F",
+    "ggb_G": "G",
+    "ggb_h": "h",
+    "ggb_H": "H",
+    "ggb_i": "i",
+    "ggb_I": "I",
+    "ggb_J": "J",
+    "ggb_k": "k",
+    "ggb_K": "K",
+    "ggb_p": "p",
+    "ggb_L": "L",
+    "ggb_q": "q",
+    "ggb_M": "M",
+    "ggb_r": "r",
+    "ggb_N": "N",
+    "ggb_s": "s",
+    "ggb_P": "P",
+    "ggb_t": "t"
+  },
+  "points": {
+    "O": {
+      "xy": [
+        "0.0000000000000000",
+        "0.0000000000000000"
+      ],
+      "birth": 0,
+      "last_use": 2
+    },
+    "A": {
+      "xy": [
+        "1.0000000000000000",
+        "0.0000000000000000"
+      ],
+      "birth": 0,
+      "last_use": 3
+    },
+    "C": {
+      "xy": [
+        "-1.0000000000000000",
+        "0.0000000000000000"
+      ],
+      "birth": 1,
+      "last_use": 12
+    },
+    "D": {
+      "xy": [
+        "-0.7500000000000000",
+        "0.9682458365518542"
+      ],
+      "birth": 3,
+      "last_use": 4
+    },
+    "E": {
+      "xy": [
+        "-0.7500000000000000",
+        "-0.9682458365518542"
+      ],
+      "birth": 3,
+      "last_use": 4
+    },
+    "F": {
+      "xy": [
+        "-2.0000000000000000",
+        "0.0000000000000000"
+      ],
+      "birth": 2,
+      "last_use": 5
+    },
+    "G": {
+      "xy": [
+        "-0.7500000000000000",
+        "0.6614378277661476"
+      ],
+      "birth": 4,
+      "last_use": 5
+    },
+    "H": {
+      "xy": [
+        "-0.5000000000000000",
+        "0.8660254037844386"
+      ],
+      "birth": 2,
+      "last_use": 6
+    },
+    "I": {
+      "xy": [
+        "-0.7500000000000000",
+        "0.0000000000000000"
+      ],
+      "birth": 4,
+      "last_use": 7
+    },
+    "J": {
+      "xy": [
+        "-1.0000000000000000",
+        "1.0000000000000000"
+      ],
+      "birth": 5,
+      "last_use": 8
+    },
+    "K": {
+      "xy": [
+        "-1.7807764064044151",
+        "0.0000000000000000"
+      ],
+      "birth": 7,
+      "last_use": 10
+    },
+    "L": {
+      "xy": [
+        "-0.8201941016011038",
+        "0.8287903429073909"
+      ],
+      "birth": 8,
+      "last_use": 9
+    },
+    "M": {
+      "xy": [
+        "-0.6403882032022076",
+        "-0.7680513974985321"
+      ],
+      "birth": 9,
+      "last_use": 10
+    },
+    "N": {
+      "xy": [
+        "-0.5120716350735147",
+        "0.0000000000000000"
+      ],
+      "birth": 8,
+      "last_use": 11
+    },
+    "U": {
+      "xy": [
+        "-1.6403882032022076",
+        "-1.3677278075713249"
+      ],
+      "birth": 10,
+      "last_use": 11
+    },
+    "P": {
+      "xy": [
+        "-0.0170269003160982",
+        "1.7025593511259846"
+      ],
+      "birth": 11,
+      "last_use": 12
+    },
+    "B_plus": {
+      "xy": [
+        "0.9324722294043558",
+        "0.3612416661871529"
+      ],
+      "birth": 12,
+      "last_use": 12
+    },
+    "B_minus": {
+      "xy": [
+        "0.9324722294043558",
+        "-0.3612416661871529"
+      ],
+      "birth": 12,
+      "last_use": 12
+    }
+  },
+  "steps": [
+    {
+      "e": 1,
+      "label": "f",
+      "op": "line",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "e": 2,
+      "label": "d",
+      "op": "circle",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "e": 3,
+      "label": "e",
+      "op": "circle",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "e": 4,
+      "label": "g",
+      "op": "line",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "e": 5,
+      "label": "h",
+      "op": "circle",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "e": 6,
+      "label": "i",
+      "op": "line",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "e": 7,
+      "label": "k",
+      "op": "circle",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "e": 8,
+      "label": "p",
+      "op": "circle",
+      "refs": [
+        "K",
+        "J"
+      ]
+    },
+    {
+      "e": 9,
+      "label": "q",
+      "op": "circle",
+      "refs": [
+        "C",
+        "L"
+      ]
+    },
+    {
+      "e": 10,
+      "label": "r",
+      "op": "circle",
+      "refs": [
+        "K",
+        "M"
+      ]
+    },
+    {
+      "e": 11,
+      "label": "s",
+      "op": "circle",
+      "refs": [
+        "N",
+        "U"
+      ]
+    },
+    {
+      "e": 12,
+      "label": "t",
+      "op": "circle",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "verified": {
+    "e_move": 12,
+    "lines": 3,
+    "paid_circles": 9,
+    "first_target_e_move": 12,
+    "exact_point_comparisons": 18,
+    "independent_replay": true,
+    "radical_correspondence": true
+  },
+  "decimal_role": "Display and GeoGebra compatibility checks only; never an exact mathematical proof."
+}

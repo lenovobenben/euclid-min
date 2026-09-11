@@ -1,0 +1,56 @@
+{
+  "source_file": "正17边形.ggb",
+  "source_sha256": "4142700f7f7de84fa65b8546ecafd87b1abc037e6722b81fe9940b98483eb838",
+  "source_channel": "QQ discussion group; relayed to the project by the user",
+  "original_creator": null,
+  "originality_status": "not_established",
+  "coordinate_mapping": "source A -> O=(0,0), source B -> A=(1,0), orientation-preserving similarity",
+  "checks": {
+    "Q_equals_zeta17_power_5": true,
+    "R_equals_zeta17_power_minus_5": true,
+    "original_is_12_e": true,
+    "original_has_no_profile_target": true,
+    "original_has_no_duplicate_draws": true,
+    "vertex_10_equals_zeta17_power_10": true,
+    "vertex_3_equals_zeta17_power_3": true,
+    "adjacent_vertex_equals_zeta17_power_1": true,
+    "adapted_first_target_at_15_e": true,
+    "adapted_no_duplicate_draws": true
+  },
+  "all_checks_passed": true,
+  "cached_branch_check_method": "Exact rational parsing of XML decimal strings, followed by exact algebraic squared-distance comparisons; no tolerance",
+  "exact_cached_branch_checks": {
+    "C": true,
+    "D": true,
+    "E": true,
+    "F": true,
+    "G": true,
+    "H": true,
+    "I": true,
+    "J": true,
+    "K": true,
+    "L": true,
+    "M": true,
+    "N": true,
+    "O": true,
+    "P": true,
+    "Q": true,
+    "R": true
+  },
+  "original": {
+    "lines": 3,
+    "circles": 9,
+    "e_move": 12,
+    "targets": []
+  },
+  "adapted": {
+    "lines": 3,
+    "circles": 12,
+    "e_move": 15,
+    "targets": [
+      "B_plus"
+    ],
+    "first_target_e_move": 15
+  },
+  "Q_x_minimal_polynomial": "x^8 + 1/2*x^7 - 7/4*x^6 - 3/4*x^5 + 15/16*x^4 + 5/16*x^3 - 5/32*x^2 - 1/32*x + 1/256"
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "euclid-min-verification-report/v1",
+  "verifier": {
+    "name": "euclid-min-sage-verifier",
+    "version": "0.6.0",
+    "sage_version": "10.7"
+  },
+  "certificate_sha256": "cf2fc676ac47a1f5dce5b63c65920c88ff3307a7a6bee69cbe603f498987904c",
+  "construction_sha256": "c2fea692a4fd65a3041f2965f1dc51d90139778c4d33a72d6ee6e54898fbbe67",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "valid": true,
+  "draw_operations": {
+    "lines": 3,
+    "circles": 9,
+    "total": 12
+  },
+  "distinct_objects": {
+    "lines": 3,
+    "circles": 10
+  },
+  "bound_points": 16,
+  "closure_strategy": "implicit_exact",
+  "duplicate_draws": 0,
+  "score": {
+    "metric": "e_move",
+    "e_move": 12
+  },
+  "targets": [
+    "B_plus",
+    "B_minus"
+  ],
+  "first_target_program_index": 25,
+  "first_target_e_move": 12,
+  "requested_claim": "verified_construction",
+  "supported_claim": "verified_construction"
+}

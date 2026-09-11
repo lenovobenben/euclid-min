@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "control": true,
+  "status": "complete",
+  "elapsed_ms": 19249,
+  "measured_ms": {
+    "object_from": 0,
+    "intersect": 68,
+    "simplify_point": 99
+  },
+  "calls": {
+    "object_from": 2,
+    "intersect": 11,
+    "simplify_point": 6
+  },
+  "result": {
+    "new_points": 10,
+    "tested_terminal_parameterizations": 1143,
+    "hits": [
+      {
+        "file": "candidate-diagnostic-control.json",
+        "score": 12,
+        "first_target_e_move": 12
+      }
+    ],
+    "independently_verified": [
+      {
+        "file": "candidate-diagnostic-control.json",
+        "score": 12,
+        "first_target_e_move": 12,
+        "independent_verification": "candidate-diagnostic-control.verification.json"
+      }
+    ]
+  }
+}

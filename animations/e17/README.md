@@ -1,5 +1,7 @@
 # E17 Manim 演示动画
 
+> 本目录演示历史 17 E 路线。当前已验证上界为 [QQ-GGB 12 E](../../qq-ggb/README.md)，其演示见 [GeoGebra](../../qq-ggb/ggb/README.md) 和 [离线网页](../../qq-ggb/web/README.md)。
+
 本目录把已验证的 17 E 构造制作成一段中文 Manim 动画。第一页说明研究对象以及
 项目上界从 19 E 更新到 17 E；这两个数字只在 `regular-17-e-fixed-v1` 内比较，
 不表示 17 E 已经证明为全局最小。正片沿用上一版的全屏作图、右上角单一计数器、

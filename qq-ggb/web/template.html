@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07101F">
+  <meta name="description" content="正十七边形相邻顶点的 12 E 尺规构造。支持逐步播放与交互查看，由精确验证的构造证书生成。">
+  <title>正十七边形 · 12 E — Euclid-Min</title>
+  <style>/* INLINE_STYLE */</style>
+</head>
+<body>
+<div class="player" id="player">
+  <header class="topbar">
+    <div class="identity"><span class="wordmark">EUCLID<span>—</span>MIN</span><h1>正十七边形<span>相邻顶点的尺规构造</span></h1></div>
+    <div class="counter" aria-live="polite" aria-atomic="true"><span id="step-count">00</span><span class="counter-total"> / 12<small>E</small></span></div>
+  </header>
+  <main class="stage" id="stage" aria-label="尺规作图画布，可拖动平移和滚轮缩放" tabindex="0">
+    <svg id="scene" role="img" aria-labelledby="scene-title scene-description" xmlns="http://www.w3.org/2000/svg">
+      <title id="scene-title">正十七边形的 12 E 作图</title><desc id="scene-description">初始点 O、A 和单位圆。按播放按钮开始。</desc>
+      <g id="world"><path id="unit-circle" class="unit"/><g id="drawables"></g><g id="reference-guide"></g><g id="result-world"></g></g>
+      <g id="points"></g><g id="references"></g>
+    </svg>
+    <div class="start-note" id="start-note"><span class="magenta-dot"></span>初始点与单位圆 · 免费</div>
+    <div class="result-note" id="result-note" hidden><span>∠AOB₊ = 2π / 17</span><small>相邻顶点已得到</small></div>
+    <div class="view-tools" aria-label="画面控制">
+      <button class="icon-button" id="zoom-in" aria-label="放大" title="放大"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button class="icon-button" id="zoom-out" aria-label="缩小" title="缩小"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+      <button class="icon-button" id="fit" aria-label="恢复自动取景" title="恢复自动取景"><svg viewBox="0 0 24 24"><path d="M8 4H4v4m12-4h4v4M4 16v4h4m12-4v4h-4"/></svg></button>
+    </div>
+  </main>
+  <footer class="controls">
+    <div class="timeline-wrap"><label class="sr-only" for="timeline">作图步骤</label><input id="timeline" type="range" min="0" max="12" step="1" value="0" aria-valuetext="初始条件，0 E"><div class="ticks" id="ticks" aria-label="跳转到指定步骤"></div></div>
+    <div class="control-row">
+      <div class="transport">
+        <button class="icon-button" id="restart" aria-label="从头开始" title="从头开始（Home）"><svg viewBox="0 0 24 24"><path d="M5 8a8 8 0 1 1-1 7M5 3v5h5"/></svg></button>
+        <button class="icon-button" id="previous" aria-label="上一步" title="上一步（←）"><svg viewBox="0 0 24 24"><path d="M6 5v14M18 5l-9 7 9 7z"/></svg></button>
+        <button class="play-button" id="play" aria-label="播放" title="播放 / 暂停（空格）"><svg viewBox="0 0 24 24" id="play-icon"><path d="m9 5 11 7-11 7z"/></svg></button>
+        <button class="icon-button" id="next" aria-label="下一步" title="下一步（→）"><svg viewBox="0 0 24 24"><path d="M18 5v14M6 5l9 7-9 7z"/></svg></button>
+        <label class="speed"><span class="sr-only">播放速度</span><select id="speed" aria-label="播放速度"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+      </div>
+      <div class="draw-counts"><span><i class="line-symbol"></i><b id="line-count">0</b> 条直线</span><span><i class="circle-symbol"></i><b id="circle-count">0</b> 个圆</span></div>
+      <div class="options">
+        <button class="text-button" id="labels" aria-pressed="true">点名</button><button class="text-button" id="helpers" aria-pressed="true">辅助线</button>
+        <button class="text-button result-button" id="focus-result" disabled aria-pressed="false">聚焦结果</button>
+        <button class="icon-button" id="fullscreen" aria-label="全屏" title="全屏"><svg viewBox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></svg></button>
+        <button class="icon-button" id="info" aria-label="来源与计数规则" title="来源与计数规则"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></svg></button>
+      </div>
+    </div>
+    <div class="footnote"><span id="step-note">每画一条直线或一个圆，记 1 E</span><span class="keyboard-hint">空格播放 · ← → 逐步 · 拖动画面</span></div>
+  </footer>
+</div>
+<dialog id="about" aria-labelledby="about-title">
+  <button class="icon-button close-button" id="close-info" aria-label="关闭"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+  <span class="eyebrow">EUCLID—MIN / 12 E</span><h2 id="about-title">来源与计数规则</h2>
+  <p>免费给出 O、A 与单位圆。经过两个已有不同点画直线，或以一个已有点为圆心、经过另一个已有点画圆，各记 1 E。求交与点名不计步。</p>
+  <p class="result-summary"><b>3</b> 条直线 ＋ <b>9</b> 个付费圆 ＝ <b>12 E</b></p>
+  <p>目标是得到初始顶点 A 的任意一个相邻顶点。本构造在第 12 E 同时得到 B₊、B₋；尚未证明 12 E 最小。绿色半径和角度弧是完成后的结果标注。</p>
+  <p>原始 GGB 由 QQ 讨论组网友提供给用户，首创者未确认。此版本改变 K、P 的交点分支，并按项目规则完成精确核验。辅助点 U 对应原文件中的 O，以免与初始圆心 O 重名。</p>
+  <p class="verification-note">作图顺序及交点来自经过 Sage 精确重放、独立核验的证书。浏览器只显示预先导出的图形，不以屏幕坐标判断几何正确性。</p>
+  <div class="dialog-actions"><button class="download-button" id="download-certificate">下载精确证书 <span>↓</span></button><button class="text-button" id="download-page">保存离线网页</button></div>
+</dialog>
+<noscript>请启用浏览器 JavaScript 以播放作图。此网页无需联网。</noscript>
+<script id="geometry-data" type="application/json">/* INLINE_GEOMETRY */</script>
+<script>/* INLINE_PLAYER */</script>
+</body>
+</html>

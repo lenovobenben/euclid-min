@@ -1,0 +1,99 @@
+{
+  "budget_seconds": 3600,
+  "workers": 4,
+  "per_job_seconds": 30,
+  "scope": "Fixed QQ-GGB prefixes, both K branches, full available intersections where completed, and bounded local one/two-object extensions. Not global exhaustive search.",
+  "shorter_found": false,
+  "verified_candidates": [
+    {
+      "file": "candidate-control-known-12e-circle-15.json",
+      "score": 12,
+      "first_target_e_move": 12,
+      "independent_verification": "candidate-control-known-12e-circle-15.verification.json"
+    }
+  ],
+  "status": "stopped_for_optimization",
+  "stages": {
+    "closure": {
+      "planned_jobs": 266,
+      "recorded_jobs": 266,
+      "complete": 266,
+      "deferred": 0,
+      "errors": 0,
+      "tested_parameterizations": 0,
+      "worker_elapsed_ms": 2910
+    },
+    "positive_control": {
+      "planned_jobs": 1,
+      "recorded_jobs": 1,
+      "complete": 1,
+      "deferred": 0,
+      "errors": 0,
+      "tested_parameterizations": 154,
+      "worker_elapsed_ms": 1517
+    },
+    "one_step": {
+      "planned_jobs": 234,
+      "recorded_jobs": 234,
+      "complete": 234,
+      "deferred": 0,
+      "errors": 0,
+      "tested_parameterizations": 20451,
+      "worker_elapsed_ms": 20147
+    },
+    "two_step": {
+      "planned_jobs": 8280,
+      "worker_elapsed_ms": 1143238,
+      "recorded_jobs": 423,
+      "errors": 0,
+      "complete": 409,
+      "deferred": 14,
+      "tested_parameterizations": 719903
+    }
+  },
+  "states": {
+    "k0-e11": {
+      "distinct_points": 79,
+      "named_points": 16,
+      "closure_pairs_complete": 66,
+      "closure_pairs_planned": 66,
+      "full_closure": true,
+      "one_step_parameterizations": 9243
+    },
+    "k0-e10": {
+      "distinct_points": 69,
+      "named_points": 15,
+      "closure_pairs_complete": 55,
+      "closure_pairs_planned": 55,
+      "full_closure": true,
+      "one_step_parameterizations": 7038
+    },
+    "k1-e10": {
+      "distinct_points": 59,
+      "named_points": 15,
+      "closure_pairs_complete": 55,
+      "closure_pairs_planned": 55,
+      "full_closure": true,
+      "one_step_parameterizations": 5133
+    },
+    "k0-e9": {
+      "distinct_points": 55,
+      "named_points": 13,
+      "closure_pairs_complete": 45,
+      "closure_pairs_planned": 45,
+      "full_closure": true,
+      "one_step_parameterizations": 4455
+    },
+    "k1-e9": {
+      "distinct_points": 51,
+      "named_points": 13,
+      "closure_pairs_complete": 45,
+      "closure_pairs_planned": 45,
+      "full_closure": true,
+      "one_step_parameterizations": 3825
+    }
+  },
+  "positive_control_passed": true,
+  "interruption_report": "interrupted-summary.json",
+  "finalized_from_checkpoints": true
+}

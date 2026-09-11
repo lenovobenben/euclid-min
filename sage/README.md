@@ -20,15 +20,15 @@ euclid_min/
 ```
 
 当前已经覆盖 M1 数学内核、M2 验证闭环、M3 首个可信 baseline、M4 基础
-搜索器、M5 profiling/启发式搜索、M6 已验证上界（先得到 19 E，后更新为
-17 E），以及 M7 小深度证明记录、横轴镜像归约、目标祖先审计、终层目标入射
-裁剪、反向 DAG 切分接口和两步 AND/OR 义务展开。17 E 构造的可视化已经发布
-在 [`animations/e17`](../animations/e17/README.md)。尚未实现：
+搜索器、M5 profiling/启发式搜索、M6 已验证上界（19 E → 17 E → 12 E），以及 M7 小深度证明记录、横轴镜像归约、目标祖先审计、终层目标入射
+裁剪、反向 DAG 切分接口和两步 AND/OR 义务展开。当前 12 E 的证书、独立核验和演示见
+[QQ-GGB 研究](../qq-ggb/README.md)；历史 17 E 动画保留在
+[`animations/e17`](../animations/e17/README.md)。尚未实现：
 
-- 能够完备排除 6–16 E 的全局 lower-bound proof mode。
+- 能够完备排除 6–11 E 的全局 lower-bound proof mode。
 
 M7 全局最优性证明当前标记为**待完成（暂停）**；现有严格边界为
-\(5 < \operatorname{OPT}\le 17\)，恢复前需要新的理论归约。
+\(5 < \operatorname{OPT}\le 12\)，恢复前需要新的理论归约。
 
 ## 参考环境
 
@@ -72,7 +72,7 @@ docker run --rm `
 ```bash
 sage -python -m euclid_min verify \
   --profile profiles/regular-17-e-fixed-v1.yaml \
-  baselines/regular-17/eddy119-2026-adapted-17e/construction.json
+  qq-ggb/construction-12e-011.json
 ```
 
 可选参数：
@@ -82,13 +82,21 @@ sage -python -m euclid_min verify \
 
 退出码 0 表示验证成功，1 表示证书或构造验证失败，2 表示 CLI 或报告写入错误。
 
-当前 17 E 证书由以下命令确定性生成：
+当前 12 E 证书可通过枚举 QQ-GGB 的八种交点分支生成，命令同时重写分支报告：
+
+```bash
+sage -python qq-ggb/search_branches.py
+```
+
+原文件核验、独立证明与 Docker 完整命令见 [QQ-GGB 复现说明](../qq-ggb/README.md#代码与复现)。
+
+历史 17 E 证书由以下命令确定性生成：
 
 ```bash
 sage -python baselines/regular-17/eddy119-2026-adapted-17e/make_certificate.py
 ```
 
-生成后仍须使用上述 `euclid_min verify` 命令从磁盘独立重放。
+生成后的每份证书仍须使用 `euclid_min verify` 从磁盘独立重放；验证历史 17 E 时，将输入路径换成 `baselines/regular-17/eddy119-2026-adapted-17e/construction.json`。
 
 M3 基线的证书由以下命令确定性生成：
 
@@ -154,7 +162,7 @@ sage -python -m euclid_min check-proof \
 全部层计数和终层入射。另有反向依赖 DAG 接口，用于按自动闭包最早可用分数
 导出具体见证的前向/后向边界；两步 AND/OR 入口则完整枚举有限状态上的全部首步
 对象和终步入射义务。v2 checker 改用线性前向枚举，并实际构造每个终步对象后
-检查 `contains`；当前固定证明严格排除到 5 E，但不代表 6–16 E 已经穷尽。设计和
+检查 `contains`；当前固定证明严格排除到 5 E，但不代表 6–11 E 已经穷尽。设计和
 证据边界见 `docs/M7_PROOF_MODE.md`。
 
 重建深度 3 frontier 并以 8 个进程完整扫描两步 AND/OR 义务：
@@ -239,7 +247,7 @@ sage -python sage/experiments/search_e16_two_step_target_extension_v2.py \
 
 该搜索现已完成：22,454 个首步候选和 202,855,848 个受限末笔参数化全部覆盖，
 0 命中、0 未决关系。它严格排除的是已验证固定 16E 前缀之后的至多两笔扩展。
-这只是对历史 19 E 路线固定前缀的局部 18 E 排除，不是 6–16 E 的全局下界。
+这只是对历史 19 E 路线固定前缀的局部 18 E 排除，不是 6–11 E 的全局下界。
 
 ## 精确性边界
 

@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "geogebra_version": "5.2.907.0",
+  "certificate_sha256": "cd08960edffac588f1d20935f1080f56fd515b24ff4a3b18492e0c6d69dff4a1",
+  "construction_sha256": "58e9af20902ca9de9843dd16c4dbb931cb3164287f0aa86db906a0492fd93df2",
+  "oracle_sha256": "06b669a7fc38a175eebb64709fed1895aada55a54cd3630b11fdb64e02380bc1",
+  "ggb_sha256": "8dfb8d12a7322992c5a56cbff99f26220740bc3c16efb8cbd2378bae1845f02d",
+  "deploy_script_sha256": "66f21fa48edb731370a4459a8114a6d1ed747a1592cf527f4707f58e15fe05f3",
+  "geogebra_intersection_indices": {
+    "C": 2,
+    "D": 1,
+    "E": 2,
+    "F": 2,
+    "G": 1,
+    "H": 2,
+    "I": null,
+    "J": 2,
+    "K": 2,
+    "L": 2,
+    "M": 1,
+    "N": 1,
+    "U": 2,
+    "P": 2,
+    "B_plus": 2,
+    "B_minus": 1
+  },
+  "compatibility_checks": {
+    "max_initial_coordinate_error": 5.834747504472176e-15,
+    "similarity_errors": [
+      1.4383281002407285e-14,
+      1.915770174509656e-14,
+      2.356215018494452e-14
+    ],
+    "saved_point_count": 18,
+    "saved_line_count": 3,
+    "saved_circle_count_including_initial": 10,
+    "native_construction_protocol": {
+      "geometry_end_step": 31,
+      "total_protocol_steps": 31,
+      "first_paid_line_step": 4,
+      "last_paid_circle_step": 29,
+      "target_binding_steps": [
+        30,
+        31
+      ],
+      "forward_and_backward": true,
+      "checked_states": 64,
+      "geometry_visibility": true,
+      "current_draw_highlight": true,
+      "native_navigation_bar": true,
+      "non_geometric_entries": 0,
+      "trailing_entries_after_targets": 0,
+      "navigation_buttons": true,
+      "play_pause_buttons": true,
+      "automatic_playback_stops_at": 31
+    }
+  },
+  "page_errors": [],
+  "scope": "Native file reload, numerical compatibility, similarity transforms and native Construction Protocol playback with no non-geometric construction entries. Exact mathematical proof is supplied by the certificate and the two Sage replayers."
+}

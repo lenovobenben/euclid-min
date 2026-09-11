@@ -1,0 +1,278 @@
+{
+  "scope": "One-object replacement of each consecutive pair, retaining remaining baseline object definitions/order with alternative intersection witnesses; exact arithmetic",
+  "script_sha256": "23ec93932bf96c156da4597f4aebe803ba2fbcb15f6c3c9caa2c19c8fcabcc95",
+  "windows": [
+    {
+      "removed": [
+        "ggb_d",
+        "ggb_f"
+      ],
+      "prefix_score": 0,
+      "required_points": [
+        "ggb_C",
+        "ggb_D",
+        "ggb_E",
+        "ggb_F",
+        "ggb_H",
+        "ggb_I",
+        "ggb_J",
+        "ggb_K",
+        "ggb_N"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [
+        "ggb_I",
+        "ggb_K",
+        "ggb_N"
+      ],
+      "no_remaining_witness": [
+        "ggb_F"
+      ],
+      "tested_parameterizations": 0,
+      "deferred": 0,
+      "geometric_survivors": 0,
+      "hits": [],
+      "elapsed_ms": 5
+    },
+    {
+      "removed": [
+        "ggb_d",
+        "ggb_e"
+      ],
+      "prefix_score": 1,
+      "required_points": [
+        "ggb_D",
+        "ggb_E",
+        "ggb_F",
+        "ggb_H",
+        "ggb_J",
+        "ggb_L"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [
+        "ggb_D",
+        "ggb_E",
+        "ggb_F"
+      ],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 9,
+      "deferred": 0,
+      "geometric_survivors": 1,
+      "hits": [],
+      "prefix_distinct_points": 3,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 9,
+      "elapsed_ms": 10
+    },
+    {
+      "removed": [
+        "ggb_e",
+        "ggb_g"
+      ],
+      "prefix_score": 2,
+      "required_points": [
+        "ggb_G",
+        "ggb_I",
+        "ggb_L"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [
+        "ggb_I"
+      ],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 45,
+      "deferred": 0,
+      "geometric_survivors": 0,
+      "hits": [],
+      "prefix_distinct_points": 6,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 45,
+      "elapsed_ms": 25
+    },
+    {
+      "removed": [
+        "ggb_g",
+        "ggb_h"
+      ],
+      "prefix_score": 3,
+      "required_points": [
+        "ggb_I",
+        "ggb_J",
+        "ggb_O"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [
+        "ggb_I"
+      ],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 108,
+      "deferred": 0,
+      "geometric_survivors": 1,
+      "hits": [],
+      "prefix_distinct_points": 9,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 108,
+      "elapsed_ms": 89
+    },
+    {
+      "removed": [
+        "ggb_h",
+        "ggb_i"
+      ],
+      "prefix_score": 4,
+      "required_points": [
+        "ggb_J",
+        "ggb_O",
+        "ggb_P"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 198,
+      "deferred": 0,
+      "geometric_survivors": 157,
+      "hits": [],
+      "prefix_distinct_points": 12,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 198,
+      "elapsed_ms": 407
+    },
+    {
+      "removed": [
+        "ggb_i",
+        "ggb_k"
+      ],
+      "prefix_score": 5,
+      "required_points": [
+        "ggb_K",
+        "ggb_P"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [
+        "ggb_K"
+      ],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 459,
+      "deferred": 0,
+      "geometric_survivors": 2,
+      "hits": [],
+      "prefix_distinct_points": 18,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 459,
+      "elapsed_ms": 502
+    },
+    {
+      "removed": [
+        "ggb_k",
+        "ggb_p"
+      ],
+      "prefix_score": 6,
+      "required_points": [
+        "ggb_K",
+        "ggb_L",
+        "ggb_N"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [
+        "ggb_K",
+        "ggb_N"
+      ],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 759,
+      "deferred": 0,
+      "geometric_survivors": 0,
+      "hits": [],
+      "prefix_distinct_points": 23,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 759,
+      "elapsed_ms": 325
+    },
+    {
+      "removed": [
+        "ggb_p",
+        "ggb_q"
+      ],
+      "prefix_score": 7,
+      "required_points": [
+        "ggb_M",
+        "ggb_N"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [
+        "ggb_N"
+      ],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 1584,
+      "deferred": 0,
+      "geometric_survivors": 2,
+      "hits": [],
+      "prefix_distinct_points": 33,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 1584,
+      "elapsed_ms": 812
+    },
+    {
+      "removed": [
+        "ggb_q",
+        "ggb_r"
+      ],
+      "prefix_score": 8,
+      "required_points": [
+        "ggb_O"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 2709,
+      "deferred": 0,
+      "geometric_survivors": 2479,
+      "hits": [],
+      "prefix_distinct_points": 43,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 2709,
+      "elapsed_ms": 42736
+    },
+    {
+      "removed": [
+        "ggb_r",
+        "ggb_s"
+      ],
+      "prefix_score": 9,
+      "required_points": [
+        "ggb_P"
+      ],
+      "replacement_must_hit_either_target": false,
+      "must_lie_on_new_object": [],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 4455,
+      "deferred": 0,
+      "geometric_survivors": 4136,
+      "hits": [],
+      "prefix_distinct_points": 55,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 4455,
+      "elapsed_ms": 41359
+    },
+    {
+      "removed": [
+        "ggb_s",
+        "ggb_t"
+      ],
+      "prefix_score": 10,
+      "required_points": [],
+      "replacement_must_hit_either_target": true,
+      "must_lie_on_new_object": [],
+      "no_remaining_witness": [],
+      "tested_parameterizations": 7038,
+      "deferred": 0,
+      "geometric_survivors": 0,
+      "hits": [],
+      "prefix_distinct_points": 69,
+      "full_prefix_closure": true,
+      "planned_parameterizations": 7038,
+      "elapsed_ms": 8249
+    }
+  ],
+  "completed_windows": 11,
+  "found": false
+}

@@ -1,0 +1,33 @@
+{
+  "method": "Independent nested radicals and circle equations in Sage AA/QQbar; no project imports",
+  "checks": {
+    "K_on_circle_k": true,
+    "L_on_circle_e": true,
+    "L_on_circle_p": true,
+    "M_on_unit_circle": true,
+    "M_on_circle_q": true,
+    "O_on_circle_h": true,
+    "O_on_circle_r": true,
+    "N_on_circle_p": true,
+    "P_on_line_i": true,
+    "P_on_circle_s": true,
+    "P_lower_x_branch": true,
+    "Q_on_unit_circle": true,
+    "Q_on_circle_t": true,
+    "cosine_polynomial_vanishes": true,
+    "qx_in_isolating_interval": true,
+    "unique_polynomial_root_in_interval": true,
+    "Q_equals_zeta17_power_5": true,
+    "extension_first_circle": true,
+    "extension_second_circle": true,
+    "extension_third_circle": true
+  },
+  "all_checks_passed": true,
+  "Q_x_minimal_polynomial": "x^8 + 1/2*x^7 - 7/4*x^6 - 3/4*x^5 + 15/16*x^4 + 5/16*x^3 - 5/32*x^2 - 1/32*x + 1/256",
+  "Q_x_isolating_interval": [
+    "-273663/1000000",
+    "-136831/500000"
+  ],
+  "Q_angle_from_initial_vertex": "10*pi/17 = 5*(2*pi/17)",
+  "minor_angle_CAQ": "7*pi/17"
+}

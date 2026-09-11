@@ -1,0 +1,238 @@
+{
+  "schema": "euclid-min-certificate/v1",
+  "problem": "regular-17-adjacent-vertex",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "construction": {
+    "id": "qq-ggb-search-geometry-redefinition-control",
+    "title": "QQ GGB 精确局部搜索候选；原始来源首创者未确认",
+    "program": [
+      {
+        "id": "ggb_f",
+        "op": "line",
+        "through": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "geometry_point_1",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_f"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_d",
+        "op": "circle",
+        "center": "geometry_point_1",
+        "through": "O"
+      },
+      {
+        "id": "ggb_e",
+        "op": "circle",
+        "center": "A",
+        "through": "geometry_point_1"
+      },
+      {
+        "id": "geometry_point_2",
+        "op": "intersect",
+        "objects": [
+          "ggb_d",
+          "ggb_e"
+        ],
+        "index": 0
+      },
+      {
+        "id": "geometry_point_3",
+        "op": "intersect",
+        "objects": [
+          "ggb_d",
+          "ggb_e"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_g",
+        "op": "line",
+        "through": [
+          "geometry_point_2",
+          "geometry_point_3"
+        ]
+      },
+      {
+        "id": "geometry_point_4",
+        "op": "intersect",
+        "objects": [
+          "ggb_f",
+          "ggb_d"
+        ],
+        "index": 0
+      },
+      {
+        "id": "geometry_point_5",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_g"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_h",
+        "op": "circle",
+        "center": "geometry_point_4",
+        "through": "geometry_point_5"
+      },
+      {
+        "id": "geometry_point_6",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_d"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_i",
+        "op": "line",
+        "through": [
+          "geometry_point_1",
+          "geometry_point_6"
+        ]
+      },
+      {
+        "id": "geometry_point_7",
+        "op": "intersect",
+        "objects": [
+          "ggb_f",
+          "ggb_g"
+        ],
+        "index": 0
+      },
+      {
+        "id": "geometry_point_8",
+        "op": "intersect",
+        "objects": [
+          "ggb_d",
+          "ggb_h"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_k",
+        "op": "circle",
+        "center": "geometry_point_7",
+        "through": "geometry_point_8"
+      },
+      {
+        "id": "geometry_point_9",
+        "op": "intersect",
+        "objects": [
+          "ggb_f",
+          "ggb_k"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_p",
+        "op": "circle",
+        "center": "geometry_point_9",
+        "through": "geometry_point_8"
+      },
+      {
+        "id": "geometry_point_10",
+        "op": "intersect",
+        "objects": [
+          "ggb_e",
+          "ggb_p"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_q",
+        "op": "circle",
+        "center": "geometry_point_1",
+        "through": "geometry_point_10"
+      },
+      {
+        "id": "geometry_point_11",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_q"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_r",
+        "op": "circle",
+        "center": "geometry_point_9",
+        "through": "geometry_point_11"
+      },
+      {
+        "id": "geometry_point_12",
+        "op": "intersect",
+        "objects": [
+          "ggb_f",
+          "ggb_p"
+        ],
+        "index": 1
+      },
+      {
+        "id": "geometry_point_13",
+        "op": "intersect",
+        "objects": [
+          "ggb_h",
+          "ggb_r"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_s",
+        "op": "circle",
+        "center": "geometry_point_12",
+        "through": "geometry_point_13"
+      },
+      {
+        "id": "geometry_point_14",
+        "op": "intersect",
+        "objects": [
+          "ggb_i",
+          "ggb_s"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_t",
+        "op": "circle",
+        "center": "geometry_point_1",
+        "through": "geometry_point_14"
+      }
+    ]
+  },
+  "assertions": {
+    "score": {
+      "metric": "e_move",
+      "e_move": 12
+    },
+    "targets": [
+      "B_plus",
+      "B_minus"
+    ],
+    "claim": "verified_construction"
+  },
+  "software": {
+    "producer": {
+      "name": "qq-ggb-exact-budget-search",
+      "version": "1.0.0"
+    }
+  },
+  "integrity": {
+    "construction_sha256": "c2fea692a4fd65a3041f2965f1dc51d90139778c4d33a72d6ee6e54898fbbe67"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "method": "Independent circle equations and nested radicals using Sage AA/QQbar; no project imports",
+  "source": "QQ discussion group supplied file; original creator not established",
+  "branch_change": {
+    "K": {
+      "original_index": 1,
+      "new_index": 0
+    },
+    "P": {
+      "original_index": 0,
+      "new_index": 1
+    }
+  },
+  "checks": {
+    "K_on_circle_k": true,
+    "K_negative_branch": true,
+    "L_on_circle_e": true,
+    "L_on_circle_p": true,
+    "M_on_unit_circle": true,
+    "M_on_circle_q": true,
+    "O_on_circle_h": true,
+    "O_on_circle_r": true,
+    "N_on_circle_p": true,
+    "N_larger_x_branch": true,
+    "P_on_line_i": true,
+    "P_on_circle_s": true,
+    "P_larger_x_branch": true,
+    "Q_on_unit_circle": true,
+    "Q_on_circle_t": true,
+    "cosine_polynomial_vanishes": true,
+    "qx_in_isolating_interval": true,
+    "unique_polynomial_root_in_interval": true,
+    "Q_equals_zeta17": true,
+    "R_equals_inverse_zeta17": true
+  },
+  "all_checks_passed": true,
+  "Q_x_minimal_polynomial": "x^8 + 1/2*x^7 - 7/4*x^6 - 3/4*x^5 + 15/16*x^4 + 5/16*x^3 - 5/32*x^2 - 1/32*x + 1/256",
+  "Q_x_isolating_interval": [
+    "2331/2500",
+    "373/400"
+  ],
+  "score": {
+    "lines": 3,
+    "paid_circles": 9,
+    "e_move": 12
+  }
+}

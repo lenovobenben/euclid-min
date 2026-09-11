@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "script_sha256": "1e0e06c9b4734ef55fb9f363edbdee949ed7fba9bb8523cae29715ff1805c6a2",
+  "restored_non_pair_jobs": 3053,
+  "pair_caches_initially_absent": true,
+  "exact_pair_jobs_regenerated": 266,
+  "one_step_cached_jobs": 234,
+  "positive_control_reverified": true,
+  "elapsed_ms": 18499
+}

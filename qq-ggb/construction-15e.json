@@ -1,0 +1,300 @@
+{
+  "schema": "euclid-min-certificate/v1",
+  "problem": "regular-17-adjacent-vertex",
+  "profile": {
+    "id": "regular-17-e-fixed-v1",
+    "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+  },
+  "construction": {
+    "id": "local-geogebra-adapted-15e",
+    "title": "QQ 讨论组提供的 GeoGebra 文件追加三个圆后的 15 E 构造（首创者未确认）",
+    "program": [
+      {
+        "id": "ggb_f",
+        "op": "line",
+        "through": [
+          "A",
+          "O"
+        ]
+      },
+      {
+        "id": "ggb_C",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_f"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_d",
+        "op": "circle",
+        "center": "ggb_C",
+        "through": "O"
+      },
+      {
+        "id": "ggb_e",
+        "op": "circle",
+        "center": "A",
+        "through": "ggb_C"
+      },
+      {
+        "id": "ggb_D",
+        "op": "intersect",
+        "objects": [
+          "ggb_d",
+          "ggb_e"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_E",
+        "op": "intersect",
+        "objects": [
+          "ggb_d",
+          "ggb_e"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_g",
+        "op": "line",
+        "through": [
+          "ggb_D",
+          "ggb_E"
+        ]
+      },
+      {
+        "id": "ggb_F",
+        "op": "intersect",
+        "objects": [
+          "ggb_d",
+          "ggb_f"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_G",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_g"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_h",
+        "op": "circle",
+        "center": "ggb_F",
+        "through": "ggb_G"
+      },
+      {
+        "id": "ggb_H",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_d"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_i",
+        "op": "line",
+        "through": [
+          "ggb_C",
+          "ggb_H"
+        ]
+      },
+      {
+        "id": "ggb_I",
+        "op": "intersect",
+        "objects": [
+          "ggb_f",
+          "ggb_g"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_J",
+        "op": "intersect",
+        "objects": [
+          "ggb_d",
+          "ggb_h"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_k",
+        "op": "circle",
+        "center": "ggb_I",
+        "through": "ggb_J"
+      },
+      {
+        "id": "ggb_K",
+        "op": "intersect",
+        "objects": [
+          "ggb_k",
+          "ggb_f"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_p",
+        "op": "circle",
+        "center": "ggb_K",
+        "through": "ggb_J"
+      },
+      {
+        "id": "ggb_L",
+        "op": "intersect",
+        "objects": [
+          "ggb_e",
+          "ggb_p"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_q",
+        "op": "circle",
+        "center": "ggb_C",
+        "through": "ggb_L"
+      },
+      {
+        "id": "ggb_M",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_q"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_r",
+        "op": "circle",
+        "center": "ggb_K",
+        "through": "ggb_M"
+      },
+      {
+        "id": "ggb_N",
+        "op": "intersect",
+        "objects": [
+          "ggb_p",
+          "ggb_f"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_O",
+        "op": "intersect",
+        "objects": [
+          "ggb_h",
+          "ggb_r"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_s",
+        "op": "circle",
+        "center": "ggb_N",
+        "through": "ggb_O"
+      },
+      {
+        "id": "ggb_P",
+        "op": "intersect",
+        "objects": [
+          "ggb_s",
+          "ggb_i"
+        ],
+        "index": 0
+      },
+      {
+        "id": "ggb_t",
+        "op": "circle",
+        "center": "ggb_C",
+        "through": "ggb_P"
+      },
+      {
+        "id": "ggb_Q",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_t"
+        ],
+        "index": 1
+      },
+      {
+        "id": "ggb_R",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "ggb_t"
+        ],
+        "index": 0
+      },
+      {
+        "id": "extra_circle_13",
+        "op": "circle",
+        "center": "ggb_Q",
+        "through": "A"
+      },
+      {
+        "id": "vertex_10",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "extra_circle_13"
+        ],
+        "index": 0
+      },
+      {
+        "id": "extra_circle_14",
+        "op": "circle",
+        "center": "vertex_10",
+        "through": "A"
+      },
+      {
+        "id": "vertex_3",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "extra_circle_14"
+        ],
+        "index": 0
+      },
+      {
+        "id": "extra_circle_15",
+        "op": "circle",
+        "center": "vertex_3",
+        "through": "ggb_Q"
+      },
+      {
+        "id": "adjacent_vertex",
+        "op": "intersect",
+        "objects": [
+          "unit_circle",
+          "extra_circle_15"
+        ],
+        "index": 1
+      }
+    ]
+  },
+  "assertions": {
+    "score": {
+      "metric": "e_move",
+      "e_move": 15
+    },
+    "targets": [
+      "B_plus"
+    ],
+    "claim": "verified_construction"
+  },
+  "software": {
+    "producer": {
+      "name": "local-geogebra-audit",
+      "version": "1.0.0"
+    }
+  },
+  "integrity": {
+    "construction_sha256": "f2cdd66255ccf81e7d38b51630b95782ea679f7a7348283527c2867cb40a2a3e"
+  }
+}

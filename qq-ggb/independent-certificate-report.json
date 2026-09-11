@@ -1,0 +1,262 @@
+{
+  "method": "Independent direct substitution into exact AA quadratics; no euclid_min imports, no floats, no tolerances",
+  "scope": "Mathematical replay of the actual JSON certificate; project CLI separately validates its schema and JCS hashes",
+  "certificate_sha256": "cd08960edffac588f1d20935f1080f56fd515b24ff4a3b18492e0c6d69dff4a1",
+  "construction_sha256_declared": "58e9af20902ca9de9843dd16c4dbb931cb3164287f0aa86db906a0492fd93df2",
+  "result": {
+    "lines": 3,
+    "paid_circles": 9,
+    "score": 12,
+    "duplicate_draws": 0,
+    "first_target_e_move": 12,
+    "targets": [
+      "B_minus",
+      "B_plus"
+    ],
+    "steps": [
+      {
+        "program_index": 0,
+        "id": "ggb_f",
+        "op": "line",
+        "e_move": 1
+      },
+      {
+        "program_index": 1,
+        "id": "ggb_C",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 0,
+        "e_move": 1
+      },
+      {
+        "program_index": 2,
+        "id": "ggb_d",
+        "op": "circle",
+        "e_move": 2
+      },
+      {
+        "program_index": 3,
+        "id": "ggb_e",
+        "op": "circle",
+        "e_move": 3
+      },
+      {
+        "program_index": 4,
+        "id": "ggb_D",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 1,
+        "e_move": 3
+      },
+      {
+        "program_index": 5,
+        "id": "ggb_E",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 0,
+        "e_move": 3
+      },
+      {
+        "program_index": 6,
+        "id": "ggb_g",
+        "op": "line",
+        "e_move": 4
+      },
+      {
+        "program_index": 7,
+        "id": "ggb_F",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 0,
+        "e_move": 4
+      },
+      {
+        "program_index": 8,
+        "id": "ggb_G",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 1,
+        "e_move": 4
+      },
+      {
+        "program_index": 9,
+        "id": "ggb_h",
+        "op": "circle",
+        "e_move": 5
+      },
+      {
+        "program_index": 10,
+        "id": "ggb_H",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 1,
+        "e_move": 5
+      },
+      {
+        "program_index": 11,
+        "id": "ggb_i",
+        "op": "line",
+        "e_move": 6
+      },
+      {
+        "program_index": 12,
+        "id": "ggb_I",
+        "op": "intersect",
+        "intersection_count": 1,
+        "selected_exact_lex_index": 0,
+        "e_move": 6
+      },
+      {
+        "program_index": 13,
+        "id": "ggb_J",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 1,
+        "e_move": 6
+      },
+      {
+        "program_index": 14,
+        "id": "ggb_k",
+        "op": "circle",
+        "e_move": 7
+      },
+      {
+        "program_index": 15,
+        "id": "ggb_K",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 0,
+        "e_move": 7
+      },
+      {
+        "program_index": 16,
+        "id": "ggb_p",
+        "op": "circle",
+        "e_move": 8
+      },
+      {
+        "program_index": 17,
+        "id": "ggb_L",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 1,
+        "e_move": 8
+      },
+      {
+        "program_index": 18,
+        "id": "ggb_q",
+        "op": "circle",
+        "e_move": 9
+      },
+      {
+        "program_index": 19,
+        "id": "ggb_M",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 0,
+        "e_move": 9
+      },
+      {
+        "program_index": 20,
+        "id": "ggb_r",
+        "op": "circle",
+        "e_move": 10
+      },
+      {
+        "program_index": 21,
+        "id": "ggb_N",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 1,
+        "e_move": 10
+      },
+      {
+        "program_index": 22,
+        "id": "ggb_O",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 0,
+        "e_move": 10
+      },
+      {
+        "program_index": 23,
+        "id": "ggb_s",
+        "op": "circle",
+        "e_move": 11
+      },
+      {
+        "program_index": 24,
+        "id": "ggb_P",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 1,
+        "e_move": 11
+      },
+      {
+        "program_index": 25,
+        "id": "ggb_t",
+        "op": "circle",
+        "e_move": 12
+      },
+      {
+        "program_index": 26,
+        "id": "ggb_Q",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 1,
+        "e_move": 12
+      },
+      {
+        "program_index": 27,
+        "id": "ggb_R",
+        "op": "intersect",
+        "intersection_count": 2,
+        "selected_exact_lex_index": 0,
+        "e_move": 12
+      }
+    ]
+  },
+  "all_18_points_match_independent_radicals": true,
+  "point_correspondence": {
+    "O": true,
+    "A": true,
+    "ggb_C": true,
+    "ggb_D": true,
+    "ggb_E": true,
+    "ggb_F": true,
+    "ggb_G": true,
+    "ggb_H": true,
+    "ggb_I": true,
+    "ggb_J": true,
+    "ggb_K": true,
+    "ggb_L": true,
+    "ggb_M": true,
+    "ggb_N": true,
+    "ggb_O": true,
+    "ggb_P": true,
+    "ggb_Q": true,
+    "ggb_R": true
+  },
+  "cyclotomic_polynomial_identity": true,
+  "Q_is_nontrivial_17th_root": true,
+  "Q_x_is_largest_of_8_cosine_roots": true,
+  "negative_controls": {
+    "original_nonadjacent_branch": {
+      "rejected": true,
+      "reason": "target_not_reached"
+    },
+    "false_11_e_score": {
+      "rejected": true,
+      "reason": "score_assertion_mismatch"
+    },
+    "out_of_range_intersection": {
+      "rejected": true,
+      "reason": "invalid_intersection_index"
+    },
+    "zero_radius_circle": {
+      "rejected": true,
+      "reason": "coincident_points"
+    }
+  },
+  "all_checks_passed": true
+}

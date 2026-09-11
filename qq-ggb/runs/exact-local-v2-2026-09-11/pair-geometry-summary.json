@@ -1,0 +1,117 @@
+{
+  "script_sha256": "c2e45c1916255a599b18bc99e37ffdcc838546ed32a554908fcd47690409810a",
+  "scope": "All legal point definitions for fixed retained baseline geometries/order after one consecutive pair is removed and zero/one object inserted from full prefix closure; K=0 baseline only. Not a global lower bound.",
+  "positive_control": [
+    {
+      "file": "candidate-geometry-redefinition-control.json",
+      "score": 12,
+      "first_target_e_move": 12,
+      "independent_verification": "candidate-geometry-redefinition-control.verification.json"
+    }
+  ],
+  "global_relevant_points": 95,
+  "windows": [
+    {
+      "window": 0,
+      "prefix_points": 2,
+      "planned_parameterizations": 4,
+      "complete_parameterizations": 4,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 0
+    },
+    {
+      "window": 1,
+      "prefix_points": 3,
+      "planned_parameterizations": 10,
+      "complete_parameterizations": 10,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 1
+    },
+    {
+      "window": 2,
+      "prefix_points": 6,
+      "planned_parameterizations": 46,
+      "complete_parameterizations": 46,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 17
+    },
+    {
+      "window": 3,
+      "prefix_points": 9,
+      "planned_parameterizations": 109,
+      "complete_parameterizations": 109,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 11
+    },
+    {
+      "window": 4,
+      "prefix_points": 12,
+      "planned_parameterizations": 199,
+      "complete_parameterizations": 199,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 115
+    },
+    {
+      "window": 5,
+      "prefix_points": 18,
+      "planned_parameterizations": 460,
+      "complete_parameterizations": 460,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 112
+    },
+    {
+      "window": 6,
+      "prefix_points": 23,
+      "planned_parameterizations": 760,
+      "complete_parameterizations": 760,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 1795
+    },
+    {
+      "window": 7,
+      "prefix_points": 33,
+      "planned_parameterizations": 1585,
+      "complete_parameterizations": 1585,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 3902
+    },
+    {
+      "window": 8,
+      "prefix_points": 43,
+      "planned_parameterizations": 2710,
+      "complete_parameterizations": 2710,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 9336
+    },
+    {
+      "window": 9,
+      "prefix_points": 55,
+      "planned_parameterizations": 4456,
+      "complete_parameterizations": 4456,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 14228
+    },
+    {
+      "window": 10,
+      "prefix_points": 69,
+      "planned_parameterizations": 7039,
+      "complete_parameterizations": 7039,
+      "deferred": 0,
+      "hits": [],
+      "elapsed_ms": 12917
+    }
+  ],
+  "status": "selected_jobs_finished",
+  "found": false,
+  "elapsed_ms": 53562
+}

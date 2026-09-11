@@ -1,0 +1,5 @@
+# Regenerable exact caches and per-job resume files stay local. Compact ledgers
+# and summaries in runs/ preserve every recorded result for review.
+runs/*/cache/
+runs/*/jobs/
+runs/**/*.tmp

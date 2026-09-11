@@ -1,0 +1,18 @@
+{
+  "observed_utc": "2026-09-10 16:50:05 UTC",
+  "container": "qq-ggb-exact-v2",
+  "cpu_stat": {
+    "usage_usec": 10954854331,
+    "user_usec": 10860846348,
+    "system_usec": 94007983,
+    "nr_periods": 21888,
+    "nr_throttled": 5682,
+    "throttled_usec": 332718614,
+    "nr_bursts": 0,
+    "burst_usec": 0
+  },
+  "memory_peak_bytes": 1085288448,
+  "cpu_quota": 6,
+  "memory_limit_bytes": 5368709120,
+  "note": "Near-deadline observation for the optimized container only. The stopped original container is not included; this is not total CPU usage for the full hour."
+}

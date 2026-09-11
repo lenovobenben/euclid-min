@@ -1,0 +1,789 @@
+{
+  "scope": "All single-object deletions with reordering and alternative definitions, within exactly the 18 named points and 13 original drawable objects of construction-12e-011.json; no unnamed points or new drawable objects",
+  "point_count": 18,
+  "object_count": 13,
+  "control": {
+    "removed": null,
+    "reachable_paid_objects": 12,
+    "target_reached": true,
+    "missing_objects": [],
+    "schedule": [
+      {
+        "object": "ggb_f",
+        "using": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "object": "ggb_d",
+        "using": [
+          "ggb_C",
+          "O"
+        ]
+      },
+      {
+        "object": "ggb_e",
+        "using": [
+          "A",
+          "ggb_C"
+        ]
+      },
+      {
+        "object": "ggb_g",
+        "using": [
+          "ggb_D",
+          "ggb_E"
+        ]
+      },
+      {
+        "object": "ggb_i",
+        "using": [
+          "ggb_C",
+          "ggb_H"
+        ]
+      },
+      {
+        "object": "ggb_h",
+        "using": [
+          "ggb_F",
+          "ggb_G"
+        ]
+      },
+      {
+        "object": "ggb_k",
+        "using": [
+          "ggb_I",
+          "ggb_J"
+        ]
+      },
+      {
+        "object": "ggb_p",
+        "using": [
+          "ggb_K",
+          "ggb_J"
+        ]
+      },
+      {
+        "object": "ggb_q",
+        "using": [
+          "ggb_C",
+          "ggb_L"
+        ]
+      },
+      {
+        "object": "ggb_r",
+        "using": [
+          "ggb_K",
+          "ggb_M"
+        ]
+      },
+      {
+        "object": "ggb_s",
+        "using": [
+          "ggb_N",
+          "ggb_O"
+        ]
+      },
+      {
+        "object": "ggb_t",
+        "using": [
+          "ggb_C",
+          "ggb_P"
+        ]
+      }
+    ]
+  },
+  "results": [
+    {
+      "removed": "ggb_f",
+      "reachable_paid_objects": 0,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_d",
+        "ggb_e",
+        "ggb_g",
+        "ggb_h",
+        "ggb_i",
+        "ggb_k",
+        "ggb_p",
+        "ggb_q",
+        "ggb_r",
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": []
+    },
+    {
+      "removed": "ggb_d",
+      "reachable_paid_objects": 2,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_g",
+        "ggb_h",
+        "ggb_i",
+        "ggb_k",
+        "ggb_p",
+        "ggb_q",
+        "ggb_r",
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_e",
+      "reachable_paid_objects": 3,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_g",
+        "ggb_h",
+        "ggb_k",
+        "ggb_p",
+        "ggb_q",
+        "ggb_r",
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_g",
+      "reachable_paid_objects": 4,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_h",
+        "ggb_k",
+        "ggb_p",
+        "ggb_q",
+        "ggb_r",
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_h",
+      "reachable_paid_objects": 5,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_k",
+        "ggb_p",
+        "ggb_q",
+        "ggb_r",
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_g",
+          "using": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_i",
+      "reachable_paid_objects": 10,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_g",
+          "using": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "object": "ggb_h",
+          "using": [
+            "ggb_F",
+            "ggb_G"
+          ]
+        },
+        {
+          "object": "ggb_k",
+          "using": [
+            "ggb_I",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_p",
+          "using": [
+            "ggb_K",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_q",
+          "using": [
+            "ggb_C",
+            "ggb_L"
+          ]
+        },
+        {
+          "object": "ggb_r",
+          "using": [
+            "ggb_K",
+            "ggb_M"
+          ]
+        },
+        {
+          "object": "ggb_s",
+          "using": [
+            "ggb_N",
+            "ggb_O"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_k",
+      "reachable_paid_objects": 6,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_p",
+        "ggb_q",
+        "ggb_r",
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_g",
+          "using": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        },
+        {
+          "object": "ggb_h",
+          "using": [
+            "ggb_F",
+            "ggb_G"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_p",
+      "reachable_paid_objects": 7,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_q",
+        "ggb_r",
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_g",
+          "using": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        },
+        {
+          "object": "ggb_h",
+          "using": [
+            "ggb_F",
+            "ggb_G"
+          ]
+        },
+        {
+          "object": "ggb_k",
+          "using": [
+            "ggb_I",
+            "ggb_J"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_q",
+      "reachable_paid_objects": 8,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_r",
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_g",
+          "using": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        },
+        {
+          "object": "ggb_h",
+          "using": [
+            "ggb_F",
+            "ggb_G"
+          ]
+        },
+        {
+          "object": "ggb_k",
+          "using": [
+            "ggb_I",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_p",
+          "using": [
+            "ggb_K",
+            "ggb_J"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_r",
+      "reachable_paid_objects": 9,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_s",
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_g",
+          "using": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        },
+        {
+          "object": "ggb_h",
+          "using": [
+            "ggb_F",
+            "ggb_G"
+          ]
+        },
+        {
+          "object": "ggb_k",
+          "using": [
+            "ggb_I",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_p",
+          "using": [
+            "ggb_K",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_q",
+          "using": [
+            "ggb_C",
+            "ggb_L"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_s",
+      "reachable_paid_objects": 10,
+      "target_reached": false,
+      "missing_objects": [
+        "ggb_t"
+      ],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_g",
+          "using": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        },
+        {
+          "object": "ggb_h",
+          "using": [
+            "ggb_F",
+            "ggb_G"
+          ]
+        },
+        {
+          "object": "ggb_k",
+          "using": [
+            "ggb_I",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_p",
+          "using": [
+            "ggb_K",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_q",
+          "using": [
+            "ggb_C",
+            "ggb_L"
+          ]
+        },
+        {
+          "object": "ggb_r",
+          "using": [
+            "ggb_K",
+            "ggb_M"
+          ]
+        }
+      ]
+    },
+    {
+      "removed": "ggb_t",
+      "reachable_paid_objects": 11,
+      "target_reached": false,
+      "missing_objects": [],
+      "schedule": [
+        {
+          "object": "ggb_f",
+          "using": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "object": "ggb_d",
+          "using": [
+            "ggb_C",
+            "O"
+          ]
+        },
+        {
+          "object": "ggb_e",
+          "using": [
+            "A",
+            "ggb_C"
+          ]
+        },
+        {
+          "object": "ggb_g",
+          "using": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "object": "ggb_i",
+          "using": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        },
+        {
+          "object": "ggb_h",
+          "using": [
+            "ggb_F",
+            "ggb_G"
+          ]
+        },
+        {
+          "object": "ggb_k",
+          "using": [
+            "ggb_I",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_p",
+          "using": [
+            "ggb_K",
+            "ggb_J"
+          ]
+        },
+        {
+          "object": "ggb_q",
+          "using": [
+            "ggb_C",
+            "ggb_L"
+          ]
+        },
+        {
+          "object": "ggb_r",
+          "using": [
+            "ggb_K",
+            "ggb_M"
+          ]
+        },
+        {
+          "object": "ggb_s",
+          "using": [
+            "ggb_N",
+            "ggb_O"
+          ]
+        }
+      ]
+    }
+  ],
+  "found_shorter": false,
+  "conclusion": "This only addresses the frozen named-point/object universe; it is not a global lower bound."
+}

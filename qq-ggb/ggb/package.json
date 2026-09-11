@@ -1,0 +1,6 @@
+{
+  "name": "euclid-min-geogebra-export",
+  "private": true,
+  "scripts": {"export": "node export_ggb.cjs"},
+  "devDependencies": {"playwright": "1.59.1"}
+}

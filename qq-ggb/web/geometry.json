@@ -1,0 +1,846 @@
+{
+  "schema": "euclid-min-web-12e/v1",
+  "points": {
+    "O": {
+      "xy": [
+        "0",
+        "0"
+      ],
+      "birth": 0,
+      "lastUse": 2,
+      "label": "O",
+      "offset": [
+        -14,
+        22
+      ]
+    },
+    "A": {
+      "xy": [
+        "1",
+        "0"
+      ],
+      "birth": 0,
+      "lastUse": 3,
+      "label": "A",
+      "offset": [
+        15,
+        18
+      ]
+    },
+    "ggb_C": {
+      "xy": [
+        "-1",
+        "0"
+      ],
+      "birth": 1,
+      "lastUse": 12,
+      "label": "C",
+      "offset": [
+        -15,
+        21
+      ]
+    },
+    "ggb_D": {
+      "xy": [
+        "-0.75",
+        "-0.968245836552"
+      ],
+      "birth": 3,
+      "lastUse": 4,
+      "label": "D",
+      "offset": [
+        14,
+        -11
+      ]
+    },
+    "ggb_E": {
+      "xy": [
+        "-0.75",
+        "0.968245836552"
+      ],
+      "birth": 3,
+      "lastUse": 4,
+      "label": "E",
+      "offset": [
+        14,
+        20
+      ]
+    },
+    "ggb_F": {
+      "xy": [
+        "-2",
+        "0"
+      ],
+      "birth": 2,
+      "lastUse": 5,
+      "label": "F",
+      "offset": [
+        -15,
+        22
+      ]
+    },
+    "ggb_G": {
+      "xy": [
+        "-0.75",
+        "-0.661437827766"
+      ],
+      "birth": 4,
+      "lastUse": 5,
+      "label": "G",
+      "offset": [
+        15,
+        -10
+      ]
+    },
+    "ggb_H": {
+      "xy": [
+        "-0.5",
+        "-0.866025403784"
+      ],
+      "birth": 2,
+      "lastUse": 6,
+      "label": "H",
+      "offset": [
+        14,
+        -12
+      ]
+    },
+    "ggb_I": {
+      "xy": [
+        "-0.75",
+        "0"
+      ],
+      "birth": 4,
+      "lastUse": 7,
+      "label": "I",
+      "offset": [
+        14,
+        22
+      ]
+    },
+    "ggb_J": {
+      "xy": [
+        "-1",
+        "-1"
+      ],
+      "birth": 5,
+      "lastUse": 8,
+      "label": "J",
+      "offset": [
+        -17,
+        -11
+      ]
+    },
+    "ggb_K": {
+      "xy": [
+        "-1.780776406404",
+        "0"
+      ],
+      "birth": 7,
+      "lastUse": 10,
+      "label": "K",
+      "offset": [
+        -12,
+        22
+      ]
+    },
+    "ggb_L": {
+      "xy": [
+        "-0.820194101601",
+        "-0.828790342907"
+      ],
+      "birth": 8,
+      "lastUse": 9,
+      "label": "L",
+      "offset": [
+        14,
+        -14
+      ]
+    },
+    "ggb_M": {
+      "xy": [
+        "-0.640388203202",
+        "0.768051397499"
+      ],
+      "birth": 9,
+      "lastUse": 10,
+      "label": "M",
+      "offset": [
+        -16,
+        22
+      ]
+    },
+    "ggb_N": {
+      "xy": [
+        "-0.512071635074",
+        "0"
+      ],
+      "birth": 8,
+      "lastUse": 11,
+      "label": "N",
+      "offset": [
+        13,
+        22
+      ]
+    },
+    "ggb_O": {
+      "xy": [
+        "-1.640388203202",
+        "1.367727807571"
+      ],
+      "birth": 10,
+      "lastUse": 11,
+      "label": "U",
+      "offset": [
+        -15,
+        22
+      ]
+    },
+    "ggb_P": {
+      "xy": [
+        "-0.017026900316",
+        "-1.702559351126"
+      ],
+      "birth": 11,
+      "lastUse": 12,
+      "label": "P",
+      "offset": [
+        14,
+        -13
+      ]
+    },
+    "ggb_Q": {
+      "xy": [
+        "0.932472229404",
+        "-0.361241666187"
+      ],
+      "birth": 12,
+      "lastUse": 12,
+      "label": "B₊",
+      "offset": [
+        20,
+        -12
+      ]
+    },
+    "ggb_R": {
+      "xy": [
+        "0.932472229404",
+        "0.361241666187"
+      ],
+      "birth": 12,
+      "lastUse": 12,
+      "label": "B₋",
+      "offset": [
+        20,
+        22
+      ]
+    }
+  },
+  "steps": [
+    {
+      "e": 1,
+      "id": "ggb_f",
+      "op": "line",
+      "refs": [
+        "A",
+        "O"
+      ],
+      "ends": [
+        [
+          "-64",
+          "0"
+        ],
+        [
+          "64",
+          "0"
+        ]
+      ],
+      "frame": [
+        "-1.4",
+        "-1.4",
+        "1.4",
+        "1.4"
+      ],
+      "counts": {
+        "lines": 1,
+        "circles": 0
+      }
+    },
+    {
+      "e": 2,
+      "id": "ggb_d",
+      "op": "circle",
+      "refs": [
+        "ggb_C",
+        "O"
+      ],
+      "path": "M 0 0 A 1 1 0 1 1 -2 0 A 1 1 0 1 1 0 0",
+      "center": [
+        "-1",
+        "0"
+      ],
+      "radius": "1",
+      "frame": [
+        "-2.4",
+        "-1.4",
+        "1.4",
+        "1.4"
+      ],
+      "counts": {
+        "lines": 1,
+        "circles": 1
+      }
+    },
+    {
+      "e": 3,
+      "id": "ggb_e",
+      "op": "circle",
+      "refs": [
+        "A",
+        "ggb_C"
+      ],
+      "path": "M -1 0 A 2 2 0 1 1 3 0 A 2 2 0 1 1 -1 0",
+      "center": [
+        "1",
+        "0"
+      ],
+      "radius": "2",
+      "frame": [
+        "-1.4",
+        "-2.4",
+        "3.4",
+        "2.4"
+      ],
+      "counts": {
+        "lines": 1,
+        "circles": 2
+      }
+    },
+    {
+      "e": 4,
+      "id": "ggb_g",
+      "op": "line",
+      "refs": [
+        "ggb_D",
+        "ggb_E"
+      ],
+      "ends": [
+        [
+          "-0.75",
+          "64"
+        ],
+        [
+          "-0.75",
+          "-64"
+        ]
+      ],
+      "frame": [
+        "-1.4",
+        "-1.4",
+        "1.4",
+        "1.4"
+      ],
+      "counts": {
+        "lines": 2,
+        "circles": 2
+      }
+    },
+    {
+      "e": 5,
+      "id": "ggb_h",
+      "op": "circle",
+      "refs": [
+        "ggb_F",
+        "ggb_G"
+      ],
+      "path": "M -0.75 -0.661437827766 A 1.414213562373 1.414213562373 0 1 1 -3.25 0.661437827766 A 1.414213562373 1.414213562373 0 1 1 -0.75 -0.661437827766",
+      "center": [
+        "-2",
+        "0"
+      ],
+      "radius": "1.414213562373",
+      "frame": [
+        "-3.814213562373",
+        "-1.814213562373",
+        "1.4",
+        "1.814213562373"
+      ],
+      "counts": {
+        "lines": 2,
+        "circles": 3
+      }
+    },
+    {
+      "e": 6,
+      "id": "ggb_i",
+      "op": "line",
+      "refs": [
+        "ggb_C",
+        "ggb_H"
+      ],
+      "ends": [
+        [
+          "-37.950417228136",
+          "64"
+        ],
+        [
+          "35.950417228136",
+          "-64"
+        ]
+      ],
+      "frame": [
+        "-1.4",
+        "-1.4",
+        "1.4",
+        "1.4"
+      ],
+      "counts": {
+        "lines": 3,
+        "circles": 3
+      }
+    },
+    {
+      "e": 7,
+      "id": "ggb_k",
+      "op": "circle",
+      "refs": [
+        "ggb_I",
+        "ggb_J"
+      ],
+      "path": "M -1 -1 A 1.030776406404 1.030776406404 0 1 1 -0.5 1 A 1.030776406404 1.030776406404 0 1 1 -1 -1",
+      "center": [
+        "-0.75",
+        "0"
+      ],
+      "radius": "1.030776406404",
+      "frame": [
+        "-2.180776406404",
+        "-1.430776406404",
+        "1.4",
+        "1.430776406404"
+      ],
+      "counts": {
+        "lines": 3,
+        "circles": 4
+      }
+    },
+    {
+      "e": 8,
+      "id": "ggb_p",
+      "op": "circle",
+      "refs": [
+        "ggb_K",
+        "ggb_J"
+      ],
+      "path": "M -1 -1 A 1.268704771331 1.268704771331 0 1 1 -2.561552812809 1 A 1.268704771331 1.268704771331 0 1 1 -1 -1",
+      "center": [
+        "-1.780776406404",
+        "0"
+      ],
+      "radius": "1.268704771331",
+      "frame": [
+        "-3.449481177735",
+        "-1.668704771331",
+        "1.4",
+        "1.668704771331"
+      ],
+      "counts": {
+        "lines": 3,
+        "circles": 5
+      }
+    },
+    {
+      "e": 9,
+      "id": "ggb_q",
+      "op": "circle",
+      "refs": [
+        "ggb_C",
+        "ggb_L"
+      ],
+      "path": "M -0.820194101601 -0.828790342907 A 0.84807051216 0.84807051216 0 1 1 -1.179805898399 0.828790342907 A 0.84807051216 0.84807051216 0 1 1 -0.820194101601 -0.828790342907",
+      "center": [
+        "-1",
+        "0"
+      ],
+      "radius": "0.84807051216",
+      "frame": [
+        "-2.24807051216",
+        "-1.4",
+        "1.4",
+        "1.4"
+      ],
+      "counts": {
+        "lines": 3,
+        "circles": 6
+      }
+    },
+    {
+      "e": 10,
+      "id": "ggb_r",
+      "op": "circle",
+      "refs": [
+        "ggb_K",
+        "ggb_M"
+      ],
+      "path": "M -0.640388203202 0.768051397499 A 1.374913889377 1.374913889377 0 1 1 -2.921164609607 -0.768051397499 A 1.374913889377 1.374913889377 0 1 1 -0.640388203202 0.768051397499",
+      "center": [
+        "-1.780776406404",
+        "0"
+      ],
+      "radius": "1.374913889377",
+      "frame": [
+        "-3.555690295782",
+        "-1.774913889377",
+        "1.4",
+        "1.774913889377"
+      ],
+      "counts": {
+        "lines": 3,
+        "circles": 7
+      }
+    },
+    {
+      "e": 11,
+      "id": "ggb_s",
+      "op": "circle",
+      "refs": [
+        "ggb_N",
+        "ggb_O"
+      ],
+      "path": "M -1.640388203202 1.367727807571 A 1.773070115229 1.773070115229 0 1 1 0.616244933055 -1.367727807571 A 1.773070115229 1.773070115229 0 1 1 -1.640388203202 1.367727807571",
+      "center": [
+        "-0.512071635074",
+        "0"
+      ],
+      "radius": "1.773070115229",
+      "frame": [
+        "-2.685141750302",
+        "-2.173070115229",
+        "1.660998480155",
+        "2.173070115229"
+      ],
+      "counts": {
+        "lines": 3,
+        "circles": 8
+      }
+    },
+    {
+      "e": 12,
+      "id": "ggb_t",
+      "op": "circle",
+      "refs": [
+        "ggb_C",
+        "ggb_P"
+      ],
+      "path": "M -0.017026900316 -1.702559351126 A 1.965946199368 1.965946199368 0 1 1 -1.982973099684 1.702559351126 A 1.965946199368 1.965946199368 0 1 1 -0.017026900316 -1.702559351126",
+      "center": [
+        "-1",
+        "0"
+      ],
+      "radius": "1.965946199368",
+      "frame": [
+        "-3.365946199368",
+        "-2.365946199368",
+        "1.4",
+        "2.365946199368"
+      ],
+      "counts": {
+        "lines": 3,
+        "circles": 9
+      }
+    }
+  ],
+  "initial": {
+    "path": "M 1 0 A 1 1 0 1 1 -1 0 A 1 1 0 1 1 1 0",
+    "frame": [
+      "-1.65",
+      "-1.4",
+      "1.65",
+      "1.4"
+    ]
+  },
+  "resultFrame": [
+    "-1.4",
+    "-1.4",
+    "1.55",
+    "1.4"
+  ],
+  "anglePath": "M 0.45 0 A 0.45 0.45 0 0 0 0.419612503232 -0.162558749784",
+  "source": {
+    "certificate_sha256": "cd08960edffac588f1d20935f1080f56fd515b24ff4a3b18492e0c6d69dff4a1",
+    "construction_sha256": "58e9af20902ca9de9843dd16c4dbb931cb3164287f0aa86db906a0492fd93df2",
+    "profile_sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014",
+    "channel": "QQ 讨论组网友提供给用户，首创者未确认。"
+  },
+  "verified": {
+    "e": 12,
+    "lines": 3,
+    "paidCircles": 9,
+    "firstTarget": 12,
+    "targets": [
+      "ggb_Q",
+      "ggb_R"
+    ],
+    "independentReplay": true
+  },
+  "certificate": {
+    "schema": "euclid-min-certificate/v1",
+    "problem": "regular-17-adjacent-vertex",
+    "profile": {
+      "id": "regular-17-e-fixed-v1",
+      "sha256": "bb0a4ea904e60fb688da15558fa8f09982d4a7eee3cd8efee32ae9cb61079014"
+    },
+    "construction": {
+      "id": "qq-ggb-12e-branches-011",
+      "title": "QQ 讨论组提供的 GeoGebra 构造变更交点分支得到的 12 E 相邻顶点（首创者未确认）",
+      "program": [
+        {
+          "id": "ggb_f",
+          "op": "line",
+          "through": [
+            "A",
+            "O"
+          ]
+        },
+        {
+          "id": "ggb_C",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_f"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_d",
+          "op": "circle",
+          "center": "ggb_C",
+          "through": "O"
+        },
+        {
+          "id": "ggb_e",
+          "op": "circle",
+          "center": "A",
+          "through": "ggb_C"
+        },
+        {
+          "id": "ggb_D",
+          "op": "intersect",
+          "objects": [
+            "ggb_d",
+            "ggb_e"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_E",
+          "op": "intersect",
+          "objects": [
+            "ggb_d",
+            "ggb_e"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_g",
+          "op": "line",
+          "through": [
+            "ggb_D",
+            "ggb_E"
+          ]
+        },
+        {
+          "id": "ggb_F",
+          "op": "intersect",
+          "objects": [
+            "ggb_d",
+            "ggb_f"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_G",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_g"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_h",
+          "op": "circle",
+          "center": "ggb_F",
+          "through": "ggb_G"
+        },
+        {
+          "id": "ggb_H",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_d"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_i",
+          "op": "line",
+          "through": [
+            "ggb_C",
+            "ggb_H"
+          ]
+        },
+        {
+          "id": "ggb_I",
+          "op": "intersect",
+          "objects": [
+            "ggb_f",
+            "ggb_g"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_J",
+          "op": "intersect",
+          "objects": [
+            "ggb_d",
+            "ggb_h"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_k",
+          "op": "circle",
+          "center": "ggb_I",
+          "through": "ggb_J"
+        },
+        {
+          "id": "ggb_K",
+          "op": "intersect",
+          "objects": [
+            "ggb_k",
+            "ggb_f"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_p",
+          "op": "circle",
+          "center": "ggb_K",
+          "through": "ggb_J"
+        },
+        {
+          "id": "ggb_L",
+          "op": "intersect",
+          "objects": [
+            "ggb_e",
+            "ggb_p"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_q",
+          "op": "circle",
+          "center": "ggb_C",
+          "through": "ggb_L"
+        },
+        {
+          "id": "ggb_M",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_q"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_r",
+          "op": "circle",
+          "center": "ggb_K",
+          "through": "ggb_M"
+        },
+        {
+          "id": "ggb_N",
+          "op": "intersect",
+          "objects": [
+            "ggb_p",
+            "ggb_f"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_O",
+          "op": "intersect",
+          "objects": [
+            "ggb_h",
+            "ggb_r"
+          ],
+          "index": 0
+        },
+        {
+          "id": "ggb_s",
+          "op": "circle",
+          "center": "ggb_N",
+          "through": "ggb_O"
+        },
+        {
+          "id": "ggb_P",
+          "op": "intersect",
+          "objects": [
+            "ggb_s",
+            "ggb_i"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_t",
+          "op": "circle",
+          "center": "ggb_C",
+          "through": "ggb_P"
+        },
+        {
+          "id": "ggb_Q",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_t"
+          ],
+          "index": 1
+        },
+        {
+          "id": "ggb_R",
+          "op": "intersect",
+          "objects": [
+            "unit_circle",
+            "ggb_t"
+          ],
+          "index": 0
+        }
+      ]
+    },
+    "assertions": {
+      "score": {
+        "metric": "e_move",
+        "e_move": 12
+      },
+      "targets": [
+        "B_plus",
+        "B_minus"
+      ],
+      "claim": "verified_construction"
+    },
+    "software": {
+      "producer": {
+        "name": "qq-ggb-branch-search",
+        "version": "1.0.0"
+      }
+    },
+    "integrity": {
+      "construction_sha256": "58e9af20902ca9de9843dd16c4dbb931cb3164287f0aa86db906a0492fd93df2"
+    }
+  },
+  "display": {
+    "decimalPlaces": 12,
+    "method": "Exact AA rounding to decimal strings for display only; no float geometry"
+  }
+}

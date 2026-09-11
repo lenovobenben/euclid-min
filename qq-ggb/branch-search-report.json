@@ -1,0 +1,110 @@
+{
+  "source_sha256": "4142700f7f7de84fa65b8546ecafd87b1abc037e6722b81fe9940b98483eb838",
+  "source_channel": "QQ discussion group; original creator not established",
+  "scope": "Only the 8 combinations of K,N,P indices; other source choices fixed",
+  "planned_configurations": 8,
+  "completed_configurations": 8,
+  "all_eight_valid": true,
+  "results": [
+    {
+      "indices": {
+        "ggb_K": 0,
+        "ggb_N": 0,
+        "ggb_P": 0
+      },
+      "valid_program": true,
+      "score": 12,
+      "Q_vertex": 2,
+      "targets": [],
+      "first_target_e_move": null
+    },
+    {
+      "indices": {
+        "ggb_K": 0,
+        "ggb_N": 0,
+        "ggb_P": 1
+      },
+      "valid_program": true,
+      "score": 12,
+      "Q_vertex": 8,
+      "targets": [],
+      "first_target_e_move": null
+    },
+    {
+      "indices": {
+        "ggb_K": 0,
+        "ggb_N": 1,
+        "ggb_P": 0
+      },
+      "valid_program": true,
+      "score": 12,
+      "Q_vertex": 4,
+      "targets": [],
+      "first_target_e_move": null
+    },
+    {
+      "indices": {
+        "ggb_K": 0,
+        "ggb_N": 1,
+        "ggb_P": 1
+      },
+      "valid_program": true,
+      "score": 12,
+      "Q_vertex": 1,
+      "targets": [
+        "B_plus",
+        "B_minus"
+      ],
+      "first_target_e_move": 12,
+      "certificate": "construction-12e-011.json"
+    },
+    {
+      "indices": {
+        "ggb_K": 1,
+        "ggb_N": 0,
+        "ggb_P": 0
+      },
+      "valid_program": true,
+      "score": 12,
+      "Q_vertex": 6,
+      "targets": [],
+      "first_target_e_move": null
+    },
+    {
+      "indices": {
+        "ggb_K": 1,
+        "ggb_N": 0,
+        "ggb_P": 1
+      },
+      "valid_program": true,
+      "score": 12,
+      "Q_vertex": 7,
+      "targets": [],
+      "first_target_e_move": null
+    },
+    {
+      "indices": {
+        "ggb_K": 1,
+        "ggb_N": 1,
+        "ggb_P": 0
+      },
+      "valid_program": true,
+      "score": 12,
+      "Q_vertex": 5,
+      "targets": [],
+      "first_target_e_move": null
+    },
+    {
+      "indices": {
+        "ggb_K": 1,
+        "ggb_N": 1,
+        "ggb_P": 1
+      },
+      "valid_program": true,
+      "score": 12,
+      "Q_vertex": 3,
+      "targets": [],
+      "first_target_e_move": null
+    }
+  ]
+}

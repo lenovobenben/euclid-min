@@ -4,31 +4,37 @@
 
 Euclid-Min is an open-source computational mathematics project for studying **short straightedge-and-compass constructions**. It fixes the meaning of a move in a machine-readable rule profile, expands every constructed line and circle into elementary operations, and replays construction certificates exactly in SageMath.
 
-The main result is currently a **17 E construction** of a vertex adjacent to a fixed vertex of a regular 17-gon. The repository also preserves an independent study of a regular 257-gon, while the regular 17-gon remains the primary focus.
+The main result is currently a **12 E construction** of a vertex adjacent to a fixed vertex of a regular 17-gon. The repository also preserves an independent study of a regular 257-gon, while the regular 17-gon remains the primary focus.
 
-> **Regular 17-gon: 17 E, consisting of 7 lines and 10 circles, verified exactly in SageMath.**
+> **Regular 17-gon: 12 E, consisting of 3 lines and 9 paid circles, verified exactly in SageMath.**
 
-[Watch the 4K animation](animations/e17/media/videos/e17_progress/2160p30/E17Progress.mp4) · [View the certificate](baselines/regular-17/eddy119-2026-adapted-17e/construction.json) · [View the verification report](baselines/regular-17/eddy119-2026-adapted-17e/verification.json) · [Read the provenance, adaptation, and exact derivation](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md)
+[12 E GeoGebra demo](qq-ggb/ggb/README.md) · [12 E offline web player](qq-ggb/web/README.md) · [View the certificate](qq-ggb/construction-12e-011.json) · [View the verification report](qq-ggb/verification-12e.json) · [Read the provenance, adaptation, and exact checks](qq-ggb/README.md)
 
 ## Current results
 
 | Problem | Rule profile | Verified result | Scope of the claim |
 |---|---|---:|---|
-| A vertex adjacent to a fixed vertex of a regular 17-gon | `regular-17-e-fixed-v1` | **17 E** | Current upper bound; global minimality has not been proved |
+| A vertex adjacent to a fixed vertex of a regular 17-gon | `regular-17-e-fixed-v1` | **12 E** | Current upper bound; global minimality has not been proved |
 | Any adjacent pair of vertices of a regular 257-gon | `regular-257-free-edge-e-fixed-v1` | **69 E** | Reproducible baseline recovered from a public video; not presented as an optimization record |
 
-The regular 17-gon construction contains 7 lines and 10 circles. It first reaches the target at exactly 17 E and does not redraw any existing object. It was extracted from the relevant prefix of Eddy119's public complete 37-move construction. Direct conversion to this project's target gives 18 E; dependency analysis then removes one unused circle, producing 17 E. The original author did not claim a 17 E result. The baseline directory records the original geometry, the project's adaptation, and the respective verification responsibilities separately. The earlier 19 E DeTemple adaptation is retained as a historical upper bound.
+The 12 E construction first produces both vertices adjacent to the fixed initial vertex at move 12, without redrawing any existing object. Its geometric framework comes from a GGB file supplied through a QQ discussion group; the original author and first publication remain unconfirmed.
+
+The original file also costs 12 E, but produces vertices 5 and 12 relative to initial vertex 0. This project's first conversion kept those branches and added three circles to reach the target, giving 15 E. Changing only the intersection branches at K and P makes the original twelve operations produce vertices 1 and 16 directly. The three saved circles precede the same target; completing the polygon is outside the counted task. The 15 E conversion has not been proved cheapest for the original branches, and 12 E has not been proved globally minimal. See the [contribution and scope](qq-ggb/README.md#本项目改了什么价值在哪里).
+
+The earlier 17 E Eddy119 adaptation and 19 E and 32 E DeTemple adaptations remain as historical baselines. Together with the existing strict exclusion through 5 E, the current bounds are **`5 < OPT ≤ 12`**. Scores 6–11 E have not been globally excluded.
 
 The repository also contains:
 
 - a strict bounded exhaustive search through 5 E;
-- replay of the 17 E certificate by the project verifier and an independent radical check;
+- replay of the 12 E certificate by the project verifier, an independent radical check, and an independent certificate replayer;
+- exact checks of all eight K, N, P branch combinations, plus [local searches with explicit coverage limits](qq-ggb/search-hour-2026-09-11.md);
+- an editable GeoGebra demo and an offline web player generated from the 12 E certificate;
 - a complete geometry-algebra IR for the earlier 19 E certificate;
-- all 32,193 one-move parameterizations from a fixed 17 E state;
-- all 22,454 first-move objects and 202,855,848 restricted final-move parameterizations from a fixed 16 E prefix;
-- a 4K Manim animation generated from the formal 17 E certificate.
+- all 32,193 one-move parameterizations from a fixed 17 E state of the historical 19 E route;
+- all 22,454 first-move objects and 202,855,848 restricted final-move parameterizations from a fixed 16 E prefix of the historical 19 E route;
+- a [4K Manim animation](animations/e17/README.md) generated from the historical 17 E certificate.
 
-The fixed-prefix searches rigorously exclude one- or two-move compressions of the earlier **19 E route**. They do not cover every possible earlier construction prefix and do not prove that 17 E is optimal.
+Negative results from these fixed-prefix and local searches apply only to their explicitly documented scopes. They do not prove that 12 E is optimal.
 
 ## The regular 17-gon problem
 
@@ -101,27 +107,30 @@ If only two distinct points \(P,Q\) are given, constructing their midpoint requi
 
 The total is 4 E; all intersection operations cost 0 E. If the line \(PQ\) were also given initially, the same task would cost 3 E. This is why move counts are directly comparable only when the initial objects, tool capabilities, free-point rules, target, and counting method all agree.
 
-## Evidence chain for 17 E
+## Evidence chain for 12 E
 
-The 17 E count is not based on manually counting a diagram. It is an exact result that can be replayed from scratch:
+The 12 E count and target are established by the following exact, replayable evidence:
 
 1. the [rule profile](profiles/regular-17-e-fixed-v1.yaml) fixes the initial objects, legal operations, and target;
-2. the [source record](baselines/regular-17/eddy119-2026-adapted-17e/source.yaml) distinguishes the author's 37-move construction from this project's 18-to-17 E adaptation;
-3. the [construction certificate](baselines/regular-17/eddy119-2026-adapted-17e/construction.json) records every line, circle, and intersection binding;
+2. the [source record](qq-ggb/source.yaml) records the original GGB's acquisition channel and hash, distinguishing its geometry from this project's branch changes;
+3. the [construction certificate](qq-ggb/construction-12e-011.json) records every line, circle, and intersection binding;
 4. the SageMath verifier recomputes every geometric object and does not trust the score declared in the certificate;
-5. the [verification report](baselines/regular-17/eddy119-2026-adapted-17e/verification.json) confirms legality, an E-score of 17, and an exact hit on \(B_+\);
-6. the [independent radical report](baselines/regular-17/eddy119-2026-adapted-17e/independent_radical_report.json) does not import project code and separately proves that the target coordinates equal \((\cos(2\pi/17),\sin(2\pi/17))\);
-7. the [human-readable derivation](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md) explains the 17 moves, metric conversion, and exact algebraic verification.
+5. the [verification report](qq-ggb/verification-12e.json) confirms legality, 3 lines and 9 paid circles, first reaching both \(B_+\) and \(B_-\) at move 12, with no duplicate draws;
+6. the [independent radical report](qq-ggb/independent-12e-report.json) checks the circle equations, nested radicals, and exact relation to the 17th roots of unity without importing project code;
+7. the [independent certificate replay](qq-ggb/independent-certificate-report.json) reads the actual JSON, uses a separate exact intersection implementation, compares all 18 points with independent radicals, and rejects four deliberately invalid inputs;
+8. the [human-readable explanation](qq-ggb/README.md) covers branch choices, counting, exact algebraic checks, and the scope of the contribution.
 
 The construction content hash is:
 
 ```text
-99c80e4ef288e73c3657f2da056b1ec3b9609cd5f7231bcad690f6bc0a722252
+58e9af20902ca9de9843dd16c4dbb931cb3164287f0aa86db906a0492fd93df2
 ```
 
-Floating-point arithmetic is used only for animation, heuristic ordering, and non-authoritative bucketing. Geometric equality, construction legality, state merging, and target detection use exact mathematical predicates.
+Mathematical verification uses exact predicates for geometric equality, construction legality, state merging, and target detection. Display coordinates, GeoGebra's numerical runtime and compatibility checks, and some heuristic ordering and non-authoritative bucketing may use floating-point arithmetic; they do not replace the exact certificate.
 
 ## Literature and internet review
+
+The following is the **historical public-source review from September 5, 2026**, before the QQ-GGB 12 E branch adaptation. See the [literature and baseline ledger](docs/LITERATURE.md) for the updated construction inventory. That review describes only the public sources examined at the time.
 
 As of **September 5, 2026**, the public-source review conducted for this project found no reproducible construction with an E-score of 16 or less that simultaneously has:
 
@@ -139,9 +148,9 @@ In 2026, Eddy119 published a complete 37-move regular 17-gon construction with r
 
 The strongest statement supported by the current evidence is:
 
-> Under `regular-17-e-fixed-v1`, the project has verified a 17 E construction adapted from the relevant prefix of a public 37-move construction through a rule conversion and one dependency-pruning step. As of the public-source review completed on September 5, 2026, no reproducible construction of 16 E or less under the same rules had been found.
+> Under `regular-17-e-fixed-v1`, the project has verified a 12 E adjacent-vertex construction. Its geometric framework comes from a GGB file supplied through a QQ discussion group. Changing the intersection branches at K and P reduces the project's first verified 15 E target conversion to 12 E. The original author, first publication, and literature priority of this branch adaptation remain unconfirmed.
 
-This does not prove that 17 E is globally minimal. A public-source review cannot establish that unpublished constructions do not exist. Global optimality would require a complete exclusion of 0–16 E; the current strict lower bound excludes only 0–5 E.
+The 12 E result is the current verified upper bound; no claim of literature priority or a world record is made. Global optimality would still require a complete exclusion of 6–11 E. The existing strict lower bound excludes only 0–5 E, and the QQ-GGB local searches do not extend that global exclusion.
 
 ## Public basis for the metric
 
@@ -163,32 +172,33 @@ The current 69 E baseline contains 65 lines and 4 circles. The existing 68 E sea
 
 ## Reproducing the result locally
 
-The reference environment is SageMath 10.7. All Python code in this repository is intended to run with the Python interpreter bundled with SageMath.
+The reference environment is SageMath 10.7. Mathematical Python scripts run with the Python interpreter bundled with SageMath; demo build environments are documented separately.
 
-### Verify the regular 17-gon certificate
+### Verify the 12 E regular 17-gon certificate
 
-From the repository root, run:
+From the repository root on macOS/Linux, run this read-only check to print a JSON report. PowerShell commands and the full regeneration workflow are in the [QQ-GGB reproduction guide](qq-ggb/README.md#代码与复现).
 
 ```bash
 docker run --rm --network none \
-  -v "$PWD:/workspace:ro" \
-  -w /workspace \
-  -e PYTHONPATH=/workspace/sage \
+  -v "$PWD:/workspace:ro" -w /workspace \
+  -e PYTHONPATH=/workspace/sage -e PYTHONDONTWRITEBYTECODE=1 \
   sagemath/sagemath@sha256:4f5589eb6c565949a006f8665de2876b8414410daf5ac554f4434a15d4f3d528 \
   sage -python -m euclid_min verify \
   --profile profiles/regular-17-e-fixed-v1.yaml \
-  baselines/regular-17/eddy119-2026-adapted-17e/construction.json
+  qq-ggb/construction-12e-011.json --json
 ```
 
-Successful output includes:
+The key fields in the JSON report should be:
 
-```text
-valid: true
-lines: 7
-circles: 10
-e_move: 17
-first_target_e_move: 17
-target: B_plus
+```json
+{
+  "valid": true,
+  "draw_operations": {"lines": 3, "circles": 9, "total": 12},
+  "duplicate_draws": 0,
+  "score": {"metric": "e_move", "e_move": 12},
+  "first_target_e_move": 12,
+  "targets": ["B_plus", "B_minus"]
+}
 ```
 
 ### Run the complete regular 17-gon test suite
@@ -216,8 +226,11 @@ Most detailed research notes are currently written in Chinese. The formal profil
 | Authoritative E-move definition and comparability rules | [Metric specification](docs/METRICS.md) |
 | Construction certificate and content-hash format | [Certificate format](docs/CERTIFICATE_FORMAT.md) |
 | Source status and baseline conversion ledger | [Literature and baseline ledger](docs/LITERATURE.md) |
-| 17 E provenance, adaptation, and exact derivation | [17 E baseline explanation](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md) |
-| 17 E animation, storyboard, and reproduction | [Manim animation documentation](animations/e17/README.md) |
+| Current 12 E provenance, branch adaptation, contribution, and exact checks | [QQ-GGB study](qq-ggb/README.md) |
+| Using and generating the 12 E demos | [GeoGebra](qq-ggb/ggb/README.md) · [Offline web player](qq-ggb/web/README.md) |
+| 12 E local search scope, coverage, and measured resource use | [Search log](qq-ggb/search-hour-2026-09-11.md) |
+| Historical 17 E provenance, adaptation, and exact derivation | [17 E baseline explanation](baselines/regular-17/eddy119-2026-adapted-17e/explanation.md) |
+| Historical 17 E animation, storyboard, and reproduction | [Manim animation documentation](animations/e17/README.md) |
 | Complete geometry-algebra IR for the earlier 19 E route | [Geometry-algebra IR](docs/GEOMETRY_ALGEBRA_IR.md) |
 | Search and proof milestones | [Roadmap](docs/ROADMAP.md) |
 | Strict bounded result through 5 E | [Bounded proof record](proofs/regular-17-through-5e.json) |
