@@ -2,35 +2,100 @@
 
 [简体中文](README.md) · **English**
 
-Euclid-Min focuses on a verified **12 E straightedge-and-compass construction** of the two vertices adjacent to a fixed vertex of a regular 17-gon: **3 lines and 9 paid circles**.
+**Construct both vertices adjacent to a given vertex of a regular 17-gon with 3 lines and 9 circles.**
 
-[Offline interactive player](qq-ggb/web/README.md) · [4K Manim animation](animations/e12/E12Construction-4K.mp4) · [GeoGebra](qq-ggb/ggb/README.md) · [Certificate](qq-ggb/construction-12e-011.json) · [Verification report](qq-ggb/verification-12e.json)
+This repository provides a step-by-step demonstration, an editable construction, a machine-replayable certificate, and independent exact checks. Both targets first appear at move 12, with no duplicate draws.
 
-## Problem and metric
+[Watch the 4K animation](animations/e12/E12Construction-4K.mp4) · [Offline interactive player](qq-ggb/web/README.md) · [GeoGebra construction](qq-ggb/ggb/README.md) · [Certificate](qq-ggb/construction-12e-011.json) · [Verification report](qq-ggb/verification-12e.json)
 
-The free initial objects are O=(0,0), A=(1,0), and their unit circle. The goal is either point (cos(2π/17), ±sin(2π/17)). The complete polygon is not required.
+[![The 12 E construction: initial circle, adjacent vertices, and central angles](animations/e12/preview.png)](animations/e12/E12Construction-4K.mp4)
 
-Drawing a line through two existing distinct points or a circle centered at one existing point through another costs 1 E. Intersections are free. The compass collapses; arbitrary points and direct distance transfer are forbidden. Composite tasks such as constructing a midpoint must be expanded into elementary operations.
+*Click the preview to view or download the animation: 3840 × 2160, 30 fps, approximately 49 seconds.*
 
-The authoritative rules are the [profile](profiles/regular-17-e-fixed-v1.yaml), [formal model](docs/FORMAL_MODEL.md), and [metric](docs/METRICS.md).
+## Explore the construction
 
-## Evidence and attribution
+| Format | File | Features |
+|---|---|---|
+| Manim animation | [4K MP4](animations/e12/E12Construction-4K.mp4) | All twelve moves, reference-point guides, and the final central angles |
+| Offline web player | [Download index.html](qq-ggb/web/index.html) | Step playback, timeline navigation, pan and zoom, and certificate access |
+| GeoGebra | [Download the .ggb file](qq-ggb/ggb/正十七边形-12E.ggb) | Move the initial points and inspect or edit native construction dependencies |
 
-The certificate reaches both targets for the first time at 12 E with no duplicate draws. SageMath exact replay, an independent radical proof, and an independent certificate replayer cross-check all 18 named points. Deliberately invalid inputs are rejected.
+The web player is a self-contained HTML file. Download it and open it in a browser; no installation, network connection, or server is required. On GitHub, the HTML file link shows source code, so download the file first.
 
-The underlying geometry comes from a GGB file supplied through a QQ discussion group. Its original creator and earliest publication are unconfirmed. Euclid-Min changes the K and P intersection branches to reach the required adjacent vertices in the same twelve moves, and supplies the certificate, exact checks, and demonstrations. See [provenance and branch enumeration](qq-ggb/README.md).
+In the animation, magenta marks the free initial circle, gold the current move, pale blue the completed auxiliary objects, and green the result. Each circle is preceded by markers for its center and known circumference point, with a temporary radius guide. The green radii and angle arcs illustrate the result.
 
-The rigorous current bounds are **5 < OPT ≤ 12**. Scores 0–5 E have been exhaustively excluded and independently checked; 6–11 E have not. This is a verified upper bound, with no claim of global minimality or a world record. Negative [local searches](qq-ggb/search-hour-2026-09-11.md) apply only to their documented scopes.
+## What 12 E achieves
 
-## Demonstrations
+The center, a point on the circle, and the unit circle are given for free:
 
-Download [index.html](qq-ggb/web/index.html) and open it in a browser for an entirely offline interactive player. The [editable GeoGebra file](qq-ggb/ggb/正十七边形-12E.ggb) preserves native dependencies and allows moving the initial points.
+$$
+O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1.
+$$
 
-The [Manim animation](animations/e12/README.md) uses a dark blue background, magenta initial circle, gold active strokes, compass guides, a move counter, and a final view of both adjacent vertices. Its geometry comes from the same exactly verified decimal snapshot as the web player; Manim performs only presentation calculations.
+The task is to construct either vertex adjacent to A in a regular 17-gon on the circle. This construction produces both:
+
+$$
+B_\pm=\left(\cos\frac{2\pi}{17},\ \pm\sin\frac{2\pi}{17}\right).
+$$
+
+Both central angles equal $2\pi/17$. The score stops when a target appears. Completing the remaining vertices or drawing the whole polygon is outside this count. **12 E is an exactly verified upper bound; global minimality has not been proved.**
+
+### What counts as a move
+
+| Operation | Cost |
+|---|---:|
+| Draw a line through two existing distinct points | 1 E |
+| Draw a circle centered at an existing point through another existing point | 1 E |
+| Obtain or name a determined intersection of existing lines and circles | 0 E |
+| The given O, A, and initial circle | 0 E |
+
+The tools are an unmarked straightedge and a **collapsing compass**, which cannot retain its opening to transfer a distance directly. Every new point must be a determined intersection of existing objects; arbitrary points are forbidden. Composite tasks such as constructing a midpoint, perpendicular, or parallel line must be expanded into elementary draws.
+
+See the [fixed profile](profiles/regular-17-e-fixed-v1.yaml) and [metric specification](docs/METRICS.md) for the complete rules.
+
+<details>
+<summary>Show the twelve charged moves</summary>
+
+Point labels match the demonstrations; U corresponds to `ggb_O` in the certificate. The [certificate](qq-ggb/construction-12e-011.json) records all intersection sources and branch indices. Intersection bindings are free.
+
+| E | Object | Construction |
+|---:|---|---|
+| 1 | Line | Through A and O |
+| 2 | Circle | Center C, through O |
+| 3 | Circle | Center A, through C |
+| 4 | Line | Through D and E |
+| 5 | Circle | Center F, through G |
+| 6 | Line | Through C and H |
+| 7 | Circle | Center I, through J |
+| 8 | Circle | Center K, through J |
+| 9 | Circle | Center C, through L |
+| 10 | Circle | Center K, through M |
+| 11 | Circle | Center N, through U |
+| 12 | Circle | Center C, through P; its intersections with the initial circle are B₊ and B₋ |
+
+</details>
+
+## Source and project contribution
+
+The underlying geometry comes from a [GGB file](qq-ggb/正17边形.ggb) supplied through a QQ discussion group. Its original creator and earliest publication remain unconfirmed. Euclid-Min enumerated three intersection branch choices and changed the K and P branches so that the same twelve moves directly produce the two vertices adjacent to the fixed initial point A. The project also supplies the certificate, independent checks, and demonstrations.
+
+See the [construction explanation](qq-ggb/README.md) and [source record](qq-ggb/source.yaml) for the original material, branch choices, and attribution.
+
+## Exact verification
+
+The verifier starts from the given objects, recomputes the construction, and independently counts the draws and first target appearance. It does not rely on displayed decimal coordinates or trust the certificate's asserted score.
+
+| Check | Result | Record |
+|---|---|---|
+| Project exact verifier | 3 lines, 9 paid circles, both targets first reached at 12 E, no duplicate draws | [Verification report](qq-ggb/verification-12e.json) |
+| Independent radical check | No project-code imports; circle equations, nested radicals, and the seventeenth root of unity checked; all 20 checks passed | [Radical report](qq-ggb/independent-12e-report.json) |
+| Independent certificate replay | A separate exact intersection implementation matches all 18 named points and rejects four deliberately invalid inputs | [Independent replay report](qq-ggb/independent-certificate-report.json) |
+
+Mathematical decisions use SageMath exact algebraic numbers. Numerical calculations in the web player and animation serve projection and playback; floating-point tolerances do not establish mathematical correctness.
 
 ## Reproduction
 
-Use SageMath 10.7. From the repository root:
+Use SageMath 10.7. From the repository root, the following command reads the existing certificate and prints a JSON report:
 
 ```sh
 docker run --rm --network none \
@@ -42,12 +107,20 @@ docker run --rm --network none \
   qq-ggb/construction-12e-011.json --json
 ```
 
-Expected: `valid: true`, 3 lines, 9 circles, `first_target_e_move: 12`, and both targets. To run tests, replace the command after the image with `sage -python -m unittest discover -s tests -v`.
+The key report fields should be:
 
-See [Sage instructions](sage/README.md), [animation reproduction](animations/e12/README.md), [certificate format](docs/CERTIFICATE_FORMAT.md), and [bounded proofs](docs/M7_PROOF_MODE.md).
+```json
+{
+  "valid": true,
+  "draw_operations": {"lines": 3, "circles": 9, "total": 12},
+  "duplicate_draws": 0,
+  "first_target_e_move": 12,
+  "targets": ["B_plus", "B_minus"]
+}
+```
 
-## Layout and license
+See the [12 E reproduction instructions](qq-ggb/README.md#复现) for independent checks and branch enumeration. Rebuild the demonstrations using the instructions for [Manim](animations/e12/README.md#重新生成), the [web player](qq-ggb/web/README.md#重新生成), and [GeoGebra](qq-ggb/ggb/README.md#重新生成).
 
-`qq-ggb/` contains the construction and its evidence; `animations/e12/` contains the animation; `sage/euclid_min/` contains the exact kernel and search infrastructure; `profiles/`, `schemas/`, `proofs/`, and `tests/` fix semantics and support reproducibility.
+## License and citation
 
-Software is licensed under [Apache 2.0](LICENSE); mathematical documents, certificates, research data, and animation outputs under [CC BY 4.0](LICENSE-CONTENT). Third-party material retains its own rights. See [license scope](LICENSE-SCOPE.md). Cite [CITATION.cff](CITATION.cff) and the commit or version used.
+Software, tests, configuration, and schemas use [Apache 2.0](LICENSE). Project mathematical documents, certificates, data, and animation outputs use [CC BY 4.0](LICENSE-CONTENT). Third-party material retains its own rights; see the [license scope](LICENSE-SCOPE.md). Cite [CITATION.cff](CITATION.cff) and the commit or version used.

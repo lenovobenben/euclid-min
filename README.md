@@ -1,46 +1,101 @@
-# Euclid-Min · 正十七边形 12 E
+# Euclid-Min · 正十七边形 12 E 尺规构造
 
 **简体中文** · [English](README.en.md)
 
-Euclid-Min 围绕正十七边形相邻顶点的 **12 E 尺规构造**，提供精确证书、独立核验、交互网页、GeoGebra 和 Manim 动画。
+**用 3 条直线和 9 个圆，构造给定圆上一点的两个正十七边形相邻顶点。**
 
-> **3 条直线 + 9 个付费圆，首次在第 12 E 同时得到两个相邻顶点。**
+本项目提供这份 12 E 构造的逐步演示、可编辑图形、机器可重放证书与独立精确核验。两个目标点首次同时出现在第 12 E，无重复绘制。
 
-[离线交互网页](qq-ggb/web/README.md) · [4K Manim 动画](animations/e12/README.md) · [GeoGebra](qq-ggb/ggb/README.md) · [构造证书](qq-ggb/construction-12e-011.json) · [精确验证报告](qq-ggb/verification-12e.json)
+[观看 4K 动画](animations/e12/E12Construction-4K.mp4) · [离线交互网页](qq-ggb/web/README.md) · [GeoGebra 构造](qq-ggb/ggb/README.md) · [构造证书](qq-ggb/construction-12e-011.json) · [验证报告](qq-ggb/verification-12e.json)
 
-[![12 E 构造结果](animations/e12/preview.png)](animations/e12/E12Construction-4K.mp4)
+[![12 E 构造：初始圆、两个相邻顶点及圆心角](animations/e12/preview.png)](animations/e12/E12Construction-4K.mp4)
 
-## 问题与计数
+*点击预览图查看或下载动画：3840 × 2160，30 fps，约 49 秒。*
 
-免费给出圆心 O=(0,0)、圆上一点 A=(1,0) 和单位圆。目标是构造 A 的任意一个正十七边形相邻顶点：
+## 先看演示
 
-\[
+| 形式 | 入口 | 可以做什么 |
+|---|---|---|
+| Manim 动画 | [4K MP4](animations/e12/E12Construction-4K.mp4) | 看完十二笔作图、定位点提示和最终圆心角 |
+| 离线网页 | [下载 index.html](qq-ggb/web/index.html) | 逐笔播放、前后跳转、平移缩放、查看证书 |
+| GeoGebra | [下载 .ggb 文件](qq-ggb/ggb/正十七边形-12E.ggb) | 拖动初始点，查看和编辑原生尺规依赖 |
+
+网页是一个自包含 HTML 文件，下载后直接用浏览器打开，无需安装依赖、联网或启动服务器。在 GitHub 上请先下载文件；点击仓库中的 HTML 链接会显示源码。
+
+动画中的洋红色圆是免费给定的初始圆，金色表示当前一笔，淡蓝色表示已完成的辅助图元，绿色表示最终结果。每次画圆前都会标出圆心和圆上一点，并显示临时半径。绿色半径与角度弧只用于解释结果。
+
+## 12 E 完成了什么
+
+免费给出圆心、圆上一点和单位圆：
+
+$$
+O=(0,0),\qquad A=(1,0),\qquad \Gamma:x^2+y^2=1.
+$$
+
+目标是在圆上构造 A 的任意一个正十七边形相邻顶点。这份构造同时得到两点：
+
+$$
 B_\pm=\left(\cos\frac{2\pi}{17},\ \pm\sin\frac{2\pi}{17}\right).
-\]
+$$
 
-画一条经过两个已有不同点的直线，或以一个已有点为圆心、经过另一个已有点画圆，各记 **1 E**；已有图元的确定交点免费。采用塌圆规，不允许直接搬运距离、任取点或把中点、垂线等复合操作算成一步。目标点出现即完成任务，不要求补齐整个多边形。
+两点对应的圆心角均为 $2\pi/17$。计数在目标点出现时结束，不包含补齐其余顶点或连接整个多边形的工作。**12 E 是已精确验证的构造上界，尚未证明全局最小。**
 
-完整规则固定在 [profile](profiles/regular-17-e-fixed-v1.yaml)、[正式模型](docs/FORMAL_MODEL.md)和[计分规范](docs/METRICS.md)中。
+### 什么算一步
 
-## 当前成果与边界
+| 操作 | 成本 |
+|---|---:|
+| 经过两个已有不同点画一条直线 | 1 E |
+| 以一个已有点为圆心、经过另一个已有点画圆 | 1 E |
+| 求出或命名已有直线与圆的确定交点 | 0 E |
+| 免费给定的 O、A 和初始圆 | 0 E |
 
-12 E 构造通过 SageMath 精确重放、独立根式核验和另一套独立证书重放。全部 18 个具名点得到交叉检查，首次命中为 12 E，无重复绘制。
+采用无刻度直尺和**塌圆规**：圆规不能保持开口来直接搬运距离。除初始点外，新点必须来自已有图元的确定交点；不允许任取点。作中点、垂线、平行线等复合操作必须展开为实际画线和画圆，不能各自算成一步。
 
-几何主体来自 QQ 讨论组提供的 GGB 文件，原作者和最初公开出处未确认。项目调整 K、P 的交点分支，使相同的十二笔直接得到固定初始顶点的两个相邻顶点，并完成证书、核验和演示。来源和分支表见 [QQ-GGB 说明](qq-ggb/README.md)。
+完整规则见 [固定配置](profiles/regular-17-e-fixed-v1.yaml)和[计分规范](docs/METRICS.md)。
 
-已有独立参考检查器严格排除 0–5 E，当前边界为 **`5 < OPT ≤ 12`**。6–11 E 尚未全局排除；12 E 是已验证上界，未证明全局最小，也不宣称世界纪录。[局部搜索](qq-ggb/search-hour-2026-09-11.md)的负结果仅适用于其中明确记载的范围。
+<details>
+<summary>展开查看十二个计费动作</summary>
 
-## 观看与使用
+点名与演示一致；U 对应证书中的 `ggb_O`。交点的来源和分支索引完整记录在[构造证书](qq-ggb/construction-12e-011.json)中，交点绑定不计 E。
 
-- **网页**：下载 [index.html](qq-ggb/web/index.html)，用浏览器打开即可离线逐步播放、平移缩放和查看证书。
-- **Manim**：观看 [4K MP4](animations/e12/E12Construction-4K.mp4)；深蓝底、洋红初始圆、金色当前一笔，逐笔显示定位点和圆规半径，最后同时展示 B₊、B₋。见[分镜与渲染说明](animations/e12/README.md)。
-- **GeoGebra**：打开[可编辑构造](qq-ggb/ggb/正十七边形-12E.ggb)，查看原生尺规依赖或拖动初始点。
+| E | 类型 | 作图 |
+|---:|---|---|
+| 1 | 直线 | 经过 A、O |
+| 2 | 圆 | 以 C 为圆心，经过 O |
+| 3 | 圆 | 以 A 为圆心，经过 C |
+| 4 | 直线 | 经过 D、E |
+| 5 | 圆 | 以 F 为圆心，经过 G |
+| 6 | 直线 | 经过 C、H |
+| 7 | 圆 | 以 I 为圆心，经过 J |
+| 8 | 圆 | 以 K 为圆心，经过 J |
+| 9 | 圆 | 以 C 为圆心，经过 L |
+| 10 | 圆 | 以 K 为圆心，经过 M |
+| 11 | 圆 | 以 N 为圆心，经过 U |
+| 12 | 圆 | 以 C 为圆心，经过 P，与初始圆相交得到 B₊、B₋ |
 
-展示只消费精确核验后导出的坐标，浮点运算用于投影和动画，不参与数学正确性判断。
+</details>
+
+## 来源与项目贡献
+
+几何主体来自 QQ 讨论组网友提供的 [GGB 文件](qq-ggb/正17边形.ggb)，原作者和最初公开出处尚未确认。本项目枚举三个交点的分支选择，调整 K、P 两点的分支，使相同的十二笔直接得到固定初始顶点 A 的两个相邻顶点，并完成证书、独立核验和演示。
+
+原始材料、分支选择与贡献范围见 [12 E 构造说明](qq-ggb/README.md)和[来源记录](qq-ggb/source.yaml)。
+
+## 为什么可以确认是 12 E
+
+验证器从初始对象出发，重新计算全部构造，重算步数和目标出现时刻。它不依赖画面上的近似坐标，也不直接采信证书声明的分数。
+
+| 核验 | 结果 | 记录 |
+|---|---|---|
+| 项目精确验证器 | 3 条直线、9 个付费圆，首次在 12 E 命中两个目标，0 次重复绘制 | [验证报告](qq-ggb/verification-12e.json) |
+| 独立根式核验 | 不导入项目代码，核对圆方程、嵌套根式与第十七次单位根，20 项检查通过 | [根式核验报告](qq-ggb/independent-12e-report.json) |
+| 独立证书重放 | 使用另一套精确求交实现，全部 18 个具名点一致，4 个错误对照被拒绝 | [独立重放报告](qq-ggb/independent-certificate-report.json) |
+
+数学判断使用 SageMath 精确代数数。网页与动画只在屏幕投影和播放时使用数值计算，不以浮点容差判断构造是否成立。
 
 ## 复现
 
-参考环境为 SageMath 10.7。以下命令从仓库根目录运行，仅读取证书并输出 JSON：
+使用 SageMath 10.7。从仓库根目录运行以下命令，只读取现有证书并输出 JSON 报告：
 
 ```sh
 docker run --rm --network none \
@@ -52,25 +107,20 @@ docker run --rm --network none \
   qq-ggb/construction-12e-011.json --json
 ```
 
-应得到 `valid: true`、`lines: 3`、`circles: 9`、`first_target_e_move: 12`，目标包含 `B_plus`、`B_minus`。运行测试时，将最后三行替换为 `sage -python -m unittest discover -s tests -v`。
+报告的关键字段应为：
 
-独立证明、八种分支枚举见 [QQ-GGB 复现说明](qq-ggb/README.md#复现)；动画重建见 [Manim 说明](animations/e12/README.md)。
+```json
+{
+  "valid": true,
+  "draw_operations": {"lines": 3, "circles": 9, "total": 12},
+  "duplicate_draws": 0,
+  "first_target_e_move": 12,
+  "targets": ["B_plus", "B_minus"]
+}
+```
 
-## 代码与文档
-
-| 位置 | 内容 |
-|---|---|
-| `qq-ggb/` | 12 E 来源、证书、独立证明、局部搜索、网页和 GeoGebra |
-| `animations/e12/` | Manim 数据适配、场景、分镜与 4K 成片 |
-| `sage/euclid_min/` | 精确几何内核、重放器、验证器与搜索基础设施 |
-| `profiles/`、`schemas/` | 固定规则和版本化文件格式 |
-| `proofs/` | 0–5 E 严格排除记录 |
-| `tests/` | 几何、12 E 核验、搜索和动画数据回归测试 |
-
-[证书格式](docs/CERTIFICATE_FORMAT.md) · [搜索边界](docs/SEARCH.md) · [下界证明](docs/M7_PROOF_MODE.md) · [实施状态](docs/ROADMAP.md) · [Sage 运行说明](sage/README.md)
+独立核验与分支枚举见 [12 E 复现说明](qq-ggb/README.md#复现)。重新生成演示见 [Manim](animations/e12/README.md#重新生成)、[网页](qq-ggb/web/README.md#重新生成)和 [GeoGebra](qq-ggb/ggb/README.md#重新生成)。
 
 ## 许可与引用
 
-代码、测试、配置和 Schema 使用 [Apache 2.0](LICENSE)；数学文档、证书、研究数据和动画使用 [CC BY 4.0](LICENSE-CONTENT)。第三方原始材料的权利不受本项目许可改变，完整说明见[许可范围](LICENSE-SCOPE.md)。引用请使用 [CITATION.cff](CITATION.cff)，并注明实际使用的提交或版本。
-
-> 搜索可以使用启发式，结论必须精确重放；没有完备下界就不声称最小。
+代码、测试、配置和 Schema 使用 [Apache 2.0](LICENSE)；项目数学文档、证书、数据与动画使用 [CC BY 4.0](LICENSE-CONTENT)。第三方原始材料的权利不受本项目许可改变，详见[许可范围](LICENSE-SCOPE.md)。引用本项目时请使用 [CITATION.cff](CITATION.cff)，并注明所用提交或版本。
