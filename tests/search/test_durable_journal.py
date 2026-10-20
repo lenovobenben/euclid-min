@@ -97,7 +97,6 @@ class DurableJournalTests(unittest.TestCase):
         repository_root = Path(__file__).resolve().parents[2]
         for name in (
             "durable-search-journal-event-v1.schema.json",
-            "fixed-prefix-two-step-search-v2.schema.json",
         ):
             schema = json.loads(
                 (repository_root / "schemas" / name).read_text(encoding="utf-8")

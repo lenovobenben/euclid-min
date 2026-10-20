@@ -20,8 +20,7 @@
 下列非软件内容采用 [Creative Commons Attribution 4.0 International](LICENSE-CONTENT)：
 
 - 所有 Markdown 文档，包括各级 `README.md`、设计文档、研究记录和动画分镜；
-- `baselines/`、`benchmarks/` 和 `proofs/` 中的构造证书、验证报告、搜索报告、检查点与证明记录；
-- `regular-257/` 中除源代码、配置和 `*.schema.json` 外的构造证书、验证报告、研究数据、CSV 和 DOT 图；
+- `qq-ggb/` 和 `proofs/` 中的项目构造证书、验证报告、搜索报告、检查点与证明记录；
 - `animations/` 中的几何导出数据、图像、音频和视频成品；
 - `CITATION.cff` 中的项目元数据。
 

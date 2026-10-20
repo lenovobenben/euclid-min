@@ -5,7 +5,7 @@ from pathlib import Path
 from sage.all import QQbar
 from euclid_min.formats import load_profile, construction_sha256
 from euclid_min.replay import ProgramReplayer
-from audit_and_convert import build_program, SOURCE_SHA256
+from source_program import build_program, SOURCE_SHA256
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parent

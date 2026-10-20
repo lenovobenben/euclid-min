@@ -24,13 +24,7 @@ from euclid_min.target import TargetName, adjacent_targets
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
-IMPROVED_CERTIFICATE = (
-    REPOSITORY_ROOT
-    / "baselines"
-    / "regular-17"
-    / "detemple-1991-carlyle-improved-converted"
-    / "construction.json"
-)
+CERTIFICATE_PATH = REPOSITORY_ROOT / "qq-ggb" / "construction-12e-011.json"
 
 
 class BackwardTerminalConstraintTests(unittest.TestCase):
@@ -43,12 +37,12 @@ class BackwardTerminalConstraintTests(unittest.TestCase):
         )
 
     def test_direct_terminal_generation_matches_full_filter(self):
-        certificate = json.loads(IMPROVED_CERTIFICATE.read_text(encoding="utf-8"))
+        certificate = json.loads(CERTIFICATE_PATH.read_text(encoding="utf-8"))
         program = certificate["construction"]["program"]
         target_line_index = next(
             index
             for index, entry in enumerate(program)
-            if entry["id"] == "target_line"
+            if entry["id"] == "ggb_t"
         )
         state = ProgramReplayer().replay(program[:target_line_index]).state
 
@@ -62,16 +56,16 @@ class BackwardTerminalConstraintTests(unittest.TestCase):
             any(candidate.drawable() == known_final_step.drawable() for candidate in direct)
         )
 
-    def test_known_19e_path_first_gets_target_on_its_last_step(self):
-        certificate = json.loads(IMPROVED_CERTIFICATE.read_text(encoding="utf-8"))
+    def test_known_12e_path_first_gets_target_on_its_last_step(self):
+        certificate = json.loads(CERTIFICATE_PATH.read_text(encoding="utf-8"))
         steps = steps_from_program(certificate["construction"]["program"])
 
-        self.assertEqual(len(steps), 19)
+        self.assertEqual(len(steps), 12)
         self.assertTrue(all(not is_regular17_terminal_step(step) for step in steps[:-1]))
         self.assertTrue(is_regular17_terminal_step(steps[-1]))
         self.assertEqual(
             regular17_targets_on_step(steps[-1]),
-            (TargetName.B_PLUS,),
+            (TargetName.B_PLUS, TargetName.B_MINUS),
         )
 
     def test_initial_two_step_and_or_expansion_is_exhaustive_and_empty(self):
@@ -120,21 +114,21 @@ class BackwardTerminalConstraintTests(unittest.TestCase):
         self.assertEqual(origin.point, new_point)
         self.assertEqual(origin.supporting_drawables, state.circles)
 
-    def test_known_19e_last_two_draws_form_a_valid_and_branch(self):
-        certificate = json.loads(IMPROVED_CERTIFICATE.read_text(encoding="utf-8"))
+    def test_known_12e_last_two_draws_form_a_valid_and_branch(self):
+        certificate = json.loads(CERTIFICATE_PATH.read_text(encoding="utf-8"))
         program = certificate["construction"]["program"]
         replay = ProgramReplayer().replay(program)
         steps = steps_from_program(program)
-        state = node_from_steps(steps[:17]).state
+        state = node_from_steps(steps[:10]).state
         precursor = Candidate(
-            steps[17].op,
-            steps[17].first,
-            steps[17].second,
+            steps[10].op,
+            steps[10].first,
+            steps[10].second,
         )
         terminal = Candidate(
-            steps[18].op,
-            steps[18].first,
-            steps[18].second,
+            steps[11].op,
+            steps[11].first,
+            steps[11].second,
         )
 
         obligation = build_regular17_two_step_obligation(
@@ -143,27 +137,27 @@ class BackwardTerminalConstraintTests(unittest.TestCase):
             terminal,
         )
 
-        self.assertEqual(obligation.targets, (TargetName.B_PLUS,))
+        self.assertEqual(obligation.targets, (TargetName.B_PLUS, TargetName.B_MINUS))
         self.assertEqual(len(obligation.new_input_origins), 1)
         origin = obligation.new_input_origins[0]
-        self.assertEqual(origin.point, replay.names["target_helper_point"])
+        self.assertEqual(origin.point, replay.names["ggb_P"])
         self.assertTrue(
             any(
-                drawable == replay.names["c_Q_O"]
+                drawable == replay.names["ggb_i"]
                 for drawable in origin.supporting_drawables
             )
         )
 
     def test_new_point_terminal_restriction_recovers_known_final_step(self):
-        certificate = json.loads(IMPROVED_CERTIFICATE.read_text(encoding="utf-8"))
+        certificate = json.loads(CERTIFICATE_PATH.read_text(encoding="utf-8"))
         steps = steps_from_program(certificate["construction"]["program"])
-        state = node_from_steps(steps[:17]).state
+        state = node_from_steps(steps[:10]).state
         self.assertEqual(generate_regular17_terminal_candidates_direct(state), ())
 
         precursor = Candidate(
-            steps[17].op,
-            steps[17].first,
-            steps[17].second,
+            steps[10].op,
+            steps[10].first,
+            steps[10].second,
         )
         child = state.clone()
         addition = child.draw_circle(precursor.first, precursor.second)
@@ -177,7 +171,7 @@ class BackwardTerminalConstraintTests(unittest.TestCase):
         self.assertEqual(restricted, full)
         self.assertTrue(
             any(
-                candidate.drawable() == steps[18].drawable()
+                candidate.drawable() == steps[11].drawable()
                 for candidate in restricted
             )
         )

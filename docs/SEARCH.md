@@ -109,36 +109,7 @@ euclid-min search --profile <profile> --max-score 3 \
 - 尚无代数次数/子域信号、Go 调度器或可完备排除 6–11 E 的全局 proof mode；M7 小深度入口已使用严格横轴镜像归约；
 - BFS 没有触发 `state_limit` 时只能说明指定深度被当前规则穷尽，不能直接推出与当前 12 E 上界相匹配的下界；beam 永远不提供穷尽结论。
 
-## 8. E12 并行联合后缀实验
-
-> 历史范围：本节记录 19 E 尚为项目上界时，为寻找不超过 18 E 的构造而进行的
-> 启发式实验。当前已验证上界是 12 E；本节数据只描述冻结的 19 E 路线前缀。
-
-为继续攻击 18 E，上界搜索已经支持从带分数的精确中间节点启动，并新增专用的
-进程级 `ParallelHeuristicBeamSearch`。它在 worker 内执行 Sage 精确展开，只向
-父进程返回路径摘要；候选预筛使用数值规范键、生成依赖层级、目标残差和线圆
-配额。运行时超时及所有被删除分支均被显式统计。
-
-该模式严格属于 `heuristic_nonproof`，不改变本页第 3 节对完备搜索和 lower bound
-的要求。固定 E12 前缀的首轮六层结果、复现命令和性能数据见
-[`M6_SUFFIX_SEARCH.md`](M6_SUFFIX_SEARCH.md)。
-
-多个确定性配置可由 `search_detemple_suffix_matrix.py` 作为独立子进程并行运行；
-每个子进程内部再使用自己的 Sage 精确 worker。配置、子结果和总汇总均受 JSON
-Schema 约束。当前四配置矩阵的总容量为 16 worker，实测峰值约 1155% Docker
-CPU；它扩大的是启发式结构覆盖，仍不具备穷尽性。
-
-可选的 `complexity_order` 根据搜索路径同步维护的有界 provenance 复杂度安排
-已选候选的 worker 提交顺序。该值不读取 `AA` 最小多项式，不进入状态相等或
-剪枝；当前 A/B 实验未证明它单独改善吞吐，主要性能信号仍来自生成层级门。
-
-最终排名审计显示：宽度不超过 32 的当前预筛不会保留已知 19 E 后缀中的任何
-一步。随后两个专用局部窗口也未找到 18 E。该结果触发了预先设定的停止条件；
-除非出现新的结构假设或可校准启发式，不再继续扩大本搜索器的非证明 beam。
-
-M5 的固定 profiling 结果、启发式公式和解释边界见 `docs/M5_PROFILING.md`。
-
-## 9. M7 小深度 Proof Mode
+## 8. 小深度 Proof Mode
 
 `euclid-min prove` 与普通 `search` 的 `bfs` 共享正式数学状态，但不接受
 `max_states`、checkpoint、超时或任何启发式候选删除。v1 按 E-score 完整分层；

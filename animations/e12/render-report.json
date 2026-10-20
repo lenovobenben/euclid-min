@@ -1,0 +1,30 @@
+{
+  "scene": "E12Construction",
+  "manim_version": "0.21.0",
+  "render_image": "euclid-min-manim:0.21.0",
+  "video": "E12Construction-4K.mp4",
+  "video_stream": {
+    "codec_name": "h264",
+    "width": 3840,
+    "height": 2160,
+    "r_frame_rate": "30/1"
+  },
+  "duration_seconds": 48.863411,
+  "size_bytes": 9787602,
+  "sha256": {
+    "E12Construction-4K.mp4": "da2877bf95fb8224e2a2c47e58757e6cdb798305442c03c62625ff7efbd1f979",
+    "e12_construction.py": "6f130f06b9aaa1d2f7018d566df3a0a018e782a665fc0f86a36e644f027363ae",
+    "geometry.json": "a8727f7957905cb1af62797a74284f1ec7eb68958b4c7f3093cb4e247c4b982f",
+    "manim.cfg": "23918519bd92c5b37adba0dccff3ee800e5eaae8a1d17bf317b2c95a139971de"
+  },
+  "visual_checks": [
+    "opening",
+    "reference markers",
+    "camera framing",
+    "twelfth circle and both targets",
+    "two equal central angles",
+    "source credits"
+  ],
+  "preview_result_time_seconds": 42.4,
+  "geometry_stroke_scale": 0.6666666666666666
+}

@@ -18,13 +18,7 @@ from euclid_min.search.sharded_checkpoint import (
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 PROFILE_PATH = REPOSITORY_ROOT / "profiles" / "regular-17-e-fixed-v1.yaml"
-INPUT_PATH = (
-    REPOSITORY_ROOT
-    / "baselines"
-    / "regular-17"
-    / "detemple-1991-carlyle-improved-converted"
-    / "construction.json"
-)
+INPUT_PATH = REPOSITORY_ROOT / "qq-ggb" / "construction-12e-011.json"
 
 
 class ShardedCheckpointTests(unittest.TestCase):
@@ -35,7 +29,7 @@ class ShardedCheckpointTests(unittest.TestCase):
             "input_sha256": {
                 "construction.json": hashlib.sha256(INPUT_PATH.read_bytes()).hexdigest()
             },
-            "configuration": {"prefix_e_move": 17, "shard_size": 64},
+            "configuration": {"prefix_e_move": 10, "shard_size": 64},
             "shard_ids": ["0000", "0001", "0002"],
         }
 
@@ -105,7 +99,7 @@ class ShardedCheckpointTests(unittest.TestCase):
             path = Path(directory) / "checkpoint.json"
             load_or_create_checkpoint(path, **self.definition())
             changed = self.definition()
-            changed["configuration"] = {"prefix_e_move": 16, "shard_size": 64}
+            changed["configuration"] = {"prefix_e_move": 9, "shard_size": 64}
             with self.assertRaises(ShardedCheckpointError):
                 load_or_create_checkpoint(path, **changed)
 
