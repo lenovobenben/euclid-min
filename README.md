@@ -121,6 +121,10 @@ docker run --rm --network none \
 
 独立核验与分支枚举见 [12 E 复现说明](qq-ggb/README.md#复现)。重新生成演示见 [Manim](animations/e12/README.md#重新生成)、[网页](qq-ggb/web/README.md#重新生成)和 [GeoGebra](qq-ggb/ggb/README.md#重新生成)。
 
+**Euclid 几何研究系列**
+
+**Euclid-Min** · [Euclid-CCC-Min](https://github.com/lenovobenben/euclid-ccc-min) · [Euclid-Equal-Angle-Min](https://github.com/lenovobenben/euclid-equal-angle-min) · [Euclid-Castillon-Min](https://github.com/lenovobenben/euclid-castillon-min) · [Euclid-Conic-Classification](https://github.com/lenovobenben/euclid-conic-classification) · [Euclid-Cubic-Trisection](https://github.com/lenovobenben/euclid-cubic-trisection) · [Euclid-Square-Reconstruction](https://github.com/lenovobenben/euclid-square-reconstruction) · [Euclid-Fermat-Point](https://github.com/lenovobenben/euclid-fermat-point) · [Euclid-Quadrilateral-Centroid](https://github.com/lenovobenben/euclid-quadrilateral-centroid) · [Euclid-Quadrature](https://github.com/lenovobenben/euclid-quadrature)
+
 ## 许可与引用
 
 代码、测试、配置和 Schema 使用 [Apache 2.0](LICENSE)；项目数学文档、证书、数据与动画使用 [CC BY 4.0](LICENSE-CONTENT)。第三方原始材料的权利不受本项目许可改变，详见[许可范围](LICENSE-SCOPE.md)。引用本项目时请使用 [CITATION.cff](CITATION.cff)，并注明所用提交或版本。
